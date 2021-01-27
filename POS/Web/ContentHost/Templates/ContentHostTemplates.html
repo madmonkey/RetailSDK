@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Content Host Template</title>
+    <link href="contentHostTemplates.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Template for the content host -->
+    <script id="contentHostTemplate" type="text/html">
+        <div class="viewLoader" data-bind="loader: { visible: isBusy, manageFocus: false }" />
+        <!-- Header and side bar -->
+        <div data-bind="headerSplitView: {
+                /* Generally applicable options */
+                title: headerTitle,
+                navigateBackVisible: canNavigateBack,
+                isHeaderVisible: isHeaderVisible,
+                isSideBarVisible: isSideBarVisible,
+
+                /* Login view and cart view specific options */
+                headerContentVisible: isHeaderContentVisible,
+                sideBarContentVisible: isSideBarContentVisible,
+                preventInteraction: shouldPreventInteraction,
+
+                /* Search specific options */
+                searchClick: onSearch.bind($data),
+                searchBySearchFieldClick: onSearchByFieldCriteria.bind($data),
+                searchText: searchText,
+                searchType: searchType,
+                showCustomerSearchFields: enableSearchByFieldCriteria,
+                setFocusOnSearchText: setFocusOnSearchText,
+                hideCustomerHeaderSearchCategory: isCustomerSearchTypeDisabled,
+                hideProductHeaderSearchCategory: isProductSearchTypeDisabled
+            },
+            appBarSpacerManager: {
+                addViewChangedEventHandler: addViewChangedEventHandler.bind($data),
+                removeViewChangedEventHandler: removeViewChangedEventHandler.bind($data),
+                appBarSpacerSelector: '#appBarSpacer'
+            }"
+            class="width100Percent height100Percent">
+            <div id="outerViewsHost" class="width100Percent height100Percent col" data-bind="css: { 'headerOffset': isHeaderVisible() && isHeaderContentVisible() }">
+                <!-- View content -->
+                <div class="viewHost row width100Percent height100Percent"></div>
+                <div id="appBarSpacer" class="width100Percent"></div>
+                <div id="sharedAppBarHost" class="width100Percent" style="display: none"></div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

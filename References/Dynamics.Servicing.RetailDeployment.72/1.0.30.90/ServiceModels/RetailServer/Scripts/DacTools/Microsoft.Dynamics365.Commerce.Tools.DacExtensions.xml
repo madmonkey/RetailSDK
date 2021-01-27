@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics365.Commerce.Tools.DacExtensions</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Contributions.DropIfExistsContribution">
+            <summary>
+            A plan contribution that drops entity if it exists.
+            </summary>
+            <seealso cref="T:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.IPlanContribution" />
+        </member>
+        <member name="P:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Contributions.DropIfExistsContribution.ContributorId">
+            <summary>
+            Gets a unique identifier for this contributor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Contributions.DropIfExistsContribution.SetArgument(System.String)">
+            <summary>
+            Sets the argument for the contributor.
+            </summary>
+            <param name="argument">The argument value.</param>
+            <remarks>A value indicating whether this contributor was correctly configured and can be used.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Contributions.DropIfExistsContribution.VisitDeploymentStep(Microsoft.SqlServer.Dac.Deployment.DeploymentStep,System.Collections.Generic.IEnumerable{Microsoft.SqlServer.Dac.Deployment.DeploymentStep}@,System.Collections.Generic.IEnumerable{Microsoft.SqlServer.Dac.Deployment.DeploymentStep}@)">
+            <summary>
+            Visits a deployment step.
+            </summary>
+            <param name="step">The deployment step to be analysed for contributions.</param>
+            <param name="preSteps">A possibly null or empty collection of steps to be added before <paramref name="step"/>.</param>
+            <param name="postSteps">A possibly null or empty collection of steps to be added after <paramref name="step"/>.</param>
+            <returns>A value indicating whether the <paramref name="step"/> should be kept (true) or removed (false).</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Contributions.StubFreeTextDependencyContribution">
+            <summary>
+            This contribution will replace the contents of any function or stored procedure that uses a free text search function with a noop statements.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Contributions.StubFreeTextDependencyContribution.FtsTableFunctionRegex">
+            <summary>
+            Match the whole FTS function until end of last parenthesis. First capture is the function name. Second capture is the first parameter.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Contributions.StubFreeTextDependencyContribution.ContributorId">
+            <summary>
+            Gets a unique identifier for this contributor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Contributions.StubFreeTextDependencyContribution.SetArgument(System.String)">
+            <summary>
+            Sets the argument for the contributor.
+            </summary>
+            <param name="argument">The argument value.</param>
+            <remarks>A value indicating whether this contributor was correctly configured and can be used.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Contributions.StubFreeTextDependencyContribution.VisitDeploymentStep(Microsoft.SqlServer.Dac.Deployment.DeploymentStep,System.Collections.Generic.IEnumerable{Microsoft.SqlServer.Dac.Deployment.DeploymentStep}@,System.Collections.Generic.IEnumerable{Microsoft.SqlServer.Dac.Deployment.DeploymentStep}@)">
+            <summary>
+            Visits a deployment step.
+            </summary>
+            <param name="step">The deployment step to be analysed for contributions.</param>
+            <param name="preSteps">A possibly null or empty collection of steps to be added before <paramref name="step"/>.</param>
+            <param name="postSteps">A possibly null or empty collection of steps to be added after <paramref name="step"/>.</param>
+            <returns>A value indicating whether the <paramref name="step"/> should be kept (true) or removed (false).</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Contributions.UnnamedConstraintContribution">
+            <summary>
+            A plan contribution that handles dropping of unnamed contraint.  
+            </summary>
+            <seealso cref="T:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.IPlanContribution" />
+        </member>
+        <member name="P:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Contributions.UnnamedConstraintContribution.ContributorId">
+            <summary>
+            Gets a unique identifier for this contributor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Contributions.UnnamedConstraintContribution.SetArgument(System.String)">
+            <summary>
+            Sets the argument for the contributor.
+            </summary>
+            <param name="argument">The argument value.</param>
+            <remarks>A value indicating whether this contributor was correctly configured and can be used.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Contributions.UnnamedConstraintContribution.VisitDeploymentStep(Microsoft.SqlServer.Dac.Deployment.DeploymentStep,System.Collections.Generic.IEnumerable{Microsoft.SqlServer.Dac.Deployment.DeploymentStep}@,System.Collections.Generic.IEnumerable{Microsoft.SqlServer.Dac.Deployment.DeploymentStep}@)">
+            <summary>
+            Visits a deployment step.
+            </summary>
+            <param name="step">The deployment step to be analysed for contributions.</param>
+            <param name="preSteps">A possibly null or empty collection of steps to be added before <paramref name="step"/>.</param>
+            <param name="postSteps">A possibly null or empty collection of steps to be added after <paramref name="step"/>.</param>
+            <returns>A value indicating whether the <paramref name="step"/> should be kept (true) or removed (false).</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.DropColumnFilter">
+            <summary>
+            Filter and possibly alters AlterElementStep to prevent column drops.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.DropColumnFilter.ContributorId">
+            <summary>
+            Gets a unique identifier for this contributor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.DropColumnFilter.ShouldKeepStep(Microsoft.SqlServer.Dac.Deployment.DeploymentStep)">
+            <summary>
+            Decides whether <paramref name="deploymentStep"/> must be filtered out of the deployment plan.
+            </summary>
+            <param name="deploymentStep">The deployment step to be analysed for filtering.</param>
+            <returns>A value indicating whether the <paramref name="deploymentStep"/> should be kept (true) or removed (false).</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.DropExtensionSchemaFilter">
+            <summary>
+            Filter out drop statements for extension tables.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.DropExtensionSchemaFilter.ContributorId">
+            <summary>
+            Gets a unique identifier for this contributor.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.DropExtensionSchemaFilter.ExtensionSchemaPrefix">
+            <summary>
+            Gets or sets the prefix for the database schema used for extensions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.DropExtensionSchemaFilter.SetArgument(System.String)">
+            <summary>
+            Sets the argument for the contributor.
+            </summary>
+            <param name="argument">The argument value.</param>
+            <remarks>A value indicating whether this contributor was correctly configured and can be used.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.DropExtensionSchemaFilter.ShouldKeepStep(Microsoft.SqlServer.Dac.Deployment.DeploymentStep)">
+            <summary>
+            Decides whether <paramref name="deploymentStep"/> must be filtered out of the deployment plan.
+            </summary>
+            <param name="deploymentStep">The deployment step to be analysed for filtering.</param>
+            <returns>A value indicating whether the <paramref name="deploymentStep"/> should be kept (true) or removed (false).</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.DropFullTextSearchIndexFilter">
+            <summary>
+            Filter out drop statements for full text indexes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.DropFullTextSearchIndexFilter.ContributorId">
+            <summary>
+            Gets a unique identifier for this contributor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.DropFullTextSearchIndexFilter.ShouldKeepStep(Microsoft.SqlServer.Dac.Deployment.DeploymentStep)">
+            <summary>
+            Decides whether <paramref name="deploymentStep"/> must be filtered out of the deployment plan.
+            </summary>
+            <param name="deploymentStep">The deployment step to be analysed for filtering.</param>
+            <returns>A value indicating whether the <paramref name="deploymentStep"/> should be kept (true) or removed (false).</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.Filter">
+            <summary>
+            Defines a base class for a filter contribution.
+            </summary>
+            <remarks>Filters simply remove existing statements from the code.</remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.Filter.ContributorId">
+            <summary>
+            Gets a unique identifier for this contributor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.Filter.ParseTrueFalseArgument(System.String,System.String)">
+            <summary>
+            Performs boolean parsing of <paramref name="argument"/> and return the result.
+            </summary>
+            <param name="argument">The argument to be parsed.</param>
+            <param name="contributorId">The contributor id to be embeded on the exception message.</param>
+            <remarks>If parsing fails, expcetion is thrown.</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.Filter.SetArgument(System.String)">
+            <summary>
+            Sets the argument for the contributor.
+            </summary>
+            <param name="argument">The argument value.</param>
+            <remarks>A value indicating whether this contributor was correctly configured and can be used.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.Filter.VisitDeploymentStep(Microsoft.SqlServer.Dac.Deployment.DeploymentStep,System.Collections.Generic.IEnumerable{Microsoft.SqlServer.Dac.Deployment.DeploymentStep}@,System.Collections.Generic.IEnumerable{Microsoft.SqlServer.Dac.Deployment.DeploymentStep}@)">
+            <summary>
+            Visits a deployment step.
+            </summary>
+            <param name="step">The deployment step to be analysed for contributions.</param>
+            <param name="preSteps">A possibly null or empty collection of steps to be added before <paramref name="step"/>.</param>
+            <param name="postSteps">A possibly null or empty collection of steps to be added after <paramref name="step"/>.</param>
+            <returns>A value indicating whether the <paramref name="step"/> should be kept (true) or removed (false).</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.Filter.ShouldKeepStep(Microsoft.SqlServer.Dac.Deployment.DeploymentStep)">
+            <summary>
+            Decides whether <paramref name="deploymentStep"/> must be filtered out of the deployment plan.
+            </summary>
+            <param name="deploymentStep">The deployment step to be analysed for filtering.</param>
+            <returns>A value indicating whether the <paramref name="deploymentStep"/> should be kept (true) or removed (false).</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.FullTextIndexFilter">
+            <summary>
+            Filter out any full text filter or catalog statement.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.FullTextIndexFilter.ContributorId">
+            <summary>
+            Gets a unique identifier for this contributor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.Filters.FullTextIndexFilter.ShouldKeepStep(Microsoft.SqlServer.Dac.Deployment.DeploymentStep)">
+            <summary>
+            Decides whether <paramref name="deploymentStep"/> must be filtered out of the deployment plan.
+            </summary>
+            <param name="deploymentStep">The deployment step to be analysed for filtering.</param>
+            <returns>A value indicating whether the <paramref name="deploymentStep"/> should be kept (true) or removed (false).</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.IPlanContribution">
+            <summary>
+            Defines what a plan contribution does.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.IPlanContribution.ContributorId">
+            <summary>
+            Gets a unique identifier for this contributor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.IPlanContribution.SetArgument(System.String)">
+            <summary>
+            Sets the argument for the contributor.
+            </summary>
+            <param name="argument">The argument value.</param>
+            <remarks>A value indicating whether this contributor was correctly configured and can be used.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.IPlanContribution.VisitDeploymentStep(Microsoft.SqlServer.Dac.Deployment.DeploymentStep,System.Collections.Generic.IEnumerable{Microsoft.SqlServer.Dac.Deployment.DeploymentStep}@,System.Collections.Generic.IEnumerable{Microsoft.SqlServer.Dac.Deployment.DeploymentStep}@)">
+            <summary>
+            Visits a deployment step.
+            </summary>
+            <param name="deploymentStep">The deployment step to be analysed for contributions.</param>
+            <param name="preDeploymentSteps">A possibly null or empty collection of steps to be added before <paramref name="deploymentStep"/>.</param>
+            <param name="postDeploymentSteps">A possibly null or empty collection of steps to be added after <paramref name="deploymentStep"/>.</param>
+            <returns>A value indicating whether the <paramref name="deploymentStep"/> should be kept (true) or removed (false).</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.PlanContributor">
+            <summary>
+            Filters a deployment plan.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.PlanContributor.ContributorId">
+            <summary>
+            The contributor identifier.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics365.Commerce.Tools.DacExtensions.PlanContributor.OnExecute(Microsoft.SqlServer.Dac.Deployment.DeploymentPlanContributorContext)">
+            <summary>
+            Called by the deployment engine to allow custom contributors to execute their unique tasks.
+            </summary>
+            <param name="context">A Microsoft.SqlServer.Dac.Deployment.DeploymentContributorContext object.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Document Templates</title>
+    <link href="InventoryDocumentTemplate.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Template for displaying line product information -->
+    <script type="text/html" id="inventoryDocumentLineProductInformationTemplate">
+        <div class="row marginBottom12 marginLeft12 marginTop12 marginRight12">
+            <div class="width72 height72 marginRight12 col fit-image">
+                <img data-bind="attr: { src: Commerce.Formatters.ImageFormatter(primaryImageUrl, Commerce.DefaultImages.ProductSmall) },
+                        alt: itemName,
+                        setImageOnError: Commerce.DefaultImages.ProductSmall" />
+            </div>
+            <div class="col">
+                <h4 class="marginBottom4" data-bind="text: itemName"></h4>
+                <h6 class="marginBottom4 secondaryFontColor textTransformNone" data-bind="text: itemId"></h6>
+                <h6 class="secondaryFontColor textTransformNone" data-bind="text: productDimensionsDescription"></h6>
+            </div>
+        </div>
+    </script>
+
+    <!-- Template for displaying line wms location information -->
+    <script type="text/html" id="inventoryDocumentLineWmsLocationTemplate">
+        <h4 class="marginBottom16 secondaryFontColor" data-bind="resx: { textContent: 'string_12438' }"></h4><!--Location-->
+        <div class="row centerY borderBottomExtraThin clickable" role="button" tabindex="0" data-bind="click: onUpdateLocation, axBubbleAttr: 'inventoryDocumentLineWmsLocationTemplate_wmsLocation'">
+            <div class="col center width48 height48 marginRight8 marginBottom8">
+                <div class="h2 icon-24x24 accentColor" data-bind="resx: { ariaLabel: 'string_12439' },
+                    css: { iconMapPin: !isWmsLocationIdEmpty, iconPOILocationNotFound: isWmsLocationIdEmpty }">
+                    </div><!--Edit location-->
+            </div>
+            <div class="grow col centerY marginBottom8">
+                <div class="col">
+                    <!-- ko ifnot: isWmsLocationIdEmpty -->
+                    <h5 data-bind="text: wmsLocationId"></h5>
+                    <!-- /ko -->
+                    <!-- ko if: isWmsLocationIdEmpty -->
+                    <h5 data-bind="resx: { textContent: 'string_12434' }"></h5><!--Location not set-->
+                    <!-- /ko -->
+                </div>
+            </div>
+            <div class="col center width48 height48 marginBottom8">
+                <div class="h2 iconChevronRight icon-24x24 accentColor" data-bind="resx: { ariaLabel: 'string_12439' }"></div><!--Edit location-->
+            </div>
+        </div>
+    </script>
+
+    <!-- Card style list for warehouse location selection dialog -->
+    <script id="inventoryDocumentWarehouseLocationGridTemplate" type="text/html">
+        <div class="inventoryDocumentWarehouseLocationGrid">
+            <div class="row borderBottomExtraThin center">
+                <div class="width48 height48 marginTop12 marginBottom12 col center">
+                    <!-- ko ifnot: isWmsLocationIdEmpty -->
+                    <div class="h2 iconMapPin icon-24x24 accentColor"></div>
+                    <!-- /ko -->
+                    <!-- ko if: isWmsLocationIdEmpty -->
+                    <div class="h2 iconPOILocationNotFound icon-24x24 accentColor"></div>
+                    <!-- /ko -->
+                </div>
+
+                <h5 class="grow" data-bind="text: friendlyLabel"></h5>
+
+                <!-- ko if: selected -->
+                <div class="width48 height48 col center">
+                    <div class="h2 iconAccept icon-24x24 accentColor"></div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </script>
+
+    <!-- Template to display inventory document header information -->
+    <script id="inventoryDocumentHeaderDetailsTemplate" type="text/html">
+        <!-- Quantity remaining -->
+        <!-- ko if: showQuantitySection -->
+        <div class="marginBottom20" data-bind="horizontalStatusBar: {
+            finishedNumber: isInboundOperation ? quantityReceived : quantityShipped,
+            inProgressNumber: quantityInProgress,
+            notStartedNumber: quantityNotStarted,
+            showNumbersBelowBar: true,
+            decimalPrecision: quantityDecimalPrecision,
+            controlLoggingId: 'inventoryDocumentHeaderDetailsTemplate',
+            labels: {
+                remainingLabel: Commerce.ViewModelAdapter.getResourceString('string_12457'), /* Quantity remaining */
+                finishedLabel: isInboundOperation
+                    ? Commerce.ViewModelAdapter.getResourceString('string_12446') /* Received */
+                    : Commerce.ViewModelAdapter.getResourceString('string_12445'), /* Shipped */
+                totalLabel: isInboundOperation
+                    ? Commerce.ViewModelAdapter.getResourceString('string_12470') /* Total to receive */
+                    : Commerce.ViewModelAdapter.getResourceString('string_12527'), /* Total to ship */
+                overallStatusLabel: isInboundOperation
+                    ? Commerce.ViewModelAdapter.getResourceString('string_12401') /* Receiving now */
+                    : Commerce.ViewModelAdapter.getResourceString('string_12501'), /* Shipping now */
+            }
+        }">
+        </div>
+        <!-- /ko -->
+
+        <!-- Expandable Quantity Section -->
+        <!-- ko if: showExpandableQuantitySection -->
+        <div class="marginBottom20 inventoryDocumentHeaderDetails">
+            <div class="col borderBottomExtraThin">
+                <div class="row centerY clickable" role="button" tabindex="0"  data-bind="click: onToggleDetailsPaneQuantity, axBubbleAttr: 'inventoryDocumentHeaderDetailsTemplate_onToggleDetailsPaneQuantity'">
+                    <h6 class="marginBottom8 secondaryFontColor" data-bind="resx: { textContent: 'string_12442' }"></h6><!--PRODUCT QUANTITY-->
+                    <div class="grow"></div>
+                    <div class="col center width48 height28 marginBottom4 positionRelative">
+                        <!-- ko ifnot: isDetailsPaneQuantityExpanded -->
+                        <div class="h2 iconChevronDown icon-24x24 accentColor" data-bind="resx: { ariaLabel: 'string_12444' }"></div><!--Unexpanded product quantity section-->
+                        <!-- /ko -->
+                        <!-- ko if: isDetailsPaneQuantityExpanded -->
+                        <div class="h2 iconChevronUp icon-24x24 accentColor" data-bind="resx: { ariaLabel: 'string_12443' }"></div><!--Expand product quantity section-->
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <!-- ko if: isDetailsPaneQuantityExpanded -->
+                <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12453' }"></h4><!--Remaining-->
+                <h4 class="marginBottom12" data-bind="text: quantityInProgress + quantityNotStarted"></h4>
+
+                <!-- ko ifnot: isPurchaseOrder -->
+                <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12445' }"></h4><!--Shipped-->
+                <h4 class="marginBottom12" data-bind="text: quantityShipped"></h4>
+                <!-- /ko -->
+
+                <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12446' }"></h4><!--Received-->
+                <h4 class="marginBottom12" data-bind="text: quantityReceived"></h4>
+
+                <!-- ko if: quantityOverReceived > 0 -->
+                <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12472' }"></h4><!--Over-received-->
+                <h4 class="marginBottom12" data-bind="text: quantityOverReceived"></h4>
+                <!-- /ko -->
+
+                <!-- ko if: quantityOverShipped > 0 -->
+                <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12529' }"></h4><!--Over-shipped-->
+                <h4 class="marginBottom12" data-bind="text: quantityOverShipped"></h4>
+                <!-- /ko -->
+
+                <!-- ko if: quantityCanceled > 0 -->
+                <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12447' }"></h4><!--Canceled-->
+                <h4 class="marginBottom12" data-bind="text: quantityCanceled"></h4>
+                <!-- /ko -->
+
+                <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12471' }"></h4><!--Originally ordered-->
+                <h4 class="marginBottom12" data-bind="text: quantityOrdered"></h4>
+                <!-- /ko -->
+            </div>
+        </div>
+        <!-- /ko -->
+
+        <!-- Transfer from -->
+        <div class="marginBottom8">
+            <!-- ko if: isPurchaseOrder -->
+            <h4 class="secondaryFontColor marginBottom8" data-bind="resx: { textContent: 'string_12645' }"></h4><!--Ship from-->
+            <!-- /ko -->
+            <!-- ko ifnot: isPurchaseOrder -->
+            <h4 class="secondaryFontColor marginBottom8" data-bind="resx: { textContent: 'string_12624' }"></h4><!--Transfer from-->
+            <!-- /ko -->
+            <div data-bind="selectTile: {
+                tileType: Commerce.Controls.SelectTile.SelectTileType.DoubleLine,
+                primaryText: sender,
+                secondaryText: senderDetails,
+                iconClass: 'iconRetail icon-20x20 secondaryFontColor',
+                iteminvoked: function(){ return undefined; },
+                displayChevron: false,
+                primaryTextCssClass: 'primaryFontColor',
+                secondaryTextCssClass: 'secondaryFontColor',
+                backgroundCssClass: displayInDialog ? 'backgroundTransparent' : 'transferContainer',
+                displayBottomBorder: true,
+                disabled: true
+            }">
+            </div>
+        </div>
+
+        <!-- Transfer to -->
+        <!-- ko ifnot: isPurchaseOrder -->
+        <div class="marginBottom8">
+            <h4 class="secondaryFontColor marginBottom8" data-bind="resx: { textContent: 'string_12625' }"></h4><!--Transfer to-->
+            <div data-bind="selectTile: {
+                tileType: Commerce.Controls.SelectTile.SelectTileType.DoubleLine,
+                primaryText: receiver,
+                secondaryText: receiverDetails,
+                iconClass: 'iconRetail icon-20x20 secondaryFontColor',
+                iteminvoked: function(){ return undefined; },
+                displayChevron: false,
+                primaryTextCssClass: 'primaryFontColor',
+                secondaryTextCssClass: 'secondaryFontColor',
+                backgroundCssClass: displayInDialog ? 'backgroundTransparent' : 'transferContainer',
+                displayBottomBorder: true,
+                disabled: true
+            }">
+            </div>
+        </div>
+        <!-- /ko -->
+
+        <!-- Ship date -->
+        <div class="row marginBottom20">
+            <div class="grow col">
+                <!-- ko if: isPurchaseOrder -->
+                <h4 class="secondaryFontColor" data-bind="resx: { textContent: 'string_13151' }"></h4><!-- Delivery date -->
+                <!-- /ko -->
+                <!-- ko ifnot: isPurchaseOrder -->
+                <h4 class="secondaryFontColor" data-bind="resx: { textContent: 'string_12626' }"></h4><!-- Ship date -->
+                <!-- /ko -->
+            </div>
+            <div class="grow col textRight">
+                <h4 class="primaryFontColor" data-bind="text: Commerce.Formatters.DateWithoutTimeIgnoreTimezone(shipDate)"></h4>
+            </div>
+        </div>
+
+        <!-- ko ifnot: isPurchaseOrder -->
+        <div class="row marginBottom20">
+            <div class="grow col">
+                <h4 class="secondaryFontColor" data-bind="resx: { textContent: 'string_12627' }"></h4><!--Receive date-->
+            </div>
+            <div class="grow col textRight">
+                <h4 class="primaryFontColor" data-bind="text: Commerce.Formatters.DateWithoutTimeIgnoreTimezone(receiveDate)"></h4>
+            </div>
+        </div>
+
+        <div class="marginBottom20">
+            <h4 class="secondaryFontColor marginBottom4" data-bind="resx: { textContent: 'string_12628' }"></h4><!--Mode of delivery-->
+            <h4 class="h4 primaryFontColor" data-bind="text: deliveryMode"></h4>
+        </div>
+        <!-- /ko -->
+    </script>
+
+    <!-- Card style list for warehouse selection dialog -->
+    <script id="inventoryDocumentWarehouseGridTemplate" type="text/html">
+        <div class="inventoryDocumentWarehouseGrid row borderBottomExtraThin centerY">
+            <div class="width48 height48 marginLeft8 marginRight8 marginTop12 marginBottom12 col center">
+                <div class="h2 iconRetail icon-24x24 accentColor"></div>
+            </div>
+
+            <div class="col">
+                <h5 class="grow" data-bind="text: InventLocation"></h5>
+                <h6 class="grow textTransformNone" data-bind="text: Name"></h6>
+            </div>
+
+            <!-- ko if: selected -->
+            <div class="width48 height48 col marginLeft8 marginRight8 centerY alignRight">
+                <div class="h2 iconAccept icon-24x24 accentColor"></div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </script>
+
+    <!-- Template for the error section in validation view -->
+    <script type="text/html" id="inventoryDocumentValidationErrorSection">
+        <div class="inventoryDocumentValidationErrorSection">
+        <!-- ko if: isCategoryActive -->
+            <!-- ko if: isError -->
+                <div class="row marginTop8 padTop8 padBottom8 padLeft12 padRight12 inventoryValidationSevereWarningSection">
+                    <div class="iconWarning icon-16x16 inventoryValidationSevereWarningIconColor marginRight8"></div>
+                    <div>
+                        <div class="h6 inline marginRight4 SegoeUISemibold textTransformNone wrapText" data-bind="resx: { textContent: 'string_12914' } "></div><!-- Required to update. -->
+                        <div class="h6 inline textTransformNone wrapText" data-bind="text: errorMessage"></div>
+                    </div>
+                </div>
+            <!-- /ko -->
+            <!-- ko if: isWarning -->
+                <div class="row marginTop8 padTop8 padBottom8 padLeft12 padRight12 inventoryValidationInfoSection">
+                    <div class="iconInfo icon-16x16 inventoryValidationWarningIconColor marginRight8"></div>
+                    <div>
+                        <div class="h6 inline marginRight4 SegoeUISemibold textTransformNone wrapText" data-bind="resx: { textContent: 'string_12915' } "></div><!-- Optional to update. -->
+                        <div class="h6 inline textTransformNone wrapText" data-bind="text: errorMessage"></div>
+                    </div>
+                </div>
+            <!-- /ko -->
+        <!-- /ko -->
+        </div>
+    </script>
+</body>
+</html>

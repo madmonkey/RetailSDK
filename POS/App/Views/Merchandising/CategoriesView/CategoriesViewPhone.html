@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CategoriesView</title>
+
+    <link href="CategoriesView.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- These templates are used to display each item in the ListView declared below. -->
+    <div id="headertemplate" data-win-control="WinJS.Binding.Template">
+        <div class="baseFont maxWidth400 minHeight40 padBottom12" data-win-bind="selectedCategory: SelectedGroupHeader">
+            <h2 class="ellipsis" data-win-bind="textContent: this Commerce.Core.Converter.GroupHeaderFormatter"></h2>
+        </div>
+    </div>
+
+    <div class="fragment groupedItemsPage">
+        <div class="section">
+            <div data-bind="pivot: {
+                    groupedDataSource: { 
+                        itemList: viewModel.categories,
+                        groupKeySelector: 'ParentCategory', 
+                        groupDataSelector: 'RecordId', 
+                        parentId: viewModel.rootCategoryRecordId, 
+                        keyName: 'Name' }, 
+                    iteminvoked: itemInvokedHandler,
+                    templateName: 'categoryCatalogPhoneTemplate'}">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

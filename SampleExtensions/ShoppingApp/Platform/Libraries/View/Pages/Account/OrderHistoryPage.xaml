@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:OrderHistoryPageXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Pages.AccountInfo.OrderHistoryPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages.AccountInfo"
+    xmlns:converters="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Converters"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    Title="Orders">
+    <StackLayout
+        Orientation="Vertical"
+        Spacing="0">
+
+        <StackLayout.Resources>
+            <ResourceDictionary>
+                <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+                <converters:ShortDatePatternConverter x:Key="ShortDatePatternConverter" />
+                <converters:SalesStatusColorConverter x:Key="SalesStatusColorConverter" />
+                <converters:EnumToTranslatedTextConverter x:Key="EnumToTranslatedTextConverter" />
+            </ResourceDictionary>
+        </StackLayout.Resources>
+
+        <views:NonPersistentSelectedItemListView
+            HasUnevenRows="false"
+            IsEnabled="{Binding IsLoggedIn}"
+            IsPullToRefreshEnabled="True"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            IsVisible="{Binding IsLoggedIn}"
+            ItemTapped="OrderItemTapped"
+            ItemsSource="{Binding Orders}"
+            LoadMoreCommand="{Binding LoadMoreOrdersCommand}"
+            RefreshCommand="{Binding LoadOrdersCommand}"
+            RowHeight="{x:Static statics:RowSizes.XLargeRowHeightInt}"
+            SeparatorColor="{x:Static statics:Palette.SEPARATOR}">
+
+            <views:NonPersistentSelectedItemListView.Resources>
+                <ResourceDictionary>
+                    <converters:ShortDatePatternConverter x:Key="ShortDatePatternConverter" />
+                    <converters:SalesStatusColorConverter x:Key="SalesStatusColorConverter" />
+                </ResourceDictionary>
+            </views:NonPersistentSelectedItemListView.Resources>
+
+            <views:NonPersistentSelectedItemListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell StyleId="disclosure">
+                        <ContentView Padding="10,10">
+                            <StackLayout
+                                Orientation="Horizontal"
+                                Spacing="0">
+
+                                <StackLayout
+                                    HorizontalOptions="StartAndExpand"
+                                    Spacing="0">
+                                    <Label
+                                        FontSize="Small"
+                                        LineBreakMode="TailTruncation"
+                                        Text="{Binding OrderNumber}"
+                                        TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        FontSize="Small"
+                                        LineBreakMode="TailTruncation"
+                                        Text="{Binding Data.CreatedDateTime, Converter={StaticResource ShortDatePatternConverter}}"
+                                        TextColor="{x:Static statics:Palette.TEXT_LIGHT}"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        FontSize="Small"
+                                        LineBreakMode="TailTruncation"
+                                        Text="{Binding Status, Converter={StaticResource EnumToTranslatedTextConverter}}"
+                                        TextColor="{Binding Status, Converter={StaticResource SalesStatusColorConverter}}"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+
+                                <StackLayout Spacing="2">
+                                    <Label
+                                        FontSize="Medium"
+                                        LineBreakMode="TailTruncation"
+                                        Text="{Binding Data.TotalAmount, StringFormat='${0:F0}'}"
+                                        TextColor="{x:Static statics:Palette.PRICE}"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+
+                            </StackLayout>
+                        </ContentView>
+                    </ViewCell>
+                </DataTemplate>
+            </views:NonPersistentSelectedItemListView.ItemTemplate>
+        </views:NonPersistentSelectedItemListView>
+    </StackLayout>
+</base:OrderHistoryPageXaml>

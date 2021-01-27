@@ -1,0 +1,27 @@
+﻿<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PromotionsView</title>
+</head>
+<body>
+    <div class="promotionsView">
+            <!-- Promotions pivot -->
+            <div id="PromotionsPivot" data-bind="msPosPivot: promotionsPivot">
+                <div data-bind="msPosPivotItem: availableDiscountsPivotItem">
+                    <div id="availableDiscountsListView">
+                    </div>
+                </div>
+                <div data-bind="msPosPivotItem: upcomingDiscountsPivotItem">
+                    <div id="upcomingDiscountsListView">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu control shown from the app bar -->
+            <div id ="constantPromotionDiscountsMenu">
+            </div>
+    </div>
+</body>
+</html>

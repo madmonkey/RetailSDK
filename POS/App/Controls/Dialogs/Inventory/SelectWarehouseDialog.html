@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SelectWarehouseDialog</title>
+</head>
+<body>
+    <div class="selectWarehouseDialog" data-bind="customControlInternal: 'SelectWarehouseDialog'">
+
+        <div data-bind="dialog: {
+             title: title,
+             visible: visible,
+             closeOnEscButton: true,
+             buttonClick: buttonClickHandler,
+             dialogCloseButtonClick: dialogCloseButtonClick
+        },
+        axBubbleAttr: 'selectWarehouseDialog_selectWarehouseDialog'" class="modalWindowContentSection" >
+            <!-- Progress ring -->
+            <div data-bind="loader: { visible: viewModel.isBusy, restoreFocus: false, type: Commerce.Controls.Loader.LoaderType.Dialog }"></div>
+
+            <!-- Dialog content -->
+            <div class="col grow">
+                <!-- Search field -->
+                <div class="marginTop20">
+                    <label data-bind="resx: {textContent: 'string_3433'}" for="searchWarehousesTextBox">Search locations</label>
+                    <div class="row grow width100Percent searchWrapper">
+                        <input class="noBorder" id="searchWarehousesTextBox" type="search"
+                               data-bind="value: viewModel.searchText,
+                                    valueUpdate: 'afterkeydown',
+                                    clearMark: true,
+                                    enterKeyPress: viewModel.performWarehouseSearch.bind(viewModel)" /> <!-- Search text box -->
+                        <button class="noBorder iconSearch margin0 height32 padRight8 searchButton" type="submit"
+                                data-bind="resx: { ariaLabel: 'string_50' },
+                                    click: viewModel.performWarehouseSearch.bind(viewModel),
+                                    axBubbleAttr: 'selectWarehouseDialog_searchButton'"></button> <!-- Search button -->
+                    </div>
+                    <div class="marginBottom10 marginTop12 secondaryBackgroundColor highContrastRowLine height01"></div> <!-- Separator line -->
+                </div>
+
+                <!-- Warehouses list -->
+                <div id="warehousesButtonGrid" class="grow col">
+                    <label class="marginTop20 marginBottom12 flexNone" data-bind="resx: {textContent: 'string_3434'}">Locations</label>
+                    <div id="warehousesList"
+                         class="grow noMargin col"
+                         data-bind="dataList: {
+                             incrementalDataSource: {
+                                dataManager: viewModel,
+                                callerMethod: viewModel.getWarehousesAsync,
+                                pageSize: 40,
+                                onLoading: viewModel.isBusyFlag,
+                                reloadCallBack: viewModel.reloadWarehousesCallback,
+                             },
+                             defaultListType: Commerce.Controls.DataList.ListType.Card,
+                             selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                             itemInvoked: itemInvokedHandler,
+                             itemTemplates: [
+                                {
+                                    templateId: 'warehouseGridTemplate',
+                                    cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                    deviceType: Commerce.Controls.DataList.DeviceType.All
+                                }
+                             ]
+                        }, axBubbleAttr: 'selectWarehouseDialog_optionsButtonGrid'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

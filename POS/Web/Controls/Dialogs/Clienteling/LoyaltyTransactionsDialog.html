@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>LoyaltyTransactionsDialog</title>
+</head>
+<body>
+    <div class="LoyaltyTransactionsDialog" data-bind="customControlInternal: 'LoyaltyTransactionsDialog'">
+        <div data-bind="dialog:
+            {
+                title: title,
+                subTitle: subTitle,
+                visible: visible,
+                buttons: [
+                    {
+                        label: Commerce.ViewModelAdapter.getResourceString('string_80'),
+                        operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK
+                    }
+                ],
+                buttonClick: buttonClickHandler,
+                closeOnEscButton: true,
+                dialogCloseButtonClick: dialogCloseButtonClick
+            },
+            axBubbleAttr: 'loyaltyTransactionsDialog_loyaltyTransactionsDialog'" class="modalWindowContentSection">
+            <!-- Dialog content -->
+            <div class="row">
+                <div class="col h1 bottomLeft" data-bind="text: loyaltyBalanceLabel"></div>
+                <div class="col h1 bottomRight textRight grow" data-bind="text: Commerce.NumberExtensions.formatNumber(totalAvailableBalance, 2)"></div>
+            </div>
+            <div class="padTop8 no-shrink">
+                <div class="line-separator"></div>
+            </div>
+            <!--Loyalty transactions list-->
+            <div class="col grow padTop32 padBottom12">
+                <!--Header-->
+                <div class="row centerY marginLeft0 marginTop10 marginBottom0 marginRight12">
+                    <div class="bottomLeft grow ratio5">
+                        <div class="margin0 h6 ellipsis bold" data-bind="resx: { textContent: 'string_290' }">DATE</div>
+                    </div>
+                    <div class="ratio5">
+                        <div class="margin0 h6 ellipsis textRight bold" data-bind="resx: { textContent: 'string_291' }">BALANCE</div>
+                    </div>
+                </div>
+            </div>
+            <div class="scrollY col grow">
+                <!--Loyalty Transaction Activities List-->
+                <div id="loyaltyTransactionsGrid">
+                    <div id="loyaltyTransactionsList"
+                         class="grow noMargin col"
+                         data-bind="dataList: {
+                            incrementalDataSource: {
+                                dataManager: viewModel,
+                                callerMethod: viewModel.getLoyaltyTransactionsAsync,
+                                pageSize: 40,
+                            },
+                            defaultListType: Commerce.Controls.DataList.ListType.Card,
+                            selectionModes: Commerce.Controls.DataList.SelectionMode.None,
+                            itemTemplates: [
+                                {
+                                    templateId: 'loyaltyTransactionsTemplate',
+                                    cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                    deviceType: Commerce.Controls.DataList.DeviceType.All
+                                }
+                            ]}, axBubbleAttr: 'loyaltyTransactionsDialog_optionsButtonGrid'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="loyaltyTransactionsTemplate" type="text/html">
+        <div class="loyaltyTransactionContainer padTop8 grow col">
+            <!-- ko if: Commerce.Formatters.ExtensibleLoyaltyRewardPointActivityEntryTypeValueFormatter(ExtensibleLoyaltyRewardPointActivityEntryTypeValue) != "Pending"-->
+            <div class="row centerY">
+                <div class="bottomLeft grow ratio5">
+                    <div class="margin0 h4 ellipsis bold" data-bind="text: Commerce.Formatters.ExtensibleLoyaltyRewardPointActivityEntryTypeValueFormatter(ExtensibleLoyaltyRewardPointActivityEntryTypeValue)"></div>
+                    <div class="margin0 h6 textTransformNone opacity60 ellipsis secondaryFontColor" data-bind="text: Commerce.Formatters.DateWithoutTime(ActivityDate)"></div>
+                </div>
+                <div class="ratio5">
+                    <div class="row alignRight">
+                        <!-- ko if: LoyaltyPoints < 0 -->
+                        <div class="margin0 h5 bold shrink bottomRight marginRight4" data-bind="resx: { textContent: 'string_3276', ariaLabel: 'string_3278' }">-</div>
+                        <!-- /ko -->
+                        <!-- ko if: LoyaltyPoints >= 0 -->
+                        <div class="margin0 h5 bold shrink bottomRight marginRight4" data-bind="resx: { textContent: 'string_3277', ariaLabel: 'string_3279' }">+</div>
+                        <!-- /ko -->
+                        <div class="margin0 h5 bold shrink bottomRight wrap marginRight4" data-bind="text: Commerce.NumberExtensions.formatNumber(Math.abs(LoyaltyPoints), 2),
+                            attr:{'aria-label': Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_3280'), Commerce.NumberExtensions.formatNumber(Math.abs(LoyaltyPoints), 2))}"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+
+        <div class="loyaltyTransactionContainer padTop8 grow col">
+            <!-- ko if: Commerce.Formatters.ExtensibleLoyaltyRewardPointActivityEntryTypeValueFormatter(ExtensibleLoyaltyRewardPointActivityEntryTypeValue) == "Pending"-->
+            <div class="row centerY">
+                <div class="bottomLeft grow ratio5">
+                    <div class="margin0 h4 ellipsis bold" data-bind="text: Commerce.Formatters.ExtensibleLoyaltyRewardPointActivityEntryTypeValueFormatter(ExtensibleLoyaltyRewardPointActivityEntryTypeValue)"></div>
+                    <div class="margin0 h6 textTransformNone opacity60 secondaryFontColor" data-bind="resx: { textContent: 'string_3275', ariaLabel: 'string_3281'}">--</div>
+                </div>
+                <div class="ratio5">
+                    <div class="row alignRight">
+                        <div class="margin0 h5 bold shrink bottomRight marginRight4 opacity60 secondaryFontColor" data-bind="resx: { textContent: 'string_3277', ariaLabel: 'string_3279' }">+</div>
+                        <div class="margin0 h5 bold shrink bottomRight wrap opacity60 secondaryFontColor marginRight4" data-bind="text: Commerce.NumberExtensions.formatNumber(Math.abs(LoyaltyPoints), 2),
+                            attr:{'aria-label': Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_3280'), Commerce.NumberExtensions.formatNumber(Math.abs(LoyaltyPoints), 2))}"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Change Due Dialog</title>
+</head>
+<body>
+    <div>
+        <div data-bind="
+             dialog: {
+                title: Commerce.ViewModelAdapter.getResourceString('string_1816'),  // Change Due
+                titleCssClass: 'h3',
+                visible: visible,
+                buttonClick: buttonClickHandler,
+                closeOnEscButton: true,
+                dialogCloseButtonClick: dialogCloseButtonClickHandler,
+                buttons: [{
+                    label: Commerce.ViewModelAdapter.getResourceString('string_1819'), // Close
+                    operationId: Commerce.Controls.Dialog.OperationIds.CLOSE_BUTTON_CLICK,
+                    cssClass: 'cancelButton',
+                    isPrimary: true }]
+             },
+             axBubbleAttr: 'changeDueDialog_Dialog'" id="changeDueDialog">
+            <div class="panel padTop8">
+                <!-- ko ifnot: Commerce.ObjectExtensions.isNullOrUndefined(changeDueDialogState()) -->
+                <div data-bind="template: { name: 'changeDueTemplate', data: changeDueDialogState()}"></div>
+                <!-- /ko -->
+                <div class="padBottom8">
+                    <div class="row">
+                        <label data-bind="resx: { textContent: changeDueText }">Change due</label>
+                    </div>
+                    <div class="row textRight">
+                        <div class="h1" data-bind="formatPrice: changeAmount"></div>
+                    </div>
+                </div>
+                <div class="row" data-bind="visible: printGiftReceiptVisible">
+                    <div class="padTop05">
+                        <label data-bind="resx: { textContent: 'string_1830' }">Print gift receipt</label>
+                    </div>
+                    <div class="win-ui-light col shrink">
+                        <div class="noWinLabel centerY"
+                             data-bind="toggleSwitch: {
+                             labelOn: 'string_7411',  // On
+                             labelOff:'string_7412',  // Off
+                             checked: printGiftReceipt,
+                             onChange: onPrintGiftReceiptToggle },
+                             resx: { ariaLabel: 'string_1830' },  // Print gift receipt
+                             axBubbleAttr: 'changeDialog_printGiftReceiptToggle'">
+                            <!-- Print gift receipt -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

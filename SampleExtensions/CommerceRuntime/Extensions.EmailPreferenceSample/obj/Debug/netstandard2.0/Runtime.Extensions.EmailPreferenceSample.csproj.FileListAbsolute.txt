@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.EmailPreferenceSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.EmailPreferenceSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.EmailPreferenceSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.EmailPreferenceSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.EmailPreferenceSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.EmailPreferenceSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.EmailPreferenceSample\obj\Debug\netstandard2.0\Runtime.Extensions.EmailPreferenceSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.EmailPreferenceSample\obj\Debug\netstandard2.0\Runtime.Extensions.EmailPreferenceSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.EmailPreferenceSample\obj\Debug\netstandard2.0\Runtime.Extensions.EmailPreferenceSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.EmailPreferenceSample\obj\Debug\netstandard2.0\Runtime.Extensions.EmailPreferenceSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.EmailPreferenceSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.EmailPreferenceSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.EmailPreferenceSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.EmailPreferenceSample.pdb

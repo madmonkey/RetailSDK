@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="col height100Percent">
+        <div class="row no-shrink taskRecorderPanelHeader">
+            <div class="grow">
+                <div class="h4 title"
+                    data-bind="resx: { textContent: 'string_10069' }">
+                    HELP
+                </div>
+            </div>
+        </div>
+        <div class="taskRecorderHelp row grow stretch padLeft12 padTop12 padRight12 padBottom12">
+            <div class="col width100Percent">
+                <div class="taskRecorderSearchPane row height36 padLeft8" data-bind="css: { active: isSearchPaneActive }">
+                    <input type="text" 
+                           autofocus="autofocus" 
+                           class="searchBoxColor noBorder padRight0 padLeft0"
+                           data-bind="hasfocus: isSearchPaneActive,
+                                value: searchText,
+                                clearMark: true,
+                                enterKeyPress: search,
+                                resx: { ariaLabel: 'string_50' }" /> <!-- Search -->
+                    <button type="submit"
+                            class="searchButton iconSearch margin01 height32 width32"
+                            data-bind="click: search,
+                                resx: { ariaLabel: 'string_50' }"></button> <!-- Search -->
+                </div>
+                <div class="row no-shrink padTop32">
+                    <div class="marginRight40"><div class="h2 tabFontColor active" data-bind="css: { active: true }, resx: { textContent: 'string_10070' }"> Task Guides </div></div>
+                    <div class="marginRight40" style="display: none"><div class="h2 tabFontColor" data-bind="css: { active: false }, resx: { textContent: 'string_10071' }"> Wiki </div></div>
+                </div>
+                <div class="grow center" data-bind="loader: { visible: isSearchInProgress, type: Commerce.Controls.Loader.LoaderType.Nested }"></div>
+                <div role="alert" class="row scrollY minHeight56 marginTop12 listSteps" data-bind="visible: !isSearchInProgress(), attr: { 'aria-label': taskGuides().length === 0 ? Commerce.ViewModelAdapter.getResourceString('string_10031'): 
+                     Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_10160'), taskGuides().length) }"> <!-- Search results contains {0} items. -->
+                    <label role="alert" data-bind="visible: taskGuides().length === 0, resx: { textContent: 'string_10031' }"> We didn't find anything to show here. </label>
+                    <ul data-bind="foreach: taskGuides, attr: { 'aria-label': Commerce.ViewModelAdapter.getResourceString('string_1000')}"> <!-- Search results -->
+                        <li role="link" class="col marginBottom12" data-bind="click: $parent.openStartTaskGuide.bind($parent, $data)">
+                            <div class="row grow clickable title wrapText">
+                                <div tabindex="0" class="h4 width100Percent" data-bind="text: title"></div>
+                            </div>
+                            <label class="description wrapText" data-bind="text: publisher"></label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

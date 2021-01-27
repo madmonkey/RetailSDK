@@ -1,0 +1,18 @@
+{
+  "Audit_event_price_lookup_error": "Ошибка регистрации события поиска цены: {0}",
+  "_Audit_event_price_lookup_error.comment": "Audit event registration log error message.",
+  "Audit_event_tax_override_error": "Ошибка регистрации события переопределения налога: {0}",
+  "_Audit_event_tax_override_error.comment": "Audit event registration log error message.",
+  "Audit_event_quantity_correction_error": "Ошибка регистрации события корректировки количества: {0}",
+  "_Audit_event_quantity_correction_error.comment": "Audit event registration log error message.",
+  "Audit_event_open_cash_drawer_error": "Ошибка регистрации события открытого кассового лотка: {0}",
+  "_Audit_event_open_cash_drawer_error.comment": "Audit event registration log error message.",
+  "Audit_event_price_lookup_event_message": "Зарегистрированное событие поиска цены",
+  "_Audit_event_price_lookup_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_tax_override_event_message": "Зарегистрированное событие переопределения налога",
+  "_Audit_event_tax_override_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_quantity_correction_event_message": "Зарегистрированное событие корректировки количества",
+  "_Audit_event_quantity_correction_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_open_cash_drawer_event_message": "Событие открытого кассового лотка зарегистрировано",
+  "_Audit_event_open_cash_drawer_event_message.comment": "Audit event database log string field value."
+}

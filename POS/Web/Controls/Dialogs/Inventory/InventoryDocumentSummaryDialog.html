@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>InventoryDocumentSummaryDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'InventoryDocumentSummaryDialog'">
+        <div data-bind="dialog: {
+                title: title,
+                visible: visible,
+                buttonClick: buttonClickHandler,
+                showProgressIndicator: indeterminateWaitVisible,
+                hideOnEscape: true,
+                buttons: [
+                    {
+                        label: Commerce.ViewModelAdapter.getResourceString('string_77'),
+                        operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK,
+                        isPrimary: true
+                    },
+                    {
+                        label: Commerce.ViewModelAdapter.getResourceString('string_76'),
+                        operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK,
+                        isPrimary: false
+                    }
+                ],
+                dialogCloseButtonClick: closeClickHandler
+            },
+            axBubbleAttr: 'inventoryDocumentSummaryDialog_inventoryDocumentSummaryDialog',attr: { 'aria-label': title() + contentTitle() }">
+            <!-- Dialog content -->
+            <div class="inventoryDocumentSummaryDialogContent">
+                <h3 class="marginBottom20 wrapText" data-bind="text: contentTitle"></h3>
+
+                <h4 class="marginBottom8 secondaryFontColor" data-bind="text: contentSubTitle"></h4>
+
+                <div class="marginBottom20" data-bind="horizontalStatusBar: {
+                    finishedNumber: quantityFinished,
+                    inProgressNumber: totalUpdateNowQuantity,
+                    notStartedNumber: quantityNotStarted,
+                    showNumbersBelowBar: true,
+                    decimalPrecision: quantityDecimalPrecision(),
+                    controlLoggingId: 'inventoryDocumentSummaryDialog',
+                    labels: {
+                        remainingLabel: Commerce.ViewModelAdapter.getResourceString('string_12457'), /* Quantity remaining */
+                        finishedLabel: quantityDoneLabel(),
+                        totalLabel: quantityTotalLabel(),
+                        overallStatusLabel: quantityInProgressLabel()
+                    }
+                }">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

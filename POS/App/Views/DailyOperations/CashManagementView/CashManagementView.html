@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cash Management View</title>
+    <link href="CashManagementView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="cashManagementView fragment" data-bind="with: viewModel">
+        <div data-bind="resx: { ariaLabel: 'string_4454' }" class="section main row marginBottom12 marginLeft20 marginRight20">
+            <!-- Main content -->
+            <!-- Amount entry area -->
+            <div class="row">
+                <div class="width320 marginTop8" data-bind="axBubbleAttr: 'cashManagementView_amountInputNumpad'">
+                    <!-- Num pad -->
+                    <!-- Numpad is not in slider yet, so label should be h2 -->
+                    <!-- can use "labelDataBinding" for numpad slider uptake -->
+                    <h2 data-bind="resx: { textContent: 'string_4011' }"></h2> <!-- Enter amount -->
+                    <div data-bind="currencyNumpad: {
+                        inputDataBinding: { resx: { ariaLabel: 'string_4011' /* Enter amount */ } },
+                        onEnter: $parent.enterAmount.bind($parent),
+                        value: amountToChange,
+                        numPadInputSource: $parent.numPadInputBroker
+                        }">
+                    </div>
+                </div>
+
+                <div class="gutter40x40"></div>
+
+                <!-- Operation details area -->
+                <div class="col grow" data-bind="sectionWrapper: {headerResx: 'string_4012' }"> <!-- Amount -->
+                    <div class="maxWidth320 grow">
+                        <div class="h1 textRight" data-bind="formatPrice: totalAmountToDeclare"></div>
+
+                        <div class="col no-shrink marginBottom12">
+                            <label data-bind="resx: { textContent: 'string_4013' }">Currency</label>
+                            <div class="h2" id="cashManagementCurrencyValue" data-bind="text: storeCurrency"></div>
+                        </div>
+
+                        <div>
+                            <label for="cashManagementNotesTextArea" data-bind="resx: { textContent: 'string_4014' }">Notes</label>
+                            <div class="col no-shrink height200 minWidth240 grow"><textarea id="cashManagementNotesTextArea" tabindex="0" data-bind="value: operationComment, valueUpdate: 'afterkeydown', axBubbleAttr: 'cashManagementView_cashManagementNotesTextArea', attr: { 'maxLength': Commerce.ViewModels.CashManagementViewModel.NOTES_MAX_LENGTH }"></textarea></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="cashManagementAppBar" data-bind="appBar: {}, axBubbleAttr: 'cashManagementView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id: 'denominationCountAppBar',
+                extraClass: 'iconCount',
+                onclick: navigateToDenominationView,
+                enabled: isDenominationAvailable,
+                labelResx: 'string_13255' },
+                axBubbleAttr: 'cashManagementView_CountButton'"></button>
+            <button data-bind="appBarCommand: {
+                id: 'performOperationAppBar',
+                extraClass: 'iconSave',
+                onclick: processOperationAsync,
+                disabled: isSaveDisabled,
+                labelResx: 'string_1327' },
+                axBubbleAttr: 'cashManagementView_SaveButton'"></button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Rating Template</title>
+    <link href="ProductRatingTemplate.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/html" id="productRatingTemplate">
+        <!-- ko if: productRating.TotalRatings && productRating.TotalRatings > 0 -->
+        <div data-bind="foreach: { data: [1,2,3,4,5], as: 'starIndex' }" class="inlineBlock floatLeft">
+            <!-- ko if: starIndex <= $parent.productRating.AverageRating -->
+            <div class="floatLeft"
+                 data-bind="template: { name: 'productQuarterRatingStarTemplate', data: {type: 'full'} }"></div>
+            <!-- /ko -->
+            <!-- ko if: (starIndex - 1  + 0.75) <= $parent.productRating.AverageRating && starIndex > $parent.productRating.AverageRating -->
+            <div class="floatLeft positionRelative width12 height12"
+                 data-bind="template: { name: 'productQuarterRatingStarTemplate', data: {type: 'partial', iconClass: 'iconThreeQuarterStarLeft'} }"></div>
+            <!-- /ko -->
+            <!-- ko if: (starIndex - 1 + 0.5) <= $parent.productRating.AverageRating && (starIndex - 1  + 0.75) > $parent.productRating.AverageRating -->
+            <div class="floatLeft positionRelative width12 height12"
+                 data-bind="template: { name: 'productQuarterRatingStarTemplate', data: {type: 'partial', iconClass: 'iconHalfStarLeft'} }"></div>
+            <!-- /ko -->
+            <!-- ko if: (starIndex - 1 + 0.25) <= $parent.productRating.AverageRating && (starIndex - 1 + 0.5) > $parent.productRating.AverageRating -->
+            <div class="floatLeft positionRelative width12 height12"
+                 data-bind="template: { name: 'productQuarterRatingStarTemplate', data: {type: 'partial', iconClass: 'iconQuarterStarLeft'} }"></div>
+            <!-- /ko -->
+            <!-- ko if: (starIndex - 1 + 0.25) > $parent.productRating.AverageRating -->
+            <div class="floatLeft"
+                 data-bind="template: { name: 'productQuarterRatingStarTemplate', data: {type: 'empty'} }"></div>
+            <!-- /ko -->
+        </div>
+        <div class="h6 inlineBlock marginLeft03" data-bind="text: '(' + productRating.TotalRatings + ')'"></div>
+        <!-- /ko -->
+        <!-- ko ifnot: productRating.TotalRatings && productRating.TotalRatings > 0 -->
+        <div class="height16">&nbsp;</div>
+        <!-- /ko -->
+    </script>
+
+    <script type="text/html" id="productQuarterRatingStarTemplate">
+        <!-- ko if: type == 'full' -->
+        <div class="iconFavoriteStarFill icon-10x10 width12 marginRight02 marginTop03"></div>
+        <!-- /ko -->
+        <!-- ko if: type == 'empty' -->
+        <div class="iconFavoriteStarFill icon-10x10 width12 marginRight02 marginTop03"
+             style="color: graytext !important;-ms-high-contrast-adjust:none;"></div>
+        <!-- /ko -->
+        <!-- ko if: type == 'partial' -->
+        <div class="iconFavoriteStarFill icon-10x10 width12 marginRight02 marginTop03 positionAbsolute"
+             style="color: graytext !important;-ms-high-contrast-adjust:none;"></div>
+        <div class="icon-10x10 width12 marginRight02 marginTop03 positionAbsolute" data-bind="css: iconClass"></div>
+        <!-- /ko -->
+    </script>
+</body>
+</html>

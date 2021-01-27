@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SalesOrderAttributesControl template</title>
+    <link href="knockout.salesOrderAttributes.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/html" id="salesOrderAttributesTemplate">
+        <div class="col height100Percent">
+            <div class="flip col no-shrink" data-bind="slideVisible: { isShowed: true }">
+                <div class="row primaryFontColor">
+                    <div class="col width88 marginBottom8 marginLeft12" data-bind="visible: isLineAttributesModeConfigured()">
+                        <div tabindex="1" class="h6 row center padBottom8" id="lineAttributesTabText" role="tab" data-bind="css: { active: viewMode() === Commerce.ViewModels.SalesOrderAttributesMode.Line },
+                                                                                 click: switchToLineAttributesMode,
+                                                                                 enterKeyPress: switchToLineAttributesMode,
+                                                                                 resx: { textContent: 'string_4486' },
+                                                                                 axBubbleAttr: 'salesOrderAttributes_lineAttributesTabText'">Line</div>
+                        <div class="row height4" data-bind="css: viewMode() === Commerce.ViewModels.SalesOrderAttributesMode.Line ? 'accentBackground' : 'splitViewBackgroundColor'"></div>
+                    </div>
+                    <div class="col width88 marginBottom8 marginLeft12" data-bind="visible: isHeaderAttributesModeConfigured()">
+                        <div tabindex="0" class="h6 row center padBottom8" id="headerAttributesTabText" role="tab" data-bind="css: { active: viewMode() === Commerce.ViewModels.SalesOrderAttributesMode.Header },
+                                                                                 click: switchToHeaderAttributesMode,
+                                                                                 enterKeyPress: switchToHeaderAttributesMode,
+                                                                                 resx: { textContent: 'string_4485' },
+                                                                                 axBubbleAttr: 'salesOrderAttributes_headerAttributesTabText'">Header</div>
+                        <div class="row height4" data-bind="css: viewMode() === Commerce.ViewModels.SalesOrderAttributesMode.Header ? 'accentBackground' : 'splitViewBackgroundColor'"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col grow scrollY padLeft12 padRight12 primaryPanelBackgroundColor">
+                <div class="h4 center" data-bind="resx: { textContent: 'string_30381' /* There are no attributes linked to this channel. */ }, visible: viewMode() === Commerce.ViewModels.SalesOrderAttributesMode.None"></div>
+                <div data-bind="visible: viewMode() === Commerce.ViewModels.SalesOrderAttributesMode.Header">
+                    <div data-bind="fadeVisible: { isShowed: viewMode() === Commerce.ViewModels.SalesOrderAttributesMode.Header}">
+                        <!-- ko foreach: { data: headerAttributeGroupViewModels, as: 'attributeGroupVm' } -->
+                        <div data-bind="salesOrderAttributeGroup: {
+                                                    salesOrderAttributeGroupViewModel: attributeGroupVm
+                                                 }"></div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <div data-bind="visible: viewMode() === Commerce.ViewModels.SalesOrderAttributesMode.Line">
+                    <div data-bind="fadeVisible: { isShowed: viewMode() === Commerce.ViewModels.SalesOrderAttributesMode.Line}">
+                        <!-- ko if: isLineSelected() -->
+                        <!-- ko foreach: { data: lineAttributeGroupViewModels, as: 'attributeGroupVm' } -->
+                        <div data-bind="salesOrderAttributeGroup: {
+                                                        salesOrderAttributeGroupViewModel: attributeGroupVm
+                                                     }"></div>
+                        <!-- /ko -->
+                        <!-- /ko -->
+                        <!-- ko if: !isLineSelected() -->
+                        <div class="col grow highContrastBorderThin marginBottom12">
+                            <div class="textCenter padTop56">
+                                <div class="center">
+                                    <div class="h1 iconProductVariant icon-40x40 secondaryFontColor" data-bind="resx: { ariaLabel: 'string_4478' }"></div>
+                                </div>
+                                <div class="h2 wrapText" data-bind="resx: { textContent: 'string_4478' }"></div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

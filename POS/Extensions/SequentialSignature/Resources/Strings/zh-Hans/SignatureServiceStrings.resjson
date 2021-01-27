@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "结束交易时出错。签名服务未准备就绪。请与您的系统管理员联系。",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "结束交易时出错。相关联的会计交易记录包含错误格式的数据。请与您的系统管理员联系。",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "上次交易记录数字签名恢复时出错。可能未同步脱机数据库。请与您的系统管理员联系。",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

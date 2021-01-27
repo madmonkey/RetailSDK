@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Kande lõpuleviimisel ilmnes tõrge. Allkirjastamisteenus pole veel valmis. Võtke ühendust süsteemiadministraatoriga.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Kande lõpuleviimisel ilmnes tõrge. Lingitud finantskanne sisaldab vales vormingus andmeid. Võtke ühendust süsteemiadministraatoriga.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "Viimase kande digiallkirja taastamisel ilmnes tõrge. Võimalik, et võrguühenduseta andmebaas pole sünkroonitud. Võtke ühendust süsteemiadministraatoriga.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

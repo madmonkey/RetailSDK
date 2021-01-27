@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SelectRefinerControl template</title>
+    <link href="knockout.selectRefinerControl.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/html" id="refinerValueTemplate">
+        <div class="row padTop04">
+            <a class="closeButton accentColor h4 iconCancel" href="#" data-bind="click: $parent.removeButton,
+               attr: { 'aria-label': Commerce.StringExtensions.format($parent.removeButtonAriaLabelAttribute, LeftValueBoundString)}"
+               role="button"></a>
+            <div class="h4 nowrap padLeft12 ellipsis"
+                 data-bind="text: Commerce.Formatters.LocalizedStringFormatterForRefinerValue($data)"></div>
+        </div>
+    </script>
+    <script type="text/html" id="refinerRangeValueTemplate">
+        <div class="row padTop04">
+            <!-- ko if: (Commerce.StringExtensions.isEmpty(LeftValueBoundString) && !Commerce.StringExtensions.isEmpty(RightValueBoundString)) -->
+            <a class="closeButton accentColor h4 iconCancel" href="#" data-bind="click: $parent.removeButton,
+               attr: { 'aria-label': Commerce.StringExtensions.format($parent.removeButtonAriaLabelAttribute, ('&lt;' + RightValueBoundString)) }"
+               role="button"></a>
+            <div>
+                <div class="h4 nowrap padLeft02 ellipsis" data-bind="text: '&lt;' + RightValueBoundString"></div>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: (!Commerce.StringExtensions.isEmpty(LeftValueBoundString) && Commerce.StringExtensions.isEmpty(RightValueBoundString)) -->
+            <a class="closeButton accentColor h4 iconCancel" href="#" data-bind="click: $parent.removeButton,
+               attr: { 'aria-label': Commerce.StringExtensions.format($parent.removeButtonAriaLabelAttribute, ('&gt;' + LeftValueBoundString)) }"
+               role="button"></a>
+            <div>
+                <div class="h4 nowrap padLeft02 ellipsis" data-bind="text: '&gt;' + LeftValueBoundString"></div>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: (!Commerce.StringExtensions.isEmpty(LeftValueBoundString) && !Commerce.StringExtensions.isEmpty(RightValueBoundString)) -->
+            <a class="closeButton accentColor h4 iconCancel" href="#" data-bind="click: $parent.removeButton,
+               attr: { 'aria-label': Commerce.StringExtensions.format($parent.removeButtonAriaLabelAttribute, (LeftValueBoundString + '-' + RightValueBoundString)) }"
+               role="button"></a>
+            <div>
+                <div class="h4 nowrap padLeft02 ellipsis" data-bind="text: LeftValueBoundString + '-' + RightValueBoundString"></div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </script>
+    <script type="text/html" id="refinerTextValueTemplate">
+        <div class="row padTop04">
+            <a class="closeButton accentColor h4 iconCancel" href="#" data-bind="click: $parent.removeButton,
+               attr: { 'aria-label': Commerce.StringExtensions.format($parent.removeButtonAriaLabelAttribute, $data) }" role="button"></a>
+            <div class="h4 nowrap padLeft12 ellipsis" data-bind="text: $data"></div>
+        </div>
+    </script>
+    <script type="text/html" id="refinerKeyValueTemplate">
+        <div class="row padTop04">
+            <a class="closeButton accentColor h4 iconCancel" href="#" data-bind="click: $parent.removeButton,
+               attr: { 'aria-label': Commerce.StringExtensions.format($parent.removeButtonAriaLabelAttribute, key) }"
+               role="button"></a>
+            <div class="h4 nowrap padLeft12 ellipsis" data-bind="text: key"></div>
+        </div>
+    </script>
+    <script type="text/html" id="refinerDateValueTemplate">
+        <div class="row padTop04" data-bind="visible: date != null">
+            <!-- ko if: isStartDate -->
+            <a class="closeButton accentColor h4 iconCancel" href="#" data-bind="click: $parent.removeButton, attr: { 'aria-label':
+               (Commerce.StringExtensions.format($parent.removeButtonAriaLabelAttribute,
+               (date != null ? Commerce.ViewModelAdapter.getResourceString('string_4200') + date.toLocaleDateString() : '')))}"
+               role="button"></a>
+            <div class="row padLeft12">
+                <div class="h4" data-bind="resx: { textContent: 'string_4190' }">Start:</div>
+                <div class="h4 nowrap padLeft02 ellipsis" data-bind="text: date != null ? date.toLocaleDateString() : null"></div>
+            </div>
+            <!-- /ko -->
+            <!-- ko ifnot: isStartDate -->
+            <a class="closeButton accentColor h4 iconCancel" href="#" data-bind="click: $parent.removeButton, attr: { 'aria-label':
+               (Commerce.StringExtensions.format($parent.removeButtonAriaLabelAttribute,
+               (date != null ? Commerce.ViewModelAdapter.getResourceString('string_4201') + date.toLocaleDateString() : '')))}"
+               role="button"></a>
+            <div class="row padLeft12">
+                <div class="h4" data-bind="resx: { textContent: 'string_4191' }">End:</div>
+                <div class="h4 nowrap padLeft02 ellipsis" data-bind="text: date != null ? date.toLocaleDateString() : null"></div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </script>
+    <script type="text/html" id="selectRefinerControlTemplate">
+        <div class="selectRefinerControl">
+            <div id="controlHeader" class="row accentBackground height44" data-bind="click: addButton, axBubbleAttr: controlAddButtonAttribute">
+                <div class="h4 padLeft12" data-bind="text: refiner.KeyName"></div>
+                <button type="button" class="iconChevronRight marginRight01"
+                        data-bind="attr: { 'aria-label': addButtonAriaLabelAttribute }, axBubbleAttr: controlAddButtonAttribute"></button> <!-- Add refiner values -->
+            </div>
+            <div class="topAnchor"></div>
+            <div class="padTop02 padLeft02" data-bind="template: { name: refinerValueTemplate, foreach: values }, axBubbleAttr: controlAttribute">
+            </div>
+        </div>
+    </script>
+</body>
+</html>

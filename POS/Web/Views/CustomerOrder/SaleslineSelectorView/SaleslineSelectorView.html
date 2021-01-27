@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cartline selection View</title>
+    <link href="SaleslineSelectorView.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="fragment saleslineSelectorView" data-bind="with: viewModel">
+        <div id="saleslineSelectorViewPivot" data-bind="pivot: {}, resx: { ariaLabel: 'string_4454' }">
+            <div id="saleslineSelectorViewPivotItem" data-bind="pivotItem: { headerResx: 'string_4466' }">
+                <!-- Main content -->
+                <div id="salesLinesList" class="dataList" data-bind="dataList: {
+                        itemDataSource: cartLines,
+                        onItemDataSourceUpdated: preSelectLines,
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.MultiSelect,
+                        selectionChanged: onSelectionChanged,
+                        ariaLabelResx: 'string_1877', /* Line items */
+                        columns: [
+                            { titleResx: 'string_4531', ratio: 12, collapseOrder: 4, minWidth: 136, field: 'ItemId' },
+                            { titleResx: 'string_110', ratio: 42, collapseOrder: 5, minWidth: 136, field: '$data', converter: 'Commerce.Core.Converter.ProductNameFormatter' },
+                            { titleResx: 'string_4534', ratio: 12, collapseOrder: 1, minWidth: 136, field: '$data', converter: 'Commerce.Core.Converter.CartLineQuantityFormat', isRightAligned: true },
+                            { titleResx: 'string_4467', ratio: 22, collapseOrder: 3, minWidth: 136, field: '$data', converter: 'Commerce.Formatters.DeliveryDescriptionAndDateFormatter' },
+                            { titleResx: 'string_4443', ratio: 12, collapseOrder: 2, minWidth: 136, field: 'TotalAmount', converter: 'Commerce.Core.Converter.PriceFormatter', isRightAligned: true },
+                        ]
+                    },
+                    axBubbleAttr: 'saleslineSelectorView_cartLines'">
+                </div>
+            </div>
+        </div>
+
+        <div id="commandAppBar" data-bind="appBar: {}, axBubbleAttr: 'saleslineSelectorView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id:'select',
+                extraClass: 'iconAccept',
+                onclick: selectSalesLinesAsync,
+                disabled: isNoLineSelected,
+                labelResx: 'string_75'},
+                axBubbleAttr: 'saleslineSelectorView_selectButton'">
+            </button><!--OK-->
+        </div>
+    </div>
+</body>
+</html>

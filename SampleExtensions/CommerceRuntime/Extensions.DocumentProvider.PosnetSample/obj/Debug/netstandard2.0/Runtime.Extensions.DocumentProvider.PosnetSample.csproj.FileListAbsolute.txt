@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.PosnetSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.Extensions.DocumentProvider.PosnetSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.PosnetSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.Extensions.DocumentProvider.PosnetSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.PosnetSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.Extensions.DocumentProvider.PosnetSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.PosnetSample\obj\Debug\netstandard2.0\Runtime.Extensions.DocumentProvider.PosnetSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.PosnetSample\obj\Debug\netstandard2.0\Runtime.Extensions.DocumentProvider.PosnetSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.PosnetSample\obj\Debug\netstandard2.0\Runtime.Extensions.DocumentProvider.PosnetSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.PosnetSample\obj\Debug\netstandard2.0\Runtime.Extensions.DocumentProvider.PosnetSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.PosnetSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.Extensions.DocumentProvider.PosnetSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.PosnetSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.Extensions.DocumentProvider.PosnetSample.pdb

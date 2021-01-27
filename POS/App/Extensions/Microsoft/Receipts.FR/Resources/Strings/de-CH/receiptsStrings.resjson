@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Erstellungsnummern-Manager: Erstellungsnummer wurde erfolgreich hinzugefügt.",
+  "Build_number_successfull_log_message_text.comment": "Meldung wird protokolliert, wenn die POS-Erstellungsnummer der Transaktion erfolgreich hinzugefügt wird.",
+  "Build_number_error_log_message_text": "Erstellungsnummern-Manager: Fehler beim Hinzufügen der Erstellungsnummer, Fehlermeldung: '{0}'.",
+  "Build_number_error_log_message_text.comment": "Meldung wird protokolliert, wenn die POS-Erstellungsnummer der Transaktion erfolglos hinzugefügt wird."
+}

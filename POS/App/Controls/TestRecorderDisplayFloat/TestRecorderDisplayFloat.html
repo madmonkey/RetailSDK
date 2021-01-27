@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>TestRecorderDisplayFloat</title>
+    <link href="TestRecorderDisplayFloat.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div data-bind="customControlInternal: 'TestRecorderDisplayFloat'">
+    <div class="testRecorderDisplayFloat">
+        <div data-bind="float:
+                {
+                    title: title,
+                    visible: visible,
+                    grabPanelLocation: grabPanelLocation,
+                    panelClass: 'testRecorderDisplayPanel'
+                },
+                axBubbleAttr: 'testRecorderDisplayFloat_testRecorderDisplayFloat'">
+
+            <!-- float content -->
+            <div class="splitViewTaskRecorderSection row grow alignRight" data-bind="axBubbleAttr: 'testRecorderDisplayFloat_openTestRecordingPane'">
+                <button class="buttonIcon height48 center cursorDefault iconRecording"
+                        type="button"
+                        data-bind="click: continueWithRecording,
+                                  css: { recordingOff: isRecordingOff },
+                                  resx: { ariaLabel: recordingStateAriaLabel },
+                                  attr: { title: recordingStateAriaLabel, disabled: !canSwitchToRecordingState() }">
+                </button>
+                <button class="buttonIcon height48 center cursorDefault"
+                        type="button"
+                        data-bind="click: toggleValidation,
+                                  css: { iconValidating: isValidating, iconCheckmarkSolid: isValidating, iconCompleted: !isValidating() },
+                                  resx: { ariaLabel: validatingStateAriaLabel },
+                                  attr: { title: validatingStateAriaLabel, disabled: !canSwitchToValidationState() }">
+                </button>
+                <button class="buttonIcon height48 center cursorDefault iconPause"
+                        type="button"
+                        data-bind="click: pauseRecording,
+                                  resx: { ariaLabel: pauseStateAriaLabel },
+                                  attr: { title: pauseStateAriaLabel, disabled: !canSwitchToPauseState() }">
+                </button>
+                <button class="buttonIcon height48 center iconClosePane"
+                        type="button"
+                        data-bind="click: hideTestRecordingPane,
+                                   visible: isTestRecordingPaneOpen,
+                                   resx: { ariaLabel: hidePaneLabel },
+                                   attr: { title: hidePaneLabel }">
+                </button>
+                <button class="buttonIcon height48 center iconOpenPane"
+                        type="button"
+                        data-bind="click: showTestRecordingPane,
+                                   visible: !isTestRecordingPaneOpen(),
+                                   resx: { ariaLabel: showPaneLabel },
+                                   attr: { title: showPaneLabel }">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

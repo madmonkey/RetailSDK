@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Fiscal Customer Action Dialog</title>
+</head>
+<body>
+    <!-- HTMLLint Disable LabelExistsValidator -->
+    <div class="fiscalCustomerActionDialog col grow">
+        <div class="marginTop12">
+            <div class="grow col padTop4">
+                <button class="primaryButton" id="enterManuallyActionButton" type="button" data-bind="text: getResx('Enter_Manually_Action_Label'), click:_onEnterManuallyActionButtonClick">Manual</button>
+            </div>
+            <!-- ko if: hasTransactionCustomer() -->
+            <div class="grow col padTop4">
+                <button class="primaryButton" id="copyFromTransactionCustomerActionButton" type="button" data-bind="text: getResx('Copy_From_Transaction_Customer_Action_Label'), click:_onCopyFromTransactionCustomerActionButtonClick">Transaction customer</button>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: hasFiscalCustomer() -->
+            <div class="grow col padTop4">
+                <button class="primaryButton" id="clearActionButton" type="button" data-bind="text: getResx('Clear_Action_Label'), click:_onClearActionButtonClick">Clear</button>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</body>
+</html>

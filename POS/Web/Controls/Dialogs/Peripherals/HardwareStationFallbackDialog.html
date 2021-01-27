@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HardwareStationFallbackDialog</title>
+</head>
+<body>
+    <div class="hardwareStationFallback" data-bind="customControlInternal: 'HardwareStationFallbackDialog'">
+        <div data-bind="dialog:
+            {
+                title: title,
+                subTitle: subTitle,
+                visible: visible,
+                buttonClick: onButtonClick,
+                closeOnEscButton: true,
+                showProgressIndicator: indeterminateWaitVisible,
+                buttons: [
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'closeButton' }]
+            },
+            axBubbleAttr: 'hardwareStationFallbackDialog'">
+
+            <!-- dialog content -->
+            <div class="col grow scrollY">
+                <div data-bind="ifnot: viewModel.showPairedStations">
+                    <div class="h4" data-bind="resx: {textContent: 'string_6035'}">Hardware station is currently turned off</div>
+                </div>
+                <div data-bind="visible: viewModel.showPairedStations">
+                    <div class="marginBottom20">
+                        <div data-bind="if: viewModel.isPairedHardwareStationExists">
+                            <div class="marginTop12" data-bind="foreach: viewModel.pairedHardwareStations">
+                                <div class="row marginBottom08 pad08" role="button" data-bind="click: $root.pairedStationsItemClicked.bind($root)">
+                                    <div class="padTop05">
+                                        <div class="iconLink icon-20x20 marginRight12" data-bind="resx:{ ariaLabel: 'string_6022'}"></div>
+                                    </div>
+                                    <div class="width100Percent">
+                                        <div class="h4 ellipsis" data-bind="text: description"></div>
+                                        <div class="h6 secondaryFontColor ellipsis" data-bind="text: hostName">HostName</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="center grow" data-bind="ifnot: viewModel.isPairedHardwareStationExists">
+                            <div>
+                                <div class="h4" data-bind="text: viewModel.pairStateLabel">No station paired</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

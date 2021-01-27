@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CommentDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'CommentDialog'">
+        <div data-bind="dialog:
+                {
+                    title: title,
+                    subTitle: subTitle,
+                    visible: visible,
+                    buttonClick: buttonClickHandler,
+                    showProgressIndicator: indeterminateWaitVisible,
+                    subTitleCssClass: subTitleCssClass,
+                    closeOnEscButton:true,
+                    dialogCloseButtonClick: dialogCloseButtonClickHandler,
+                    buttons: [
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_3424'), operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, disable: commentHasNoContent },
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK }
+                    ],
+                },
+                axBubbleAttr: 'commentDialog_commentDialog'" class="commentDialog modalWindowContentSection">
+
+            <div class="col height120 marginBottom16">
+                <label for="commentDialogContent" data-bind="text: inputLabel"></label>
+                <textarea id="commentDialogContent"
+                          class="textInputArea"
+                          autofocus="autofocus"
+                          data-bind="value: textContent, valueUpdate:'keypress',
+                                  attr: { 'maxLength': textMaxLength, 'rows': rowsNumber },
+                                  style: { overflow: hideScrollbar() ? 'hidden' : 'auto' },
+                                  event: { keydown: onKeyDown },
+                                  axBubbleAttr: 'commentDialog_contentInput'"></textarea>
+            </div>
+            <!-- Comment list -->
+            <div class="grow col padTop12">
+                <div class="h4" data-bind="text: listTitle, visible: hasComments"></div>
+                <div class="scrollY col" data-bind="foreach: comments">
+                    <div class="marginBottom12 padRight12">
+                        <!-- Comment content header -->
+                        <div class="row height32">
+                            <div class="grow col centerY">
+                                <div class="h6 textTransformNone ellipsis bold" data-bind="text: AuthorName">Author name</div>
+                            </div>
+                            <div class="width96 centerY alignRight">
+                                <div class="h6 secondaryFontColor" data-bind="text: Commerce.Formatters.DateWithoutTime(CreatedDateTime)">Created DateTime</div>
+                            </div>
+                        </div>
+                        <!-- Comment content -->
+                        <div class="padRight16">
+                            <div class="h6 wrapTextWithoutHyphen maxHeight96 ellipsis textTransformNone" data-bind="text: Text">Comment</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end comment list -->
+        </div>
+    </div>
+</body>
+</html>

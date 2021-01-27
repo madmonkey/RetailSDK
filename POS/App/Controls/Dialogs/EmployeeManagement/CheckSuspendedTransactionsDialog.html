@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CheckSuspendedTransactionsDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'CheckSuspendedTransactionsDialog'">
+
+        <div class="wrapTextWithoutHyphen" data-bind="dialog:
+                {
+                    title: Commerce.ViewModelAdapter.getResourceString('string_946'),
+                    subTitle: Commerce.ViewModelAdapter.getResourceString('string_2651'),
+                    visible: visible,
+                    buttonClick: buttonClickHandler,
+                    buttons: [
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false }
+                    ]
+                },
+                axBubbleAttr: 'checkSuspendedTransactionsDialog_CheckSuspendedTransactionsDialog'">
+            <div data-bind="selectTile: {
+                 primaryText: Commerce.ViewModelAdapter.getResourceString('string_2649'),   /* View all */
+                 iteminvoked: selectViewAllOption
+            }" class="marginTop28"></div>
+            <div data-bind="selectTile: {
+                 primaryText: Commerce.ViewModelAdapter.getResourceString('string_2650'),   /* Void all */
+                 iteminvoked: selectVoidAllOption
+            }"></div>
+        </div>
+    </div>
+</body>
+</html>

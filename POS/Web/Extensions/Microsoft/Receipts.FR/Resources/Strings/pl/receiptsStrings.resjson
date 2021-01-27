@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Menedżer numerów kompilacji: numer kompilacji został pomyślnie dodany.",
+  "Build_number_successfull_log_message_text.comment": "Komunikat rejestrowany w przypadku, gdy numer kompilacji punktu sprzedaży został pomyślnie dodany do transakcji.",
+  "Build_number_error_log_message_text": "Menedżer numerów kompilacji: dodawanie numeru kompilacji nie powiodło się, komunikat o błędzie: „{0}”.",
+  "Build_number_error_log_message_text.comment": "Komunikat rejestrowany w przypadku, gdy numer kompilacji punktu sprzedaży nie został pomyślnie dodany do transakcji."
+}

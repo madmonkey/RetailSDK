@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CommonFrance\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.CommonFrance.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CommonFrance\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.CommonFrance.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CommonFrance\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.CommonFrance.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CommonFrance\obj\Debug\netstandard2.0\Runtime.Extensions.CommonFrance.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CommonFrance\obj\Debug\netstandard2.0\Runtime.Extensions.CommonFrance.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CommonFrance\obj\Debug\netstandard2.0\Runtime.Extensions.CommonFrance.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CommonFrance\obj\Debug\netstandard2.0\Runtime.Extensions.CommonFrance.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CommonFrance\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.CommonFrance.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CommonFrance\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.CommonFrance.pdb

@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Task Recorder Self Packing Item Template</title>
+</head>
+<body>
+    <script id="SelfPackingTaskRecorderUnpacked" type="text/html">
+        <div class="row width96 splitViewTaskRecorderSection alignRight" data-bind="axBubbleAttr: 'headerSplitView_openRecordingPane'">
+            <button class="buttonIcon width48 height48 center headerBackgroundColor headerBackgroundColorHover cursorDefault" type="button"
+                    data-bind="css: { iconRecording: isRecordingInProgress, iconPause: isRecordingPaused }"></button>
+            <button class="buttonIcon width48 height48 center headerBackgroundColor headerBackgroundColorHover iconSidePane"
+                    type="button" data-bind="click: openRecordingPane, resx: { ariaLabel: 'string_10408' /* Task Recorder */ }"></button>
+        </div>
+    </script>
+    <script id="SelfPackingTaskRecorderPacked" type="text/html">
+        <button class="row width240 height48 pad0"
+                data-bind="click: openRecordingPane, resx: { ariaLabel: 'string_10408' /* Task Recorder */ }, axBubbleAttr: 'headerSplitView_openRecordingPane'">
+            <div class="buttonIcon height20 margin12" data-bind="css: { iconRecording: isRecordingInProgress, iconPause: isRecordingPaused }">
+            </div>
+            <div class="grow col marginLeft8 padTop12">
+                <div class="h4 row" data-bind="resx: { textContent: 'string_10408' /* Task Recorder */ }"></div>
+            </div>
+        </button>
+    </script>
+</body>
+</html>

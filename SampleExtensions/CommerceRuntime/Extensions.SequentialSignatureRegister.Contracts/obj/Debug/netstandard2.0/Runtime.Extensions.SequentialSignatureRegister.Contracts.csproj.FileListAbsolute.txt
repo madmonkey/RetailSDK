@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SequentialSignatureRegister.Contracts\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SequentialSignatureRegister.Contracts.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SequentialSignatureRegister.Contracts\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SequentialSignatureRegister.Contracts.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SequentialSignatureRegister.Contracts\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SequentialSignatureRegister.Contracts.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SequentialSignatureRegister.Contracts\obj\Debug\netstandard2.0\Runtime.Extensions.SequentialSignatureRegister.Contracts.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SequentialSignatureRegister.Contracts\obj\Debug\netstandard2.0\Runtime.Extensions.SequentialSignatureRegister.Contracts.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SequentialSignatureRegister.Contracts\obj\Debug\netstandard2.0\Runtime.Extensions.SequentialSignatureRegister.Contracts.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SequentialSignatureRegister.Contracts\obj\Debug\netstandard2.0\Runtime.Extensions.SequentialSignatureRegister.Contracts.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SequentialSignatureRegister.Contracts\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.SequentialSignatureRegister.Contracts.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SequentialSignatureRegister.Contracts\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.SequentialSignatureRegister.Contracts.pdb

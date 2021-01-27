@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Shipping Locations View</title>
+</head>
+<body>
+
+    <div class="fragment" data-bind="with: viewModel">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'shippingLocationsView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' /* Main content */ }">
+            <div data-bind="pivotItem: { headerResx: 'string_2585' /* Shipping locations */ }">
+                <!-- Main content -->
+                <div id="shippingLocationsList" data-bind="dataList: {
+                    itemDataSource: shippingLocations,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                    selectionChanged: selectShippingLocations,
+                    ariaLabelResx: 'string_5505', /* List of stores */
+                    columns: [
+                        { titleResx: 'string_2580' /* Warehouse ID */, ratio: 20, collapseOrder: 5, minWidth: 100, field: 'InventLocation' },
+                        { titleResx: 'string_2581' /* Warehouse Description */, ratio: 20, collapseOrder: 4, minWidth: 100, field: 'Name' },
+                        { titleResx: 'string_2582' /* Store ID */, ratio: 10, collapseOrder: 3, minWidth: 100, field: 'storeId' },
+                        { titleResx: 'string_2583' /* Store Name */, ratio: 20, collapseOrder: 2, minWidth: 100, field: 'storeName' },
+                        { titleResx: 'string_2584' /* Ship From Address */, ratio: 30, collapseOrder: 1, minWidth: 200, field: 'warehouseAddressText' }
+                    ]
+                    },
+                    axBubbleAttr: 'shippingLocationsView_listOfStores'">
+                </div>
+            </div>
+        </div>
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar:{}, axBubbleAttr: 'shippingLocationsView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAccept',
+                id: 'selectShippingLocations',
+                onclick: setFulfillmentWarehouse,
+                labelResx: 'string_6405' /* Select */,
+                enabled: hasSelectedLocation,
+            }, axBubbleAttr: 'shippingLocationsView_selectShippingLocations'"></button>
+
+        </div>
+    </div>
+</body>
+</html>

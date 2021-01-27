@@ -1,0 +1,371 @@
+/*This file is loaded in runtime and placeholders are replaced with specific values.
+    %%ACCENT_COLOR%% - replaced by accent color setting which is got from device configuration;
+
+Loading DynamicAccentColor.css and css rules updating happens in CSSHelpers.applyAccentColor() method. Then style tag is added to document head.
+*/
+
+.accent {
+    cursor: pointer;
+    color: %%ACCENT_COLOR%%;
+}
+
+.accentColor {
+    color: %%ACCENT_COLOR%%;
+}
+
+.accentColorImportant {
+    color: %%ACCENT_COLOR%% !important;
+}
+
+progress.win-ring, .win-listview .win-progress {
+    color: %%ACCENT_COLOR%% ;
+}
+
+a, a:active, a:hover, a:hover:active {
+    cursor: pointer;
+    color: %%ACCENT_COLOR%%;
+}
+
+.taskRecorderMainPanel button:not(.iconBack):not(.iconSearch):not(.primaryButton):not(.secondaryButton),
+.taskRecorderMainPanel input[type=button],
+.taskRecorderMainPanel input[type=reset] {
+    color: %%ACCENT_COLOR%%;
+}
+
+.taskRecorderMainPanel div[role=button] {
+    cursor: pointer;
+    color: %%ACCENT_COLOR%%;
+}
+
+.taskRecorderMainPanel .iconAdd,
+.taskRecorderMainPanel .iconRecording,
+.taskRecorderMainPanel .iconPause,
+.taskRecorderMainPanel .iconStop,
+.taskRecorderMainPanel .iconIncreaseIndentLegacy,
+.taskRecorderMainPanel .iconDecreaseIndentLegacy,
+.taskRecorderMainPanel .iconSave,
+.taskRecorderMainPanel .iconWordLogo,
+.taskRecorderMainPanel .iconOperations {
+    color: %%ACCENT_COLOR%%;
+}
+
+.taskRecorderHelp .listItem *,
+.taskRecorderHelp .listItem *:hover {
+    color: %%ACCENT_COLOR%%;
+}
+
+button.primaryButton,
+input.primaryButton[type=button],
+input.primaryButton[type=submit],
+.accentBackground, 
+.accentBackground:hover, 
+.accentBackground:active,
+.accentBackground:active:hover, 
+button[type=submit], 
+input[type=submit],
+.standardGrid .win-listview.win-selectionstylefilled .win-selected .win-selectionbackground,
+.dataList .win-listview.win-selectionstylefilled .win-selected .win-selectionbackground,
+.win-listview.win-selectionstylefilled.win-selected.win-selectionbackground,
+.win-listview.win-selectionstylefilled .win-selected:hover .win-selectionbackground,
+html.win-hoverable .win-listview.win-selectionstylefilled .win-selected:hover .win-selectionbackground,
+.win-itemcontainer.win-selectionstylefilled.win-container.win-selected:hover .win-itembox,
+html.win-hoverable .win-itemcontainer.win-selectionstylefilled.win-selected:hover .win-selectionbackground,
+.standardGrid .win-itemcontainer.win-selectionstylefilled.win-selected .win-selectionbackground,
+.dataList .win-itemcontainer.win-selectionstylefilled.win-selected .win-selectionbackground,
+option:checked,
+option:checked:hover,
+select:focus option:checked:hover,
+option:hover:active,
+select:focus option:hover:active,
+option:hover:active,
+option:checked:hover:active,
+.win-dropdown option:checked,
+.win-dropdown option:checked:hover,
+.win-dropdown select:focus option:checked:hover,
+.win-dropdown option:hover:active,
+.win-dropdown select:focus option:hover:active,
+.win-dropdown option:hover:active,
+.win-dropdown option:checked:hover:active,
+.itemPicker.win-listview .win-focused {
+    background-color: %%ACCENT_COLOR%%;
+    color: #ffffff;
+}
+
+.win-overlay.win-flyout {
+    border-color: %%ACCENT_COLOR%%;
+}
+
+body .win-toggleswitch-on .win-toggleswitch-track {
+    background-color: %%ACCENT_COLOR%%;
+}
+
+html.win-hoverable body .win-toggleswitch-on:not(.win-toggleswitch-disabled):not(.win-toggleswitch-pressed) .win-toggleswitch-clickregion:hover .win-toggleswitch-track {
+    background-color: %%ACCENT_COLOR_DARK_10%%;
+}
+
+/*Selection color for text inputs. */
+input[type=submit]::selection,
+input[type=text]::selection,
+input[type=number]::selection,
+input[type=search]::selection,
+input[type=tel]::selection,
+input[type=email]::selection,
+textarea::selection {
+    background: %%ACCENT_COLOR%%;
+}
+
+.itemPicker.win-listview .win-itembox .win-item:hover,
+.itemPicker.win-listview :not(.win-focused).win-itembox .win-item:hover,
+html.win-hoverable .win-toggleswitch-enabled.win-toggleswitch:hover .win-toggleswitch-fill-lower,
+.win-listview.win-selectionstylefilled .win-selected:hover .win-selectionbackground,
+html.win-hoverable .win-listview.win-selectionstylefilled .win-selected:hover .win-selectionbackground,
+html.win-hoverable .win-itemcontainer.win-selectionstylefilled.win-selected:hover .win-selectionbackground,
+.standardGrid .win-container:nth-child(2n+1):not(.win-selected):hover .listViewLine,
+.standardGrid .win-container:nth-child(2n):not(.win-selected):hover .listViewLine,
+.standardGrid .win-container:nth-child(2n+1):not(.win-selected):hover .colspanRow,
+.standardGrid .win-listview.win-selectionstylefilled .win-container:hover .win-itembox,
+.standardGrid .win-container:nth-child(2n):not(.win-selected):hover .colspanRow,
+.dataList .win-container:nth-child(2n+1):not(.win-selected):hover .dataListLine,
+.dataList .win-container:nth-child(2n):not(.win-selected):hover .dataListLine,
+.dataList .win-listview.win-selectionstylefilled .win-container:hover .win-itembox {
+    background-color: %%ACCENT_COLOR_LIGHT_20%%;
+}
+
+.standardGrid .win-container:nth-child(2n+1):not(.win-selected):hover .colspanRow .secondaryFontColor,
+.standardGrid .win-container:nth-child(2n):not(.win-selected):hover .colspanRow .secondaryFontColor,
+.standardGrid .win-container:nth-child(2n+1):not(.win-selected):hover .listViewLine *,
+.standardGrid .win-container:nth-child(2n):not(.win-selected):hover .listViewLine *,
+.dataList .win-container:nth-child(2n+1):not(.win-selected):hover .secondaryFontColor,
+.dataList .win-container:nth-child(2n):not(.win-selected):hover .secondaryFontColor,
+.dataList .win-container:nth-child(2n+1):not(.win-selected):hover .dataListLine *,
+.dataList .win-container:nth-child(2n):not(.win-selected):hover .dataListLine * {
+    color: #fff !important;
+}
+
+.itemPicker.win-listview :not(.win-focused).win-itembox .win-item:hover h4,
+.itemPicker.win-listview :not(.win-focused).win-itembox .win-item:hover .h4 {
+    color: #fff;
+}
+.standardGrid .win-container:nth-child(2n+1):not(.win-selected):hover .listViewLine .win-interactive,
+.standardGrid .win-container:nth-child(2n):not(.win-selected):hover .listViewLine .win-interactive,
+.dataList .win-container:nth-child(2n+1):not(.win-selected):hover .dataListLine .win-interactive,
+.dataList .win-container:nth-child(2n):not(.win-selected):hover .dataListLine .win-interactive {
+    border-color: #fff !important;
+}
+
+.accentBackgroundHover:hover,
+button.accentBackground[type=button]:hover,
+button.accentBackground[type=button]:focus,
+.tileList .itemContainer.accentBackground:hover,
+.tileList .itemContainer.accentBackground:focus  {
+    background-color: %%ACCENT_COLOR_LIGHT_20%%;
+}
+
+button.primaryButton:hover,
+input.primaryButton[type=button]:hover,
+input.primaryButton[type=submit]:hover {
+    background-color: %%ACCENT_COLOR_DARK_10%%;
+}
+
+.accentBackgroundActive:active,
+button.primaryButton:active,
+input.primaryButton[type=button]:active,
+input.primaryButton[type=submit]:active, 
+button.accentBackground[type=button]:active,
+.tileList .itemContainer.accentBackground:active {
+    background-color: %%ACCENT_COLOR_DARK_20%%;
+}
+
+
+.accentBackground .accent,
+.win-selected .accent,
+.accentBackground .accentColor,
+.win-selected .accentColor,
+.accentBackground .accentColorImportant,
+.win-selected .accentColorImportant {
+    color: inherit !important;
+}
+
+.genericDialog.confirmButton {
+    background-color: %%ACCENT_COLOR%%;
+    color: #ffffff;
+}
+
+.win-selected.win-selectionborder,
+.refinerMultiSelectBorderColor {
+    border-color: %%ACCENT_COLOR%%;
+}
+
+.ui-widget-header,
+.win-toggleswitch .win-toggleswitch-fill-lower {
+    background-color: %%ACCENT_COLOR%%;
+}
+
+body[dir=rtl] .win-listview .win-horizontal .win-selectioncheckmarkbackground,
+body[dir=rtl] :not(.win-selectionstylefilled).win-listview .win-selected.win-container .win-selectioncheckmarkbackground,
+body[dir=rtl] :not(.win-selectionstylefilled).win-selected.win-container.win-itemcontainer .win-selectioncheckmarkbackground {
+    border-left-color: %%ACCENT_COLOR%%;
+    border-right-color: transparent;
+}
+
+body[dir=rtl] .win-listview .win-horizontal .win-container.win-selected:hover .win-selectioncheckmarkbackground,
+body[dir=rtl] :not(.win-selectionstylefilled).win-listview .win-selected.win-container:hover .win-selectioncheckmarkbackground,
+body[dir=rtl] :not(.win-selectionstylefilled).win-selected.win-container.win-itemcontainer:hover .win-selectioncheckmarkbackground {
+    border-left-color: %%ACCENT_COLOR_LIGHT_20%%;
+}
+
+.browseGrid .win-listview .win-horizontal .win-container.win-selected:hover .win-selectioncheckmarkbackground,
+.browseGrid .win-listview .win-container.win-selected:hover .win-selectioncheckmarkbackground, 
+.browseGrid .win-itemcontainer.win-container.win-selected:hover .win-selectioncheckmarkbackground,
+.dataCardList .win-listview .win-horizontal .win-container.win-selected:hover .win-selectioncheckmarkbackground,
+.dataCardList .win-listview .win-container.win-selected:hover .win-selectioncheckmarkbackground, 
+.dataCardList .win-itemcontainer.win-container.win-selected:hover .win-selectioncheckmarkbackground {
+    border-color: %%ACCENT_COLOR_LIGHT_20%%;
+}
+
+.win-horizontal .win-container.win-selected .win-selectionborder,
+.win-listview.win-selectionstylefilled .win-container.win-selected .win-selectionborder,
+:not(.win-selectionstylefilled).win-listview .win-selected.win-container .win-selectionborder,
+:not(.win-selectionstylefilled).win-selected.win-container.win-itemcontainer .win-selectionborder {
+    border: 2px solid %%ACCENT_COLOR%%;
+}
+
+.accentBorder {
+    border: 2px solid %%ACCENT_COLOR%%;
+}
+
+.countingGrid .win-selected .accent {
+    color: %%ACCENT_COLOR%%;
+}
+
+input[type=range]::-ms-fill-lower,
+option:checked, select:focus::-ms-value,
+::selection {
+    background-color: %%ACCENT_COLOR%%;
+    color: #ffffff;
+}
+
+.headerBackgroundColor,
+.headerBackgroundColor:hover,
+.headerBackgroundColor:active,
+.headerBackgroundColor:active:hover,
+.headerSplitViewHeader .primaryButton,
+.headerSplitViewHeader button.headerSplitViewToggleButton,
+.headerSplitView.win-splitview-pane-closed .splitViewBackgroundColor button.headerSplitViewToggleButton {
+    background-color: %%HEADER_COLOR%%;
+    color: #ffffff;
+}
+
+.headerSplitViewHeader .splitViewTitle::after {
+    background: linear-gradient(90deg, transparent, %%HEADER_COLOR%% 100%);
+}
+
+body[dir=rtl] .headerSplitViewHeader .splitViewTitle::after {
+    background: linear-gradient(90deg, %%HEADER_COLOR%%, transparent);
+}
+
+.headerSplitView .headerSplitViewNavButton.active::before {
+    background-color: %%ACCENT_COLOR%%;
+    border-color: %%ACCENT_COLOR%%;
+}
+
+.headerBackgroundColorHover:hover,
+.headerBackgroundColorHover:focus,
+.headerSplitViewHeader button.primaryButton:hover,
+.headerSplitViewHeader input.primaryButton[type=button]:hover,
+.headerSplitViewHeader input.primaryButton[type=submit]:hover,
+.headerSplitViewHeader button.accentBackground[type=button]:hover,
+.headerSplitViewHeader button.accentBackground[type=button]:focus {
+    background-color: %%HEADER_COLOR_LIGHT_20%%;
+}
+
+.togglefor200Percent:focus, 
+.togglefor200Percent:hover {
+    background-color: %%HEADER_COLOR_LIGHT_20%% !important;
+}
+.headerBackgroundColorActive:active,
+.headerSplitViewHeader button.primaryButton:active,
+.headerSplitViewHeader input.primaryButton[type=button]:active,
+.headerSplitViewHeader input.primaryButton[type=submit]:active,
+.headerSplitViewHeader button.accentBackground[type=button]:active {
+    background-color: %%HEADER_COLOR_DARK_20%%;
+}
+
+.browseGrid .win-listview .win-surface.win-selectionmode .win-selectioncheckmarkbackground,
+.browseGrid .win-listview .win-surface.win-selectionmode .win-itembox::after,
+.dataCardList .win-listview .win-surface.win-selectionmode .win-selectioncheckmarkbackground,
+.dataCardList .win-listview .win-surface.win-selectionmode .win-itembox::after {
+    border: 2px %%ACCENT_COLOR%% solid;
+}
+
+.browseGrid .win-listview.win-selectionstylefilled .win-container.win-selected:hover .win-selectionborder,
+.dataCardList .win-listview.win-selectionstylefilled .win-container.win-selected:hover .win-selectionborder {
+    border-color: %%ACCENT_COLOR_LIGHT_20%%;
+}
+
+.headerSearch .searchOptionSelectedBackgroundColor,
+.headerSearch .searchOptionHoverBackgroundColor:hover,
+html.win-hoverable .headerSplitViewHeader button.headerSplitViewToggleButton:hover,
+html.win-hoverable .headerSplitViewHeader button.headerSplitViewToggleButton:active,
+html.win-hoverable .headerSplitView.win-splitview-pane-closed .splitViewBackgroundColor button.headerSplitViewToggleButton:hover,
+html.win-hoverable .headerSplitView.win-splitview-pane-closed .splitViewBackgroundColor button.headerSplitViewToggleButton:active {
+    background-color: %%ACCENT_COLOR_LIGHT_20%%;
+    color: #ffffff;
+}
+
+/* High contrast need to be here. Moving it to _itemPicker.scss or _Buttons.scss will make 'background-color: %%ACCENT_COLOR_LIGHT_20%%;' effective in high-contrast for IE UI */
+@media screen and (-ms-high-contrast) {
+    .itemPicker.win-listview .win-itembox .win-item:hover,
+    .itemPicker.win-listview :not(.win-focused).win-itembox .win-item:hover {
+        background-color: Highlight !important;
+    }
+
+    .accentBackgroundHover:hover,
+    .tileList .itemContainer.accentBackground:hover,
+    .tileList .itemContainer.accentBackground:focus {
+        background-color: Highlight;
+    }
+
+    button.primaryButton,
+    input.primaryButton[type=button],
+    input.primaryButton[type=submit] {
+        background-color: ButtonText; /* Set primary button to have system selected color as background */
+        color: ButtonFace;
+    }
+
+    button.primaryButton:disabled,
+    input.primaryButton[type=button]:disabled,
+    input.primaryButton[type=submit]:disabled,
+    button.primaryButton:disabled:hover,
+    input.primaryButton[type=button]:disabled:hover,
+    input.primaryButton[type=submit]:disabled:hover,
+    button.primaryButton:disabled:active,
+    input.primaryButton[type=button]:disabled:active,
+    input.primaryButton[type=submit]:disabled:active {
+        background-color: transparent;
+        border: 1px solid  GrayText; /* System disabled text color */
+        color: GrayText;
+    }
+
+    button.primaryButton:hover,
+    input.primaryButton[type=button]:hover,
+    input.primaryButton[type=submit]:hover,
+    button.primaryButton:active,
+    input.primaryButton[type=button]:active,
+    input.primaryButton[type=submit]:active,
+    button.primaryButton:focus,
+    input.primaryButton[type=button]:focus,
+    input.primaryButton[type=submit]:focus {
+        background-color: Highlight;
+        color: HighlightText;
+    }
+
+    button.primaryButton:active,
+    input.primaryButton[type=button]:active,
+    input.primaryButton[type=submit]:active,
+    button.primaryButton:focus,
+    input.primaryButton[type=button]:focus,
+    input.primaryButton[type=submit]:focus {
+        border: 1px solid  ButtonText;
+    }
+}

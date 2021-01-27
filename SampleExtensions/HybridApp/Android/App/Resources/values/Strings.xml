@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="ApplicationName">Retail Modern POS</string>
+  <string name="CloudPosUrlTitle">Retail Cloud POS Url</string>
+  <string name="SaveSettings">Save</string>
+</resources>

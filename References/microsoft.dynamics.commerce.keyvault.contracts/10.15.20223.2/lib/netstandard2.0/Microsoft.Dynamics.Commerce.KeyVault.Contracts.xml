@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.KeyVault.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException">
+            <summary>
+            An exception to represent when the type of secret requested does not match the actual sercert's type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException.#ctor(System.Uri,System.Type,System.Type,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException"/> class.
+            </summary>
+            <param name="secretLocation">The secret's location.</param>
+            <param name="requestedType">The requested secret's type.</param>
+            <param name="actualType">The actual sercret's type.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException.RequestedType">
+            <summary>
+            Gets the requested secret type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException.ActualType">
+            <summary>
+            Gets the actual secret type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.ISecretMiddleware">
+            <summary>
+            A middleware to be applied on every secret retrieval.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.ISecretMiddleware.Next">
+            <summary>
+            Gets or sets the next middleware in the chain.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.ISecretMiddleware.InvokeAsync``1(System.Uri)">
+            <summary>
+            Invokes this middleware when a secret retrievel request occurs.
+            </summary>
+            <typeparam name="TSecret">The type of the expected secret.</typeparam>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>The secret, if found, or null otherwise.</returns>
+            <remarks>This implementation is thread-safe.</remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.ISecretProvider">
+            <summary>
+            Represents a provider implementation that can retrieve secrets.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.ISecretProvider.SupportedLocationScheme">
+            <summary>
+            Gets the <see cref="P:System.Uri.Scheme"/> supported by this provider.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.ISecretProvider.IsLocationSupported(System.Uri)">
+            <summary>
+            Returns a <see cref="T:System.Boolean"/> indicating whether the <paramref name="location"/> is supported by this provider.
+            </summary>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>A <see cref="T:System.Boolean"/> indicating whether the <paramref name="location"/> is supported by this provider.</returns>
+            <remarks>This implementation is thread-safe.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.ISecretProvider.RetrieveSecretAsync``1(System.Uri)">
+            <summary>
+            Retrieves a secret specified by the <paramref name="location"/> <see cref="T:System.Uri"/>.
+            </summary>
+            <typeparam name="TSecret">The type of the expected secret. If the secret cannot to converted to type, <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException"/> is thrown.</typeparam>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>The secret if found or throws a <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException"/> otherwise.</returns>
+            <remarks>This implementation is thread-safe.</remarks>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretLocationNotSupported">If the <paramref name="location"/> is not supported by this provider.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException">If the <typeparamref name="TSecret"/> is not of same type of the secret returned.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException">If the location is supported but it resolves to no secret.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotAvailableException">If the provider is not able to return the target secret.</exception>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.SecertLifetimeTooShortException">
+            <summary>
+            An exception to indicate that a secret has too short lifetime.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.SecertLifetimeTooShortException.#ctor(System.Uri,System.DateTime,System.Int32,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException"/> class.
+            </summary>
+            <param name="secretLocation">The secret's location.</param>
+            <param name="secretValidTo">The date time representing the secret's ValidTo field.</param>
+            <param name="minimumLifetimeInSeconds"></param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.SecretBundle`1">
+            <summary>
+            A bundle containing the secret's value and additional secret metadata.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.SecretBundle`1.SecretValue">
+            <summary>
+            Gets or sets the secret value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.SecretBundle`1.NotAfter">
+            <summary>
+            Gets or sets the date time offset after which the secret is not valid.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.SecretLocationNotSupported">
+            <summary>
+            An exception to represent when a secret location is not found.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.SecretLocationNotSupported.#ctor(System.Uri,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretLocationNotSupported"/> class.
+            </summary>
+            <param name="secretLocation">The secret's location.</param>
+            <param name="message">The exception message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotAvailableException">
+            <summary>
+            An exception to represent when the specific secret provider is not able to retrieve the target secret for unexpected reason.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.SecretNotAvailableException.#ctor(System.Uri,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotAvailableException"/> class.
+            </summary>
+            <param name="secretLocation">The secret's location.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException">
+            <summary>
+            An exception to represent when a secret was not found.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException.#ctor(System.Uri,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException"/> class.
+            </summary>
+            <param name="secretLocation">The secret's location.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNullException">
+            <summary>
+            An exception to indicate that the secret value was null.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.SecretNullException.#ctor(System.Uri,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNullException"/> class.
+            </summary>
+            <param name="secretLocation">The secret's location.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.SecretRetrievalException">
+            <summary>
+            Base class for secret exceptions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.SecretRetrievalException.#ctor(System.Uri,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretRetrievalException"/> class.
+            </summary>
+            <param name="secretLocation">The secret's location.</param>
+            <param name="message">The exception message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.SecretRetrievalException.SecretLocation">
+            <summary>
+            Gets the secret's location.
+            </summary>
+        </member>
+    </members>
+</doc>

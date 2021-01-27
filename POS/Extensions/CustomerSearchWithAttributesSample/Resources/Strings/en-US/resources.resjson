@@ -1,0 +1,23 @@
+﻿//======================================================================================================
+//======================================= Sample comment. ==============================================
+//======================================================================================================
+{
+    //======================== Column names.  ========================
+    "string_1"                                      : "MARKETING OPT IN",
+    "_string_1.comment"                             : "Whether the customer would like to be contacted by email.",
+
+    "string_2"                                      : "ACCOUNT NUMBER",
+    "_string_2.comment"                             : "Customer search column name.",
+
+    "string_3"                                      : "NAME",
+    "_string_3.comment"                             : "Customer search column name.",
+
+    "string_4"                                      : "ADDRESS",
+    "_string_4.comment"                             : "Customer search column name.",
+
+    "string_5"                                      : "CONTACT EMAIL",
+    "_string_5.comment"                             : "Customer search column name.",
+
+    "string_7"                                      : "PHONE NUMBER",
+    "_string_7.comment"                             : "Customer search column name."
+}

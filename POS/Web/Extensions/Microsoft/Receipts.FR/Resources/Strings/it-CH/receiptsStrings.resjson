@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Gestione numero di build: aggiunta del numero di build completata.",
+  "Build_number_successfull_log_message_text.comment": "Messaggio registrato quando l'aggiunta del numero di build del POS alla transazione viene eseguita.",
+  "Build_number_error_log_message_text": "Gestione numero di build: aggiunta del numero di build non riuscita, messaggio di errore: \"{0}\"",
+  "Build_number_error_log_message_text.comment": "Messaggio registrato quando l'aggiunta del numero di build del POS alla transazione non viene eseguita."
+}

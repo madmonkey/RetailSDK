@@ -1,0 +1,111 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>$(AssemblyNamePrefix).Pos.Extensions</AssemblyName>
+    <PosExtensionPackagesDropRoot>$(MsBuildThisFileDirectory)..\..\Pos\SharedApp\Extensions</PosExtensionPackagesDropRoot>
+    <TypeReferencesDropFolder>typings\</TypeReferencesDropFolder>
+    <JsonSchemaReferencesDropFolder>schemas\</JsonSchemaReferencesDropFolder>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+    <PosContractsDir>..\Contracts\</PosContractsDir>
+    <EnableDefaultItems>false</EnableDefaultItems>
+  </PropertyGroup>
+  <ItemGroup Label="Libraries">
+    <TypeReferences Include="$(PosContractsDir)Pos.Types.d.ts">
+      <Visible>false</Visible>
+    </TypeReferences>
+    <TypeReferences Include="$(PosContractsDir)Pos.Api.d.ts">
+      <Visible>false</Visible>
+    </TypeReferences>
+    <TypeReferences Include="$(PosContractsDir)Pos.UI.Sdk.d.ts">
+      <Visible>false</Visible>
+    </TypeReferences>
+    <TypeReferences Include="$(PosContractsDir)KnockoutJS.d.ts">
+      <Visible>false</Visible>
+    </TypeReferences>
+    <TypeReferences Include="$(PosContractsDir)DataJS.d.ts">
+      <Visible>false</Visible>
+    </TypeReferences>
+    <JsonSchemaReferences Include="$(PosContractsDir)manifestSchema.json">
+      <Visible>false</Visible>
+    </JsonSchemaReferences>
+    <JsonSchemaReferences Include="$(PosContractsDir)cultureInfoSchema.json">
+      <Visible>false</Visible>
+    </JsonSchemaReferences>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="readme.md" />
+    <Content Include="extensions.json" />
+    <Content Include="tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="2.2.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <Target Name="CopyPosExtensionsFiles" AfterTargets="AfterBuild">
+    <ItemGroup>
+      <JavaScriptFileList Include="@(TypeScriptCompile->'%(RelativeDir)%(Filename).js')">
+        <InProject>false</InProject>
+        <Visible>false</Visible>
+      </JavaScriptFileList>
+      <HtmlFileList Include="@(Content)" Condition="'%(Extension)' == '.html'">
+        <InProject>false</InProject>
+        <Visible>false</Visible>
+      </HtmlFileList>
+      <CssFileList Include="@(Content)" Condition="'%(Extension)' == '.css'">
+        <InProject>false</InProject>
+        <Visible>false</Visible>
+      </CssFileList>
+      <CssFileList Include="@(None ->'%(RelativeDir)%(Filename).min.css')" Condition="'%(Extension)' == '.scss'">
+        <InProject>false</InProject>
+        <Visible>false</Visible>
+      </CssFileList>
+      <ScssFileList Include="@(None)" Condition="'%(Extension)' == '.scss'">
+        <InProject>false</InProject>
+        <Visible>false</Visible>
+      </ScssFileList>
+      <CssMapFileList Include="@(None ->'%(RelativeDir)%(Filename).min.css.map')" Condition="'%(Extension)' == '.scss'">
+        <InProject>false</InProject>
+        <Visible>false</Visible>
+      </CssMapFileList>
+      <JsonFileList Include="@(None);@(Content)" Condition="'%(Extension)' == '.json' And '%(Filename)' != 'tsconfig'">
+        <InProject>false</InProject>
+        <Visible>false</Visible>
+      </JsonFileList>
+      <ResjsonFileList Include="@(None);@(Content)" Condition="'%(Extension)' == '.resjson'">
+        <InProject>false</InProject>
+        <Visible>false</Visible>
+      </ResjsonFileList>
+      <PngFileList Include="@(Content)" Condition="'%(Extension)' == '.png'">
+        <InProject>false</InProject>
+        <Visible>false</Visible>
+      </PngFileList>
+      <JpgFileList Include="@(Content)" Condition="'%(Extension)' == '.jpg'">
+        <InProject>false</InProject>
+        <Visible>false</Visible>
+      </JpgFileList>
+    </ItemGroup>
+    <Copy SourceFiles="@(JavaScriptFileList)" DestinationFiles="@(JavaScriptFileList->'$(PosExtensionPackagesDropRoot)\%(RelativeDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(HtmlFileList)" DestinationFiles="@(HtmlFileList->'$(PosExtensionPackagesDropRoot)\%(RelativeDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(ScssFileList)" DestinationFiles="@(ScssFileList->'$(PosExtensionPackagesDropRoot)\%(RelativeDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(CssFileList)" DestinationFiles="@(CssFileList->'$(PosExtensionPackagesDropRoot)\%(RelativeDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(CssMapFileList)" DestinationFiles="@(CssMapFileList->'$(PosExtensionPackagesDropRoot)\%(RelativeDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(JsonFileList)" DestinationFiles="@(JsonFileList->'$(PosExtensionPackagesDropRoot)\%(RelativeDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(ResjsonFileList)" DestinationFiles="@(ResjsonFileList->'$(PosExtensionPackagesDropRoot)\%(RelativeDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(PngFileList)" DestinationFiles="@(PngFileList->'$(PosExtensionPackagesDropRoot)\%(RelativeDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(JpgFileList)" DestinationFiles="@(JpgFileList->'$(PosExtensionPackagesDropRoot)\%(RelativeDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+  <Target Name="CopyReferences" BeforeTargets="BeforeBuild" Inputs="@(TypeReferences);@(JsonSchemaReferences)" Outputs="@(TypeReferences->'$(TypeReferencesDropFolder)%(Filename)%(Extension)');@(JsonSchemaReferences->'$(JsonSchemaReferencesDropFolder)%(Filename)%(Extension)')">
+    <Copy SourceFiles="@(TypeReferences)" DestinationFiles="@(TypeReferences->'$(TypeReferencesDropFolder)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(JsonSchemaReferences)" DestinationFiles="@(JsonSchemaReferences->'$(JsonSchemaReferencesDropFolder)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+  <Target Name="DeleteTypeCopiedFiles" AfterTargets="Clean">
+    <RemoveDir Directories="$(TypeReferencesDropFolder);$(JsonSchemaReferencesDropFolder);$(PosExtensionPackagesDropRoot)" />
+  </Target>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.DotNetCore.targets" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.DotNetCore.targets')" />
+  <Import Project="$(SdkRootPath)\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

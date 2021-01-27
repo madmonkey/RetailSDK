@@ -1,0 +1,42 @@
+﻿.commerceButtonGrid {
+    flex: none;
+}
+
+.commerceButtonGrid button {
+    width: 72px;
+    height: 72px;
+    font-size: 10px; /* Reset font size to base font size. */
+    background-repeat: no-repeat;
+    min-width: 72px;
+    min-height: 72px;
+    border: none;
+    cursor: pointer;
+}
+
+.commerceButtonGrid button:active {
+    transform: translate(2px, 2px);
+    opacity: 0.9;
+}
+
+.commerceButtonGrid button.backgroundPositionLeft {
+    background-position: left;
+ }
+
+.commerceButtonGrid button.backgroundPositionCenter {
+    background-position: center;
+ }
+
+.commerceButtonGrid button.backgroundPositionRight {
+    background-position: right;
+ }
+
+/* High contrast mode */
+@media screen and (-ms-high-contrast) {
+    .commerceButtonGrid button {
+        border-style: solid;
+    }
+
+    .commerceButtonGrid button:active {
+        opacity: 1;
+    }
+}

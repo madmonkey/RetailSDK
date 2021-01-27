@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>removeCustomersFromClientBookDialog</title>
+</head>
+<body>
+    <div class="removeCustomersFromClientBookDialog" data-bind="customControlInternal: 'removeCustomersFromClientBookDialog'">
+        <div data-bind="dialog: {
+             title: Commerce.ViewModelAdapter.getResourceString('string_6553'),
+             visible: visible,
+             closeOnEscButton: true,
+             buttonClick: buttonClickHandler,
+             dialogCloseButtonClick: dialogCloseButtonClick,
+             buttons: [
+                {
+                    label: Commerce.ViewModelAdapter.getResourceString('string_77'),
+                    operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK,
+                    cssClass: 'okButton',
+                    isPrimary:true ,
+                },
+                { 
+                    label: Commerce.ViewModelAdapter.getResourceString('string_76'),
+                    operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK,
+                    cssClass: 'cancelButton'
+                },
+             ],
+        },
+        axBubbleAttr: 'removeCustomersFromClientBookDialog_removeCustomersFromClientBookDialog'" class="modalWindowContentSection">
+
+            <label class="marginTop8 h3 flexNone primaryFontColor" data-bind="resx: {textContent: 'string_6551'}">Are you sure you want to remove selected customers?</label>
+            <label class="marginTop8 h4 flexNone"
+                   data-bind="resx: {textContent: 'string_6552'}">Removing them here will not delete their profile. You can still locate them under the Store Client Book.</label>
+            
+            <div class="row marginTop20 ">
+                <div class="grow">
+                    <label class="secondaryFontColor h4 flexNone" data-bind="resx: {textContent: 'string_6554'}">Selected customers</label>
+                </div>
+                <div class="padRight4">
+                    <div class="h4" data-bind="text: numberOfSelectedCustomers"></div>
+                </div>
+            </div>
+
+            <div class="padTop20 marginBottom6 no-shrink">
+                <div class="line-separator"></div>
+            </div>
+            <div class="row padTop8 padBottom8 padLeft8">
+                <div class="iconCancel accentColor icon-16x16 padTop03"></div>
+                <a href="#" class="h4 padLeft8" data-bind="click: $root.clearAll.bind($root), text: Commerce.ViewModelAdapter.getResourceString('string_6565'), axBubbleAttr: 'removeCustomersFromClientBookDialog_clearAllButton'"></a>
+            </div>
+            <div class="padTop6 marginBottom12 no-shrink">
+                <div class="line-separator"></div>
+            </div>
+
+            <!-- Selected Client book Customer list -->
+            <div id="slectedCustomerListsButtonGrid" class="grow col">
+                <div id="selectedCustomerListsList"
+                     data-bind="dataList: {
+                            itemDataSource: clientBookCustomers,
+                            onLoadingComplete: $root.selectAll.bind($root),
+                            defaultListType: Commerce.Controls.DataList.ListType.Card,
+                            selectionModes: Commerce.Controls.DataList.SelectionMode.MultiSelect,
+                            selectionChanged: setSelectedCustomers.bind($data),
+                            itemTemplates: [
+                            {
+                                templateId: 'employeeClientBookCustomerSmallCardTemplate',
+                                cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                deviceType: Commerce.Controls.DataList.DeviceType.Both
+                            }
+                            ]
+                    }, axBubbleAttr: 'removeCustomersFromClientBookDialog_optionsButtonGrid'"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

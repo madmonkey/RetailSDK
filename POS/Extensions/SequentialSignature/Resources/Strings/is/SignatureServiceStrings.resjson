@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Villa kom upp við færslu. Undirskriftaþjónusta er ekki tilbúin. Hafa skal samband við kerfisstjóra.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Villa kom upp við færslu. Tengd fjárhagsfærsla inniheldur gögn á röngu sniði. Hafa skal samband við kerfisstjóra.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "Villa kom upp við endurheimt stafrænnar undirskriftar í síðustu færslu. Hugsanlega er ótengdur gagnagrunnur ekki samstilltur. Hafðu samband við kerfisstjóra.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

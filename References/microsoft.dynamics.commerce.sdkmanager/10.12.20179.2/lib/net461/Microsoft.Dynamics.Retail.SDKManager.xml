@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.SDKManager</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.SDKManager.AXBridge">
+            <summary>
+            Provides a bridge to overloaded methods that X++ cannot access.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.AXBridge.PaymentProperty_GetPropertyValueProperties(System.Collections.Hashtable,System.String,System.String,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[]@)">
+            <summary>
+            Returns the property list value of a property.
+            </summary>
+            <param name="hashtable">Hashtable containing all of the payment properties.</param>
+            <param name="namespaceValue">The namespace of the property to seek.</param>
+            <param name="name">The name of the property to seek.</param>
+            <param name="value">The property's value.</param>
+            <returns>True if the property was found, false if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.AXBridge.PaymentProperty_GetPropertyValueString(System.Collections.Hashtable,System.String,System.String,System.String@)">
+            <summary>
+            Returns the string value of a property.
+            </summary>
+            <param name="hashtable">Hashtable containing all of the payment properties.</param>
+            <param name="namespaceValue">The namespace of the property to seek.</param>
+            <param name="name">The name of the property to seek.</param>
+            <param name="value">The value of the property.</param>
+            <returns>True if the property was found, false if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.AXBridge.PaymentProperty_GetPropertyValueDecimal(System.Collections.Hashtable,System.String,System.String,System.Decimal@)">
+            <summary>
+            Returns the decimal value of a property.
+            </summary>
+            <param name="hashtable">Hashtable containing all of the payment properties.</param>
+            <param name="namespaceValue">The namespace of the property to seek.</param>
+            <param name="name">The name of the property to seek.</param>
+            <param name="value">The property's value.</param>
+            <returns>True if the property was found, false if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.AXBridge.PaymentProperty_GetPropertyValueDateTime(System.Collections.Hashtable,System.String,System.String,System.DateTime@)">
+            <summary>
+            Returns the date/time value of a property.
+            </summary>
+            <param name="hashtable">Hashtable containing all of the payment properties.</param>
+            <param name="namespaceValue">The namespace of the property to seek.</param>
+            <param name="name">The name of the property to seek.</param>
+            <param name="value">The property's value.</param>
+            <returns>True if the property was found, false if not found.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.SDKManager.PaymentProcessorManager">
+            <summary>
+            PaymentProcessorManager class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.SDKManager.PaymentProcessorManager.Padlock">
+            <summary>
+            Used to make updates thread safe.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.SDKManager.PaymentProcessorManager.connectorPath">
+            <summary>
+            The connector path.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.PaymentProcessorManager.Create(System.String)">
+            <summary>
+            Create the PaymentProcessorFactory.
+            </summary>
+            <param name="connectorPathValue">The path where the payment processors are located.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.PaymentProcessorManager.Create(System.String[])">
+            <summary>
+            Create the PaymentProcessorFactory.
+            </summary>
+            <param name="assemblyNames">An array of payment connectors assembly names to load (GAC).</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.PaymentProcessorManager.GetSupportedProcessors">
+            <summary>
+            Fetch an array of installed payment processor connectors.
+            </summary>
+            <returns>Array of payment processor names.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.PaymentProcessorManager.GetPaymentProcessor(System.String)">
+            <summary>
+            Fetch a PaymentProcessor.
+            </summary>
+            <param name="name">The name of the required payment processor.</param>
+            <returns>Payment processor object.</returns>
+        </member>
+    </members>
+</doc>

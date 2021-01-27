@@ -1,0 +1,101 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PivotView</title>
+</head>
+<body>
+    <div class="PivotView">
+            <div class="grow marginBottom48 scrollY">
+                <div class="pad20 col width680">
+                    <h3>msPosPivot</h3>
+                    <div class="pad8 height120">
+                        <div data-bind="msPosPivot: pivot">
+                            <div data-bind="msPosPivotItem: pivotItem1">
+                                <div class="h4">Pivot item 1 content</div>
+                            </div>
+                            <div data-bind="msPosPivotItem: pivotItem2">
+                                <div class="h4">Pivot item 2 content</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="h4 padTop40">ViewModel interface</div>
+                    <textarea class="height220">
+    export interface IPivotItemState {
+        header: string;
+    }
+
+    export class PivotView extends PosControl {
+        header: string;
+        constructor(initialState: IPivotItemState);
+    }
+                    </textarea>
+                    <div class="h4 padTop40">Controller syntax</div>
+                    <textarea class="height220">
+
+import * as Views from "PosApi/Create/Views";
+import * as Pivot from "PosUISdk/Controls/Pivot";
+import { ObjectExtensions } from "PosApi/TypeExtensions";
+
+/**
+ * The controller for PivotView.
+ */
+export default class PivotView extends Views.CustomViewControllerBase {
+    public readonly pivot: Pivot.Pivot;
+    public readonly pivotItem1: Pivot.PivotItem;
+    public readonly pivotItem2: Pivot.PivotItem;
+
+    constructor(context: Views.ICustomViewControllerContext) {
+        super(context);
+
+        this.state.title = "Pivot sample";
+
+        this.pivot = new Pivot.Pivot({});
+
+        this.pivotItem1 = new Pivot.PivotItem({
+            header: "Pivot item 1"
+        });
+
+        this.pivotItem2 = new Pivot.PivotItem({
+            header: "Pivot item 2"
+        });
+    }
+
+    /**
+     * Bind the html element with view controller.
+     *
+     * @param {HTMLElement} element DOM element.
+     */
+    public onReady(element: HTMLElement): void {
+        ko.applyBindings(this, element);
+    }
+
+    /**
+     * Called when the object is disposed.
+     */
+    public dispose(): void {
+        ObjectExtensions.disposeAllProperties(this);
+    }
+}
+                    </textarea>
+                    <div class="h4 padTop40">HTML syntax</div>
+                    <textarea class="height220">
+    <div data-bind="msPosPivot: pivot">
+        <div data-bind="msPosPivotItem: pivotItem1">
+            <div class="h4">Pivot item 1 content</div>
+        </div>
+        <div data-bind="msPosPivotItem: pivotItem2">
+            <div class="h4">Pivot item 2 content</div>
+        </div>
+    </div>
+                    </textarea>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

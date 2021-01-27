@@ -1,0 +1,36 @@
+{
+  "$schema": "../Api/dist/manifestSchema.json",
+  "name": "Extensions_Advance_Invoice",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "9.7.0.0",
+  "supportedCountryRegions": [ "CZ", "HU", "PL" ],
+  "components": {
+    "resources": {
+      "supportedUICultures": [ "cs", "en-US", "hu", "pl" ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources/Strings",
+      "stringResourcesFileName": "advanceInvoiceStrings.resjson"
+    },
+    "extend": {
+      "triggers": [
+        {
+          "triggerType": "PostCartCheckoutTransaction",
+          "modulePath": "TriggerHandlers/PrintAdvanceInvoicePostCartCheckoutTrigger"
+        }
+      ],
+      "views": {
+        "ShowJournalView": {
+          "appBarCommands": [ { "modulePath": "ViewExtensions/ShowJournal/PrintAdvanceInvoiceCommand" } ]
+        }
+      }
+    },
+    "create": {
+      "requestHandlers": [
+        {
+          "modulePath": "RequestHandlers/PrintAdvanceInvoiceHandler"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+SAMPLE CODE NOTICE
+
+THIS SAMPLE CODE IS MADE AVAILABLE AS IS.  MICROSOFT MAKES NO WARRANTIES, WHETHER EXPRESS OR IMPLIED, 
+OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY OR COMPLETENESS OF RESPONSES, OF RESULTS, OR CONDITIONS OF MERCHANTABILITY.  
+THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS SAMPLE CODE REMAINS WITH THE USER.  
+NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU HAVE A LICENSE AGREEMENT WITH MICROSOFT THAT ALLOWS YOU TO DO SO.
+-->
+<Settings>
+  <StorefrontInstance>
+	<WebAppPool id="StorefrontInstanceAppPool">
+		<Name>[AppPoolName]</Name>
+		<ProcessModel_IdentityType>Custom</ProcessModel_IdentityType>
+		<ProcessModel_UserName>[WebAppPoolUser]</ProcessModel_UserName>
+	</WebAppPool>
+    <WebSite>
+		<Name>[WebSiteName]</Name>
+		<PhysicalPath>[WebApplicationWorkingFolder]</PhysicalPath>
+		<ApplicationPoolXPath>Settings/StorefrontInstance/WebAppPool[@id='StorefrontInstanceAppPool']</ApplicationPoolXPath>
+		<Port>[WebSiteHttpPort]</Port>
+		<PortSSL>[WebSiteHttpsPort]</PortSSL>
+		<ServerCertificateRootStore>[WebSiteSSLCertificateRootStore]</ServerCertificateRootStore>
+		<ServerCertificateStore>[WebSiteSSLCertificateStore]</ServerCertificateStore>
+		<ServerCertificateThumbprint>[WebSiteSSLCertificateThumbprint]</ServerCertificateThumbprint>
+		<WebApplication>
+			<Name>[WebApplicationName]</Name>
+			<PhysicalPath>[WebApplicationWorkingFolder]</PhysicalPath>
+			<ApplicationPoolXPath>Settings/StorefrontInstance/WebAppPool[@id='StorefrontInstanceAppPool']</ApplicationPoolXPath>
+			<ServiceBinarySourceFolder>[WebApplicationServiceBinarySourceFolder]</ServiceBinarySourceFolder>
+		</WebApplication>
+	</WebSite>
+  </StorefrontInstance>
+</Settings>

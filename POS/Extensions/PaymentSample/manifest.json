@@ -1,0 +1,40 @@
+﻿{
+  "$schema": "../schemas/manifestSchema.json",
+  "name": "Pos_Payment_Samples",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "7.2.0.0",
+  "components": {
+    "extend": {
+      "requestHandlers": [
+        {
+          "modulePath": "Peripherals/Handlers/CardPaymentCheckGCBalancePeripheralRequestHandlerExt"
+        },
+        {
+          "modulePath": "Peripherals/Handlers/GetPaymentCardTypeByBinRangeClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Peripherals/Handlers/PaymentTerminalActivateGiftCardPeripheralRequestHandlerExt"
+        },
+        {
+          "modulePath": "Peripherals/Handlers/PaymentTerminalAuthorizePaymentRequestHandlerExt"
+        },
+        {
+          "modulePath": "Peripherals/Handlers/PaymentTerminalCapturePaymentRequestHandlerExt"
+        },
+        {
+          "modulePath": "Peripherals/Handlers/PaymentTerminalExecuteTaskRequestHandlerExt"
+        },
+        {
+          "modulePath": "Peripherals/Handlers/PaymentTerminalRefundPaymentRequestHandlerExt"
+        },
+        {
+          "modulePath": "Peripherals/Handlers/PaymentTerminalUpdateLinesRequestHandlerExt"
+        },
+        {
+          "modulePath": "Peripherals/Handlers/PaymentTerminalVoidPaymentRequestHandlerExt"
+        }
+      ]
+    }
+  }
+}

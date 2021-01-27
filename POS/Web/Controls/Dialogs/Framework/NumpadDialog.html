@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>NumpadDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'NumpadDialog'">
+        <div data-bind="dialog:
+            {
+                title: title,
+                subTitle: subTitle,
+                visible: visible,
+                showProgressIndicator: indeterminateWaitVisible,
+                dialogCloseButtonClick: numpadDialogCloseButtonClick,
+                closeOnEscButton: true
+            }">
+
+            <!-- dialog content -->
+            <div class="grow">
+                <div class="customContent scrollY">
+                    <!-- empty content to be provided on control call -->
+                </div>
+            </div>
+            <div class="col">
+                <div data-bind="axBubbleAttr: 'numpadDialog_numpad'">
+                    <!-- numpads that can be shown, only one is visible at a time -->
+                    <!-- ko if: _numpadDialogType() === Commerce.Controls.NumpadDialogTypes.Alphanumeric -->
+                    <div data-bind="alphanumericNumpad: {
+                                value: _numpadTextValue,
+                                labelDataBinding: { text: _numpadLabel },
+                                onEnter: onTextBoxEnterEventHandler,
+                                numPadInputSource: numPadInputBroker,
+                                parser: _numpadParser(),
+                                decimalPrecision: _numpadDecimalPrecision()
+                         }">
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: _numpadDialogType() === Commerce.Controls.NumpadDialogTypes.Currency -->
+                    <div data-bind="currencyNumpad: {
+                                value: _numpadTextValue,
+                                labelDataBinding: { text: _numpadLabel },
+                                onEnter: onTextBoxEnterEventHandler,
+                                numPadInputSource: numPadInputBroker,
+                                parser: _numpadParser(),
+                                decimalPrecision: _numpadDecimalPrecision()
+                            }">
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: _numpadDialogType() === Commerce.Controls.NumpadDialogTypes.Numeric -->
+                    <div data-bind="numericNumpad: {
+                            value: _numpadTextValue,
+                            labelDataBinding: { text: _numpadLabel },
+                            onEnter: onTextBoxEnterEventHandler,
+                            numPadInputSource: numPadInputBroker,
+                            parser: _numpadParser(),
+                            decimalPrecision: _numpadDecimalPrecision()
+                         }">
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

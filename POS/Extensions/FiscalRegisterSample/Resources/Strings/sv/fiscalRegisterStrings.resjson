@@ -1,0 +1,23 @@
+{
+  "Fiscal_register_not_enabled_error": "Räkenskapsregistret har aktiverats för kassan, men maskinvarustationen har inte aktiverats.",
+  "_Fiscal_register_not_enabled_error.comment": "Fiscal register error message.",
+  "Fiscal_register_not_available_error": "Räkenskapsregistret har aktiverats för kassan, men maskinvarustationen är inte tillgänglig.",
+  "_Fiscal_register_not_available_error.comment": "Fiscal register error message.",
+  "Fiscal_register_unregistered_comleted_transactions_error": "Det finns färdiga försäljningstransaktioner som inte är registrerat i räkenskapsregistret. Åtgärden avbryts.",
+  "_Fiscal_register_unregistered_comleted_transactions_error.comment": "Fiscal register error message.",
+  "Ok_Button_Label": "OK",
+  "_Ok_Button_Label.comment": "Message dialog button label.",
+  "Cancel_Button_Label": "Avbryt",
+  "_Cancel_Button_Label.comment": "Message dialog button label.",
+  "Skip_Button_Label": "Hoppa över",
+  "_Skip_Button_Label.comment": "Message dialog button label.",
+  "Run_Refiscalization_Dialog_Title": "Räkenskapsregister",
+  "_Run_Refiscalization_Dialog_Title.comment": "Message dialog message.",
+  "Run_Refiscalization_Dialog_Message": "Det finns {0} färdiga försäljningstransaktioner som inte är registrerat i räkenskapsregistret. Klicka på OK om du vill registrera dessa transaktioner.",
+  "Skip_Refiscalize_Dialog_Title": "Fel i räkenskapsregister",
+  "_Skip_Refiscalize_Dialog_Title.comment": "Message dialog title.",
+  "Skip_Refiscalize_Dialog_Message": "Försäljningstransaktion kan inte registreras i räkenskapsregistret. Du kan hoppa över räkenskapsregistreringen eller avbryta åtgärden.",
+  "_Skip_Refiscalize_Dialog_Message.comment": "Message dialog message.",
+  "Confirm_Skip_Refiscalization_Dialog_Message": "Är du säker på att du vill hoppa över räkenskapsregistrering för transaktion ID: '{0}', datum/tid för transaktion: '{1}', kvitto-ID: '{2}', totalbelopp på kvitto: '{3}'? Om du hoppar över registreringen, registreras detta i transaktionen.",
+  "_Confirm_Skip_Refiscalization_Dialog_Message.comment": "Message dialog message."
+}

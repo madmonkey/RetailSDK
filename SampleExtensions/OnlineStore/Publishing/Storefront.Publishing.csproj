@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyName>$(AssemblyNamePrefix).Retail.Ecommerce.Publishing</AssemblyName>
+    <RootNamespace>Contoso.Retail.Ecommerce.Publishing</RootNamespace>
+    <ShippingSourceCode>true</ShippingSourceCode>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\OnlineStore\Ecommerce.Sdk.Core\Platform.Ecommerce.Sdk.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Composition" Version="1.2.0" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Diagnostics.Sinks" Version="$(DiagnosticsRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.KeyVault.Contracts" Version="$(ToolsRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.RetailProxy" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTransform" Version="15.1.0" />
+  </ItemGroup>
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

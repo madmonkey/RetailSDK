@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PriceCheckView</title>
+    <link href="PriceCheckView.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- The content that will be loaded and displayed. -->
+    <div class="fragment priceCheckView" data-bind="with: viewModel">
+        <div class="section main panoramic padBottom0">
+
+            <div class="no-shrink col">
+                <div class="row width592">
+
+                    <div class="col width320">
+                        <!--Product-->
+                        <div data-bind="sectionWrapper: {headerResx: 'string_3510' }">
+                            <!-- Product image -->
+                            <div class="col width320 height320 fit-image" data-bind="visible: hasProduct">
+                                <img src="#"
+                                        data-bind="attr: { alt:productName, src: Commerce.Formatters.ImageUrlFormatter(productImage().source, Commerce.DefaultImages.ProductLarge) }, setImageOnError: Commerce.DefaultImages.ProductLarge" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gutter40x40"></div>
+
+                    <!-- Product information -->
+                    <div class="col width232" data-bind="visible: hasProduct">
+
+                        <div class="gutter40x40"></div>
+                        <div class="h3 wrapText" data-bind="text: productName">Product name</div>
+
+                        <div class="gutter40x40"></div>
+                        <div class="h4 wrapText secondaryFontColor" data-bind="text: itemId">Product identifier</div>
+
+                        <div data-bind="visible: hasVariant">
+                            <div class="gutter40x40"></div>
+                            <div class="h4 wrapText" data-bind="text: variantDimensionValues"></div>
+                        </div>
+
+                        <div class="gutter40x40"></div>
+                        <div class="h1 wrapText" data-bind="formatPrice: productPrice">Product price</div>
+
+                    </div>
+
+                </div>   
+                <!--ko ifnot: hasProduct-->
+                <div class="center">
+                    <div class="h4" data-bind="resx: { textContent: 'string_2619' }">Scan or search for a product to get started</div>
+                </div>
+                <!--/ko-->
+                </div>
+
+            <!-- ko foreach: { data: customPanelViewModels, as: 'control' } -->
+            <div class="gutter40x40" data-bind="visible: control.isVisible"></div>
+            <div data-bind="customControl: control, visible: control.isVisible" class="col padBottom60 maxWidth500"></div>
+            <!-- /ko -->
+
+            <div class="gutter40x40"></div>
+
+            <!-- Store section -->
+            <div data-bind="sectionWrapper: {headerResx: 'string_3511' }">
+                <div class="col width220 height80 highContrastBorderThin listViewThemeColor padLeft12 padTop20">
+                    <a href="#" class="h3" data-bind="text: store().OrgUnitName, click: navigateToStoreDetails,attr: {'aria-label': Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_2558'), store().OrgUnitName) }, axBubbleAttr: 'priceCheckView_storeNameLink'"></a>
+                    <div class="h4" data-bind="text: store().OrgUnitNumber"></div>
+                </div>
+            </div>
+
+            <div class="gutter40x40"></div>
+
+            <!-- Customer section -->
+            <div data-bind="sectionWrapper: {headerResx: 'string_3512' }">
+                <!-- Section when customer is added to price check -->
+                <div id="CustomerPanel" class="col highContrastBorderThin listViewThemeColor width220 height80 padLeft12 padTop20 " data-bind="visible: hasCustomer, with: customer, axBubbleAttr: 'priceCheckView_customerPanel'">
+                    <div class="right0 top0 overLayZIndex">
+                        <button class="iconCancel noBorder" data-bind="resx: { ariaLabel: 'string_4401' }, click: $parent.removeCustomerAsync.bind($parent), axBubbleAttr: 'priceCheckView_removeCustomerButton'"></button>    <!-- Remove customer -->
+                    </div>
+                    <a href="#" class="h3 ellipsis" data-bind="text: Name, click: $parent.navigateToCustomerDetails.bind($parent),attr: {'aria-label': Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_2559'), Commerce.ObjectExtensions.isNullOrUndefined(Name) ? ' ':Name) }, axBubbleAttr: 'priceCheckView_customerNameLink'"></a>
+                    <div class="h4" data-bind="text: AccountNumber"></div>
+                </div>
+
+                <!-- Section when no customer is added to price check -->
+                <div class="listViewThemeColor width220 height80 highContrastBorderThin centerY" data-bind="visible: !hasCustomer(),
+                            buttonBlock: {  buttonClass: 'iconAdd',
+                                            labelTextResx: 'string_3522', /* Add customer */
+                                            click: searchCustomers },
+                                            axBubbleAttr: 'priceCheckView_addCustomerButton'">
+                </div>
+            </div>
+
+        </div>
+
+        <div id="commandAppBar" data-bind="appBar:{ extensionCommands: extensionCommandViewModels }, axBubbleAttr: 'priceCheckView_commandAppBar'">
+
+            <!-- Search store is not visible as we don't support store parameters as part of price check. -->
+            <button data-bind="appBarCommand: {
+                id:'addProductToCart',
+                extraClass: 'iconBuy',
+                onclick: addProductToCartAsync,
+                enabled: hasProduct,
+                labelResx: 'string_922' },
+                axBubbleAttr: 'priceCheckView_addProductToCart'"></button>
+            <button data-bind="appBarCommand: {
+                id:'searchProductPrice',
+                extraClass: 'iconSearch',
+                onclick: getSearchTextInputAndSearchProductAsync,
+                labelResx: 'string_3371' }, axBubbleAttr: 'priceCheckView_searchProductPrice'"></button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DeviceActivationProcessView</title>
+</head>
+
+<body>
+    <div id="deviceActivationProcessPanel" class="fragment dynamicsBackground center" data-bind="axBubbleAttr: 'deviceActivationProcessView_deviceActivationProcessPanel'">
+
+        <!-- Indeterminate wait -->
+        <div data-bind="loader: { visible: viewModel.isBusy, color: Commerce.Controls.Loader.LoaderColor.White }"></div>
+
+        <div data-bind="activationUserInfo: { }"></div>
+
+        <div id="deviceActivationProcessSection" class="main row" data-bind="resx: { ariaLabel: 'string_4454' }, axBubbleAttr: 'deviceActivationProcessView_deviceActivationProcessSection'">
+
+            <!-- Main content -->
+            <div class="center">
+                <div class="width500 margin40 panelBackgroundColor highContrastBorderThin">
+
+                    <!-- Logo -->
+                    <div class="center">
+                        <img src="#" data-bind="attr: { src: 'Assets/ActivationLogo.png' }" />
+                    </div>
+
+                    <div class="padLeft40 padRight40 padBottom40">
+
+                        <!-- Title -->
+                        <div class="padBottom40">
+                            <div class="headerFont wrapTextWithoutHyphen" data-bind="text: appTitle">Activate Retail Modern POS</div>
+                        </div>
+
+                        <!-- When device is still activating -->
+                        <div data-bind="visible: controllerState() === Commerce.Proxy.Entities.DeviceActivationControllerState.Processing">
+                            <div class="padBottom40">
+                                <div class="h4" data-bind="text: progressMessage"></div>
+                            </div>
+
+                            <!--Progress bar to indicate navigation to login page-->
+                            <div data-bind="progressBar: {value: progressBarValue }"></div>
+                        </div>
+
+                        <!-- When device is activated successfully -->
+                        <div data-bind="visible: controllerState() === Commerce.Proxy.Entities.DeviceActivationControllerState.Succeeded">
+                            <div>
+                                <div class="h4" data-bind="text: deviceActivatedMessage">Device activated successfully!</div>
+                            </div>
+                            <div class="padTop40 textRight">
+                                <button id="launchButton" class="primaryButton dynamicsBackground"
+                                        data-bind="text: getStartedMessage, click: launch, axBubbleAttr: 'deviceActivationProcessView_launchButton'">
+                                    Get started
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- When any errors occur during device activation -->
+                        <div data-bind="visible: controllerState() == Commerce.Proxy.Entities.DeviceActivationControllerState.Error">
+                            <div id="activationErrorControl" class="activationErrorControl"
+                                 data-bind="userControl: {
+                                    name: 'ActivationErrorControl',
+                                    options: {
+                                        errorHeaderMessage: errorHeaderMessage,
+                                        clientErrorMessage: clientErrorMessage,
+                                        errorMessage: errorMessage,
+                                        errorDetails: errorDetails,
+                                        footerMessage: footerMessage,
+                                        continueLabel: continueLabel,
+                                        headerDeviceId: headerDeviceId,
+                                        headerRegisterNumber: headerRegisterNumber,
+                                        previousFunction: navigateToActivationPage.bind($root),
+                                        retryFunction: activateDevice.bind($root)
+                                    }
+                                 },
+                                 axBubbleAttr: 'deviceActivationProcessView_errorControl'">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

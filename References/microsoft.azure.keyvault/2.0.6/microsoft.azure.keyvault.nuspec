@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.KeyVault</id>
+    <version>2.0.6</version>
+    <title>Microsoft Azure key vault</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>https://raw.githubusercontent.com/Microsoft/dotnet/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Azure/azure-sdk-for-net</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Azure Key Vault enables users to store and use cryptographic keys within the Microsoft Azure environment. Azure Key Vault supports multiple key types and algorithms and enables the use of Hardware Security Modules (HSM) for high value customer keys. In addition, Azure Key Vault allows users to securely store secrets in a Key Vault; secrets are limited size octet objects and Azure Key Vault applies no specific semantics to these objects. A Key Vault may contain a mix of keys and secrets at the same time, and access control for the two types of object is independently controlled. Users, subject to appropriate authorization, may: 1) Manage cryptographic keys using Create, Import, Update, Delete and other operations 2) Manage secrets using Get, Set, Delete and other operations 3) Use cryptographic keys with Sign/Verify, WrapKey/UnwrapKey and Encrypt/Decrypt operations. Operations against Key Vaults are authenticated and authorized using Azure Active Directory. Key Vault now supports certificates, a complex type that makes use of existing key and secret infrastructure for certificate operations. KV certificates also support notification and auto-renewal as well as other management features.</description>
+    <summary>Class library for using Azure Key Vault</summary>
+    <releaseNotes>This is a preview release of the Azure Key Vault .NET SDK, based on version 2015-06-01 of the Azure Key Vault REST API. For migration guide from version 1.0, please visit https://azure.microsoft.com/en-us/documentation/articles/key-vault-dotnet2api-release-notes/.</releaseNotes>
+    <tags>Microsoft Azure key vault,Key Vault,REST HTTP client,azureofficial,windowsazureofficial</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Microsoft.Azure.KeyVault.WebKey" version="[2.0.4, 3.0.0)" />
+        <dependency id="Microsoft.Rest.ClientRuntime" version="[2.3.2, 3.0.0)" />
+        <dependency id="Microsoft.Rest.ClientRuntime.Azure" version="[3.3.1, 4.0.0)" />
+      </group>
+      <group targetFramework=".NETStandard1.5">
+        <dependency id="Microsoft.Azure.KeyVault.WebKey" version="[2.0.4, 3.0.0)" />
+        <dependency id="Microsoft.Rest.ClientRuntime" version="[2.3.2, 3.0.0)" />
+        <dependency id="Microsoft.Rest.ClientRuntime.Azure" version="[3.3.1, 4.0.0)" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

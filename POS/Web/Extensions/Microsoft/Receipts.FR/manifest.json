@@ -1,0 +1,66 @@
+{
+  "$schema": "../Api/dist/manifestSchema.json",
+  "name": "Extensions_Receipts_FR",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "7.2.0.0",
+  "supportedCountryRegions": [ "FR" ],
+  "components": {
+    "resources": {
+      "supportedUICultures": [
+        "ar",
+        "cs",
+        "da",
+        "de",
+        "de-AT",
+        "de-CH",
+        "en-AU",
+        "en-CA",
+        "en-GB",
+        "en-IE",
+        "en-IN",
+        "en-MY",
+        "en-NZ",
+        "en-SG",
+        "en-US",
+        "en-ZA",
+        "es",
+        "es-MX",
+        "et",
+        "fi",
+        "fr",
+        "fr-BE",
+        "fr-CA",
+        "fr-CH",
+        "hu",
+        "is",
+        "it",
+        "it-CH",
+        "ja",
+        "lt",
+        "lv",
+        "nb-NO",
+        "nl",
+        "nl-BE",
+        "pl",
+        "pt-BR",
+        "ru",
+        "sv",
+        "th",
+        "tr",
+        "zh-Hans"
+      ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources/Strings",
+      "stringResourcesFileName": "receiptsStrings.resjson"
+    },
+    "extend": {
+      "triggers": [
+        {
+          "triggerType": "PreEndTransaction",
+          "modulePath": "TriggerHandlers/SalesTransBuildNumberPreEndTransactionTrigger"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>FiscalRegistrationErrorDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'FiscalRegistrationErrorDialog'">
+        <div class="fiscalRegistrationErrorDialog modalWindowContentSection" data-bind="dialog:
+            {
+                title: titleValue,
+                message: messageValue,
+                visible: visible,
+                buttonClick: cancelButtonClickHandler,
+                buttons: [{
+                    label: Commerce.ViewModelAdapter.getResourceString('string_76'),
+                    operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK,
+                    visible: allowCancel,
+                    isPrimary: !Commerce.ArrayExtensions.hasElements(actionLines())
+                }],
+            },
+            axBubbleAttr: 'fiscalRegistrationErrorDialog_fiscalRegistrationErrorDialog'">
+
+            <div id="fiscalRegistrationErrorDialogTileList" data-bind="tileList:
+                {
+                    iteminvoked: itemClickHandler,
+                    itemDataSource: actionLines,
+                    field: 'Label'
+                },
+                axBubbleAttr: 'fiscalRegistrationErrorDialog_fiscalRegistrationErrorDialogTileList'">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

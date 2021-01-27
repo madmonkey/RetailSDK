@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<base:NonPersistentSelectedItemListView
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Views.ProductDescriptionListView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    SeparatorColor="{x:Static statics:Palette.SEPARATOR}">
+    <base:NonPersistentSelectedItemListView.ItemTemplate>
+        <DataTemplate>
+            <ViewCell
+                StyleId="disclosure">
+                <ContentView
+                    Padding="10,5,10,5">
+                    <StackLayout>
+                        <Label
+                            Margin="0,5,0,0"
+                            FontSize="Medium"
+                            Text="{Binding Data.Name}"
+                            TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            Margin="0,0,5,0"
+                            FontSize="Default"
+                            Text="{Binding Value}"
+                            TextColor="{x:Static statics:Palette.TEXT_LIGHT}"
+                            VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </ContentView>
+            </ViewCell>
+        </DataTemplate>
+    </base:NonPersistentSelectedItemListView.ItemTemplate>
+</base:NonPersistentSelectedItemListView>

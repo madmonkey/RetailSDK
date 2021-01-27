@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Date Time Template</title>
+    <link href="LoginDateTimeTemplate.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Template for Date and Time displayed in Login -->
+    <script type="text/html" id="loginDateTimeTemplate">
+        <div class="bottom80 loginDateTimeTemplate col" data-bind="css: { left40: !isLeftLayout, right40: isLeftLayout }">
+            <div class="h1 row loginDateTimeTemplateTime" data-bind="text: time">Time</div>
+            <div class="h4 textTransformNone row loginDateTimeTemplateDate" data-bind="text: date, css: { alignRight: isLeftLayout }">Date</div>
+        </div>
+    </script>
+</body>
+</html>

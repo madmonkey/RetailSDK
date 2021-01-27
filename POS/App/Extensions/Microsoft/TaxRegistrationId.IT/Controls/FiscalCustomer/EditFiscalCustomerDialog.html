@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>EditFiscalCustomerDialog</title>
+</head>
+<body>
+    <!-- HTMLLint Disable LabelExistsValidator -->
+    <div class="editFiscalCustomerDialog col grow">
+        <div class="marginTop12">
+            <label for="lotteryCodeInput" data-bind="text: getResx('Tax_Registration_ID_IT_Lottery_Code_Input_Label')">Lottery Code</label>
+            <input id="lotteryCodeInput" type="text" data-bind="
+                value: lotteryCode,
+                disable: isReadOnly(),
+                attr: {
+                    'placeholder': getLotteryCodePlaceholder()
+                }" />
+        </div>
+    </div>
+</body>
+</html>

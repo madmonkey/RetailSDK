@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>MessageDialog</title>
+
+    <link href="MessageDialog.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'MessageDialog'">
+
+        <div data-bind="dialog:
+                {
+                    title: title,
+                    subTitle: subTitle,
+                    visible: visible,
+                    buttonClick: buttonClickHandler,
+                    showProgressIndicator: indeterminateWaitVisible,
+                    hideOnEscape: hideOnEscape,
+                    buttons: buttons,
+                    dialogCloseButtonClick: closeClickHandler
+                },
+                axBubbleAttr: 'messageDialog_messageDialog',attr: { 'aria-label': title() + content() }" class="modalWindowContentSection alwaysOnTop">
+
+            <!-- dialog content -->
+            <div class="content">
+                <div class="h4 wrapTextWithoutHyphen wrapTextWithLineBreaks" data-bind="text: content"></div>
+                <div class="padTop20" data-bind="if: hasAdditionalInformation">
+                    <div class="h4 wrapText secondaryFontColor" data-bind="text: additionalInformationHeader"></div>
+                    <!-- ko foreach: additionalInformationFields -->
+                    <div class="h4 wrapText padTop8" data-bind="text: label"></div>
+                    <div class="h4 wrapText" data-bind="text: value"></div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <div class="padTop12 row" data-bind="visible: messageCheckboxVisible, axBubbleAttr: 'messageDialog_messageCheckbox'">
+                <input id="messageCheckbox" type="checkbox" data-bind="checked: messageCheckboxChecked" />
+                <div>
+                    <label for="messageCheckbox" data-bind="text: messageCheckboxLabel">Do not tell me again</label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

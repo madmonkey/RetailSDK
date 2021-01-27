@@ -1,0 +1,18 @@
+{
+  "Audit_event_price_lookup_error": "Errore di registrazione evento di ricerca prezzi: {0}",
+  "_Audit_event_price_lookup_error.comment": "Audit event registration log error message.",
+  "Audit_event_tax_override_error": "Errore di registrazione evento di forzatura imposta: {0}",
+  "_Audit_event_tax_override_error.comment": "Audit event registration log error message.",
+  "Audit_event_quantity_correction_error": "Errore di registrazione evento di rettifica quantità: {0}",
+  "_Audit_event_quantity_correction_error.comment": "Audit event registration log error message.",
+  "Audit_event_open_cash_drawer_error": "Errore di registrazione evento cassetto della cassa aperto: {0}",
+  "_Audit_event_open_cash_drawer_error.comment": "Audit event registration log error message.",
+  "Audit_event_price_lookup_event_message": "Evento di ricerca prezzi registrato",
+  "_Audit_event_price_lookup_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_tax_override_event_message": "Evento di forzatura imposta registrato",
+  "_Audit_event_tax_override_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_quantity_correction_event_message": "Evento di rettifica quantità registrato",
+  "_Audit_event_quantity_correction_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_open_cash_drawer_event_message": "Evento cassetto della cassa aperto registrato",
+  "_Audit_event_open_cash_drawer_event_message.comment": "Audit event database log string field value."
+}

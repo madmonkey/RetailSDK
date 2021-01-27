@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PaymentOptionsDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'PaymentOptionsDialog'">
+        <div data-bind="dialog: {
+            title: title,
+            visible: visible,
+            buttonClick: buttonClickHandler,
+            buttons: [
+                { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false, visible: isCancelAllowed },
+            ],
+        },
+        axBubbleAttr: 'listInputDialog_listInputDialog'" class="listInputDialog modalWindowContentSection">
+            <!-- Message -->
+            <div class="padTop8">
+                <div class="h4" data-bind="text: description"></div>
+            </div>
+
+            <!-- Line separator -->
+            <div class="padTop12 padBottom20 no-shrink">
+                <div class="line-separator"></div>
+            </div>
+
+            <!-- Options list -->
+            <!-- ko foreach: paymentOptions -->
+                <!-- Single line buttons if no secondary text was provided-->
+                <!-- ko if: Commerce.StringExtensions.isNullOrWhitespace(secondaryText) -->
+                <div data-bind="selectTile: {
+                        tileType: Commerce.Controls.SelectTile.SelectTileType.SingleLine,
+                        primaryText: primaryText,
+                        iconClass: iconClass,
+                        iteminvoked: function () { $parent.optionClickHandler($data); },
+                        displayChevron: false
+                }"></div>
+                <!-- /ko -->
+
+                <!-- Double line buttons if secondary text was provided -->
+                <!-- ko ifnot: Commerce.StringExtensions.isNullOrWhitespace(secondaryText) -->
+                <div data-bind="selectTile: {
+                    tileType: Commerce.Controls.SelectTile.SelectTileType.SmallDoubleLine,
+                    primaryText: primaryText,
+                    secondaryText: secondaryText,
+                    iconClass: iconClass,
+                    iteminvoked: function () { $parent.optionClickHandler($data); },
+                    displayChevron: false
+                }"></div>
+                <!-- /ko -->
+            <!-- /ko -->
+        </div>
+    </div>
+</body>
+</html>

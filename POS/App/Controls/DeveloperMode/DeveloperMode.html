@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Developer Mode Settings Flyout</title>
+    <link href="DeveloperMode.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="developerMode col" data-bind="customControlInternal: 'DeveloperMode'">
+        <!-- Set on/off developer mode to control whether grid, theme, and dir are loaded in
+    from the local storage -->
+        <div class="h2 marginTop8 marginBottom8" data-bind="resx: { textContent: 'string_10' /* Developer mode */ }, visible: !Commerce.Config.isPhone"></div>
+        <div class="padBottom12">
+            <div class="grow">
+                <div id="isDeveloperModeToggle"
+                     data-bind="toggleSwitch: {
+                                    labelOn: 'string_7411',
+                                    labelOff:'string_7412',
+                                    checked: $root.isDeveloperMode,
+                                    onChange: $root.toggleDeveloperMode
+                                },
+                                resx: { ariaLabel: 'string_10' /* Developer mode */ }">
+                </div>
+            </div>
+        </div>
+        <div class="marginTop12 borderTop padTop12">
+            <div class="h4 marginBottom12" data-bind="resx: { textContent: 'string_11' }">Theme (CTRL+ALT+T)</div>
+            <div class="row padBottom12">
+                <div class="grow">
+                    <div class="h6 marginBottom8" data-bind="resx: { textContent: 'string_12' }">Dark</div>
+                    <input type="radio" value="dark" name="themeSelect"
+                           data-bind="checked: $root.theme,
+                                enable: $root.isDeveloperMode,
+                                resx: { ariaLabel: 'string_12' },
+                                axBubbleAttr: 'developerMode_darkThemeRadio'" />  <!-- Dark -->
+                </div>
+
+                <div class="grow">
+                    <div class="h6 marginBottom8" data-bind="resx: { textContent: 'string_13' }">Light</div>
+                    <input type="radio" value="light" name="themeSelect"
+                           data-bind="checked: $root.theme,
+                                enable: $root.isDeveloperMode,
+                                resx: { ariaLabel: 'string_13' },
+                                axBubbleAttr: 'developerMode_lightThemeRadio'" />  <!-- Light -->
+                </div>
+            </div>
+        </div>
+
+        <div class="marginTop12 borderTop padTop12">
+            <div class="h4 marginBottom12" data-bind="resx: { textContent: 'string_14' }">Text Direction (CTRL+ALT+D)</div>
+            <div class="row padBottom12">
+                <div class="grow">
+                    <div class="h6 marginBottom8" data-bind="resx: { textContent: 'string_15' }">LTR</div>
+                    <input type="radio" value="ltr" name="textDir"
+                           data-bind="checked: $root.dir,
+                                enable: $root.isDeveloperMode,
+                                resx: { ariaLabel: 'string_15' },
+                                axBubbleAttr: 'developerMode_ltrRadio'" />    <!-- LTR -->
+                </div>
+
+                <div class="grow">
+                    <div class="h6 marginBottom8" data-bind="resx: { textContent: 'string_16' }">RTL</div>
+                    <input type="radio" value="rtl" name="textDir"
+                           data-bind="checked: $root.dir,
+                                enable: $root.isDeveloperMode,
+                                resx: { ariaLabel: 'string_16' },
+                                axBubbleAttr: 'developerMode_rtlRadio'" />  <!-- RTL -->
+                </div>
+            </div>
+        </div>
+
+        <div class="marginTop12 borderTop padTop12">
+            <div class="padBottom12">
+                <div id="developerModeStringIdsToggle"
+                     data-bind="toggleSwitch: {
+                                    title: 'string_7413', /* Show string IDs (log out and log back in) */
+                                    labelOn: 'string_7411',
+                                    labelOff:'string_7412',
+                                    checked: $root.areStringIdsVisible,
+                                    onChange: $root.toggleStringIdsVisibility,
+                                    enabled: $root.isDeveloperMode
+                                }">
+                </div>
+            </div>
+        </div>
+
+        <div class="marginTop12 borderTop padTop12">
+            <div class="padBottom12">
+                <div id="developerModePseudoLocalizationToggle"
+                     data-bind="toggleSwitch: {
+                                    title: 'string_7415', /* Enable pseudo localization (log out and log back in) */
+                                    labelOn: 'string_7411',
+                                    labelOff:'string_7412',
+                                    checked: $root.isPseudoLocalizationEnabled,
+                                    onChange: $root.togglePseudoLocalization,
+                                    enabled: $root.isDeveloperMode
+                                }">
+                </div>
+            </div>
+        </div>
+
+        <div class="marginTop12 borderTop padTop12">
+            <div class="padBottom12">
+                <div id="developerModeGridToggle"
+                     data-bind="toggleSwitch: {
+                                    title: 'string_17', /* Grid Overlay (CTRL+ALT+G) */
+                                    labelOn: 'string_7411',
+                                    labelOff:'string_7412',
+                                    checked: $root.isGridHelperVisible,
+                                    onChange: $root.toggleGridVisibility,
+                                    enabled: $root.isDeveloperMode
+                                }">
+                </div>
+            </div>
+        </div>
+
+        <div class="marginTop12 borderTop padTop12">
+            <div class="padBottom12">
+                <div id="developerModeColorToggle"
+                     data-bind="toggleSwitch: {
+                                    title: 'string_18', /* Colors (CTRL+ALT+C) */
+                                    labelOn: 'string_7411',
+                                    labelOff:'string_7412',
+                                    checked: $root.isColoringVisible,
+                                    onChange: $root.toggleColorVisibility,
+                                    enabled: $root.isDeveloperMode
+                                }">
+                </div>
+            </div>
+        </div>
+
+        <!-- Enabling the Performance Log should currently be disallowed since it is not working properly -->
+        <!--
+        <div class="marginTop12 borderTop padTop12">
+            <div class="padBottom12">
+                <div id="developerModeColorToggle"
+                     data-bind="toggleSwitch: {
+                                    title: 'string_60', /* Performance log */
+                                    labelOn: 'string_7411',
+                                    labelOff:'string_7412',
+                                    checked: $root.isPerformanceLogEnabled,
+                                    onChange: $root.togglePerformanceLog,
+                                    enabled: $root.isDeveloperMode
+                                }">
+                </div>
+            </div>
+        </div>
+        -->
+        <div class="marginTop12 borderTop padTop12">
+            <div class="h4" data-bind="resx: { textContent: 'string_61' }">Retail Server Connection Timeout</div>
+            <div class="padBottom12">
+                <input aria-label="" maxlength="4" class="textLeft"
+                       data-bind="value: $root.connectionTimeout,
+                                  resx: { ariaLabel: 'string_61' },
+                                  valueUpdate: 'afterkeydown',
+                                  enable: $root.isDeveloperMode,
+                                  axBubbleAttr: 'developerMode_retailServerConnectionTimeoutInput'" />
+                <!-- Connection Timeout -->
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

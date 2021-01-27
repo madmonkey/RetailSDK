@@ -1,0 +1,4481 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.PaymentSDK</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.AccountType">
+            <summary>
+            The account types.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AccountType.Checking">
+            <summary>
+            The checking account type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AccountType.Deposit">
+            <summary>
+            The deposit account type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.AuthorizationResult">
+            <summary>
+            The authorization results.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AuthorizationResult.None">
+            <summary>
+            No authorization result.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AuthorizationResult.Success">
+            <summary>
+            The success authorization result.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AuthorizationResult.Failure">
+            <summary>
+            The failure authorization result.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AuthorizationResult.Referral">
+            <summary>
+            The referral authorization result.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AuthorizationResult.PartialAuthorization">
+            <summary>
+            The partial authorization result.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AuthorizationResult.ImmediateCaptureFailed">
+            <summary>
+            The immediate capture failed authorization result.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.AVSDetail">
+            <summary>
+            The AVS details that were successfully verified.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AVSDetail.None">
+            <summary>
+            No details were verified.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AVSDetail.AccountholderName">
+            <summary>
+            The account holder name was successfully verified.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AVSDetail.BillingAddress">
+            <summary>
+            The billing address only was successfully verified.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AVSDetail.BillingPostalCode">
+            <summary>
+            The postal code only was successfully verified.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AVSDetail.BillingAndPostalCode">
+            <summary>
+            The billing address and postal code was successfully verified.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.AVSResult">
+            <summary>
+            The states of the AVS result.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AVSResult.None">
+            <summary>
+            Indicates that there was no address information available to compare.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AVSResult.Returned">
+            <summary>
+            Indicates that the verification result was returned.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AVSResult.NotReturned">
+            <summary>
+            Indicates that the address verification result was not returned.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AVSResult.VerificationNotSupported">
+            <summary>
+            Indicates that the system does not support verification.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.AVSResult.SystemUnavailable">
+            <summary>
+            Indicates that the system is unavailable.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.CaptureResult">
+            <summary>
+            The capture results.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CaptureResult.None">
+            <summary>
+            Indicates that no result was returned.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CaptureResult.Success">
+            <summary>
+            Indicates that the capture was successful.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CaptureResult.Failure">
+            <summary>
+            Indicates that the capture failed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.CardEntryTypes">
+            <summary>
+            Represents original enumeration from Contracts / Services / ICard.
+            To distinguish whether the card has been read with a stripe card reader or has been manually entered.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CardEntryTypes.None">
+            <summary>
+            The none.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CardEntryTypes.MagneticStripeRead">
+            <summary>
+            Using the magnetic stripe reader.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CardEntryTypes.ManuallyEntered">
+            <summary>
+            Entering the number manually.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CardEntryTypes.ChipEntry">
+            <summary>
+            Using the chip reader.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.CardType">
+            <summary>
+            Represents the different card types.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CardType.Unknown">
+            <summary>
+            Indicates that the card type is unknown.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CardType.Debit">
+            <summary>
+            Indicates that the card is a debit card.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CardType.Visa">
+            <summary>
+            Indicates that the card type is visa.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CardType.MasterCard">
+            <summary>
+            Indicates that the card type is master card.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CardType.Discover">
+            <summary>
+            Indicates that the card type is discover.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CardType.Amex">
+            <summary>
+            Indicates that the card type is amex.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CardType.GiftCard">
+            <summary>
+            Indicates that the card type is gift card.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.CashBackRequestAvailableEvent">
+            <summary>
+            Cash back Request Available event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.CashBackRequestOperationEventArgs">
+            <summary>
+            Cash Back Requested - Session Operation - Event Argument.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.CashBackRequestOperationEventArgs.#ctor(System.Decimal)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.CashBackRequestOperationEventArgs"/> class.
+            </summary>
+            <param name="cashBackRequested">The cash back requested.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.CashBackRequestOperationEventArgs.CashBackRequested">
+            <summary>
+            Gets the cash back requested.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties">
+            <summary>
+            The authorization response properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.CardToken">
+            <summary>
+            Gets the card token.
+            </summary>
+            <value>
+            The card token.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.ProviderTransactionId">
+            <summary>
+            Gets the provider transaction identifier.
+            </summary>
+            <value>
+            The provider transaction identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.AccountType">
+            <summary>
+            Gets the type of the account.
+            </summary>
+            <value>
+            The type of the account.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.ApprovalCode">
+            <summary>
+            Gets the approval code.
+            </summary>
+            <value>
+            The approval code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.AvailableBalance">
+            <summary>
+            Gets the available balance.
+            </summary>
+            <value>
+            The available balance.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.CardType">
+            <summary>
+            Gets the type of the card.
+            </summary>
+            <value>
+            The type of the card.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.Last4Digits">
+            <summary>
+            Gets the last4 digits.
+            </summary>
+            <value>
+            The last4 digits.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.IsSwiped">
+            <summary>
+            Gets the is swiped.
+            </summary>
+            <value>
+            The is swiped.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.VoiceAuthorizationCode">
+            <summary>
+            Gets the voice authorization code.
+            </summary>
+            <value>
+            The voice authorization code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.ResponseCode">
+            <summary>
+            Gets the response code.
+            </summary>
+            <value>
+            The response code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.CVV2Result">
+            <summary>
+            Gets the cv v2 result.
+            </summary>
+            <value>
+            The cv v2 result.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.TransactionType">
+            <summary>
+            Gets the type of the transaction.
+            </summary>
+            <value>
+            The type of the transaction.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.TransactionDateTime">
+            <summary>
+            Gets the transaction date time.
+            </summary>
+            <value>
+            The transaction date time.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.ApprovedAmount">
+            <summary>
+            Gets the approved amount.
+            </summary>
+            <value>
+            The approved amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.CashBackAmount">
+            <summary>
+            Gets the cash back amount.
+            </summary>
+            <value>
+            The cash back amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.AuthorizationResult">
+            <summary>
+            Gets the authorization result.
+            </summary>
+            <value>
+            The authorization result.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.ProviderMessage">
+            <summary>
+            Gets the provider message.
+            </summary>
+            <value>
+            The provider message.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.AVSResult">
+            <summary>
+            Gets the AVS result.
+            </summary>
+            <value>
+            The AVS result.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.AVSDetail">
+            <summary>
+            Gets the AVS detail.
+            </summary>
+            <value>
+            The AVS detail.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.Properties">
+            <summary>
+            Gets the properties.
+            </summary>
+            <value>
+            The properties.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.CardNumber">
+            <summary>
+            Gets the card number.
+            </summary>
+            <value>
+            The card number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.CurrencyCode">
+            <summary>
+            Gets the currency code.
+            </summary>
+            <value>
+            The currency code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.UniqueCardId">
+            <summary>
+            Gets the unique card identifier.
+            </summary>
+            <value>
+            The unique card identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.IsCardDataRead">
+            <summary>
+            Gets the is card data read.
+            </summary>
+            <value>
+            The is card data read.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.ExternalReceipt">
+            <summary>
+            Gets the external receipt.
+            </summary>
+            <value>
+            The external receipt.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.IsImmediateCapture">
+            <summary>
+            Gets the is immediate capture.
+            </summary>
+            <value>
+            The is immediate capture.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.IsPendingCustomerSignature">
+            <summary>
+            Gets the is pending customer signature.
+            </summary>
+            <value>
+            The is pending customer signature.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.AuthorizationResponseProperties.BankIdentificationNumberStart">
+            <summary>
+            Gets the BankIdentificationNumberStart property.
+            The property value is the starting number of card BIN (Bank Identification Number).
+            For example, it should be 400000 for Visa, 510000 for MasterCard, 340000 for Amex, and 601100 for Discover.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties">
+            <summary>
+            The capture response properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties.ProviderTransactionId">
+            <summary>
+            Gets the provider transaction identifier.
+            </summary>
+            <value>
+            The provider transaction identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties.ApprovalCode">
+            <summary>
+            Gets the approval code.
+            </summary>
+            <value>
+            The approval code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties.CardType">
+            <summary>
+            Gets the type of the card.
+            </summary>
+            <value>
+            The type of the card.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties.CardToken">
+            <summary>
+            Gets the card token.
+            </summary>
+            <value>
+            The card token.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties.TransactionType">
+            <summary>
+            Gets the type of the transaction.
+            </summary>
+            <value>
+            The type of the transaction.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties.TransactionDateTime">
+            <summary>
+            Gets the transaction date time.
+            </summary>
+            <value>
+            The transaction date time.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties.ResponseCode">
+            <summary>
+            Gets the response code.
+            </summary>
+            <value>
+            The response code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties.CaptureResult">
+            <summary>
+            Gets the capture result.
+            </summary>
+            <value>
+            The capture result.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties.ProviderMessage">
+            <summary>
+            Gets the provider message.
+            </summary>
+            <value>
+            The provider message.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties.Properties">
+            <summary>
+            Gets the properties.
+            </summary>
+            <value>
+            The properties.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties.CurrencyCode">
+            <summary>
+            Gets the currency code.
+            </summary>
+            <value>
+            The currency code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties.UniqueCardId">
+            <summary>
+            Gets the unique card identifier.
+            </summary>
+            <value>
+            The unique card identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties.Last4Digits">
+            <summary>
+            Gets the last 4 digits.
+            </summary>
+            <value>
+            The last 4 digits.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.CaptureResponseProperties.BankIdentificationNumberStart">
+            <summary>
+            Gets the BankIdentificationNumberStart property.
+            The property value is the starting number of card BIN (Bank Identification Number).
+            For example, it should be 400000 for Visa, 510000 for MasterCard, 340000 for Amex, and 601100 for Discover.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.ConnectorProperties">
+            <summary>
+            The connector properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.ConnectorProperties.ConnectorName">
+            <summary>
+            Gets the name of the connector.
+            </summary>
+            <value>
+            The name of the connector.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.ConnectorProperties.CardKey">
+            <summary>
+            Gets the CardKey property.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.Constant">
+            <summary>
+            Contains shared constants.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.Constants.Constant.PROPERTIES">
+            <summary>
+            The properties string.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.ExternalReceiptConstants">
+            <summary>
+            The external receipt constants.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.Constants.ExternalReceiptConstants.Receipt">
+            <summary>
+            The Xml element for receipt.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.Constants.ExternalReceiptConstants.ReceiptData">
+            <summary>
+            The root Xml element for external receipts.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.Constants.ExternalReceiptConstants.ReceiptLine">
+            <summary>
+            The Xml element for each line in the receipt.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.Constants.ExternalReceiptConstants.ReceiptTypeCustomer">
+            <summary>
+            The receipt customer type attribute for receipt.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.Constants.ExternalReceiptConstants.ReceiptTypeMerchant">
+            <summary>
+            The receipt merchant type attribute for receipt.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.Constants.ExternalReceiptConstants.TypeName">
+            <summary>
+            The Xml attribute type name.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace">
+            <summary>
+            The generic namespace.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.PaymentCard">
+            <summary>
+            Gets the payment card.
+            </summary>
+            <value>
+            The payment card.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.TransactionData">
+            <summary>
+            Gets the transaction data.
+            </summary>
+            <value>
+            The transaction data.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.MerchantAccount">
+            <summary>
+            Gets the merchant account.
+            </summary>
+            <value>
+            The merchant account.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.AuthorizationResponse">
+            <summary>
+            Gets the authorization response.
+            </summary>
+            <value>
+            The authorization response.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.Connector">
+            <summary>
+            Gets the connector.
+            </summary>
+            <value>
+            The connector.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.CaptureResponse">
+            <summary>
+            Gets the capture response.
+            </summary>
+            <value>
+            The capture response.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.VoidResponse">
+            <summary>
+            Gets the void response.
+            </summary>
+            <value>
+            The void response.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.RefundResponse">
+            <summary>
+            Gets the refund response.
+            </summary>
+            <value>
+            The refund response.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.L2Data">
+            <summary>
+            Gets the l2 data.
+            </summary>
+            <value>
+            The l2 data.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.TaxDetail">
+            <summary>
+            Gets the tax detail.
+            </summary>
+            <value>
+            The tax detail.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.TaxDetails">
+            <summary>
+            Gets the tax details.
+            </summary>
+            <value>
+            The tax details.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.MiscellaneousCharge">
+            <summary>
+            Gets the miscellaneous charge.
+            </summary>
+            <value>
+            The miscellaneous charge.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.MiscellaneousCharges">
+            <summary>
+            Gets the miscellaneous charges.
+            </summary>
+            <value>
+            The miscellaneous charges.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.PurchaseLevelData">
+            <summary>
+            Gets the purchase level data.
+            </summary>
+            <value>
+            The purchase level data.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.L3Data">
+            <summary>
+            Gets the l3 data.
+            </summary>
+            <value>
+            The l3 data.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.TotalsVerification">
+            <summary>
+            Gets the totals verification.
+            </summary>
+            <value>
+            The totals verification.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.XReport">
+            <summary>
+            Gets the x report.
+            </summary>
+            <value>
+            The x report.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.LastReceipt">
+            <summary>
+            Gets the last receipt.
+            </summary>
+            <value>
+            The last receipt.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.ActivateGiftCardResponse">
+            <summary>
+            Gets the namespace for the activate gift card response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.LoadGiftCardResponse">
+            <summary>
+            Gets the namespace for the load gift card response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.GenericNamespace.BalanceOnGiftCardResponse">
+            <summary>
+            Gets the namespace for the balance on gift card response.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties">
+            <summary>
+            The L2 data properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.OrderDateTime">
+            <summary>
+            Gets the order date time.
+            </summary>
+            <value>
+            The order date time.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.OrderNumber">
+            <summary>
+            Gets the order number.
+            </summary>
+            <value>
+            The order number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.InvoiceDateTime">
+            <summary>
+            Gets the invoice date time.
+            </summary>
+            <value>
+            The invoice date time.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.InvoiceNumber">
+            <summary>
+            Gets the invoice number.
+            </summary>
+            <value>
+            The invoice number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.OrderDescription">
+            <summary>
+            Gets the order description.
+            </summary>
+            <value>
+            The order description.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.SummaryCommodityCode">
+            <summary>
+            Gets the summary commodity code.
+            </summary>
+            <value>
+            The summary commodity code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.MerchantContact">
+            <summary>
+            Gets the merchant contact.
+            </summary>
+            <value>
+            The merchant contact.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.MerchantTaxId">
+            <summary>
+            Gets the merchant tax identifier.
+            </summary>
+            <value>
+            The merchant tax identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.MerchantType">
+            <summary>
+            Gets the type of the merchant.
+            </summary>
+            <value>
+            The type of the merchant.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.PurchaserId">
+            <summary>
+            Gets the purchaser identifier.
+            </summary>
+            <value>
+            The purchaser identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.PurchaserTaxId">
+            <summary>
+            Gets the purchaser tax identifier.
+            </summary>
+            <value>
+            The purchaser tax identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.ShipToCity">
+            <summary>
+            Gets the ship to city.
+            </summary>
+            <value>
+            The ship to city.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.ShipToCounty">
+            <summary>
+            Gets the ship to county.
+            </summary>
+            <value>
+            The ship to county.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.ShipToState_ProvinceCode">
+            <summary>
+            Gets the ship to state_ province code.
+            </summary>
+            <value>
+            The ship to state_ province code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.ShipToPostalCode">
+            <summary>
+            Gets the ship to postal code.
+            </summary>
+            <value>
+            The ship to postal code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.ShipToCountryCode">
+            <summary>
+            Gets the ship to country code.
+            </summary>
+            <value>
+            The ship to country code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.ShipFromCity">
+            <summary>
+            Gets the ship from city.
+            </summary>
+            <value>
+            The ship from city.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.ShipFromCounty">
+            <summary>
+            Gets the ship from county.
+            </summary>
+            <value>
+            The ship from county.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.ShipFromState_ProvinceCode">
+            <summary>
+            Gets the ship from state_ province code.
+            </summary>
+            <value>
+            The ship from state_ province code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.ShipFromPostalCode">
+            <summary>
+            Gets the ship from postal code.
+            </summary>
+            <value>
+            The ship from postal code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.ShipFromCountryCode">
+            <summary>
+            Gets the ship from country code.
+            </summary>
+            <value>
+            The ship from country code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.DiscountAmount">
+            <summary>
+            Gets the discount amount.
+            </summary>
+            <value>
+            The discount amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.MiscCharge">
+            <summary>
+            Gets the miscellaneous charge.
+            </summary>
+            <value>
+            The miscellaneous charge.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.DutyAmount">
+            <summary>
+            Gets the duty amount.
+            </summary>
+            <value>
+            The duty amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.FreightAmount">
+            <summary>
+            Gets the freight amount.
+            </summary>
+            <value>
+            The freight amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.HandlingCharge">
+            <summary>
+            Gets the handling charge.
+            </summary>
+            <value>
+            The handling charge.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.IsTaxable">
+            <summary>
+            Gets the is taxable.
+            </summary>
+            <value>
+            The is taxable.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.TotalTaxAmount">
+            <summary>
+            Gets the total tax amount.
+            </summary>
+            <value>
+            The total tax amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.TotalTaxRate">
+            <summary>
+            Gets the total tax rate.
+            </summary>
+            <value>
+            The total tax rate.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.MerchantName">
+            <summary>
+            Gets the name of the merchant.
+            </summary>
+            <value>
+            The name of the merchant.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.MerchantStreet">
+            <summary>
+            Gets the merchant street.
+            </summary>
+            <value>
+            The merchant street.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.MerchantCity">
+            <summary>
+            Gets the merchant city.
+            </summary>
+            <value>
+            The merchant city.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.MerchantState">
+            <summary>
+            Gets the state of the merchant.
+            </summary>
+            <value>
+            The state of the merchant.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.MerchantCounty">
+            <summary>
+            Gets the merchant county.
+            </summary>
+            <value>
+            The merchant county.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.MerchantCountryCode">
+            <summary>
+            Gets the merchant country code.
+            </summary>
+            <value>
+            The merchant country code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.MerchantZip">
+            <summary>
+            Gets the merchant zip.
+            </summary>
+            <value>
+            The merchant zip.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.TaxRate">
+            <summary>
+            Gets the tax rate.
+            </summary>
+            <value>
+            The tax rate.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.TaxAmount">
+            <summary>
+            Gets the tax amount.
+            </summary>
+            <value>
+            The tax amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.TaxDescription">
+            <summary>
+            Gets the tax description.
+            </summary>
+            <value>
+            The tax description.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.TaxTypeIdentifier">
+            <summary>
+            Gets the tax type identifier.
+            </summary>
+            <value>
+            The tax type identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.RequesterName">
+            <summary>
+            Gets the name of the requester.
+            </summary>
+            <value>
+            The name of the requester.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.TotalAmount">
+            <summary>
+            Gets the total amount.
+            </summary>
+            <value>
+            The total amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.PurchaseCardType">
+            <summary>
+            Gets the type of the purchase card.
+            </summary>
+            <value>
+            The type of the purchase card.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.AmexLegacyDescription1">
+            <summary>
+            Gets the amex legacy description1.
+            </summary>
+            <value>
+            The amex legacy description1.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.AmexLegacyDescription2">
+            <summary>
+            Gets the amex legacy description2.
+            </summary>
+            <value>
+            The amex legacy description2.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.AmexLegacyDescription3">
+            <summary>
+            Gets the amex legacy description3.
+            </summary>
+            <value>
+            The amex legacy description3.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.AmexLegacyDescription4">
+            <summary>
+            Gets the amex legacy description4.
+            </summary>
+            <value>
+            The amex legacy description4.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.TaxDetails">
+            <summary>
+            Gets the tax details.
+            </summary>
+            <value>
+            The tax details.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L2DataProperties.MiscellaneousCharges">
+            <summary>
+            Gets the miscellaneous charges.
+            </summary>
+            <value>
+            The miscellaneous charges.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties">
+            <summary>
+            The L3 data properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.SequenceNumber">
+            <summary>
+            Gets the sequence number.
+            </summary>
+            <value>
+            The sequence number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.CommodityCode">
+            <summary>
+            Gets the commodity code.
+            </summary>
+            <value>
+            The commodity code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.ProductCode">
+            <summary>
+            Gets the product code.
+            </summary>
+            <value>
+            The product code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.ProductName">
+            <summary>
+            Gets the name of the product.
+            </summary>
+            <value>
+            The name of the product.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.ProductSKU">
+            <summary>
+            Gets the product SKU.
+            </summary>
+            <value>
+            The product SKU.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.Descriptor">
+            <summary>
+            Gets the descriptor.
+            </summary>
+            <value>
+            The descriptor.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.UnitOfMeasure">
+            <summary>
+            Gets the unit of measure.
+            </summary>
+            <value>
+            The unit of measure.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.UnitPrice">
+            <summary>
+            Gets the unit price.
+            </summary>
+            <value>
+            The unit price.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.Discount">
+            <summary>
+            Gets the discount.
+            </summary>
+            <value>
+            The discount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.DiscountRate">
+            <summary>
+            Gets the discount rate.
+            </summary>
+            <value>
+            The discount rate.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.Quantity">
+            <summary>
+            Gets the quantity.
+            </summary>
+            <value>
+            The quantity.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.MiscCharge">
+            <summary>
+            Gets the miscellaneous charge.
+            </summary>
+            <value>
+            The miscellaneous charge.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.NetTotal">
+            <summary>
+            Gets the net total.
+            </summary>
+            <value>
+            The net total.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.TaxAmount">
+            <summary>
+            Gets the tax amount.
+            </summary>
+            <value>
+            The tax amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.TaxRate">
+            <summary>
+            Gets the tax rate.
+            </summary>
+            <value>
+            The tax rate.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.TotalAmount">
+            <summary>
+            Gets the total amount.
+            </summary>
+            <value>
+            The total amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.CostCenter">
+            <summary>
+            Gets the cost center.
+            </summary>
+            <value>
+            The cost center.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.FreightAmount">
+            <summary>
+            Gets the freight amount.
+            </summary>
+            <value>
+            The freight amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.HandlingAmount">
+            <summary>
+            Gets the handling amount.
+            </summary>
+            <value>
+            The handling amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.CarrierTrackingNumber">
+            <summary>
+            Gets the carrier tracking number.
+            </summary>
+            <value>
+            The carrier tracking number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.MerchantTaxID">
+            <summary>
+            Gets the merchant tax identifier.
+            </summary>
+            <value>
+            The merchant tax identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.MerchantCatalogNumber">
+            <summary>
+            Gets the merchant catalog number.
+            </summary>
+            <value>
+            The merchant catalog number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.TaxCategoryApplied">
+            <summary>
+            Gets the tax category applied.
+            </summary>
+            <value>
+            The tax category applied.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.PickupAddress">
+            <summary>
+            Gets the pickup address.
+            </summary>
+            <value>
+            The pickup address.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.PickupCity">
+            <summary>
+            Gets the pickup city.
+            </summary>
+            <value>
+            The pickup city.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.PickupState">
+            <summary>
+            Gets the state of the pickup.
+            </summary>
+            <value>
+            The state of the pickup.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.PickupCounty">
+            <summary>
+            Gets the pickup county.
+            </summary>
+            <value>
+            The pickup county.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.PickupZip">
+            <summary>
+            Gets the pickup zip.
+            </summary>
+            <value>
+            The pickup zip.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.PickupCountry">
+            <summary>
+            Gets the pickup country.
+            </summary>
+            <value>
+            The pickup country.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.PickupDateTime">
+            <summary>
+            Gets the pickup date time.
+            </summary>
+            <value>
+            The pickup date time.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.PickupRecordNumber">
+            <summary>
+            Gets the pickup record number.
+            </summary>
+            <value>
+            The pickup record number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.CarrierShipmentNumber">
+            <summary>
+            Gets the carrier shipment number.
+            </summary>
+            <value>
+            The carrier shipment number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.UNSPSCCode">
+            <summary>
+            Gets the UNSPSC code.
+            </summary>
+            <value>
+            The UNSPSC code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.TaxDetails">
+            <summary>
+            Gets the tax details.
+            </summary>
+            <value>
+            The tax details.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.L3DataProperties.MiscellaneousCharges">
+            <summary>
+            Gets the miscellaneous charges.
+            </summary>
+            <value>
+            The miscellaneous charges.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties">
+            <summary>
+            The merchant account properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.AssemblyName">
+            <summary>
+            Gets the name of the assembly.
+            </summary>
+            <value>
+            The name of the assembly.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.ServiceAccountId">
+            <summary>
+            Gets the service account identifier.
+            </summary>
+            <value>
+            The service account identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.MerchantId">
+            <summary>
+            Gets the merchant identifier.
+            </summary>
+            <value>
+            The merchant identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.SupportedCurrencies">
+            <summary>
+            Gets the supported currencies.
+            </summary>
+            <value>
+            The supported currencies.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.SupportedTenderTypes">
+            <summary>
+            Gets the supported tender types.
+            </summary>
+            <value>
+            The supported tender types.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.IsAVSRequired">
+            <summary>
+            Gets a value indicating whether AVS is required.
+            </summary>
+            <value>
+            A value indicating whether AVS is required.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.ProhibitMultiplePayments">
+            <summary>
+            Gets the prohibit multiple payments.
+            </summary>
+            <value>
+            The prohibit multiple payments.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.GatewayUserId">
+            <summary>
+            Gets the gateway user identifier.
+            </summary>
+            <value>
+            The gateway user identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.GatewayPassword">
+            <summary>
+            Gets the gateway password.
+            </summary>
+            <value>
+            The gateway password.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.GatewayClientId">
+            <summary>
+            Gets the gateway client identifier.
+            </summary>
+            <value>
+            The gateway client identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.PaymentDeviceKey">
+            <summary>
+            Gets the payment device key.
+            </summary>
+            <value>
+            The payment device key.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.PaymentDeviceName">
+            <summary>
+            Gets the name of the payment device.
+            </summary>
+            <value>
+            The name of the payment device.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.GatewayMerchantKey">
+            <summary>
+            Gets the gateway merchant key.
+            </summary>
+            <value>
+            The gateway merchant key.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.PaymentDeviceSerialNumber">
+            <summary>
+            Gets the payment device serial number.
+            </summary>
+            <value>
+            The payment device serial number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.OperatorId">
+            <summary>
+            Gets the operator identifier.
+            </summary>
+            <value>
+            The operator identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.GatewayUrl">
+            <summary>
+            Gets the gateway URL.
+            </summary>
+            <value>
+            The gateway URL.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.PaymentAcceptKeyId">
+            <summary>
+            Gets the PaymentAcceptKeyId property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MerchantAccountProperties.PaymentAcceptKeyValue">
+            <summary>
+            Gets the PaymentAcceptKeyValue property.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MiscellaneousChargeProperties">
+            <summary>
+            The miscellaneous charge properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MiscellaneousChargeProperties.MiscellaneousCharge">
+            <summary>
+            Gets the miscellaneous charge.
+            </summary>
+            <value>
+            The miscellaneous charge.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MiscellaneousChargeProperties.ChargeType">
+            <summary>
+            Gets the type of the charge.
+            </summary>
+            <value>
+            The type of the charge.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.MiscellaneousChargeProperties.ChargeAmount">
+            <summary>
+            Gets the charge amount.
+            </summary>
+            <value>
+            The charge amount.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties">
+            <summary>
+            The payment card properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.CardType">
+            <summary>
+            Gets the type of the card.
+            </summary>
+            <value>
+            The type of the card.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Track1">
+            <summary>
+            Gets the track1.
+            </summary>
+            <value>
+            The track1.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Track2">
+            <summary>
+            Gets the track2.
+            </summary>
+            <value>
+            The track2.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Track3">
+            <summary>
+            Gets the track3.
+            </summary>
+            <value>
+            The track3.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Track4">
+            <summary>
+            Gets the track4.
+            </summary>
+            <value>
+            The track4.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.CardVerificationValue">
+            <summary>
+            Gets the card verification value.
+            </summary>
+            <value>
+            The card verification value.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.VoiceAuthorizationCode">
+            <summary>
+            Gets the voice authorization code.
+            </summary>
+            <value>
+            The voice authorization code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.CardToken">
+            <summary>
+            Gets the card token.
+            </summary>
+            <value>
+            The card token.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.CardNumber">
+            <summary>
+            Gets the card number.
+            </summary>
+            <value>
+            The card number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.CashBackAmount">
+            <summary>
+            Gets the cash back amount.
+            </summary>
+            <value>
+            The cash back amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.AccountType">
+            <summary>
+            Gets the type of the account.
+            </summary>
+            <value>
+            The type of the account.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.ExpirationYear">
+            <summary>
+            Gets the expiration year.
+            </summary>
+            <value>
+            The expiration year.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.ExpirationMonth">
+            <summary>
+            Gets the expiration month.
+            </summary>
+            <value>
+            The expiration month.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.House">
+            <summary>
+            Gets the house number or name.
+            </summary>
+            <value>
+            The house number or name.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.StreetAddress">
+            <summary>
+            Gets the street address.
+            </summary>
+            <value>
+            The street address.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.StreetAddress2">
+            <summary>
+            Gets the street address2.
+            </summary>
+            <value>
+            The street address2.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.City">
+            <summary>
+            Gets the city.
+            </summary>
+            <value>
+            The city.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.State">
+            <summary>
+            Gets the state.
+            </summary>
+            <value>
+            The state.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.PostalCode">
+            <summary>
+            Gets the postal code.
+            </summary>
+            <value>
+            The postal code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Country">
+            <summary>
+            Gets the country.
+            </summary>
+            <value>
+            The country.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Phone">
+            <summary>
+            Gets the phone.
+            </summary>
+            <value>
+            The phone.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.EncryptedPin">
+            <summary>
+            Gets the encrypted pin.
+            </summary>
+            <value>
+            The encrypted pin.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.AdditionalSecurityData">
+            <summary>
+            Gets the additional security data.
+            </summary>
+            <value>
+            The additional security data.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.ProcessorTenderId">
+            <summary>
+            Gets the processor tender identifier.
+            </summary>
+            <value>
+            The processor tender identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Last4Digits">
+            <summary>
+            Gets the last 4 digits.
+            </summary>
+            <value>
+            The last 4 digits.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.UniqueCardId">
+            <summary>
+            Gets the unique card identifier.
+            </summary>
+            <value>
+            The unique card identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Properties">
+            <summary>
+            Gets the properties.
+            </summary>
+            <value>
+            The properties.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.CardEntryType">
+            <summary>
+            Gets the type of the card entry.
+            </summary>
+            <value>
+            The type of the card entry.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.IssuerName">
+            <summary>
+            Gets the name of the issuer.
+            </summary>
+            <value>
+            The name of the issuer.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Track1Encrypted">
+            <summary>
+            Gets the track1 encrypted.
+            </summary>
+            <value>
+            The track1 encrypted.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Track1KeySerialNumber">
+            <summary>
+            Gets the track1 key serial number.
+            </summary>
+            <value>
+            The track1 key serial number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Track2Encrypted">
+            <summary>
+            Gets the track2 encrypted.
+            </summary>
+            <value>
+            The track2 encrypted.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Track2KeySerialNumber">
+            <summary>
+            Gets the track2 key serial number.
+            </summary>
+            <value>
+            The track2 key serial number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Track3Encrypted">
+            <summary>
+            Gets the track3 encrypted.
+            </summary>
+            <value>
+            The track3 encrypted.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Track3KeySerialNumber">
+            <summary>
+            Gets the track3 key serial number.
+            </summary>
+            <value>
+            The track3 key serial number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Track4Encrypted">
+            <summary>
+            Gets the track4 encrypted.
+            </summary>
+            <value>
+            The track4 encrypted.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.Track4KeySerialNumber">
+            <summary>
+            Gets the track4 key serial number.
+            </summary>
+            <value>
+            The track4 key serial number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.ShowSameAsShippingAddress">
+            <summary>
+            Gets the ShowSameAsShippingAddress property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.IsSwipe">
+            <summary>
+            Gets the IsSwipe property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PaymentCardProperties.BankIdentificationNumberStart">
+            <summary>
+            Gets the BankIdentificationNumberStart property.
+            The property value is the starting number of card BIN (Bank Identification Number).
+            For example, it should be 400000 for Visa, 510000 for MasterCard, 340000 for Amex, and 601100 for Discover.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PurchaseLevelDataProperties">
+            <summary>
+            The purchase level data properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PurchaseLevelDataProperties.L2Data">
+            <summary>
+            Gets the l2 data.
+            </summary>
+            <value>
+            The l2 data.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PurchaseLevelDataProperties.L3Data">
+            <summary>
+            Gets the l3 data.
+            </summary>
+            <value>
+            The l3 data.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.PurchaseLevelDataProperties.L3DataItems">
+            <summary>
+            Gets the l3 data items.
+            </summary>
+            <value>
+            The l3 data items.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties">
+            <summary>
+            The refund response properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.CardToken">
+            <summary>
+            Gets the card token.
+            </summary>
+            <value>
+            The card token.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.ProviderTransactionId">
+            <summary>
+            Gets the provider transaction identifier.
+            </summary>
+            <value>
+            The provider transaction identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.ApprovalCode">
+            <summary>
+            Gets the approval code.
+            </summary>
+            <value>
+            The approval code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.TransactionType">
+            <summary>
+            Gets the type of the transaction.
+            </summary>
+            <value>
+            The type of the transaction.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.ResponseCode">
+            <summary>
+            Gets the response code.
+            </summary>
+            <value>
+            The response code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.ApprovedAmount">
+            <summary>
+            Gets the approved amount.
+            </summary>
+            <value>
+            The approved amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.RefundResult">
+            <summary>
+            Gets the refund result.
+            </summary>
+            <value>
+            The refund result.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.ProviderMessage">
+            <summary>
+            Gets the provider message.
+            </summary>
+            <value>
+            The provider message.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.TransactionDateTime">
+            <summary>
+            Gets the transaction date time.
+            </summary>
+            <value>
+            The transaction date time.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.Properties">
+            <summary>
+            Gets the properties.
+            </summary>
+            <value>
+            The properties.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.CurrencyCode">
+            <summary>
+            Gets the currency code.
+            </summary>
+            <value>
+            The currency code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.UniqueCardId">
+            <summary>
+            Gets the unique card identifier.
+            </summary>
+            <value>
+            The unique card identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.CardType">
+            <summary>
+            Gets the type of the card.
+            </summary>
+            <value>
+            The type of the card.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.Last4Digits">
+            <summary>
+            Gets the last 4 digits.
+            </summary>
+            <value>
+            The last 4 digits.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.IsCardDataRead">
+            <summary>
+            Gets the is card data read.
+            </summary>
+            <value>
+            The is card data read.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.ExternalReceipt">
+            <summary>
+            Gets the external receipt.
+            </summary>
+            <value>
+            The external receipt.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.IsImmediateCapture">
+            <summary>
+            Gets the is immediate capture.
+            </summary>
+            <value>
+            The is immediate capture.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.RefundResponseProperties.BankIdentificationNumberStart">
+            <summary>
+            Gets the BankIdentificationNumberStart property.
+            The property value is the starting number of card BIN (Bank Identification Number).
+            For example, it should be 400000 for Visa, 510000 for MasterCard, 340000 for Amex, and 601100 for Discover.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TaxDetailProperties">
+            <summary>
+            The tax detail properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TaxDetailProperties.TaxDetail">
+            <summary>
+            Gets the tax detail.
+            </summary>
+            <value>
+            The tax detail.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TaxDetailProperties.TaxTypeIdentifier">
+            <summary>
+            Gets the tax type identifier.
+            </summary>
+            <value>
+            The tax type identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TaxDetailProperties.TaxRate">
+            <summary>
+            Gets the tax rate.
+            </summary>
+            <value>
+            The tax rate.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TaxDetailProperties.TaxDescription">
+            <summary>
+            Gets the tax description.
+            </summary>
+            <value>
+            The tax description.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TaxDetailProperties.TaxAmount">
+            <summary>
+            Gets the tax amount.
+            </summary>
+            <value>
+            The tax amount.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TotalsVerificationProperties">
+            <summary>
+            Totals verification namespace.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TotalsVerificationProperties.ExternalReceipt">
+            <summary>
+            Gets the receipt with shift totals.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties">
+            <summary>
+            The transaction data properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.Amount">
+            <summary>
+            Gets the amount.
+            </summary>
+            <value>
+            The amount.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.SupportCardTokenization">
+            <summary>
+            Gets the support card tokenization.
+            </summary>
+            <value>
+            The support card tokenization.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.AuthorizationProviderTransactionId">
+            <summary>
+            Gets the authorization provider transaction identifier.
+            </summary>
+            <value>
+            The authorization provider transaction identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.CardNumber">
+            <summary>
+            Gets the card number.
+            </summary>
+            <value>
+            The card number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.IndustryType">
+            <summary>
+            Gets the type of the industry.
+            </summary>
+            <value>
+            The type of the industry.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.PurchaseLevel">
+            <summary>
+            Gets the purchase level.
+            </summary>
+            <value>
+            The purchase level.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.AllowPartialAuthorization">
+            <summary>
+            Gets the allow partial authorization.
+            </summary>
+            <value>
+            The allow partial authorization.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.CurrencyCode">
+            <summary>
+            Gets the currency code.
+            </summary>
+            <value>
+            The currency code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.TerminalId">
+            <summary>
+            Gets the terminal identifier.
+            </summary>
+            <value>
+            The terminal identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.Description">
+            <summary>
+            Gets the description.
+            </summary>
+            <value>
+            The description.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.ExternalCustomerId">
+            <summary>
+            Gets the external customer identifier.
+            </summary>
+            <value>
+            The external customer identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.ExternalInvoiceNumber">
+            <summary>
+            Gets the external invoice number.
+            </summary>
+            <value>
+            The external invoice number.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.ExternalReferenceId">
+            <summary>
+            Gets the external reference identifier.
+            </summary>
+            <value>
+            The external reference identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.IsTestMode">
+            <summary>
+            Gets the is test mode.
+            </summary>
+            <value>
+            The is test mode.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.TransactionType">
+            <summary>
+            Gets the TransactionType property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.HostPageOrigin">
+            <summary>
+            Gets the HostPageOrigin property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.PaymentAcceptAdaptorPath">
+            <summary>
+            Gets the PaymentAcceptAdaptorPath property.
+            The containing URL path of payment accepting adaptors which could be HTML, JavaScript or CSS.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.PaymentAcceptUrl">
+            <summary>
+            Gets the PaymentAcceptUrl property.
+            The property contains the URL to open the payment accepting page.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.PaymentAcceptSubmitUrl">
+            <summary>
+            Gets the PaymentAcceptSubmitUrl property.
+            The property contains the URL to submit the payment accepting page.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.PaymentAcceptMessageOrigin">
+            <summary>
+            Gets the PaymentAcceptMessageOrigin property.
+            The value could be the origin of the PaymentAcceptUrl property, or the origin of a different page URL.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.PaymentAcceptResultAccessCode">
+            <summary>
+            Gets the PaymentAcceptResultAccessCode property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.AllowVoiceAuthorization">
+            <summary>
+            Gets AllowVoiceAuthorization property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.SupportCardSwipe">
+            <summary>
+            Gets SupportCardSwipe property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.TransactionDataProperties.PaymentAcceptContent">
+            <summary>
+            Gets the PaymentAcceptContent property.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.VoidResponseProperties">
+            <summary>
+            Void response properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.VoidResponseProperties.ProviderTransactionId">
+            <summary>
+            Gets the provider transaction identifier.
+            </summary>
+            <value>
+            The provider transaction identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.VoidResponseProperties.VoidResult">
+            <summary>
+            Gets the void result.
+            </summary>
+            <value>
+            The void result.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.VoidResponseProperties.ProviderMessage">
+            <summary>
+            Gets the provider message.
+            </summary>
+            <value>
+            The provider message.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.VoidResponseProperties.TransactionType">
+            <summary>
+            Gets the type of the transaction.
+            </summary>
+            <value>
+            The type of the transaction.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.VoidResponseProperties.TransactionDateTime">
+            <summary>
+            Gets the transaction date time.
+            </summary>
+            <value>
+            The transaction date time.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.VoidResponseProperties.ResponseCode">
+            <summary>
+            Gets the response code.
+            </summary>
+            <value>
+            The response code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.VoidResponseProperties.Properties">
+            <summary>
+            Gets the properties.
+            </summary>
+            <value>
+            The properties.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.VoidResponseProperties.CurrencyCode">
+            <summary>
+            Gets the currency code.
+            </summary>
+            <value>
+            The currency code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.VoidResponseProperties.UniqueCardId">
+            <summary>
+            Gets the unique card identifier.
+            </summary>
+            <value>
+            The unique card identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.VoidResponseProperties.CardType">
+            <summary>
+            Gets the type of the card.
+            </summary>
+            <value>
+            The type of the card.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.VoidResponseProperties.Last4Digits">
+            <summary>
+            Gets the last4 digits.
+            </summary>
+            <value>
+            The last4 digits.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.VoidResponseProperties.ExternalReceipt">
+            <summary>
+            Gets the external receipt.
+            </summary>
+            <value>
+            The external receipt.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.VoidResponseProperties.BankIdentificationNumberStart">
+            <summary>
+            Gets the BankIdentificationNumberStart property.
+            The property value is the starting number of card BIN (Bank Identification Number).
+            For example, it should be 400000 for Visa, 510000 for MasterCard, 340000 for Amex, and 601100 for Discover.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Constants.XReportProperties">
+            <summary>
+            X report namespace.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Constants.XReportProperties.ExternalReceipt">
+            <summary>
+            Gets the receipt with bank X report.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.CustomerAmountApprovalEvent">
+            <summary>
+            PIN Available event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.CustomerAmountApprovalEventArgs">
+            <summary>
+            The customer amount approval event arguments.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.CustomerAmountApprovalEventArgs.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.CustomerAmountApprovalEventArgs"/> class.
+            </summary>
+            <param name="amountApproved">If set to <c>true</c> [amount approved].</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.CustomerAmountApprovalEventArgs.AmountApproved">
+            <summary>
+            Gets a value indicating whether [amount approved].
+            </summary>
+            <value>
+              <c>true</c> if [amount approved]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.CVV2Result">
+            <summary>
+            Represents possible card verification results.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CVV2Result.Unknown">
+            <summary>
+            The card verification result is unknown.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CVV2Result.Success">
+            <summary>
+            The card verification was successful.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CVV2Result.Failure">
+            <summary>
+            The card verification has failed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CVV2Result.IssuerNotRegistered">
+            <summary>
+            The card cannot be verified because the issuer is not registered.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.CVV2Result.NotProcessed">
+            <summary>
+            The card was not processed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.DataType">
+            <summary>
+            Enumeration that defines the data type used.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.DataType.String">
+            <summary>
+            String data type used.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.DataType.Decimal">
+            <summary>
+            Decimal data type used.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.DataType.DateTime">
+            <summary>
+            DateTime data type used.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.DataType.PropertyList">
+            <summary>
+            PropertyList data type used.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode">
+            <summary>
+            Error code enumeration.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.None">
+            <summary>
+            No error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidOperation">
+            <summary>
+            The invalid operation error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ApplicationError">
+            <summary>
+            The application error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.GenericCheckDetailsForError">
+            <summary>
+            The generic check details for error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.DONotAuthorized">
+            <summary>
+            The do not authorized error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.UserAborted">
+            <summary>
+            The user aborted error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidArgumentTenderAccountNumber">
+            <summary>
+            The invalid argument tender account number error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.LocaleNotSupported">
+            <summary>
+            The locale not supported error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidMerchantProperty">
+            <summary>
+            The invalid merchant property error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidArgumentVoiceAuthCode">
+            <summary>
+            Invalid voice authorization code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CashBackAmountExceedsTotalAmount">
+            <summary>
+            Cash back amount exceeds the total amount for the transaction.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CommunicationError">
+            <summary>
+            The communication error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidArgumentCardTypeNotSupported">
+            <summary>
+            The invalid argument card type not supported error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.VoiceAuthorizationNotSupported">
+            <summary>
+            The voice authorization not supported error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ReauthorizationNotSupported">
+            <summary>
+            The reauthorization not supported error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.MultipleCaptureNotSupported">
+            <summary>
+            The multiple capture not supported error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.BatchCaptureNotSupported">
+            <summary>
+            The batch capture not supported error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.UnsupportedCurrency">
+            <summary>
+            The unsupported currency error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.UnsupportedCountry">
+            <summary>
+            The unsupported country error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CannotReauthorizePostCapture">
+            <summary>
+            The cannot reauthorize post capture error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CannotReauthorizePostVoid">
+            <summary>
+            The cannot reauthorize post void error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ImmediateCaptureNotSupported">
+            <summary>
+            The immediate capture not supported error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CardExpired">
+            <summary>
+            The card expired error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ReferToIssuer">
+            <summary>
+            The refer to issuer error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.NoReply">
+            <summary>
+            The no reply error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.HoldCallOrPickupCard">
+            <summary>
+            The hold call or pickup card error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidAmount">
+            <summary>
+            The invalid amount error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.AccountLengthError">
+            <summary>
+            The account length error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.AlreadyReversed">
+            <summary>
+            The already reversed error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CannotVerifyPin">
+            <summary>
+            The cannot verify pin error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidCardNumber">
+            <summary>
+            The invalid card number error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidCVV2">
+            <summary>
+            The invalid CVV2 error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CashBackNotAvailable">
+            <summary>
+            The cash back not available error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CardTypeVerificationError">
+            <summary>
+            The card type verification error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.Decline">
+            <summary>
+            The card declined error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.EncryptionError">
+            <summary>
+            The encryption error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.NoActionTaken">
+            <summary>
+            The no action taken error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.NoSuchIssuer">
+            <summary>
+            The no such issuer error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.PinTriesExceeded">
+            <summary>
+            The pin tries exceeded error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.SecurityViolation">
+            <summary>
+            The security violation error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ServiceNotAllowed">
+            <summary>
+            The service not allowed error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.StopRecurring">
+            <summary>
+            The stop recurring error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.WrongPin">
+            <summary>
+            The wrong pin error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CVV2Mismatch">
+            <summary>
+            The CVV2 mismatch error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.DuplicateTransaction">
+            <summary>
+            The duplicate transaction error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.Reenter">
+            <summary>
+            The error code for reentering card.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.AmountExceedLimit">
+            <summary>
+            The amount exceed limit error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.AuthorizationExpired">
+            <summary>
+            The authorization expired error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.AuthorizationAlreadyCompleted">
+            <summary>
+            The authorization already completed error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.AuthorizationIsVoided">
+            <summary>
+            The authorization is voided error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ProcessorDuplicateBatch">
+            <summary>
+            The processor duplicate batch error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.AuthorizationFailure">
+            <summary>
+            The authorization failure error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidMerchantConfiguration">
+            <summary>
+            The invalid merchant configuration error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidExpirationDate">
+            <summary>
+            The invalid expiration date error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidCardholderNameFirstNameRequired">
+            <summary>
+            The invalid cardholder name first name required error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidCardholderNameLastNameRequired">
+            <summary>
+            The invalid cardholder name last name required error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.FilterDecline">
+            <summary>
+            The filter decline error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidAddress">
+            <summary>
+            The invalid address error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CVV2Required">
+            <summary>
+            The CVV2 required error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CardTypeNotSupported">
+            <summary>
+            The card type not supported error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.UniqueInvoiceNumberRequired">
+            <summary>
+            The unique invoice number required error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.PossibleDuplicate">
+            <summary>
+            The possible duplicate error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ProcessorRequiresLinkedRefund">
+            <summary>
+            The processor requires linked refund error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CryptoBoxUnavailable">
+            <summary>
+            The crypto box unavailable error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CVV2Declined">
+            <summary>
+            The CVV2 declined  error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.MerchantIdInvalid">
+            <summary>
+            The merchant identifier invalid error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.TranNotAllowed">
+            <summary>
+            The transaction not allowed error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.TerminalNotFound">
+            <summary>
+            The terminal not found error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidEffectiveDate">
+            <summary>
+            The invalid effective date error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InsufficientFunds">
+            <summary>
+            The insufficient funds error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ReauthorizationMaxReached">
+            <summary>
+            The reauthorization maximum reached error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ReauthorizationNotAllowed">
+            <summary>
+            The reauthorization not allowed error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.DateOfBirthError">
+            <summary>
+            The date of birth error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.EnterLesserAmount">
+            <summary>
+            The enter lesser amount error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.HostKeyError">
+            <summary>
+            The host key error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidCashBackAmount">
+            <summary>
+            The invalid cash back amount error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidTransaction">
+            <summary>
+            The invalid transaction error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ImmediateCaptureRequired">
+            <summary>
+            The immediate capture required error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ImmediateCaptureRequiredMAC">
+            <summary>
+            The immediate capture required mac error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.MACRequired">
+            <summary>
+            The mac required error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.BankcardNotSet">
+            <summary>
+            The bankcard not set error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidRequest">
+            <summary>
+            The invalid request error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidTransactionFee">
+            <summary>
+            The invalid transaction fee error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.NoCheckingAccount">
+            <summary>
+            The no checking account error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.NoSavingsAccount">
+            <summary>
+            The no savings account error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.RestrictedCardTemporarilyDisallowedFromInterchange">
+            <summary>
+            The restricted card temporarily disallowed from interchange error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.MACSecurityFailure">
+            <summary>
+            The mac security failure error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ExceedsWithdrawalFrequencyLimit">
+            <summary>
+            The exceeds withdrawal frequency limit error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidCaptureDate">
+            <summary>
+            The invalid capture date error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.NoKeysAvailable">
+            <summary>
+            The no keys available error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.KMESyncError">
+            <summary>
+            The KME synchronize error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.KPESyncError">
+            <summary>
+            The KPE synchronize error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.KMACSyncError">
+            <summary>
+            The KMAC synchronize error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ResubmitExceedsLimit">
+            <summary>
+            The resubmit exceeds limit error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.SystemProblemError">
+            <summary>
+            The system problem error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.AccountNumberNotFoundForRow">
+            <summary>
+            The account number not found for row error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidTokenInfoParameterForRow">
+            <summary>
+            The invalid token information parameter for row error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ExceptionThrownForRow">
+            <summary>
+            The exception thrown for row error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.TransactionAmountExceedsRemaining">
+            <summary>
+            The transaction amount exceeds remaining balance error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.GeneralException">
+            <summary>
+            The general exception error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidCardTrackData">
+            <summary>
+            The card track data is invalid.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.InvalidResultAccessCode">
+            <summary>
+            The result access code is invalid.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.ExecuteTaskNotSupported">
+            <summary>
+            Execute Task not supported.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CardNotActivated">
+            <summary>
+            Card Not Activated.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode.CardAlreadyActivated">
+            <summary>
+            Card Already Activated.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.IEFTServiceOperations">
+            <summary>
+            Additional bank operations which are not included in IPaymentProcessor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IEFTServiceOperations.RunTotalsVerification(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Bank totals verification.
+            </summary>
+            <param name="request">Request object.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IEFTServiceOperations.GetXReport(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Bank cards X Report.
+            </summary>
+            <param name="request">Request object.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IEFTServiceOperations.GetLastReceipt(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Get bank cards last operation receipt.
+            </summary>
+            <param name="request">Request object.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.IndustryType">
+            <summary>
+            Represents industry types.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.IndustryType.Retail">
+            <summary>
+            The retail industry.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.IndustryType.DirectMarketing">
+            <summary>
+            The direct marketing industry.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.IndustryType.Ecommerce">
+            <summary>
+            The ecommerce industry.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessor">
+            <summary>
+            Payment processing SDK interface for payment connectors.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1">
+            <summary>
+            V1 Payment processing SDK interface for payment connectors.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.Authorize(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            Authorize the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the authorize transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by authorization process.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.Capture(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Capture the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the Capture transaction.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.ImmediateCapture(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            ImmediateCapture the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the ImmediateCapture transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by ImmediateCapture process.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.Void(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Void the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the Void transaction.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.Refund(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            Refund the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the Refund transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by Refund process.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.Reversal(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Reversal the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the Reversal transaction.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.Reauthorize(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            ReAuthorize the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the ReAuthorize transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by ReAuthorize process.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.GenerateCardToken(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            GenerateCardToken get the token for the requested credit card from the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the GenerateCardToken transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by GenerateCardToken process.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.GetPaymentAcceptPoint(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            GetPaymentAcceptPoint gets the payment accepting point from the payment provider, e.g. a payment page URL.
+            </summary>
+            <param name="request">Request object needed to process the GetPaymentAcceptPoint transaction.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.RetrievePaymentAcceptResult(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            RetrievePaymentAcceptResult retrieves the payment accepting result from the payment provider after the payment is processed externally.
+            This method pairs with GetPaymentAcceptPoint.
+            </summary>
+            <param name="request">Request object needed to process the RetrievePaymentAcceptResult transaction.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.ActivateGiftCard(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            ActivateGiftCard the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the ActivateGiftCard transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by ActivateGiftCard process.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.LoadGiftCard(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            LoadGiftCard the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the LoadGiftCard transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by LoadGiftCard process.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.BalanceOnGiftCard(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            BalanceOnGiftCard the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the BalanceOnGiftCard transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by BalanceOnGiftCard process.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.GetMerchantAccountPropertyMetadata(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            GetMerchantAccountPropertyMetadata returns the merchant account properties need by the payment provider.
+            </summary>
+            <param name="request">Request object.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessorV1.ValidateMerchantAccount(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            ValidateMerchantAccount the passed merchant account properties with the payment provider.
+            </summary>
+            <param name="request">Request object to validate.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.IProcessorIdentifier">
+            <summary>
+            Generic interface for identifying processors.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.IProcessorIdentifierV1">
+            <summary>
+            Version 1.0 of the processor identifier interface.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.IProcessorIdentifierV1.Name">
+            <summary>
+            Gets the name of payment connector.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.IProcessorIdentifierV1.Copyright">
+            <summary>
+            Gets the copyright for payment connector.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.IProcessorIdentifierV1.PrimaryProcessor">
+            <summary>
+            Gets or sets a value indicating whether [primary processor].
+            </summary>
+            <remarks>In the case where the processor drives a customer facing device the primary processor should have priority
+            (over other processors).</remarks>
+            <value>
+              <c>true</c> if [primary processor]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.IProcessorIdentifierV1.SupportedCountries">
+            <summary>
+            Gets the supported country codes.
+            </summary>
+            <remarks>
+            The processor operates in the following country codes
+            ISO 3166-1 alpha-2.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.ISessionOperation">
+            <summary>
+            Generic session operations.  Sessions have a beginning and an ending.  A single operation should only be invoked
+            sequentially.  The host application must call BeginOperation and EndOperation in pairs. Only if BeginOperation fails
+            should EndOperation not be invoked.  Once a session is started the SessionStatus event will indicate when it is ready
+            and the EndOperation can be invoked.  If the EndOperation is invoked before that time it will either block until ready
+            or cancel the operation.  The result of the EndOperation depends upon the type of operation being performed.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentSDK.ISessionOperation.OperationStatus">
+            <summary>
+            Occurs when [operation status] is available.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.ISessionOperation.HasCapability(System.String)">
+            <summary>
+            Is the operation specified by the token supported.
+            </summary>
+            <param name="operationToken">Requested operation (token).</param>
+            <returns>true if capability is supported.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.ISessionOperation.BeginOperation(System.String,System.Object[])">
+            <summary>
+            Begin the operation specified the token. If this returns true then the caller must invoke EndSession
+            before the next attempt to perform this operation.  EndOperation should not be called if this returns false.
+            </summary>
+            <param name="operationToken">Requested operation (token).</param>
+            <param name="args">The arguments.</param>
+            <returns>
+            True on success.
+            </returns>
+            <remarks>
+            If this method returns true, caller must invoke EndOperation() when done; otherwise, they should not call EndOperation.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.ISessionOperation.EndOperation(System.String,System.Object[])">
+            <summary>
+            End the operation specified by the token and get the results.
+            </summary>
+            <param name="operationToken">Requested operation (token).</param>
+            <param name="args">The args.</param>
+            <returns>
+            The value returned depends upon the operation performed.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.ITenderAvailableEventData">
+            <summary>
+            The tender available event data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.ITenderAvailableEventData.TenderProcessor">
+            <summary>
+            Gets the name of the TenderProcessor providing the tender.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.ITenderInfo">
+            <summary>
+            Tender information returned from processor to application.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.ITenderInfoV1">
+            <summary>
+            ITenderInfo version 1.0.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.ITenderInfoV1.HaveTender">
+            <summary>
+            Gets or sets a value indicating whether [have tender].
+            </summary>
+            <value>
+              <c>true</c> if [have tender]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.ITenderInfoV1.PropertyBag">
+            <summary>
+            Gets the property bag.
+            </summary>
+            <value>
+            The property bag.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.ITenderProcessor">
+            <summary>
+            Generic interface for processors that are able to provide tenders.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.ITenderProcessorV1">
+            <summary>
+            Version 1.0 of the tender processor interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.ITenderProcessorV1.GetTender(System.Object)">
+            <summary>
+            Optional: Returns a tender for when one has been made available by the customer (using a customer facing device).
+            </summary>
+            <param name="hostSessionId">The host session id.</param>
+            <returns>
+            The tender info.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.PaymentError">
+            <summary>
+            PaymentError class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentError.#ctor(Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.PaymentError"/> class.
+            </summary>
+            <param name="code">The code.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentError.#ctor(Microsoft.Dynamics.Retail.PaymentSDK.ErrorCode,System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.PaymentError"/> class.
+            </summary>
+            <param name="code">The code.</param>
+            <param name="message">The message.</param>
+            <param name="isLocalized">The boolean flag indicates whether the message is localized to be displayed in client.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentError.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.PaymentError"/> class from being created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentError.Code">
+            <summary>
+            Gets or sets the error code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentError.Message">
+            <summary>
+            Gets or sets the error message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentError.IsLocalized">
+            <summary>
+            Gets or sets a value indicating whether the message is localized to be displayed in client.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentError.GetErrorsAsTraceString(System.Collections.Generic.IList{Microsoft.Dynamics.Retail.PaymentSDK.PaymentError})">
+            <summary>
+            Converts an array of payment errors into a string for tracing.
+            </summary>
+            <param name="errors">The array of payment errors.</param>
+            <returns>Errors converted to string for tracing.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper">
+            <summary>
+            The payment processor wrapper.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.#ctor(Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper"/> class.
+            </summary>
+            <param name="connectorProxy">The connector proxy.</param>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.OperationStatus">
+            <summary>
+            Occurs when [operation status] is available.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.Name">
+            <summary>
+            Gets the name of payment connector.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.Copyright">
+            <summary>
+            Gets the copyright for payment connector.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.PrimaryProcessor">
+            <summary>
+            Gets or sets a value indicating whether [primary processor].
+            </summary>
+            <value>
+              <c>true</c> if [primary processor]; otherwise, <c>false</c>.
+            </value>
+            <remarks>
+            In the case where the processor drives a customer facing device the primary processor should have priority
+            (over other processors).
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.SupportedCountries">
+            <summary>
+            Gets the supported country codes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.Authorize(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            Authorize the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the authorize transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by authorization process.</param>
+            <returns>
+            Response object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.Capture(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Capture the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the Capture transaction.</param>
+            <returns>
+            Response object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.ImmediateCapture(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            ImmediateCapture the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the ImmediateCapture transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by ImmediateCapture process.</param>
+            <returns>
+            Response object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.Void(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Void the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the Void transaction.</param>
+            <returns>
+            Response object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.Refund(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            Refund the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the Refund transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by Refund process.</param>
+            <returns>
+            Response object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.Reversal(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Reversal the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the Reversal transaction.</param>
+            <returns>
+            Response object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.Reauthorize(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            ReAuthorize the request with the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the ReAuthorize transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by ReAuthorize process.</param>
+            <returns>
+            Response object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.GenerateCardToken(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            Generate card token for the requested credit card from the payment provider.
+            </summary>
+            <param name="request">Request object needed to process the GenerateCardToken transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by GenerateCardToken process.</param>
+            <returns>
+            Response object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.GetPaymentAcceptPoint(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            GetPaymentAcceptPoint gets the payment accepting point from the payment provider, e.g. a payment page URL.
+            </summary>
+            <param name="request">Request object needed to process the GetPaymentAcceptPoint transaction.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.RetrievePaymentAcceptResult(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            RetrievePaymentAcceptResult retrieves the payment accepting result from the payment provider after the payment is processed externally.
+            This method pairs with GetPaymentAcceptPoint.
+            </summary>
+            <param name="request">Request object needed to process the RetrievePaymentAcceptResult transaction.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.ActivateGiftCard(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            Activate gift card.
+            </summary>
+            <param name="request">Request object needed to process the ActivateGiftCard transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by ActivateGiftCard process.</param>
+            <returns>
+            Response object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.LoadGiftCard(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            Load gift card.
+            </summary>
+            <param name="request">Request object needed to process the LoadGiftCard transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by LoadGiftCard process.</param>
+            <returns>
+            Response object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.BalanceOnGiftCard(Microsoft.Dynamics.Retail.PaymentSDK.Request,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            Gets the balance on the gift card.
+            </summary>
+            <param name="request">Request object needed to process the BalanceOnGiftCard transaction.</param>
+            <param name="requiredInteractionProperties">Properties required by BalanceOnGiftCard process.</param>
+            <returns>
+            Response object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.GetMerchantAccountPropertyMetadata(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Gets the metadata for merchant account properties.
+            </summary>
+            <param name="request">Request object.</param>
+            <returns>
+            Response object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.ValidateMerchantAccount(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Validates the merchant account.
+            </summary>
+            <param name="request">Request object to validate.</param>
+            <returns>
+            Response object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.RunTotalsVerification(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Bank totals verification.
+            </summary>
+            <param name="request">Request object.</param>
+            <returns>Response object.</returns>
+            <remarks>
+            Applicable only for connectors that support IEFTServiceOperations, otherwise method does nothing and return empty response.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.GetXReport(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Bank cards X Report.
+            </summary>
+            <param name="request">Request object.</param>
+            <returns>Response object.</returns>
+            <remarks>
+            Applicable only for connectors that support IEFTServiceOperations, otherwise method does nothing and return empty response.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.GetLastReceipt(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Get bank cards last operation receipt.
+            </summary>
+            <param name="request">Request object.</param>
+            <returns>Response object.</returns>
+            <remarks>
+            Applicable only for connectors that support IEFTServiceOperations, otherwise method does nothing and return empty response.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.IsInterfaceSupportedByConnector``1">
+            <summary>
+            Determines whether [is interface supported by connector].
+            </summary>
+            <typeparam name="T">The payment processor.</typeparam>
+            <returns>True if interface supported by connector.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.GetTender(System.Object)">
+            <summary>
+            Gets a tender for making payment is one has been made available (e.g., by customer from hydra device).
+            </summary>
+            <param name="hostSessionId">The host session id.</param>
+            <returns>
+            The tender info.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.InitializeLifetimeService">
+            <summary>
+            Obtains a lifetime service object to control the lifetime policy for this instance.
+            </summary>
+            <returns>
+            An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the <see cref="P:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime" /> property.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.HasCapability(System.String)">
+            <summary>
+            Is the operation specified by the token supported.
+            </summary>
+            <param name="operationToken">Requested operation (token).</param>
+            <returns>
+            True if capability is supported.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.BeginOperation(System.String,System.Object[])">
+            <summary>
+            Begin the operation specified the token. If this returns true then the caller must invoke EndSession
+            before the next attempt to perform this operation.  EndOperation should not be called if this returns false.
+            </summary>
+            <param name="operationToken">Requested operation (token).</param>
+            <param name="args">The arguments.</param>
+            <returns>
+            True on success.
+            </returns>
+            <remarks>
+            If this method returns true, caller must invoke EndOperation() when done; otherwise, they should not call EndOperation.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.EndOperation(System.String,System.Object[])">
+            <summary>
+            End the operation specified by the token and get the results.
+            </summary>
+            <param name="operationToken">Requested operation (token).</param>
+            <param name="args">The args.</param>
+            <returns>
+            The value returned depends upon the operation performed.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.TraceError(Microsoft.Dynamics.Retail.PaymentSDK.Response)">
+            <summary>
+            Traces the error.
+            </summary>
+            <param name="response">The response.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.TraceError(Microsoft.Dynamics.Retail.PaymentSDK.Response,System.String,System.Exception)">
+            <summary>
+            Traces the exception error.
+            </summary>
+            <param name="response">The response.</param>
+            <param name="methodName">The method name.</param>
+            <param name="ex">The exception.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.CallEFTServiceOperation(System.Func{Microsoft.Dynamics.Retail.PaymentSDK.IEFTServiceOperations,Microsoft.Dynamics.Retail.PaymentSDK.Response})">
+            <summary>
+            Calls the EFT service operation.
+            </summary>
+            <param name="eftOperation">The EFT operation.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProcessorWrapper.Operation_OperationStatus(System.Object,Microsoft.Dynamics.Retail.PaymentSDK.SessionOperationEventArgs)">
+            <summary>
+            Handles the OperationStatus event of the operation control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.SessionOperationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty">
+            <summary>
+            Property class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.#ctor(System.String,System.String,System.String,Microsoft.Dynamics.Retail.PaymentSDK.SecurityLevel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty"/> class.
+            </summary>
+            <param name="namespaceValue">The namespace value.</param>
+            <param name="nameValue">The name value.</param>
+            <param name="value">The value.</param>
+            <param name="securityLevelValue">The security level value.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.#ctor(System.String,System.String,System.Decimal,Microsoft.Dynamics.Retail.PaymentSDK.SecurityLevel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty"/> class.
+            </summary>
+            <param name="namespaceValue">The namespace value.</param>
+            <param name="nameValue">The name value.</param>
+            <param name="value">The value.</param>
+            <param name="securityLevelValue">The security level value.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.#ctor(System.String,System.String,System.DateTime,Microsoft.Dynamics.Retail.PaymentSDK.SecurityLevel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty"/> class.
+            </summary>
+            <param name="namespaceValue">The namespace value.</param>
+            <param name="nameValue">The name value.</param>
+            <param name="value">The value.</param>
+            <param name="securityLevelValue">The security level value.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.#ctor(System.String,System.String,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty"/> class.
+            </summary>
+            <param name="namespaceValue">The namespace value.</param>
+            <param name="nameValue">The name value.</param>
+            <param name="propertyList">The property list.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.Namespace">
+            <summary>
+            Gets or sets the namespace.
+            </summary>
+            <value>
+            The namespace.
+            </value>
+            <remarks>
+            The namespace for the property is a URI but serialized as a string.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.Name">
+            <summary>
+            Gets or sets the name for the property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.ValueType">
+            <summary>
+            Gets or sets the DataType enumeration for the property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.StringValue">
+            <summary>
+            Gets or sets the StringValue for the property, dependant on valueType.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.StoredStringValue">
+            <summary>
+            Gets or sets stored string value needed for serialization of the property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.DecimalValue">
+            <summary>
+            Gets or sets the DecimalValue for the property, dependant on valueType.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.DateValue">
+            <summary>
+            Gets or sets the DateValue for the property, dependant on valueType.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.PropertyList">
+            <summary>
+            Gets or sets the PropertyList for the property, dependant on valueType.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.DisplayName">
+            <summary>
+            Gets or sets displayName for the PropertyMetadata.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.Description">
+            <summary>
+            Gets or sets the description for the PropertyMetadata.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.SecurityLevel">
+            <summary>
+            Gets or sets the securityLevel for the PropertyMetadata.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.IsEncrypted">
+            <summary>
+            Gets or sets a value indicating whether data is encrypted.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.IsPassword">
+            <summary>
+            Gets or sets a value indicating whether the property holds password information.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.IsReadOnly">
+            <summary>
+            Gets or sets a value indicating whether this instance is read only.
+            </summary>
+            <value>
+            <c>true</c> if this instance is read only; otherwise, <c>false</c>.
+            </value>
+            <remarks>
+            Property used on client setup UI.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.IsHidden">
+            <summary>
+            Gets or sets a value indicating whether this instance is hidden.
+            </summary>
+            <value>
+              <c>true</c> if this instance is hidden; otherwise, <c>false</c>.
+            </value>
+            <remarks>
+            Property used on client setup UI.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.DisplayHeight">
+            <summary>
+            Gets or sets the display height.
+            </summary>
+            <value>
+            The display height.
+            </value>
+            <remarks>
+            Property used on client setup UI.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.SequenceNumber">
+            <summary>
+            Gets or sets the display order for client setup UI.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.ConvertToHashtable(Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            Convert payment properties into hashtable for quick searching.
+            </summary>
+            <param name="properties">Array of payment properties.</param>
+            <returns>Hashtable of properties.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.GetPropertyFromHashtable(System.Collections.Hashtable,System.String,System.String)">
+            <summary>
+            Search for the required payment property.
+            </summary>
+            <param name="hashtable">Hashtable containing all of the payment properties.</param>
+            <param name="requiredNamespace">Namespace of the required property.</param>
+            <param name="requiredPropertyName">Name of the required property.</param>
+            <returns>Returns found payment property or null if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.ConvertHashToProperties(System.Collections.Hashtable)">
+            <summary>
+            Converts a hashtable into an array of payment properties.
+            </summary>
+            <param name="propertyHash">Hashtable containing payment properties.</param>
+            <returns>Array of payment properties.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.ConvertPropertyArrayToXML(System.Object[])">
+            <summary>
+            Converts an array of payment properties to XML with encryption if required.
+            </summary>
+            <param name="properties">Array of properties.</param>
+            <returns>XML string.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.ConvertXMLToPropertyArray(System.String)">
+            <summary>
+            Convert the payment property XML into an array of payment properties.
+            </summary>
+            <param name="xml">XML string of payment properties.</param>
+            <returns>Array of payment properties.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.GetPropertyValue(System.Collections.Hashtable,System.String,System.String,System.Decimal@)">
+            <summary>
+            Get the required payment property decimal value.
+            </summary>
+            <param name="hashtable">Hashtable containing all of the payment properties.</param>
+            <param name="namespaceValue">Namespace to search for.</param>
+            <param name="name">Name to search for.</param>
+            <param name="value">Value found.</param>
+            <returns>True if found, false if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.GetPropertyValue(System.Collections.Hashtable,System.String,System.String,System.String@)">
+            <summary>
+            Get the required payment property string value.
+            </summary>
+            <param name="hashtable">Hashtable containing all of the payment properties.</param>
+            <param name="namespaceValue">Namespace to search for.</param>
+            <param name="name">Name to search for.</param>
+            <param name="value">Value found.</param>
+            <returns>True if found, false if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.GetPropertyValue(System.Collections.Hashtable,System.String,System.String,System.Boolean@)">
+            <summary>
+            Get the required payment property boolean value.
+            </summary>
+            <param name="hashtable">Hashtable containing all of the payment properties.</param>
+            <param name="namespaceValue">Namespace to search for.</param>
+            <param name="name">Name to search for.</param>
+            <param name="value">Value found.</param>
+            <returns>True if found, false if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.GetPropertyValue(System.Collections.Hashtable,System.String,System.String,Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[]@)">
+            <summary>
+            Get the required payment property list.
+            </summary>
+            <param name="hashtable">Hashtable containing all of the payment properties.</param>
+            <param name="namespaceValue">Namespace to search for.</param>
+            <param name="name">Name to search for.</param>
+            <param name="value">List of payment properties found.</param>
+            <returns>True if found, false if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.GetPropertyValue``1(System.Collections.Hashtable,System.String,System.String,``0@)">
+            <summary>
+            Gets the property value.
+            </summary>
+            <typeparam name="TValue">The type of the value.</typeparam>
+            <param name="hashtable">The hashtable.</param>
+            <param name="namespaceValue">The namespace value.</param>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+            <returns>True if found, false if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.RemoveDataEncryption(Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            Removes the data encryption from the property values.
+            </summary>
+            <param name="properties">The input array of properties.</param>
+            <returns>The output array of properties.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.SetMetadata(System.String,System.String)">
+            <summary>
+            Set the metadata for the payment property.
+            </summary>
+            <param name="displayNameValue">Display name for the property.</param>
+            <param name="descriptionValue">Description of the property (Tooltip).</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.SetMetadata(System.String,System.String,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Set the metadata for the payment property.
+            </summary>
+            <param name="displayNameValue">Display name for the property.</param>
+            <param name="descriptionValue">Description of the property (Tooltip).</param>
+            <param name="isPasswordValue">Property contains a password.</param>
+            <param name="isReadOnlyValue">Make property readonly.</param>
+            <param name="sequenceNumberValue">Sequence number of property.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.ToString">
+            <summary>
+            Provides an override of the ToString() method to return the string representation of the value of this property for simple types.
+            </summary>
+            <returns>The string value of this property.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.Equals(Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty)">
+            <summary>
+            Implementation of <c>IEquatable</c>, compares payment property namespace and name only.
+            </summary>
+            <param name="other">PaymentProperty to compare.</param>
+            <returns>True, if properties are equal; otherwise false.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.Equals(System.Object)">
+            <summary>
+            Implementation of <c>IEquatable</c>, compares payment property namespace and name only.
+            </summary>
+            <param name="other">PaymentProperty as object to compare.</param>
+            <returns>True, if properties are equal; otherwise false.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty.GetHashCode">
+            <summary>
+            Get hash code method
+            </summary>
+            <returns>Hash period.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.PinAvailableEvent">
+            <summary>
+            PIN Available event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.PinPadOperationEventArgs">
+            <summary>
+            The pin pad operation event arguments.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.PinPadOperationEventArgs.#ctor(System.Boolean,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.PinPadOperationEventArgs"/> class.
+            </summary>
+            <param name="userCanceled">If set to <c>true</c> then the operation was canceled by the user.</param>
+            <param name="encryptedPin">The encrypted pin.</param>
+            <param name="additionalSecurityInfo">The additional security information.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PinPadOperationEventArgs.UserCanceled">
+            <summary>
+            Gets a value indicating whether user cancelled the PIN request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PinPadOperationEventArgs.EncryptedPin">
+            <summary>
+            Gets the encrypted PIN.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.PinPadOperationEventArgs.AdditionalSecurityInfo">
+            <summary>
+            Gets the additional security information.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.PurchaseCardType">
+            <summary>
+            PurchaseCardType enumeration.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.PurchaseCardType.U">
+            <summary>
+            Unknown (Default).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.PurchaseCardType.P">
+            <summary>
+            Purchase Card.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.PurchaseCardType.C">
+            <summary>
+            Corporate Card.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.PurchaseCardType.B">
+            <summary>
+            Business Card.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.PurchaseCardType.N">
+            <summary>
+            None card type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.PurchaseLevel">
+            <summary>
+            Represents the purchase levels.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.PurchaseLevel.Level1">
+            <summary>
+            The purchase level 1.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.PurchaseLevel.Level2">
+            <summary>
+            The purchase level 2.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.PurchaseLevel.Level3">
+            <summary>
+            The purchase level 3.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.RefundResult">
+            <summary>
+            Represents all possible results of a refund.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.RefundResult.None">
+            <summary>
+            No result.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.RefundResult.Success">
+            <summary>
+            Refund successful.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.RefundResult.Failure">
+            <summary>
+            Refund failed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Request">
+            <summary>
+            Request class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Request.Locale">
+            <summary>
+            Gets or sets the locale.
+            </summary>
+            <value>
+            The locale.
+            </value>
+            <remarks>
+            The culture name is in the format <c>languagecode2-country/regioncode2</c>,
+            where <c>languagecode2</c> is a lowercase two-letter code derived from ISO 639-1
+            and <c>country/regioncode2</c> is an uppercase two-letter code derived from ISO 3166.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Request.Properties">
+            <summary>
+            Gets or sets the collection of properties needed by the request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Request.ExtensionData">
+            <summary>
+            Gets or sets the structure that contains extra data.
+            </summary>
+            <returns>An <see cref="T:System.Runtime.Serialization.ExtensionDataObject"/> that contains data that is not recognized as belonging to the data contract.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Request.SetProperties(System.Object[])">
+            <summary>
+            Helper method for X++.
+            </summary>
+            <param name="value">Property array of objects.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Response">
+            <summary>
+            Response class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Response.Locale">
+            <summary>
+            Gets or sets the locale of the response (CultureInfo .NET example "en-US").
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Response.Properties">
+            <summary>
+            Gets or sets collection of properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.Response.Errors">
+            <summary>
+            Gets or sets array of possible errors that occurred.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.SecurityLevel">
+            <summary>
+            Represents the various payment security levels.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.SecurityLevel.PCI">
+            <summary>
+            Payment Card Industry (PCI) data security level required.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.SecurityLevel.HSPII">
+            <summary>
+            Highly Sensitive PII.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.SecurityLevel.PII">
+            <summary>
+            Personally Identifiable Information data security level required.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.SecurityLevel.None">
+            <summary>
+            No security required.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.SessionOperationEventArgs">
+            <summary>
+            The session operation event arguments.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.SessionOperationEventArgs.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.SessionOperationEventArgs"/> class.
+            </summary>
+            <param name="operation">The operation.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.SessionOperationEventArgs.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.SessionOperationEventArgs"/> class.
+            </summary>
+            <param name="operation">The operation.</param>
+            <param name="completed">If set to <c>true</c> [completed].</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.SessionOperationEventArgs.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.SessionOperationEventArgs"/> class from being created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.SessionOperationEventArgs.Operation">
+            <summary>
+            Gets or sets the operation.
+            </summary>
+            <value>
+            The operation.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.SessionOperationEventArgs.IsCompleted">
+            <summary>
+            Gets or sets a value indicating whether this instance is completed.
+            </summary>
+            <value>
+            <c>true</c> if this instance is completed; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.SessionTokens">
+            <summary>
+            The session tokens.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.SessionTokens.PinPadOperation">
+            <summary>
+            The pin pad operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.SessionTokens.SignatureOperation">
+            <summary>
+            The signature operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.SessionTokens.AmountApprovalOperation">
+            <summary>
+            The amount approval operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.SessionTokens.CashBackRequestOperation">
+            <summary>
+            The cash back request operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.SignatureAvailableEvent">
+            <summary>
+            Signature Available event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.SignatureOperationEventArgs">
+            <summary>
+            The signature operation event arguments.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.SignatureOperationEventArgs.#ctor(System.Boolean,System.Collections.ObjectModel.ReadOnlyCollection{System.Drawing.Point})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.SignatureOperationEventArgs"/> class.
+            </summary>
+            <param name="operationCanceled">If set to <c>true</c> [operation canceled].</param>
+            <param name="digitalSignature">The digital signature.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.SignatureOperationEventArgs.UserCanceled">
+            <summary>
+            Gets a value indicating whether the user canceled the signature request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentSDK.SignatureOperationEventArgs.DigitalSignature">
+            <summary>
+            Gets the digital Signature (UPOS standard point array).
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.TaxIdentifierType">
+            <summary>
+            Enumeration for TaxTypeIdentifier property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TaxIdentifierType.AlternateTax">
+            <summary>
+            Alternate tax.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TaxIdentifierType.NationalTax">
+            <summary>
+            Federal or national sales tax.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TaxIdentifierType.LocalTax">
+            <summary>
+            Local sales tax.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TaxIdentifierType.VATTax">
+            <summary>
+            Value added tax.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.TenderAvailableEvent">
+            <summary>
+            Tender available notification.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.TenderInfoTokens">
+            <summary>
+            Common tokens for ITenderInfo property bag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TenderInfoTokens.ProcessorTender">
+            <summary>
+            Processor tender method (boolean).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TenderInfoTokens.TenderId">
+            <summary>
+            Processor tender id (GUID).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TenderInfoTokens.DigitalSignature">
+            <summary>
+            Digital signature (UPOS point array).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TenderInfoTokens.EncryptedPin">
+            <summary>
+            Encrypted PIN (string).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TenderInfoTokens.AdditionalSecurityInfo">
+            <summary>
+            Additional security info (string).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TenderInfoTokens.CashBackAllowed">
+            <summary>
+            Cash back allowed for tender (boolean).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TenderInfoTokens.CashBackRequest">
+            <summary>
+            Requested cash back amount (decimal).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TenderInfoTokens.SignatureAllowed">
+            <summary>
+            Indicates that the client application may request a digital signature for this tender using the legacy API (boolean).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TenderInfoTokens.CardNumber">
+            <summary>
+            Card/Account number (string).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TenderInfoTokens.DebitRequest">
+            <summary>
+            Debit process request (boolean).
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.TransactionType">
+            <summary>
+            Represents the payment transaction types.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TransactionType.None">
+            <summary>
+            Indicates that the transaction type was not specified.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TransactionType.Authorize">
+            <summary>
+            The authorize transaction type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TransactionType.Reauthorize">
+            <summary>
+            The reauthorize transaction type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TransactionType.Capture">
+            <summary>
+            The capture transaction type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TransactionType.ImmediateCapture">
+            <summary>
+            The immediate capture transaction type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TransactionType.Void">
+            <summary>
+            The void transaction type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TransactionType.Reversal">
+            <summary>
+            The reversal transaction type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.TransactionType.Refund">
+            <summary>
+            The refund transaction type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.VoidResult">
+            <summary>
+            The possible results for the void operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.VoidResult.None">
+            <summary>
+            Indicates that no result was returned.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.VoidResult.Success">
+            <summary>
+            Indicates that void operation was successful.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.VoidResult.Failure">
+            <summary>
+            Indicates that the void operation failed.
+            </summary>
+        </member>
+    </members>
+</doc>

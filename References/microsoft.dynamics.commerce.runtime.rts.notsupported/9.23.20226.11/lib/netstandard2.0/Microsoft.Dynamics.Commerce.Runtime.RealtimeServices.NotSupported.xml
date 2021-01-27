@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.RealtimeServices.NotSupported</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.RealtimeServices.Offline.FeatureNotSupportedRequestHandler">
+            <summary>
+            Handler that either does a no-op or throws a not supported exception for all realtime requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.RealtimeServices.Offline.FeatureNotSupportedRequestHandler.SupportedRequestTypes">
+            <summary>
+            Gets the supported request types.
+            </summary>
+            <value>
+            The supported request types.
+            </value>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.RealtimeServices.Offline.FeatureNotSupportedRequestHandler.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Executes the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+    </members>
+</doc>

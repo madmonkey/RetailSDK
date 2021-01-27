@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pages:ProductListPageXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Pages.ProductListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <views:SearchToolbarItem
+            Navigation="{Binding Navigation}" />
+    </ContentPage.ToolbarItems>
+    <StackLayout
+        Orientation="Vertical"
+        Spacing="0"
+        VerticalOptions="StartAndExpand">
+        <views:ProductListView
+            ItemTapped="ProductItemTapped"
+            ItemsSource="{Binding Products}"
+            LoadMoreCommand="{Binding LoadMoreProductsCommand}"
+            RefreshCommand="{Binding LoadProductsCommand}" />
+        <ActivityIndicator
+            HeightRequest="{x:Static statics:Sizes.ListActivityIndicatorDouble}"
+            IsEnabled="{Binding IsBusy}"
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Start" />
+    </StackLayout>
+</pages:ProductListPageXaml>

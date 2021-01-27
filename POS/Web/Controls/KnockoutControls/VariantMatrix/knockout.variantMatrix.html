@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout variant matrix markup.</title>
+    <link href="knockout.variantMatrix.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Header template -->
+    <script id="header" type="text/html">
+        <div class="row padRight16">
+            <!-- Dimension titles for left-side dimensions -->
+            <div class="row" data-bind="foreach: dimensions">
+                <!-- ko if: $index() !== 0 -->
+                <div class="col height48 minWidth144 marginBottom4 marginRight4 highContrastBorderThin">
+                    <div tabindex="0"
+                         role="button"
+                         class="row center padLeft12 primaryPanelBackgroundColor clickable" 
+                         data-bind="click: $parent.matrixViewModel.dimensionClickHandler.bind($parent.matrixViewModel, $data),
+                            resx: { ariaLabel: 'string_2640' }">    <!-- Switch dimension -->
+                        <div class="h5 ellipsis accentColor" data-bind="text: Commerce.ProductPropertiesHelper.getDimensionString(ProductDimensions[0].DimensionTypeValue, Commerce.DimensionStringKind.LABEL)"></div>
+                        <div class="alignRight">
+                            <div class="iconChevronDown accentColor width40 center" data-bind="attr: { 'aria-label': Commerce.ProductPropertiesHelper.getDimensionString(ProductDimensions[0].DimensionTypeValue, Commerce.DimensionStringKind.LABEL) }"></div>
+                        </div>
+                    </div>
+
+                    <div class="accentBackground height4"></div> <!-- Accent color bar -->
+                </div>
+                <!-- /ko -->
+            </div>
+
+            <!-- Dimension title for first/top dimension -->
+            <div class="topDimensionWidth col height48 width100Percent marginBottom4 highContrastBorderThin">
+                <div tabindex="0"
+                     role="button"
+                     class="row center padLeft12 primaryPanelBackgroundColor clickable" 
+                     data-bind="click: matrixViewModel.dimensionClickHandler.bind(matrixViewModel, dimensions()[0]),
+                        resx: { ariaLabel: 'string_2640' }">    <!-- Switch dimension -->
+                    <div class="h5 ellipsis accentColor" data-bind="text: Commerce.ProductPropertiesHelper.getDimensionString(dimensions()[0].ProductDimensions[0].DimensionTypeValue, Commerce.DimensionStringKind.LABEL)"></div>
+                    <div class="alignRight">
+                        <div class="iconChevronDown accentColor width40 center" data-bind="attr: { 'aria-label': Commerce.ProductPropertiesHelper.getDimensionString(dimensions()[0].ProductDimensions[0].DimensionTypeValue, Commerce.DimensionStringKind.LABEL) }"></div>
+                    </div>
+                </div>
+
+                <div class="accentBackground height4"></div> <!-- Accent color bar -->
+            </div>
+        </div>
+    </script>
+
+    <!-- Dimension value templates -->
+    <script id="dimensionValueTemplate" type="text/html">
+        <div class="dimensionValue primaryPanelBackgroundColor height80 minWidth144 width100Percent">
+            <div class="h6 ellipsis center" data-bind="text: DimensionValue.Value"></div>
+        </div>
+    </script>
+
+    <script id="topDimensionValueTemplate" type="text/html">
+        <div class="topDimensionValue primaryPanelBackgroundColor height32 minWidth144 maxWidth296 width100Percent">
+            <div class="h6 ellipsis center" data-bind="text: DimensionValue.Value"></div>
+        </div>
+    </script>
+
+    <!-- Matrix cell template wrapper -->
+    <script id="variantMatrixCellTemplate" type="text/html">
+        <!-- ko ifnot: Commerce.ObjectExtensions.isNullOrUndefined($data) -->
+        <!-- Note: $parents[1] accesses the grandparent of the current context, which is the top level control and contains the options passed in -->
+        <div tabindex="0"
+             role="button"
+             class="cellBorder height80 minWidth144 maxWidth296 width100Percent pad4 padLeft8 padRight8 primaryBackgroundColor clickable" 
+             data-bind="click: $parents[1].options.cellClickHandler.bind($parents[1].viewContext),
+                css: { slashBackground: $parents[1].options.isCellSlashStyleVisible($data) },
+                resx: { ariaLabel: 'string_2641' }">  <!-- Select item -->
+            <div class="cardHover accentBorder overLayZIndex"></div>
+            <div class="row" data-bind="template: { name: $parents[1].options.cellTemplateId, data: $data }"></div>
+        </div>
+        <!-- /ko -->
+
+        <!-- N/A block for variants that don't exist -->
+        <!-- ko if: Commerce.ObjectExtensions.isNullOrUndefined($data) -->
+        <div class="cellBorder height80 minWidth144 maxWidth296 width100Percent pad4 primaryBackgroundColor slashBackground">
+            <div class="row alignRight height100Percent">
+                <div class="h3 alignBottom secondaryFontColor cellDisabled" data-bind="resx: { textContent: 'string_2643' }"></div>  <!-- n/a -->
+            </div>
+        </div>
+        <!-- /ko -->
+    </script>
+
+    <!-- Variant matrix control template -->
+    <script id="variantMatrixTemplate" type="text/html">
+        <div data-bind="loader: { visible: matrixViewModel.isBusy }"></div>
+
+        <div class="col grow marginBottom20 height100Percent">
+            <div data-bind="template: { name: 'header', data: $data }"></div>
+
+            <div class="col grow height100Percent">
+                <!-- First/top dimension values list (if there's more than one dimension) -->
+                <!-- ko if: dimensions().length > 1 -->
+                <div class="dimensionRow row width100Percent height32 padRight16">
+                    <div class="row" data-bind="foreach: dimensions">
+                        <!-- ko if: $index() !== 0 -->
+                        <!-- Placeholder div for a blank cell -->
+                        <div class="placeholderCell primaryPanelBackgroundColor height32 minWidth144 marginRight4" data-bind="resx: { ariaLabel: 'string_2642' }"></div>    <!-- Empty cell -->
+                        <!-- /ko -->
+                    </div>
+                    
+                    <!-- Dimension values list -->
+                    <div class="dimensionRow width100Percent">
+                        <div class="topDimensionValuesRow row height32" data-bind="template: { name: 'topDimensionValueTemplate', foreach: dimensions()[0].ProductDimensions }"></div>
+                    </div>
+                </div>
+                <!-- /ko -->
+
+                <div class="col grow scrollY padRight16">
+                    <div class="row">
+                        <!-- Left dimension value lists -->
+                        <div class="row" data-bind="foreach: dimensions">
+                            <!-- Only show dimension values on the left column for the first dimension if it's the only dimension, otherwise it's shown on top -->
+                            <!-- ko if: $index() !== 0 || $parent.dimensions().length === 1 -->
+                            <div class="col minWidth144 marginRight4">
+                                <div data-bind="template: { name: 'dimensionValueTemplate', foreach: ProductDimensions },
+                                     css: { topBorder: $index() === 0 }"></div>
+                            </div>
+                            <!-- /ko -->
+                        </div>
+
+                        <!-- Cells -->
+                        <div class="col scrollX padBottom16 heightAuto">
+                            <!-- Items list -->
+                            <div class="col grow height100Percent cellSection" data-bind="foreach: itemsList">
+                                <div data-bind="attr: { 'class': 'matrixRow' + $index() }">
+                                    <div class="row" data-bind="template: { name: 'variantMatrixCellTemplate', foreach: $data }"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Dimension menu for pivoting -->
+    <script id="dimensionMenuTemplate" type="text/html">
+        <div data-bind="menu: { anchorElement: matrixViewModel.dimensionMenuAnchor, placement: 'bottom', alignment: 'left', visible: matrixViewModel.isDimensionMenuVisible },
+                 resx: { ariaLabel: 'string_2640' }">   <!-- Switch dimension -->
+            <!-- ko foreach: dimensions -->
+            <button data-bind="menuCommand: {
+                        id: 'dimensionOption' + ProductDimensions[0].DimensionTypeValue,
+                        label: Commerce.ProductPropertiesHelper.getDimensionString(ProductDimensions[0].DimensionTypeValue, Commerce.DimensionStringKind.LABEL),
+                        onClick: $parent.matrixViewModel.pivotDimension.bind($parent.matrixViewModel, $data)
+                    }, winControl: {
+                        disabled: $parent.matrixViewModel.areDimensionOptionsVisible[$index()]
+                    }"></button>
+            <!-- /ko -->
+        </div>
+    </script>
+</body>
+</html>

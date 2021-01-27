@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetReturnChargeDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'GetReturnChargeDialog'">
+
+        <div data-bind="dialog: {
+                title: _dialogTitle,
+                subTitle: _dialogSubtitle,
+                message: _dialogMessage,
+                visible: visible,
+                buttonClick: getReturnChargeButtonClick,
+                dialogCloseButtonClick: dialogCloseButtonClick
+            }, axBubbleAttr: 'getReturnChargeDialog_getReturnChargeDialog'">
+
+
+            <!-- dialog content -->
+            <div class="grow"></div>
+            <div class="content">
+                <div class="dialogSplitColumn" data-bind="axBubbleAttr: 'getReturnChargeDialog_setReturnChargeNumPad'">
+                    <div data-bind="currencyNumpad: {
+                                value: _returnCharges,
+                                onEnter: onTextBoxEnterEventHandler,
+                                inputDataBinding: { resx: { ariaLabel: 'string_5151' /* Amount */ } },
+                                numPadInputSource: numPadInputBroker
+                            }">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Microsoft_Dynamics_Internal_Server_Error" xml:space="preserve">
+    <value>An error occurred on server while processing this request.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_EmployeeNotAllowedManageSharedShift" xml:space="preserve">
+    <value>You do not have permission to perform this action.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnableToGenerateToken" xml:space="preserve">
+    <value>The number that was entered for the credit card number is not valid. Enter a valid card number.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidCardExpirationDate" xml:space="preserve">
+    <value>The card is expired or expiration date is invalid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PaymentKeyNotFound" xml:space="preserve">
+    <value>Sorry, something went wrong. We are unable to capture the payment with the payment provider. Void the payment and try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RealTimeServiceConnectionFailed" xml:space="preserve">
+    <value>A Real-time Service error occurred.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NonDrawerOperationsOnly" xml:space="preserve">
+    <value>A shift is not currently assigned. The operation cannot be completed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_QuoteMustHaveValidQuotationExpiryDate" xml:space="preserve">
+    <value>The expiration date is not valid. Enter a date that is greater than today's date.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnableToGetCardPaymentAcceptPoint" xml:space="preserve">
+    <value>Sorry, something went wrong. We were unable to obtain the card payment accept page url. Please try again or contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_EnteringPriceNotAllowed" xml:space="preserve">
+    <value>You cannot enter a price for this product.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MustKeyInEqualHigherPrice" xml:space="preserve">
+    <value>You need to enter a new price that is equal to or higher than the original price of the product.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MustKeyInEqualLowerPrice" xml:space="preserve">
+    <value>You need to enter a new price that is equal to or lower than the original price of the product.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MustKeyInNewPrice" xml:space="preserve">
+    <value>Enter a price for the product.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotChangeCustomerIdWhenEditingCustomerOrder" xml:space="preserve">
+    <value>The customer cannot be changed on a recalled order.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PaymentConnectorNotFound" xml:space="preserve">
+    <value>The payment connector is not correctly configured. Please contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotReturnMoreThanPurchased" xml:space="preserve">
+    <value>The returned quantity must be less than or equal to the purchased quantity. Enter a different quantity and try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotReturnMoreThanInvoicedMinusReturned" xml:space="preserve">
+    <value>The returned quantity must be less than or equal to the returnable quantity: {0}. Enter a different quantity and try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ChangePasswordFailed" xml:space="preserve">
+    <value>There was an error when changing the password.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ResetPasswordFailed" xml:space="preserve">
+    <value>There was an error when resetting the password.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnableToRetrieveCardPaymentAcceptResult" xml:space="preserve">
+    <value>Sorry, something went wrong. We were unable to obtain the card payment accept result. Please try again or contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ChannelDatabaseConnectionFailed" xml:space="preserve">
+    <value>The server or POS cannot connect to the channel database</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AuthenticationFailed" xml:space="preserve">
+    <value>A server side error occurred that prevent user from logging on. This may be due to one or more reasons; the user name or password may be incorrect. Please check the server log for detailed information or contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DeviceConfigurationNotFound" xml:space="preserve">
+    <value>There is no device configuration information found for the store.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_HardwareProfileNotFound" xml:space="preserve">
+    <value>The hardware profile is missing or is not assigned to store.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UserLogonAnotherTerminal" xml:space="preserve">
+    <value>The user cannot sign in to this register because they are already signed in to register {0}.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_LocalLogonFailed" xml:space="preserve">
+    <value>The user name and/or password combination failed to log on to the store.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DeviceTokenValidationFailed" xml:space="preserve">
+    <value>Device token failed during validation.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DeviceTokenGenerationFailed" xml:space="preserve">
+    <value>Device token failed during generation.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NoDeviceManagementPermission" xml:space="preserve">
+    <value>The user has no permission to activate a device.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NotValidLogonType" xml:space="preserve">
+    <value>The log on type is invalid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_StorageException" xml:space="preserve">
+    <value>A server side database related error occurred. Please check the server log for detailed info or contact your IT support.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TransactionServiceException" xml:space="preserve">
+    <value>The Retail Server is unable to communicate with the Real-time Service or Real-time Service fails during calling to headquarters. Contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TransactionServiceTimeOut" xml:space="preserve">
+    <value>The Retail Transaction Service call does not complete within the allotted transaction service call timeout value. Please check if the Retail Transaction Service service is running properly.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_LocalDeviceAuthenticationFailed" xml:space="preserve">
+    <value>Device authentication failed at both transaction service and local database. Contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_IncorrectLogonTypeUserAccountOrPassword" xml:space="preserve">
+    <value>The user account or password associated with log on type may be incorrect.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnknownRequestResponsePair" xml:space="preserve">
+    <value>The specified request response pair is unknown.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UserBlockedDueToTooManyFailedLogonAttempts" xml:space="preserve">
+    <value>The user is blocked due to too many failed log on attempts.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AttemptToActivateFromDifferentPhysicalDevice" xml:space="preserve">
+    <value>The register is already active on another device. If you continue with activation, pending or offline transactions that have not been synced will not be uploaded to HQ and will be deleted. If you want to save the pending or offline transactions, sync the transactions before you continue with activation.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerAccountPaymentIsNotAllowedForCustomerOrderDepositAndCancellation" xml:space="preserve">
+    <value>The customer account payment method cannot be used while creating or editing a customer order or quotation.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DuplicateObject" xml:space="preserve">
+    <value>The specified ID already exists.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidCartSalesLineAdd" xml:space="preserve">
+    <value>The cart line is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidFormat" xml:space="preserve">
+    <value>The format of the specified data is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_LastChangeVersionMismatch" xml:space="preserve">
+    <value>The change version requested and stored do not match.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ObjectNotFound" xml:space="preserve">
+    <value>The specified ID was not found.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RequiredValueNotFound" xml:space="preserve">
+    <value>Required value is missing.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnknownRequest" xml:space="preserve">
+    <value>The specified request type is unknown.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnsupportedLanguage" xml:space="preserve">
+    <value>The language specified is not supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ValueOutOfRange" xml:space="preserve">
+    <value>The specified value is out of range.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidCartVersion" xml:space="preserve">
+    <value>The cart was updated by another session. Please refresh and retry.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UpdateOfReadOnlyCart" xml:space="preserve">
+    <value>The cart could not be updated because an update was already in progress. Please try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AggregateCommunicationError" xml:space="preserve">
+    <value>A communication error occurred.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ApplicationCompositionFailed" xml:space="preserve">
+    <value>Runtime components for the application are missing.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ConfigurationSettingNotFound" xml:space="preserve">
+    <value>Configuration settings are missing.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DuplicateDefaultNotificationHandlerEncountered" xml:space="preserve">
+    <value>Duplicate notification handlers have been encountered.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_EmptyInventoryUnitOfMeasureForItem" xml:space="preserve">
+    <value>The unit of measure is not set for the product.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ExternalProviderError" xml:space="preserve">
+    <value>An error occurred communicating with an external provider.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_HeadquarterCommunicationFailure" xml:space="preserve">
+    <value>A connection to headquarters could not be established. This may be due to Retail Real-time Service is not running propery or the trusted certificate used by Real-time Service is missing or expired</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_HeadquarterResponseParsingError" xml:space="preserve">
+    <value>Data returned from headquarters could not be parsed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidChannelConfiguration" xml:space="preserve">
+    <value>The channel configuration is not properly configured.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidConfigurationKeyFormat" xml:space="preserve">
+    <value>The configuration key is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidPipelineConfiguration" xml:space="preserve">
+    <value>The runtime pipeline has not been correctly configured.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidProviderConfiguration" xml:space="preserve">
+    <value>One or more providers are not correctly configured.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidServerResponse" xml:space="preserve">
+    <value>The response returned from the server is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnableToComputeSalesTaxGroupForAddress" xml:space="preserve">
+    <value>The address provided does not match any sales tax group. This is likely a sales tax group configuration issue.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnableToFindDefaultHandler" xml:space="preserve">
+    <value>No default notification handler has been configured.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnableToFindDeliveryOptions" xml:space="preserve">
+    <value>The delivery options cannot be found.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnableToFindInventoryForItem" xml:space="preserve">
+    <value>No inventory can be found for this product.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AggregateValidationError" xml:space="preserve">
+    <value>A validation error occurred.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SalesGroupItemGroupIntersectionInvalid" xml:space="preserve">
+    <value>The combination of sales tax group {0} and item sales tax group {1} is not valid since it doesn't result in a list of sales tax codes. This is likely a tax group configuration issue.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SessionExpired" xml:space="preserve">
+    <value>There was a problem signing in. Try entering the operator ID and password again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AuthorizationFailed" xml:space="preserve">
+    <value>The user is not authorized to perform this operation.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CouponIsValidForCurrentSession" xml:space="preserve">
+    <value>The coupon is only valid for the current session.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CriticalStorageError" xml:space="preserve">
+    <value>A database error has occurred.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DiscountAmountInvalidated" xml:space="preserve">
+    <value>The discount amount for a line item has changed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_IdMismatch" xml:space="preserve">
+    <value>An ID mismatch has occurred.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InsufficientQuantityAvailable" xml:space="preserve">
+    <value>There is an insufficient quantity of the product available.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidPriceEncountered" xml:space="preserve">
+    <value>The price entered cannot be negative.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidRequest" xml:space="preserve">
+    <value>The request passed to the service is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidShippingAddress" xml:space="preserve">
+    <value>The shipping address is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ItemDiscontinuedFromChannel" xml:space="preserve">
+    <value>Items have been discontinued from channel.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ObjectVersionMismatchError" xml:space="preserve">
+    <value>There is a mismatch between the object to be saved and the object in the database. Please try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UpdateOfReadOnlyRowError" xml:space="preserve">
+    <value>An update was attempted on a read-only database object. Please try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RequestedItemIsOutOfStock" xml:space="preserve">
+    <value>The requested product is out of stock.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnitOfMeasureConversionNotFound" xml:space="preserve">
+    <value>The unit of measure conversion cannot be found.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DefaultCustomerNotFound" xml:space="preserve">
+    <value>Default customer cannot be found, make sure the job A/N_1010-OC was run.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnableToAuthorizePayment" xml:space="preserve">
+    <value>Declined. The payment couldn't be authorized.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_VoidTransactionContainsTenderedLines" xml:space="preserve">
+    <value>The transaction cannot be voided because a partial payment has been made.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_QuoteMustNotHaveDepositOverride" xml:space="preserve">
+    <value>Quote creation or edition must have no deposit override amount set.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidPickupDepositOverrideAmount" xml:space="preserve">
+    <value>The provided deposit override amount for a pick up operation is invalid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerNotFound" xml:space="preserve">
+    <value>The customer was not found. Please select a different customer or try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidLoyaltyCardNumber" xml:space="preserve">
+    <value>The loyalty card number wasn't found. Either activate the loyalty card number or enter a different card number, and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_BlockedLoyaltyCard" xml:space="preserve">
+    <value>The loyalty card number is not available. Enter a different card number, and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ConflictLoyaltyCardCustomerAndTransactionCustomer" xml:space="preserve">
+    <value>The loyalty card can't be added to the transaction. The customer on the loyalty card is different than the customer on the transaction. Either change the customer on the transaction or select a different loyalty card.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NotEnoughRewardPoints" xml:space="preserve">
+    <value>The loyalty payment amount exceeds what is allowed for this loyalty card in this transaction.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NoMoreThanOneLoyaltyTender" xml:space="preserve">
+    <value>The transaction cannot contain more than one loyalty payment line.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AmountDueMustBePaidBeforeCheckout" xml:space="preserve">
+    <value>Amount due must be paid before checkout.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DiscountMustBeCalculatedBeforeCheckout" xml:space="preserve">
+    <value>Transaction totals (tax and discounts) must be calculated before checkout.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TotalsMustBeCalculatedBeforeCheckout" xml:space="preserve">
+    <value>Transaction totals (tax and discounts) must be calculated before checkout.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PaymentAlreadyVoided" xml:space="preserve">
+    <value>The payment information is either missing information or it is incorrect. Verify the payment information and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MultipleEmployeeTotalDiscountsNotAllowed" xml:space="preserve">
+    <value>The total discount amount and the discount percentage cannot be set at the same time.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MultipleEmployeeLineDiscountsNotAllowed" xml:space="preserve">
+    <value>The line discount amount and the discount percentage cannot be set at the same time.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidAddress" xml:space="preserve">
+    <value>The address is either missing information or it is incorrect. Verify the address and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NoPriceOverrideForReturns" xml:space="preserve">
+    <value>Price cannot be overridden for return items.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NoPriceOverrideForGiftCards" xml:space="preserve">
+    <value>Price cannot be overridden for gift card items.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_OrderWasNotCreatedWithDepositOverride" xml:space="preserve">
+    <value>Deposit override is only available for pick-up orders if it was used when the pick-up order was created.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PaymentAmountExceedsGiftBalance" xml:space="preserve">
+    <value>The amount exceeds the balance on the gift card. Enter a different amount and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NoMoreThanOneOperationWithAGiftCard" xml:space="preserve">
+    <value>You cannot perform two operations with the same gift card in a single transaction.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UseExistingShiftPermissionDenied" xml:space="preserve">
+    <value>The current user does not have permission to use existing shift.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotSuspendCartWithActiveTenderLines" xml:space="preserve">
+    <value>The transaction cannot be suspended because a partial payment has been made.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotSuspendCartWithActiveGiftCardSalesLines" xml:space="preserve">
+    <value>The transaction cannot be suspended. You must first void the gift card line item.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CashDrawerHasAnOpenShift" xml:space="preserve">
+    <value>A shift is already open on the selected cash drawer. Close the shift on the cash drawer to open a new shift.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ShiftValidationError" xml:space="preserve">
+    <value>The operation cannot be performed because an error has occurred. Review and correct the errors for the shift and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ShiftStartingAmountNotEntered" xml:space="preserve">
+    <value>The shift cannot be closed because a starting amount is missing. Enter a starting amount.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ReconciliationLineStatusMustBePending" xml:space="preserve">
+    <value>The reconciliation line status must be pending in order to reconcile the lines.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ShiftTenderDeclarationAmountNotEntered" xml:space="preserve">
+    <value>The shift cannot be closed because a tender declaration amount is missing. Enter a tender declaration amount.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ShiftHasUnreconciledLines" xml:space="preserve">
+    <value>The shift can't be closed because there are unreconciled cash activities.  Reconcile the lines and try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ReturnItemPriceExceeded" xml:space="preserve">
+    <value>The selected product cannot be returned. The product's line item amount exceeds the maximum line item amount.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ReturnTransactionTotalExceeded" xml:space="preserve">
+    <value>The transaction's products cannot be returned. The products' total amount exceeds the maximum transaction amount.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PropertyUpdateNotAllowed" xml:space="preserve">
+    <value>You're trying to perform an operation that updates a read only property '{0}'. Either perform a different operation or contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidQuantity" xml:space="preserve">
+    <value>The quantity of item is not valid for the unit of measure. Please enter a different value and try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidCustomerOrderModeForAddCartLine" xml:space="preserve">
+    <value>The product cannot be added to the cart. Products can be added to the cart only when the order is created or modified.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotAddProductHavingRefundChargeAmount" xml:space="preserve">
+    <value>You can't add a product when a shipping charge refund is applied to a transaction.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotApplyRefundChargeOnProductForSale" xml:space="preserve">
+    <value>You can't apply a shipping charge refund to a product that is for sale.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotApplyHeaderChargesWhenShippingRefundAppliedOnCartLines" xml:space="preserve">
+    <value>You can't apply a shipping charge to a transaction when a shipping charge refund has been applied to a product for return.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RemoteProductsNotSupportedWithCurrentTransactionType" xml:space="preserve">
+    <value>One or more products are not available in this store. To order the products, change the transaction to a customer order and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_WorkerDoesNotHaveAllowSaleOutsideAssortmentPermission" xml:space="preserve">
+    <value>You do not have permission to sell non-assorted products. To order the products, change the transaction to a customer order or contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RefundAmountMoreThanAllowed" xml:space="preserve">
+    <value>The loyalty refund amount exceeds what is allowed for this loyalty card in this transaction.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ViewTimeClockNotEnabled" xml:space="preserve">
+    <value>Your permission settings do not allow viewing time clock entries.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ItemQuantityExceeded" xml:space="preserve">
+    <value>An item cannot be added to a sales transaction. The maximum quantity has been reached.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CurrencyChannelOrderMismatch" xml:space="preserve">
+    <value>The sales order cannot be recalled. The sales order uses a different currency than the currency used by the store.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TimeClockNotEnabled" xml:space="preserve">
+    <value>The time clock has not been enabled.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NoTenderLoyaltyCard" xml:space="preserve">
+    <value>This loyalty card is not eligible to redeem loyalty points for this transaction.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidUnitOfMeasure" xml:space="preserve">
+    <value>The unit of measure symbol is invalid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DepositOverrideMustNotBeGreaterThanTotalAmount" xml:space="preserve">
+    <value>Deposit override amount must not be greater than the transaction total amount.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DepositOverrideMustNotBeGreaterThanMaximumOverrideAmount" xml:space="preserve">
+    <value>Deposit override amount must not be greater than the maximum override amount.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DepositMustBeGreaterThanZero" xml:space="preserve">
+    <value>Deposit override amount must not be less than zero.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DepositOverrideMayNotBeChanged" xml:space="preserve">
+    <value>Deposit override amount may not be changed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DepositOverrideMayNotBeCleared" xml:space="preserve">
+    <value>Deposit override amount may not be cleared.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SettleInvoiceFailed" xml:space="preserve">
+    <value>One or more invoice payment on the transaction could not be settled.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CurrentVersionSupportsOnlyOneInvoicePayment" xml:space="preserve">
+    <value>The version that you are on supports payment of only one invoice in a transaction. Please keep only one invoice line in the cart to continue with the transaction.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NoPriceOverrideForInvoiceLines" xml:space="preserve">
+    <value>Price cannot be overridden for invoice line items.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ShiftAlreadyOpenOnDifferentTerminal" xml:space="preserve">
+    <value>The current shift is already opened on a different terminal.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidCustomerOrderModeForVoidProducts" xml:space="preserve">
+    <value>The product cannot be voided. Products can be voided only when the order is created or modified.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ShiftNotFound" xml:space="preserve">
+    <value>The operation cannot be completed because a closed shift cannot be found for the register.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_IncomeExpenseCartDoesNotAllowSalesLine" xml:space="preserve">
+    <value>Sales lines cannot be added to an income or expense account transaction.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TerminalHasAnOpenShift" xml:space="preserve">
+    <value>A shift is already open on the selected cash drawer. Close the shift on the cash drawer before inactivating the device.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_GiftCardUnlockFailed" xml:space="preserve">
+    <value>An error occurred while trying to unlock the gift card.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerAccountDepositMultipleCartLinesNotAllowed" xml:space="preserve">
+    <value>The customer account deposit can't be processed because other line items are in the cart. Void or complete the transaction and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerAccountNumberIsNotSet" xml:space="preserve">
+    <value>Enter customer account information and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerAccountIsBlocked" xml:space="preserve">
+    <value>The customer has been blocked. Sales or transactions are not allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerInvoiceAccountIsBlocked" xml:space="preserve">
+    <value>The customer's invoice account has been blocked. Sales or transactions are not allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotPayForCustomerAccountDepositWithCustomerAccountPaymentMethod" xml:space="preserve">
+    <value>Customer account deposit transactions cannot be tendered with the 'On Account' payment method.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerAccountDepositCannotBeNegative" xml:space="preserve">
+    <value>The customer account deposit amount cannot be negative.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerAccountDepositCannotBeVoided" xml:space="preserve">
+    <value>The customer account deposit line cannot be voided.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerAccountDepositCartTypeMismatch" xml:space="preserve">
+    <value>Sorry, something went wrong. Please contact the system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_EmployeeDiscountExceeded" xml:space="preserve">
+    <value>The line discount amount cannot be applied because the amount exceeds your authorized limit.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_IncomeExpenseCartDoesNotAllowCustomer" xml:space="preserve">
+    <value>The customer cannot be added to an income or expense account transaction.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidCashDrawer" xml:space="preserve">
+    <value>The shift cannot be opened or resumed on an invalid cash drawer.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PaymentUsingUnauthorizedAccount" xml:space="preserve">
+    <value>Customer account payment requires its own account or matching invoice account on a tender line.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MultiplePrimaryCustomerContactsNotAllowed" xml:space="preserve">
+    <value>Customer cannot have multiple primary contacts at the same time.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnlockRegisterFailed" xml:space="preserve">
+    <value>There was a problem unlocking the register. Re-enter the password and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SalesMustHaveQuantityGreaterThanZero" xml:space="preserve">
+    <value>You cannot add a line item to the sale with a quantity that is less than or equal to zero. Enter a quantity that is greater than zero and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnableToCapturePayment" xml:space="preserve">
+    <value>Sorry, something went wrong. The payment card information was not captured. Please try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_BalanceAmountExceedsMaximumAllowedValue" xml:space="preserve">
+    <value>The balance due amount exceeds the maximum amount that is allowed. Enter a different amount.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ChangebackIsNotAllowed" xml:space="preserve">
+    <value>Overpayment is not allowed for this payment method. Enter an amount that is either less than or equal to the amount due or change the payment method, and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_IncorrectPaymentAmountSign" xml:space="preserve">
+    <value>The refund or the payment doesn't match the transaction. For refund amounts enter a negative number. For payment amounts enter a positive number.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_OvertenderAmountExceedsMaximumAllowedValue" xml:space="preserve">
+    <value>The change that is due exceeds the maximum amount that is allowed. Enter a lower payment amount, and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PaymentExceedsMaximumAmountPerLine" xml:space="preserve">
+    <value>The payment amount exceeds the maximum amount that is allowed per line.  Enter a different payment amount and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PaymentExceedsMaximumAmountPerTransaction" xml:space="preserve">
+    <value>The payment amount exceeds the maximum amount that is allowed for the transaction.  Enter a different payment amount and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PaymentExceedsMinimumAmountPerLine" xml:space="preserve">
+    <value>The payment amount is less than the minimum amount that is allowed per line. Enter a different payment amount and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PaymentExceedsMinimumAmountPerTransaction" xml:space="preserve">
+    <value>The payment amount is less than the minimum amount that is allowed for the transaction. Enter a different payment amount and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PaymentMustBeUsedToFinalizeTransaction" xml:space="preserve">
+    <value>The payment amount must be equal to or greater than the remaining balance. Enter a different payment amount and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ProductIsNotActive" xml:space="preserve">
+    <value>Selected product has not been activated for sale.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ProductIsBlocked" xml:space="preserve">
+    <value>Selected product is blocked and cannot be sold.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotReturnMultipleTransactions" xml:space="preserve">
+    <value>Cannot return items from multiple transactions.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MaxCountingDifferenceExceeded" xml:space="preserve">
+    <value>The counted amount differs from the total sales amount. Please recount the {0} tender type.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_BarcodeNotFound" xml:space="preserve">
+    <value>The barcode cannot be found.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ChangeTenderTypeNotSupported" xml:space="preserve">
+    <value>Change cannot be given for the selected payment method. Please change the amount or choose a different payment method.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidAmount" xml:space="preserve">
+    <value>The amount entered is invalid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidBagNumber" xml:space="preserve">
+    <value>The bag number cannot be empty.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CurrencyNotFound" xml:space="preserve">
+    <value>The given currency is not supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ChargeNotConfiguredOnHeadquarters" xml:space="preserve">
+    <value>The cancellation or shipping charge code was not configured on the headquarters.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PickupModeOfDeliveryNotConfiguredOnHeadquarters" xml:space="preserve">
+    <value>The pickup mode of delivery is not configured on the headquarters.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidAudience" xml:space="preserve">
+    <value>The audience validation failed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidIssuer" xml:space="preserve">
+    <value>An error has occurred. This may be due to one or more of the following reasons. Contact your system administrator.
+- The service is not provisioned for the same tenant. User / Application is hitting a retail server that does not belong to the same tenant as the user / application's account;
+- The AAD environment of the user / application logging in is different than the AAD environment for which this service instance is configured.E.g.AAD Production users can only use Retail Server instances configured for Production;</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TenantIdNotFound" xml:space="preserve">
+    <value>Tenant identity is missing from the retail server configuration.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AADTokenIssuedForDifferentEnvironment" xml:space="preserve">
+    <value>The AAD environment of the user logging in is different than the AAD environment for which this service instance is configured. E.g. AAD Production users can only use Retail Server instances configured for Production.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidAADTenantId" xml:space="preserve">
+    <value>The service is not provisioned for the same tenant. User is hitting a retail server that does not belong to the same tenant as the Activation account.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RetailServerConfigurationNotFound" xml:space="preserve">
+    <value>Retail server configuration could not be retrieved from the database.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CommerceIdentityNotFound" xml:space="preserve">
+    <value>Could not resolve employee's identity. Probably due to the user's external identity is not being mapped to an employee.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NoPrintersReturned" xml:space="preserve">
+    <value>The receipt cannot be generated because a receipt profile has not been set in register's hardware profile.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PreValidationForAsyncAddressFailed" xml:space="preserve">
+    <value>The customer address does not contain required data.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RetailServerApiVersionNotSupported" xml:space="preserve">
+    <value>The server does not support your current version. Please update your application.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidShippingDate" xml:space="preserve">
+    <value>The delivery date is not valid. This may be because the store is in a different time zone than the one you are in, or because you chose a date that is in the past. Choose a later date.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotAddNonProductItemToCustomerOrder" xml:space="preserve">
+    <value>A gift card cannot be added to the customer order or quote.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SalesLineMustHavePickupDeliveryMode" xml:space="preserve">
+    <value>The product is not scheduled for pickup. Select a product that is scheduled for pickup.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnableToPickupMoreThanQtyRemaining" xml:space="preserve">
+    <value>The quantity that you entered exceeds what is available for pickup. Enter a different quantity.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ManualCardNumberNotAllowed" xml:space="preserve">
+    <value>The card number for selected card type cannot be manually entered.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TenderLineCannotBeVoided" xml:space="preserve">
+    <value>Payment cannot be voided.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_OfflineDatabaseChunkFileNotFound" xml:space="preserve">
+    <value>Sorry, something went wrong. Unable to sync offline database. Please contact the system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ElevatedUserSameAsLoggedOnUser" xml:space="preserve">
+    <value>The elevating user is same as current logged on user. Please try to elevate as a different user.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RealtimeServiceNotSupported" xml:space="preserve">
+    <value>This operation is not supported in offline mode.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CartNotActive" xml:space="preserve">
+    <value>The operation cannot be completed because the transaction is suspended.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotUpdateUnitOfMeasureOnPriceOverriddenLine" xml:space="preserve">
+    <value>The operation cannot be performed on a line with an overridden price.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DemoModeOperationNotSupported" xml:space="preserve">
+    <value>This operation is not supported in demo mode.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidAuthenticationCredentials" xml:space="preserve">
+    <value>We didn't recognize the user name or password. Please try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CredentialsNotConfigured" xml:space="preserve">
+    <value>The user credentials have not been configured. Please ensure that all employee credentials are configured and the data is synced to the channel or offline database and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SearchFilterNeedsToBeRefined" xml:space="preserve">
+    <value>Please narrow the search filter.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_OperationNotAllowedOnLinkedProduct" xml:space="preserve">
+    <value>The operation cannot be performed on a linked product.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TransactionServiceAuthenticationFailedFault" xml:space="preserve">
+    <value>The headquarter Real-time Service call failed due to security reason(s).</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TransactionServiceForbiddenFault" xml:space="preserve">
+    <value>The headquarters Real-time Service call failed due to security reason(s). Real-time Service profile fields such as User identifier or Identity provider might be invalid. When using Service-to-Service authentication, this error can mean the client ID being used isn't mapped to a user in the headquarters, or the mapped user has insufficient privileges.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TransactionServiceSenderFault" xml:space="preserve">
+    <value>The Real-time Service call failed. This may be because of an unhandled exception or because the headquarters did not recognize the Real-time Service Profile permissions. Contact your system admin.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidCity" xml:space="preserve">
+    <value>The city is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidCountryRegion" xml:space="preserve">
+    <value>The country/region is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidCounty" xml:space="preserve">
+    <value>The county is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidDistrict" xml:space="preserve">
+    <value>The district is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidStateProvince" xml:space="preserve">
+    <value>The state/province is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidZipPostalCode" xml:space="preserve">
+    <value>The zip/postal code is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnableToFindListing" xml:space="preserve">
+    <value>The operation cannot be completed because the item is not listed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_GiftCardDiscountNotAllowed" xml:space="preserve">
+    <value>Discount on the gift card is not allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidUserToken" xml:space="preserve">
+    <value>Sorry, the user session has expired or is invalid. Please log on again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DiscontinuedProductsRemovedFromCart" xml:space="preserve">
+    <value>One or more products in this transaction are no longer available and have been removed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidChannel" xml:space="preserve">
+    <value>The channel does not exist or was not published.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PaymentRequiresMerchantProperties" xml:space="preserve">
+    <value>Unable to make payment because of missing merchant payment properties. Contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerAccountPaymentExceedsCustomerAccountFloorLimit" xml:space="preserve">
+    <value>Unable to process a customer account payment at this time – floor limit value exceeded.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnableToCancelPayment" xml:space="preserve">
+    <value>Sorry, something went wrong. The payment could not be cancelled. Please try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UserPasswordExpired" xml:space="preserve">
+    <value>The password must be changed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ZeroPriceIsNotAllowed" xml:space="preserve">
+    <value>Zero price is not allowed for selected product. Enter a different price and try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SalesLineNotAllowed" xml:space="preserve">
+    <value>The operation can't be processed because other line items are in the cart. Void or complete the transaction and then try again.</value>
+    <comment>Error message to display when the operation cannot be performed on a transaction with line items in any state (including voided).</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AuthenticationMethodDisabled" xml:space="preserve">
+    <value>The authentication method requested is currently disabled. Please try a different authentication method or talk to your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PasswordRequired" xml:space="preserve">
+    <value>Your password is required to access the system. Please provide your password and try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CredentialIdentifierAlreadyInUse" xml:space="preserve">
+    <value>The provided credentials are already associated to another user. Please try again with different credentials.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CartNotFound" xml:space="preserve">
+    <value>The shopping cart could not be found. The cart might have been missing, voided or deleted already.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CdxDataPackageApplicationFailure" xml:space="preserve">
+    <value>Failed to download the requested data.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ReceiptTypeNotFound" xml:space="preserve">
+    <value>The requested receipt type ({0}) was not found.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DeliveryModeMissing" xml:space="preserve">
+    <value>The delivery mode is not present on sales transaction or sales line.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_LCSLibrariesNotConfigured" xml:space="preserve">
+    <value>Please set up the default LCS project and BPM libraries in Dynamics 365 Commerce &gt; System administration &gt; Setup &gt; System parameters &gt; Help.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ProductRecommendationsDisabled" xml:space="preserve">
+    <value>Product recommendations aren't available because that functionality hasn't been enabled in the headquarters.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_OpenMultipleShiftsNotAllowed" xml:space="preserve">
+    <value>The current user does not have permission to open multiple shifts.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NegativePriceIsNotAllowed" xml:space="preserve">
+    <value>Negative price is not allowed for selected product. Please enter a different price and try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ReceiptTypeNotSupported" xml:space="preserve">
+    <value>This receipt type is not supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DeviceDeactivationFailed" xml:space="preserve">
+    <value>Device cannot be deactivated due to an error during calling Real-time Service. Please try again or contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ReturnLineNumberNotFound" xml:space="preserve">
+    <value>The cart line number of the item to be returned cannot be found on the original transaction. Please try to search the original transaction again and reselect the item to be returned.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidShiftStatusChange" xml:space="preserve">
+    <value>Cannot change the shift status from '{0}' to '{1}'.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidStatus" xml:space="preserve">
+    <value>The current cart status is invalid for the operation.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerEmailExceedsMaximumLength" xml:space="preserve">
+    <value>The customer's email exceeds the maximum number of characters allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerNameExceedsMaximumLength" xml:space="preserve">
+    <value>The customer's name exceeds the maximum number of characters allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerPhoneNumberExceedsMaximumLength" xml:space="preserve">
+    <value>The customer's phone number exceeds the maximum number of characters allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AmountExceedsMaximumAllowed" xml:space="preserve">
+    <value>The amount is greater than maximum allowed amount. </value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SelectedValuesDidNotMatchOneProduct" xml:space="preserve">
+    <value>The selected dimension or slot to component relations did not match exactly one product. Please ensure the selected values match exactly one product.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ProductNotFound" xml:space="preserve">
+    <value>The product you requested was not found. Please make sure it has been correctly released on the headquarters.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidCartSalesLineUpdate" xml:space="preserve">
+    <value>The action that you are trying to take cannot be completed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MultiplePrimaryAddresses" xml:space="preserve">
+    <value>A customer cannot have multiple primary addresses.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PrintXZReportNotConfigured" xml:space="preserve">
+    <value>The current terminal is not configured to print X or Z report.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DiscountNotAllowed" xml:space="preserve">
+    <value>Discount is not allowed on the selected product.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_FailedToRecallTransaction" xml:space="preserve">
+    <value>Failed to recall this transaction. This transaction will be deleted.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ReturnsMustHaveQuantityLesserThanZero" xml:space="preserve">
+    <value>Return lines should have quantity less than zero.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_HardwareStationTokenCreationFailed" xml:space="preserve">
+    <value>The hardware station pairing could not be completed because token generation failed at the server. For more help contact your administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_UnableToRetrieveRecommendationServiceCredentials" xml:space="preserve">
+    <value>Product recommendations couldn't be retrieved.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_OnlineChannelRequired" xml:space="preserve">
+    <value>Updating channel publishing status is supported for existing Online Channel's only.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidS2SApplicationName" xml:space="preserve">
+    <value>The headquarters Real-time Service call failed due to security reason(s). Please ask your system administrator to check the current AAD (Azure Active Directory) Service-to-Service authentication settings. The specified application name appears to be invalid, ensure the configured application name exists in AAD under the correct tenant.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidS2SClientId" xml:space="preserve">
+    <value>The headquarters Real-time Service call failed due to security reason(s). Please ask your system administrator to check the current AAD (Azure Active Directory) Service-to-Service authentication settings. The provided client ID could not be found in AAD under the specified tenant.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidS2SSecret" xml:space="preserve">
+    <value>The headquarters Real-time Service call failed due to security reason(s). Please ask your system administrator to check the current AAD (Azure Active Directory) Service-to-Service authentication settings. The provided client secret(s) appear to be invalid, ensure this client's secret(s) aren't expired or removed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidS2STenant" xml:space="preserve">
+    <value>The headquarters Real-time Service call failed due to security reason(s). Please ask your system administrator to check the current AAD (Azure Active Directory) Service-to-Service authentication settings. The specified tenant ID appears to be invalid, ensure the configured tenant exists in AAD.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CurrencyConversionFailed" xml:space="preserve">
+    <value>Exchange rate from currency '{0}' to currency '{1}' is not supported or misconfigured.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_IncomeExpenseCartDoesNotAllowAffiliation" xml:space="preserve">
+    <value>Affiliations cannot be added to an income or expense account transaction.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Invalid_OrderInvoice_Data" xml:space="preserve">
+    <value>Invalid order invoice.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NoSalesInvoiceReturned" xml:space="preserve">
+    <value>The sales invoice not found.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SalesInvoiceLineVoidReversalNotSupported" xml:space="preserve">
+    <value>Sales invoice lines that are voided can't be reversed. Add a new sales invoice line.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_GiftCardLineNotAllowedWithInvoiceLine" xml:space="preserve">
+    <value>Can not add a gift card line to a cart already containing an invoice.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvoiceLineNotAllowedInCustomerOrder" xml:space="preserve">
+    <value>Sales invoice lines can not be added to a customer order.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerOrderNotAllowedToContainInvoiceLine" xml:space="preserve">
+    <value>Customer orders can not be created from a cart with sales invoice lines.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SalesLineNotAllowedDuringInvoicePayment" xml:space="preserve">
+    <value>While in sales invoice payment mode, only open sales invoices may be added to the transaction.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvoiceLineNotAllowedWithItemLines" xml:space="preserve">
+    <value>Can not add an invoice to a cart containing items.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ItemLinesNotAllowedWithInvoiceLine" xml:space="preserve">
+    <value>Can not add items to a cart containing an invoice.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MultipleInvoiceLinesNotAllowed" xml:space="preserve">
+    <value>Can not add an invoice to a cart already containing an invoice.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerAccountRemovalNotAllowedForInvoiceSales" xml:space="preserve">
+    <value>Customer accounts can not be removed from carts containing invoices. Void the invoice line or the transaction.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvoiceLineNotAllowedInCartWithoutCustomerAccount" xml:space="preserve">
+    <value>Can not add an invoice to a cart without a customer account.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvoiceLineNotAllowedInCartWithDifferentCustomerAccount" xml:space="preserve">
+    <value>Can not add an invoice to a cart with a different customer account than is associated with the invoice.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvoiceDiscountNotAllowed" xml:space="preserve">
+    <value>Discounts on invoices are not allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AttributeTypeNotSupported" xml:space="preserve">
+    <value>One or more of attribute types is not supported while processing this request.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidAttributeValue" xml:space="preserve">
+    <value>The value '{0}' can't be used for '{1}'. Enter a new value and try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AttributeValueCannotBeNull" xml:space="preserve">
+    <value>The attribute value for attribute '{0}' can't be blank. Enter a new value and try again or contact the system admin.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AttributeDefinitionNotFound" xml:space="preserve">
+    <value>The action can't be completed. '{0}' hasn't been configured in headquarters. Please contact the system admin.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AttributeValueOutOfBounds" xml:space="preserve">
+    <value>An invalid value was entered for '{0}'. Enter a new value between '{1}' and '{2}' and try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AttributeTypeMismatch" xml:space="preserve">
+    <value>The value for '{0}' is invalid. Enter a new value and try again or contact the system admin.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MixingSalesAndReturnsProhibited" xml:space="preserve">
+    <value>You cannot mix sales and return lines in the same receipt. Void conflicting lines and use separate transactions to register sales and returns.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidCouponCode" xml:space="preserve">
+    <value>The coupon code {0} is invalid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CouponRequiresCustomerOnCart" xml:space="preserve">
+    <value>Coupon code {0} requires a customer to be added to the cart.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ExclusiveCouponCannotBeAppliedWithOtherCoupons" xml:space="preserve">
+    <value>Coupon code {0} is exclusive and cannot be applied with other coupons.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CouponsNotSupportedOnSalesQuotations" xml:space="preserve">
+    <value>Coupons are not supported on sales quotations.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_FeatureNotSupportedInHeadquarters" xml:space="preserve">
+    <value>This functionality is not supported by the headquarters server. Please contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CouponExceedsDefinedUsageLimits" xml:space="preserve">
+    <value>The coupon code(s): {0} exceed defined usage limits.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UpdatingCouponsNotSupportedOnPickup" xml:space="preserve">
+    <value>Updating coupons is not supported on pickup customer orders.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UserCannotAcceptFulfillmentLines" xml:space="preserve">
+    <value>The user doesn't have permission to accept fulfillment lines.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UserCannotRejectFulfillmentLines" xml:space="preserve">
+    <value>The user doesn't have permission to reject fulfillment lines.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UserCannotMassActivation" xml:space="preserve">
+    <value>The user doesn't have permission to perform mass activation.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RemoveAddPaymentMethodConfigurationNotDefined" xml:space="preserve">
+    <value>'Remove/Add payment method' is not defined in store configuration. Please contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_OverrideDepostAmountShouldBeLargerThanCarriedOutAmount" xml:space="preserve">
+    <value>Override deposit amount should be larger than carried out amount.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_IncomeExpenseCartDoesNotAllowGiftCardLine" xml:space="preserve">
+    <value>Gift card lines cannot be added to an income or expense account transaction.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MixingItemIdsAndProductIdsProhibited" xml:space="preserve">
+    <value>Item Id and Product Id in the same request is not supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UpdateAsyncCustomerNotSupported" xml:space="preserve">
+    <value>Editing async customers isn't supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RestrictPrintingReceiptCopy_AlreadyRegistered" xml:space="preserve">
+    <value>You cannot print a copy of the receipt. A copy of the receipt is already registered. Contact your manager.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RestrictPrintingReceiptCopy_HQisNotAvailable" xml:space="preserve">
+    <value>You cannot print a copy of a receipt when Headquarters is not available. Contact your manager.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RestrictPrintingReceiptCopy" xml:space="preserve">
+    <value>You cannot print a copy of a receipt. Contact your manager.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SerialNumberMissing" xml:space="preserve">
+    <value>The serial number is missing for one or more items. Assign a serial number to items and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SerialNumberMissingInCustomerOrder" xml:space="preserve">
+    <value>The serial number is missing for one or more items. Assign a serial number to the carry out items and try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidOrderType" xml:space="preserve">
+    <value>To create a transfer order the order type needs to be one of the following: transferIn, transferOut or transferOrder.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Missing_LocationId" xml:space="preserve">
+    <value>From and to InventLocationId is required when creating or updating a transfer order.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Missing_ReceiveDate" xml:space="preserve">
+    <value>ReceiveDate is required when creating or updating a transfer order.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Missing_ShipDate" xml:space="preserve">
+    <value>ShipDate is required when creating or updating a transfer order.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ShippingSerializedProductsNotSupported" xml:space="preserve">
+    <value>Shipping serialized products from POS is not supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ShippingMultipleOrdersNotSupported" xml:space="preserve">
+    <value>Shipping multiple orders is not supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidProductDimensionCombinations" xml:space="preserve">
+    <value>Product dimension combinations is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnableToOpenShift" xml:space="preserve">
+    <value>There was a problem opening the shift. Please try again.</value>
+    <comment>This should never happen. If this error happens then number sequence on client has issues and need investigation.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_InvalidShift" xml:space="preserve">
+    <value>The shift you were working on is invalid. Please open a new shift.</value>
+    <comment>There is already a closed shift with given shift identifier and terminal identifier.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CartAlreadyCheckedOut" xml:space="preserve">
+    <value>You cannot modify the transaction because it has already been completed. Tender this transaction again to continue.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SuspendedTransactionNotFound" xml:space="preserve">
+    <value>This transaction cannot be recalled. Either it has been recalled in a different POS terminal or the transaction doesn't exist in the database.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CartContainsProductsForReturnOnly" xml:space="preserve">
+    <value>The cart only contains products that need to be returned. Add one or more products for sale and try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CartContainsProductsForReturn" xml:space="preserve">
+    <value>The lines that you've selected have one or more products that need to be returned. Select only lines for sale and try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerBlockedForLoyaltyEnrollment" xml:space="preserve">
+    <value>The user cannot be enrolled in the loyalty program.</value>
+    <comment>The customer is blocked for loyalty enrollment.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TransactionServiceLoyaltySenderFault" xml:space="preserve">
+    <value>A loyalty card number cannot be generated because setup is incomplete. Please try again later.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidLinkedPayment" xml:space="preserve">
+    <value>The linked payment is invalid or does not exist.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InactiveCouponCode" xml:space="preserve">
+    <value>The coupon code is not active and cannot be validated.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ExpiredCouponCode" xml:space="preserve">
+    <value>The coupon code {0} has expired and cannot be validated.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NotStartedCouponCode" xml:space="preserve">
+    <value>The coupon code {0} cannot be applied. The coupon start date is later than today.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ExceededUsageLimitCouponCode" xml:space="preserve">
+    <value>The coupon code {0} has exceeded the defined usage limit.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_LoyaltyCardNotFound" xml:space="preserve">
+    <value>The loyalty card number wasn't found.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidResumeCartRequest" xml:space="preserve">
+    <value>CartId and ReceiptId are null or empty. To resume a suspended cart, you must provide at least one CartId or ReceiptId.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AddressLengthExceeded" xml:space="preserve">
+    <value>The full address exceeds the maximum number of {0} characters allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CountyLengthExceeded" xml:space="preserve">
+    <value>The county exceeds the maximum number of {0} characters allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_StreetLengthExceeded" xml:space="preserve">
+    <value>The street exceeds the maximum number of {0} characters allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NotesLengthExceeded" xml:space="preserve">
+    <value>The notes exceeds the maximum number of {0} characters allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CrossStoreProductSearchNotSupportedInOnlineChannel" xml:space="preserve">
+    <value>Online channel search is limited to products assorted in the same channel.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerOrDirectoryPartyNotFound" xml:space="preserve">
+    <value>The loyalty card cannot be issued for this customer at this time. Please try again later.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ExtensibleMicrosoft_Dynamics_Commerce_Runtime_ExtensibleTransactionTypeNotFound" xml:space="preserve">
+    <value>The specified extensible transaction type was not found.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Extensible_Enumeration_Data_Duplicate" xml:space="preserve">
+    <value>The data used to initialize the extensible enumeration type has duplicated records. The enumeration type name: {0}.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Extensible_Enumeration_Empty_Name" xml:space="preserve">
+    <value>Extensible enumeration member instance name cannot be null or empty. The enumeration type name: {0}.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Extensible_Enumeration_Incompatible_CSharp_Enumeration" xml:space="preserve">
+    <value>Extensible enumeration is incompatible with C Sharp enumeration member. The extensible enumeration type name: {0}. The C Sharp enumeration type name: {1}.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Extensible_Enumeration_Initialization_Data_Not_Exists" xml:space="preserve">
+    <value>There is no data to initialize the extensible enumeration type. The enumeration type name: {0}.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Extensible_Enumeration_Member_Not_Found_By_Name" xml:space="preserve">
+    <value>Extensible enumeration '{0}' of type '{1}' doesn’t exist in the channel database. Initialize the extensible enumeration in Retail headquarters and run the CDX jobs.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Extensible_Enumeration_Member_Not_Found_By_Value" xml:space="preserve">
+    <value>Extensible enumeration '{0}' of type '{1}' doesn’t exist in the channel database. Initialize the extensible enumeration in Retail headquarters and run the CDX jobs.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Extensible_Enumeration_No_CSharp_Enumeration_Defined" xml:space="preserve">
+    <value>Cannot access enumeration member of type {0} by using CSharp enumeration type while there is no CSharp enumeration type associated with it.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Extensible_Enumeration_Type_Attribute_Not_Found" xml:space="preserve">
+    <value>Type: {0} needs to be marked by ExtensibleEnumerationTypeAttribute to specify its corresponding enumeration type at AX side.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CrossStoreGetActivePriceNotSupportedInOnlineChannel" xml:space="preserve">
+    <value>Online channel 'Get Active Price' functionality is limited to products assorted in the same channel.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UpdateClientBookNotSupported" xml:space="preserve">
+    <value>Clienteling feature is not enabled in headquarters. Please contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CompositionAssemblyLoadingError" xml:space="preserve">
+    <value>Commerce runtime failed to load '{0}' assembly.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CompositionTypeLoadingError" xml:space="preserve">
+    <value>Commerce runtime failed to load '{0}' type.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NotValidLastModifiedDateTimeFromValue" xml:space="preserve">
+    <value>Cart search filter is not valid. Please contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MissingRequiredCartTenderLines" xml:space="preserve">
+    <value>Payment information provided is not complete or not correct.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidEmailAddress" xml:space="preserve">
+    <value>The email address is invalid. Verify the email address and then try again.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CreateCustomerTimelineItemNotSupported" xml:space="preserve">
+    <value>Creating customer timeline item is not supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RequestCustomerTimelineItemsNotSupported" xml:space="preserve">
+    <value>Reading customer timeline items is not supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RequestCustomerTimelineItemTypesNotSupported" xml:space="preserve">
+    <value>Reading customer timeline item types is not supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UpdateCustomerTimelineItemNotSupported" xml:space="preserve">
+    <value>Updating customer timeline item is not supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NotValidRefinerRecordIdForCustomerSearchKeywordRefiner" xml:space="preserve">
+    <value>The customer search keyword refiner with record id '{0}' did not match with a unique customer search field.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DocumentOperationNotSupportedInHeadquarters" xml:space="preserve">
+    <value>Document operation is not supported by the headquarters server. Please contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_FiscalService_NotFound" xml:space="preserve">
+    <value>The fiscal service wasn't found. Please contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NotValidCartTypeForCheckout" xml:space="preserve">
+    <value>Checkout of cart with type '{0}' is not allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NotValidCustomerOrderModeForCheckout" xml:space="preserve">
+    <value>Checkout of cart with customer order mode '{0}' is not allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MissingSequentialSignature" xml:space="preserve">
+    <value>Fiscal sequential data is a required parameter for internal connector.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TaskManagementNotSupported" xml:space="preserve">
+    <value>Task management operation is not supported. Please contact your system administrator to upgrade HQ component.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidChecklistTasksUpdateRequest" xml:space="preserve">
+    <value>Update for checklist tasks is not allowed. Please contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ChecklistTasksCreateNotAllowed" xml:space="preserve">
+    <value>The user is not authorized to perform this operation. Please contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NotValidTransferOrder" xml:space="preserve">
+    <value>The transfer order is not valid in the HQ. The commit cannot be proceeded.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NotValidTransferOrderLines" xml:space="preserve">
+    <value>Some lines are no longer found in the master document in HQ, these lines will be deleted and not received.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidConfigurationExtensionsSection" xml:space="preserve">
+    <value>Commerce Runtime configuration extension couldn't be loaded. Error: {0}. Line: {1}</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UnableToAuthorizePaymentCardTypeMissingOrNotSupported" xml:space="preserve">
+    <value>The payment couldn't be authorized. Card Type Id in 'TokenizedPaymentCard' is missing or provided Card Type Id is not supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_FraudRisk" xml:space="preserve">
+    <value>The order cannot be processed at this time. Please try again later.</value>
+    <comment>A message returning to the client application, such as, for instance, eCommerce Front End, and can be rendered to the customer. It corresponds to the error when Dynamics Fraud Protection detected a risk of fraud and as a result we interrupt the order creation process.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentOverreceivingToTransferOrderIsNotAllowed" xml:space="preserve">
+    <value>You cannot receive a quantity greater than the quantity shipped. To receive additional quantity, contact the Outbound shipper to update the shipment data to include this additional quantity.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AddingLinesToOrderIsNotAllowed" xml:space="preserve">
+    <value>Product not found, adding a new line is not allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentOverReceivedExceedsThreshold" xml:space="preserve">
+    <value>The quantity entered exceeds the over-delivery tolerance. The maximum total quantity you can receive for this product is '{0}'.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentOverreceivingNotEnabled" xml:space="preserve">
+    <value>Over-receiving is prohibited. The maximum total quantity you can receive for this product is '{0}'.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentOvershippingNotEnabled" xml:space="preserve">
+    <value>Over-delivery is prohibited. The maximum total quantity you can ship for this product is '{0}'.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentOverShippedExceedsThreshold" xml:space="preserve">
+    <value>The quantity entered exceeds the over-delivery tolerance. The maximum total quantity you can ship for this product is '{0}'.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentOverdeliveringToTransferOrderIsNotAllowed" xml:space="preserve">
+    <value>You cannot ship a quantity greater than the quantity ordered. To ship additional quantity, contact the orderer to update the shipment data to include this additional quantity.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentReceiptIdNotValid" xml:space="preserve">
+    <value>You need to provide a valid receipt id for current document.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DefaultLocationNotFoundForWarehouse" xml:space="preserve">
+    <value>Default location is not found for current warehouse. Please contact your system administrator to configure default location for current warehouse.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentNotEnoughApplicableLinesForUpdateLinesByProduct" xml:space="preserve">
+    <value>The quantity entered for this product is greater than the quantity ordered. Please enter a smaller number. </value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentExceedMaximumQuantity" xml:space="preserve">
+    <value>The quantity entered for this line is greater than the quantity ordered. Please enter a smaller number. </value>
+  </data>
+  <data name="Microsoft_Dynamics_RetailServer_BadRequest" xml:space="preserve">
+    <value>The web request is malformed and couldn't be processed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_StoreOrgUnitNameMissing" xml:space="preserve">
+    <value>Org unit name missing from a store. Make sure the HQ data was synchronized to the Channel DB.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidItemTaxGroup" xml:space="preserve">
+    <value>The sale cannot be completed because item sales tax groups are not specified for some of the lines in the cart. You need to either apply tax override or void the products.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MixingGiftCardsAndDepositLinesNotAllowed" xml:space="preserve">
+    <value>Item ids and product ids cannot be mixed in the sequential signing request.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CompositionComponentExportingError" xml:space="preserve">
+    <value>An error occurred during export of runtime compostion components. Details: {0}</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentRowVersionMismatch" xml:space="preserve">
+    <value>The document was updated by another session. Please refresh and retry.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_DuplicatedWarranty" xml:space="preserve">
+    <value>One line item cannot be warrantied by multiple warranty products.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidWarranty" xml:space="preserve">
+    <value>Product({1}) is not setup to be warrantied by Product({0}).</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InvalidWarrantyLineQuantity" xml:space="preserve">
+    <value>Warranty product’s line item cannot have a quantity greater than one.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_AssociatedWarrantableIsVoided" xml:space="preserve">
+    <value>You cannot revert a warranty when the associated product is void.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SalesOrderNotFound" xml:space="preserve">
+    <value>The operation cannot be completed because sales order is not found.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SalesOrderVoided" xml:space="preserve">
+    <value>The sales order is void.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_WarrantyAlreadyAdded" xml:space="preserve">
+    <value>Line item in transaction ID: {0} with line number: {1} is already warrantied.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_WarrantyAlreadyBought" xml:space="preserve">
+    <value>A warranty has already been purchased for the line with transaction ID: {0}, line number: {1}, product ID: {2}, item ID: {3}.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_WarrantyNotApplicableByPrice" xml:space="preserve">
+    <value>This warranty is not applicable for current price of the line item.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_WarrantyOperationalLineNotFound" xml:space="preserve">
+    <value>Unable to find the operational sales line for the warranty.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_WarrantyForReturnedItemNotAllowed" xml:space="preserve">
+    <value>You cannot buy warranty on a previously returned item.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_IsNotWarranty" xml:space="preserve">
+    <value>The line item is not a warranty product so the WarrantableTransactionId/WarrantableLineNumber/WarrantableSerialNumber fields must be empty.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotChangeWarrantableProductWhenItAssociatesWarranty" xml:space="preserve">
+    <value>Cannot change product for the selected line item as it is warrantied.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_WarrantyForCustomerOrderNotSupported" xml:space="preserve">
+    <value>Extended warranty currently does not support customer order.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_WarrantyNotEmptyForReturn" xml:space="preserve">
+    <value>Warranty related fields must be all empty for a return line.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotSpecifyBothWarrantableLineNumberAndWarrantiedId" xml:space="preserve">
+    <value>Cannot specify both WarrantableLineNumber and WarrantiedId at the same time.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CannotHaveMultipleWarrantablesOrWarrantiesWithSameWarrantiedId" xml:space="preserve">
+    <value>Cannot have multiple warrantable products or warranty products with same WarrantiedId.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_OnlySerializedProductCanHaveWarranty" xml:space="preserve">
+    <value>Cannot add warranty for non-serialized product.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CrossCustomerWarrantyNotAllowed" xml:space="preserve">
+    <value>The line item being warrantied and warranty line item must be for the same customer.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CrossCustomerWarrantyReturnNotAllowed" xml:space="preserve">
+    <value>The warranty line item being returned must be for the same customer as the original warranty line item.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerChangeNotAllowedWithWarrantyLines" xml:space="preserve">
+    <value>The customer cannot be changed when there is a warranty line item warranting line item in another transaction.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerChangeNotAllowedWithWarrantyReturn" xml:space="preserve">
+    <value>The customer cannot be changed when returning a warranty line item.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CartTypeChangeNotAllowedWhenWarrantableInDifferentOrder" xml:space="preserve">
+    <value>Cannot change cart type when warrantied item is in different order.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_WarrantyInconsistentCartType" xml:space="preserve">
+    <value>Cart type should be the same when warranty and its warrantied item are in different orders.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_WarrantyRelationCombiningCashAndCarryAndCustomerOrderNotAllowed" xml:space="preserve">
+    <value>A warranty relation cannot combine a cash-and-carry order and a customer order.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PaymentViolatesReturnPolicy" xml:space="preserve">
+    <value>This payment cannot be added, because it is not allowed by the return policy.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_PolicyBypassNotAllowed" xml:space="preserve">
+    <value>The user is not allowed to bypass the return policy.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CardTypeNotValid" xml:space="preserve">
+    <value>The card type is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_GiftCardBalanceInquiryFailed" xml:space="preserve">
+    <value>The gift card balance inquiry failed with an error.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_NoResponseFromGatewayForGiftCardBalanceInquiry" xml:space="preserve">
+    <value>The external gateway did not respond to a gift card balance inquiry request.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TaxRegistrationInvalidCategorySetup" xml:space="preserve">
+    <value>The registration number cannot be saved. Please ensure that the registration category is set up in the headquarters and try again.</value>
+    <comment>Error message when trying to create or update current tax registration number with an incorrect registration category setup.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TaxRegistrationFormatNotValid" xml:space="preserve">
+    <value>Registration number {0} must have {1} characters and the format is {2}.</value>
+    <comment>Error message when registration number format is incorrect.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TaxRegistrationIsPrimaryAddressRestricted" xml:space="preserve">
+    <value>The registration number cannot be saved because the address is not marked as primary for country/region. The registration number should be created from Retail Headquarters.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TaxRegistrationNumberMustBeUnique" xml:space="preserve">
+    <value>Registration number must be unique for the registration type {0} and {1}. Enter a unique registration number.</value>
+    <comment>Registration number unique validation error.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_ElectronicAddressTypeNotValid" xml:space="preserve">
+    <value>The electronic address type is not valid.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_RecipientAddressCountExceededMaximumAllowed" xml:space="preserve">
+    <value>The number of recipient addresses exceeded allowed maximum - {0}.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_VisualProfileNotFound" xml:space="preserve">
+    <value>There is no visual profile information found for the device.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentNotValidStatus" xml:space="preserve">
+    <value>This action is not supported while the document is in a {0} status.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_UpdateInventoryDocumentStatusUnsupportedTransition" xml:space="preserve">
+    <value>Updating the status from {0} to {1} is not supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentOperationCommitFailed" xml:space="preserve">
+    <value>An unexpected result {0} was returned, please try again later or contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentReceiptIdNotSupportedForGivenDocumentType" xml:space="preserve">
+    <value>A receipt id may not be captured for transfer orders.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentVersionNull" xml:space="preserve">
+    <value>This document cannot be processed. Version info is required. Please try again later or contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentNotValidVersion" xml:space="preserve">
+    <value>Delete operation failed due to version conflict.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SearchingWarehouseLocationsInMultipleWarehousesNotSupported" xml:space="preserve">
+    <value>Searching warehouse locations in multiple warehouses is not supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_SearchingWarehouseLocationsWithoutWarehouseNotSupported" xml:space="preserve">
+    <value>Searching warehouse locations without a warehouse specified is not supported.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryNoAvailableReceiveQtyTransferOrder" xml:space="preserve">
+    <value>Receiving is prohibited on this transfer order line. Receiving now data can only be entered when the quantity shipped is greater than 0 and when there is available quantity remaining to be received. You may try refreshing this document to ensure the application has the most recent data from HQ about this transfer order line.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_OptimizedProductAvailabilityJobNotSupported" xml:space="preserve">
+    <value>This environment has been configured to use the optimized product availability job in Commerce shared parameters. If this error is from GetProductAvailabilities and GetAvailableInventoryNearby legacy APIs, your shared parameters configuration does not support these older API’s.  Please use GetEstimatedAvailability or GetEstimatedProductWarehouseAvailability APIs.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentSerialNumberNotMatch" xml:space="preserve">
+    <value>There is no line with a not registered serial number that matches what you just entered. Please enter a different serial number.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentSerialNumberLinesFulfilled" xml:space="preserve">
+    <value>You cannot register or validate more serial numbers than the receiving now quantity.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentSerialNumberDuplicated" xml:space="preserve">
+    <value>This serial number has already been entered. Please enter a different number.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentSerialNumberRequired" xml:space="preserve">
+    <value>Serial number is required but has not been provided for products {0}. Please fix before submission.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentNotAllowToUpdatePostedSerialNumbers" xml:space="preserve">
+    <value>Updating a registered serial number is not allowed.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentNotBlankSerialNumberRequired" xml:space="preserve">
+    <value>Serial number is required for this item.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentSerialNumberLineNonIntegerQuantityEntered" xml:space="preserve">
+    <value>Receiving serialized items with non-integer quantity is not supported. Please enter an integer quantity.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentNotSupportedHeadquarterVersion" xml:space="preserve">
+    <value>This function is not supported in the version that you are using. Please update to Commerce Headquarters version 10.0.11 or later.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentTransferOrderLineNotAllowToClose" xml:space="preserve">
+    <value>The quantity you are attempting to close exceeds under-delivery parameters.  This line cannot be closed until a quantity of {0} is shipped.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentTransferOrderUnderDeliveryBelowTolerance" xml:space="preserve">
+    <value>The quantity entered is below the under-delivery tolerance.  Remove the Close remainder flag for the line or increase your Shipping now quantity.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentTransferOrderUnderDeliveryNotAllowed" xml:space="preserve">
+    <value>The accept underdelivery flag is not enabled. It’s not allowed to set the Close remainder flag.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TokenizedPaymentCardNotExpected" xml:space="preserve">
+    <value>TokenizedPaymentCard may not be initialized by the time the response property AdditionalContext.Action is being added into the response since if the property is being added it means an additional action must be performed by the client to make a Card Token available.</value>
+    <comment>Indicates that a TokenizedPaymentCard was not expected at this point.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_MultipleCustomerAccountPaymentsNotAllowed" xml:space="preserve">
+    <value>A customer account payment has already been applied and only one is allowed per transaction.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentValidationResultCategoryMustBeSpecified" xml:space="preserve">
+    <value>You must specify the value of validation result category.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentValidationResultCategoryCanOnlyBeSpecifiedOnce" xml:space="preserve">
+    <value>The value of validation result category can only be specfied once.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryDocumentDoesNotExist" xml:space="preserve">
+    <value>This document cannot be found. Please try again later or contact your system administrator.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_InventoryInboundOutboundDocumentsValidationNotSupported" xml:space="preserve">
+    <value>Inventory inbound outbound document validation feature is disabled in headquarters. Please contact your system administrator to enable the feature.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_TotalDiscountsNotAllowedForMixSalesAndReturn" xml:space="preserve">
+    <value>The discount cannot be applied to the transaction because it contains both purchase and return items. Select the line you want to discount and apply the discount on that line.</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_CustomerAccountPaymentForCustomerWithoutAllowOnAccount" xml:space="preserve">
+    <value>This customer is not allowed to pay on account.</value>
+  </data>
+</root>

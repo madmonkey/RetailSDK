@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CrossLoyaltySample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.CrossLoyaltySample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CrossLoyaltySample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.CrossLoyaltySample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CrossLoyaltySample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.CrossLoyaltySample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CrossLoyaltySample\obj\Debug\netstandard2.0\Runtime.Extensions.CrossLoyaltySample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CrossLoyaltySample\obj\Debug\netstandard2.0\Runtime.Extensions.CrossLoyaltySample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CrossLoyaltySample\obj\Debug\netstandard2.0\Runtime.Extensions.CrossLoyaltySample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CrossLoyaltySample\obj\Debug\netstandard2.0\Runtime.Extensions.CrossLoyaltySample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CrossLoyaltySample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.CrossLoyaltySample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CrossLoyaltySample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.CrossLoyaltySample.pdb

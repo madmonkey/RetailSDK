@@ -1,0 +1,262 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.PaymentProcessor.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentProcessor.Common.ConnectorConvertor">
+            <summary>
+            Connector convertor, converts desktop connector into the portable connector interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.ConnectorConvertor.GetConnectorsFromDirectory(System.String)">
+            <summary>
+            Lists the connectors in a directory, including portable version and desktop version.
+            When both versions present, only list the portable version.
+            </summary>
+            <param name="connectorPathValue">The path to the connector directory.</param>
+            <returns>IEnumerable of payment connectors.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.ConnectorConvertor.FetchDesktopConnectors(System.Collections.Generic.IList{System.Reflection.Assembly})">
+            <summary>
+            Fetch the desktop connector and convert it to the portable interface.
+            </summary>
+            <param name="assemblies">List of desktop connector assemblies to adapt.</param>
+            <returns>A collection of converted desktop connectors to the portable interface.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper">
+            <summary>
+            Wrapper class between Non-Portable to Portable.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.#ctor(Microsoft.Dynamics.Retail.PaymentSDK.IPaymentProcessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper"/> class.
+            </summary>
+            <param name="processor">Payment processor.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.Name">
+            <summary>
+            Gets the connector name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.Copyright">
+            <summary>
+            Gets the copyright.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.PrimaryProcessor">
+            <summary>
+            Gets or sets a value indicating whether it is the primary processor.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.SupportedCountries">
+            <summary>
+            Gets the supported countries.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.Authorize(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request,Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentProperty[])">
+            <summary>
+            Call the authorize method on desktop connector.
+            </summary>
+            <param name="request">Portable request.</param>
+            <param name="requiredInteractionProperties">Portable iteration properties.</param>
+            <returns>Portable response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.Capture(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request)">
+            <summary>
+            Call the capture method on desktop connector.
+            </summary>
+            <param name="request">Portable request.</param>
+            <returns>Portable response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.ImmediateCapture(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request,Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentProperty[])">
+            <summary>
+            Call the immediate capture method on desktop connector.
+            </summary>
+            <param name="request">Portable request.</param>
+            <param name="requiredInteractionProperties">Portable iteration properties.</param>
+            <returns>Portable response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.Void(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request)">
+            <summary>
+            Call the void method on desktop connector.
+            </summary>
+            <param name="request">Portable request.</param>
+            <returns>Portable response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.Refund(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request,Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentProperty[])">
+            <summary>
+            Call the refund method on desktop connector.
+            </summary>
+            <param name="request">Portable request.</param>
+            <param name="requiredInteractionProperties">Portable iteration properties.</param>
+            <returns>Portable response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.Reversal(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request)">
+            <summary>
+            Call the reversal method on desktop connector.
+            </summary>
+            <param name="request">Portable request.</param>
+            <returns>Portable response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.Reauthorize(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request,Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentProperty[])">
+            <summary>
+            Call the reauthorize method on desktop connector.
+            </summary>
+            <param name="request">Portable request.</param>
+            <param name="requiredInteractionProperties">Portable iteration properties.</param>
+            <returns>Portable response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.GenerateCardToken(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request,Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentProperty[])">
+            <summary>
+            Call the generate card token method on desktop connector.
+            </summary>
+            <param name="request">Portable request.</param>
+            <param name="requiredInteractionProperties">Portable iteration properties.</param>
+            <returns>Portable response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.GetPaymentAcceptPoint(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request)">
+            <summary>
+            GetPaymentAcceptPoint gets the payment accepting point from the payment provider, e.g. a payment page URL.
+            </summary>
+            <param name="request">Request object needed to process the GetPaymentAcceptPoint transaction.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.RetrievePaymentAcceptResult(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request)">
+            <summary>
+            RetrievePaymentAcceptResult retrieves the payment accepting result from the payment provider after the payment is processed externally.
+            This method pairs with GetPaymentAcceptPoint.
+            </summary>
+            <param name="request">Request object needed to process the RetrievePaymentAcceptResult transaction.</param>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.ActivateGiftCard(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request,Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentProperty[])">
+            <summary>
+            Call the activate gift card method on desktop connector.
+            </summary>
+            <param name="request">Portable request.</param>
+            <param name="requiredInteractionProperties">Portable iteration properties.</param>
+            <returns>Portable response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.LoadGiftCard(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request,Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentProperty[])">
+            <summary>
+            Call the load gift card method on desktop connector.
+            </summary>
+            <param name="request">Portable request.</param>
+            <param name="requiredInteractionProperties">Portable iteration properties.</param>
+            <returns>Portable response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.BalanceOnGiftCard(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request,Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentProperty[])">
+            <summary>
+            Call the balance on gift card method on desktop connector.
+            </summary>
+            <param name="request">Portable request.</param>
+            <param name="requiredInteractionProperties">Portable iteration properties.</param>
+            <returns>Portable response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.GetMerchantAccountPropertyMetadata(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request)">
+            <summary>
+            Call the get merchant account property metadata method on desktop connector.
+            </summary>
+            <param name="request">Portable request.</param>
+            <returns>Portable response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.DesktopToPortableWrapper.ValidateMerchantAccount(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request)">
+            <summary>
+            Call the validate merchant account method on desktop connector.
+            </summary>
+            <param name="request">Portable request.</param>
+            <returns>Portable response.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentProcessor.Common.TypeConverter">
+            <summary>
+            Type converters between desktop types and portable types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.TypeConverter.ToPortable(Microsoft.Dynamics.Retail.PaymentSDK.Request)">
+            <summary>
+            Converts a desktop request to a portable request.
+            </summary>
+            <param name="source">The desktop request.</param>
+            <returns>The portable request.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.TypeConverter.ToDesktop(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Request)">
+            <summary>
+            Converts a portable request to a desktop request.
+            </summary>
+            <param name="source">The portable request.</param>
+            <returns>The desktop request.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.TypeConverter.ToPortable(Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty[])">
+            <summary>
+            Converts a desktop payment property array to a portable payment property array.
+            </summary>
+            <param name="source">The desktop payment property array.</param>
+            <returns>The portable payment property array.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.TypeConverter.ToPortable(Microsoft.Dynamics.Retail.PaymentSDK.PaymentProperty)">
+            <summary>
+            Converts a desktop payment property to a portable payment property.
+            </summary>
+            <param name="source">The desktop payment property.</param>
+            <returns>The portable payment property.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.TypeConverter.ToDesktop(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Response)">
+            <summary>
+            Converts a portable response to a desktop response.
+            </summary>
+            <param name="source">The portable response.</param>
+            <returns>The desktop response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.TypeConverter.ToPortable(Microsoft.Dynamics.Retail.PaymentSDK.Response)">
+            <summary>
+            Converts a desktop response to a portable response.
+            </summary>
+            <param name="source">The desktop response.</param>
+            <returns>The portable response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.TypeConverter.ToDesktop(Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentProperty[])">
+            <summary>
+            Converts a portable payment property array to a desktop payment property array.
+            </summary>
+            <param name="source">The portable payment property array.</param>
+            <returns>The desktop payment property array.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.TypeConverter.ToDesktop(Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentProperty)">
+            <summary>
+            Converts a portable payment property to a desktop payment property.
+            </summary>
+            <param name="source">The portable payment property.</param>
+            <returns>The desktop payment property.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.TypeConverter.ToDesktop(Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentError[])">
+            <summary>
+            Converts a portable payment error array to a desktop payment error array.
+            </summary>
+            <param name="source">The portable payment error array.</param>
+            <returns>The desktop payment error array.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.TypeConverter.ToPortable(Microsoft.Dynamics.Retail.PaymentSDK.PaymentError[])">
+            <summary>
+            Converts a desktop payment error array to a portable payment error array.
+            </summary>
+            <param name="source">The desktop payment error array.</param>
+            <returns>The portable payment error array.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.TypeConverter.ToDesktop(Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentError)">
+            <summary>
+            Converts a portable payment error to a desktop payment error.
+            </summary>
+            <param name="source">The portable payment error.</param>
+            <returns>The desktop payment error.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentProcessor.Common.TypeConverter.ToPortable(Microsoft.Dynamics.Retail.PaymentSDK.PaymentError)">
+            <summary>
+            Converts a desktop payment error to a portable payment error.
+            </summary>
+            <param name="source">The desktop payment error.</param>
+            <returns>The portable payment error.</returns>
+        </member>
+    </members>
+</doc>

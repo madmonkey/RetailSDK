@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceModelInstallationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>RetailSelfService</Name>
+  <Description />
+  <InstallationDateTime>2020-08-22T19:39:16.9490604-07:00</InstallationDateTime>
+  <InstallationInfoFilePath>Q:\cmd\4\Drop\retail\Services\RetailSDK\Code\Packages\RetailSelfService\Scripts\InstallationInfo.xml</InstallationInfoFilePath>
+  <Version>10.0.569.10005</Version>
+  <Publisher>Microsoft Corporation</Publisher>
+  <GeneratedFromAXMetadata>false</GeneratedFromAXMetadata>
+  <Configuration />
+  <CustomName />
+  <CustomVersion />
+  <CustomDescription />
+  <CustomPublisher />
+  <ServiceModelGroup>Application</ServiceModelGroup>
+  <ReleaseVersion>10.0.13</ReleaseVersion>
+  <ProductRegisteredName>Microsoft Dynamics 365 for Finance and Operations</ProductRegisteredName>
+</ServiceModelInstallationInfo>

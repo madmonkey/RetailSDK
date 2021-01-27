@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
+  <Identity Name="Microsoft.Dynamics.Retail.Pos" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="e1fe5da7-72e1-49a7-8a09-f6474c44abee" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>Microsoft Dynamics Retail Modern POS application</DisplayName>
+    <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="Pos.html">
+      <Extensions>
+        <uap:Extension Category="windows.search" StartPage="Pos.html" />
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name=".xml">
+            <uap:DisplayName>XML Documents</uap:DisplayName>
+            <uap:SupportedFileTypes>
+              <uap:FileType>.xml</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+      </Extensions>
+      <uap:VisualElements DisplayName="ms-resource:string_0" Description="ms-resource:string_1" BackgroundColor="#7F4209" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png">
+        <uap:LockScreen Notification="badge" BadgeLogo="Assets\BadgeLogo.png" />
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\Square310x310Logo.png" Square71x71Logo="Assets\Square71x71Logo.png" ShortName="Retail Modern POS">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+            <uap:ShowOn Tile="square310x310Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen BackgroundColor="#FFFFFF" Image="Assets\SplashScreen.png" />
+      </uap:VisualElements>
+      <uap:ApplicationContentUriRules>
+        <uap:Rule Match="https://paymentacceptsample.cloud.int.dynamics.com/*" Type="include" WindowsRuntimeAccess="none" />
+        <uap:Rule Match="https://paymentacceptsample.cloud.dynamics.com/*" Type="include" WindowsRuntimeAccess="none" />
+        <uap:Rule Match="https://payments.dynamicsonline-onebox.dl:10481/paymentaccept/*" Type="include" WindowsRuntimeAccess="none" />
+        <uap:Rule Match="https://payments.dynamicsonline-int.com/paymentaccept/*" Type="include" WindowsRuntimeAccess="none" />
+        <uap:Rule Match="https://payments.dynamicsonline-ppe.com/paymentaccept/*" Type="include" WindowsRuntimeAccess="none" />
+        <uap:Rule Match="https://payments.dynamicsonline.com/paymentaccept/*" Type="include" WindowsRuntimeAccess="none" />
+        <uap:Rule Match="https://www.simplify.com" Type="include" WindowsRuntimeAccess="none" />
+        <uap:Rule Match="https://sandbox.simplify.com" Type="include" WindowsRuntimeAccess="none" />
+      </uap:ApplicationContentUriRules>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="privateNetworkClientServer" />
+    <Capability Name="internetClient" />
+    <uap:Capability Name="documentsLibrary" />
+    <!--
+        <m2:DeviceCapability Name="bluetooth.rfcomm">
+          <uap:Device Id="any">
+            <uap:Function Type="name:serialPort" />
+          </uap:Device>
+        </uap:DeviceCapability>    
+     -->
+    <DeviceCapability Name="proximity" />
+    <DeviceCapability Name="microphone" />
+    <DeviceCapability Name="pointOfService" />
+  </Capabilities>
+  <Extensions>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>clrhost.dll</Path>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.AsyncClientRequest" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.AsyncClientResponseMessage" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.LoadUploadTransactionResponseMessage" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.AsyncClientDownloadSession" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.AsyncClientOfflineSyncStatsLine" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.GetOfflineSyncStatsResponseMessage" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.DownloadFileResponseMessage" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.AppConfiguration" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.CommerceRuntimeRequest" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.HardwareStationRequest" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.HardwareStationRequestMessage" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.HardwareStationResponseMessage" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.HardwareStationHeader" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.ScreenCapture" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.TaskRecorderFileManager" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.TaskRecorderUploadFileResponseMessage" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.Logger" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.Dynamics.Commerce.ClientBroker.LoggerResponseMessage" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%DynamicsRetailBrokerPath%" />
+        </ActivatableClass>
+        <ActivatableClass ActivatableClassId="Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.IdentityModel.Clients.ActiveDirectory.UserIdentifier" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationResult" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+  </Extensions>
+</Package>

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ReassignCustomersFromClientBookDialog</title>
+</head>
+<body>
+    <div class="reassignCustomersFromClientBookDialog" data-bind="customControlInternal: 'reassignCustomersFromClientBookDialog'">
+        <div data-bind="dialog: {
+             title: Commerce.ViewModelAdapter.getResourceString('string_6555'),
+             visible: visible,
+             closeOnEscButton: true,
+             buttonClick: buttonClickHandler,
+             dialogCloseButtonClick: dialogCloseButtonClick,
+             buttons: [
+                { 
+                    label: Commerce.ViewModelAdapter.getResourceString('string_76'),
+                    operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK,
+                    isPrimary: false,
+                }
+             ]
+        },
+        axBubbleAttr: 'reassignCustomersFromClientBookDialog_reassignCustomersFromClientBookDialog'" class="modalWindowContentSection">
+            <label class="marginTop20 marginBottom8 h4 flexNone" data-bind="resx: {textContent: 'string_6561'}">Select employee</label>
+            <!-- Selected Client book Customer list -->
+            <div id="employeeListsButtonGrid" class="grow col">
+                <div id="employeeList" data-bind="tileList: {
+                        iteminvoked: itemInvokedHandler,
+                        itemDataSource: employees,
+                        field: 'Name',
+                        secondaryField: 'StaffId',
+                        tileType: Commerce.Controls.TileList.TileType.DoubleLine
+                    },
+                    axBubbleAttr: 'reassignCustomersFromClientBookDialog_employeeList'">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

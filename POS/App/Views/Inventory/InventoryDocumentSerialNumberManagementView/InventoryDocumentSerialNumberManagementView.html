@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Inventory Document Serial Number Management View</title>
+    <link href="InventoryDocumentSerialNumberManagementView.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment inventoryDocumentSerialNumberManagementView" data-bind="with: viewModel">
+        <div class="row height100Percent">
+            <div class="col grow flexBasis100Percent">
+                <div data-bind="pivot: { onselectionchanged: switchSelectionMode.bind($data), headerItemsAxBubbleAttr: 'inventoryDocumentSerialNumberManagementView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }"><!--Main content-->
+                    <!-- ko if: hasSingleOrderLineMode -->
+                    <div id="singleOrderLinePivotItem" data-bind="pivotItem: { headerResx: singleOrderLinePivotLabel }">
+                        <!-- ko if: isInSingleOrderLineMode() || isSingleOrderLineDatalistLoaded() -->
+                        <div id="singleOrderLineDataList" class="dataList" data-bind="dataList: {
+                                defaultListType: Commerce.Controls.DataList.ListType.List,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                selectionChanged: onSelectionChanged,
+                                ariaLabelResx: 'string_1877', /* Line items */
+                                incrementalDataSource: {
+                                    dataManager: $data,
+                                    callerMethod: getSerialNumberLinesForSingleOrderLineAsync,
+                                    pageSize: 80,
+                                    reloadCallBack: reloadSingleOrderLinePivotCallback,
+                                    updateItemCallBack: updateSingleOrderLineDataListCallback,
+                                },
+                                autoSelectFirstItem: true,
+                                autoFocusFirstItem: true,
+                                columns: singleOrderLineColumns,
+                                emptyDataListTemplate: 'emptySerialNumberDataListTemplate',
+                            },
+                            axBubbleAttr: 'inventoryDocumentSerialNumberManagementView_singleOrderLine'">
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+
+                    <!-- Empty list template for data list -->
+                    <script id="emptySerialNumberDataListTemplate" type="text/html">
+                        <div class="height100Percent row center" data-bind="axBubbleAttr: 'inventoryDocumentSerialNumberManagementView_emptyDataListTip'">
+                            <div class="center maxWidth432 col">
+                                <h2 class="padLeft20 padRight20 marginBottom20 width100Percent textCenter wrapText" data-bind="resx: { textContent: 'string_12819' } "></h2><!--You haven't received any serialized lines. To continue receiving, go to \"Receiving now\".-->
+                                <a href="#" class="h4" data-bind="resx: { textContent: 'string_12401' }, click: onGotoReceivingNow, axBubbleAttr: 'inventoryDocumentSerialNumberManagementView_emptyDataListTipAnchor'"></a><!--Receiving now-->
+                            </div>
+                        </div>
+                    </script>
+
+                    <div id="allOrderLinesPivotItem" data-bind="pivotItem: { headerResx: 'string_12801' }"> <!-- All serialized items -->
+                        <!-- ko if: isInAllOrderLinesMode() || isAllOrderLinesDatalistLoaded() -->
+                        <div id="allOrderLinesDataList" class="dataList" data-bind="dataList: {
+                                defaultListType: Commerce.Controls.DataList.ListType.List,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                selectionChanged: onSelectionChanged,
+                                ariaLabelResx: 'string_1877', /* Line items */
+                                incrementalDataSource: {
+                                    dataManager: $data,
+                                    callerMethod: getSerialNumberLinesForAllOrderLinesAsync,
+                                    pageSize: 80,
+                                    reloadCallBack: reloadAllOrderLinesPivotCallback,
+                                    updateItemCallBack: updateAllOrderLinesDataListCallback,
+                                },
+                                autoSelectFirstItem: true,
+                                autoFocusFirstItem: true,
+                                columns: allOrderLinesColumns,
+                                emptyDataListTemplate: 'emptySerialNumberDataListTemplate',
+                            },
+                            axBubbleAttr: 'inventoryDocumentSerialNumberManagementView_allOrderLines'">
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+
+                <div id="statsPane" class="primaryPanelBackgroundColor row height56 marginLeft20 marginRight20">
+                    <div class="marginLeft20 marginTop4 marginBottom8">
+                        <h3 data-bind="text: totalLines "></h3>
+                        <h6 data-bind="resx: { textContent: 'string_12424' }"></h6><!--TOTAL LINE-->
+                    </div>
+                    <div class="grow"></div>
+                    <div class="marginRight20 marginTop4 marginBottom8 textRight">
+                        <h3 data-bind="text: totalRegisteringQuantity "></h3>
+                        <h6 data-bind="resx: { textContent: 'string_12810' }"></h6><!--TOTAL REGISTERING-->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header details tab -->
+            <div id="detailsCol" class="col">
+                <div class="row">
+                    <h2 class="title marginTop8" data-bind="slideVisible: { isShowed: isDetailsPaneVisible() }, resx: { textContent: 'string_12422' }"></h2><!--Details-->
+                    <div class="grow"></div>
+                    <a href="#" id="btnToggleDetailsPane" class="icon-20x20 width40 height40 margin4 center fixedToggleDetailsPaneButton"
+                       data-bind="click: toggleDetailsPane, css: isDetailsPaneVisible() ? 'iconClosePane' : 'iconOpenPane', resx: { ariaLabel: 'string_13156' }"></a><!--Toggle details pane-->
+                </div>
+
+                <div class="col grow width320 marginTop8 marginRight20 marginBottom12 scrollY primaryPanelBackgroundColor" data-bind="slideVisible: { isShowed: isDetailsPaneVisible() }">
+                    <!-- ko if: hasSingleSelectedLine -->
+                    <div class="marginLeft12 marginRight12 marginTop12">
+                        <div data-bind="template: {
+                            name: 'inventoryDocumentLineProductInformationTemplate',
+                            data: {
+                                primaryImageUrl: singleSelectedLine().product.PrimaryImageUrl,
+                                itemName: singleSelectedLine().product.Name,
+                                itemId: singleSelectedLine().product.ItemId,
+                                productDimensionsDescription: singleSelectedLineProductDimensionsDescription }}"></div>
+
+                        <div class="col marginLeft12 marginRight12 marginBottom8">
+                            <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12800' }"></h4><!--Serial number-->
+                            <!-- ko if: isSingleSelectedLineSerialNumberNotRegistered -->
+                            <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onRegisterSerialNumberLineAsync, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_detailsPaneRegisterSerialNumber'">
+                                <div class="col center width16 height16 marginRight8">
+                                    <!-- ko if: isSingleSelectedLineSerialNumberEmpty -->
+                                    <div class="h2 iconNumberSymbol icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12811' }"></div><!--Register serial number-->
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: isSingleSelectedLineSerialNumberEmpty -->
+                                    <div class="h2 iconNumberSymbol icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12818' }"></div><!--Validate serial number-->
+                                    <!-- /ko -->
+                                </div>
+                                <!-- ko if: isSingleSelectedLineSerialNumberEmpty -->
+                                <h4 class="accentColor" data-bind="resx: { textContent: 'string_12811' }"></h4><!--Register serial number-->
+                                <!-- /ko -->
+                                <!-- ko ifnot: isSingleSelectedLineSerialNumberEmpty -->
+                                <h4 class="accentColor" data-bind="resx: { textContent: 'string_12818' }"></h4><!--Validate serial number-->
+                                <!-- /ko -->
+                            </div>
+                            <!-- /ko -->
+                            <!-- ko if: hasSingleSelectedLine() && !isSingleSelectedLineSerialNumberNotRegistered() -->
+                            <h3 class="marginTop4 marginBottom8" data-bind="text: singleSelectedLine().SerialNumber"></h3>
+                            <!-- ko if: isPurchaseOrder() && isSingleSelectedLineSerialNumberRegistering() -->
+                            <div class="row">
+                                <div class="row centerY shrink clickable" role="button" tabindex="0" data-bind="click: onEditSerialNumberLineAsync, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_detailsPaneEditSerialNumber'">
+                                    <div class="col center width16 height16 marginRight8">
+                                        <div class="h2 iconEdit icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_13172' }"></div><!--Edit-->
+                                    </div>
+                                    <h4 class="accentColor padRight20 separator" data-bind="resx: { textContent: 'string_13172' }"></h4><!--Edit-->
+                                </div>
+                                <div class="row centerY shrink clickable" role="button" tabindex="0" data-bind="click: onResetSerialNumberLineAsync, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_detailsPaneEditSerialNumber'">
+                                    <div class="col center width16 height16 marginLeft20 marginRight8">
+                                        <div class="h2 iconCancel icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_41' }"></div><!--Clear-->
+                                    </div>
+                                    <h4 class="accentColor marginRight20" data-bind="resx: { textContent: 'string_41' }"></h4><!--Clear-->
+                                </div>
+                            </div>
+                            <!-- /ko -->
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                    <!-- /ko -->
+
+                    <!-- ko ifnot: hasSingleSelectedLine -->
+                    <div class="col grow primaryPanelBackgroundColor highContrastBorderThin marginBottom12">
+                        <div class="textCenter padTop40">
+                            <!-- ko if: isInSingleOrderLineMode -->
+                            <div class="row center height72">
+                                <div class="h1 iconNumberSymbol icon-40x40 secondaryFontColor"></div>
+                            </div>
+                            <div class="h2 wrapText" data-bind="resx: { textContent: 'string_12803' }"></div><!--To start serial number registration, begin scanning serial numbers or select "Serial number".-->
+                            <!-- /ko -->
+                            <!-- ko if: isInAllOrderLinesMode -->
+                            <div class="row center height72">
+                                <div class="h1 iconBulletedList icon-40x40 secondaryFontColor" data-bind="resx: { ariaLabel: 'string_13157' }"></div><!--Multiple selected lines-->
+                            </div>
+                            <div class="h2 wrapText" data-bind="resx: { textContent: 'string_12431' }"></div><!--Select a line-->
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+
+                <!-- Minimized placeholder for details pane -->
+                <div class="col grow no-shrink marginRight20 marginBottom12" data-bind="visible: !isDetailsPaneVisible(), resx: { ariaLabel: 'string_12423' }"><!--Details section, unexpanded-->
+                    <div id="minimizedDetailsView" class="col no-shrink grow primaryPanelBackgroundColor width48"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

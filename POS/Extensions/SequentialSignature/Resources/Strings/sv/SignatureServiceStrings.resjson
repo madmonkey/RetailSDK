@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Ett fel uppstod när transaktionen skulle slutföras. Tjänsten för signeringsbegränsning är inte klar. Kontakta din systemadministratör.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Ett fel uppstod när transaktionen skulle slutföras. Länkad skattemässig transaktion innehåller data med fel format. Kontakta din systemadministratör.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "Ett fel uppstod när den senaste transaktionen för digital signatur återställdes. Offlinedatabasen kanske inte har synkroniserats. Kontakta systemadministratören.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

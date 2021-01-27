@@ -1,0 +1,8 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SuspendTransactionReceiptSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SuspendTransactionReceiptSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SuspendTransactionReceiptSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SuspendTransactionReceiptSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SuspendTransactionReceiptSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SuspendTransactionReceiptSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SuspendTransactionReceiptSample\obj\Debug\netstandard2.0\Runtime.Extensions.SuspendTransactionReceiptSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SuspendTransactionReceiptSample\obj\Debug\netstandard2.0\Runtime.Extensions.SuspendTransactionReceiptSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SuspendTransactionReceiptSample\obj\Debug\netstandard2.0\Runtime.Extensions.SuspendTransactionReceiptSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SuspendTransactionReceiptSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.SuspendTransactionReceiptSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SuspendTransactionReceiptSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.SuspendTransactionReceiptSample.pdb

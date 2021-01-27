@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout HeaderIncremenatlScrollableView</title>
+</head>
+<body>
+    <!-- Template for a category list node -->
+    <script id="categoryTreeDataRendererNodeTemplate" type="text/html">
+        <div class="pad0 marginTop0">
+            <div>
+                <button type="button" class="clickable noBorder pad0 textLeft baseFont" data-bind="click: $data.onClick">
+                    <div class="maxWidth220 padBottom20">
+                        <div class="h4 nowrap margin0 ellipsis primaryFontColor" data-bind="textAndTooltip: Commerce.Formatters.CategoryNameTranslator($data.category)">                          
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </script>
+
+    <!-- Container for the scrollable div -->
+    <script type="text/html" id="incrementalScrollableControlTemplate">
+        <div class="scrollY col">
+            <div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

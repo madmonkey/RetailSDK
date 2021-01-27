@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DateRangeInputDialog</title>
+
+    <link href="DateRangeInputDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'DateRangeInputDialog'">
+
+        <div class="dateRangeInputDialog">
+            <div data-bind="dialog:
+                {
+                    title: title,
+                    subTitle: subTitle,
+                    visible: visible,
+                    buttonClick: buttonClickHandler,
+                    closeOnEscButton: true,
+                    buttons: [
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_75'), operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK },
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK }
+                    ],
+                },
+                axBubbleAttr: 'dateRangeInputDialog_dateRangeInputDialog'">
+
+                <!-- dialog content -->
+                <div class="content">
+                    <div class="manual-toggle marginBottom12"
+                         data-bind="toggleSwitch: {
+                            title: 'string_4118', /* Start date */
+                            checked: false,
+                            onChange: toggleStartDateMode}">
+                    </div>
+
+                    <!--Date picker dropdown-->
+                    <div id="startDate" class="row marginBottom12"
+                         data-bind="datePicker:{ datePattern: '{day.integer(2)} {dayofweek.full}',
+                         current: startDate,
+                         disabled: isStartDateDisabled },
+                         resx: { ariaLabel: 'string_4118'},
+                         axBubbleAttr: 'dateRangeInputDialog_startDate'"></div>
+
+                    <div class="manual-toggle marginBottom12"
+                         data-bind="toggleSwitch: {
+                            title: 'string_4119', /* End date */
+                            checked: false,
+                            onChange: toggleEndDateMode}">
+                    </div>
+
+                    <!-- Date picker dropdown -->
+                    <div id="endDate" class="row marginBottom12"
+                         data-bind="datePicker:{ datePattern: '{day.integer(2)} {dayofweek.full}',
+                         current: endDate,
+                         disabled: isEndDateDisabled },
+                         resx: { ariaLabel: 'string_4119'},
+                         axBubbleAttr: 'dateRangeInputDialog_endDate'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

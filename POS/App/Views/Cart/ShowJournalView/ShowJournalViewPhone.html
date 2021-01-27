@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Show Journal View</title>
+    <link href="ShowJournalView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="showJournalView fragment" data-bind="with: viewModel, interaction: { journalSelectionChanged: { selectPivot: '#showJournalViewLinesPivot' }}">
+        <div id="showJournalViewPivot" data-bind="pivot: {}, visible: !isReceiptSelected()">
+
+            <!-- Transactions -->
+            <div id="showJournalViewPTransactionsPivot" data-bind="pivotItem: { headerResx: 'string_4080' }">
+                <!-- Journals -->
+                <div class="col grow flexBasis100Percent height100Percent">
+                    <!-- ko if: mode === Commerce.ViewModels.ShowJournalMode.ShowJournal -->
+                    <div id="transactionList"
+                         data-bind="dataList: {
+                                incrementalDataSource: {
+                                    dataManager: $data,
+                                    callerMethod: getJournalTransactionsAsync,
+                                    pageSize: 20,
+                                    onLoading: isBusyFlag,
+                                    reloadCallBack: reloadTransactionsCallback
+                                },
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                selectionChanged: $parent.journalSelectionChangedHandlerAsync.bind($parent),
+                                ariaLabelResx: 'string_4182',
+                                columns: transactionListColumns
+                                }">
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: mode === Commerce.ViewModels.ShowJournalMode.SingleCustomerSalesOrder  -->
+                    <div id="salesOrderList"
+                         data-bind="dataList: {
+                                incrementalDataSource: {
+                                    dataManager: $data,
+                                    callerMethod: getSalesOrderDetailsAsync,
+                                    pageSize: 20,
+                                    onLoading: isBusyFlag
+                                },
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                selectionChanged: $parent.journalSelectionChangedHandlerAsync.bind($parent),
+                                ariaLabelResx: 'string_4182',
+                                columns: [
+                                    { titleResx: 'string_4064', ratio: 20, collapseOrder: 7, minWidth: 200, field: 'CreatedDateTime', converter: 'Commerce.Core.Converter.ShortDateAndTime' },
+                                    { titleResx: 'string_4047', ratio: 10, collapseOrder: 1, minWidth: 100, field: 'StaffId', converter: 'Commerce.Core.Converter.textContentFormatter' },
+                                    { titleResx: 'string_4043', ratio: 15, collapseOrder: 2, minWidth: 100, field: 'TerminalId', converter: 'Commerce.Core.Converter.textContentFormatter' },
+                                    { titleResx: 'string_4066', ratio: 15, collapseOrder: 3, minWidth: 200, field: 'TransactionTypeValue', converter: 'Commerce.Core.Converter.TransactionTypeFormatter' },
+                                    { titleResx: 'string_3712', ratio: 10, collapseOrder: 4, minWidth: 100, field: '$data', converter: 'Commerce.Core.Converter.CustomerOrderHistoryStatusFormatter' },
+                                    { titleResx: 'string_4065', ratio: 20, collapseOrder: 6, minWidth: 200, field: 'ReceiptId', converter: 'Commerce.Core.Converter.textContentFormatter' },
+                                    { titleResx: 'string_4024', ratio: 10, collapseOrder: 5, minWidth: 100, field: 'TotalAmount', converter: 'Commerce.Core.Converter.PriceFormatter', isRightAligned: true }
+                                ]
+                                }">
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: mode === Commerce.ViewModels.ShowJournalMode.CustomerSalesOrders -->
+                    <div id="salesOrderByCustomerList"
+                         data-bind="dataList: {
+                                incrementalDataSource: {
+                                    dataManager: $data,
+                                    callerMethod: getSalesOrdersByCustomerIdAsync,
+                                    pageSize: 20,
+                                    onLoading: isBusyFlag
+                                },
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                selectionChanged: $parent.journalSelectionChangedHandlerAsync.bind($parent),
+                                ariaLabelResx: 'string_4182',
+                                columns: customerOrderHistoryListColumns
+                                }">
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+
+            <!-- Lines -->
+            <div id="showJournalViewLinesPivot" data-bind="pivotItem: { headerResx: 'string_181' }">
+                <div class="col grow height100Percent">
+                    <!-- Default lines grid to show -->
+                    <div class="standardGrid" data-bind="visible: mode === Commerce.ViewModels.ShowJournalMode.ShowJournal && incomeExpenseAccountLines().length == 0 && customerAccountDepositLines().length == 0,
+                            listView: {
+                                    itemDataSource: salesLines,
+                                    headerRowClass: 'tillLayout-SelectedLinesFields',
+                                    rowClass: 'tillLayout-SelectedLinesFields',
+                                    selectionMode: 'none',
+                                    strikethroughRow: 'IsVoided',
+                                    displayMode: Commerce.Controls.ListView.DisplayMode.Expandable,
+                                    expandableRowConverter: isTransactionGridRowExpandable.bind($data),
+                                    rowExpandedTemplateId: 'ShowJournallineItemColspan',
+                                    columns: [
+                                        { titleResx: 'string_110', cssClass: 'ratio5' , field: 'productName' },
+                                        { titleResx: 'string_111' , cssClass: 'ratio2 textRight' , field: 'Quantity' },
+                                        { titleResx: 'string_1238' , cssClass: 'ratio3 textRight' , field: 'NetAmountWithAllInclusiveTax' , converter: 'Commerce.Core.Converter.PriceFormatter' }
+                                    ],
+                                    ariaLabelResx: 'string_181' /* Lines */
+                                },
+                                axBubbleAttr: 'showJournalView_salesLines'">
+                    </div>
+
+                    <div class="standardGrid"
+                         data-bind="visible: incomeExpenseAccountLines().length > 0,
+                            listView: {
+                                itemDataSource: incomeExpenseAccountLines,
+                                headerRowClass: 'tillLayout-SelectedLinesFields',
+                                rowClass: 'tillLayout-SelectedLinesFields',
+                                selectionMode: 'none',
+                                columns: [
+                                    { titleResx: 'string_4131', cssClass: 'ratio5', field: 'AccountTypeValue', converter: 'Commerce.Core.Converter.IncomeExpenseAccountTypeFormatter' },
+                                    { titleResx: 'string_4057', cssClass: 'ratio3 textRight', field: 'IncomeExpenseAccount' },
+                                    { titleResx: 'string_4024', cssClass: 'ratio2 textRight', field: 'Amount', converter: 'Commerce.Core.Converter.PriceFormatter' }
+                                ],
+                                ariaLabelResx: 'string_4054' /* Accounts */
+                            }">
+                    </div>
+
+                    <div class="standardGrid"
+                         data-bind="visible: customerAccountDepositLines().length > 0,
+                            listView: {
+                                itemDataSource: customerAccountDepositLines,
+                                selectionMode: 'none',
+                                displayMode: Commerce.Controls.ListView.DisplayMode.Expandable,
+                                expandableRowConverter: isCustomerAccountDepositGridRowExpandable.bind($parent),
+                                rowExpandedTemplateId: 'ShowJournalCustomerAccountDepositLineItemColspan',
+                                columns: [
+                                    { titleResx: 'string_110', cssClass: 'ratio7', defaultValueResx: 'string_1927' },
+                                    { titleResx: 'string_4024', cssClass: 'ratio3 textRight', field: 'Amount', converter: 'Commerce.Core.Converter.PriceFormatter' }
+                                ],
+                                ariaLabelResx: 'string_6158' /* Customer account deposit */
+                            }">
+                    </div>
+
+                    <!-- Transaction lines grid for customer order history page only. -->>
+                    <div class="standardGrid" data-bind="visible: mode === Commerce.ViewModels.ShowJournalMode.CustomerSalesOrders || mode === Commerce.ViewModels.ShowJournalMode.SingleCustomerSalesOrder,
+                                listView: {
+                                    itemDataSource: salesLines,
+                                    headerRowClass: 'tillLayout-SelectedLinesFields',
+                                    rowClass: 'tillLayout-SelectedLinesFields',
+                                    selectionMode: 'none',
+                                    strikethroughRow: 'IsVoided',
+                                    displayMode: Commerce.Controls.ListView.DisplayMode.Expandable,
+                                    expandableRowConverter: isTransactionGridRowExpandable.bind($data),
+                                    rowExpandedTemplateId: 'ShowJournallineItemColspan',
+                                    columns: [
+                                        { titleResx: 'string_110', cssClass: 'ratio5' , field: 'productName' },
+                                        { titleResx: 'string_4067' , cssClass: 'ratio2 textRight' , field: '$data' , converter: 'Commerce.Core.Converter.OrderedQuantityFormatter'},
+                                        { titleResx: 'string_4068' , cssClass: 'ratio2 textRight' , field: '$data' , converter: 'Commerce.Core.Converter.InvoicedQuantityFormatter'},
+                                        { titleResx: 'string_112' , cssClass: 'ratio1 textRight' , field: 'NetAmount' , converter: 'Commerce.Core.Converter.PriceFormatter' }
+                                    ],
+                                    ariaLabelResx: 'string_181' /* Lines */
+                                },
+                                axBubbleAttr: 'showJournalView_salesLines'">
+                    </div>
+                </div>
+
+                <script type="text/html" id="ShowJournallineItemColspan">
+                    <div class="lineItemVariant secondaryFontColor row" data-bind="visible: !Commerce.StringExtensions.isNullOrWhitespace($data.variantDescription)">
+                        <div class="h4" data-bind="text: $data.variantDescription"></div>
+                    </div>
+                    <div class="lintItemPriceOverrideText secondaryFontColor" data-bind="visible: $data.IsPriceOverridden">
+                        <div class="h4" data-bind="text: $data.priceOverrideInformation"></div>
+                    </div>
+                    <div class="lineItemComment secondaryFontColor row" data-bind="visible: !Commerce.StringExtensions.isNullOrWhitespace($data.Comment)">
+                        <div class="h4" data-bind="text: $data.Comment"></div>
+                    </div>
+                    <div class="lineItemSerialNumber secondaryFontColor row" data-bind="visible: !Commerce.StringExtensions.isNullOrWhitespace($data.SerialNumber)">
+                        <div class="h4" data-bind="text: $data.SerialNumber"></div>
+                    </div>
+                    <div class="lineItemBarcode secondaryFontColor row" data-bind="visible: !Commerce.StringExtensions.isNullOrWhitespace($data.Barcode)">
+                        <div class="h4" data-bind="text: $data.Barcode"></div>
+                    </div>
+                    <!-- ko if: $root.shouldDisplayTaxExemptMessage($data) -->
+                    <div class="taxOverrideCodeLabel secondaryFontColor row">
+                        <div class="h4" data-bind="resx: { textContent: 'string_4487' }">Tax Exempt</div>
+                    </div>
+                    <div class="taxOverrideCode secondaryFontColor row">
+                        <div class="h4" data-bind="text: Commerce.Formatters.taxExemptCodeFormatter($data.TaxOverrideCode)">
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                    <div class="secondaryFontColor" data-bind="foreach: { data: $data.DiscountLines, as: 'discountLine' }">
+                        <div class="row">
+                            <div class="h4" data-bind="text: Commerce.DiscountsHelper.getDiscountTypeName(discountLine, $parent.Price, $parent.Quantity)"></div>
+                        </div>
+                    </div>
+                    <!-- ko foreach: $root.linesGridItemSubfieldsViewModel.customGridItemSubfields -->
+                    <div class="secondaryFontColor row" data-bind="visible: $data.isVisible($parent)">
+                        <div class="h4" data-bind="text: $data.computeValue($parent)"></div>
+                    </div>
+                    <!-- /ko -->
+                </script>
+                <script type="text/html" id="ShowJournalCustomerAccountDepositLineItemColspan">
+                    <div class="lineItemComment secondaryFontColor row" data-bind="visible: $data.Comment.length > 0">
+                        <div class="h4" data-bind="text: $data.Comment"></div>
+                    </div>
+                </script>
+            </div>
+
+            <!-- Payments-->
+            <div id="showJournalViewPaymentsPivot" data-bind="pivotItem: { headerResx: 'string_182' }">
+                <div class="col grow height100Percent">
+                    <div class="standardGrid" data-bind="listView: {
+                                itemDataSource: tenderLines,
+                                headerRowClass: 'tillLayout-SelectedLinesFields',
+                                rowClass: 'tillLayout-SelectedLinesFields',
+                                strikethroughRowConverter: isPaymentVoided,
+                                strikethroughEnabled: true,
+                                selectionMode: 'none',
+                                displayMode: Commerce.Controls.ListView.DisplayMode.Expandable,
+                                expandableRowConverter: isTenderLineRowExpandable.bind($data),
+                                rowExpandedTemplateId: 'ShowJournalTenderLineItemColspan',
+                                columns: [
+                                    { titleResx: 'string_114', cssClass: 'ratio6', field: '$data', converter: 'Commerce.Core.Converter.TenderLineNameFormatter' },
+                                    { titleResx: 'string_115', cssClass: 'ratio2 textRight', field: 'Currency' },
+                                    { titleResx: 'string_116', cssClass: 'ratio2 textRight', field: '$data', converter: 'Commerce.Core.Converter.AmountInTenderedCurrencyFormatter' }
+                                ],
+                                ariaLabelResx: 'string_182' /* Payments */
+                            }">
+                    </div>
+
+                    <script type="text/html" id="ShowJournalTenderLineItemColspan">
+                        <div class="secondaryFontColor row" data-bind="visible: !Commerce.StringExtensions.isNullOrWhitespace($data.CreditMemoId)">
+                            <div class="h4" data-bind="resx: { textContent: 'string_1147' }">Credit Memo Number</div>
+                            <div class="h4">:&nbsp;</div>
+                            <div class="h4" data-bind="text: $data.CreditMemoId"></div>
+                        </div>
+                        <!-- ko foreach: $root.paymentsGridItemSubfieldsViewModel.customGridItemSubfields -->
+                        <div class="secondaryFontColor row" data-bind="visible: $data.isVisible($parent)">
+                            <div class="h4" data-bind="text: $data.computeValue($parent)"></div>
+                        </div>
+                        <!-- /ko -->
+                    </script>
+
+                    <div class="width100Percent bottom0 padRight24">
+                        <div class="col grow primaryPanelBackgroundColor highContrastBorderThin">
+                            <div class="center" data-bind="visible: !selectedSalesOrder()">
+                                <div class="textCenter margin52">
+                                    <div class="h4" data-bind="resx: { textContent: 'string_4165' }">Select a transaction.</div>
+                                </div>
+                            </div>
+                            <div id="TotalsPanel" class="col grow layoutControl transactionDetails panel"
+                                 data-bind="with: selectedSalesOrder, visible: selectedSalesOrder()">
+                                <div class="fields row">
+                                    <div class="left grow">
+                                        <div id="DiscountsField" data-bind="visible: DiscountAmount">
+                                            <div class="row pad12 padBottom0">
+                                                <div class="secondaryFontColor"><div class="h6" data-bind="resx: { textContent: 'string_118' }">DISCOUNTS</div></div>
+                                                <div class="textRight"><div class="h4" data-bind="formatPrice: DiscountAmount"></div></div>
+                                            </div>
+                                        </div>
+                                        <div id="SubtotalField">
+                                            <div class="row pad12 padBottom0">
+                                                <div class="secondaryFontColor"><div class="h6" data-bind="resx: { textContent: 'string_120' }">SUBTOTAL</div></div>
+                                                <div class="textRight"><div class="h4" data-bind="formatPrice: SubtotalAmount"></div></div>
+                                            </div>
+                                        </div>
+                                        <div id="ChargeField" data-bind="visible: ChargeAmount">
+                                            <div class="row pad12 padBottom0">
+                                                <div class="secondaryFontColor"><div class="h6" data-bind="resx: { textContent: 'string_4323' }">CHARGES</div></div>
+                                                <div class="textRight"><div class="h4" data-bind="formatPrice: ChargeAmount"></div></div>
+                                            </div>
+                                        </div>
+                                        <div id="TaxField">
+                                            <div class="row pad12 padBottom0">
+                                                <div class="secondaryFontColor"><div class="h6" data-bind="resx: { textContent: 'string_119' }">TAX</div></div>
+                                                <div class="textRight"><div class="h4" data-bind="formatPrice: TaxAmount"></div></div>
+                                            </div>
+                                        </div>
+                                        <div id="TotalField">
+                                            <div class="row pad12 padBottom0">
+                                                <div class="secondaryFontColor"><div class="h6" data-bind="resx: { textContent: 'string_140' }">TOTAL</div></div>
+                                                <div class="textRight"><div class="h4" data-bind="formatPrice: TotalAmount"></div></div>
+                                            </div>
+                                        </div>
+                                        <div id="EmptyLine">
+                                            <div class="row pad12 padBottom0"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row pad12 panel-footer">
+                                    <div class="secondaryFontColor height12">
+                                        <div class="h6" data-bind="resx: { textContent: 'string_1818' }">Total paid</div>
+                                    </div>
+                                    <div class="textRight height32">
+                                        <div class="h2" data-bind="formatPrice: AmountPaid"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--customer-->
+            <div id="showJournalViewCustomerPivot" data-bind="pivotItem: { headerResx: 'string_136' }">
+                <div class="col grow">
+                    <div class="height212">
+                        <div class="center primaryPanelBackgroundColor highContrastBorder" data-bind="if:!selectedSalesOrder(), visible:!selectedSalesOrder() && !hasActiveCustomer">
+                            <div class="textCenter margin52">
+                                <div class="h4" data-bind="resx: { textContent: 'string_4165' }">Select a transaction.</div>
+                            </div>
+                        </div>
+                        <div class="center primaryPanelBackgroundColor highContrastBorder" data-bind="if: selectedSalesOrder(), visible: selectedSalesOrder() && !hasActiveCustomer()">
+                            <div class="textCenter margin52">
+                                <div class="h4" data-bind="resx: { textContent: 'string_4430' },visible: selectedSalesOrder().CustomerId.length==0">There is no customer associated with this sale.</div>
+                                <div class="h4" data-bind="resx: { textContent: 'string_4170' },visible: selectedSalesOrder().CustomerId.length!=0">Customer cannot be found.</div>
+                            </div>
+                        </div>
+                        <div data-bind="customerCard: {data: CustomerCardViewModel, template: 'customerContactCardTemplate'}, visible: hasActiveCustomer"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="receiptPreview grow" data-bind="visible: isReceiptSelected">
+            <pre data-bind="html: receiptText, visible: !showDefaultReceiptPreview()"></pre>
+            <div class="height100Percent center" data-bind="visible: showDefaultReceiptPreview">
+                <div class="col">
+                    <div class="center">
+                        <div class="secondaryFontColor icon-42x42 iconReceiptPrinter" data-bind="resx: { ariaLabel: 'string_1837' }"></div>
+                    </div>
+                    <div class="h4 padLeft12 padRight12 textCenter wrapText padTop20 width320 " data-bind="resx: { textContent: 'string_1837' }">No preview is available for this receipt type.</div>
+                    <div class="h4 padLeft12 padRight12 textCenter wrapText width320" data-bind="resx: { textContent: 'string_1838' }">Print a copy to review the contents of the receipt.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

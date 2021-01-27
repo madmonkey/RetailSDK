@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Manage Safes View</title>
+</head>
+<body>
+    <div class="fragment" data-bind="with: viewModel">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'manageSafesView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' /* Main content */ }">
+            <div data-bind="pivotItem: { header: subTitle }">
+                <div id="storeSafesList" 
+                        data-bind="dataList: {
+                        itemDataSource: storeSafes,
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                        selectionChanged: selectStoreSafes,
+                        ariaLabelResx: 'string_30114',  /* Safes */
+                        columns: [
+                            { titleResx: 'string_30120', ratio: 30, collapseOrder: 4, minWidth: 140, field: 'Name' },
+                            { titleResx: 'string_30115',  ratio: 20, collapseOrder: 1, minWidth: 100, field: 'SafeNumber'},
+                            { titleResx: 'string_30124', ratio: 30, collapseOrder: 2, minWidth: 200, field: 'LastUpdatedTime', converter: 'Commerce.Core.Converter.ShortDateAndTime' },
+                            { titleResx: 'string_4012', ratio: 20, collapseOrder: 3, minWidth: 120, field: 'SafeBalance', converter: 'Commerce.Core.Converter.PriceFormatter', isRightAligned: true }
+                        ]
+                    },
+                    axBubbleAttr: 'manageSafesView_storeSafesList'"></div>
+            </div>
+        </div>
+        <div id="safeOperationsFlyout" data-bind="menu: { anchor: '#safeOperationsAppBarComand', placement: 'top', alignment: 'left' }">
+            <button data-bind="menuCommand: {id:'declareStartAmount', label: 'string_30102'}, resx: { label: 'string_30102' }, click: declareStartAmountAsync, axBubbleAttr: 'manageSafesView_declareStartAmount'"></button>
+            <button data-bind="menuCommand: {id:'floatEntry', label: 'string_4009'}, resx: { label: 'string_4009' }, click: floatEntryAsync, axBubbleAttr: 'manageSafesView_floatEntry'"></button>
+            <button data-bind="menuCommand: {id:'tenderRemoval', label: 'string_4010'}, resx: { label: 'string_4010' }, click: tenderRemovalAsync, axBubbleAttr: 'manageSafesView_tenderRemoval'"></button>
+        </div>
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar: {}, axBubbleAttr: 'manageSafesView_appBar'">
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconBank',
+                        id:'bankAppBar',
+                        label:'string_30118', /* Bank Drop */
+                        enabled: hasSelectedStoreSafe,
+                        onclick: bankDropAsync,
+                        labelResx: 'string_30118'},
+                        axBubbleAttr: 'manageSafesView_bankAppBar'"></button>
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconMoney',
+                        id:'safeOperationsAppBarComand',
+                        label:'string_30119', /* Manage cash */
+                        enabled: hasSelectedStoreSafe,
+                        type: 'flyout',
+                        flyout: '#safeOperationsFlyout',
+                        labelResx: 'string_30119'},
+                        axBubbleAttr: 'manageSafesView_safeOperationsAppBarComand'"></button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>LockRegisterView</title>
+</head>
+
+<body>
+    <div class="fragment lockRegisterView" data-bind="css: { loginBackgroundImage: !_isPortraitOrientation(), loginBackgroundImagePortrait: _isPortraitOrientation() }">
+        <!--Lock Register panel for displaying operator id and accepting password-->
+        <div id="lockRegisterSection" class="section main full-screen col grow pad40" data-bind="resx: { ariaLabel: 'string_4454' /* Main content */ }, axBubbleAttr: 'lockRegister_lockRegisterSection'">
+            <!-- Date time -->
+            <!-- ko if: viewModel.showDateTime() -->
+            <div data-bind="template: {
+                name: 'loginDateTimeTemplate',
+                data: {
+                    isLeftLayout: viewModel.isLeftLayout(),
+                    time: viewModel.clockViewModel.currentTime(),
+                    date: viewModel.clockViewModel.currentDate()
+                 }
+            }">
+            </div>
+            <!-- /ko -->
+            <!-- Main content -->
+            <div class="col" data-bind="css: {
+                height100Percent: viewModel.isLeftLayout() || viewModel.isRightLayout(),
+                left0: viewModel.isLeftLayout(),
+                right0: viewModel.isRightLayout(),
+                center: viewModel.isCenteredLayout() }">
+                <!-- Logo outside the panel, shown when it's centered layout -->
+                <div class="width296 marginBottom40 loginLogoImage height48" data-bind="visible: viewModel.showLogo() && !showLogoInside()"></div>
+                <!-- Panel -->
+                <div class="col width360 padTop40 padLeft32 padRight32 padBottom20 highContrastBorderThin lockRegisterPanel primaryBackgroundColor scrollY"
+                    data-bind="css: {
+                        height100Percent: viewModel.isRightLayout() || viewModel.isLeftLayout(),
+                        maxHeight676: viewModel.isCenteredLayout() && viewModel.showNumPad(),
+                        maxHeight500: viewModel.isCenteredLayout() && !viewModel.showNumPad()
+                    }">
+                    <!-- Logo inside the panel, shown when it's left / right layout -->
+                    <div class="marginBottom20 loginLogoImage height48" data-bind="visible: viewModel.showLogo() && showLogoInside()"></div>
+                    <!-- User / password textbox field -->
+                    <div class="marginTop20">
+                        <div>
+                            <h1 class="wrapTextWithoutHyphen" data-bind="resx: { textContent: 'string_6700' }">Locked</h1>
+                        </div>
+
+                        <div class="padTop40">
+                            <label data-bind="resx: { textContent: 'string_6709' }">Store / Register</label>
+                            <div class="ellipsis h4" data-bind="text: viewModel.storeAndRegister">Store / Register</div>
+                        </div>
+
+                        <div class="padTop20">
+                            <label data-bind="resx: { textContent: 'string_6703' },
+                                        css: { marginBottom16: viewModel.isOperatorIdSelectVisible, marginBottom8: viewModel.isOperatorIdTextVisible }"
+                                    for="lockRegisterOperatorIdText">
+                                Locked by
+                            </label>
+
+                            <!-- ko if: !viewModel.isOperatorIdSelectVisible  -->
+                            <div class="centerY">
+                                <input id="lockRegisterOperatorIdText" type="text" role="textbox" data-bind="value: viewModel.operatorId" class="ellipsis" disabled />
+
+                                <!-- ko if: viewModel.showNumPad()  -->
+                                <!-- If the numpad exists, there will not be button for the switch user, need a new button here -->
+                                <div class="center accentColor iconSwitchUser icon-24x24 width24 clickable marginLeft20" role="button" tabindex="0"
+                                    data-bind="click: switchUserButtonClick,
+                                        enterKeyPress: switchUserButtonClick,
+                                        axBubbleAttr: 'lockRegister_switchUserButton',
+                                        resx: { ariaLabel: 'string_6707' /* Switch user */ }"
+                                    data-retail-numpad-ignore-keys="enter"></div>
+                                <!-- /ko -->
+                            </div>
+                            <!-- /ko -->
+
+                            <!-- People picker -->
+                            <!-- ko if: viewModel.isOperatorIdSelectVisible  -->
+                            <div id="operatorBox" class="centerY marginTop8">
+                                <div data-bind="userImageOrInitials: userImageOrInitialsOptions" class="height48 width48 circleBorder h4"></div>
+                                <div class="padLeft12 col grow overflowHidden">
+                                    <div class="ellipsis h4 primaryFontColor inlineBlock" data-bind="text: userImageOrInitialsOptions.name"></div>
+                                    <div id="lockRegisterOperatorIdText" class="ellipsis h4 primaryFontColor inlineBlock" data-bind="text: viewModel.operatorId"></div>
+                                </div>
+                                <div class="center accentColor iconChevronRight icon-24x24 width24 clickable" role="button" tabindex="0"
+                                    data-bind="click: switchUserButtonClick,
+                                        enterKeyPress: switchUserButtonClick,
+                                        axBubbleAttr: 'lockRegister_switchUserButton',
+                                        resx: { ariaLabel: 'string_6707' /* Switch user */ }"
+                                    data-retail-numpad-ignore-keys="enter"></div>
+                            </div>
+                            <!-- /ko -->
+                        </div>
+
+                        <!-- ko if: !viewModel.showNumPad() -->
+                        <div class="padTop20">
+                            <label data-bind="resx: { textContent: 'string_6704' }" for="passwordBox" class="marginBottom8">Password</label>
+
+                            <input id="passwordBox" class="passwordBox" type="password" tabindex="0" required="required" role="textbox" sensitiveDataFor="lockRegisterOperatorIdText" tabindex="2"
+                                data-bind="
+                                            value: viewModel.password,
+                                            valueUpdate: 'afterkeydown',
+                                            enterKeyPress: unlockRegisterButtonClick,
+                                            validator: {
+                                                validatorField: 'Password',
+                                                validatorType: 'ConnectionRequestValidator'
+                                            },
+                                            axBubbleAttr: 'lockRegister_lockRegisterView_passwordBox'" />
+                        </div>
+                        <!-- /ko -->
+
+                        <!-- ko if: !viewModel.showNumPad() -->
+                        <div class="padTop40 flexRow">
+                            <div class="flexGrow100 flexRow">
+                                <button class="primaryButton flexGrow100" data-bind="resx: { textContent: 'string_6705' }, click: unlockRegisterButtonClick, disable: disableUnlockButton, axBubbleAttr: 'lockRegister_unlockButton'">
+                                    Unlock register
+                                </button>
+                            </div>
+                            <!-- ko if: viewModel.isOperatorIdTextVisible  -->
+                            <div class="marginLeft8 flexGrow100 flexRow">
+                                <button class="secondaryButton flexGrow100" data-bind="resx: { textContent: 'string_6707' }, click: switchUserButtonClick, axBubbleAttr: 'lockRegister_switchUserButton'">
+                                    Switch user
+                                </button>
+                            </div>
+                            <!-- /ko -->
+                        </div>
+                        <!-- /ko -->
+                    </div>
+
+                    <!-- ko if: viewModel.showNumPad() -->
+                    <div class="col grow numpad padTop20" data-bind="multipleTextInputNumpad: {
+                            inputOptions: numpadInputOptions,
+                            onCompleted: onNumpadComplete.bind($root),
+                            numPadInputSource: numPadInputBroker
+                        },
+                        setElementRef: numpadElement">
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

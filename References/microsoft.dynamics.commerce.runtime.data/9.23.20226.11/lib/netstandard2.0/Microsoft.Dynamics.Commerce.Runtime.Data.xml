@@ -1,0 +1,2457 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.Data</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntityDataExtensions">
+            <summary>
+            Provides additional extensions methods to CommerceEntity and its successors.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntityDataExtensions.CreateDataRow(Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Loads the entity property bag into the data row, given the table schema.
+            </summary>
+            <param name="entity">CommerceEntity instance.</param>
+            <param name="table">The table schema.</param>
+            <returns>The created data row.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntityDataExtensions.Populate(Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity,Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult,System.Collections.Generic.List{Microsoft.Dynamics.Commerce.Runtime.DataModel.TimeZoneInterval})">
+            <summary>
+            Populates the entity property bag using the specified SQL data reader.
+            </summary>
+            <param name="entity">CommerceEntity instance.</param>
+            <param name="databaseResult">The SQL data reader.</param>
+            <param name="channelTimeZoneRecords">The channel time zones.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntityDataExtensions.ResolveType(System.String,Microsoft.Dynamics.Commerce.Runtime.DataModel.EntityTypeCache)">
+            <summary>
+            Resolves the type.
+            </summary>
+            <param name="columnName">Name of the column.</param>
+            <returns>The resolved type.</returns>
+            <param name="typeCache">Cache for reflection data.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager">
+            <summary>
+            Responsible for managing the lifetime of current active connection and encapsulates
+            the logic necessary to failover to the offline database if available.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager.#ctor(System.String,Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager"/> class.
+            </summary>
+            <param name="connectionString">The connection string.</param>
+            <param name="context">The request context.</param>
+            <param name="isReadOnly">A value indicating whether the connection string should declare read-only intent.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager.Connection">
+            <summary>
+            Gets the current active connection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager.DatabaseProvider">
+            <summary>
+            Gets the database provider that can access the current database connection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager.ConnectionString">
+            <summary>
+            Gets the connection string used for this connection manager.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager.Create(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager"/> class using the specified configuration.
+            </summary>
+            <param name="context">The request context.</param>
+            <returns>An instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager"/> class.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager.Create(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Boolean)">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager"/> class using the specified configuration.
+            </summary>
+            <param name="context">The request context.</param>
+            <param name="isReadOnly">A value indicating whether the connection string should declare read-only intent.</param>
+            <returns>An instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager"/> class.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager.Create(System.String,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager"/> class using the specified configuration.
+            </summary>
+            <param name="connectionString">The connection string.</param>
+            <param name="context">The request context.</param>
+            <returns>An instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager"/> class.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager.Create(System.String,Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Boolean)">
+            <summary>
+            Creates an instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager"/> class using the specified configuration.
+            </summary>
+            <param name="connectionString">The connection string.</param>
+            <param name="context">The request context.</param>
+            <param name="isReadOnly">A value indicating whether the connection string should declare read-only intent.</param>
+            <returns>An instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager"/> class.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.ConnectionManager.OpenConnection(System.String,System.Boolean)">
+            <summary>
+            Opens the connection.
+            </summary>
+            <param name="connectionString">The connection string.</param>
+            <param name="isReadOnly">A value indicating whether the connection string should declare read-only intent.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.CustomerSearchHelper">
+            <summary>
+            Helper class for customer search.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.CustomerSearchHelper.ProcessCustomerSearchByFieldCriteria(Microsoft.Dynamics.Commerce.Runtime.DataModel.CustomerSearchByFieldCriteria)">
+            <summary>
+            Process the customer search criteria search term strings by appending wildcard characters for partial match searches
+            and setting the exact match flag.
+            </summary>
+            <param name="searchByCriteria">An instance of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CustomerSearchByFieldCriteria"/> class.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.CustomerSearchHelper.ProcessCustomerSearchByFieldCriteria(Microsoft.Dynamics.Commerce.Runtime.DataModel.CustomerSearchByFieldCriteria,Microsoft.Dynamics.Commerce.Runtime.DataModel.CustomerSearchFieldType[])">
+            <summary>
+            Process the customer search criteria search term strings by appending wildcard characters for partial match searches
+            and setting the exact match flag.
+            </summary>
+            <param name="searchByCriteria">An instance of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CustomerSearchByFieldCriteria"/> class.</param>
+            <param name="order">The order of the customer search fields in which to search.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseConnectionMode">
+            <summary>
+            Represents database connection mode.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseConnectionMode.Default">
+            <summary>
+            Default connection settings (read-write).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseConnectionMode.IsPersisted">
+            <summary>
+            Set to keep connection open during the entire lifetime of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseConnectionMode.IsReadOnly">
+            <summary>
+            Set if read-only operations will be executed.
+            </summary>
+            <remarks>This flag is required to support "read scale-out". Read more here: https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out</remarks>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseConnectionMode.AllowReadFromReplica">
+            <summary>
+            Set to allow connection can be estblished with replica. This could result reads of stale data as transaction log is replicated with delay.
+            </summary>
+            <remarks>This flag is required to support "read scale-out". Read more here: https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out</remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext">
+            <summary>
+            Wraps common operations associated to database access, maintaining single database connection.
+            </summary>
+            <summary>
+            Wraps common operations associated to database access, maintaining single database connection.
+            </summary>
+            <summary>
+            Wraps common operations associated to database access, maintaining single database connection.
+            </summary>
+            <summary>
+            Wraps common operations associated to database access, maintaining single database connection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.BeginTransactionAsync">
+            <summary>
+            Begins a transaction on the database.
+            </summary>
+            <returns>The database transaction.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureAsync``1(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the stored procedure using the specified parameters.
+            </summary>
+            <typeparam name="T">The type of data being returned.</typeparam>
+            <param name="procedureName">The name of the stored procedures.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>A paginated collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteNonPagedStoredProcedureAsync``1(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the stored procedure using the specified parameters, non-paginated.
+            </summary>
+            <typeparam name="T">The type of data being returned.</typeparam>
+            <param name="procedureName">The name of the stored procedures.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>A collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureAsync``2(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureAsync``2(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="outputParameters">Output parameters of the stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureAsync``3(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureAsync``3(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="outputParameters">Output parameters of the stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureAsync``4(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <typeparam name="T4">Type of fourth expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureAsync``4(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <typeparam name="T4">Type of fourth expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="outputParameters">Output parameters of the stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureAsync``8(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <typeparam name="T4">Type of fourth expected result set.</typeparam>
+            <typeparam name="T5">Type of fifth expected result set.</typeparam>
+            <typeparam name="T6">Type of sixth expected result set.</typeparam>
+            <typeparam name="T7">Type of seventh expected result set.</typeparam>
+            <typeparam name="T8">Type of eighth expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureAsync``8(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <typeparam name="T4">Type of fourth expected result set.</typeparam>
+            <typeparam name="T5">Type of fifth expected result set.</typeparam>
+            <typeparam name="T6">Type of sixth expected result set.</typeparam>
+            <typeparam name="T7">Type of seventh expected result set.</typeparam>
+            <typeparam name="T8">Type of eighth expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="outputParameters">Output parameters of the stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureScalarCollectionAsync``1(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes a query that returns a collection of single results.
+            </summary>
+            <typeparam name="T">The collection type.</typeparam>
+            <param name="procedureName">The stored procedure name.</param>
+            <param name="parameters">The stored procedure's parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The scalar collection result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureNonQueryAsync(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure with the specified parameters.
+            </summary>
+            <param name="procedureName">The procedure name.</param>
+            <param name="parameters">The parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The error code returned from the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureScalarAsync(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the stored procedure using the specified parameters and returns the return value
+            of the stored procedure as an integer.
+            </summary>
+            <param name="procedureName">The name of the stored procedures.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>A collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureScalarAsync(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the stored procedure using the specified parameters and returns the return value
+            of the stored procedure as an integer.
+            </summary>
+            <param name="procedureName">The name of the stored procedure.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="outputParameters">The set of output parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>A collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ReadEntityAsync``1(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery)">
+            <summary>
+            Reads an entity from the database.
+            </summary>
+            <typeparam name="T">The commerce entity type.</typeparam>
+            <param name="query">The SQL query to be executed.</param>
+            <returns>The collection of entities read.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteNonQueryAsync(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery)">
+            <summary>
+            Executes a query that has no output.
+            </summary>
+            <param name="query">SQL query to be executed.</param>
+            <returns>The async task.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteScalarAsync``1(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery)">
+            <summary>
+            Executes a query that returns a single result.
+            </summary>
+            <typeparam name="T">The scalar type.</typeparam>
+            <param name="query">The SQL query to be executed.</param>
+            <returns>The scalar result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteScalarCollectionAsync``1(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery)">
+            <summary>
+            Executes a query that returns a collection of single results.
+            </summary>
+            <typeparam name="T">The collection type.</typeparam>
+            <param name="query">The SQL query to be executed.</param>
+            <returns>The scalar collection result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ConsumeNonQueryResultAsync(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult)">
+            <summary>
+            Consume a <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult"/> for non-query operations.
+            </summary>
+            <param name="result">The database result.</param>
+            <returns>The async result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteQueryWithRetryAsync(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery)">
+            <summary>
+            Executes a SQL query.
+            </summary>
+            <param name="query">The SQL query to be executed.</param>
+            <returns>The associated database result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.GetConnectionAsync">
+            <summary>
+            Get the database connection.
+            </summary>
+            <returns>Instance of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseConnection"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.CreateDatasetFromResultAsync(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult)">
+            <summary>
+            Consumes <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult"/> to produce <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataSet"/>.
+            </summary>
+            <param name="databaseResult">The result of database query execution.</param>
+            <returns>An instance of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataSet"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureAsync(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Func{Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult,System.Threading.Tasks.Task},Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes a stored procedure.
+            </summary>
+            <param name="procedureName">The procedure name.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="outputParameters">The set of output parameters.</param>
+            <param name="resultCallback">The result callback.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The procedure result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.#ctor(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext"/> class.
+            </summary>
+            <param name="requestContext">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.#ctor(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext"/> class.
+            </summary>
+            <param name="requestContext">The request context.</param>
+            <param name="connectionString">The connection string.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.#ctor(Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseConnectionMode,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext"/> class.
+            </summary>
+            <param name="requestContext">The request context.</param>
+            <param name="connectionMode">Connection mode.</param>
+            <param name="connectionString">The connection string.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.#ctor(Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseConnectionMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext"/> class.
+            </summary>
+            <param name="requestContext">The request context.</param>
+            <param name="connectionMode">Connection mode.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ConnectionMode">
+            <summary>
+            Gets the database connection mode flags.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ChannelDateTimeNow">
+            <summary>
+            Gets current channel date/time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.IsPersistedConnectionMode">
+            <summary>
+            Gets a value indicating whether to keep connection open for entire lifetime of database context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.RequestContext">
+            <summary>
+            Gets the request context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.DatabaseProvider">
+            <summary>
+            Gets the database provider that can access the current database connection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.Dispose">
+            <summary>
+            Releases the associated database connection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.Dispose(System.Boolean)">
+            <summary>
+            Releases the associated database connection.
+            </summary>
+            <param name="disposing">The flag for disposing.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.CreateDatasetFromResult(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult,System.Boolean)">
+            <summary>
+            Consumes <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult"/> to produce <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataSet"/>.
+            </summary>
+            <param name="databaseResult">The result of database query execution.</param>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>An instance of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataSet"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ConsumeNonQueryResult(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult,System.Boolean)">
+            <summary>
+            Consume a <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult"/> for non-query operations.
+            </summary>
+            <param name="result">The database result.</param>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>The async result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteQueryWithRetryAsync(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery,System.Boolean)">
+            <summary>
+            Executes a SQL query.
+            </summary>
+            <param name="query">The SQL query to be executed.</param>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>The associated database result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.GetConnection(System.Boolean)">
+            <summary>
+            Get the database connection.
+            </summary>
+            <param name="isAsync">True if the connection should be get asynchronous.</param>
+            <returns>Instance of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseConnection"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.BeginTransaction(System.Boolean)">
+            <summary>
+            Begins a transaction on the database.
+            </summary>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>The database transaction.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Func{Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult,System.Threading.Tasks.Task},Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings,System.Boolean)">
+            <summary>
+            Executes a stored procedure.
+            </summary>
+            <param name="procedureName">The procedure name.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="outputParameters">The set of output parameters.</param>
+            <param name="resultCallback">The result callback.</param>
+            <param name="resultSettings">The result settings.</param>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>The procedure result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureScalarCollectionAsync``1(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings,System.Boolean)">
+            <summary>
+            Executes a query that returns a collection of single results.
+            </summary>
+            <typeparam name="T">The collection type.</typeparam>
+            <param name="procedureName">The stored procedure name.</param>
+            <param name="parameters">The stored procedure's parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>The scalar collection result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``8(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings,System.Boolean)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <typeparam name="T4">Type of fourth expected result set.</typeparam>
+            <typeparam name="T5">Type of fifth expected result set.</typeparam>
+            <typeparam name="T6">Type of sixth expected result set.</typeparam>
+            <typeparam name="T7">Type of seventh expected result set.</typeparam>
+            <typeparam name="T8">Type of eighth expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="outputParameters">Output parameters of the stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureDataSet(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings,System.Boolean)">
+            <summary>
+            Executes the stored procedure using the specified parameters and returns the output
+            of the stored procedure as a dataset.
+            </summary>
+            <param name="procedureName">The name of the stored procedure.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>A dataset.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ReadEntity``1(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery,System.Boolean)">
+            <summary>
+            Reads an entity from the database.
+            </summary>
+            <typeparam name="T">The commerce entity type.</typeparam>
+            <param name="query">The SQL query to be executed.</param>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>The collection of entities read.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteNonQuery(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery,System.Boolean)">
+            <summary>
+            Executes a query that has no output.
+            </summary>
+            <param name="query">SQL query to be executed.</param>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>The async task.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteScalar``1(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery,System.Boolean)">
+            <summary>
+            Executes a query that returns a single result.
+            </summary>
+            <typeparam name="T">The scalar type.</typeparam>
+            <param name="query">The SQL query to be executed.</param>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>The scalar result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteScalarCollectionAsync``1(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery,System.Boolean)">
+            <summary>
+            Executes a query that returns a collection of single results.
+            </summary>
+            <typeparam name="T">The collection type.</typeparam>
+            <param name="query">The SQL query to be executed.</param>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>The scalar collection result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteQueryDataSetAsync(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Boolean)">
+            <summary>
+            Executes the query with specified parameters.
+            </summary>
+            <param name="query">Query to be executed.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>A dataset.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.DatabaseResultContext">
+            <summary>
+            Represents database result context.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.DatabaseResultContext.#ctor(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult,System.IDisposable[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.DatabaseResultContext"/> class.
+            </summary>
+            <param name="result">The database result.</param>
+            <param name="dependencyContextCollection">The collection of elements that the result depends on to be executed.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.DatabaseResultContext.Result">
+            <summary>
+            Gets the database result.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.DatabaseResultContext.DependencyContextCollection">
+            <summary>
+            Gets the collection of elements that the result depends on to be executed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.DatabaseResultContext.Dispose">
+            <summary>
+            Dispose the database result and all dependencies.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.#ctor(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext"/> class.
+            </summary>
+            <param name="requestContext">The request context.</param>
+            <param name="isPersistedConnectionMode">Pass 'true' to use same connection for entire lifetime of this object; otherwise new connection will be opened for each query execution.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.#ctor(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext"/> class.
+            </summary>
+            <param name="requestContext">The request context.</param>
+            <param name="connectionString">The connection string.</param>
+            <param name="isPersistedConnectionMode">Pass 'true' to use same connection for entire lifetime of this object; otherwise new connection will be opened for each query execution.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.#ctor(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext"/> class.
+            </summary>
+            <param name="request">The data request.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.#ctor(Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext"/> class.
+            </summary>
+            <param name="context">The data request context.</param>
+            <param name="requestSettings">The request settings.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``1(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet)">
+            <summary>
+            Executes the stored procedure using the specified parameters.
+            </summary>
+            <typeparam name="T">The type of data being returned.</typeparam>
+            <param name="procedureName">The name of the stored procedures.</param>
+            <param name="parameters">The set of parameters.</param>
+            <returns>A paginated collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``1(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Int32@)">
+            <summary>
+            Executes the stored procedure using the specified parameters.
+            </summary>
+            <typeparam name="T">The type of data being returned.</typeparam>
+            <param name="procedureName">The name of the stored procedures.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="returnValue">The return value of the stored procedure.</param>
+            <returns>A paginated collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteNonPagedStoredProcedure``1(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet)">
+            <summary>
+            Executes the stored procedure using the specified parameters, non-paginated.
+            </summary>
+            <typeparam name="T">The type of data being returned.</typeparam>
+            <param name="procedureName">The name of the stored procedures.</param>
+            <param name="parameters">The set of parameters.</param>
+            <returns>A collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``2(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``2(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Int32@)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="outputParameters">Output parameters of the stored procedure.</param>
+            <param name="returnValue">The return value of the stored procedure.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``3(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``3(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Int32@)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="outputParameters">Output parameters of the stored procedure.</param>
+            <param name="returnValue">The return value of the stored procedure.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``4(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <typeparam name="T4">Type of fourth expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``4(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Int32@)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <typeparam name="T4">Type of fourth expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="outputParameters">Output parameters of the stored procedure.</param>
+            <param name="returnValue">The return value of the stored procedure.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``8(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <typeparam name="T4">Type of fourth expected result set.</typeparam>
+            <typeparam name="T5">Type of fifth expected result set.</typeparam>
+            <typeparam name="T6">Type of sixth expected result set.</typeparam>
+            <typeparam name="T7">Type of seventh expected result set.</typeparam>
+            <typeparam name="T8">Type of eighth expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``8(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Int32@)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <typeparam name="T4">Type of fourth expected result set.</typeparam>
+            <typeparam name="T5">Type of fifth expected result set.</typeparam>
+            <typeparam name="T6">Type of sixth expected result set.</typeparam>
+            <typeparam name="T7">Type of seventh expected result set.</typeparam>
+            <typeparam name="T8">Type of eighth expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="outputParameters">Output parameters of the stored procedure.</param>
+            <param name="returnValue">The return value of the stored procedure.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Action{Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult},System.Int32@)">
+            <summary>
+            Executes a stored procedure.
+            </summary>
+            <param name="procedureName">The procedure name.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="outputParameters">The set of output parameters.</param>
+            <param name="resultCallback">The result callback.</param>
+            <param name="returnValue">The procedure result.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureScalarCollection``1(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet)">
+            <summary>
+            Executes a query that returns a collection of single results.
+            </summary>
+            <typeparam name="T">The collection type.</typeparam>
+            <param name="procedureName">The stored procedure name.</param>
+            <param name="parameters">The stored procedure's parameters.</param>
+            <returns>The scalar collection result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureNonQuery(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet)">
+            <summary>
+            Executes the specified stored procedure with the specified parameters.
+            </summary>
+            <param name="procedureName">The procedure name.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>The error code returned from the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureDataSet(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet)">
+            <summary>
+            Executes the stored procedure using the specified parameters and returns the output
+            of the stored procedure as a dataset.
+            </summary>
+            <param name="procedureName">The name of the stored procedure.</param>
+            <param name="parameters">The set of parameters.</param>
+            <returns>A dataset.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureDataSet(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Int32@)">
+            <summary>
+            Executes the stored procedure using the specified parameters and returns the output
+            of the stored procedure as a dataset.
+            </summary>
+            <param name="procedureName">The name of the stored procedure.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="returnValue">The return value.</param>
+            <returns>A dataset.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureScalar(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet)">
+            <summary>
+            Executes the stored procedure using the specified parameters and returns the return value
+            of the stored procedure as an integer.
+            </summary>
+            <param name="procedureName">The name of the stored procedures.</param>
+            <param name="parameters">The set of parameters.</param>
+            <returns>A collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureScalar(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet)">
+            <summary>
+            Executes the stored procedure using the specified parameters and returns the return value
+            of the stored procedure as an integer.
+            </summary>
+            <param name="procedureName">The name of the stored procedure.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="outputParameters">The set of output parameters.</param>
+            <returns>A collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.GetEntityReader(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery)">
+            <summary>
+            Gets the entity reader.
+            </summary>
+            <param name="query">The SQL query to be executed.</param>
+            <returns>The entity reader.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteQuery(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery)">
+            <summary>
+            Executes a SQL query.
+            </summary>
+            <param name="query">The SQL query to be executed.</param>
+            <returns>The associated database result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.GetConnection">
+            <summary>
+            Get the database connection.
+            </summary>
+            <returns>Instance of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseConnection"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.GetConnectionAsync(System.Boolean)">
+            <summary>
+            Get the database connection.
+            </summary>
+            <param name="isReadOnly">A value indicating whether the connection should declare a read-only intent.</param>
+            <returns>Instance of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseConnection"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.BeginTransaction">
+            <summary>
+            Begins a transaction on the database.
+            </summary>
+            <returns>The database transaction.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``1(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the stored procedure using the specified parameters.
+            </summary>
+            <typeparam name="T">The type of data being returned.</typeparam>
+            <param name="procedureName">The name of the stored procedures.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>A paginated collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``1(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Int32@,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the stored procedure using the specified parameters.
+            </summary>
+            <typeparam name="T">The type of data being returned.</typeparam>
+            <param name="procedureName">The name of the stored procedures.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="returnValue">The return value of the stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>A paginated collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteNonPagedStoredProcedure``1(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the stored procedure using the specified parameters, non-paginated.
+            </summary>
+            <typeparam name="T">The type of data being returned.</typeparam>
+            <param name="procedureName">The name of the stored procedures.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>A collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``2(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``2(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Int32@,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="outputParameters">Output parameters of the stored procedure.</param>
+            <param name="returnValue">The return value of the stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``3(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``3(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Int32@,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="outputParameters">Output parameters of the stored procedure.</param>
+            <param name="returnValue">The return value of the stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``4(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <typeparam name="T4">Type of fourth expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``4(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Int32@,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <typeparam name="T4">Type of fourth expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="outputParameters">Output parameters of the stored procedure.</param>
+            <param name="returnValue">The return value of the stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``8(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <typeparam name="T4">Type of fourth expected result set.</typeparam>
+            <typeparam name="T5">Type of fifth expected result set.</typeparam>
+            <typeparam name="T6">Type of sixth expected result set.</typeparam>
+            <typeparam name="T7">Type of seventh expected result set.</typeparam>
+            <typeparam name="T8">Type of eighth expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure``8(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Int32@,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure.
+            </summary>
+            <typeparam name="T1">Type of first expected result set.</typeparam>
+            <typeparam name="T2">Type of second expected result set.</typeparam>
+            <typeparam name="T3">Type of third expected result set.</typeparam>
+            <typeparam name="T4">Type of fourth expected result set.</typeparam>
+            <typeparam name="T5">Type of fifth expected result set.</typeparam>
+            <typeparam name="T6">Type of sixth expected result set.</typeparam>
+            <typeparam name="T7">Type of seventh expected result set.</typeparam>
+            <typeparam name="T8">Type of eighth expected result set.</typeparam>
+            <param name="procedureName">Procedure name to call.</param>
+            <param name="parameters">Parameters to pass to stored procedure.</param>
+            <param name="outputParameters">Output parameters of the stored procedure.</param>
+            <param name="returnValue">The return value of the stored procedure.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The result of executing the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedure(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Action{Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult},System.Int32@,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes a stored procedure.
+            </summary>
+            <param name="procedureName">The procedure name.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="outputParameters">The set of output parameters.</param>
+            <param name="resultCallback">The result callback.</param>
+            <param name="returnValue">The procedure result.</param>
+            <param name="resultSettings">The result settings.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureScalarCollection``1(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes a query that returns a collection of single results.
+            </summary>
+            <typeparam name="T">The collection type.</typeparam>
+            <param name="procedureName">The stored procedure name.</param>
+            <param name="parameters">The stored procedure's parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The scalar collection result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureNonQuery(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the specified stored procedure with the specified parameters.
+            </summary>
+            <param name="procedureName">The procedure name.</param>
+            <param name="parameters">The parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>The error code returned from the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureDataSet(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the stored procedure using the specified parameters and returns the output
+            of the stored procedure as a dataset.
+            </summary>
+            <param name="procedureName">The name of the stored procedure.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>A dataset.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureDataSet(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,System.Int32@,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the stored procedure using the specified parameters and returns the output
+            of the stored procedure as a dataset.
+            </summary>
+            <param name="procedureName">The name of the stored procedure.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="returnValue">The return value.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>A dataset.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureScalar(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the stored procedure using the specified parameters and returns the return value
+            of the stored procedure as an integer.
+            </summary>
+            <param name="procedureName">The name of the stored procedures.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>A collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteStoredProcedureScalar(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Executes the stored procedure using the specified parameters and returns the return value
+            of the stored procedure as an integer.
+            </summary>
+            <param name="procedureName">The name of the stored procedure.</param>
+            <param name="parameters">The set of parameters.</param>
+            <param name="outputParameters">The set of output parameters.</param>
+            <param name="resultSettings">The result settings.</param>
+            <returns>A collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ReadEntity``1(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery)">
+            <summary>
+            Reads an entity from the database.
+            </summary>
+            <typeparam name="T">The commerce entity type.</typeparam>
+            <param name="query">The SQL query to be executed.</param>
+            <returns>The collection of entities read.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteNonQuery(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery)">
+            <summary>
+            Executes a query that has no output.
+            </summary>
+            <param name="query">SQL query to be executed.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteScalar``1(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery)">
+            <summary>
+            Executes a query that returns a single result.
+            </summary>
+            <typeparam name="T">The scalar type.</typeparam>
+            <param name="query">The SQL query to be executed.</param>
+            <returns>The scalar result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteScalarCollection``1(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery)">
+            <summary>
+            Executes a query that returns a collection of single results.
+            </summary>
+            <typeparam name="T">The collection type.</typeparam>
+            <param name="query">The SQL query to be executed.</param>
+            <returns>The scalar collection result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteQueryDataSet(System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet)">
+            <summary>
+            Executes the query with specified parameters.
+            </summary>
+            <param name="query">Query to be executed.</param>
+            <param name="parameters">The set of parameters.</param>
+            <returns>A dataset.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.CreateDatasetFromResult(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult)">
+            <summary>
+            Consumes <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult"/> to produce <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataSet"/>.
+            </summary>
+            <param name="databaseResult">The result of database query execution.</param>
+            <returns>An instance of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataSet"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ConsumeNonQueryResult(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult)">
+            <summary>
+            Consume a <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult"/> for non-query operations.
+            </summary>
+            <param name="result">The database result.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseContext.ExecuteQueryWithRetry(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery)">
+            <summary>
+            Executes a SQL query.
+            </summary>
+            <param name="query">The SQL query to be executed.</param>
+            <returns>The associated database result.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.DataTableExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DataTableExtensions.ExecuteNonQuery(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseConnection,Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseProvider,System.String)">
+            <summary>
+            Execute a query using the table that leverages the table name, table columns and table values.
+            </summary>
+            <param name="table">The data table.</param>
+            <param name="connection">The database connection.</param>
+            <param name="provider">The database provider.</param>
+            <param name="queryTemplate">The query template is used with string.Format whose replacement parameters are: {0} for table name, {1} for table columns, {2} for column values.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.DataTableExtensions.Load(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseConnection,Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseProvider)">
+            <summary>
+            Loads records from the database into a data table.
+            </summary>
+            <param name="table">The data table.</param>
+            <param name="connection">The database connection.</param>
+            <param name="provider">The database provider.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.EntityReader">
+            <summary>
+            Contains methods to read entities from the database result.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.EntityReader.#ctor(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.TimeZoneInterval})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.EntityReader"/> class.
+            </summary>
+            <param name="databaseResult">The database result.</param>
+            <param name="timeZoneIntervals">The time zone intervals.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.EntityReader.DatabaseResult">
+            <summary>
+            Gets or sets the database result.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.EntityReader.TimeZoneIntervals">
+            <summary>
+            Gets or sets the time zone intervals.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.EntityReader.ReadNextEntityPagedResult``1">
+            <summary>
+            Gets a paged result for the given entity.
+            </summary>
+            <typeparam name="T">The commerce entity type.</typeparam>
+            <returns>The paged result for given entity.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.EntityReader.ReadNextEntityPagedResultAsync``1">
+            <summary>
+            Gets a paged result for the given entity.
+            </summary>
+            <typeparam name="T">The commerce entity type.</typeparam>
+            <returns>The paged result for given entity.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.EntityReader.ReadNextEntityPagedResult``1(Microsoft.Dynamics.Commerce.Runtime.DataModel.PagingInfo)">
+            <summary>
+            Gets a paged result for the given entity.
+            </summary>
+            <typeparam name="T">The commerce entity type.</typeparam>
+            <param name="pagingInfo">The paging information.</param>
+            <returns>The paged result for given entity.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.EntityReader.ReadNextEntityPagedResultAsync``1(Microsoft.Dynamics.Commerce.Runtime.DataModel.PagingInfo)">
+            <summary>
+            Gets a paged result for the given entity.
+            </summary>
+            <typeparam name="T">The commerce entity type.</typeparam>
+            <param name="pagingInfo">The paging information.</param>
+            <returns>The paged result for given entity.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.EntityReader.Dispose">
+            <summary>
+            Disposes the database result.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.EntityReader.Dispose(System.Boolean)">
+            <summary>
+            Releases the associated database connection.
+            </summary>
+            <param name="disposing">The flag for disposing.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.EntityReader.ReadNextEntityPagedResult``1(System.Boolean)">
+            <summary>
+            Gets a paged result for the given entity.
+            </summary>
+            <typeparam name="T">The commerce entity type.</typeparam>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>The paged result for given entity.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.EntityReader.ReadNextEntityPagedResult``1(Microsoft.Dynamics.Commerce.Runtime.DataModel.PagingInfo,System.Boolean)">
+            <summary>
+            Gets a paged result for the given entity.
+            </summary>
+            <typeparam name="T">The commerce entity type.</typeparam>
+            <param name="pagingInfo">The paging information.</param>
+            <param name="isAsync">True if the operation should be asynchronous.</param>
+            <returns>The paged result for given entity.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.ProductSearchResultExtensions">
+            <summary>
+            Extension methods for product search results.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.ProductSearchResultExtensions.GetLookupId(Microsoft.Dynamics.Commerce.Runtime.DataModel.ProductSearchResultContainer,System.Int64)">
+            <summary>
+            Gets the standalone or master identifier based on <paramref name="productId"/>.
+            </summary>
+            <param name="result">The extended class.</param>
+            <param name="productId">The product identifier.</param>
+            <returns>Returns the master product identifier for the <paramref name="productId"/>, or <paramref name="productId"/> otherwise.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlCompositeQuery">
+            <summary>
+            Represents a SQL composite query.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlCompositeQuery.#ctor(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlCompositeQuery"/> class.
+            </summary>
+            <param name="queries">The array of queries.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlCompositeQuery.Parameters">
+            <summary>
+            Gets or sets the parameters.
+            </summary>
+            <value>
+            The parameters.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlCompositeQuery.Queries">
+            <summary>
+            Gets the composite queries.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlCompositeQuery.BuildQuery(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQueryBuilder)">
+            <summary>
+            Builds the query to be executed against the database.
+            </summary>
+            <param name="queryBuilder">The query builder.</param>
+            <returns>The query to be executed against the database.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery">
+            <summary>
+            Represents an abstraction to simplify writing select queries that are by
+            default always paged.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.CrtDatabaseSchema">
+            <summary>
+            The database schema prefix.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.MaxRowsForInClause">
+            <summary>
+            Maximum number of rows in the TVP to be converted from JOIN to the IN clause.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery"/> class.
+            </summary>
+            <param name="queryResultSettings">The query settings.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.SortingInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery"/> class.
+            </summary>
+            <param name="queryResultSettings">The query settings.</param>
+            <param name="parameters">The parameters.</param>
+            <param name="defaultSort">Default sort order for paging purposes.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings,Microsoft.Dynamics.Commerce.Runtime.DataModel.SortingInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery"/> class.
+            </summary>
+            <param name="queryResultSettings">The query settings.</param>
+            <param name="defaultSort">Default sort order for paging purposes.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.Select">
+            <summary>
+            Gets or sets the select clause.
+            </summary>
+            <value>
+            The select clause.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.From">
+            <summary>
+            Gets or sets from clause.
+            </summary>
+            <value>
+            The from clause.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.Where">
+            <summary>
+            Gets or sets the where clause.
+            </summary>
+            <value>
+            The where.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.OrderBy">
+            <summary>
+            Gets or sets the order by clause.
+            </summary>
+            <value>
+            The order by clause.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.Hints">
+            <summary>
+            Gets the hint(s) to add to the query.
+            </summary>
+            <value>
+            The individual hint(s).
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.IsQueryByPrimaryKey">
+            <summary>
+            Gets or sets a value indicating whether this query is by primary key.
+            </summary>
+            <value>
+            If <c>true</c> the query is expected to return only a single record; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.Paging">
+            <summary>
+            Gets the paging.
+            </summary>
+            <value>
+            The paging.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.Aliased">
+            <summary>
+            Gets or sets a value indicating whether a query source should have an alias.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.Alias">
+            <summary>
+            Gets or sets the alias for the from clause.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.DatabaseSchema">
+            <summary>
+            Gets or sets the database schema.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.Distinct">
+            <summary>
+            Gets or sets a value indicating whether the DISTINCT keyword is added to the query.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.AddHints(System.String[])">
+            <summary>
+            Adds additional hint(s) to the query without disturbing any existing or default hint(s).
+            </summary>
+            <param name="hints">The hint(s) to be added to the query hint collection.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.GetTotalNumberOfRecordsQuery(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQueryBuilder)">
+            <summary>
+            Gets a query which computes the total number of records.
+            </summary>
+            <param name="builder">Specific implementation of query builder to get a final SQL statement.</param>
+            <returns>A counting query.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.BuildQuery(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQueryBuilder)">
+            <summary>
+            Builds a query using the specified builder.
+            </summary>
+            <param name="queryBuilder">The query builder.</param>
+            <returns>The query.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.ConstructQueryParts(System.String)">
+            <summary>
+            Constructs the database query parts.
+            </summary>
+            <param name="from">The from clause.</param>
+            <returns>The database query parts.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.GetInnerJoins">
+            <summary>
+            Builds the inner joins.
+            </summary>
+            <returns>The query containing the inner joins.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.GetFromDefinition">
+            <summary>
+            Gets the properly formatted FROM clause.
+            </summary>
+            <returns>
+            Returns properly formatted FROM clause definition.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.CanJoinableTableTypeBeConvertedToInClause(System.Object)">
+            <summary>
+            Checks if parameter's value is of type <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.JoinableTableType"/>,
+            has only one column and data type of value in the table is
+            <see cref="T:System.String"/>, <see cref="T:System.Int64"/>, <see cref="T:System.Int32"/>,
+            <see cref="T:System.Int16"/>.
+            </summary>
+            <param name="parameterValue">Parameter's value.</param>
+            <returns>
+            <c>true</c> if parameter's value is of type <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.JoinableTableType"/>, has one column and has no more than <see cref="F:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.MaxRowsForInClause"/> rows;
+            otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.ConvertParameterToInClause(System.Collections.Generic.KeyValuePair{System.String,System.Object},System.Text.StringBuilder,System.String,Microsoft.Dynamics.Commerce.Runtime.ParameterSet)">
+            <summary>
+            Converts single row, single column parameter to the IN clause.
+            </summary>
+            <param name="parameter">Parameter to convert.</param>
+            <param name="builder"><see cref="T:System.Text.StringBuilder"/> instance with the WHERE clause to be updated.</param>
+            <param name="fromClause">The FROM clause.</param>
+            <param name="newParameters">Collection of new parameters to be added to the collection of initial parameters.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery.ConvertJoinableTableTypesToWhereClause">
+            <summary>
+            Converts JOIN with TVP to the IN clause.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQueryExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQueryExtensions.AddInClause``1(Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery,System.Collections.Generic.IReadOnlyCollection{``0},System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Adds an IN clause to the whereClauses of the query consisting of elements in the collection.
+            </summary>
+            <param name="query">The query.</param>
+            <typeparam name="T">The type of elements in the collection.</typeparam>
+            <param name="values">The collection of values of type T. </param>
+            <param name="columnName">The name of the column on the left hand side of the IN clause.</param>
+            <param name="whereClauses">The where clauses.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQueryExtensions.AddDefaultSortOrder(Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery,System.Type)">
+            <summary>
+            Adds the default sort order columns to the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery"/> based
+            on an entity type.
+            </summary>
+            <param name="query">The query that the default sort order is added to.</param>
+            <param name="entityType">The entity from which to retrieve the default sort order.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlQuery">
+            <summary>
+            Represents a SQL query.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlQuery.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlQuery"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlQuery.#ctor(System.String,System.Object[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlQuery"/> class.
+            </summary>
+            <param name="query">The query string value.</param>
+            <param name="arguments">Arguments to format the <paramref name="query"/>.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlQuery.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlQuery"/> class.
+            </summary>
+            <param name="query">The query string value.</param>
+            <param name="parameters">The set of parameters to be used along with this query.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlQuery.Parameters">
+            <summary>
+            Gets or sets the parameters.
+            </summary>
+            <value>
+            The parameters.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlQuery.QueryString">
+            <summary>
+            Gets or sets the query string.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlQuery.EscapeSpecialCharactersForWhereClauseLike(System.String)">
+            <summary>
+            Escapes special characters for the text in LIKE statement in WHERE clause.
+            </summary>
+            <param name="text">The text to be escaped. The text MUST be put in the SQL parameter.</param>
+            <returns>The escaped text.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlQuery.BuildQuery(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQueryBuilder)">
+            <summary>
+            Builds the query to be executed against the database.
+            </summary>
+            <param name="queryBuilder">Not in use.</param>
+            <returns>The query to be executed against the database.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlServerPagedQuery">
+            <summary>
+            Represents an paged queries specific to SQL server.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlServerPagedQuery.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlServerPagedQuery"/> class.
+            </summary>
+            <param name="queryResultSettings">The query settings.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlServerPagedQuery.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.DataModel.SortingInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlServerPagedQuery"/> class.
+            </summary>
+            <param name="queryResultSettings">The query settings.</param>
+            <param name="parameters">The parameters.</param>
+            <param name="defaultSort">Default sort order for paging purposes.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlServerPagedQuery.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings,Microsoft.Dynamics.Commerce.Runtime.DataModel.SortingInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.SqlServerPagedQuery"/> class.
+            </summary>
+            <param name="queryResultSettings">The query settings.</param>
+            <param name="defaultSort">Default sort order for paging purposes.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlServerPagedQuery.StartRank">
+            <summary>
+            Gets or sets a value indicating the lower bound for dense rank (inclusive).
+            </summary>
+            <remarks>
+            Ranking is ordered by the order by clause.
+            </remarks>
+            <value>
+            A value indicating the lower bound for dense rank (inclusive).
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.SqlServerPagedQuery.EndRank">
+            <summary>
+            Gets or sets a value indicating the upper bound for dense rank (inclusive).
+            </summary>
+            <remarks>
+            Ranking is ordered by the order by clause.
+            </remarks>
+            <value>
+            A value indicating the upper bound for dense rank (inclusive).
+            </value>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.SqlServerPagedQuery.ConstructQueryParts(System.String)">
+            <summary>
+            Constructs the database query parts.
+            </summary>
+            <param name="from">The from clause.</param>
+            <returns>The database query parts.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.BigIntTableType">
+            <summary>
+            Represents a table-value type parameter to support set-based operations on big int values.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.BigIntTableType.#ctor(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.BigIntTableType"/> class.
+            </summary>
+            <param name="values">The collection of integer values.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.BigIntTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ClientBookRefinerValueTableType">
+            <summary>
+            Enables the client book refiner value to be set as SQL table valued type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ClientBookRefinerValueTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ClientBookRefinerValue})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ClientBookRefinerValueTableType"/> class.
+            </summary>
+            <param name="refinerValues">The client book refiner values by which refinement needs to be performed.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ClientBookRefinerValueTableType.CreateTableSchema">
+            <summary>
+            Creates the table schema.
+            </summary>
+            <remarks>
+            The order of the data table columns MUST match the order specified in the TVP.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ClientBookRefinerValueTableType.TableTypeFields">
+            <summary>
+            Encapsulates all of the column names of this table-valued parameter.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ComponentInSlotRelationTableType">
+            <summary>
+            Represents the table type that relates a product component and a kit slot.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ComponentInSlotRelationTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ComponentInSlotRelation})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ComponentInSlotRelationTableType"/> class.
+            </summary>
+            <param name="componentInSlotRelations">The collection of component-slot relations.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ComponentInSlotRelationTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.CustomerSearchByFieldCriteriaTableType">
+            <summary>
+            Represents a table-value type parameter to store the customer search field criteria data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.CustomerSearchByFieldCriteriaTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.CustomerSearchByFieldCriterion})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.CustomerSearchByFieldCriteriaTableType"/> class.
+            </summary>
+            <param name="criteria">The customer search criteria.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.CustomerSearchByFieldCriteriaTableType.CreateTableSchema">
+            <summary>
+            Creates the table schema.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.CustomerSearchByFieldCriteriaTableType.GetDataRow(Microsoft.Dynamics.Commerce.Runtime.DataModel.CustomerSearchByFieldCriterion)">
+            <summary>
+            Populates the data row.
+            </summary>
+            <param name="criterion">The customer search criterion.</param>
+            <returns>The data row.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.CustomerSearchByFieldCriteriaTableType.CustomerTableTypeFields">
+            <summary>
+            Encapsulates all of the column names of the customer table-value parameter.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DirectoryPartyTableRecordId">
+            <summary>
+            Represents a table-value type parameter to support set-based operations on RECIDs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DirectoryPartyTableRecordId.#ctor(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DirectoryPartyTableRecordId"/> class.
+            </summary>
+            <param name="directoryPartyTableRecordIds">The collection of record identifiers.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DirectoryPartyTableRecordId.#ctor(System.String,System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DirectoryPartyTableRecordId"/> class.
+            </summary>
+            <param name="tableName">The name given to the table.</param>
+            <param name="directoryPartyTableRecordIds">The collection of record identifiers.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DirectoryPartyTableRecordId.#ctor(System.Collections.Generic.IEnumerable{System.Int64},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DirectoryPartyTableRecordId"/> class.
+            </summary>
+            <param name="directoryPartyTableRecordIds">The collection of record identifiers.</param>
+            <param name="joinColumn">The join column name of the underlying base table.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DirectoryPartyTableRecordId.#ctor(System.Collections.Generic.IEnumerable{System.Int64},System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DirectoryPartyTableRecordId"/> class.
+            </summary>
+            <param name="directoryPartyTableRecordIds">The collection of record identifiers.</param>
+            <param name="joinColumn">The join column name of the underlying base table.</param>
+            <param name="tableName">The name given to the table.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DirectoryPartyTableRecordId.TableTypeJoinColumn">
+            <summary>
+            Gets the join column name of the table value parameter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DirectoryPartyTableRecordId.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DiscountsSearchCriteriaValueTableType">
+            <summary>
+            Enables product refiner value to be set as SQL TVP.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DiscountsSearchCriteriaValueTableType.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.DiscountsSearchCriteria)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DiscountsSearchCriteriaValueTableType"/> class.
+            </summary>
+            <param name="searchCriteria">The discount search criteria value by which refinement needs to be performed.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DiscountsSearchCriteriaValueTableType.CreateTableSchema">
+            <summary>
+            Creates the table schema.
+            </summary>
+            <remarks>
+            The order of the data table columns MUST match the order specified in the TVP.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.FulfillmentLineTransactionTableType">
+            <summary>
+            Represents a table-value type parameter of fulfillment line transaction.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.FulfillmentLineTransactionTableType.#ctor(System.Collections.Generic.ICollection{Microsoft.Dynamics.Commerce.Runtime.DataModel.FulfillmentLineTransaction},System.String,System.String,System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.FulfillmentLineTransactionTableType"/> class.
+            </summary>
+            <param name="fulfillmentLines">The collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.FulfillmentLineTransaction"/> to get the salesId and lineNum pair.</param>
+            <param name="dataAreaId">The data area identifier.</param>
+            <param name="inventLocationId">The warehouse identifier.</param>
+            <param name="channelId">The channel identifier.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.FulfillmentLineTransactionTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.IntTableType">
+            <summary>
+            Represents a table-value type parameter to support set-based operations on integer values.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.IntTableType.#ctor(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.IntTableType"/> class.
+            </summary>
+            <param name="values">The collection of integer values.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.IntTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdSearchTableType">
+            <summary>
+            Represents a table-value type parameter to support set-based operations on strings.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdSearchTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ProductLookupClause})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdSearchTableType"/> class.
+            </summary>
+            <param name="itemLookups">The collection of item identifiers.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdSearchTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ProductLookupClause},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdSearchTableType"/> class.
+            </summary>
+            <param name="itemLookups">The collection of record identifiers.</param>
+            <param name="joinColumn">The join column name of the underlying base table.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdSearchTableType.TableTypeJoinColumn">
+            <summary>
+            Gets the join column name of the table value parameter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdSearchTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdToInfoCodeMappingTableType">
+            <summary>
+            Represents a table-value type parameter of item id to info code mapping.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdToInfoCodeMappingTableType.#ctor(System.Collections.Generic.IDictionary{System.String,Microsoft.Dynamics.Commerce.Runtime.DataModel.InfoCode})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdToInfoCodeMappingTableType"/> class.
+            </summary>
+            <param name="infoCodeIdByItemIdMapping">The mapping of item ids to info codes.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdToInfoCodeMappingTableType.CreateTableSchema">
+            <summary>
+            Creates the table schema.
+            </summary>
+            <remarks>
+            The order of the data table columns MUST match the order specified in the TVP.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdToReasonCodeMappingTableType">
+            <summary>
+            Represents a table-value type parameter of item id to reason code mapping.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdToReasonCodeMappingTableType.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdToReasonCodeMappingTableType"/> class.
+            </summary>
+            <param name="reasonCodeIdByItemIdMapping">The mapping of item ids to reason codes.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemIdToReasonCodeMappingTableType.CreateTableSchema">
+            <summary>
+            Creates the table schema.
+            </summary>
+            <remarks>
+            The order of the data table columns MUST match the order specified in the TVP.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemQuantityTableType">
+            <summary>
+            Represents a table-value type parameter to support set-based operations on item quantities.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemQuantityTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ItemQuantity})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemQuantityTableType"/> class.
+            </summary>
+            <param name="itemQuantities">The collection of item quantities.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemQuantityTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemReservationIdTableType">
+            <summary>
+            Represents a table-value type parameter to support set-based operations on item reservation identifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemReservationIdTableType.#ctor(System.Collections.Generic.IEnumerable{System.Guid})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemReservationIdTableType"/> class.
+            </summary>
+            <param name="reservationIds">The collection of reservation identifiers.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemReservationIdTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemReservationTableType">
+            <summary>
+            Represents a table-value type parameter to support set-based operations on item reservations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemReservationTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ItemReservation})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemReservationTableType"/> class.
+            </summary>
+            <param name="reserverations">The collection of item reservations.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemReservationTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemUnitConversionTableType">
+            <summary>
+            Represents a table type for a collection of item unit measure conversions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemUnitConversionTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ItemUnitConversion})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemUnitConversionTableType"/> class.
+            </summary>
+            <param name="conversions">The collection of item unit measure conversions.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemUnitConversionTableType.CreateTableSchema">
+            <summary>
+            Creates the table schema.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemUnitConversionTableType.CreateDataRow(Microsoft.Dynamics.Commerce.Runtime.DataModel.ItemUnitConversion)">
+            <summary>
+            Populates the data row.
+            </summary>
+            <param name="conversion">The item unit conversion.</param>
+            <returns>The data row.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemUnitConversionTableType.TableTypeFields">
+            <summary>
+            Encapsulates all of the column names of the string identifier table-value parameter.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemVariantInventoryDimensionTableType">
+            <summary>
+            Represents a table type that contains both the item and inventory dimension identifier.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemVariantInventoryDimensionTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ItemVariantInventoryDimension})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemVariantInventoryDimensionTableType"/> class.
+            </summary>
+            <param name="items">The collection of items.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemVariantInventoryDimensionTableType.CreateTableSchema">
+            <summary>
+            Creates the table schema.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemVariantInventoryDimensionTableType.GetDataRow(Microsoft.Dynamics.Commerce.Runtime.DataModel.ItemVariantInventoryDimension)">
+            <summary>
+            Populates the data row.
+            </summary>
+            <param name="item">The item data.</param>
+            <returns>The data row.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemVariantInventoryDimensionTableType.ItemVariantInventoryDimensionTableTypeFields">
+            <summary>
+            Encapsulates all of the column names of the item/variant inventory dimension table-value parameter.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemWarehouseTableType">
+            <summary>
+            Represents a table-value type parameter to support set-based operations on item warehouses.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemWarehouseTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ItemWarehouse})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemWarehouseTableType"/> class.
+            </summary>
+            <param name="itemWarehouses">The collection of item warehouses.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ItemWarehouseTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.JoinableTableType">
+            <summary>
+            Represents a table type parameter used during set-based operations as
+            a enhanced replacement for the IN (...) syntax.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.JoinableTableType.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.JoinableTableType"/> class.
+            </summary>
+            <param name="tableTypeName">The name of the table type.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.Types.JoinableTableType.TableTypeJoinColumn">
+            <summary>
+            Gets the join column name of the table value parameter.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.Types.JoinableTableType.JoinColumn">
+            <summary>
+            Gets or sets the join column name of the underlying base table.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.Types.JoinableTableType.JoinColumnsSpecified">
+            <summary>
+            Gets a value indicating whether the join columns have been specified.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.LanguageIdTableType">
+            <summary>
+            Represents a table-value type parameter to support languages.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.LanguageIdTableType.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.LanguageIdTableType"/> class.
+            </summary>
+            <param name="languages">The collection of languages.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.LanguageIdTableType.#ctor(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.LanguageIdTableType"/> class.
+            </summary>
+            <param name="languages">The collection of languages.</param>
+            <param name="joinColumn">The column name to be joined.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.Types.LanguageIdTableType.TableTypeJoinColumn">
+            <summary>
+            Gets the join column name of the table value parameter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.LanguageIdTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.LinkedRefundPaymentTableType">
+            <summary>
+            Represents a table-value type parameter to support operations on updating refundable amounts.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.LinkedRefundPaymentTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.LinkedRefundPayment})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.LinkedRefundPaymentTableType"/> class.
+            </summary>
+            <param name="linkedRefundPayments">The collection of linked refund payments to update.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.LinkedRefundPaymentTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductRefinerValueTableType">
+            <summary>
+            Enables product refiner value to be set as SQL TVP.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductRefinerValueTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ProductRefinerValue})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductRefinerValueTableType"/> class.
+            </summary>
+            <param name="refinerValues">The product refiner values by which refinement needs to be performed.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductRefinerValueTableType.CreateTableSchema">
+            <summary>
+            Creates the table schema.
+            </summary>
+            <remarks>
+            The order of the data table columns MUST match the order specified in the TVP.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductRefinerValueTableType_V2">
+            <summary>
+            Enables the second version of product refiner value to be set as SQL TVP.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductRefinerValueTableType_V2.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ProductRefinerValue})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductRefinerValueTableType_V2"/> class.
+            </summary>
+            <param name="refinerValues">The product refiner values by which refinement needs to be performed.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductRefinerValueTableType_V2.CreateTableSchema">
+            <summary>
+            Creates the table schema.
+            </summary>
+            <remarks>
+            The order of the data table columns MUST match the order specified in the TVP.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductWarehouseLastUpdatedTableType">
+            <summary>
+            Represents a table-value type parameter to support set-based operations on Product Warehouses with a last updated datetime.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductWarehouseLastUpdatedTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.Entities.DataModel.ProductWarehouseInventoryUnpostedQuantity})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductWarehouseLastUpdatedTableType"/> class.
+            </summary>
+            <param name="unpostedQuantities">The collection of Product Warehouse pairs to collect their unposted quantity sold since their last calculation.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductWarehouseLastUpdatedTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductWarehouseTableType">
+            <summary>
+            Represents a table-value type parameter to support set-based operations on Product Warehouse Availability.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductWarehouseTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ProductWarehouse})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductWarehouseTableType"/> class.
+            </summary>
+            <param name="productWarehouses">The collection of Product Warehouse pairs.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.ProductWarehouseTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.QueryResultSettingsTableType">
+            <summary>
+            Enables paging parameters to be set.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Data.Types.QueryResultSettingsTableType.ParameterName">
+            <summary>
+            Stored procedure parameter name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.QueryResultSettingsTableType.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.QueryResultSettingsTableType"/> class.
+            </summary>
+            <param name="settings">The query result settings.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.QueryResultSettingsTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdLanguageTableType">
+            <summary>
+            Represents TVP to store RecordID and LanguageID.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdLanguageTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ProductExistenceId})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdLanguageTableType" /> class.
+            </summary>
+            <param name="ids">The collection of record identifiers.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdLanguageTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdsTableType">
+            <summary>
+            Represents a table-valued type parameter to support set-based operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdsTableType.#ctor(System.Collections.Generic.ICollection{Microsoft.Dynamics.Commerce.Runtime.DataModel.ComponentInSlotRelation})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdsTableType"/> class.
+            </summary>
+            <param name="slotToComponentRelations">The collection of product component(s) that fit into the respective slot(s) represented by its identifier.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdsTableType.CreateTableSchema">
+            <summary>
+            Creates the table schema.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdsTableType.GetDataRow(Microsoft.Dynamics.Commerce.Runtime.DataModel.ComponentInSlotRelation)">
+            <summary>
+            Populates the data row.
+            </summary>
+            <param name="slotToComponentRelation">The identifier of the product component in the respective slot represented by its identifier.</param>
+            <returns>The data row.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdsTableType.TableTypeFields">
+            <summary>
+            Encapsulates all of the column names of this table-valued parameter.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdTableType">
+            <summary>
+            Represents a table-value type parameter to support set-based operations on RECIDs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdTableType.#ctor(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdTableType"/> class.
+            </summary>
+            <param name="recordIds">The collection of record identifiers.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdTableType.#ctor(System.String,System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdTableType"/> class.
+            </summary>
+            <param name="tableName">The name given to the table.</param>
+            <param name="recordIds">The collection of record identifiers.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdTableType.#ctor(System.Collections.Generic.IEnumerable{System.Int64},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdTableType"/> class.
+            </summary>
+            <param name="recordIds">The collection of record identifiers.</param>
+            <param name="joinColumn">The join column name of the underlying base table.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdTableType.#ctor(System.Collections.Generic.IEnumerable{System.Int64},System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdTableType"/> class.
+            </summary>
+            <param name="recordIds">The collection of record identifiers.</param>
+            <param name="joinColumn">The join column name of the underlying base table.</param>
+            <param name="tableName">The name given to the table.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdTableType.TableTypeJoinColumn">
+            <summary>
+            Gets the join column name of the table value parameter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RecordIdTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.SalesLineReferenceLookupTableType">
+            <summary>
+            Represents a table-value type parameter of sales line reference lookup.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.SalesLineReferenceLookupTableType.#ctor(System.Collections.Generic.IReadOnlyDictionary{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLineReference,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLineLookupResult},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.SalesLineReferenceLookupTableType"/> class.
+            </summary>
+            <param name="salesLineReferenceLookups">The collection of key value pair of sales line references and values.</param>
+            <param name="dataAreaId">The data area identifier.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.SalesLineReferenceLookupTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.SalesLineReferenceTableType">
+            <summary>
+            Represents a table-value type parameter of sales line reference.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.SalesLineReferenceTableType.#ctor(System.Collections.Generic.ICollection{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLineReference},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.SalesLineReferenceTableType"/> class.
+            </summary>
+            <param name="salesLineReferences">The collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLineReference"/>.</param>
+            <param name="dataAreaId">The data area identifier.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.SalesLineReferenceTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.StringIdNonJoinableTableType">
+            <summary>
+            Represents a table-value type parameter to support set-based operations on string identifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.StringIdNonJoinableTableType.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.StringIdNonJoinableTableType"/> class.
+            </summary>
+            <param name="stringIds">The collection of string identifiers.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.StringIdNonJoinableTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.StringIdTableType">
+            <summary>
+            Represents a table-value type parameter to support set-based operations on string identifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.StringIdTableType.#ctor(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.StringIdTableType"/> class.
+            </summary>
+            <param name="stringIds">The collection of string identifiers.</param>
+            <param name="joinColumn">The join column name of the underlying base table.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.Types.StringIdTableType.TableTypeJoinColumn">
+            <summary>
+            Gets the join column name of the table value parameter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.StringIdTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.SuspendedTransactionTableType">
+            <summary>
+            Represents a table-value type parameter to support operations on suspended transaction.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.SuspendedTransactionTableType.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.SuspendedTransactionTableType"/> class.
+            </summary>
+            <param name="suspendedTransaction">The suspended transaction.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.SuspendedTransactionTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.TableType">
+            <summary>
+            Represents a table type parameter used during set-based operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.TableType.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.TableType"/> class.
+            </summary>
+            <param name="tableTypeName">The name of the table type.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Data.Types.TableType.DataTable">
+            <summary>
+            Gets the underlying data table.
+            </summary>
+            <remarks>
+            This data table should NOT be disposed by the caller directly.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.TableType.Dispose">
+            <summary>
+            Releases all resources used by the <see cref="P:Microsoft.Dynamics.Commerce.Runtime.Data.Types.TableType.DataTable"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.TableType.ToString">
+            <summary>
+            Returns a string representation of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.TableType"/> instance.
+            </summary>
+            <returns>The string representation of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.TableType"/> instance.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.TableType.CreateTableSchema">
+            <summary>
+            Creates the table schema.
+            </summary>
+            <remarks>
+            The order of the data table columns MUST match the order specified in the TVP.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.TaxRegistrationTableType">
+            <summary>
+            Represents a table-value type parameter to support set-based operations on tax registration entities.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.TaxRegistrationTableType.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.TaxRegistration})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.TaxRegistrationTableType"/> class.
+            </summary>
+            <param name="entities">The collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.TaxRegistration"/> entities.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.TaxRegistrationTableType.CreateTableSchema">
+            <summary>
+            Sets the table schema.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Helpers.DateTimeDataHelper">
+            <summary>
+            DateTime data helper class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Helpers.DateTimeDataHelper.ToUtcDateTimeOffset(System.Nullable{System.DateTime})">
+            <summary>
+            Converts the input date and time in UTC time zone to UTC date and time offset.
+            </summary>
+            <param name="utcDateTime">The UTC DateTime value to be converted.</param>
+            <returns>The DateTimeOffset value; null, if the provided date/time is null.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Helpers.DateTimeDataHelper.GetUtcDateTime(System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Gets the date and time in UTC from date and time offset.
+            </summary>
+            <param name="dateTimeOffset">The DateTimeOffset value to be converted.</param>
+            <returns>The DateTime value; null, if the dateTimeOffset is null.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Helpers.DateTimeOffsetDataHelper">
+            <summary>
+            DateTimeOffset data helper class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Helpers.DateTimeOffsetDataHelper.GetDbNullableTimeInSeconds(System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Gets DB nullable time in seconds.
+            </summary>
+            <param name="dateTime">The DateTime nullable object.</param>
+            <returns>The time in seconds or <c>DBNULL.value</c> when DateTime parameter is null.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Helpers.DateTimeOffsetDataHelper.GetDbNullableDate(System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Gets the database nullable date.
+            </summary>
+            <param name="dateTime">The date/time nullable object.</param>
+            <returns>The date or <c>DBNULL.value</c> when date/time parameter is null.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Helpers.DateTimeOffsetDataHelper.GetDbNullableDateTime(System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Gets DB nullable date/time.
+            </summary>
+            <param name="dateTime">The date/time nullable object.</param>
+            <returns>The date/time or <c>null</c> when the provided parameter is null.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Helpers.DateTimeOffsetDataHelper.GetDbDateTimeOrDefault(System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Gets DB date/time or defaults to <see cref="F:System.DateTime.MinValue"/>.
+            </summary>
+            <param name="dateTime">The date/time nullable object.</param>
+            <returns>The date/time or defaults to <see cref="F:System.DateTime.MinValue"/> when the provided parameter is null.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Helpers.DateTimeOffsetDataHelper.GetDbNullableUtcDateTime(System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Gets the database nullable UTC date/time.
+            </summary>
+            <param name="dateTime">The date/time offset nullable object.</param>
+            <returns>The date/time in UTC or <c>null</c> when date/time offset parameter is null.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Helpers.DateTimeOffsetDataHelper.GetDateOrDefaultSqlDate(System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Get date or <c>SqlDateTime.MinValue.Value</c> as default non-null SQL date.
+            </summary>
+            <param name="dateTimeOffset">The delivery date provided.</param>
+            <returns>The date/time value.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.CleanCashSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.DocumentProvider.CleanCashSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.CleanCashSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.DocumentProvider.CleanCashSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.CleanCashSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.DocumentProvider.CleanCashSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.CleanCashSample\obj\Debug\netstandard2.0\Runtime.Extensions.DocumentProvider.CleanCashSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.CleanCashSample\obj\Debug\netstandard2.0\Runtime.Extensions.DocumentProvider.CleanCashSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.CleanCashSample\obj\Debug\netstandard2.0\Runtime.Extensions.DocumentProvider.CleanCashSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.CleanCashSample\obj\Debug\netstandard2.0\Runtime.Extensions.DocumentProvider.CleanCashSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.CleanCashSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.DocumentProvider.CleanCashSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.CleanCashSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.DocumentProvider.CleanCashSample.pdb

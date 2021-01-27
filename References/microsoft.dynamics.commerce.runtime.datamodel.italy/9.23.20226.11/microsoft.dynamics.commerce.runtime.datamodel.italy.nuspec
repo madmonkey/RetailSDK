@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Dynamics.Commerce.Runtime.DataModel.Italy</id>
+    <version>9.23.20226.11</version>
+    <authors>Dynamics Retail and Commerce team</authors>
+    <owners>Dynamics Retail and Commerce team</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://dynamics.microsoft.com/en-us/retail/overview/</projectUrl>
+    <description>The CommerceRuntime DataModel.Italy Localization library for Retail components.</description>
+    <tags>Microsoft Dynamics Dynamics365 Retail Commerce Runtime Localization DataModel.Italy</tags>
+    <repository url="https://msazure.visualstudio.com/D365/Retail Team/_git/Retail-Rainier-Channel" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>

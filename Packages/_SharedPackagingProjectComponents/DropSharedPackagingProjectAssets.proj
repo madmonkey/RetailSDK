@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This item group is necessary for proper regex support in the copy commands below. -->
+  <ItemGroup>
+    <SharedAssets Include="$(MSBuildThisFileDirectory)\SharedAssets\**" />
+  </ItemGroup>
+  <Target Name="CopySharedAssets" BeforeTargets="BeforeBuild">
+    <Copy SourceFiles="@(SharedAssets)" DestinationFolder=".\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+</Project>

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Deposit Override View</title>
+    <link href="DepositOverrideView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment depositOverrideView" data-bind="with: viewModel">
+        <!-- Content -->
+        <div class="section main row noflip">
+            <div id="DepositOverridePivot" data-bind="pivot: {}">
+                <div data-bind="pivotItem: { header: Commerce.ViewModelAdapter.getResourceString('string_4601')}" class="padLeft20">
+                    <!-- Current deposit amount -->
+                    <div class="padTop20">
+                        <h2 data-bind="resx: { textContent: 'string_4601' }"></h2> <!-- Current deposit amount -->
+                    </div>
+
+                    <div class="padTop4">
+                        <a href="#" class="h1" data-bind="formatPrice: currentDeposit, attr: {'aria-label': ariaLabelCurrentDeposit}, click: setFullOverridenDepositAmount"></a>
+                    </div>
+
+                    <div class="padTop20" data-bind="visible: isCustomerOrderPickup">
+                        <h2 data-bind="resx: { textContent: 'string_4606' }"></h2> <!-- Available deposit amount -->
+                    </div>
+
+                    <div class="padTop4" data-bind="visible: isCustomerOrderPickup">
+                        <a href="#" class="h1" data-bind="formatPrice: availableDepositAmount, attr: {'aria-label': ariaLabelAvailableDeposit}, click: setDepositAvailableAmount"></a>
+                    </div>
+
+                    <div class="padTop20" data-bind="visible: isCustomerOrderCreateOrEdit">
+                        <h2 data-bind="resx: { textContent: 'string_4607' }"></h2> <!-- Maximum override amount -->
+                    </div>
+
+                    <div class="padTop4" data-bind="visible: isCustomerOrderCreateOrEdit">
+                        <a href="#" class="h1" data-bind="formatPrice: maximumOverrideAmount, attr: {'aria-label': ariaLabelMaximumOverrideAmount}, click: setMaximumOverrideAmount"></a>
+                    </div>
+
+                    <div class="padTop20" data-bind="visible: isCustomerOrderPickup">
+                        <h2 data-bind="resx: { textContent: 'string_4608' }"></h2> <!-- Amount due now -->
+                    </div>
+
+                    <div class="padTop4" data-bind="visible: isCustomerOrderPickup">
+                        <a href="#" class="h1" data-bind="formatPrice: totalSalesAmountDue, attr: {'aria-label': ariaLabelAmountDueNow}, click: setCartAmountDueNow"></a>
+                    </div>
+                </div>
+
+                <div data-bind="pivotItem: { header: Commerce.ViewModelAdapter.getResourceString('string_4605')}" class="padLeft20">
+                    <!-- New deposit amount -->
+                    <div class="col">
+                        <div data-bind="currencyNumpad: {
+                                    inputDataBinding: { resx: { ariaLabel: 'string_4605' /* New deposit amount */ } },
+                                    onEnter: overrideDeposit,
+                                    value: depositAmountToOverride,
+                                    numPadInputSource: $parent.numPadInputBroker
+                        }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="commandAppBar" data-bind="appBar:{}">
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconUndo',
+                id:'clearDepositOverride',
+                onclick: clearDepositOverride,
+                labelResx: 'string_4603' }"></button>
+
+        </div>
+    </div>
+</body>
+</html>

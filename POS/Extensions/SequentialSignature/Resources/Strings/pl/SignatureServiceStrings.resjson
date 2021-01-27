@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Podczas finalizowania transakcji wystąpił błąd. Funkcja podpisywania nie jest gotowa. Skontaktuj się z administratorem.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Podczas finalizowania transakcji wystąpił błąd. Połączona transakcja fiskalna zawiera dane w nieprawidłowym formacie. Skontaktuj się z administratorem.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "Wystąpił błąd podczas ostatniego odzyskiwania podpisu cyfrowego transakcji. Prawdopodobnie baza danych trybu offline nie jest zsynchronizowana. Skontaktuj się z administratorem systemu.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

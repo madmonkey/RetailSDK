@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CustomerSearchSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.CustomerSearchSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CustomerSearchSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.CustomerSearchSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CustomerSearchSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.CustomerSearchSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CustomerSearchSample\obj\Debug\netstandard2.0\Runtime.Extensions.CustomerSearchSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CustomerSearchSample\obj\Debug\netstandard2.0\Runtime.Extensions.CustomerSearchSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CustomerSearchSample\obj\Debug\netstandard2.0\Runtime.Extensions.CustomerSearchSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CustomerSearchSample\obj\Debug\netstandard2.0\Runtime.Extensions.CustomerSearchSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CustomerSearchSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.CustomerSearchSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.CustomerSearchSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.CustomerSearchSample.pdb

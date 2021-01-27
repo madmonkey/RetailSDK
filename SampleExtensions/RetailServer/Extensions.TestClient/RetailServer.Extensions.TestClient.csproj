@@ -1,0 +1,102 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\..\..\BuildTools\Common.props" />
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyName>$(AssemblyNamePrefix).RetailServer.TestClient</AssemblyName>
+    <RootNamespace>Contoso.RetailServer.TestClient</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <OutputType>WinExe</OutputType>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="ActivationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ActivationForm.Designer.cs">
+      <DependentUpon>ActivationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="DebugForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DebugForm.Designer.cs">
+      <DependentUpon>DebugForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="LogOnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="LogOnForm.Designer.cs">
+      <DependentUpon>LogOnForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="ActivationForm.resx">
+      <DependentUpon>ActivationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="DebugForm.resx">
+      <DependentUpon>DebugForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="LogOnForm.resx">
+      <DependentUpon>LogOnForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Update="..\..\..\Assets\commerceruntime.mposoffline.config">
+      <Link>CommerceRuntime.MPOSOffline.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="..\..\..\Assets\commerceruntime.mposoffline.ext.config">
+      <Link>CommerceRuntime.MPOSOffline.Ext.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="..\..\..\Assets\retailproxy.mposoffline.ext.config">
+      <Link>RetailProxy.MPOSOffline.Ext.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="..\..\..\Assets\workflowFoundation.config">
+      <Link>workflowFoundation.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.2.0" />
+    <PackageReference Include="System.Composition" Version="1.2.0" />
+    <PackageReference Include="Microsoft.Data.Edm" Version="5.6.4" />
+    <PackageReference Include="Microsoft.Data.Services.Client" Version="5.6.4" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Diagnostics.Sinks" Version="$(DiagnosticsRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.PaymentManager.Reference" Version="$(PaymentsRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.PaymentSDK.Extensions" Version="$(PaymentsRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.RetailProxy.ConfigurationProviders" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache" Version="$(FrameworkRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.DataServices" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.RTS.NotSupported" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.Services" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.Services.Desktop" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.SDKManager" Version="$(PaymentsRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.2" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTransform" Version="15.1.0" />
+    <PackageReference Include="System.Spatial" Version="5.6.4" />
+  </ItemGroup>
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetCashManagementTransactionDetailsDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'GetCashManagementTransactionDetailsDialog'">
+
+        <div class="getCashManagementTransactionDetailsDialog">
+            <div data-bind="dialog: {
+                    title: title,
+                    visible: visible,
+                    buttonClick: buttonClickHandler,
+                    closeOnEscButton: true,
+                    dialogCloseButtonClick: dialogCloseButtonClick,
+                    buttons: [
+                        { label: okButtonLabel, operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, disable: viewModel.disableOKButton },
+                        { label: cancelButtonLabel, operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false }
+                    ],
+                },
+                axBubbleAttr: 'getCashManagementTransactionDetailsDialog_GetCashManagementTransactionDetailsDialog'">
+
+                <!-- Progress ring -->
+                <div data-bind="loader: { visible: viewModel.isBusy, restoreFocus: false, type: Commerce.Controls.Loader.LoaderType.Dialog }"></div>
+
+                <!-- dialog content -->
+                <div class="content" data-bind="with: viewModel">
+                    <div>
+                        <div class="h4 padTop8 secondaryFontColor" data-bind="resx: { textContent: 'string_5151' /* Amount */ }"></div>
+                        <div class="row padTop8 padBottom8">
+                            <div class="col centerY alignRight">
+                                <div class="h1" data-bind="text: Commerce.Formatters.PriceFormatter(amount)"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="no-shrink">
+                        <div class="line-separator"></div>
+                    </div>
+                    <div>
+                        <!-- Source -->
+                        <!--ko if: isSourceVisible -->
+                        <div class="h4 secondaryFontColor marginTop12 marginBottom12" data-bind="resx: { textContent: 'string_30104' /* From */ }">From</div>
+                        <div data-bind="selectTile: {
+                            tileType: Commerce.Controls.SelectTile.SelectTileType.DoubleLine,
+                            primaryText: sourcePrimaryText,
+                            secondaryText: sourceSecondaryText,
+                            iconClass: $root.sourceIconCssClass,
+                            iteminvoked: function(){ $parent.sourceClickHandler(); },
+                            displayChevron: !isSourceLocked(),
+                            primaryTextCssClass: 'primaryFontColor',
+                            secondaryTextCssClass: 'secondaryFontColor',
+                            backgroundCssClass:'backgroundTransparent',
+                            displayBottomBorder: true,
+                            cheveronCssClass:'accentColor',
+                            disabled: isSourceLocked()
+                        }"></div>
+                        <!--/ko-->
+                        <!-- Destination -->
+                        <!--ko if: isDestinationVisible -->
+                        <div class="h4 secondaryFontColor marginTop12 marginBottom12" data-bind="resx: { textContent: 'string_30105' /* To */ }">To</div>
+                        <div data-bind="selectTile: {
+                            tileType: Commerce.Controls.SelectTile.SelectTileType.DoubleLine,
+                            primaryText: destinationPrimaryText,
+                            secondaryText: destinationSecondaryText,
+                            iconClass: $root.destinationIconCssClass,
+                            iteminvoked: function(){ $parent.destinationClickHandler(); },
+                            displayChevron: !isDestinationLocked(),
+                            primaryTextCssClass: 'primaryFontColor',
+                            secondaryTextCssClass: 'secondaryFontColor',
+                            backgroundCssClass:'backgroundTransparent',
+                            displayBottomBorder: true,
+                            cheveronCssClass:'accentColor',
+                            disabled: isDestinationLocked()
+                        }"></div>
+                        <!--/ko-->
+                    </div>
+                    <!--ko if: showNotes -->
+                    <div class="grow padTop8">
+                        <label for="cashManagementNotesTextArea" data-bind="resx: { textContent: 'string_4014' /* Notes */ }">Notes</label>
+                        <div class="col no-shrink height100 minWidth240 grow">
+                            <textarea id="cashManagementNotesTextArea" tabindex="0"
+                                      data-bind="value: notes,
+                                      valueUpdate: 'afterkeydown',
+                                      attr: { 'maxLength': Commerce.ViewModels.GetCashManagementTransactionDetailsViewModel.NOTES_MAX_LENGTH },
+                                      axBubbleAttr: 'getCashManagementTransactionDetailsDialog_cashManagementNotesTextArea'">
+                            </textarea>
+                        </div>
+                    </div>
+                    <!--/ko-->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

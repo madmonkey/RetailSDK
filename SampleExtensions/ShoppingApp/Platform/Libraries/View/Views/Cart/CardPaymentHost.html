@@ -1,0 +1,93 @@
+﻿<!--
+ * SAMPLE CODE NOTICE
+ *
+ * THIS SAMPLE CODE IS MADE AVAILABLE AS IS.  MICROSOFT MAKES NO WARRANTIES, WHETHER EXPRESS OR IMPLIED,
+ * OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY OR COMPLETENESS OF RESPONSES, OF RESULTS, OR CONDITIONS OF MERCHANTABILITY.
+ * THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS SAMPLE CODE REMAINS WITH THE USER.
+ * NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU HAVE A LICENSE AGREEMENT WITH MICROSOFT THAT ALLOWS YOU TO DO SO.
+-->
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+<body>
+    <div id="result" style="display: none;">Result:</div>
+    <iframe id="cardPaymentIframe" name="cardPaymentIframe" sandbox="allow-scripts allow-forms allow-same-origin" frameborder="0" style="height:550px;width:100%;"></iframe>
+    <script type="text/javascript">
+    const CARDPAYMENTACCEPTPAGEHOSTREADY = "msax-cc-hostready";
+    const CARDPAYMENTACCEPTPAGESUBMIT = "msax-cc-submit";
+
+    var cardPageOrigin;
+
+    function log(str)
+    {
+        /* Uncomment for troubleshooting.
+        var result = document.getElementById("result");
+        result.style.display = "block";
+        result.innerText += " " + str;
+        */
+    }
+
+    function invokeCSCode(data) {
+        try {
+            log("Sending Data:" + data);
+            invokeCSharpAction(data);
+        }
+        catch (err){
+            log(err);
+        }
+    }
+
+    function setCardPaymentAcceptPoint(data) {
+        log('setCardPaymentAcceptPoint(' + data + ')');
+        var cardPaymentAcceptPoint = JSON.parse(data);
+        cardPageOrigin = cardPaymentAcceptPoint.MessageOrigin;
+        var cardPaymentIframe = document.getElementById("cardPaymentIframe");
+        cardPaymentIframe.src = cardPaymentAcceptPoint.AcceptPageUrl;
+    }
+
+    function postMessageToIFrame(message, origin) {
+        log(message);
+        log(origin);
+        var iframe = document.getElementById("cardPaymentIframe");
+        log('iframe' + iframe);
+        iframe.contentWindow.postMessage(message, origin);
+    }
+
+    function submitCard() {
+        log('submitCard');
+        log(location.origin);
+        var cardPaymentAcceptMessage = {
+            type: CARDPAYMENTACCEPTPAGESUBMIT,
+            value: "true"
+        }
+        var message = JSON.stringify(cardPaymentAcceptMessage);
+        postMessageToIFrame(message, cardPageOrigin);
+    }
+
+    function receiveMessage(event) {
+        log('receiveMessage');
+        var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
+        if (cardPageOrigin !== origin)
+        {
+            log('origin mismatch: ' + origin);
+            return;
+        }
+
+        invokeCSCode(event.data);
+     }
+
+    window.addEventListener("message", receiveMessage, false);
+
+    window.onload = function()
+    {
+        var cardPaymentAcceptMessage = {
+            type: CARDPAYMENTACCEPTPAGEHOSTREADY,
+            value: ""
+        }
+        var message = JSON.stringify(cardPaymentAcceptMessage);
+        invokeCSCode(message);
+    }
+    </script>
+</body>
+</html>

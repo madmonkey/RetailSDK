@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>AssignExtendedLogOnDialog</title>
+    </head>
+    <body>
+        <div data-bind="customControlInternal: 'AssignExtendedLogOnDialog'">
+            <div data-bind="dialog: {
+                 title: title,
+                 subTitle: subTitle,
+                 message: employeeText,
+                 visible: visible,
+                 buttons: [
+                     { label: Commerce.ViewModelAdapter.getResourceString('string_75'), operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, isPrimary: true, disable: extendedLogonTokenUnavailable },
+                     { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false }
+                 ],
+                 buttonClick: onButtonClick
+            },
+            axBubbleAttr: 'AssignExtendedLogOnDialog_AssignExtendedLogOnDialog'">
+            </div>
+        </div>
+    </body>
+</html>

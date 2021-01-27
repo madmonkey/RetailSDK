@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Spatial</id>
+    <version>7.6.1</version>
+    <title>Microsoft.Spatial</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>http://go.microsoft.com/fwlink/?linkid=833178</licenseUrl>
+    <projectUrl>http://odata.github.io/</projectUrl>
+    <iconUrl>http://static.tumblr.com/hgchgxz/9ualgdf98/icon.png</iconUrl>
+    <description>Contains classes and methods that facilitate geography and geometry spatial operations. Targets .NET Platform Standard 1.1.
+OData .NET library is open source at http://github.com/OData/odata.net. Documentation for the library can be found at https://odata.github.io/odata.net.</description>
+    <summary>Contains classes and methods that facilitate geography and geometry spatial operations.</summary>
+    <releaseNotes>http://odata.github.io/odata.net/v7/#ODL-7.6.1</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>wcf data services odata odatalib edmlib spatial ado.net ef entity framework open protocol wcfds wcfdataservices dataservices</tags>
+  </metadata>
+</package>

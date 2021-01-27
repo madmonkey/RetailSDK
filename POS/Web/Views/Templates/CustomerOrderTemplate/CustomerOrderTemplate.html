@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Order Template</title>
+</head>
+<body>
+
+    <!-- Fulfillment quantity dialog template -->
+    <script id="FulfillmentQuantityDialogTemplate" type="text/html">
+        <div class="secondaryFontColor"><div class="h4" data-bind="resx: { textContent: 'string_4556' }">Sales order number</div></div>
+        <div class="padTop4"><div class="h4" data-bind="text: productDetails.salesId">Sales Id</div></div>
+        <div class="padTop16 width100Percent row" data-bind="attr: { title: productDetails.productName }">
+            <div class="width72 height72 col fit-image">
+                <img src="#"
+                     data-bind="image: {
+                        src: Commerce.Formatters.SmallRecentPurchaseImage(productDetails.primaryImageUrl),
+                        alt: productDetails.productName,
+                        defaultSrc: Commerce.DefaultImages.ProductSmall
+                     }" />
+            </div>
+            <div class="wrapText padLeft12 grow padRight12 padTop4 height72">
+                <div class="h5" data-bind="text: productDetails.productName"></div>
+                <div class="h4 secondaryFontColor" data-bind="text: productDetails.itemId"></div>
+                <div class="h4 secondaryFontColor" data-bind="text: productDetails.dimensions"></div>
+            </div>
+        </div>
+        <div class="secondaryFontColor padTop16"><div class="h4" data-bind="resx: { textContent: 'string_13167' }">Remaining quantity</div></div>
+        <div class="h1" data-bind="text: productDetails.remainingQuantity">Quantity</div>
+        <div data-bind="visible: showSecondaryInfo">
+            <div class="secondaryFontColor padTop16"><div class="h4" data-bind="text: secondaryTitle"></div></div>
+            <div class="h1" data-bind="text: secondaryQuantity"></div>
+        </div>
+    </script>
+
+    <!-- Fulfillment reject reason dialog template -->
+    <script id="FulfillmentRejectReasonDialogTemplate" type="text/html">
+        <div class="secondaryFontColor"><div class="h4" data-bind="resx: { textContent: 'string_4556' }">Sales order number</div></div>
+        <div class="padTop4"><div class="h4" data-bind="text: SalesId">Sales Id</div></div>
+        <div class="padTop16 width100Percent row" data-bind="attr: { title: ProductName }">
+            <div class="width72 height72 col fit-image">
+                <img src="#"
+                     data-bind="image: {
+                        src: Commerce.Formatters.SmallRecentPurchaseImage(PrimaryImageUrl),
+                        alt: ProductName,
+                        defaultSrc: Commerce.DefaultImages.ProductSmall
+                     }" />
+            </div>
+            <div class="wrapText padLeft12 grow padRight12 padTop4 height72">
+                <div class="h5" data-bind="text: ProductName"></div>
+                <div class="h4 secondaryFontColor" data-bind="text: ItemId"></div>
+                <div class="h4 secondaryFontColor" data-bind="text: Dimensions"></div>
+            </div>
+        </div>
+        <div class="secondaryFontColor padTop16 padBottom4"><div class="h4" data-bind="resx: { textContent: 'string_13174' }">Reject reason</div></div>
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetShippingChargeDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'GetShippingChargeDialog'">
+        <div data-bind="dialog:
+            {
+                title: Commerce.ViewModelAdapter.getResourceString('string_2518'),
+                subTitle: Commerce.ViewModelAdapter.getResourceString('string_2516'),
+                message: _deliveryMethodDescription,
+                visible: visible,
+                buttonClick: getShippingChargeButtonClick,
+                dialogCloseButtonClick: dialogCloseButtonClick
+            },
+            axBubbleAttr: 'getShippingChargeDialog_getShippingChargeDialog'">
+
+
+            <!-- dialog content -->
+            <div class="grow"></div>
+            <div class="content">
+                <div class="dialogSplitColumn width100Percent" data-bind="axBubbleAttr: 'getShippingChargeDialog_setShippingChargeNumpad'">
+                    <div data-bind="currencyNumpad: {
+                                value: _shippingCharge,
+                                onEnter: onTextBoxEnterEventHandler,
+                                inputDataBinding: { resx: { ariaLabel: 'string_5151' /* Amount */ } },
+                                numPadInputSource: numPadInputBroker
+                         }" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

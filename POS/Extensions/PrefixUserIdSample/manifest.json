@@ -1,0 +1,25 @@
+﻿{
+  "$schema": "../schemas/manifestSchema.json",
+  "name": "Prefix_UserId_Samples",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "9.12.0.0",
+  "components": {
+    "extend": {
+      "triggers": [
+        {
+          "triggerType": "PreUnlockTerminal",
+          "modulePath": "TriggerHandlers/PreUnlockTerminalTrigger"
+        },
+        {
+          "triggerType": "PreElevateUser",
+          "modulePath": "TriggerHandlers/PreElevateUserTrigger"
+        },
+        {
+          "triggerType": "PreLogOn",
+          "modulePath": "TriggerHandlers/PreLogOnTrigger"
+        }
+      ]
+    }
+  }
+}

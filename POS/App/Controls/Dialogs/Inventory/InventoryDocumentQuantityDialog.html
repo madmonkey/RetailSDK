@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>InventoryDocumentQuantityDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'InventoryDocumentQuantityDialog'">
+        <div data-bind="dialog:
+            {
+                title: viewModel.computedTitle,
+                visible: visible,
+                showProgressIndicator: indeterminateWaitVisible,
+                dialogCloseButtonClick: closeButtonClick,
+                closeOnEscButton: true,
+                dialogType: Commerce.Controls.Dialog.DialogTypes.SEQUENCE,
+                backButtonVisible: viewModel.showBackButton,
+                backClick: onClickBack,
+            }">
+            <!-- dialog content -->
+            <div class="inventoryDocumentQuantityDialog grow col">
+                <!-- ko if: viewModel.hasProductData() && !viewModel.showWarning() -->
+                <div data-bind="template: {
+                    name: 'inventoryDocumentLineProductInformationTemplate',
+                    data: {
+                        primaryImageUrl: viewModel.itemPrimaryImageUrl(),
+                        itemName: viewModel.itemName(),
+                        itemId: viewModel.itemId(),
+                        productDimensionsDescription: viewModel.productDimensionsDescription() }}"></div>
+
+                <!-- ko if: viewModel.isLocationActive -->
+                <div class="marginTop20">
+                    <div data-bind="template: { name: 'inventoryDocumentLineWmsLocationTemplate',
+                        data: { onUpdateLocation: onClickLocation.bind($data), wmsLocationId: viewModel.wmsLocationId(), isWmsLocationIdEmpty: viewModel.isWmsLocationIdEmpty() }}">
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko if: viewModel.showWarning -->
+                <div>
+                    <span class="h3 iconWarning icon-18x18 warningColor inline"></span>
+                    <h3 class="wrapText warningColor inline" data-bind="text: viewModel.warningText"></h3>
+                </div>
+                <!-- /ko -->
+
+                <div class="grow">
+                    <div class="customContent scrollY">
+                        <!-- empty content to be provided on control call -->
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div data-bind="axBubbleAttr: 'inventoryDocumentQuantityDialog_numpad'">
+                        <div data-bind="numericNumpad: {
+                                value: viewModel.numpadTextValue,
+                                labelDataBinding: { text: viewModel.numpadLabel },
+                                onEnter: onTextBoxEnterEventHandler,
+                                numPadInputSource: numPadInputBroker,
+                            }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

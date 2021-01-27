@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ChangeDialog</title>
+
+    <link href="ChangeDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'TextInputDialog'">
+        <div data-bind="
+            dialog: {
+                title: Commerce.ViewModelAdapter.getResourceString('string_1816'),
+                visible: visible,
+                buttonClick: buttonClickHandler,
+                closeOnEscButton: true,
+                buttons: [{ label: Commerce.ViewModelAdapter.getResourceString('string_1819'), operationId: Commerce.Controls.Dialog.OperationIds.CLOSE_BUTTON_CLICK, cssClass: 'cancelButton', isPrimary: true }]
+            },
+            axBubbleAttr: 'changeDialog_changeDialog'" id="changeDialog">
+            <div class="panel">
+                <div class="row padBottom12">
+                    <div>
+                        <div class="h4" data-bind="resx: { textContent: 'string_1817' }">Total amount due</div>
+                    </div>
+                    <div class="textRight">
+                        <div class="h4" data-bind="formatPrice: amountDue"></div>
+                    </div>
+                </div>
+                <div class="row padBottom20">
+                    <div>
+                        <div class="h4" data-bind="resx: { textContent: 'string_1818' }">Total Payments</div>
+                    </div>
+                    <div class="textRight">
+                        <div class="h4" data-bind="formatPrice: totalAmountPaid"></div>
+                    </div>
+                </div>
+                <div class="row padBottom32" data-bind="visible: salesPaymentDifferenceVisible">
+                    <div>
+                        <div class="h4" data-bind="resx: { textContent: 'string_1823' }">Rounding</div>
+                    </div>
+                    <div class="textRight">
+                        <div class="h4" data-bind="formatPrice: salesPaymentDifference"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padTop05">
+                        <div class="h4" data-bind="text:changeAmountLabel">Change due (tender type)</div>
+                    </div>
+                    <div class="textRight">
+                        <div class="h2" data-bind="formatPrice: changeAmount"></div>
+                    </div>
+                </div>
+                <div class="row" data-bind="visible: printGiftReceiptVisible">
+                    <div class="win-ui-light col shrink">
+                        <div class="noWinLabel"
+                             data-bind="toggleSwitch: {
+                                    title: 'string_1830', /* Print gift receipt */
+                                    labelOn: 'string_7411',
+                                    labelOff:'string_7412',
+                                    checked: printGiftReceipt,
+                                    onChange: onPrintGiftReceiptToggle
+                             }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

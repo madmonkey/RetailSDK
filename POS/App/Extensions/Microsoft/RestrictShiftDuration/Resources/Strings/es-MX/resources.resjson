@@ -1,0 +1,10 @@
+{
+  "Warning_title": "Advertencia",
+  "_Warning_title.comment": "POS warning message title.",
+  "Shift_closing_warning": "Debe cerrar el turno a las {0}.",
+  "_Shift_closing_warning.comment": "POS warning message when the cashier performs an operation within the shift closing interval.",
+  "Error_title": "Error",
+  "_Error_title.comment": "POS error message title.",
+  "Shift_closing_error": "La duración del turno supera el límite. Suspenda la transacción, cierre el turno y abra uno nuevo.",
+  "_Shift_closing_error.comment": "POS warning message when the cashier performs an operation after the shift closing time."
+}

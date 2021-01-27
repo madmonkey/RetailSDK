@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "内部版本号管理器: 已成功添加内部版本号。",
+  "Build_number_successfull_log_message_text.comment": "成功将 POS 内部版本号添加到交易记录时记录的消息。",
+  "Build_number_error_log_message_text": "内部版本号管理器: 添加内部版本号失败，错误消息: '{0}'。",
+  "Build_number_error_log_message_text.comment": "未成功将 POS 内部版本号添加到交易记录时记录的消息。"
+}

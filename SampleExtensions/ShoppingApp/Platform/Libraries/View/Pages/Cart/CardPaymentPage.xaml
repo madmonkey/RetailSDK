@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pages:CardPaymentPageXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Pages.CardPaymentPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Behaviors"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:pages="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    Title="{localization:Translate Pages_CardPaymentPage_Title}">
+    <StackLayout
+        Orientation="Vertical"
+        Spacing="0">
+      <views:CardPaymentView
+            x:Name="CardPaymentView"
+            BindingContext="{Binding CardPaymentView}"
+            CardSubmitted="OnCardSubmitted"/>
+        <Button
+            x:Name="DoneButton"
+            Style="{StaticResource actionButtonStyle}"
+            Clicked="DoneButtonClicked"
+            IsEnabled="{Binding CardPaymentView.IsInitialized}"
+            Text="{localization:Translate Pages_CardPaymentPage_Done}" />
+    </StackLayout>
+</pages:CardPaymentPageXaml>

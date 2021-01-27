@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TimeRegistrationDialog</title>
+
+    <link href="TimeRegistrationDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'TimeRegistrationDialog'">
+
+        <div class="timeRegistrationDialog">
+            <div data-bind="dialog:
+                {
+                    title: title,
+                    visible: visible,
+                    showProgressIndicator: indeterminateWaitVisible,
+                    buttonClick: buttonClickHandler,
+                    buttons: [{ label: Commerce.ViewModelAdapter.getResourceString('string_80'), isPrimary: false, operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK }], /* Close */
+                },
+                axBubbleAttr: 'timeRegistrationDialog_timeRegistrationDialog'" class="timeRegistrationDialog modalWindowContentSection">
+
+                <div data-bind="visible: statusLabelsVisible" class="marginBottom12">
+                    <div class="marginBottom08">
+                        <label data-bind="resx: { textContent: 'string_4089' }"></label><!-- Current status -->
+                        <div class="h4" data-bind="text: lastActivityStatus"></div>
+                    </div>
+                    <div>
+                        <label data-bind="text: lastActivityDateLabel"></label><!-- Last activity time / Current activity time -->
+                        <div class="h4" data-bind="text: lastActivityDate"></div>
+                    </div>
+                </div>
+                <div data-bind="visible: viewMode() == Commerce.Controls.TimeClockDialogViewMode.Options,
+                     tileList: {
+                        itemDataSource: optionButtons,
+                        iteminvoked: handleTimeClockAction,
+                        field: 'actionName',
+                        iconCssClassField: 'cssClass',
+                        tileType: Commerce.Controls.TileList.TileType.Flat }, axBubbleAttr: 'timeRegistrationDialog_optionButtons'">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

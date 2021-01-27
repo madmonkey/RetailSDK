@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Warehouse Templates</title>
+    <link href="WarehouseTemplate.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Card style list for warehouse selection dialog -->
+    <script id="warehouseGridTemplate" type="text/html">
+        <div class="warehouseItemContainer">
+            <div class="accentBackground">
+                <div class="row centerY">
+                    <div class="bottomLeft grow pad12">
+                        <div class="margin0 h5 ellipsis maxWidth220" data-bind="text: InventLocation"></div>
+                        <div class="margin0 h6 textTransformNone opacity60 ellipsis maxWidth220" data-bind="text: Name"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    
+    <!-- Card style list for warehouse location selection dialog -->
+    <script id="warehouseLocationGridTemplate" type="text/html">
+        <div class="warehouseItemContainer">
+            <div class="accentBackground">
+                <div class="row centerY">
+                    <div class="bottomLeft grow pad12">
+                        <div class="margin0 h5 ellipsis maxWidth220" data-bind="text: LocationId"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

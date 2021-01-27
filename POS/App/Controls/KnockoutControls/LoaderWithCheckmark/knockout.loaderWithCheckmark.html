@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout loader with complete checkmark</title>
+    <link href="knockout.loaderWithCheckmark.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/html" id="loaderWithCheckmarkTemplate">
+        <div class="loaderWithCheckmark" id="loaderWithCheckmarkControl" data-bind="visible: $data.loaderStatus() !== Commerce.Controls.LoaderWithCheckmark.LoaderWithCheckmarkStatus.Hidden">
+            <!-- ko if: $data.loaderStatus() === Commerce.Controls.LoaderWithCheckmark.LoaderWithCheckmarkStatus.InProgress -->
+            <div class="padTop8">
+                <div class="loaderCheckmark"></div>
+            </div>
+            <div class="h4 textCenter" data-bind="resx: { textContent: $data.loaderLabel }"></div>
+            <!-- /ko -->
+            <!-- ko if: $data.loaderStatus() === Commerce.Controls.LoaderWithCheckmark.LoaderWithCheckmarkStatus.Completed -->
+            <div class="checkmarkRoot padTop8">
+                <svg class="checkmark">
+                    <circle class="checkmark_circle" cx="26" cy="26" r="26" fill="none" />
+                    <path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                </svg>
+            </div>
+            <div class="h4 textCenter checkmarkRoot" data-bind="resx: { textContent: $data.loaderLabel }"></div>
+            <!-- /ko -->
+        </div>
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CatalogsView</title>
+    <link href="CatalogsView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment catalogsView">
+        <div class="section main row" data-bind="resx: { ariaLabel: 'string_4454' }">
+            <!-- Main content -->
+            <div id="catalogsViewPivot" data-bind="pivot: {}">
+                <div data-bind="pivotItem: { header: Commerce.ViewModelAdapter.getResourceString('string_35') }" class="padLeft20 padRight20">
+                    <div class="col width320 primaryBackgroundColor highContrastBorderThin padLeft20" data-bind="visible: Commerce.Session.instance.productCatalogStore.StoreType != Commerce.Proxy.Entities.StoreButtonControlType.AllStores">
+                            <div id="storeName">
+                                <a class="h3" href="#" data-bind="text: currentStoreLocation, click: navigateToStoreDetails">Store name</a>
+                            </div>
+                            <div>
+                                <div class="h4" data-win-bind="textContent: currentStore.OrgUnitNumber"></div>
+                            </div>
+                            <div class="row marginTop12 marginBottom20">
+                                <div class="marginRight8">
+                                    <div class="margin8">
+                                        <button class="iconPhone icon-18x18 margin07" data-bind="resx: { ariaLabel: 'string_4209' }"></button>  <!-- Phone number -->
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="margin8">
+                                        <button class="iconMail icon-18x18 margin07" data-bind="resx: { ariaLabel: 'string_4211' }"></button>  <!-- Email address -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="height72 secondaryFontColor" data-win-bind="innerHTML: currentStore.OrgUnitAddress Commerce.Core.Converter.threeLineAddressFormatterWithHtmlEscape"></div>
+                        </div>
+
+                    <div class="row width320 primaryBackgroundColor highContrastBorderThin" data-bind="visible: Commerce.Session.instance.productCatalogStore.StoreType == Commerce.Proxy.Entities.StoreButtonControlType.AllStores">
+                            <div class="width72 height72">
+                                <img class="width72 height72 otherStores highContrastBorderThin" />
+                            </div>
+                            <div class="height72 width232 padLeft12">
+                                <div>
+                                    <h3 class="ellipsis" data-bind="resx: { textContent: 'string_5504' }"></h3> <!--All stores and catalogs-->
+                                </div>
+                                <div class="secondaryFontColor">
+                                    <div class="h4" data-bind="resx: { textContent: 'string_44' }"></div> <!--Search all available products currently for sale anywhere.-->
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="marginTop12">
+                        <div data-bind="buttonBlock: {  
+                            buttonClass: 'iconRetail',
+                            labelTextResx: 'string_43', 
+                            click: switchToCurrentStore }"><!--Use current store-->
+                        </div>
+                    </div>
+
+                    <div>
+                        <div data-bind="buttonBlock: { 
+                            buttonClass: 'iconMapPin',
+                            labelTextResx: 'string_30', 
+                            click: switchToOtherStores }"><!--Find other stores-->
+                        </div>
+                    </div>
+
+                    <div>
+                        <div data-bind="buttonBlock: { 
+                            buttonClass: 'iconSearch',
+                            labelTextResx: 'string_36',
+                            click: switchToAllStoreProducts }"><!--Search all stores and catalogs-->
+                        </div>
+                    </div>
+                        
+                </div>
+
+                <div data-bind="pivotItem: { header: Commerce.ViewModelAdapter.getResourceString('string_32') }" class="padLeft20">
+                    <div id="catalogsList"
+                            class="noMargin"
+                            data-bind="dataList: {
+                            itemDataSource: viewModel.catalogs,
+                            defaultListType: Commerce.Controls.DataList.ListType.Card,
+                            selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                            itemInvoked: itemInvokedHandler,
+                            ariaLabelResx: 'string_925', /* Collection of products */
+                            itemTemplates: [
+                                { templateId: 'categoryCatalogTemplate' }
+                            ]
+                            },
+                            axBubbleAttr: 'catalogsView_productsView'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

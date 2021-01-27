@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata minClientVersion="2.12">
+    <id>Microsoft.SqlServer.SqlManagementObjects</id>
+    <version>150.18208.0</version>
+    <authors>Microsoft</authors>
+    <owners>nugetsqltools,Microsoft</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/smo-license-terms</licenseUrl>
+    <projectUrl>https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/overview-smo</projectUrl>
+    <iconUrl>https://s.gravatar.com/avatar/6f39d8562df0a3509a8240fb281bc5bd?s=80</iconUrl>
+    <description>The SQL Server Management Objects (SMO) Framework is a set of objects designed for programmatic management of Microsoft SQL Server and Microsoft Azure SQL Database.</description>
+    <summary>All libraries included as part of the SQL Server Management Objects (SMO) Framework</summary>
+    <releaseNotes>See https://docs.microsoft.com/sql/ssms/sql-server-management-studio-changelog-ssms for combined release notes of SMO and SSMS.</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>SQL SMO</tags>
+    <dependencies>
+      <group>
+        <dependency id="Newtonsoft.Json" version="10.0.1" exclude="Compile" />
+      </group>
+      <group targetFramework=".NETCoreApp2.0">
+        <dependency id="System.Data.SqlClient" version="4.6.0" exclude="Compile" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

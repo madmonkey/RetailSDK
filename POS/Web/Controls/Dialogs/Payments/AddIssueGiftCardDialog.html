@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GiftCardDialog</title>
+
+    <!-- WinJS references -->
+    <link href="AddIssueGiftCardDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'GiftCardDialog'">
+        <div tabindex="-1" data-bind="dialog: {
+             title: title,
+             message: message,
+             visible: visible,
+             buttonClick: onButtonClick,
+             showProgressIndicator: indeterminateWaitVisible,
+             closeOnEscButton: true,
+             tabIndexButton: 3,
+             dialogCloseButtonClick: onCloseDialogButtonClick,
+             buttons: [{ visible: isButtonVisible, label: buttonLabel, operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton' }]
+             },
+             axBubbleAttr: 'addIssueGiftCardDialog_giftCardDialog' ">
+
+            <!-- dialog content -->
+            <div data-bind="if: isScanning">
+                <div class="centerX padTop48">
+                    <div class="col center padLeft36 padRight36">
+                        <div class="center iconPaymentCard icon-40x40 height48"></div>
+                        <div class="h4 center primaryFontColor height48" data-bind="resx: { textContent: 'string_5119'} ">Swipe or scan card...</div>
+                    </div>
+                    <progress class="accentColor height4 padLeft36 padRight36"></progress>
+                </div>
+            </div>
+            <div data-bind="if: isDisplayBalance() && !Commerce.StringExtensions.isNullOrWhitespace(giftCardNumber())">
+                <div class="h4 secondaryFontColor" data-bind="resx: { textContent: 'string_5150' }">Card number</div>
+                <div class="h4 primaryFontColor" data-bind="text: giftCardNumber"></div>
+            </div>
+            <div data-bind="if: isDisplayBalance() && !Commerce.StringExtensions.isNullOrWhitespace(giftCardAmountBalance())" class="marginTop12">
+                <div class="h4 secondaryFontColor" data-bind="resx: { textContent: 'string_5153' }">Balance</div>
+                <div class="h1" data-bind="text: giftCardAmountBalance"></div>
+            </div>
+            <div class="grow"></div>
+            <div data-bind="if: !isScanning() && Commerce.StringExtensions.isNullOrWhitespace(giftCardNumber()) && isManualCardNumberInputAllowed(), axBubbleAttr: 'addIssueGiftCardDialog_cardNumberNumPad'">
+                <div data-bind="alphanumericNumpad: {
+                        labelDataBinding: { resx: { textContent: 'string_5150' } },
+                        onEnter: onNumPadCardNumberEnterEventHandler,
+                        numPadInputSource: numPadInputBroker
+                }"></div>
+            </div>
+            <div data-bind="if: !Commerce.StringExtensions.isNullOrWhitespace(giftCardNumber()) && !isGiftCardBalanceOperation() && Commerce.StringExtensions.isNullOrWhitespace(giftCardAmount()), axBubbleAttr: 'addIssueGiftCardDialog_cardAmountNumPad'">
+                <div data-bind="currencyNumpad: {
+                        labelDataBinding: { resx: { textContent: 'string_5151' /* Amount */ } },
+                        value: giftCardAmountFromCart,
+                        onEnter: onNumPadAmountEnterEventHandler,
+                        numPadInputSource: numPadInputBroker,
+                        autoFocusOnInput: true
+                    }"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,2760 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.DataServices</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AddressDataService">
+            <summary>
+            Address data services that contains methods to retrieve the information by calling views.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AddressDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AddressDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AffiliationDataService">
+            <summary>
+            Affiliation data services that contains methods to retrieve the information by calling views.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AffiliationDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AffiliationDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AttributeDataService">
+            <summary>
+            Attribute data services that contains methods to retrieve the information by calling views.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AttributeDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AttributeDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AttributeDataService.GetAttributeDefinitions(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetAttributeDefinitionsDataRequest)">
+            <summary>
+            Get the attribute definitions.
+            </summary>
+            <param name="request">The attribute definition request.</param>
+            <returns>List of attribute definitions.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AttributeDataService.GetAttributeTranslationDetails(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetAttributeDefinitionsDataRequest,System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            Get the list of attribute translation details.
+            </summary>
+            <param name="request">The attribute definition request.</param>
+            <param name="attributeRecordIds">List of attribute record identifiers that we want to get the translation.</param>
+            <returns>List of attribute translation details.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AttributeDataService.DeserializeAttributeMetadata(Microsoft.Dynamics.Commerce.Runtime.PagedResult{Microsoft.Dynamics.Commerce.Runtime.DataModel.AttributeDefinition})">
+            <summary>
+            Deserialize the attribute metadata XML and populate the values of the attribute flags.
+            </summary>
+            <param name="attributeDefinitions">The attribute definitions.</param>
+            <remarks>Sample XML string: <ProductProperty IsSearchable="false" IsRetrievable="false" IsQueryable="false" IsRefinable="false" IsSortable="false" IsMultiValue="false" IsTokenNormalization="false" IsCompleteMatch="false" IsMandatory="true" IsHidden="true" /></remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AttributeDataService.InsertAttributeTranslations(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.AttributeDefinition},System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.AttributeTranslationDetails})">
+            <summary>
+            Inserts attribute translation details to the appropriate attribute definition entity.
+            </summary>
+            <param name="attributes">List of attribute definitions.</param>
+            <param name="attributeTranslations">List of attribute translations that are going to be inserted to the attribute definition.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AttributeDataService.InsertAttributeEnumerationDetails(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.AttributeDefinition},System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.AttributeEnumeration})">
+            <summary>
+            Insert attribute enumeration details to the appropriate attribute definition entity.
+            </summary>
+            <param name="attributes">List of attribute definition.</param>
+            <param name="attributeEnumerations">List of attribute enumerations that are going to be inserted to the attribute definition.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AttributeGroupDataService">
+            <summary>
+            Attribute group data services that contains methods to retrieve the information by calling views.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AttributeGroupDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AttributeGroupDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AttributeGroupDataService.GetAttributeGroupDefinitions(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetAttributeGroupDefinitionsDataRequest)">
+            <summary>
+            Get the attribute group definitions.
+            </summary>
+            <param name="request">The attribute group definition request.</param>
+            <returns>List of attribute group definitions.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AttributeGroupDataService.GetAttributeGroupTranslationDetails(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetAttributeGroupDefinitionsDataRequest,System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            Get the list of attribute group translation details.
+            </summary>
+            <param name="request">The attribute group definition request.</param>
+            <param name="attributeGroupRecordIds">List of attribute group record identifiers that we want to get the translation.</param>
+            <returns>List of attribute group translation details.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.AttributeGroupDataService.InsertAttributeGroupTranslations(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.AttributeGroupDefinition},System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.AttributeGroupTranslationDetails})">
+            <summary>
+            Inserts attribute group translation details to the appropriate attribute group definition entity.
+            </summary>
+            <param name="attributeGroups">List of attribute group definitions.</param>
+            <param name="attributeGroupTranslations">List of attribute group translations that are going to be inserted to the attribute group definition.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BarcodeDataService">
+            <summary>
+            The barcode common data request handler.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BarcodeDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BarcodeDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BarcodeDataService.GetBarcodeMaskSegment(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetBarcodeMaskSegmentDataRequest)">
+            <summary>
+            Gets the barcode mask segment using the specified mask identifier.
+            </summary>
+            <param name="request">The get barcode mask segment data request.</param>
+            <returns>
+            A entity data service response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BarcodeDataService.GetBarcodeMask(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetBarcodeMaskDataRequest)">
+            <summary>
+            Gets the barcode mask segment using the specified mask identifier.
+            </summary>
+            <param name="request">The get barcode mask segment data request.</param>
+            <returns>
+            A entity data service response.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BusinessPartnerDataService">
+            <summary>
+            A data service implementation associated with Business Partner.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BusinessPartnerDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BusinessPartnerDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BusinessPartnerDataService.CreateBusinessPartnerProspect(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.CreateBusinessPartnerProspectDataRequest)">
+            <summary>
+            Saves the business partner prospect.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>A single entity data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BusinessPartnerDataService.CreateBusinessPartnerUser(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.CreateBusinessPartnerUserDataRequest)">
+            <summary>
+            Saves the business partner user.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>A single entity data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BusinessPartnerDataService.UpdatesBusinessPartnerUser(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.UpdateBusinessPartnerUserDataRequest)">
+            <summary>
+            Updates the business partner user.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>A single entity data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BusinessPartnerDataService.RemoveBusinessPartnerUser(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.RemoveBusinessPartnerUserDataRequest)">
+            <summary>
+            Removes the business partner user.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>A single entity data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BusinessPartnerDataService.CreateBusinessPartnerOperation(Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.DataModel.BusinessPartnerOperationType,System.String,System.String)">
+            <summary>
+            Saves the business partner operation.
+            </summary>
+            <param name="requestContext">The request context.</param>
+            <param name="businessPartnerOperationType">The operation type.</param>
+            <param name="value">The value.</param>
+            <param name="businessPartnerId">The business partner id.</param>
+            <returns>A single entity data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BusinessPartnerDataService.GetCurrentBusinessPartner(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetCurrentBusinessPartnerDataRequest)">
+            <summary>
+            Gets the current business partner.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>A single entity data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BusinessPartnerDataService.GetBusinessPartnerUser(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetBusinessPartnerUserDataRequest)">
+            <summary>
+            Gets the business partner user.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>A single entity data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BusinessPartnerDataService.GetBusinessPartnerUsers(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetBusinessPartnerUsersDataRequest)">
+            <summary>
+            Gets the business partner users.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>A single entity data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BusinessPartnerDataService.Authorize(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Validate that the customer is a business partner admin when the principal is customer.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BusinessPartnerDataService.AuthorizeCustomer(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Validate that the principal is a customer who is a business partner admin.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.BusinessPartnerDataService.EnsureCustomerIsAdmin(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,System.String)">
+            <summary>
+            Validate that the customer is a business partner admin.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="customerAccount">The customer account.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService">
+            <summary>
+            Channel data services that contains methods to retrieve the information by calling views.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.PopulateOrgUnitsAddress(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.OrgUnit},System.Boolean)">
+            <summary>
+            Populates orgUnits' addresses based on their property bag values.
+            </summary>
+            <param name="context">The request context.</param>
+            <param name="orgUnits">OrgUnits for the update.</param>
+            <param name="hasAllOrgUnits">Specifies if the the org unit list contains all orgunits or not.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.PopulateOrgUnitAddress(Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.DataModel.OrgUnit)">
+            <summary>
+            Populates <see cref="P:Microsoft.Dynamics.Commerce.Runtime.DataModel.OrgUnit.OrgUnitAddress"/>.
+            </summary>
+            <param name="context">The request context.</param>
+            <param name="orgUnit">The <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.OrgUnit"/> instance for the update.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.PopulateOrgUnitContact(Microsoft.Dynamics.Commerce.Runtime.DataModel.OrgUnit)">
+            <summary>
+            Populates organization unit address according to organization unit contacts.
+            </summary>
+            <param name="orgUnit">The <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.OrgUnit"/> instance for the update.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetOrgUnitContactByType(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.OrgUnitContact},Microsoft.Dynamics.Commerce.Runtime.DataModel.ContactInfoType)">
+            <summary>
+            Gets the organization unit contact by contact type.
+            </summary>
+            <param name="contacts">The collection of contacts.</param>
+            <param name="type">The desired type.</param>
+            <returns>The organization unit contact.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.ParseXmlAttributeFlag(System.Xml.Linq.XAttribute)">
+            <summary>
+            Parse XML attribute flag value
+            </summary>
+            <param name="xAttribute">The XML attribute</param>
+            <returns>The attribute flag value</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.DeserializeAttributeMetaData(Microsoft.Dynamics.Commerce.Runtime.DataModel.AttributeProduct)">
+            <summary>
+            Deserialize the attribute meta data XML and populate the values of the attribute flags
+            </summary>
+            <param name="attribute">The attribute</param>
+            <remarks>Sample XML string: <ProductProperty IsSearchable="false" IsRetrievable="true" IsQueryable="false" IsRefinable="false" IsSortable="false" IsMultiValue="false" IsTokenNormalization="false" IsCompleteMatch="false" /></remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.ReadFromReplicaIfEnabled(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets the DB Mode
+            </summary>
+            <param name="requestContext">The RequestContext.</param>
+            <returns>If we allow to read from replica.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetImageByImageId(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetImageByImageIdDataRequest)">
+            <summary>
+            Get retail image by image identifier.
+            </summary>
+            <param name="request">The get image by image id data request.</param>
+            <returns>The retail image.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetImagesByRecIds(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetImagesDataRequest)">
+            <summary>
+            Get retail images by record identifier.
+            </summary>
+            <param name="request">The get images by record ids data request.</param>
+            <returns>The retail image.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetLocalizedStrings(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetLocalizedStringsDataRequest)">
+            <summary>
+            Gets the localized string for a specified language and text identifier.
+            </summary>
+            <param name="request">The get localized strings data request.</param>
+            <returns>
+            A collection containing the localized string record for the language and text identifiers specified.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetLocalizedTexts(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetLocalizedTextsDataRequest)">
+            <summary>
+            Gets the localized string for a specified language and text identifier.
+            </summary>
+            <param name="request">The get localized texts data request.</param>
+            <returns>
+            A collection containing the localized text record for the language and text identifiers specified.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelCashDeclaration(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelCashDeclarationDataRequest)">
+            <summary>
+            Gets the cash declarations.
+            </summary>
+            <param name="request">The get channel cash declaration data request.</param>
+            <returns>
+            A collection of cash declarations.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelAttributesByChannelId(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelAttributesByChannelIdDataRequest)">
+            <summary>
+            Gets the channel attributes of a given channel.
+            </summary>
+            <param name="request">The get channel attributes by channel id data request.</param>
+            <returns>
+            A collection of channel attributes.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetAttributeNameTranslations(System.Int64,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets a list of attribute name translation of a given attribute.
+            </summary>
+            <param name="attributeId">The attribute identifier.</param>
+            <param name="context">The request context.</param>
+            <returns>A collection of attribute name translation.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelProductAttributeById(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelProductAttributeByIdDataRequest)">
+            <summary>
+            Gets the product attribute of a given attribute identifier.
+            </summary>
+            <param name="request">The get channel product attribute by id data request.</param>
+            <returns>The product attribute.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelProductAttributesByChannelId(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelProductAttributesByChannelIdDataRequest)">
+            <summary>
+            Gets the product attributes of a given channel.
+            </summary>
+            <param name="request">The get channel product attributes by channel id data request.</param>
+            <returns>
+            A collection of product attribute.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelCategoryAttributesByChannelId(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelCategoryAttributesByChannelIdDataRequest)">
+            <summary>
+            Gets the category attributes of a given channel category.
+            </summary>
+            <param name="request">The get channel category attributes by channel id data request.</param>
+            <returns>
+            A collection of category attributes.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelById(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelByIdDataRequest)">
+            <summary>
+            Gets the channel by channel identifier.
+            </summary>
+            <param name="request">The get channel by id data request.</param>
+            <returns>The channel.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelIdentityById(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelIdentityByIdDataRequest)">
+            <summary>
+            Gets the channel identity by channel identifier.
+            </summary>
+            <param name="request">The get channel identitiy by identifier request.</param>
+            <returns>The channel identity.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetOnlineChannelById(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetOnlineChannelByIdDataRequest)">
+            <summary>
+            Gets the online channel by channel identifier.
+            </summary>
+            <param name="request">The get online channel by id data request.</param>
+            <returns>The online channel.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetDirectChildCategories(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetDirectChildCategoriesDataRequest)">
+            <summary>
+            Gets the child categories.
+            </summary>
+            <param name="request">The get directC child categories data request.</param>
+            <returns>
+            A collection of categories.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.PopulateCategoryImage(System.Collections.ObjectModel.ReadOnlyCollection{Microsoft.Dynamics.Commerce.Runtime.DataModel.Category},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Fill image values for categories.
+            </summary>
+            <param name="categories">Categories to be associated.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.FillCategoryNameTranslations(System.Int64,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.Category},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Populate the name translations for the categories.
+            </summary>
+            <param name="channelId">Channel identifier.</param>
+            <param name="categories">The category set that needs to be filled with name translations.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelTenderTypes(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelTenderTypesDataRequest)">
+            <summary>
+            The data service method to execute the data manager to get the channel tender types.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelConfiguration(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelConfigurationDataRequest)">
+            <summary>
+            Gets the channel configuration by channel identifier.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetEnableFetchingPickingListsForPickingAndReceiving(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelConfigurationDataRequest)">
+            <summary>
+            Gets the configuration for whether to fetch picking lists in picking and receiving service.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>True if picking lists needs fetching; otherwise false.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetNotificationRefreshInterval(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetNotificationRefreshIntervalDataRequest)">
+            <summary>
+            Gets the notification refresh interval.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The notification refresh interval time in minutes.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetTimeZones(System.Int32,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets the list of time zones by time zone code.
+            </summary>
+            <param name="timeZoneCode">The time zone code.</param>
+            <param name="context">The request context.</param>
+            <returns>Collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.TimeZoneInterval"/> time zone records.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelCategories(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelCategoriesDataRequest)">
+            <summary>
+            Gets the channel categories.
+            </summary>
+            <param name="request">The get channel categories data request.</param>
+            <returns>
+            A collection of categories.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannels(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelsDataRequest)">
+            <summary>
+            Gets the channels. If channel type is unspecified or unknown, all channels are returned.
+            </summary>
+            <param name="request">The data request to retrieve channels based on channel type.</param>
+            <returns>The list of channels.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelProfileByChannelId(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelProfileByChannelIdDataRequest)">
+            <summary>
+            Gets the channel profile.
+            </summary>
+            <param name="request">The get channel profile by channel id data request.</param>
+            <returns>The channel profile.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelPropertiesByChannelId(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelPropertiesByChannelIdDataRequest)">
+            <summary>
+            Gets the channel-specific properties.
+            </summary>
+            <param name="request">The get channel properties by channel id data request.</param>
+            <returns>
+            A collections of channel properties.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelLanguagesByChannelId(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelLanguagesByChannelIdDataRequest)">
+            <summary>
+            Gets the channel languages.
+            </summary>
+            <param name="request">The get channel languages by channel id data request.</param>
+            <returns>
+            A collection of channel languages.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetTransactionServiceProfile(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetTransactionServiceProfileDataRequest)">
+            <summary>
+            Get the the transaction service profile.
+            </summary>
+            <param name="request">Get transaction service profile data request.</param>
+            <returns>Instance of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.TransactionServiceProfile"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetCurrencies(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetCurrenciesDataRequest)">
+            <summary>
+            Gets the currencies.
+            </summary>
+            <param name="request">The get currencies data request.</param>
+            <returns>
+            A collection of currencies.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetNumberOfDecimals(System.Decimal)">
+            <summary>
+            Get the No.Of decimals in currency amount.
+            </summary>
+            <param name="roundOffValue">Round Off Price Value of Currency.</param>
+            <returns>No. Of Decimals in currency amount.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelL2CacheDataStoreAccessor(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets the cache accessor for the channel data service requests.
+            </summary>
+            <param name="context">The request context.</param>
+            <returns>An instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.ChannelL2CacheDataStoreAccessor"/> class.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.BuildSearchOrderWhereClause(Microsoft.Dynamics.Commerce.Runtime.DataModel.TransactionSearchCriteria,Microsoft.Dynamics.Commerce.Runtime.Data.SqlPagedQuery,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Builds the WHERE clause from the search criteria for Orders.
+            The result is the AND of the following non-empty parameters for the RetailTransactionView: ReceiptId, CustomerAccountNumber, FirstName, LastName, Store, Terminal, StaffId, StartDateTime, EndDateTime
+            and the following non-empty parameters for the RetailTransactionSalesTransView: ItemId, Barcode.
+            </summary>
+            <param name="criteria">Search criteria.</param>
+            <param name="query">The SQL query.</param>
+            <param name="whereClauses">Where clauses to build.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.PopulateOrgUnitsTaxRegistrations(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.OrgUnit})">
+            <summary>
+            Populates <see cref="P:Microsoft.Dynamics.Commerce.Runtime.DataModel.OrgUnit.TaxRegistrations"/> for the given organization units.
+            </summary>
+            <param name="context">The request context.</param>
+            <param name="orgUnits">OrgUnits for the update.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.SearchOrgUnitByGivenCriteria(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.SearchOrgUnitDataRequest)">
+            <summary>
+            Search store information by using search criteria.
+            </summary>
+            <param name="request">Search org unit data request.</param>
+            <returns>Returns the store collection.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetStoresbyStoreNumbers(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.SearchOrgUnitDataRequest)">
+            <summary>
+            Gets a collection of available stores.
+            </summary>
+            <param name="request">The data request.</param>
+            <returns>
+            The stores associated with the current channel.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.SearchOrgUnitByStoreSearchCriteria(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.SearchOrgUnitDataRequest)">
+            <summary>
+            Search store information by using search criteria.
+            </summary>
+            <param name="request">Search org unit data request.</param>
+            <returns>Returns the store collection.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetDeviceByDeviceId(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetDeviceDataRequest)">
+            <summary>
+            Gets the device by device identifier.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetStoreByChannelId(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.SearchOrgUnitDataRequest)">
+            <summary>
+            The data service method to execute the data manager to get the channel configuration.
+            Gets the store by identifier.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetRetailConfigurationParameters(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetConfigurationParametersDataRequest)">
+            <summary>
+            Gets a collection of retail configuration parameters.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>
+            Retail configuration parameters.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetRetailSharedConfigurationParameters(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetSharedConfigurationParametersDataRequest)">
+            <summary>
+            Gets a collection of retail shared configuration parameters.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>
+            Retail shared configuration parameters.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetSalesOrderHeaderAttributeGroups(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetSalesOrderHeaderAttributeGroupsDataRequest)">
+            <summary>
+            Gets a collection of sales order header attribute groups.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>
+            The sales order header attribute groups.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetSalesOrderLinesAttributeGroups(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetSalesOrderLinesAttributeGroupsDataRequest)">
+            <summary>
+            Gets a collection of sales order lines attribute groups.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>
+            The sales order lines attribute groups.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetStoreHours(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetStoreHoursDataRequest)">
+            <summary>
+            Gets the store hours of current channel.
+            </summary>
+            <param name="request">The get store hours data request.</param>
+            <returns>
+            The store hours of current channel.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelPurchaseParameters(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelPurchParametersDataRequest)">
+            <summary>
+            Gets the purchase parameters of current channel.
+            </summary>
+            <param name="request">The get purchase parameters data request.</param>
+            <returns>
+            The the purchase parameters of current channel.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetChannelInventoryConfiguration(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelInventoryConfigurationDataRequest)">
+            <summary>
+            Gets the inventory configuration of current channel.
+            </summary>
+            <param name="request">The get inventory configuration data request.</param>
+            <returns>
+            The inventory configuration of current channel.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChannelDataService.GetDeviceL2CacheDataStoreAccessor(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets the cache accessor for the device data service requests.
+            </summary>
+            <param name="context">The request context.</param>
+            <returns>An instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.DeviceL2CacheDataStoreAccessor"/> class.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChargeDataService">
+            <summary>
+            Common data request handler for charges.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChargeDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ChargeDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CouponDataService">
+            <summary>
+            Coupon data service that contains methods to retrieve the information by calling views.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CouponDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CouponDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CouponDataService.GetCouponCodeDetails(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetCouponCodesDataRequest)">
+            <summary>
+            Gets the coupon code details.
+            </summary>
+            <param name="request">The data service request containing the coupon codes.</param>
+            <returns>The data service response containing the coupon code configuration details.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CurrencyDataService">
+            <summary>
+            Currency data services that contains methods to retrieve the information by calling views.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CurrencyDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CurrencyDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CustomerDataService">
+            <summary>
+            Customer data services that contains methods to retrieve the customer information from underlying data storage.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CustomerDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CustomerDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CustomerDataService.GetDataManagerInstance(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets the customer data manager instance.
+            </summary>
+            <param name="context">The request context.</param>
+            <returns>An instance of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.CustomerDataManager"/></returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CustomerDataService.GetAddresses(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetAddressesDataRequest)">
+            <summary>
+            Gets all addresses that meet the supplied criteria.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CustomerDataService.GetAddress(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetAddressDataRequest)">
+            <summary>
+            Gets a single address that meets the supplied criteria.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CustomerDataService.GetCustomerGroups(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetCustomerGroupsDataRequest)">
+            <summary>
+            Gets the customer groups from retail store.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CustomerDataService.GetInitializedCustomerFromGlobalCustomer(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetCustomerWithPartyNumberDataRequest)">
+            <summary>
+            Gets an customer initialized with party information.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CustomerDataService.ProcessCustomerImages(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.ProcessCustomerImagesDataRequest)">
+            <summary>
+            Processes images for customers.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CustomerDataService.GetOrderHistory(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetOrderHistoryDataRequest)">
+            <summary>
+            Gets order history for customer.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.CustomerDataService.GetClientelingParameters(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetClientelingParametersDataRequest)">
+            <summary>
+            Gets Clienteling parameters.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService">
+            <summary>
+            Employee data services that contains methods to retrieve the information by calling views.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService.GetUserCredential(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetUserCredentialsDataRequest)">
+            <summary>
+            Looks up for the matching user credential against the database.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService.CheckEmployeeHasOpenSessionOnCurrentTerminal(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Checks whether the current employee has an open session on the current terminal.
+            </summary>
+            <param name="requestContext">The request context.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService.GetAuthorizedEmployee(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetEmployeeAuthorizedOnStoreDataRequest)">
+            <summary>
+            Gets employee authorized to current store.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService.GetOperationPermissions(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetOperationPermissionsDataRequest)">
+            <summary>
+            Gets Operation Permissions for the operation.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService.GetEmployeePasswordCryptoInfo(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetEmployeePasswordCryptoInfoDataRequest)">
+            <summary>
+            Gets the salt for hashing password.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The salt and the algorithm to hash password.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService.EmployeeLogOnStore(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.EmployeeLogOnStoreDataRequest)">
+            <summary>
+            Logs On the user in the local store database.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService.GetEmployeePermissions(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetEmployeePermissionsDataRequest)">
+            <summary>
+            Gets the employee permission group for the staff identifier.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService.GetEmployeeNotificationSubscriptions(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetEmployeeNotificationSubscriptionsDataRequest)">
+            <summary>
+            Gets the employee notification subscriptions for the staff identifier.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService.GetEmployeeBreakCategoriesByJob(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetEmployeeBreakCategoriesByJobDataRequest)">
+            <summary>
+            Gets the employee break categories by job identifier.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService.GetEmployeeStoresFromAddressBook(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetEmployeeStoresFromAddressBookDataRequest)">
+            <summary>
+            Gets the employee stores from address book.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService.GetEmployeeBreakCategoriesByActivity(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetEmployeeBreakCategoriesByActivityDataRequest)">
+            <summary>
+            Gets the employee break categories by activity names.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.EmployeeDataService.ValidateEmployeePassword(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.ValidateEmployeePasswordDataRequest)">
+            <summary>
+            Validates the employee password.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService">
+            <summary>
+            Fiscal integration data service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService.GetFunctionalityProfilesByGroup(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetFiscalIntegrationChannelFunctionalityProfilesByGroupDataRequest)">
+            <summary>
+            Gets functionality profiles by functionality profile group.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService.GetHardwareProfileConnectorTechnicalProfiles(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetHardwareProfileFiscalConnectorTechnicalProfilesDataRequest)">
+            <summary>
+            Gets connector technical profiles for specified hardware profile.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService.GetFunctionalityProfileConnectorTechnicalProfiles(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetFunctionalityProfileFiscalConnectorTechnicalProfilesDataRequest)">
+            <summary>
+            Gets connector technical profiles for specified functionality profile.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService.GetChannelFiscalRegistrationProcess(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetChannelFiscalIntegrationRegistrationProcessDataRequest)">
+            <summary>
+            Gets fiscal registration process for current channel.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService.FillRegistrationProcessMembers(Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationRegistrationProcess,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Fills fiscal reigstration process members.
+            </summary>
+            <param name="requestContext">The request context.</param>
+            <param name="registrationProcess">The fiscal registration process.</param>
+            <param name="queryResultSettings">The query result settinngs.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService.GetFunctionalityProfile(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetFiscalIntegrationFunctionalityProfileDataRequest)">
+            <summary>
+            Gets fiscal integration functionality profile.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService.GetTechnicalProfile(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetFiscalIngerationTechnicalProfileDataRequest)">
+            <summary>
+            Gets fiscal integration technical profile.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService.GetFunctionalityProfileGroup(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetFiscalIntegrationFunctionalityProfileGroupDataRequest)">
+            <summary>
+            Gets functionality profile group.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService.FillFunctionalityProfileGroupMembers(Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationFunctionalityProfileGroup,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Fills functionality profile group members.
+            </summary>
+            <param name="requestContext">The request context.</param>
+            <param name="functionalityProfileGroup">The functionality profile group.</param>
+            <param name="settings">The query result settings.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService.GetFiscalIntegrationL2CacheDataStoreAccessor(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets the cache accessor for the channel data service requests.
+            </summary>
+            <param name="context">The request context.</param>
+            <returns>An instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.FiscalIntegrationL2CacheDataStoreAccessor"/> class.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService.GetActiveFiscalIntegrationProcessContext(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetActiveFiscalIntegrationProcessContextDataRequest)">
+            <summary>
+            Fetches process context from database.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response with process context.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalIntegrationDataService.GetLastSequentialSignatures(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetLastSequentialSignaturesDataRequest)">
+            <summary>
+            Gets the last sequential signature for terminal by sequential type.
+            </summary>
+            <param name="request">The data request to get the sequential signature for terminal.</param>
+            <returns>The last sequential signature for terminal.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalTextDataService">
+            <summary>
+            Fiscal text data service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalTextDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.FiscalTextDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.HardwareProfileDataService">
+            <summary>
+            The hardware profile common data request handler.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.HardwareProfileDataService.TerminalCashDrawersViewName">
+            <summary>
+            The hardware profile view names.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.HardwareProfileDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.HardwareProfileDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.HardwareProfileDataService.GetFiscalRegisterConfiguration(System.String,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets the fiscal register configuration by the specified configuration identifier.
+            </summary>
+            <param name="configurationId">The fiscal register configuration identifier.</param>
+            <param name="context">The request context.</param>
+            <returns>The fiscal register configuration.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.HealthCheckDataService">
+            <summary>
+            Payment connector data service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.HealthCheckDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.HealthCheckDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.IndiaTaxDataService">
+            <summary>
+            Common data request handler for India tax.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.IndiaTaxDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.IndiaTaxDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.IndiaTaxDataService.GetTaxComponentIndia(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetTaxComponentIndiaDataRequest)">
+            <summary>
+            Gets Tax component.
+            </summary>
+            <param name="request">The get tax component India data request.</param>
+            <returns>Tax component.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.IndiaTaxDataService.GetTaxSummarySettingIndia(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetTaxSummarySettingIndiaDataRequest)">
+            <summary>
+            Gets tax summary setting.
+            </summary>
+            <param name="request">The get tax summary setting India data request.</param>
+            <returns>Tax summary setting.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.IndiaTaxDataService.GetReceiptHeaderInfoIndia(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetReceiptHeaderInfoIndiaDataRequest)">
+            <summary>
+            Gets Receipt Header information for India.
+            </summary>
+            <param name="request">The get receipt header info India data request.</param>
+            <returns>Receipt Header information.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.IndiaTaxDataService.GetIndiaTaxL2CacheDataStoreAccessor(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets the cache accessor for the India tax data service requests.
+            </summary>
+            <param name="context">The request context.</param>
+            <returns>An instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.ChannelL2CacheDataStoreAccessor"/> class.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.InventoryDataService">
+            <summary>
+            Inventory data services that contains methods to retrieve the inventory information from underlying data storage.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.InventoryDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.InventoryDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.InventoryDataService.GetWarehouse(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetWarehouseDataRequest)">
+            <summary>
+            Gets warehouse information.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.InventoryDataService.SearchWarehousesInCurrentFulfillmentGroupAsync(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.SearchWarehousesDataRequest)">
+            <summary>
+            Gets the channel's store locator group (fulfillment group) warehouses.
+            </summary>
+            <param name="request">The get channel fulfillment group warehouses data request.</param>
+            <returns>
+            A collection of warehouses.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.InventoryDataService.GetWarehouseLocationsAsync(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetWarehouseLocationsDataRequest)">
+            <summary>
+            Gets locations for warehouse.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.InventoryDataService.GetPurchaseOrder(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetPurchaseOrderDataRequest)">
+            <summary>
+            Gets all purchase order lines that meet the supplied criteria.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.InventoryDataService.GetPickingList(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetPickingListDataRequest)">
+            <summary>
+            Gets all picking list lines that meet the supplied criteria.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.InventoryDataService.GetTransferOrder(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetTransferOrderDataRequest)">
+            <summary>
+            Gets all transfer order lines that meet the supplied criteria.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.InventoryDataService.PopulateWarehousesAddress(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.Warehouse})">
+            <summary>
+            Populates Warehouses' addresses based on their inventory location identifiers.
+            </summary>
+            <param name="context">The request context.</param>
+            <param name="warehouses">Warehouses for the update.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ItemDataService">
+            <summary>
+            Product data service class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ItemDataService.MaxCachedCollectionSize">
+            <summary>
+            Indicates the maximum number of entries of a collection which can be cached.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ItemDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ItemDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ItemDataService.GetCacheAccessor(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets the cache accessor for the item data service requests.
+            </summary>
+            <param name="context">The request context.</param>
+            <returns>An instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.ItemL2CacheDataStoreAccessor"/> class.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.OfflineProvisioningDataService">
+            <summary>
+            Offline provision data service class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.OfflineProvisioningDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.OfflineProvisioningDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.PaymentConnectorDataService">
+            <summary>
+            Payment connector data service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.PaymentConnectorDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.PaymentConnectorDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.PricingDataService">
+            <summary>
+            Pricing data services that contains methods to retrieve the information by calling views.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.PricingDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+            <remarks>This covers common accessors shared by SQL and SQLite.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.PricingDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ProductDataService">
+            <summary>
+            Product data service class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ProductDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ProductDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.RecommendationsDataService">
+            <summary>
+            The recommendations data service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.RecommendationsDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.RecommendationsDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Entry point to recommendations data service of the request execution.
+            </summary>
+            <param name="request">The data service request to execute.</param>
+            <returns>Result of executing request, or null object for void operations.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.RetailServiceConfigurationDataService">
+            <summary>
+            Customer data services that contains methods to retrieve the retail service configuration.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.RetailServiceConfigurationDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.RetailServiceConfigurationDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.RetailServiceConfigurationDataService.GetRetailPlanOffers(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetRetailPlanOffersDataRequest)">
+            <summary>
+            Gets the trial plan offer details.
+            </summary>
+            <param name="request">The data request for trial plan offer.</param>
+            <returns>
+            A entity data service response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.RetailServiceConfigurationDataService.GetRetailServiceConfiguration(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetRetailServiceConfigurationDataRequest)">
+            <summary>
+            Gets the retail service configuration.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.RetailServiceConfigurationDataService.GetRetailServiceConfigurationSettings(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets the Retail Service configuration settings.
+            </summary>
+            <param name="requestContext">The request context.</param>
+            <returns>The collection of configuration settings.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ShiftDataService">
+            <summary>
+            A data service implementation associated with <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.Shift"/>s.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ShiftDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ShiftDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ShiftDataService.GetShift(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetShiftDataRequest)">
+            <summary>
+            Gets the shift.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>A single entity data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ShiftDataService.GetShiftReconciliationLines(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetShiftReconciliationLinesDataRequest)">
+            <summary>
+            Get the shift reconciliation lines.
+            </summary>
+            <param name="request">Request containing the criteria used to retrieve the shift reconciliation lines.</param>
+            <returns>A collection of shift reconciliation lines.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ShiftDataService.GetShiftEntity``1(System.String,System.String,System.String,System.Int64,Microsoft.Dynamics.Commerce.Runtime.Messages.Request,System.Boolean)">
+            <summary>
+            Gets the shift tender lines or account lines entity.
+            </summary>
+            <param name="userId">The user identifier.</param>
+            <param name="viewName">The view name.</param>
+            <param name="terminalId">The terminal identifier.</param>
+            <param name="shiftId">The shift identifier.</param>
+            <param name="request">The request.</param>
+            <param name="queryByPrimaryKey">The query by primary key flag.</param>
+            <typeparam name="T">The entity type.</typeparam>
+            <returns>A collection of shift tender lines or account lines.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ShippingDataService">
+            <summary>
+            The tax SQL server data service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ShippingDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ShippingDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Entry point to tax data service of the request execution.
+            </summary>
+            <param name="request">The data service request to execute.</param>
+            <returns>Result of executing request, or null object for void operations.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ShippingDataService.GetAllDeliveryOptions(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetAllDeliveryOptionsDataRequest)">
+            <summary>
+            Get all delivery options.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response with the delivery options.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ShippingDataService.GetDeliveryOption(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetDeliveryOptionDataRequest)">
+            <summary>
+            Gets the delivery option.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response with the delivery option.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ShippingDataService.GetShippingAdapterConfiguration(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetShippingAdapterConfigurationDataRequest)">
+            <summary>
+            Gets the shipping adapter configuration.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response with the shipping adapter configuration.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ShippingDataService.GetWarehouseDetails(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetWarehouseDetailsDataRequest)">
+            <summary>
+            Gets the warehouse details.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response with the warehouse details.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.ShippingDataService.GetItemDimensions(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetItemDimensionsDataRequest)">
+            <summary>
+            Gets the item dimensions.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response with the item dimensions.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.SimpleProductDataService">
+            <summary>
+            Product data service class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.SimpleProductDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.SimpleProductDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.StockCountDataService">
+            <summary>
+            Stock count data service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.StockCountDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.StockCountDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.StockCountDataService.GetStockCountJournalsByJournalId(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.String,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Gets the stock count journals.
+            </summary>
+            <param name="context">The request context.</param>
+            <param name="journalId">The journal identifier.</param>
+            <param name="settings">The query result settings.</param>
+            <returns>A collection of stock count journals.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.StockCountDataService.GetStockCountTransactionsByJournalId(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.String,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Gets the stock count journal transactions.
+            </summary>
+            <param name="context">The request context.</param>
+            <param name="journalId">The stock count journal identifier.</param>
+            <param name="settings">The query result settings.</param>
+            <returns>A collection of stock count journal transactions.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.StockCountDataService.GetStockCountData(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetStockCountDataRequest)">
+            <summary>
+            Dispatches stock count request.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.StorageLookupDataService">
+            <summary>
+            Data services that provides storage lookup information.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.StorageLookupDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.StorageLookupDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxDataService">
+            <summary>
+            Channel data services that contains methods to retrieve the information by calling views.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxDataService.MaxCachedCollectionSize">
+            <summary>
+            Indicates the maximum number of entries of a collection which can be cached.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxDataService.GetTaxOverrideDetails(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetTaxOverrideDetailsDataRequest)">
+            <summary>
+            The data service method to execute the data manager to get tax override details.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxDataService.GetTaxOverrides(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetTaxOverridesDataRequest)">
+            <summary>
+            The data service method to execute the data manager to get tax overrides.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxDataService.GetSalesTaxGroups(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetSalesTaxGroupsDataRequest)">
+            <summary>
+            The data service method to execute the data manager to get the sales tax groups.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxDataService.GetTaxCodeFormulaIndia(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetTaxCodeFormulaIndiaDataRequest)">
+            <summary>
+            The data service method to execute the data manager to get the tax code formula for India.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxDataService.GetTaxParameter(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetTaxParameterDataRequest)">
+            <summary>
+            The data service method to execute the data manager to get the tax parameter.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxDataService.GetRetailPrintCode(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetRetailPrintCodeDataRequest)">
+            <summary>
+            The data service method to get retail  print code.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxRegistrationDataService">
+            <summary>
+            Represents a tax registration data service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxRegistrationDataService.SupportedRequestTypes">
+            <summary>
+            Gets the supported request types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxRegistrationDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            The entry point to <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxRegistrationDataService"/> service.
+            </summary>
+            <param name="request">The request to execute.</param>
+            <returns>Result of executing request, or null object for void operations.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxRegistrationDataService.GetTaxRegistrationsByNumberAndRule(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetTaxRegistrationsByNumberAndRuleRequest)">
+            <summary>
+            Gets tax registrations by registration number and applicability rule.
+            </summary>
+            <param name="request">The service request.</param>
+            <returns>The collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.TaxRegistration"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxRegistrationDataService.GetTaxRegistrationTypeApplicabilityRules(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetTaxRegistrationTypeApplicabilityRulesDataRequest)">
+            <summary>
+            Gets the collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.TaxRegistrationTypeApplicabilityRule"/>.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxRegistrationDataService.SaveTaxRegistrations(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.SaveTaxRegistrationsDataRequest)">
+            <summary>
+            Saves the collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.TaxRegistration"/>.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The null response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxRegistrationDataService.DeleteTaxRegistrations(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.DeleteTaxRegistrationsDataRequest)">
+            <summary>
+            Deletes the collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.TaxRegistration"/>.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The null response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxRegistrationDataService.GetTaxRegistration(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetTaxRegistrationDataRequest)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.TaxRegistration"/>.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TaxRegistrationDataService.GetChannelTaxRegistrationsByChannelIds(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetTaxRegistrationsByChannelIdsDataRequest)">
+            <summary>
+            Gets the collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.ChannelTaxRegistration"/> entities.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TerminalDataService">
+            <summary>
+            Terminal data services that contains methods to retrieve the information by calling views.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TerminalDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TerminalDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TerminalDataService.GetTerminalByCriteria(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetTerminalDataRequest)">
+            <summary>
+            Gets terminal entity by record identifier or terminal identifier.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TerminalDataService.GetPaymentConnector(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetPaymentConnectorDataRequest)">
+            <summary>
+            Gets the payment connector setting for the terminal.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TerminalDataService.GetCurrentTerminalId(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetCurrentTerminalIdDataRequest)">
+            <summary>
+            Gets the current working terminal identifier.
+            </summary>
+            <param name="request">The data service request.</param>
+            <returns>The data service response.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TillLayoutDataService">
+            <summary>
+            Channel data services that contains methods to retrieve the information by calling views.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TillLayoutDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TillLayoutDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TillLayoutDataService.GetButtonsGrids(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetButtonGridsDataRequest)">
+            <summary>
+            Gets a button grids by identifiers.
+            </summary>
+            <param name="request">The get button grids data request.</param>
+            <returns>
+            Collection of matching button grids.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TillLayoutDataService.GetButtonGridButtons(System.Collections.Generic.IEnumerable{System.String},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Get buttons for a button grid.
+            </summary>
+            <param name="buttonGridIds">The button grid identifiers.</param>
+            <param name="context">The request context.</param>
+            <returns>Collection of button grid buttons.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.TillLayoutDataService.GetAllButtonGridButtons(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Get buttons for all button grid.
+            </summary>
+            <param name="context">The request context.</param>
+            <returns>Collection of button grid buttons.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.UnitOfMeasureDataService">
+            <summary>
+            The unit of measure common data request handler.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.UnitOfMeasureDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.UnitOfMeasureDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.UnitOfMeasureDataService.GetUnitsOfMeasure(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetUnitsOfMeasureDataRequest)">
+            <summary>
+            Retrieves the units of measure for the given unit identifiers.
+            If no unit identifiers are provided then all the supported units of measure are retrieved.
+            </summary>
+            <param name="request">The units of measure request.</param>
+            <returns>
+            A unit of measure for the symbol.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Common.UnitOfMeasureDataService.GetInventoryUnitsOfMeasure(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetItemInventoryUnitsOfMeasureDataRequest)">
+            <summary>
+            Retrieves the unit of measure for the given item identifier.
+            </summary>
+            <param name="request">The unit of measure for inventory request.</param>
+            <returns>
+            A unit of measure for the item id.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateCacheEntry">
+            <summary>
+            Represents the cache entry mapping of FeatureStatesView, just for internal usage.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateCacheEntry.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateCacheEntry"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateCacheEntry.EnableDate">
+            <summary>
+            Gets or sets the enable date of the feature (notice it contains only date information without time / timezone).
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateDataService">
+            <summary>
+            Common data request handler for features.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateDataService.GetFeatureStates(Microsoft.Dynamics.Commerce.Runtime.Messages.GetFeatureStatesRequest)">
+            <summary>
+            Gets feature states with the given feature names inside request.
+            </summary>
+            <param name="request">Request contains feature names to query.</param>
+            <returns>Feature states with the given feature names.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateDataService.GetFilteredFeatureStates(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Collections.Generic.Dictionary{System.String,Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateCacheEntry},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Get all feature states by input names.
+            </summary>
+            <param name="context">The request context.</param>
+            <param name="allFeatureStateCacheEntries">The cached feature state entries.</param>
+            <param name="featureNames">The feature names to filter.</param>
+            <returns>Feature states that match the input feature names.</returns>
+            <remarks>
+            The number of results may be less than requested feature names when there is not feature matching the name.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateDataService.GetAllFeatureStateCacheEntries(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets all feature state cache entries.
+            </summary>
+            <param name="context">The request context.</param>
+            <returns>
+            The dictionary of feature state cache entries with feature name as key.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateDataService.ConstructFeatureStatesJsonString(System.Collections.Generic.ICollection{Microsoft.Dynamics.Commerce.Runtime.DataModel.FeatureState})">
+            <summary>
+            Construct JSON format string for a list of feature states (as a property bag).
+            Sample: {"FeatureA":True,"FeatureB":False}
+            </summary>
+            <param name="featureStates">The feature states.</param>
+            <returns>
+            JSON string for a list of feature states.
+            </returns>
+            <remarks>
+            We need pass this format of string to telemetry event since it can be easily parsed to a dynamic property bag in kusto query.
+            We handcraft this because of efficiency: We need to transform featureStates to a property bag (dictionary) first to use standard JSON serializer.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateL2CacheDataStoreAccessor">
+            <summary>
+             Level 2 cache data accessor implementation for the feature data manager.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateL2CacheDataStoreAccessor.#ctor(Microsoft.Dynamics.Commerce.Runtime.Data.IDataStore,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateL2CacheDataStoreAccessor"/> class.
+            </summary>
+            <param name="backingStore">The backing data store.</param>
+            <param name="context">The request context of this call.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateL2CacheDataStoreAccessor.GetFeatureStates(Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Gets feature states.
+            </summary>
+            <param name="settings">The query result settings.</param>
+            <returns>
+            The dictionary of feature states with feature name as key.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateL2CacheDataStoreAccessor.PutFeatureStates(System.Collections.Generic.Dictionary{System.String,Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateCacheEntry},Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings)">
+            <summary>
+            Caches all feature states.
+            </summary>
+            <param name="result">The result of the matching Get method of the data manager interface.</param>
+            <param name="settings">The query result settings.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.FeatureStateL2CacheDataStoreAccessor.GetKeyPattern">
+            <summary>
+            Returns the key pattern specific to each implementation of the memory cache.
+            </summary>
+            <returns>A string which serves as a prefix for all the keys calculated by a given implementation of a memory cache accessor.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.ReasonCodeDataService">
+            <summary>
+            Reason code data request handler.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.ReasonCodeDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.ReasonCodeDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The request message.</param>
+            <returns>The response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.ReasonCodeDataService.GetReasonCodeL2CacheDataStoreAccessor(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets the cache accessor for the reason code data service requests.
+            </summary>
+            <param name="context">The request context.</param>
+            <returns>An instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.ReasonCodeL2CacheDataStoreAccessor"/> class.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesOrderDataService">
+            <summary>
+            The data request handler for <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesOrderDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesOrderDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesOrderDataService.GetSalesOrderDetails(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.GetSalesOrderDetailsDataRequest)">
+            <summary>
+            Given the transaction identifier or sales identifier gets a <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder"/> with all of its details.
+            </summary>
+            <param name="request">The request containing transaction identifier or sales identifier.</param>
+            <returns>The sales order.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService">
+            <summary>
+            The data request handler for sales transaction.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Gets the sales transaction to be saved.
+            </summary>
+            <param name="request">The request message.</param>
+            <returns>The response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillSalesOrderMembers(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},System.Boolean,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            FillSalesOrderMembers
+            </summary>
+            <param name="salesOrders">The sales orders.</param>
+            <param name="includeDetails">The include details.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillSalesLinesProperties(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Populate the sales lines with all their information for the given sales orders. Also populate extra details on the sales orders such as contact information, discounts, and expenses.
+            </summary>
+            <param name="salesOrders">The sales orders.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillOrderMembers(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder})">
+            <summary>
+            Populates the sales orders with extra details such as contact information, discounts, and expenses.
+            </summary>
+            <param name="salesOrders">The list of sales orders.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillTenderLines(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+             Updates the orders with its tender lines.
+            </summary>
+            <param name="orders">A collection of orders to get tender lines for.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillIncomeExpenseLines(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+             Updates the orders with income and expense lines.
+            </summary>
+            <param name="orders">A collection of orders to get income and expense lines for.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillFiscalTransactions(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Updates the orders with their fiscal transactions.
+            </summary>
+            <param name="orders">A collection of orders to get fiscal transactions for.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillFiscalTransactions(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},System.String,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Updates the orders with their fiscal transactions.
+            </summary>
+            <param name="orders">A collection of orders to get fiscal transactions for.</param>
+            <param name="terminalId">The terminal identifier.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillCustomerAccountDepositLines(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+             Updates the orders with customer account deposit lines.
+            </summary>
+            <param name="orders">A collection of orders to get customer account deposit lines for.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillInvoiceLines(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Updates the order with its invoice sales lines.
+            </summary>
+            <param name="orders">A collection of orders to get sales lines for.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillSalesLines(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.LoyaltyRewardPointLine},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+             Updates the orders with its sales lines.
+            </summary>
+            <param name="orders">A collection of orders to get sales lines for.</param>
+            <param name="rewardPointLines">A collection of reward point lines.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateTaxLines(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Populates Tax Lines for Sales Orders.
+            </summary>
+            <param name="orders">The sales orders.</param>
+            <param name="context">The executing context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillAddresses(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+             Populates the ShippingAddress for a Collection of SalesOrder or SalesLine.
+            </summary>
+            <param name="entities">A Collection of SalesOrders or SalesLines.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.GetOneTimeAddress(System.Collections.Generic.IEnumerable{System.String},Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets a collection of addresses associated with the Order header or lines.
+            </summary>
+            <param name="transactionIds">The collection of TransactionIds.</param>
+            <param name="settings">The query result settings.</param>
+            <returns>A collection of one time customer addresses or empty list.</returns>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillReasonCodeLines(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Updates the order with its reason code lines.
+            </summary>
+            <param name="orders">The sales order.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillDiscountLines(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLine,Microsoft.Dynamics.Commerce.Runtime.DataModel.QueryResultSettings,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Updates the sales lines with their discount lines.
+            </summary>
+            <param name="line">The sales line.</param>
+            <param name="settings">The query result settings.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillDiscounts(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Updates the sales lines with their discount lines.
+            </summary>
+            <param name="orders">The sales orders.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.AddDiscountLines(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder,Microsoft.Dynamics.Commerce.Runtime.DataModel.DiscountLine)">
+            <summary>
+            Add the disocunt lines.
+            </summary>
+            <param name="order">A sales order.</param>
+            <param name="discountLine">A discount line.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillOrderAttributes(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+             Updates the orders with its attributes.
+            </summary>
+            <param name="orders">A collection of orders..</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillTransactionProperties(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+             Updates the orders with its transaction properties.
+            </summary>
+            <param name="orders">A collection of orders..</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillAdjustedSalesLines(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+             Updates the orders fiscal transactions with its sales lines adjustments.
+            </summary>
+            <param name="orders">A collection of orders.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillAdjustedPaymentLines(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+             Updates the orders fiscal transactions with its payment lines adjustments.
+            </summary>
+            <param name="orders">A collection of orders.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillWarrantyTransactions(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Fill the sales lines with all their warranty transactions.
+            </summary>
+            <param name="salesOrders">The sales orders.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillAffiliation(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesAffiliationLoyaltyTier,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Fill affiliation value to the affiliation table.
+            </summary>
+            <param name="salesAffiliationLoyaltyTier">The sales affiliation.</param>
+            <param name="transaction">The sales transaction.</param>
+            <param name="affiliationsTable">The affiliations data table.</param>
+            <param name="reasonCodeTable">The reason code table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillReasonCodesForAffiliationLine(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesAffiliationLoyaltyTier,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Saves the reason codes for affiliation line.
+            </summary>
+            <param name="salesAffiliationLoyaltyTier">The sales affiliation line.</param>
+            <param name="transaction">The transaction.</param>
+            <param name="reasonCodeTable">The reason code table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillReasonCodesForFiscalTransactions(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Saves the reason codes for fiscal transactions in the sales transaction.
+            </summary>
+            <param name="salesTransaction">The sales transaction.</param>
+            <param name="reasonCodeTable">The reason code table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillReasonCodeLines(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ReasonCodeLine},Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,System.Decimal,Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalTransaction)">
+            <summary>
+            Saves the reason code line.
+            </summary>
+            <param name="reasonCodeLines">The reason code lines.</param>
+            <param name="transaction">The transaction.</param>
+            <param name="reasonCodeTable">The reason code table.</param>
+            <param name="parentLineNumber">The parent line number.</param>
+            <param name="context">The request context.</param>
+            <param name="fiscalTransaction">The fiscal transaction.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.GetNextLineNumber(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Gets the next line number.
+            </summary>
+            <param name="dataTable">The data table.</param>
+            <returns>The next line number.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.GetStoreId(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction)">
+            <summary>
+            Gets the store associated with the sales transaction.
+            </summary>
+            <param name="transaction">The sales transaction.</param>
+            <returns>The store identifier.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.GetStoreId(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Int64)">
+            <summary>
+            Gets the store associated with the channel ID.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="channelId">The channel ID.</param>
+            <returns>The store identifier.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.SetField(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataRow,System.String,System.Object)">
+            <summary>
+            Add a field to a data table.
+            </summary>
+            <param name="row">The data row.</param>
+            <param name="field">The field name.</param>
+            <param name="value">The field value.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillOrderAffiliations(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Updates the orders with its affiliations.
+            </summary>
+            <param name="orders">A collection of orders.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillOrderChargeLines(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Updates the order with its charge lines.
+            </summary>
+            <param name="orders">The sales order.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.GetLoyaltyRewardPointLines(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets reward point lines for orders.
+            </summary>
+            <param name="orders">A collection of orders.</param>
+            <param name="context">The request context.</param>
+            <returns> List of reward point lines.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillLoyaltyRewardPointLinesOnTransactionHeader(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesOrder},System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.LoyaltyRewardPointLine})">
+            <summary>
+            Updates the order header with its reward point lines.
+            </summary>
+            <param name="orders">A collection of orders.</param>
+            <param name="rewardPointLines">A collection of reward point lines.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillLoyaltyRewardPointLinesOnTransactionLines(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLine,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.LoyaltyRewardPointLine})">
+            <summary>
+            Updates the order lines with its reward point lines.
+            </summary>
+            <param name="salesLine">Sales line object.</param>
+            <param name="rewardPointLines">A collection of reward point lines.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.LogChargeOverrides(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,System.String,System.String,System.String,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Sends the request to store the charge overrides in the database.
+            </summary>
+            <param name="transaction"> The transaction that may have overrides.</param>
+            <param name="transactionId"> The id of the transaction.</param>
+            <param name="storeId"> The store the transaction was at.</param>
+            <param name="transactionTerminal"> The terminal the transaction was done on.</param>
+            <param name="context"> The <see cref="T:Microsoft.Dynamics.Commerce.Runtime.RequestContext"/>, which is used to get the channel configuration.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.ShouldIncrementGrandTotals(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.SaveSalesTransactionDataRequest)">
+            <summary>
+            Check should increment Grand Total counters.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>True if it need to increment Grand Total counters.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.SetIsCreatedOfflineOnTransaction(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Sets the <see cref="P:Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction.IsCreatedOffline"/> flag according to the database that the transaction will be saved to.
+            </summary>
+            <param name="salesTransaction">The sales transaction.</param>
+            <param name="requestContext">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillCustomerOrder(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save the customer order specific fields.
+            </summary>
+            <param name="transaction">The sales transaction.</param>
+            <param name="customerOrderTable">The customer order table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillOrderPayments(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.TenderLine},Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save payments.
+            </summary>
+            <param name="transaction">The sales transaction.</param>
+            <param name="tenderLines">The tender lines containing payment information.</param>
+            <param name="paymentTable">The payment table.</param>
+            <param name="reasonCodeTable">The reason code table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.SaveReasonCodesForTenderLine(Microsoft.Dynamics.Commerce.Runtime.DataModel.TenderLine,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Saves the reason codes for tender lines.
+            </summary>
+            <param name="tenderLine">The tender line.</param>
+            <param name="transaction">The transaction.</param>
+            <param name="reasonCodeTable">The reason code table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillOrderLines(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save item lines.
+            </summary>
+            <param name="salesTransaction">The sales transaction.</param>
+            <param name="lineTable">The line data table.</param>
+            <param name="warrantyLineTable">The warranty line data table.</param>
+            <param name="incomeExpenseTable">The income/ expense line data table.</param>
+            <param name="markupTable">The markup data table.</param>
+            <param name="taxTable">The tax data table.</param>
+            <param name="chargeTaxTable">The charge tax data table.</param>
+            <param name="addressTable">The address data table.</param>
+            <param name="discountTable">The discount data table.</param>
+            <param name="reasonCodeTable">The reason code table.</param>
+            <param name="propertiesTable">The properties table.</param>
+            <param name="affiliationsTable">The affiliations table.</param>
+            <param name="invoiceLinesTable">The invoice table.</param>
+            <param name="customerAccountDepositTable">The customer account deposit line data table.</param>
+            <param name="attributeTable">The attribute table.</param>
+            <param name="rewardPointTable">The reward points table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillIncomeExpenseLine(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.DataModel.IncomeExpenseLine,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save individual income / expense lines.
+            </summary>
+            <param name="salesTransaction">The sales transaction.</param>
+            <param name="incomeExpenseLine">The income / expense lines.</param>
+            <param name="incomeExpenseTable">The income / expense table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillCustomerAccountDepositLine(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.DataModel.CustomerAccountDepositLine,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Saves the customer account deposit line.
+            </summary>
+            <param name="salesTransaction">The sales transaction.</param>
+            <param name="customerAccountDepositLine">The customer account deposit line.</param>
+            <param name="customerAccountDepositTable">The customer account deposit data table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillItemLine(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLine,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save individual item line.
+            </summary>
+            <param name="salesLine">The sales line.</param>
+            <param name="transaction">The transaction.</param>
+            <param name="lineTable">The line table.</param>
+            <param name="warrantyLineTable">The warranty line table.</param>
+            <param name="markupTable">The markup table.</param>
+            <param name="taxTable">The tax table.</param>
+            <param name="chargeTaxTable">The charge tax table.</param>
+            <param name="addressTable">The address table.</param>
+            <param name="discountTable">The discount table.</param>
+            <param name="reasonCodeTable">The reason code table.</param>
+            <param name="propertiesTable">The properties table.</param>
+            <param name="invoiceTable">The invoice table.</param>
+            <param name="rewardPointTable">The reward points table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillWarrantyLines(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLine,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save individual warranty line.
+            </summary>
+            <param name="transaction">The transaction.</param>
+            <param name="salesLine">The sales line.</param>
+            <param name="warrantyLineTable">The warranty line table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillItemTaxLines(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLine,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,System.Decimal,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save all tax lines for an individual sale line item.
+            </summary>
+            <param name="transaction">The transaction.</param>
+            <param name="saleItem">The sale item.</param>
+            <param name="taxTable">The tax table.</param>
+            <param name="lineNumber">The line number.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillTaxLine(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLine,Microsoft.Dynamics.Commerce.Runtime.DataModel.TaxLine,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,System.Decimal,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save an individual item tax line.
+            </summary>
+            <param name="transaction">The transaction.</param>
+            <param name="saleItem">The sale item.</param>
+            <param name="taxItem">The tax item.</param>
+            <param name="taxTable">The tax table.</param>
+            <param name="lineNumber">The line number.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillReasonCodesForSalesLine(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLine,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Saves the reason codes for sales line.
+            </summary>
+            <param name="salesLine">The sales line.</param>
+            <param name="transaction">The transaction.</param>
+            <param name="reasonCodeTable">The reason code table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillItemDiscountLines(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLine,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,System.Decimal,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save discount lines for an individual sale line item.
+            </summary>
+            <param name="transaction">The transaction.</param>
+            <param name="saleItem">The sale line item.</param>
+            <param name="discountTable">The discount table.</param>
+            <param name="lineNumber">The line number.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillDiscountLine(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLine,Microsoft.Dynamics.Commerce.Runtime.DataModel.DiscountLine,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,System.Decimal,System.Decimal,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save an individual discount line.
+            </summary>
+            <param name="transaction">The transaction.</param>
+            <param name="saleItem">The sale line item.</param>
+            <param name="discount">The discount line.</param>
+            <param name="discountTable">The discount table.</param>
+            <param name="lineNumber">The line number.</param>
+            <param name="discountLineNumber">The discount line number.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillChargesForItemLine(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ChargeLine},Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLine,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,System.Decimal,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save Charges for a line.
+            </summary>
+            <param name="charges">The charges.</param>
+            <param name="transaction">The transaction.</param>
+            <param name="lineItem">The line item.</param>
+            <param name="markupTable">The markup table.</param>
+            <param name="chargeTaxTable">The charge tax table.</param>
+            <param name="lineNumber">The line number.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillChargeTaxLine(Microsoft.Dynamics.Commerce.Runtime.DataModel.TaxLine,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,System.Int32,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,System.Decimal,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save charge from a line.
+            </summary>
+            <param name="taxLine">The charge tax line.</param>
+            <param name="transaction">The transaction.</param>
+            <param name="markupLineNumber">The markup line number.</param>
+            <param name="chargeTaxTable">The charge tax table.</param>
+            <param name="lineNumber">The line number.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillOrderHeader(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save header information.
+            </summary>
+            <param name="transaction">The sales transaction.</param>
+            <param name="transactionTable">The transaction data table.</param>
+            <param name="markupTable">The markup data table.</param>
+            <param name="attributeTable">The attribute data table.</param>
+            <param name="addressTable">The address data table.</param>
+            <param name="reasonCodeTable">The reason code table.</param>
+            <param name="propertiesTable">The properties table.</param>
+            <param name="rewardPointTable">The reward point table.</param>
+            <param name="chargeTaxTable">The charge tax table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillRewardPointLines(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Fills in the reward point lines for save.
+            </summary>
+            <param name="transaction">The transaction.</param>
+            <param name="rewardPointTable">The reward point data table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillRewardPointLines(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLine,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Fills in the reward point lines for save.
+            </summary>
+            <param name="transaction">The transaction.</param>
+            <param name="salesLine">The sales line item.</param>
+            <param name="rewardPointTable">The reward point data table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillRewardPointTable(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLine,Microsoft.Dynamics.Commerce.Runtime.DataModel.LoyaltyRewardPointLine,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Fills the reward point line data table.
+            </summary>
+            <param name="transaction">The sales transaction.</param>
+            <param name="salesLine">The sales line.</param>
+            <param name="rewardPointLine">The reward point line.</param>
+            <param name="rewardPointTable">The reward point data table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillAddress(Microsoft.Dynamics.Commerce.Runtime.DataModel.Address,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,System.Decimal,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Saves the one-time address if the address fields are present.
+            </summary>
+            <param name="address">Address to be saved.</param>
+            <param name="transaction">Sales transaction.</param>
+            <param name="addressTable">Address data table.</param>
+            <param name="lineNumber">Line number - zero indicates header level.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillAddress(Microsoft.Dynamics.Commerce.Runtime.DataModel.Address,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,System.Decimal,System.String,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Saves the one-time address if the address fields are present.
+            </summary>
+            <param name="address">Address to be saved.</param>
+            <param name="transaction">Sales transaction.</param>
+            <param name="addressTable">Address data table.</param>
+            <param name="lineNumber">Line number - zero indicates header level.</param>
+            <param name="storeNumber">The store number on sales transaction on fill order header address/ the store number on  sales line on fill item line address. The latter is required mainly for online channel multi mode shipping where the transaction will not not have any store number on it.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.SavePropertySet(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.ParameterSet,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Decimal)">
+            <summary>
+            Save all elements in a property set.
+            </summary>
+            <param name="transaction">The transaction.</param>
+            <param name="propertySet">The property set.</param>
+            <param name="propertiesTable">The property table.</param>
+            <param name="context">The request context.</param>
+            <param name="lineNumber">The sales line number or 0 if sales header.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.SaveReasonCodesForHeader(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Saves the reason codes for transaction level.
+            </summary>
+            <param name="transaction">The transaction.</param>
+            <param name="reasonCodeTable">The reason code table.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillAttributes(Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,System.Collections.ObjectModel.Collection{Microsoft.Dynamics.Commerce.Runtime.DataModel.AttributeValueBase},System.Decimal)">
+            <summary>
+            Save retail attributes.
+            </summary>
+            <param name="transaction">The sales transaction.</param>
+            <param name="context">The request context.</param>
+            <param name="attributeTable">The attribute data table.</param>
+            <param name="attributeValues">The attribute values.</param>
+            <param name="lineNumber">The line number. If saving header attributes, the value is 0.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.GetAddressRecordId(Microsoft.Dynamics.Commerce.Runtime.DataModel.Address)">
+            <summary>
+            Gets the record identifier of the given address.
+            </summary>
+            <param name="shippingAddress">The shipping address.</param>
+            <returns>The record identifier if the shipping address is a customer address or <c>0</c> if it is not.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillChargesForHeader(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.ChargeLine},Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,System.Decimal,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save charges for the order header.
+            </summary>
+            <param name="charges">The charges.</param>
+            <param name="transaction">The sales transaction.</param>
+            <param name="markupTable">The markup table.</param>
+            <param name="chargeTaxTable">The charge tax table.</param>
+            <param name="lineNumber">The line number.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.FillChargeLine(Microsoft.Dynamics.Commerce.Runtime.DataModel.ChargeLine,Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesTransaction,System.Int32,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable,System.Decimal,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Save charge from a line.
+            </summary>
+            <param name="chargeLine">The charge line.</param>
+            <param name="transaction">The transaction.</param>
+            <param name="markupLineNumber">The markup line number.</param>
+            <param name="markupTable">The markup table.</param>
+            <param name="lineNumber">The line number.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateAddressSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populates the table with the AddressTrans schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateAttributeSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populates the table with the AttributeTrans schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateTaxSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populates the table with TaxTrans schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateChargeTaxSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populates the table with ChargeTaxTrans schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateMarkupSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populates the table with MarkupTrans schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateIncomeExpenseLineSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populates the table with income and expense schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateCustomerAccountDepositLineSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populates the table with customer account deposit schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateSaleLineSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populates the table with SalesTrans schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateWarrantyLineSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populates the table with RetailWarrantyTransactionSales schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateDiscountSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populates the table with Discount schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateReasonCodeSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populates the table with the reason code schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulatePropertiesSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populate the table with Properties schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateRewardPointSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populates the table with the reward point schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateAffiliationsSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populates the table with the affiliations schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateInvoiceSchema(Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Populates the table with the invoice schema.
+            </summary>
+            <param name="tableSchema">The table schema.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.PopulateMasterProductIds(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.SalesLine})">
+            <summary>
+            Populates the master product identifiers on the sales lines.
+            </summary>
+            <param name="context">The request context.</param>
+            <param name="salesLines">The sales lines.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.DataServices.SalesTransactionDataService.IsTransactionDateTimeAsCheckoutChannelDateTimeEnabled(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets the boolean to determine if we will using transaction date time as checkout channel date time or begin transaction date time.
+            </summary>
+            <param name="context">The request context.</param>
+            <returns>True if we want to use checkout channel date time; False if we want to use begin transaction date time.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.EntitySingleFieldTranslationService">
+            <summary>
+            A data service handler that can be used to retrieve single-field translations
+            for entities that support that translation method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.EntitySingleFieldTranslationService.GetTranslationDataResponse(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity})">
+            <summary>
+            Get the translations for the given entities.
+            </summary>
+            <param name="context">The request context.</param>
+            <param name="entities">The entities to retrieve translations for.  These must all have the same type.</param>
+            <returns>The translation response, containing the translations for the entities.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.EntitySingleFieldTranslationService.IsRequestSupported(Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity)">
+            <summary>
+            Gets a value indicating if the given entity is supported for translation by this service.
+            </summary>
+            <param name="entity">The entity to test.</param>
+            <returns>True if the entity can be translated by this service, otherwise false.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.EntitySingleFieldTranslationService.GetTranslations(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataServices.EntitySingleFieldTranslationService.TranslateEntityInfo})">
+            <summary>
+            Gets a collection of translations for the given entities by recid.
+            </summary>
+            <param name="context">The language id to translate to.</param>
+            <param name="entityInfos">The entity record ids for the entities to translate.</param>
+            <returns>The translated field value.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.EntityTranslationService">
+            <summary>
+            A data service handler that can retrieve translations for entities.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.EntityTranslationService.GetTranslationDataResponse(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity})">
+            <summary>
+            Get the translations for the given entities.
+            </summary>
+            <param name="context">The request context.</param>
+            <param name="entities">The entities to retrieve translations for.  These must all have the same type.</param>
+            <returns>The translation response, containing the translations for the entities.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.EntityTranslationService.IsRequestSupported(Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity)">
+            <summary>
+            Gets a value indicating if the given entity is supported for translation by this service.
+            </summary>
+            <param name="entity">The entity to test.</param>
+            <returns>True if the entity can be translated by this service, otherwise false.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.EntityTranslationService.Process(Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.TranslateEntitiesDataRequest)">
+            <summary>
+            Given the translation request, determine the correct translation source service,
+            retrieve the translations from the provider,
+            apply the translations,
+            and return the translated entities.
+            </summary>
+            <param name="request">The translation request.</param>
+            <returns>A null response, for now.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.EntityTranslationService.ApplyTranslations(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity},System.Collections.Generic.Dictionary{Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity,System.Collections.Generic.Dictionary{System.String,System.String}})">
+            <summary>
+            Given entities and translations, transform the entities to apply the translations.
+            </summary>
+            <param name="entities">The entities to translate. Must all have the same concrete type.</param>
+            <param name="translationValues">The translation values to apply.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.EntityTranslationService.GetTranslationsForEntity(Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity,System.Collections.Generic.Dictionary{Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity,System.Collections.Generic.Dictionary{System.String,System.String}})">
+            <summary>
+            Get the available translations for the provided entity.
+            </summary>
+            <param name="entity">The entity to retrieve translations for.</param>
+            <param name="translationValues">The translation values mappings.</param>
+            <returns>A dictionary of available translations, with the field name as the key and the translated value as the value.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.EntityTranslationService.TranslationDataResponse">
+            <summary>
+            A mapping from entities to their translations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.EntityTranslationService.TranslationDataResponse.#ctor(System.Collections.Generic.Dictionary{Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceEntity,System.Collections.Generic.Dictionary{System.String,System.String}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.EntityTranslationService.TranslationDataResponse"/> class.
+            </summary>
+            <param name="translationValues">The mapping of entity translations.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataServices.EntityTranslationService.TranslationDataResponse.TranslationValues">
+            <summary>
+            Gets a dictionary of entities to its translated values,
+            where the translated values is a dictionary of the field name to the translated text value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataServices.Translations.TranslationExtensions">
+            <summary>
+            Extensions to be used during entity translation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataServices.Translations.TranslationExtensions.Translate``1(System.Collections.Generic.IEnumerable{``0},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Given a collection of entities, send a request to translate them, and return the result.
+            </summary>
+            <typeparam name="T">The type of entity to be translated.</typeparam>
+            <param name="entities">The entities to be translated.</param>
+            <param name="context">The request context.</param>
+            <returns>A collection of the transalted entities.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RetailBusinessPartnerOperationTableType">
+            <summary>
+            The business partner operation table type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RetailBusinessPartnerOperationTableType.#ctor(System.Guid,System.Int64,Microsoft.Dynamics.Commerce.Runtime.DataModel.BusinessPartnerOperationType,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RetailBusinessPartnerOperationTableType"/> class.
+            </summary>
+            <param name="operationId">The operation id.</param>
+            <param name="channelId">The channel identifier.</param>
+            <param name="businessPartnerOperationType">The operation type.</param>
+            <param name="description">The description.</param>
+            <param name="value">The value.</param>
+            <param name="businessPartnerId">The business partner id.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RetailBusinessPartnerOperationTableType.CreateTableSchema">
+            <summary>
+            Creates the table schema.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Data.Types.RetailBusinessPartnerOperationTableType.GetDataRow(System.Guid,System.Int64,Microsoft.Dynamics.Commerce.Runtime.DataModel.BusinessPartnerOperationType,System.String,System.String,System.String)">
+            <summary>
+            Populates the data row.
+            </summary>
+            <param name="operationId">The operation id.</param>
+            <param name="channelId">The channel identifier.</param>
+            <param name="businessPartnerOperationType">The operation type.</param>
+            <param name="description">The description.</param>
+            <param name="value">The value.</param>
+            <param name="businessPartnerId">The business partner id.</param>
+            <returns>The data row.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,632 @@
+﻿{
+  "$schema": "../schemas/manifestSchema.json",
+  "name": "Pos_Extensibility_Samples",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "7.2.0.0",
+  "components": {
+    "resources": {
+      "supportedUICultures": [ "de", "en-US", "fr" ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources/Strings",
+      "stringResourcesFileName": "resources.resjson",
+      "cultureInfoOverridesFilePath": "Resources/cultureInfoOverrides.json"
+    },
+    "extend": {
+      "views": {
+        "AddressAddEditView": {
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "addressAddEditCustomFieldsSection",
+                "htmlPath": "ViewExtensions/AddressAddEdit/AddressAddEditCustomFieldsSection.html",
+                "modulePath": "ViewExtensions/AddressAddEdit/AddressAddEditCustomFieldsSection"
+              }
+            ]
+          },
+          "appBarCommands": [
+            { "modulePath": "ViewExtensions/AddressAddEdit/GetExternalAddressCommand" }
+          ]
+        },
+        "CartView": {
+          "viewController": { "modulePath": "ViewExtensions/Cart/CartViewController" },
+          "linesGrid": {
+            "customColumn1": { "modulePath": "ViewExtensions/Cart/LinesGrid/CustomColumn1Configuration" },
+            "customColumn2": { "modulePath": "ViewExtensions/Cart/LinesGrid/CustomColumn2Configuration" },
+            "customColumn3": { "modulePath": "ViewExtensions/Cart/LinesGrid/CustomColumn3Configuration" },
+            "customColumn4": { "modulePath": "ViewExtensions/Cart/LinesGrid/CustomColumn4Configuration" },
+            "customColumn5": { "modulePath": "ViewExtensions/Cart/LinesGrid/CustomColumn5Configuration" },
+            "customItemSubfields": [
+              {
+                "itemSubfieldName": "fraudCheckReminderItemSubfield",
+                "modulePath": "ViewExtensions/Cart/LinesGrid/FraudCheckReminderItemSubfield"
+              },
+              {
+                "itemSubfieldName": "subscribeAndSaveItemSubfield",
+                "modulePath": "ViewExtensions/Cart/LinesGrid/SubscribeAndSaveItemSubfield"
+              }
+            ]
+          },
+          "paymentsGrid": {
+            "customColumn1": { "modulePath": "ViewExtensions/Cart/PaymentsGrid/CustomColumn1Configuration" }
+          },
+          "deliveryGrid": {
+            "customColumn1": { "modulePath": "ViewExtensions/Cart/DeliveryGrid/CustomColumn1Configuration" }
+          },
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "lineDetails",
+                "htmlPath": "ViewExtensions/Cart/LineDetailsCustomControl.html",
+                "modulePath": "ViewExtensions/Cart/LineDetailsCustomControl"
+              },
+              {
+                "controlName": "customerDetails",
+                "htmlPath": "ViewExtensions/Cart/CustomerDetailsCustomControl.html",
+                "modulePath": "ViewExtensions/Cart/CustomerDetailsCustomControl"
+              }
+            ]
+          },
+          "totalsPanel": {
+            "customFields": [
+              {
+                "fieldName": "TipsField",
+                "modulePath": "ViewExtensions/Cart/TipsCustomField"
+              }
+            ]
+          }
+        },
+        "ShippingMethodsView": {
+          "viewController": { "modulePath": "ViewExtensions/ShippingMethods/ShippingMethodsViewController" }
+        },
+        "CustomerAddEditView": {
+          "appBarCommands": [
+            { "modulePath": "ViewExtensions/CustomerAddEdit/GetExternalCustomerCommand" }
+          ],
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "customFieldsSection",
+                "htmlPath": "ViewExtensions/CustomerAddEdit/CustomFieldsSection.html",
+                "modulePath": "ViewExtensions/CustomerAddEdit/CustomFieldsSection"
+              }
+            ]
+          }
+        },
+        "CustomerDetailsView": {
+          "appBarCommands": [
+            { "modulePath": "ViewExtensions/CustomerDetails/DisplayCustomerSummaryCommand" },
+            { "modulePath": "ViewExtensions/CustomerDetails/CustomerCrossLoyaltyCommand" }
+          ],
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "customerDetailsFriendsPanel",
+                "htmlPath": "ViewExtensions/CustomerDetails/CustomerDetailsFriendsPanel.html",
+                "modulePath": "ViewExtensions/CustomerDetails/CustomerDetailsFriendsPanel"
+              }
+            ]
+          }
+        },
+        "InventoryLookupMatrixView": {
+          "cellInteractionMenu": {
+            "customCommands": [ { "modulePath": "ViewExtensions/InventoryLookupMatrix/MoreDetailsMenuCommand" } ]
+          }
+        },
+        "InventoryLookupView": {
+          "appBarCommands": [ { "modulePath": "ViewExtensions/InventoryLookup/DownloadDocCommand" } ],
+          "inventoryByStoreListConfiguration": { "modulePath": "ViewExtensions/InventoryLookup/CustomInventoryByStoreListColumns" }
+        },
+        "FulfillmentLineView": {
+          "appBarCommands": [ { "modulePath": "ViewExtensions/FulfillmentLine/FulfillmentLineCommand" } ],
+          "customSortColumns": [ { "modulePath": "ViewExtensions/FulfillmentLine/DeliveryModeSortColumn" } ]
+        },
+        "ManageShiftsView": {
+          "appBarCommands": [ { "modulePath": "ViewExtensions/ManageShifts/ManageShiftsCommand" } ]
+        },
+        "PaymentView": {
+          "appBarCommands": [
+            { "modulePath": "ViewExtensions/Payment/PaymentViewCommand" }
+          ]
+        },
+        "PickingAndReceivingDetailsView": {
+          "appBarCommands": [ { "modulePath": "ViewExtensions/PickingAndReceivingDetails/PickingAndReceivingDetailsCmd" } ],
+          "orderLinesListConfiguration": { "modulePath": "ViewExtensions/PickingAndReceivingDetails/CustomOrderLinesListColumns" }
+        },
+        "ResumeCartView": {
+          "suspendedCartsListConfiguration": { "modulePath": "ViewExtensions/ResumeCart/ResumeCartListColumns" }
+        },
+        "SearchOrdersView": {
+          "appBarCommands": [ { "modulePath": "ViewExtensions/SearchOrders/SampleSearchOrdersCommand" } ],
+          "ordersListConfiguration": { "modulePath": "ViewExtensions/SearchOrders/CustomOrdersListColumns" },
+          "searchFilters": [ { "modulePath": "ViewExtensions/SearchOrders/SampleOrderSearchTextFilter" } ]
+        },
+        "SearchPickingAndReceivingView": {
+          "appBarCommands": [ { "modulePath": "ViewExtensions/SearchPickingAndReceiving/SearchPickingAndReceivingCmd" } ],
+          "ordersListConfiguration": { "modulePath": "ViewExtensions/SearchPickingAndReceiving/CustomOrdersListColumns" }
+        },
+        "SearchView": {
+          "productAppBarCommands": [
+            { "modulePath": "ViewExtensions/Search/NavigateToSimpleExtensionViewCommand" },
+            { "modulePath": "ViewExtensions/Search/QuickCompareProductsCommand" }
+          ],
+          "customerAppBarCommands": [ { "modulePath": "ViewExtensions/Search/ViewCustomerSummaryCommand" } ],
+          "productListConfiguration": { "modulePath": "ViewExtensions/Search/CustomProductSearchColumns" },
+          "customerListConfiguration": { "modulePath": "ViewExtensions/Search/CustomCustomerSearchColumns" }
+        },
+        "ShowJournalView": {
+          "appBarCommands": [ { "modulePath": "ViewExtensions/ShowJournal/DownloadDocumentCommand" } ],
+          "transactionListConfiguration": { "modulePath": "ViewExtensions/ShowJournal/TransactionListColumns" },
+          "customerOrderHistoryListConfiguration": { "modulePath": "ViewExtensions/ShowJournal/CustomerOrderHistoryListColumns" },
+          "searchFilters": [ { "modulePath": "ViewExtensions/ShowJournal/SampleTransactionSearchTextFilter" } ],
+          "linesGrid": {
+            "customItemSubfields": [
+              {
+                "itemSubfieldName": "fraudCheckReminderItemSubfield",
+                "modulePath": "ViewExtensions/ShowJournal/LinesGrid/FraudCheckReminderItemSubfield"
+              },
+              {
+                "itemSubfieldName": "subscribeAndSaveItemSubfield",
+                "modulePath": "ViewExtensions/ShowJournal/LinesGrid/SubscribeAndSaveItemSubfield"
+              }
+            ]
+          }
+        },
+        "SimpleProductDetailsView": {
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "productAvailabilityPanel",
+                "htmlPath": "ViewExtensions/SimpleProductDetails/ProductAvailabilityPanel.html",
+                "modulePath": "ViewExtensions/SimpleProductDetails/ProductAvailabilityPanel"
+              }
+            ]
+          }
+        },
+        "PriceCheckView": {
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "priceCheckPanel",
+                "htmlPath": "ViewExtensions/PriceCheck/PriceCheckCustomControlPanel.html",
+                "modulePath": "ViewExtensions/PriceCheck/PriceCheckCustomControlPanel"
+              }
+            ]
+          }
+        },
+        "ReportDetailsView": {
+          "appBarCommands": [ { "modulePath": "ViewExtensions/ReportDetails/ReportDetailsCommand" } ]
+        },
+        "ReturnTransactionView": {
+          "appBarCommands": [ { "modulePath": "ViewExtensions/ReturnTransaction/ReturnTransactionCommand" } ],
+          "salesOrderLinesGrid": {
+            "customItemSubfields": [
+              {
+                "itemSubfieldName": "fraudCheckReminderItemSubfield",
+                "modulePath": "ViewExtensions/ReturnTransaction/LinesGrid/FraudCheckReminderItemSubfield"
+              }
+            ]
+          }
+        },
+        "StockCountDetailsView": {
+            "appBarCommands": [ { "modulePath": "ViewExtensions/StockCountDetails/StockCountDetailsCommand" } ]
+        },
+        "HealthCheckView": {
+          "customHealthChecks": [
+            {
+              "name": "customHealthCheck",
+              "modulePath": "ViewExtensions/HealthCheck/CustomHealthCheck"
+            }
+          ]
+        }
+      },
+      "triggers": [
+        {
+          "triggerType": "PreProductSale",
+          "modulePath": "TriggerHandlers/PreProductSaleTrigger"
+        },
+        {
+          "triggerType": "PreProductSale",
+          "modulePath": "TriggerHandlers/InfoLoggingPreProductSaleTrigger"
+        },
+        {
+          "triggerType": "PostProductSale",
+          "modulePath": "TriggerHandlers/PostProductSaleTrigger"
+        },
+        {
+          "triggerType": "ApplicationStart",
+          "modulePath": "TriggerHandlers/ApplicationStartTrigger"
+        },
+        {
+          "triggerType": "ApplicationSuspend",
+          "modulePath": "TriggerHandlers/ApplicationSuspendTrigger"
+        },
+        {
+          "triggerType": "PrePrintReceiptCopy",
+          "modulePath": "TriggerHandlers/PrePrintReceiptCopyTrigger"
+        },
+        {
+          "triggerType": "PostGetSerialNumber",
+          "modulePath": "TriggerHandlers/PostGetSerialNumberTrigger"
+        },
+        {
+          "triggerType": "PostGetGiftCardNumber",
+          "modulePath": "TriggerHandlers/PostGetGiftCardNumberTrigger"
+        },
+        {
+          "triggerType": "PostProductSale",
+          "modulePath": "TriggerHandlers/ChangeUnitOfMeasurePostProductSaleTrigger"
+        },
+        {
+          "triggerType": "PreGetLoyaltyCardBalance",
+          "modulePath": "TriggerHandlers/PreGetLoyaltyCardBalanceTrigger"
+        },
+        {
+          "triggerType": "PreDisplayLoyaltyCardBalance",
+          "modulePath": "TriggerHandlers/PreDisplayLoyaltyCardBalanceTrigger"
+        },
+        {
+          "triggerType": "PostGetLoyaltyCardBalance",
+          "modulePath": "TriggerHandlers/PostGetLoyaltyCardBalanceTrigger"
+        },
+        {
+          "triggerType": "PreCreatePackingSlip",
+          "modulePath": "TriggerHandlers/PreCreatePackingSlipTrigger"
+        },
+        {
+          "triggerType": "PreCustomerSave",
+          "modulePath": "TriggerHandlers/PreCustomerSaveTrigger"
+        },
+        {
+          "triggerType": "PostCustomerSave",
+          "modulePath": "TriggerHandlers/PostCustomerSaveTrigger"
+        },
+        {
+          "triggerType": "PreFloatEntry",
+          "modulePath": "TriggerHandlers/PreFloatEntryTrigger"
+        },
+        {
+          "triggerType": "PostFloatEntry",
+          "modulePath": "TriggerHandlers/PostFloatEntryTrigger"
+        },
+        {
+          "triggerType": "PreMarkFulfillmentLinesAsPacked",
+          "modulePath": "TriggerHandlers/PreMarkFulfillmentLinesAsPackedTrigger"
+        },
+        {
+          "triggerType": "PreShipFulfillmentLines",
+          "modulePath": "TriggerHandlers/PreShipFulfillmentLinesTrigger"
+        },
+        {
+          "triggerType": "PostReceiptPrompt",
+          "modulePath": "TriggerHandlers/PostReceiptPromptTrigger"
+        },
+        {
+          "triggerType": "PreSearchOrders",
+          "modulePath": "TriggerHandlers/PreSearchOrdersTrigger"
+        },
+        {
+          "triggerType": "PostLogon",
+          "modulePath": "TriggerHandlers/PostLogonTrigger"
+        }
+      ],
+      "requestHandlers": [
+        {
+          "modulePath": "Handlers/CashDrawerOpenRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/DepositOverrideOperationRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/GetCancellationChargeClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/GetScanResultClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/GetSerialNumberClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/GetKeyedInPriceClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/GetPickupDateClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/GetReportParametersClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/GetTenderDetailsClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/PrintPackingSlipClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/GetShippingDateClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/GetRefinerValuesByTextServiceRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/ShowChangeDueClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/GetReceiptEmailAddressClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/SelectZipCodeInfoClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/LoyaltyCardPointsBalanceOperationRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/GetShippingChargeClientRequestHandlerExt"
+        },
+        {
+          "modulePath": "Handlers/GetCountedTenderDetailAmountClientRequestHandlerExt"
+        }
+      ]
+    },
+    "create": {
+      "controls": [
+        {
+          "htmlPath": "Controls/CustomControl/CustomControl.html",
+          "modulePath": "Controls/CustomControl/CustomControl"
+        }
+      ],
+      "templatedDialogs": [
+        {
+          "htmlPath": "Controls/DialogSample/DialogSample.html",
+          "modulePath": "Controls/DialogSample/DialogSampleModule"
+        },
+        {
+          "htmlPath": "Controls/BarcodeMsrDialog/BarcodeMsrDialog.html",
+          "modulePath": "Controls/BarcodeMsrDialog/BarcodeMsrDialog"
+        },
+        {
+          "htmlPath": "Controls/GiftCardBalanceDialog/GiftCardBalanceDialog.html",
+          "modulePath": "Controls/GiftCardBalanceDialog/GiftCardBalanceDialog"
+        }
+      ],
+      "views": [
+        {
+          "title": "Simple View Test",
+          "pageName": "SimpleExtensionView",
+          "phonePageName": "SimpleExtensionView",
+          "viewDirectory": "Views/",
+          "viewControllerPath": "Views/SimpleExtensionView"
+        },
+        {
+          "title": "Simple Next View",
+          "pageName": "SimpleNextView",
+          "phonePageName": "SimpleNextView",
+          "viewDirectory": "Views/",
+          "viewControllerPath": "Views/SimpleNextView"
+        },
+        {
+          "title": "Samples View",
+          "pageName": "SamplesView",
+          "phonePageName": "SamplesView",
+          "viewDirectory": "Views/",
+          "viewControllerPath": "Views/SamplesView"
+        },
+        {
+          "title": "AddTenderLineToCartView",
+          "pageName": "AddTenderLineToCartView",
+          "phonePageName": "AddTenderLineToCartView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/AddTenderLineToCartView"
+        },
+        {
+          "title": "AlphanumericNumPadView",
+          "pageName": "AlphanumericNumPadView",
+          "phonePageName": "AlphanumericNumPadView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/AlphanumericNumPadView"
+        },
+        {
+          "title": "TextInputDialogView",
+          "pageName": "TextInputDialogView",
+          "phonePageName": "TextInputDialogView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/TextInputDialogView"
+        },
+        {
+          "title": "ApiView",
+          "pageName": "ApiView",
+          "phonePageName": "ApiView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/ApiView"
+        },
+        {
+          "title": "AppBarView",
+          "pageName": "AppBarView",
+          "phonePageName": "AppBarView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/AppBarView"
+        },
+        {
+          "title": "CurrencyNumPadView",
+          "pageName": "CurrencyNumPadView",
+          "phonePageName": "CurrencyNumPadView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/CurrencyNumPadView"
+        },
+        {
+          "title": "DataListView",
+          "pageName": "DataListView",
+          "phonePageName": "DataListView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/DataListView"
+        },
+        {
+          "title": "DatePickerView",
+          "pageName": "DatePickerView",
+          "phonePageName": "DatePickerView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/DatePickerView"
+        },
+        {
+          "title": "DynamicDataListView",
+          "pageName": "DynamicDataListView",
+          "phonePageName": "DynamicDataListView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/DynamicDataListView"
+        },
+        {
+          "title": "ForceVoidTransactionView",
+          "pageName": "ForceVoidTransactionView",
+          "phonePageName": "ForceVoidTransactionView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/ForceVoidTransactionView"
+        },
+        {
+          "title": "HeaderSplitViewView",
+          "pageName": "HeaderSplitViewView",
+          "phonePageName": "HeaderSplitViewView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/HeaderSplitViewView"
+        },
+        {
+          "title": "LoaderView",
+          "pageName": "LoaderView",
+          "phonePageName": "LoaderView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/LoaderView"
+        },
+        {
+          "title": "MenuView",
+          "pageName": "MenuView",
+          "phonePageName": "MenuView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/MenuView"
+        },
+        {
+          "title": "AlphanumericInputDialogView",
+          "pageName": "AlphanumericInputDialogView",
+          "phonePageName": "AlphanumericInputDialogView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/AlphanumericInputDialogView"
+        },
+        {
+          "title": "NumericInputDialogView",
+          "pageName": "NumericInputDialogView",
+          "phonePageName": "NumericInputDialogView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/NumericInputDialogView"
+        },
+        {
+          "title": "ListInputDialogView",
+          "pageName": "ListInputDialogView",
+          "phonePageName": "ListInputDialogView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/ListInputDialogView"
+        },
+        {
+          "title": "NumericNumPadView",
+          "pageName": "NumericNumPadView",
+          "phonePageName": "NumericNumPadView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/NumericNumPadView"
+        },
+        {
+          "title": "PivotView",
+          "pageName": "PivotView",
+          "phonePageName": "PivotView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/PivotView"
+        },
+        {
+          "title": "TimePickerView",
+          "pageName": "TimePickerView",
+          "phonePageName": "TimePickerView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/TimePickerView"
+        },
+        {
+          "title": "ToggleMenuView",
+          "pageName": "ToggleMenuView",
+          "phonePageName": "ToggleMenuView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/ToggleMenuView"
+        },
+        {
+          "title": "ToggleSwitchView",
+          "pageName": "ToggleSwitchView",
+          "phonePageName": "ToggleSwitchView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/ToggleSwitchView"
+        },
+        {
+          "title": "TransactionNumPadView",
+          "pageName": "TransactionNumPadView",
+          "phonePageName": "TransactionNumPadView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/TransactionNumPadView"
+        },
+        {
+          "title": "CloseShiftView",
+          "pageName": "CloseShiftView",
+          "phonePageName": "CloseShiftView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/CloseShiftView"
+        },
+        {
+          "title": "VoidCartLineView",
+          "pageName": "VoidCartLineView",
+          "phonePageName": "VoidCartLineView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/VoidCartLineView"
+        },
+        {
+          "title": "SyncStockCountJournalsView",
+          "pageName": "SyncStockCountJournalsView",
+          "phonePageName": "SyncStockCountJournalsView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/SyncStockCountJournalsView"
+        },
+        {
+          "title": "VoidTenderLineView",
+          "pageName": "VoidTenderLineView",
+          "phonePageName": "VoidTenderLineView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/VoidTenderLineView"
+        },
+         {
+          "title": "PostLogOnView",
+          "pageName": "PostLogOnView",
+          "phonePageName": "PostLogOnView",
+          "viewDirectory": "Views/Samples/",
+          "viewControllerPath": "Views/Samples/PostLogOnView"
+        }
+      ],
+      "requestHandlers": [
+        {
+          "modulePath": "RequestHandlers/SendEmailRequestHandler"
+        }
+      ],
+      "operations": [
+        {
+          "operationId": "5000",
+          "operationRequestFactoryPath": "Operations/Print/PrintOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/Print/PrintOperationRequestHandler"
+        },
+        {
+          "operationId": "5001",
+          "operationRequestFactoryPath": "Operations/EndOfDay/EndOfDayOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/EndOfDay/EndOfDayOperationRequestHandler"
+        },
+        {
+          "operationId": "5002",
+          "operationRequestFactoryPath": "Operations/CheckGiftCardBalance/CheckGiftCardBalanceFactory",
+          "operationRequestHandlerPath": "Operations/CheckGiftCardBalance/CheckGiftCardBalanceHandler"
+        },
+        {
+          "operationId": "5003",
+          "operationRequestFactoryPath": "Operations/SaveDataToSelectedCartLine/SaveDataToSelectedCartLineFactory",
+          "operationRequestHandlerPath": "Operations/SaveDataToSelectedCartLine/SaveDataToSelectedCartLineHandler"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Versionsnummerhanterare: versionsnumret har lagts till.",
+  "Build_number_successfull_log_message_text.comment": "Meddelande som loggas när kassaversionsnumret har lagts till i transaktionen.",
+  "Build_number_error_log_message_text": "Versionsnummerhanterare: Det gick inte att lägga till versionsnummer, felmeddelande: {0}.",
+  "Build_number_error_log_message_text.comment": "Meddelande som loggas när kassaversionsnumret inte har lagts till i transaktionen."
+}

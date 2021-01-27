@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout self packing list markup.</title>
+    <link href="knockout.selfPackingList.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script id="selfPackingListTemplate" type="text/html">
+        <div class="selfPackingListLeftList height48 row grow alignRight"></div>
+        <div class="selfPackingListOverflowButton width48">
+            <button class="buttonIcon width48 height48 headerBackgroundColor headerBackgroundColorHover iconMore selfPackingListOverflowEllipsis" type="button" 
+                    data-bind="click: toggleOveflowFlyout,
+                    resx: { ariaLabel: 'string_900' /* Show list */ },
+                    attr: {title: Commerce.ViewModelAdapter.getResourceString('string_942'), /* More options */ }"></button>
+        </div>
+        <div class="selfPackingListRightList height48 row"></div>
+        <div class="selfPackingListOverflowFlyout primaryFontColor"></div>
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>KitComponentSubstitutesView</title>
+    <link href="KitComponentSubstitutesView.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="pivot: { headerItemsAxBubbleAttr: 'kitComponentSubstitutesView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+        <div data-bind="pivotItem: { headerResx:'string_821' }"> <!--Change product-->
+            <div id="productsList"
+                    data-bind="dataList: {
+                        defaultListType: Commerce.Controls.DataList.ListType.Card,
+                        itemDataSource: viewModel.productComponents,
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                        itemInvoked: viewModel.productComponentItemInvokeHandler.bind(viewModel),
+                        ariaLabelResx: 'string_925', /* Collection of products */
+                        columns: [
+                            { titleResx: 'string_906', ratio: 20, collapseOrder: 4, minWidth: 120, field: 'ItemId' },
+                            { titleResx: 'string_907', ratio: 40, collapseOrder: 3, minWidth: 200, field: 'Name' },
+                            { titleResx: 'string_5352', ratio: 15, collapseOrder: 2, minWidth: 60, field: '$data', converter: 'Commerce.Core.Converter.ProductComponentQuantityFormatter', isRightAligned: true },
+                            { titleResx: 'string_5372', ratio: 25, collapseOrder: 1, minWidth: 150, field: 'AdditionalChargeForComponent', converter: 'Commerce.Core.Converter.AdditionalComponentChargeFormatter', isRightAligned: true }
+                        ],
+                        itemTemplates: [
+                            {
+                                name: 'string_939', /* Show cards */
+                                templateId: 'kitComponentLargeCardTemplate',
+                                cardType: Commerce.Controls.DataList.CardType.Static,
+                                deviceType: Commerce.Controls.DataList.DeviceType.Tablet
+                            },
+                            {
+                                name: 'string_939', /* Show cards */
+                                templateId: 'kitComponentSmallCardTemplatePhone',
+                                cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                deviceType: Commerce.Controls.DataList.DeviceType.Phone
+                            }
+                        ]
+                        },
+                        axBubbleAttr: 'kitComponentSubstitutesView_productsList'">
+            </div>
+        </div>
+    </div>
+
+    <div id="commandAppBar" data-bind="appBar: {}, axBubbleAttr: 'kitComponentSubstitutesView_appBar'">
+        <button data-bind="appBarCommand: {
+                    extraClass: 'iconView',
+                    id:'showSubstitutesViewMenu',
+                    labelResx: 'string_1035' 
+                },
+                templateSwitcher: { listId: '#productsList' },
+                axBubbleAttr: 'kitComponentSubstitutesView_showSubstitutesViewMenu'"></button><!-- Change View -->
+    </div>
+</body>
+</html>

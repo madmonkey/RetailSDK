@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Stjórnandi smíðarnúmers: Smíðarnúmeri var bætt við.",
+  "Build_number_successfull_log_message_text.comment": "Skilaboð skráð þegar tekst að bæta smíðarnúmeri sölustaðar við færsluna.",
+  "Build_number_error_log_message_text": "Stjórnandi smíðarnúmers: Ekki tókst að bæta við smíðarnúmeri, villuboð: „{0}“.",
+  "Build_number_error_log_message_text.comment": "Skilaboð skráð þegar ekki tekst að bæta smíðarnúmeri sölustaðar við færsluna."
+}

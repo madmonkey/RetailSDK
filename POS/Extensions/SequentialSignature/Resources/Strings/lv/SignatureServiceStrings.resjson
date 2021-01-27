@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Pabeidzot transakciju, radās kļūda. Parakstīšanas pakalpojums nav gatavs. Sazinieties ar sistēmas administratoru.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Pabeidzot transakciju, radās kļūda. Saistītā finanšu transakcija satur nepareiza formāta datus. Sazinieties ar sistēmas administratoru.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "Pēc pēdējās transakcijas ciparparaksta atkopšanas radās kļūda. Iespējams, netika sinhronizēta bezsaistes datu bāze. Sazinieties ar sistēmas administratoru.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

@@ -1,0 +1,10 @@
+{
+  "Warning_title": "Viðvörun",
+  "_Warning_title.comment": "POS warning message title.",
+  "Shift_closing_warning": "Loka verður vaktinni fyrir {0}.",
+  "_Shift_closing_warning.comment": "POS warning message when the cashier performs an operation within the shift closing interval.",
+  "Error_title": "Villa",
+  "_Error_title.comment": "POS error message title.",
+  "Shift_closing_error": "Vaktin er yfir tímamörkum. Frestaðu færslunni, lokaðu vaktinni og opnaðu nýja vakt.",
+  "_Shift_closing_error.comment": "POS warning message when the cashier performs an operation after the shift closing time."
+}

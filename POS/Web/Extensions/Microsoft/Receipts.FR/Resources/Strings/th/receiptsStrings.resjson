@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "ตัวจัดการหมายเลขบิลด์: เพิ่มหมายเลขบิลด์เรียบร้อยแล้ว",
+  "Build_number_successfull_log_message_text.comment": "ข้อความที่บันทึกเมื่อเพิ่มหมายเลขบิลด์ POS ลงในธุรกรรมได้สำเร็จ",
+  "Build_number_error_log_message_text": "ตัวจัดการหมายเลขบิลด์: การเพิ่มหมายเลขบิลด์ล้มเหลว ข้อความแสดงข้อผิดพลาด: '{0}'",
+  "Build_number_error_log_message_text.comment": "ข้อความที่บันทึกเมื่อเพิ่มหมายเลขบิลด์ POS ลงในธุรกรรมไม่สำเร็จ"
+}

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TaxOverrideDialog</title>
+    <link href="TaxOverrideDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'TaxOverrideDialog'">
+        <div class="taxOverrideDialog">
+            <div data-bind="dialog: {
+                title: title,
+                visible: visible,
+                buttonClick: cancelDialog,
+                buttons: [{ label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false }],
+            },
+            axBubbleAttr: 'taxOverrideDialog_taxOverrideDialog',attr: { 'aria-label': title }" class="taxOverrideDialog modalWindowContentSection">
+
+                <!-- dialog content -->
+                <div data-bind="tileList: { itemDataSource: taxOverrides, iteminvoked: itemInvokedHandler, field: '$data', converter: 'Commerce.Formatters.taxOverrideToDescriptionFormatter' }, axBubbleAttr: 'taxOverrideDialog_taxOverrides'"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

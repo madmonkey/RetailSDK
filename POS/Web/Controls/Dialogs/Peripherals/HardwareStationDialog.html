@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HardwareStationDialog</title>
+    <link href="HardwareStationDialog.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="hardwareStation" data-bind="customControlInternal: 'HardwareStationDialog'">
+        <div data-bind="dialog:
+            {
+                title: title,
+                subTitle: subTitle,
+                visible: visible,
+                buttonClick: onButtonClick,
+                closeOnEscButton: true,
+                showProgressIndicator: indeterminateWaitVisible,
+                buttons: [
+                    { label: labelResxString, operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, cssClass: 'okButton', isPrimary: true },
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_80'), visible: closeButtonVisibility , operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'closeButton' }]
+            },
+            axBubbleAttr: 'hardwareStationDialog'">
+
+            <!-- dialog content -->
+            <div class="col grow scrollY" data-bind="visible: !manageStations()">
+                <div data-bind="visible:!viewModel.showPairedStations()">
+                    <div class="h4" data-bind="resx: {textContent: 'string_6035'}">Hardware station is currently turned off</div>
+                </div>
+                <div data-bind="visible:viewModel.showPairedStations">
+                    <div class="marginBottom20 padTop05">
+                        <label data-bind="resx: {textContent: 'string_6026'}">Selected station</label>
+                        <div data-bind="visible: viewModel.isConnectedHardwareStationExists()">
+                            <div id="connectedStations" class="marginTop12" data-bind="foreach: viewModel.connectedHardwareStation">
+                                <div class="row marginBottom20 pad08" role="button" data-bind="click: $root.activeStationsItemClicked.bind($root)">
+                                    <div class="padTop05"><div class="iconCompleted icon-20x20 marginRight12" data-bind="resx:{ ariaLabel: 'string_6022'}"></div></div>
+                                    <div class="width100Percent">
+                                        <div class="h4 ellipsis" data-bind="text:description"></div>
+                                        <div class="h6 ellipsis secondaryFontColor" data-bind="text: hostName">HostName</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="center grow padBottom20" data-bind="visible: !viewModel.isConnectedHardwareStationExists()">
+                            <div>
+                                <div class="h4" data-bind="resx: {textContent: 'string_6031'}">No station Selected</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marginBottom20">
+                        <label data-bind="resx: {textContent: 'string_6027'}">Available Paired Station</label>
+                        <div data-bind="visible: viewModel.isPairedHardwareStationExists">
+                            <div class="marginTop12" data-bind="foreach: viewModel.pairedHardwareStations">
+                                <div class="row marginBottom08 pad08" role="button" data-bind="click: $root.pairedStationsItemClicked.bind($root)">
+                                    <div class="padTop05"><div class="iconLink icon-20x20 marginRight12" data-bind="resx:{ ariaLabel: 'string_6022'}"></div></div>
+                                    <div class="width100Percent">
+                                        <div class="h4 ellipsis" data-bind="text: description"></div>
+                                        <div class="h6 secondaryFontColor ellipsis" data-bind="text: hostName">HostName</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="center grow" data-bind="visible: !viewModel.isPairedHardwareStationExists()">
+                            <div>
+                                <div class="h4" data-bind="text: viewModel.pairStateLabel">No station paired</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col grow scrollY" data-bind="visible:manageStations">
+                <div class="marginBottom40">
+                    <div id="hardwareStationToggle"
+                            data-bind="toggleSwitch: {
+                                title: 'string_6004', /* Use hardware station */
+                                labelOn: 'string_7411',
+                                labelOff:'string_7412',
+                                checked: viewModel.showPairedStations,
+                                onChange: viewModel.toggleManageHardware.bind(viewModel)
+                            }">
+                    </div>
+                </div>
+
+                <div class="marginBottom12 grow" data-bind="visible:viewModel.showPairedStations">
+                    <label data-bind="resx: {textContent: 'string_6019'}">Paired Hardware Station</label>
+                    <div id="availableStations" data-bind="foreach: viewModel.hardwareStations, axBubbleAttr: 'hardwareStationView_pairedHardwareStationsList'">
+                        <div class="marginBottom20">
+                            <div data-bind="toggleSwitch: {
+                                title: description,
+                                labelOn: 'string_6024', /* Paired */
+                                labelOff:'string_6025', /* Ready to pair */
+                                checked: isPaired,
+                                enabled: !Commerce.Peripherals.HardwareStation.HardwareStationContext.isLocalStation($data),
+                                onChange: $root.toggleSwitchChanged.bind($root)
+                            }">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marginBottom20" data-bind="visible:!viewModel.showPairedStations()">
+                    <label data-bind="resx: {textContent: 'string_6023'}">Turn on Hardware station to enable pairing</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

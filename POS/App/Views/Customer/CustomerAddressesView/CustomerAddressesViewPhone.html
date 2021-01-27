@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CustomerAddressesView</title>
+
+    <link href="CustomerAddressesView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="customerAddressesView fragment">
+        <!-- Main content -->
+        <div id="CustomerAddressViewPhonePivot" data-bind="pivot: {},resx: { ariaLabel: 'string_4454' }">
+            <div id="CustomerAddressViewPhonePivotPrimary" data-bind="pivotItem: { headerResx : 'string_4809'}">
+                <!-- Primary address -->
+                <div class="browseGrid">
+                    <!-- The selectionMode property on data-win-options is set on the view controler. -->
+                    <div id="customerPrimaryAddressList" class="minWidth280 maxWidth320"
+                         data-win-control="WinJS.UI.ListView"
+                         data-win-options="{
+                            itemTemplate: select('#customerAddressTemplatePhone'),
+                            layout: { type: WinJS.UI.ListLayout },
+                            selectionMode: 'none',
+                            tapBehavior: 'none'
+                            }"
+                         data-bind="winControl: {
+                            itemDataSource: primaryAddressWrappers,
+                            preventDefaulListViewEvents: true
+                            },
+                            resx: { ariaLabel: 'string_4809'}">
+                        <!-- Primary address -->
+                    </div>
+                </div>
+            </div>
+            <div id="CustomerAddressViewPhonePivotAddresses" data-bind="pivotItem: { headerResx : 'string_4834'}">
+                <!-- Addresses -->
+                <div class="browseGrid">
+                    <!-- The selectionMode property on data-win-options is set on the view controler. -->
+                    <div id="customerAddressesList" class="minWidth280 maxWidth320"
+                         data-win-control="WinJS.UI.ListView"
+                         data-win-options="{
+                            itemTemplate: select('#customerAddressTemplatePhone'),
+                            layout: { type: WinJS.UI.ListLayout },
+                            selectionMode: 'none',
+                            tapBehavior: 'none'
+                            }"
+                         data-bind="winControl: {
+                            itemDataSource: otherAddressWrappers,
+                            preventDefaulListViewEvents: true
+                            },
+                            resx: { ariaLabel: 'string_4834' }">
+                        <!-- Addresses -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--ko if: viewModel.isMarketingOptInEnable-->
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar: {}, axBubbleAttr: 'customerAddressesView_commandAppBar'">
+            <button data-bind="
+                        appBarCommand: {
+                            extraClass: 'iconAccept',
+                            id: 'onSubmitLinesAsync',
+                            onclick: allAddressessViewActionCompleted,
+                            visible: showOkButton,
+                            labelResx: 'string_75',/* OK */
+                        },
+                        axBubbleAttr: 'customerAddressesView_completeAddAddress'"></button><!--ok-->
+
+            <button data-bind="
+                        appBarCommand: {
+                            extraClass: 'iconAdd',
+                            onclick: addAddressClicked,
+                            id:'cmdAddAddress',
+                            labelResx: 'string_4842'/* Add address */
+                        },
+                        axBubbleAttr: 'customerAddressesView_cmdAddAddress'"></button><!--Add address-->
+        </div>
+        <!-- /ko -->
+    </div>
+</body>
+</html>

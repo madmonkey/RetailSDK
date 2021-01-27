@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "There was an error while concluding the transaction. Signing service is not ready. Contact your system administrator.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "There was an error while concluding the transaction. Linked fiscal transaction contains data of a wrong format. Contact your system administrator.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "There was an error while last transaction digital signature recovery. Possibly offline database not synced. Contact your system administrator.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

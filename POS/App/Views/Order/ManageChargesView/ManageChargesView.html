@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ManageChargesView</title>
+</head>
+<body>
+    <div class="fragment manageChargesView" data-bind="with: viewModel">
+        <div class="row height100Percent marginBottom48">
+            <div id="listCol" class="grow height100Percent">
+                <div id="chargesViewPivot" data-bind="pivot: { onselectionchanged: switchMode.bind($data) }, resx: { ariaLabel: 'string_4454' }">
+                    <div id="linePivotItem" data-bind="pivotItem: { headerResx: 'string_4486' }">
+                        <div id="lineChargesViewList" data-bind="
+                                dataList: {
+                                    visible: viewMode() === Commerce.ViewModels.ManageChargesViewModel.LINE,
+                                    itemDataSource: lineChargeDisplays,
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    selectionChanged: selectLineCharges,
+                                    ariaLabelResx: 'string_6165', /* Charges */
+                                    columns: [
+                                        { titleResx: 'string_5941', ratio: 15, collapseOrder: 6, minWidth: 150, field: 'chargeCode' },
+                                        { titleResx: 'string_824', ratio: 15, collapseOrder: 4, minWidth: 150, field: 'description' },
+                                        { titleResx: 'string_5956', ratio: 13, collapseOrder: 2, minWidth: 120, field: 'itemNumber' },
+                                        { titleResx: 'string_5943', ratio: 22, collapseOrder: 3, minWidth: 200, field: 'itemName' },
+                                        { titleResx: 'string_5952', ratio: 22, collapseOrder: 1, minWidth: 200, field: 'itemVariant' },
+                                        { titleResx: 'string_5944', ratio: 13, collapseOrder: 5, minWidth: 120, field: 'chargeAmountFormatted', isRightAligned: true }
+                                    ]
+                                },
+                                axBubbleAttr: 'manageChargesView_Charges'">
+                        </div>
+                    </div>
+
+                    <div id="headerPivotItem" data-bind="pivotItem: { headerResx: 'string_4485' }">
+                        <div id="headerChargesViewList" data-bind="
+                                dataList: {
+                                    visible: viewMode() === Commerce.ViewModels.ManageChargesViewModel.HEADER,
+                                    itemDataSource: headerChargeDisplays,
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    selectionChanged: selectHeaderCharges,
+                                    ariaLabelResx: 'string_6165', /* Charges */
+                                    columns: [
+                                        { titleResx: 'string_5941', ratio: 30, collapseOrder: 3, minWidth: 150, field: 'chargeCode' },
+                                        { titleResx: 'string_824', ratio: 40, collapseOrder: 1, minWidth: 150, field: 'description' },
+                                        { titleResx: 'string_5944', ratio: 30, collapseOrder: 2, minWidth: 120, field: 'chargeAmountFormatted', isRightAligned: true }
+                                    ]
+                                },
+                                axBubbleAttr: 'manageChargesView_Charges'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="detailsCol" data-bind="ifnot: Commerce.Config.isPhone" class="col">
+                <div class="row">
+                    <h2 class="title marginTop12" data-bind="if: detailsExpanded(), resx: { textContent: 'string_5954' }"></h2>
+                    <div class="grow"></div>
+                    <a href="#" id="btnToggleDetailsPane" class="icon-20x20 width40 height40 margin4 center fixedToggleDetailsPaneButton"
+                        data-bind="click: toggleDetails, css: detailsExpanded() ? 'iconClosePane' : 'iconOpenPane', resx: { ariaLabel: 'string_13156' }"></a>
+                </div>
+
+                <div id="detailsView" class="no-shrink width320 col grow" data-bind="slideVisible: { isShowed: detailsExpanded() }">
+                    <div data-bind="ifnot: isAnyChargeSelected(), css: { grow: !isAnyChargeSelected() }" class="row grow">
+                        <div class="col grow primaryPanelBackgroundColor highContrastBorderThin marginBottom12 marginRight12">
+                            <div class="textCenter padTop56">
+                                <div class="center">
+                                    <div class="h1 iconBulletedList icon-40x40 secondaryFontColor" data-bind="resx: { ariaLabel: 'string_13157' }"></div>
+                                </div>
+                                <div class="h2 wrapText" data-bind="resx: { textContent: 'string_5947' }"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-bind="if: isAnyChargeSelected(), css: { grow: isAnyChargeSelected() }" class="row grow">
+                        <div class="col grow primaryPanelBackgroundColor highContrastBorderThin marginBottom12 marginRight12">
+
+                            <!--Delivery mode-->
+                            <div class="marginRight12 marginBottom12 marginLeft12 marginTop12">
+                                <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_5949' }"></div>
+                                <div class="h4 primaryFontColor" data-bind="text: selectedChargeDisplay().deliveryMode"></div>
+                            </div>
+
+                            <!--Override reason-->
+                            <div class="marginRight12 marginBottom12 marginLeft12">
+                                <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_5950' }"></div>
+                                <div class="h4 primaryFontColor" data-bind="text: selectedChargeDisplay().overrideReason"></div>
+                            </div>
+
+                            <!--Currency-->
+                            <div class="marginRight12 marginBottom12 marginLeft12">
+                                <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_5960' }"></div>
+                                <div class="h4 primaryFontColor" data-bind="text: selectedChargeDisplay().currencyCode"></div>
+                            </div>
+
+                            <!--Full description-->
+                            <div class="marginRight12 marginBottom12 marginLeft12">
+                                <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_5961' }"></div>
+                                <div class="h4 primaryFontColor" data-bind="text: selectedChargeDisplay().description"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col grow no-shrink marginRight20 marginBottom12" data-bind="visible: !detailsExpanded(), resx: { ariaLabel: 'string_5955' }">
+                    <div id="minimizedDetailsView" class="col no-shrink grow primaryPanelBackgroundColor width48"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="commandAppBar" data-bind="appBar: {}">
+            <button data-bind="appBarCommand: {
+                    visible: Commerce.Config.isPhone,
+                    id:'mobileViewDetailsAppBar',
+                    extraClass: 'iconBulletedList',
+                    enabled: isAnyChargeSelected(),
+                    onclick: mobileChargeDetailsAsync,
+                    labelResx: 'string_5954',
+                    axBubbleAtr: ' manageChargesView_viewDetailsMobile'}"></button>
+            <button data-bind="appBarCommand: {
+                id:'editChargeAppBar',
+                extraClass: 'iconEdit',
+                enabled: isAnyChargeSelected(),
+                onclick: overrideChargeAsync,
+                labelResx: 'string_302',
+                axBubbleAttr: 'manageChargesView_editCharge'}"></button>
+        </div>
+    </div>
+</body>
+</html>

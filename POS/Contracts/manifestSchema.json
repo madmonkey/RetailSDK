@@ -1,0 +1,1464 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": { },
+  "description": "schema for extension manifest",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string" },
+    "minimumPosVersion": { "type": "string" },
+    "name": { "type": "string" },
+    "publisher": { "type": "string" },
+    "description": { "type": "string" },
+    "supportedCountryRegions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "alias": { "type": "string" },
+          "modulePath": { "type": "string" },
+          "format": { "enum": ["amd"] }
+        },
+        "required": [ "alias", "modulePath", "format" ],
+        "additionalProperties": false
+      }
+    },
+    "components": {
+      "type": "object",
+      "properties": {
+        "resources": {
+          "type": "object",
+          "properties": {
+            "supportedUICultures": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "fallbackUICulture": { "type": "string" },
+            "culturesDirectoryPath": { "type": "string" },
+            "stringResourcesFileName": { "type": "string" },
+            "cultureInfoOverridesFilePath": { "type": "string" },
+            "name": { "type": "string" },
+            "description": { "type": "string" }
+          },
+          "required": [ "fallbackUICulture", "culturesDirectoryPath", "stringResourcesFileName", "name", "description" ],
+          "additionalProperties": false
+        },
+        "dualDisplay": {
+          "type": "object",
+          "properties": {
+            "customControl": {
+              "type": "object",
+              "properties": {
+                "controlName": { "type": "string" },
+                "htmlPath": {
+                  "type": "string",
+                  "pattern": "^([^\\s]+(\\.html)$)$"
+                },
+                "modulePath": { "type": "string" },
+                "name": { "type": "string" },
+                "description": { "type": "string" }
+              },
+              "required": [ "controlName", "htmlPath", "modulePath", "name", "description" ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "extend": {
+          "type": "object",
+          "properties": {
+            "requestHandlers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "modulePath": { "type": "string" },
+                  "name": { "type": "string" },
+                  "description": { "type": "string" }
+                },
+                "required": [ "modulePath", "name", "description" ],
+                "additionalProperties": false
+              }
+            },
+            "views": {
+              "type": "object",
+              "properties": {
+                "AddressAddEditView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "controlsConfig": {
+                      "type": "object",
+                      "properties": {
+                        "customControls": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "controlName": { "type": "string" },
+                              "htmlPath": {
+                                "type": "string",
+                                "pattern": "^([^\\s]+(\\.html)$)$"
+                              },
+                              "modulePath": { "type": "string" },
+                              "name": { "type": "string" },
+                              "description": { "type": "string" }
+                            },
+                            "required": [ "controlName", "htmlPath", "modulePath", "name", "description" ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "CartView": {
+                  "type": "object",
+                  "properties": {
+                    "viewController": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    },
+                    "linesGrid": {
+                      "type": "object",
+                      "properties": {
+                        "customColumn1": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn2": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn3": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn4": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn5": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn6": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn7": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn8": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn9": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn10": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customItemSubfields": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "itemSubfieldName": { "type": "string" },
+                              "modulePath": { "type": "string" },
+                              "name": { "type": "string" },
+                              "description": { "type": "string" }
+                            },
+                            "required": [ "itemSubfieldName", "modulePath", "name", "description" ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "paymentsGrid": {
+                      "type": "object",
+                      "properties": {
+                        "customColumn1": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn2": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn3": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn4": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn5": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn6": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn7": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn8": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn9": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn10": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "deliveryGrid": {
+                      "type": "object",
+                      "properties": {
+                        "customColumn1": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn2": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn3": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn4": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn5": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn6": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn7": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn8": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn9": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        },
+                        "customColumn10": {
+                          "type": "object",
+                          "properties": {
+                            "modulePath": { "type": "string" },
+                            "name": { "type": "string" },
+                            "description": { "type": "string" }
+                          },
+                          "required": [ "modulePath", "name", "description" ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "controlsConfig": {
+                      "type": "object",
+                      "properties": {
+                        "customControls": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "controlName": { "type": "string" },
+                              "htmlPath": {
+                                "type": "string",
+                                "pattern": "^([^\\s]+(\\.html)$)$"
+                              },
+                              "modulePath": { "type": "string" },
+                              "name": { "type": "string" },
+                              "description": { "type": "string" }
+                            },
+                            "required": [ "controlName", "htmlPath", "modulePath", "name", "description" ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "totalsPanel": {
+                      "type": "object",
+                      "properties": {
+                        "customFields": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "fieldName": { "type": "string" },
+                              "modulePath": { "type": "string" },
+                              "name": { "type": "string" },
+                              "description": { "type": "string" }
+                            },
+                            "required": [ "fieldName", "modulePath", "name", "description" ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [ "customFields" ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "CustomerAddEditView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "controlsConfig": {
+                      "type": "object",
+                      "properties": {
+                        "customControls": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "controlName": { "type": "string" },
+                              "htmlPath": {
+                                "type": "string",
+                                "pattern": "^([^\\s]+(\\.html)$)$"
+                              },
+                              "modulePath": { "type": "string" },
+                              "name": { "type": "string" },
+                              "description": { "type": "string" }
+                            },
+                            "required": [ "controlName", "htmlPath", "modulePath", "name", "description" ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "CustomerDetailsView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "controlsConfig": {
+                      "type": "object",
+                      "properties": {
+                        "customControls": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "controlName": { "type": "string" },
+                              "htmlPath": {
+                                "type": "string",
+                                "pattern": "^([^\\s]+(\\.html)$)$"
+                              },
+                              "modulePath": { "type": "string" },
+                              "name": { "type": "string" },
+                              "description": { "type": "string" }
+                            },
+                            "required": [ "controlName", "htmlPath", "modulePath", "name", "description" ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "FulfillmentLineView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "fulfillmentLinesListConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" }
+                      },
+                      "required": [ "modulePath" ],
+                      "additionalProperties": false
+                    },
+                    "customSortColumns": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "HealthCheckView": {
+                  "type": "object",
+                  "properties": {
+                    "customHealthChecks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name" ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "InventoryDocumentListView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "InventoryLookupMatrixView": {
+                  "type": "object",
+                  "properties": {
+                    "cellInteractionMenu": {
+                      "type": "object",
+                      "properties": {
+                        "customCommands": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "modulePath": { "type": "string" },
+                              "name": { "type": "string" },
+                              "description": { "type": "string" }
+                            },
+                            "required": [ "modulePath", "name", "description" ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [ "customCommands" ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "InventoryDocumentShippingAndReceivingView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "InventoryLookupView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "inventoryByStoreListConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "ManageShiftsView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "PaymentView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "PickingAndReceivingDetailsView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "orderLinesListConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    },
+                    "advancedWarehousingOrderLinesListConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "PriceCheckView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "controlsConfig": {
+                      "type": "object",
+                      "properties": {
+                        "customControls": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "controlName": { "type": "string" },
+                              "htmlPath": {
+                                "type": "string",
+                                "pattern": "^([^\\s]+(\\.html)$)$"
+                              },
+                              "modulePath": { "type": "string" },
+                              "name": { "type": "string" },
+                              "description": { "type": "string" }
+                            },
+                            "required": [ "controlName", "htmlPath", "modulePath", "name", "description" ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "ReportDetailsView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "ResumeCartView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "suspendedCartsListConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "ReturnTransactionView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "salesOrderLinesGrid": {
+                      "type": "object",
+                      "properties": {
+                        "customItemSubfields": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "itemSubfieldName": { "type": "string" },
+                              "modulePath": { "type": "string" },
+                              "name": { "type": "string" },
+                              "description": { "type": "string" }
+                            },
+                            "required": [ "itemSubfieldName", "modulePath", "name", "description" ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "SalesInvoiceDetailsView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "SalesInvoicesView": {
+                  "type": "object",
+                  "properties": {
+                    "salesInvoicesListConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "SearchOrdersView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "ordersListConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    },
+                    "searchFilters": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "SearchPickingAndReceivingView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "ordersListConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "SearchStockCountView": {
+                  "type": "object",
+                  "properties": {
+                    "stockCountJournalsListConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "SearchView": {
+                  "type": "object",
+                  "properties": {
+                    "customerAppBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "customerListConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    },
+                    "productAppBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "productListConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "ShippingMethodsView": {
+                  "type": "object",
+                  "properties": {
+                    "viewController": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "ShowJournalView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "transactionListConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    },
+                    "customerOrderHistoryListConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    },
+                    "searchFilters": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "linesGrid": {
+                      "type": "object",
+                      "properties": {
+                        "customItemSubfields": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "itemSubfieldName": { "type": "string" },
+                              "modulePath": { "type": "string" },
+                              "name": { "type": "string" },
+                              "description": { "type": "string" }
+                            },
+                            "required": [ "itemSubfieldName", "modulePath", "name", "description" ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "paymentsGrid": {
+                      "type": "object",
+                      "properties": {
+                        "customItemSubfields": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "itemSubfieldName": { "type": "string" },
+                              "modulePath": { "type": "string" },
+                              "name": { "type": "string" },
+                              "description": { "type": "string" }
+                            },
+                            "required": [ "itemSubfieldName", "modulePath", "name", "description" ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "SimpleProductDetailsView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "controlsConfig": {
+                      "type": "object",
+                      "properties": {
+                        "customControls": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "controlName": { "type": "string" },
+                              "htmlPath": {
+                                "type": "string",
+                                "pattern": "^([^\\s]+(\\.html)$)$"
+                              },
+                              "modulePath": { "type": "string" },
+                              "name": { "type": "string" },
+                              "description": { "type": "string" }
+                            },
+                            "required": [ "controlName", "htmlPath", "modulePath", "name", "description" ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "StockCountDetailsView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "stockCountLinesConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "TransferOrderDetailsView": {
+                  "type": "object",
+                  "properties": {
+                    "appBarCommands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "modulePath": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        },
+                        "required": [ "modulePath", "name", "description" ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "transferOrderLinesListConfiguration": {
+                      "type": "object",
+                      "properties": {
+                        "modulePath": { "type": "string" },
+                        "name": { "type": "string" },
+                        "description": { "type": "string" }
+                      },
+                      "required": [ "modulePath", "name", "description" ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "triggers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "modulePath": { "type": "string" },
+                  "triggerType": { "type": "string" },
+                  "name": { "type": "string" },
+                  "description": { "type": "string" }
+                },
+                "required": [ "modulePath", "triggerType", "name", "description" ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "create": {
+          "type": "object",
+          "properties": {
+            "operations": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "operationId": { "type": "string" },
+                  "operationRequestFactoryPath": { "type": "string" },
+                  "operationRequestHandlerPath": { "type": "string" },
+                  "name": { "type": "string" },
+                  "description": { "type": "string" }
+                },
+                "required": [ "operationId", "operationRequestFactoryPath", "operationRequestHandlerPath", "name", "description" ],
+                "additionalProperties": false
+              }
+            },
+            "controls": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "htmlPath": {
+                    "type": "string",
+                    "pattern": "^([^\\s]+(\\.html)$)$"
+                  },
+                  "modulePath": { "type": "string" },
+                  "name": { "type": "string" },
+                  "description": { "type": "string" }
+                },
+                "required": [ "htmlPath", "modulePath", "name", "description" ],
+                "additionalProperties": false
+              }
+            },
+            "templatedDialogs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "htmlPath": {
+                    "type": "string",
+                    "pattern": "^([^\\s]+(\\.html)$)$"
+                  },
+                  "modulePath": { "type": "string" },
+                  "name": { "type": "string" },
+                  "description": { "type": "string" }
+                },
+                "required": [ "htmlPath", "modulePath", "name", "description" ],
+                "additionalProperties": false
+              }
+            },
+            "requestHandlers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "modulePath": { "type": "string" },
+                  "name": { "type": "string" },
+                  "description": { "type": "string" }
+                },
+                "required": [ "modulePath", "name", "description" ],
+                "additionalProperties": false
+              }
+            },
+            "views": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "pageName": { "type": "string" },
+                  "phonePageName": { "type": "string" },
+                  "title": { "type": "string" },
+                  "viewControllerPath": { "type": "string" },
+                  "viewDirectory": { "type": "string" },
+                  "name": { "type": "string" },
+                  "description": { "type": "string" }
+                },
+                "required": [ "pageName", "viewControllerPath", "viewDirectory", "name", "description" ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [ "version", "minimumPosVersion", "name", "publisher", "components", "description" ],
+  "additionalProperties": false
+}

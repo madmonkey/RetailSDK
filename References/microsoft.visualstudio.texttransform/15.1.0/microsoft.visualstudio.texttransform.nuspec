@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.VisualStudio.TextTransform</id>
+    <version>15.1.0</version>
+    <authors>Dynamics Retail and Commerce team</authors>
+    <owners>Dynamics Retail and Commerce team</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>http://www.microsoft.com/license</licenseUrl>
+    <description>A manual package of Visual Studio 2017 TextTransform</description>
+    <tags>Microsoft TextTransform</tags>
+  </metadata>
+</package>

@@ -1,0 +1,158 @@
+.product-details-img-wrapper {
+
+}
+
+.product-gallery-img {
+    width: 250px;
+}
+
+.product-details-product-name {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.product-details-product-number {
+    color: #999;
+}
+
+.product-details-price-wrapper {
+    float: left;
+}
+
+.product-details-star-rating {
+    float: right;
+}
+
+.product-details-actual-price {
+    font-size: 21px;
+}
+
+.product-details-original-price {
+    color: #999;
+    text-decoration: line-through;
+}
+
+.product-details-description{
+    display: inline-block;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.product-details-dimension-wrapper {
+    width: inherit;
+}
+
+.product-details-quanity-wrapper {
+    width: 130px;
+    margin-bottom: 20px;
+}
+
+.product-details-details-wrapper {
+    text-align: left;
+}
+
+.product-details-quanity-wrapper .btn {
+    min-width: 20px;
+}
+
+.add-to-wish-list-btn {
+    cursor: pointer;
+    background: url('../IMG/i_Add_Wishlist_32.png') no-repeat scroll center center;
+    background-clip: inherit;
+    width: 50px;
+    height: 50px;
+}
+
+.tile-view-content {
+    float: left;
+    margin-right: 10px;
+    width:140px;
+    height:140px;   
+	background-color: grey;
+    position: relative;
+    overflow: hidden;
+}
+
+.tile-view-details-box {
+    width: 150px;
+    top: 100px;
+    left: 0px;
+    color: white;   
+    background-color: black;
+    position: absolute; 
+    line-height:50px;
+    text-align: center;    
+}
+
+.large-button-left {
+    width: 10px;
+    height: 38px;
+    position: absolute;
+    left: 0;
+}
+
+.large-button-right {
+    width: 10px;
+    height: 38px;
+    position: absolute;
+    right: 0;
+}
+
+.right-scroll-list,
+.left-scroll-list {
+    float: left;
+    width: 30px;
+    margin-top: 60px;
+}
+
+.left-scroll-list {
+    margin-right: 10px;
+}
+
+.msax-CreateListName {
+    width: 360px;
+    height: 25px;    
+    margin: 8px;	
+}
+
+.msax-Star {
+    float:right;
+    padding: 5px; 
+    font-size: 25px;
+    color: white;
+}
+
+.msax-TileScroll {
+    height: 160px;
+}
+
+.left-scroll-list {
+    margin-right: 10px;
+}
+
+.print-this-page-image {
+    background: url('../IMG/i_Print_32.png') no-repeat scroll center center;
+    background-clip: inherit;
+    width: 50px;
+    height: 50px;
+}
+
+.info-bottom {
+    height: 80px;
+    background: url('../IMG/btn_bar_bg.png'), #f6f6f8;
+    background-position: bottom, top;
+    border: 1px solid #b1b5b9;
+}
+
+.info-bottom > .bottom-footer {
+    padding: 20px 30px 0px 20px;
+}
+
+.msax-addToWishListModal {
+    list-style-type: none;
+}
+
+.input-error{
+    background: #F7FABB;
+    border-color: #FFD700;
+}

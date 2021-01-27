@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceModelInstallationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>RetailServer</Name>
+  <Description />
+  <InstallationDateTime>2018-07-22T20:45:50.3652301-07:00</InstallationDateTime>
+  <InstallationInfoFilePath>E:\bt\163108\Drop\retail\Services\RetailServer\Scripts\InstallationInfo.xml</InstallationInfoFilePath>
+  <Version>7.3.11971.64416</Version>
+  <Publisher>Microsoft Corporation</Publisher>
+  <GeneratedFromAXMetadata>false</GeneratedFromAXMetadata>
+  <Configuration />
+  <CustomName>Contoso Retail Customization</CustomName>
+  <CustomVersion>1.0.0.1</CustomVersion>
+  <CustomDescription>Contoso Retail Customization</CustomDescription>
+  <CustomPublisher>CN=Contoso Ltd.</CustomPublisher>
+  <ServiceModelGroup>Application</ServiceModelGroup>
+  <ReleaseVersion>7.3</ReleaseVersion>
+  <ProductRegisteredName>Microsoft Dynamics 365 for Finance and Operations, Enterprise edition</ProductRegisteredName>
+</ServiceModelInstallationInfo>

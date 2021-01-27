@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout select tile handler.</title>
+    <link href="knockout.selectTile.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Select Tile template -->
+    <script type="text/html" id="selectTileTemplate">
+        <!-- SingleLine tile -->
+        <div class="stretch"
+             data-bind="if: tileType === Commerce.Controls.SelectTile.SelectTileType.SingleLine,
+                visible: tileType === Commerce.Controls.SelectTile.SelectTileType.SingleLine ">
+            <div class="col" data-bind="template: { name: 'selectTileSingleLineTemplate', data: $data }"></div>
+        </div>
+
+        <!-- DoubleLine tile -->
+        <div class="stretch"
+             data-bind="if: tileType === Commerce.Controls.SelectTile.SelectTileType.DoubleLine,
+                visible: tileType === Commerce.Controls.SelectTile.SelectTileType.DoubleLine ">
+            <div class="col" data-bind="template: { name: 'selectTileDoubleLineTemplate', data: $data }"></div>
+        </div>
+
+        <!-- SmallDoubleLine tile -->
+        <div class="stretch"
+             data-bind="if: tileType === Commerce.Controls.SelectTile.SelectTileType.SmallDoubleLine,
+                visible: tileType === Commerce.Controls.SelectTile.SelectTileType.SmallDoubleLine ">
+            <div class="col" data-bind="template: { name: 'selectTileSmallDoubleLineTemplate', data: $data }"></div>
+        </div>
+    </script>
+
+    <!-- Single line tile template -->
+    <script type="text/html" id="selectTileSingleLineTemplate">
+        <div class="itemContainer marginRight8 width100Percent highContrastBorder"
+             data-bind="css: backgroundCssClass, attr: { disabled: disabled }">
+            <div class="col grow pad12 padBottom0">
+                <div class="row">
+                    <!-- Icon -->
+                    <div class="height32" data-bind="if: iconClass">
+                        <div class="marginRight12">
+                            <div class="h4" data-bind="css: iconClass"></div>
+                        </div>
+                    </div>
+
+                    <!-- Single row of text -->
+                    <div class="marginRight12 grow">
+                        <div class="h4" data-bind="text: primaryText, css: primaryTextCssClass"></div>
+                    </div>
+
+                    <!-- Chevron -->
+                    <!-- ko if: displayChevron -->
+                    <div class="iconChevronRight padTop4" data-bind="css: cheveronCssClass"></div>
+                    <!-- /ko -->
+                    <!-- ko if: isPreSelected -->
+                    <div class="iconAccept padTop4 accentColor"></div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <!-- Display bottom border -->
+            <!-- ko if: displayBottomBorder -->
+            <div class="no-shrink">
+                <div class="line-separator"></div>
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="marginBottom12"></div>
+    </script>
+
+    <!-- Double line tile template -->
+    <script type="text/html" id="selectTileDoubleLineTemplate">
+        <div class="itemContainer marginRight8 width100Percent highContrastBorder"
+             data-bind="css: backgroundCssClass, attr: { disabled: disabled }">
+            <div class="col grow pad12 padTop8">
+                <div class="row">
+                    <!-- Icon -->
+                    <div class="height40" data-bind="if: iconClass">
+                        <div class="width36 marginRight12 padTop4 center">
+                            <div class="h4 center" data-bind="css: iconClass"></div>
+                        </div>
+                    </div>
+
+                    <!-- Double lines of text -->
+                    <div class="marginRight12 height40 grow">
+                        <div class="width100Percent col grow center">
+                            <div class="h5 width100Percent alighLeft" data-bind="text: primaryText, css: primaryTextCssClass"></div>
+
+                            <div class="h6 textTransformNone opacity60 width100Percent alighLeft" data-bind="text: secondaryText, css: secondaryTextCssClass"></div>
+                        </div>
+                    </div>
+
+                    <!-- Chevron -->
+                    <!-- ko if: displayChevron -->
+                    <div class="iconChevronRight width36 height40 center padTop4" data-bind="css: cheveronCssClass"></div>
+                    <!-- /ko -->
+
+                    <!-- ko if: isPreSelected -->
+                    <div class="iconAccept width36 height40 center padTop4 accentColor"></div>
+                    <!-- /ko -->
+
+                </div>
+            </div>
+            <!-- Display bottom border -->
+            <!-- ko if: displayBottomBorder -->
+            <div class="no-shrink">
+                <div class="line-separator"></div>
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="marginBottom12"></div>
+    </script>
+
+    <!-- Small double line tile template -->
+    <script type="text/html" id="selectTileSmallDoubleLineTemplate">
+        <div class="itemContainer marginRight8 width100Percent highContrastBorder"
+             data-bind="css: backgroundCssClass, attr: { disabled: disabled }">
+            <div class="col grow pad12">
+                <div class="row">
+                    <!-- Icon -->
+                    <div class="height36" data-bind="if: iconClass">
+                        <div class="width36 marginRight12 center">
+                            <div class="h4 center" data-bind="css: iconClass"></div>
+                        </div>
+                    </div>
+
+                    <!-- Double lines of text -->
+                    <div class="marginRight12 grow">
+                        <div class="width100Percent">
+                            <div class="h4" data-bind="text: primaryText, css: primaryTextCssClass"></div>
+
+                            <div class="h6 textTransformNone opacity60" data-bind="text: secondaryText, css: secondaryTextCssClass"></div>
+                        </div>
+                    </div>
+
+                    <!-- Chevron -->
+                    <!-- ko if: displayChevron -->
+                    <div class="iconChevronRight width36 height40 center padTop4" data-bind="css: cheveronCssClass"></div>
+                    <!-- /ko -->
+                    <!-- Chevron -->
+                    <!-- ko if: isPreSelected -->
+                    <div class="iconAccept width36 height40 center padTop4 accentColor"></div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <!-- Display bottom border -->
+            <!-- ko if: displayBottomBorder -->
+            <div class="no-shrink">
+                <div class="line-separator"></div>
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="marginBottom12"></div>
+    </script>
+</body>
+</html>

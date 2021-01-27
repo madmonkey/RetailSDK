@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business</id>
+    <version>10.14.20225.5</version>
+    <authors>Dynamics Retail and Commerce team</authors>
+    <owners>Dynamics Retail and Commerce team</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://dynamics.microsoft.com/en-us/retail/overview/</projectUrl>
+    <description>The CommerceDataExchange synch library for Retail and Commerce components.</description>
+    <tags>Microsoft Dynamics Dynamics365 Commerce Retail AsyncClient</tags>
+    <repository url="https://msazure.visualstudio.com/D365/Retail Team/_git/Retail-Rainier-CDX" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="EntityFramework" version="6.1.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Commerce.Diagnostics" version="10.5.20224.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Произошла ошибка при завершении проводки. Служба подписи не готова. Обратитесь к системному администратору.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Произошла ошибка при завершении проводки. Связанная фискальная проводка содержит данные в неверном формате. Обратитесь к системному администратору.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "Возникла ошибка во время последнего восстановления цифровой подписи проводки. Возможно, автономная база данных не синхронизирована. Обратитесь к системному администратору.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

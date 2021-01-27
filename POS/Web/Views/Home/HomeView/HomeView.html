@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HomeView</title>
+    <link href="HomeView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment homeView">
+
+        <!-- do not remove .homeViewContainer class -->
+        <div class="section row scrollX homeViewContainer" data-bind="parallax: { parallaxBackgroundElement: '.homeBackgroundImageContainer', parallaxReverse: true }">
+            <div class="homeBackgroundImageContainer height100Percent" data-bind="visible: viewModel.hasBackgroundImageData(), style: { backgroundImage: backgroundImageEncodingURL }">
+                <!-- acts as a spacer to obtain the proper amount of horizontal space for the background image -->
+                <img src="#" data-bind="attr: { src: backgroundImageEncodingSrc, alt: Commerce.ViewModelAdapter.getResourceString('string_423')}"/>
+            </div>
+
+            <div class="homeViewButtonGridContainer">
+                <div class="padBottom0 row flip">
+
+                    <!-- ko foreach: viewModel.buttonGridData -->
+                    <div class="verticalAlignTop marginBottom0 marginLeft40" data-bind="buttonGrid: {
+                            id: 'WelcomeScreenButtonGrid-' + $index(),
+                            buttonClick: $root.buttonGridClick,
+                            callbackContext: $root,
+                            data: $data,
+                            showName: true
+                        }">
+                    </div>
+                    <!--/ko-->
+
+                    <div class="gutter40x40"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

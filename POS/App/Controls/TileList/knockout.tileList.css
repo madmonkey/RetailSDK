@@ -1,0 +1,100 @@
+.tileList .textStart {
+    text-align: start;
+}
+
+.tileList .boundaries {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.tileList .win-itemcontainer .win-itembox,
+.win-ui-light .win-itemcontainer .win-itembox {
+    background-color: transparent;
+}
+
+.win-listview .win-itembox,
+.win-itemcontainer .win-itembox {
+    background-color: transparent;
+}
+
+.tileList .itemContainer {
+    color: #fff;
+}
+
+.tileList .itemContainer,
+.tileList .win-focusedoutline {
+    outline: none !important; /* overrides default winjs styles */
+}
+
+.tileList .itemContainer:focus {
+    border-width: 2px;
+    border-style: dotted; 
+}
+
+.tileList .itemContainer .win-focused {
+    margin: -2px; /* Reverts the padding done by the border */
+}
+
+.tileList .itemContainer.disabled,
+.tileList .itemContainer.disabled.accentBackground:focus,
+.tileList .itemContainer.disabled.accentBackground:hover {
+    background-color: #CCCCCC;
+    color: #A6A6A6
+}
+
+/* required fix for dialogs. Dialogs should consume only light theme styles. */
+.commerceDialog .tileList .itemContainer:focus {
+    border-color: #000000
+}
+
+/* removing border for pressed state of a tile. */
+html.win-hoverable .tileList .win-itemcontainer .win-itembox:hover::before {
+    border-color: transparent;
+}
+
+/* width of the text in the tile. */
+.tileList .textPanel {
+    width: calc(100% - 20px); /* 100% of width - 10px padding left and right */
+}
+
+/* HighContrast settings used only for IE/Modern UI */
+@media (-ms-high-contrast) {
+    .tileList .itemContainer.accentBackground:hover,
+    .tileList .itemContainer.accentBackground:active {
+        background-color: Highlight !important;
+        color: HighlightText !important;
+        border-color: ButtonText !important;
+        -ms-high-contrast-adjust: none; /*For edge and IE (or else text blocks out in EDGE/MPOS)*/
+    }
+
+    .tileList .itemContainer.accentBackground:active {
+        background-color: Highlight !important;
+        color: HighlightText !important;
+        -ms-high-contrast-adjust:none; /*For edge and IE (or else text blocks out in EDGE/MPOS)*/
+    }
+
+    .tileList .itemContainer.disabled,
+    .tileList .itemContainer.disabled.accentBackground:focus,
+    .tileList .itemContainer.disabled.accentBackground:hover {
+        border-color: GrayText;
+        color: GrayText;
+        background-color: transparent;
+    }
+
+    .tileList .itemContainer.accentBackground:focus,
+    .commerceDialog .tileList .itemContainer.accentBackground:focus {
+        background-color: Highlight !important;
+        color: HighlightText !important;
+        border-color: HighlightText !important;
+        -ms-high-contrast-adjust: none; /*For edge and IE (or else text blocks out in EDGE/MPOS)*/
+    }
+
+    .win-listview .win-item:focus, .win-itemcontainer .win-item:focus {
+        background-color:  Highlight ;
+    }
+
+    .tileList {
+        padding-top: 4px;
+    }
+}

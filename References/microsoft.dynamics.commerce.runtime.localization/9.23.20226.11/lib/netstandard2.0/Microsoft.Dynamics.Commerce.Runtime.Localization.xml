@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.Localization</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Localization.IRuntimeLocalizer">
+            <summary>
+            The runtime localization interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.IRuntimeLocalizer.GetLocalizedString(System.String,System.String)">
+            <summary>
+            Gets localized message for the specified text identifier according to culture name.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="textId">The text identifier.</param>
+            <returns>The localized string.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.IRuntimeLocalizer.GetLocalizedString(System.String,System.String,System.Object[])">
+            <summary>
+            Gets localized message for the specified text identifier according to culture name.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="textId">The text identifier.</param>
+            <param name="args">The arguments for the string.</param>
+            <returns>The localized string.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.IRuntimeLocalizer.GetLocalizedString(System.String,System.String,Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Object[])">
+            <summary>
+            Gets localized message for the specified text identifier according to culture name.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="textId">The text identifier.</param>
+            <param name="requestContext">The request context to get overridden resource value.</param>
+            <param name="args">The arguments for the string.</param>
+            <returns>The localized string.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeExceptionLocalizer">
+            <summary>
+            The Commerce Runtime library exception localization helper class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeExceptionLocalizer.ExceptionResourceFileName">
+            <summary>
+            Exception localizable message resource file name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeExceptionLocalizer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeExceptionLocalizer"/> class with runtime default localization resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeExceptionLocalizer.#ctor(System.String,System.Reflection.Assembly)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeExceptionLocalizer"/> class with base resource file name and current assembly.
+            </summary>
+            <param name="baseResourceFileName">The base resource file full name.</param>
+            <param name="baseResourceFileAssembly">The assembly that contains base resource file.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeInventoryLocalizer">
+            <summary>
+            The Commerce Runtime library Inventory localization helper class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeInventoryLocalizer.InventoryResourceFileName">
+            <summary>
+            Inventory localizable message resource file name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeInventoryLocalizer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeInventoryLocalizer"/> class with runtime Merchandising localization resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeInventoryLocalizer.#ctor(System.String,System.Reflection.Assembly)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeInventoryLocalizer"/> class with base resource file name and current assembly.
+            </summary>
+            <param name="baseResourceFileName">The base resource file full name.</param>
+            <param name="baseResourceFileAssembly">The assembly that contains base resource file.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeInventoryLocalizer.GetInventoryDocumentValidationLocalizedString``1(System.String,``0,System.Object[])">
+            <summary>
+            Get inventory document validation localized string from enum value.
+            </summary>
+            <typeparam name="T">The document validation enum type.</typeparam>
+            <param name="languageId">Localized language id.</param>
+            <param name="errorCode">The inventory document validation error code.</param>
+            <param name="args">The arguments for the string.</param>
+            <returns>The localized inventory document validation string.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeLocalizer">
+            <summary>
+            The Commerce Runtime library localization helper class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeLocalizer.localizedTextKeyFormat">
+            <summary>
+            The format of the key of the localized text dictionary. The first part is the language identifier and
+            the second part is the text identifier.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeLocalizer.stringLocalizer">
+            <summary>
+            The string localizer to get values from resources files.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeLocalizer.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeLocalizer"/> class with runtime default localization resource.
+            </summary>
+            <param name="baseResourceFileName">The base resource file full name.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeLocalizer.#ctor(System.String,System.Reflection.Assembly)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeLocalizer"/> class with base resource file name and current assembly.
+            </summary>
+            <param name="baseResourceFileName">The base resource file full name.</param>
+            <param name="baseResourceFileAssembly">The assembly that contains base resource file.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeLocalizer.GetLocalizedString(System.String,System.String)">
+            <summary>
+            Gets localized message for the specified text identifier according to culture name from the resources files only.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="textId">The text identifier.</param>
+            <returns>The localized string.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeLocalizer.GetLocalizedString(System.String,System.String,System.Object[])">
+            <summary>
+            Gets localized message for the specified text identifier according to culture name from the resources files only.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="textId">The text identifier.</param>
+            <param name="args">The arguments for the string.</param>
+            <returns>The localized string.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeLocalizer.GetLocalizedString(System.String,System.String,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets localized message for the specified text identifier according to culture name. This method honors the
+            overridden language text in AX.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="textId">The text identifier.</param>
+            <param name="requestContext">The request context.</param>
+            <returns>The localized string.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeLocalizer.GetLocalizedString(System.String,System.String,Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Object[])">
+            <summary>
+            Gets localized message for the specified text identifier according to culture name. This method honors the
+            overridden language text in AX.
+            </summary>
+            <remarks>This method will get the localized string if and only if the passed in request context is not null.</remarks>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="textId">The text identifier.</param>
+            <param name="requestContext">The request context.</param>
+            <param name="args">The arguments for the string.</param>
+            <returns>The localized string.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeLocalizer.GetOverriddenLocalizedString(System.String,System.String,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets the localized string overrode by customers.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="textId">The text identifier.</param>
+            <param name="requestContext">The request context.</param>
+            <returns>The localized string if the customer override it, otherwise null.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeMerchandisingLocalizer">
+            <summary>
+            The Commerce Runtime library Merchandising localization helper class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeMerchandisingLocalizer.MerchandisingResourceFileName">
+            <summary>
+            Merchandising localizable message resource file name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeMerchandisingLocalizer.RatingRefinerValueSingularResourceId">
+            <summary>
+            Merchandising localizable message resource id.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeMerchandisingLocalizer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeMerchandisingLocalizer"/> class with runtime Merchandising localization resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeMerchandisingLocalizer.#ctor(System.String,System.Reflection.Assembly)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeMerchandisingLocalizer"/> class with base resource file name and current assembly.
+            </summary>
+            <param name="baseResourceFileName">The base resource file full name.</param>
+            <param name="baseResourceFileAssembly">The assembly that contains base resource file.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeMerchandisingLocalizer.GetRatingRefinerValueLocalizedString(System.String,System.Int32)">
+            <summary>
+            Get rating refiner localized string from integer value.
+            </summary>
+            <param name="languageId">Localized language id</param>
+            <param name="value">Rating refiner value</param>
+            <returns>The localized rating value string</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeMerchandisingLocalizer.GetBooleanRefinerValueLocalizedString(System.String,System.String)">
+            <summary>
+            Get boolean refiner localized string from integer value.
+            </summary>
+            <param name="languageId">Localized language id</param>
+            <param name="value">Rating refiner value</param>
+            <returns>The localized rating value string</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeReceiptLocalizer">
+            <summary>
+            The Commerce Runtime library receipt localization helper class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeReceiptLocalizer.ReceiptResourceFileName">
+            <summary>
+            Receipt localizable message resource file name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeReceiptLocalizer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeReceiptLocalizer"/> class with runtime default localization resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeReceiptLocalizer.#ctor(System.String,System.Reflection.Assembly)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Localization.RuntimeReceiptLocalizer"/> class with base resource file name and current assembly.
+            </summary>
+            <param name="baseResourceFileName">The base resource file full name.</param>
+            <param name="baseResourceFileAssembly">The assembly that contains base resource file.</param>
+        </member>
+    </members>
+</doc>

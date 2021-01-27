@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>All Discounts View</title>
+    <link href="AllDiscountsView.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <script id="discountResultZero" type="text/html">
+        <div class="center col" data-bind="axBubbleAttr: 'allDiscountView_discountResultZero'">
+            <div class="h3" data-bind="resx: { textContent: 'string_1032' }">We didn't find anything to display here.</div>
+        </div>
+    </script>
+
+    <div class="fragment allDiscountsView" data-bind="with: viewModel">
+        <div class="row height100Percent">
+            <div class="col grow flexBasis100Percent">
+                <div id="allDiscountsViewPivot" data-bind="pivot: {}, resx: { ariaLabel: 'string_4454' /* Main content */ }">
+                    <div id="allDiscountsViewPivotItem" data-bind="pivotItem: { headerResx: 'string_30271' /* Promotion */ }">
+                        <!-- Main content -->
+                        <div id="allDiscountsList" class="dataList" data-bind="dataList: {
+                                defaultListType: Commerce.Controls.DataList.ListType.List,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOrSingle,
+                                itemInvoked: onSelectionChanged,
+                                selectionChanged: onSelectionChanged,
+                                selectInvokedItem: true,
+                                autoSelectFirstItem: false,
+                                autoFocusFirstItem: true,
+                                emptyDataListTemplate: 'discountResultZero',
+                                ariaLabelResx: 'string_30272', /* List of discounts */
+                                incrementalDataSource: {
+                                dataManager: $data,
+                                callerMethod: getAllDiscounts,
+                                pageSize: 80,
+                                onLoading: isBusyFlag,
+                                reloadCallBack: reloadDiscountLinesCallback
+                                },
+                                columns: [
+                                            { titleResx: 'string_30274' /* OFFER NAME */, ratio: 40, collapseOrder: 5, minWidth: 100, field: 'OfferName' },
+                                            { titleResx: 'string_30275' /* DISCOUNT TYPE */, ratio: 15, collapseOrder: 4, minWidth: 100, field: 'PeriodicDiscountTypeValue', converter: 'Commerce.Core.Converter.DiscountTypeEnumFormatter' },
+                                            { titleResx: 'string_30276' /* COUPON REQUIRED */, ratio: 15, collapseOrder: 3, minWidth: 100, field: 'IsDiscountCodeRequired', converter: 'Commerce.Core.Converter.YesNoBooleanFormatter' },
+                                            { titleResx: 'string_30277' /* START DATE */, ratio: 15, collapseOrder: 2, minWidth: 100, field: 'ValidFromDate', converter: 'Commerce.Core.Converter.DateWithoutTime' },
+                                            { titleResx: 'string_30278' /* END DATE */, ratio: 15, collapseOrder: 1, minWidth: 100, field: 'ValidToDate', converter: 'Commerce.Core.Converter.DateWithoutTime' }
+                                        ]
+                                },
+                                axBubbleAttr: 'allDiscountView_discounts'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="detailsCol" class="col">
+                <div class="row">
+                    <h2 class="title marginTop12" data-bind="if: isDetailsVisible(), resx: { textContent: 'string_30282' /* Details */ }"></h2>
+                    <div class="grow"></div>
+                    <a href="#" id="btnToggleDetailsPane" class="icon-20x20 width40 height40 margin4 center fixedToggleDetailsPaneButton"
+                       data-bind="click: toggleDetails,
+                           css: isDetailsVisible() ? 'iconClosePane' : 'iconOpenPane',
+                           resx: { ariaLabel: 'string_13156' /* Toggle details pane */ },
+                           attr: {title: isDetailsVisible() ? Commerce.ViewModelAdapter.getResourceString('string_31000') /* Hide details */ : Commerce.ViewModelAdapter.getResourceString('string_31001') /* Show details */}"></a>
+                </div>
+
+                <!-- Discount line details tabs -->
+                <div class="no-shrink width320 col primaryPanelBackgroundColor height100Percent marginRight20 marginTop08" data-bind="slideVisible: { isShowed: isDetailsVisible() }">
+                    <!-- ko if: numberOfSelectedLines() === 1 -->
+                    <!-- ko with: selectedLineForDetail -->
+                    <div class="grow primaryPanelBackgroundColor highContrastBorderThin marginBottom12 marginTop12">
+                        <!-- Additional Restrictions -->
+                        <div class="marginRight12 marginBottom12 marginLeft12">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30279' /* ADDITIONAL RESTRICTIONS */ }">ADDITIONAL RESTRICTIONS</div>
+                            <div class="h4 primaryFontColor" data-bind="text: AdditionalRestrictions"></div>
+                        </div>
+                        <!-- Description -->
+                        <div class="marginRight12 marginBottom12 marginLeft12">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30281' /* DESCRIPTION */ }">DESCRIPTION</div>
+                            <div class="h4 primaryFontColor" data-bind="text: Description"></div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko if: numberOfSelectedLines() !== 1 -->
+                    <div class="col grow primaryPanelBackgroundColor highContrastBorderThin marginBottom12">
+                        <div class="textCenter padTop56">
+                            <div class="center">
+                                <div class="h1 iconProductVariant icon-40x40 secondaryFontColor" 
+                                     data-bind="resx: { ariaLabel: 'string_30284' /* Multiple selected lines */ }"></div>
+                            </div>
+                            <div data-bind="if: numberOfSelectedLines() === 0">
+                                <div class="h2 wrapText" data-bind="resx: { textContent: 'string_30283' /* Select a line for details */ }"></div>
+                            </div>
+                            <div data-bind="if: numberOfSelectedLines() > 1">
+                                <div class="h2" data-bind="text: Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_30285') /* {0} lines selected */ , numberOfSelectedLines())"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <div class="col no-shrink width48 marginTop48 marginRight20" data-bind="visible: !isDetailsVisible()">
+                <div class="col grow primaryPanelBackgroundColor highContrastBorderThin marginBottom12"></div>
+            </div>
+            <!-- End Discount line details tabs -->
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="allDiscountsViewCommandAppBar" data-bind="appBar: {}, axBubbleAttr: 'alldiscountsView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id:'filterAllDiscounts',
+                extraClass: 'iconFilter' ,
+                onclick: $root.viewModel.filterDiscountLines.bind($root.viewModel),
+                labelResx: 'string_935' /* Filter */},
+                axBubbleAttr: 'allDiscountsView_filterAllDiscounts'"></button><!-- Filter -->
+        </div>
+    </div>
+</body>
+</html>

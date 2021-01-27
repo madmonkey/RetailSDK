@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>UserInfoDilaog</title>
+</head>
+<body>
+    <div id="userInfoDialog" data-bind="customControlInternal: 'UserInfoDialog'">
+        <div data-bind="dialog:
+            {
+                title: Commerce.ViewModelAdapter.getResourceString(''),
+                subTitle: Commerce.ViewModelAdapter.getResourceString(''),
+                visible: visible,
+                buttonClick: cancelDialog,
+                closeOnEscButton: true,
+                buttons: [
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton' }]
+            },
+            axBubbleAttr: 'userInfoDialog_userInfoDialog'">
+            <div>
+                <div class="row height48">
+                    <div class="height48 width48 center">
+                        <div data-bind="userImageOrInitials: userImageOrInitialsOptions, axBubbleAttr: 'activationUserInfo_userImage'" class="height40 width40 circleBorder h5"></div>
+                    </div>
+                    <div class="grow col padTop4">
+                        <div class="h4" data-bind="text: userImageOrInitialsOptions().name">Name</div>
+                        <div class="h4" data-bind="text: shiftInfo()">Additional info</div>
+                    </div>
+                </div>
+                <div class="grow col padTop4">
+                    <button class="primaryButton" id="logOffButton" type="button" data-bind="resx: { textContent: 'string_3901' }, click:logOff, disable: isBusy">Log off</button>
+                </div>
+                <!-- ko if: !useAAD() -->
+                <div class="grow col padTop4">
+                    <button class="primaryButton" type="button" data-bind="resx: { textContent: 'string_3900' }, click:lockRegister, disable: isBusy">Lock register</button>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

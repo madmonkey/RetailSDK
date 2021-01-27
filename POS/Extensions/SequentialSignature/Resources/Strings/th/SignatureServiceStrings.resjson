@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "มีข้อผิดพลาดเกิดขึ้นขณะสรุปธุรกรรม บริการการลงชื่อไม่พร้อมใช้งาน ติดต่อผู้ดูแลระบบของคุณ",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "มีข้อผิดพลาดเกิดขึ้นขณะสรุปธุรกรรม ธุรกรรมทางการเงินที่เชื่อมโยงมีข้อมูลในรูปแบบที่ไม่ถูกต้อง ติดต่อผู้ดูแลระบบของคุณ",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "มีข้อผิดพลาดเกิดขึ้นขณะกู้คืนลายเซ็นสำหรับธุรกรรมล่าสุด อาจเพราะไม่ได้ฐานข้อมูลแบบออฟไลน์ โปรดติดต่อผู้ดูแลระบบของคุณ",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

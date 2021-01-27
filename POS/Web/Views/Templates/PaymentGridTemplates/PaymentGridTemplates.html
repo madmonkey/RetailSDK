@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Grid Templates</title>
+</head>
+<body>
+
+    <!-- Binding template for the CartPage payment grid header row. -->
+    <script type="text/html" id="cartPaymentGridHeaderTemplate">
+    </script>
+
+    <script type="text/html" id="cartPaymentGridHeaderTemplate_PaymentMethodField">
+        <div class="tillLayout-PaymentMethodField">
+            <div class="h6" data-bind="resx: { textContent: 'string_114' }">PAYMENT METHOD</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridHeaderTemplate_CurrencyField">
+        <div class="tillLayout-CurrencyField textRight">
+            <div class="h6" data-bind="resx: { textContent: 'string_115' }">CURRENCY</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridHeaderTemplate_AmountField">
+        <div class="tillLayout-AmountField textRight">
+            <div class="h6" data-bind="resx: { textContent: 'string_116' }">AMOUNT</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridHeaderTemplate_CustomColumn1">
+        <div class="tillLayout-CustomColumn1" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn1.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn1.title()">CUSTOM COLUMN 1</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridHeaderTemplate_CustomColumn2">
+        <div class="tillLayout-CustomColumn2" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn2.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn2.title()">CUSTOM COLUMN 2</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridHeaderTemplate_CustomColumn3">
+        <div class="tillLayout-CustomColumn3" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn3.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn3.title()">CUSTOM COLUMN 3</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridHeaderTemplate_CustomColumn4">
+        <div class="tillLayout-CustomColumn4" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn4.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn4.title()">CUSTOM COLUMN 4</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridHeaderTemplate_CustomColumn5">
+        <div class="tillLayout-CustomColumn5" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn5.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn5.title()">CUSTOM COLUMN 5</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridHeaderTemplate_CustomColumn6">
+        <div class="tillLayout-CustomColumn6" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn6.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn6.title()">CUSTOM COLUMN 6</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridHeaderTemplate_CustomColumn7">
+        <div class="tillLayout-CustomColumn7" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn7.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn7.title()">CUSTOM COLUMN 7</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridHeaderTemplate_CustomColumn8">
+        <div class="tillLayout-CustomColumn8" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn8.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn8.title()">CUSTOM COLUMN 8</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridHeaderTemplate_CustomColumn9">
+        <div class="tillLayout-CustomColumn9" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn9.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn9.title()">CUSTOM COLUMN 9</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridHeaderTemplate_CustomColumn10">
+        <div class="tillLayout-CustomColumn10" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn10.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn10.title()">CUSTOM COLUMN 10</div>
+        </div>
+    </script>
+
+    <!-- Binding template for the CartPage payment grid header row. -->
+    <script type="text/html" id="cartPaymentGridRowTemplate">
+    </script>
+
+    <script type="text/html" id="cartPaymentGridRowTemplate_PaymentMethodField">
+        <div class="tillLayout-PaymentMethodField">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: 'Commerce.Core.Converter.TenderLineTypeNameFormatter', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_114' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridRowTemplate_CurrencyField">
+        <div class="tillLayout-CurrencyField textRight">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: 'Currency', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_115' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridRowTemplate_AmountField">
+        <div class="tillLayout-AmountField textRight">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: 'Commerce.Core.Converter.AmountInTenderedCurrencyFormatter', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_116' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridRowTemplate_CustomColumn1">
+        <div class="tillLayout-CustomColumn1" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn1.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn1, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridRowTemplate_CustomColumn2">
+        <div class="tillLayout-CustomColumn2" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn2.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn2, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridRowTemplate_CustomColumn3">
+        <div class="tillLayout-CustomColumn3" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn3.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn3, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridRowTemplate_CustomColumn4">
+        <div class="tillLayout-CustomColumn4" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn4.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn4, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridRowTemplate_CustomColumn5">
+        <div class="tillLayout-CustomColumn5" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn5.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn5, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridRowTemplate_CustomColumn6">
+        <div class="tillLayout-CustomColumn6" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn6.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn6, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridRowTemplate_CustomColumn7">
+        <div class="tillLayout-CustomColumn7" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn7.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn7, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridRowTemplate_CustomColumn8">
+        <div class="tillLayout-CustomColumn8" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn8.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn8, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridRowTemplate_CustomColumn9">
+        <div class="tillLayout-CustomColumn9" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn9.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn9, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartPaymentGridRowTemplate_CustomColumn10">
+        <div class="tillLayout-CustomColumn10" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn10.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn10, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+
+</body>
+</html>

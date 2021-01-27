@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PickingAndReceivingDetailsView</title>
+    <link href="PickingAndReceivingDetailsView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="pickingAndReceivingDetailsView fragment" data-bind="with: viewModel">
+        <div class="section main row marginLeft20 marginRight20">
+            <div class="row grow" data-bind="visible: !isReceiptSelected()">
+                <!-- Lines -->
+                <div class="col grow" data-bind="sectionWrapper: {headerResx: journalId }">
+                    <div id="listviewContainer" data-bind="dataList: {
+                                itemDataSource: lineDetails,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                selectionChanged: productSelectionChanged,
+                                ariaLabelResx: 'string_3874',
+                                columns: dataListColumns
+                                },
+                                axBubbleAttr: 'pickingAndReceivingDetailsView_listView'">
+                    </div>
+                </div>
+                <div class="gutter40x40"></div>
+                <!-- Numpad -->
+                <div class="col no-shrink width320 marginTop12" data-bind="axBubbleAttr: 'pickingAndReceivingDetailsView_numpad'">
+                    <h4 data-bind="visible: isEnterReceivedNowMode, resx: { textContent: receivedNowOrShippedNowLabelResx }"></h4><!-- Received now/Ship now -->
+                    <h4 data-bind="visible: isEnterProductMode, resx: { textContent: 'string_3743' }"></h4><!-- Enter product -->
+                    <h4 data-bind="visible: isReceivedNowMode, resx: { textContent: addToReceivedNowOrShippedNowLabelResx }"></h4><!-- Add to Received/Ship now -->
+                    <!-- Product input numpad -->
+                    <div data-bind="visible: numpadTextMode() === Commerce.ViewModels.PickingAndReceivingTextMode.EnterProduct">
+                        <div data-bind="alphanumericNumpad: {
+                                    onEnter: enterProductOrReceivedNowAsync,
+                                    value: numpadInputText,
+                                    inputDataBinding: { resx: { ariaLabel: 'string_3743' /* Enter product */ } },
+                                    numPadInputSource: $parent.numPadInputBroker
+                                }">
+                        </div>
+                    </div>
+
+                    <!-- Quantity input numpad -->
+                    <div data-bind="visible: numpadTextMode() !== Commerce.ViewModels.PickingAndReceivingTextMode.EnterProduct">
+                        <div data-bind="numericNumpad: {
+                                    onEnter: enterProductOrReceivedNowAsync,
+                                    value: numpadInputText,
+                                    inputDataBinding: { resx: { ariaLabel: 'string_5306' /* Quantity */ } },
+                                    numPadInputSource: $parent.numPadInputBroker
+                                }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="receiptPreview grow" data-bind="visible: isReceiptSelected">
+                <pre data-bind="html: receiptText"></pre>
+            </div>
+        </div>
+
+        <div id="pickingReceivingAppBar" data-bind="appBar: { extensionCommands: extensionCommandViewModels }, axBubbleAttr: 'pickingAndReceivingDetailsView_commandAppBar'">
+
+            <!-- opens dialog to show the transfer order header -->
+            <button data-bind="appBarCommand: {
+                id:'showOrderHeader',
+                extraClass: 'iconPageHeader',
+                onclick: showOrderHeaderClickHandler,
+                enabled: showHeaderButton,
+                visible: !isReceiptSelected(),
+                labelResx: 'string_3423'}, axBubbleAttr: 'pickingAndReceivingDetailsView_showOrderHeaderButton'"></button>
+
+            <button data-bind="appBarCommand: {
+                id:'packingSlip',
+                extraClass: 'iconProductList',
+                onclick: packingSlipHandlerAsync,
+                enabled: showHeaderButton,
+                visible: !isReceiptSelected(),
+                labelResx: 'string_3430'}, axBubbleAttr: 'pickingAndReceivingDetailsView_packingSlipButton'"></button>
+
+            <!-- opens a dialog to add/view comments of the current transfer order.-->
+            <button data-bind="appBarCommand: {
+                id: 'addTransferOrderComment',
+                extraClass: 'iconNote',
+                onclick: addOrViewTransferOrderCommentAsync,
+                enabled:  showHeaderButton,
+                visible: !isReceiptSelected(),
+                labelResx: 'string_3426'}, axBubbleAttr: 'pickingAndReceivingDetailsView_showTransferOrderCommentButton'"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconImportAll',
+                id:'receiveNowOrShipNow',
+                labelResx: receiveAllOrShipAllLabelResx,
+                enabled: isEnterProductMode,
+                visible: !isReceiptSelected(),
+                onclick: receiveOrShipAllLines}, axBubbleAttr: 'pickingAndReceivingDetailsView_shipAllReceiveAllButton'"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconMapPin',
+                id:'changeLocation',
+                labelResx: 'string_3876',
+                onclick: startChangingLocationAsync,
+                visible: isAdvancedWarehousingEnabled && !isReceiptSelected() }, axBubbleAttr: 'pickingAndReceivingDetailsView_locationButton'"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconSearch',
+                id:'searchProducts',
+                labelResx: 'string_3821',
+                onclick: searchForProductAsync,
+                visible: !isReceiptSelected(),
+                enabled: isEnterProductMode }, axBubbleAttr: 'pickingAndReceivingDetailsView_searchProductsButton'"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconSave',
+                id:'saveJournal',
+                labelResx: 'string_3824',
+                enabled: isEnterProductMode,
+                visible: !isReceiptSelected(),
+                onclick: saveJournalAsync }, axBubbleAttr: 'pickingAndReceivingDetailsView_saveButton'"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAccept',
+                id:'commitJournal',
+                labelResx: 'string_3823',
+                enabled: isEnterProductMode,
+                visible: !isReceiptSelected(),
+                onclick: commitJournalAsync }, axBubbleAttr: 'pickingAndReceivingDetailsView_commitButton'"></button>
+
+            <!-- Buttons visible in preview mode -->
+            <button data-bind="appBarCommand: {
+                id:'printReceiptsCommand',
+                extraClass: 'iconPrint',
+                onclick: printReceiptAsync,
+                labelResx: 'string_1808',
+                enabled: isSelectedReceiptPrintable,
+                visible: isReceiptSelected },
+                axBubbleAttr: 'pickingAndReceivingDetailsView_printReceiptsCommand'"></button><!--Print-->
+            <!-- Buttons visible in preview mode -->
+            <button data-bind="appBarCommand: {
+                id:'clearReceiptSelection',
+                extraClass: 'iconCancel',
+                onclick: clearReceiptSelectionHandlerAsync,
+                labelResx: 'string_80',
+                visible: isReceiptSelected },
+                axBubbleAttr: 'pickingAndReceivingDetailsView_clearReceiptSelection'"></button><!--Close Print Preview-->
+        </div>
+    </div>
+</body>
+</html>

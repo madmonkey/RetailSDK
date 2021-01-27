@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.FiscalRegisterReceiptSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.FiscalRegisterReceiptSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.FiscalRegisterReceiptSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.FiscalRegisterReceiptSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.FiscalRegisterReceiptSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.FiscalRegisterReceiptSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.FiscalRegisterReceiptSample\obj\Debug\netstandard2.0\Runtime.Extensions.FiscalRegisterReceiptSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.FiscalRegisterReceiptSample\obj\Debug\netstandard2.0\Runtime.Extensions.FiscalRegisterReceiptSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.FiscalRegisterReceiptSample\obj\Debug\netstandard2.0\Runtime.Extensions.FiscalRegisterReceiptSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.FiscalRegisterReceiptSample\obj\Debug\netstandard2.0\Runtime.Extensions.FiscalRegisterReceiptSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.FiscalRegisterReceiptSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.FiscalRegisterReceiptSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.FiscalRegisterReceiptSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.FiscalRegisterReceiptSample.pdb

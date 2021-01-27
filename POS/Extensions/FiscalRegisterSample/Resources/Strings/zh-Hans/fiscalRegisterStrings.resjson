@@ -1,0 +1,23 @@
+{
+  "Fiscal_register_not_enabled_error": "为 POS 启用了会计登记簿，但硬件工作站未启用。",
+  "_Fiscal_register_not_enabled_error.comment": "Fiscal register error message.",
+  "Fiscal_register_not_available_error": "为 POS 启用了会计登记簿，但硬件工作站不可用。",
+  "_Fiscal_register_not_available_error.comment": "Fiscal register error message.",
+  "Fiscal_register_unregistered_comleted_transactions_error": "有已完成的销售交易记录未在会计登记簿中进行登记。操作已取消。",
+  "_Fiscal_register_unregistered_comleted_transactions_error.comment": "Fiscal register error message.",
+  "Ok_Button_Label": "确定",
+  "_Ok_Button_Label.comment": "Message dialog button label.",
+  "Cancel_Button_Label": "取消",
+  "_Cancel_Button_Label.comment": "Message dialog button label.",
+  "Skip_Button_Label": "跳过",
+  "_Skip_Button_Label.comment": "Message dialog button label.",
+  "Run_Refiscalization_Dialog_Title": "会计登记簿",
+  "_Run_Refiscalization_Dialog_Title.comment": "Message dialog message.",
+  "Run_Refiscalization_Dialog_Message": "有 {0} 个已完成的销售交易记录未在会计登记簿中进行登记。单击“确定”以登记这些交易记录。",
+  "Skip_Refiscalize_Dialog_Title": "会计登记簿出错",
+  "_Skip_Refiscalize_Dialog_Title.comment": "Message dialog title.",
+  "Skip_Refiscalize_Dialog_Message": "销售交易记录无法在会计登记簿中进行登记。您可以跳过会计登记或取消该操作。",
+  "_Skip_Refiscalize_Dialog_Message.comment": "Message dialog message.",
+  "Confirm_Skip_Refiscalization_Dialog_Message": "是否确实要跳过交易记录 ID:“{0}”、交易记录日期/时间:“{1}”、收据 ID:“{2}”、收据总金额:“{3}”的会计登记?如果您跳过会计登记，该操作将被记录在交易记录中。",
+  "_Confirm_Skip_Refiscalization_Dialog_Message.comment": "Message dialog message."
+}

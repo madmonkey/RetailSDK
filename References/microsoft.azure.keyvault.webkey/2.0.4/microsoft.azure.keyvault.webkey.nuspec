@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.KeyVault.WebKey</id>
+    <version>2.0.4</version>
+    <title>Microsoft Azure Key Vault WebKey</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>https://raw.githubusercontent.com/Microsoft/dotnet/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Azure/azure-sdk-for-net</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Microsoft Azure Key Vault WebKey Class Library</description>
+    <summary>Class library for Azure Key Vault WebKey</summary>
+    <releaseNotes></releaseNotes>
+    <tags>Microsoft Azure key vault WebKey</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Newtonsoft.Json" version="[6.0.8, )" />
+      </group>
+      <group targetFramework=".NETStandard1.5">
+        <dependency id="Microsoft.NETCore.Platforms" version="[1.0.1, )" />
+        <dependency id="System.Collections" version="[4.0.11, )" />
+        <dependency id="System.Runtime" version="[4.1.0, )" />
+        <dependency id="System.Security.Cryptography.Algorithms" version="[4.2.0, )" />
+        <dependency id="System.Collections.Concurrent" version="[4.0.12, )" />
+        <dependency id="System.Linq" version="[4.1.0, )" />
+        <dependency id="Newtonsoft.Json" version="[9.0.1, 10.0.0)" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+SAMPLE CODE NOTICE
+
+THIS SAMPLE CODE IS MADE AVAILABLE AS IS.  MICROSOFT MAKES NO WARRANTIES, WHETHER EXPRESS OR IMPLIED, 
+OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY OR COMPLETENESS OF RESPONSES, OF RESULTS, OR CONDITIONS OF MERCHANTABILITY.  
+THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS SAMPLE CODE REMAINS WITH THE USER.  
+NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU HAVE A LICENSE AGREEMENT WITH MICROSOFT THAT ALLOWS YOU TO DO SO.
+-->
+<Settings>
+  <Databases>
+    <!-- Note: Channel Database is part of RetailChannelDatabase.msi and will be installed as part of that installer. -->
+  </Databases>
+  <WindowsGroupMemberShips>
+    <add MachineName="[ChannelDatabaseServerName]" GroupName="RetailChannelUsers" UserName="[RetailServerWebAppPoolUser]" />
+    <add MachineName="[ChannelDatabaseServerName]" GroupName="RetailReportUsers" UserName="[RetailServerWebAppPoolUser]" />
+  </WindowsGroupMemberShips>
+
+  <RetailServerInstance>
+	<WebAppPool id="RetailServerInstanceAppPool">
+		<Name>[RetailServerWebAppPoolName]</Name>
+		<ProcessModel_IdentityType>Custom</ProcessModel_IdentityType>
+		<ProcessModel_UserName>[RetailServerWebAppPoolUser]</ProcessModel_UserName>
+	</WebAppPool>
+    <WebSite>
+		<Name>[RetailServerWebSiteName]</Name>
+		<PhysicalPath>[RetailServerWebSiteWorkingFolder]</PhysicalPath>
+		<ApplicationPoolXPath>Settings/RetailServerInstance/WebAppPool[@id='RetailServerInstanceAppPool']</ApplicationPoolXPath>
+		<Port>[RetailServerWebSiteHttpPort]</Port>
+		<PortSSL>[RetailServerWebSiteHttpsPort]</PortSSL>
+		<ServerCertificateRootStore>[RetailServerWebSiteSSLCertificateRootStore]</ServerCertificateRootStore>
+		<ServerCertificateStore>[RetailServerWebSiteSSLCertificateStore]</ServerCertificateStore>
+		<ServerCertificateThumbprint>[RetailServerWebSiteSSLCertificateThumbprint]</ServerCertificateThumbprint>
+		<WebApplication>
+			<Name>[RetailServerWebApplicationName]</Name>
+			<AllowAnonymousMetadata>[RetailServerAllowAnonymousMetadata]</AllowAnonymousMetadata>
+			<RequireSSL>[RetailServerRequireSSL]</RequireSSL>
+			<PhysicalPath>[RetailServerWebApplicationWorkingFolder]</PhysicalPath>
+			<ApplicationPoolXPath>Settings/RetailServerInstance/WebAppPool[@id='RetailServerInstanceAppPool']</ApplicationPoolXPath>
+			<ServiceBinarySourceFolder>[RetailServerWebApplicationServiceBinarySourceFolder]</ServiceBinarySourceFolder>
+			<AppSettings>
+				<Property Key="ConnectionString" Value="Server=[ChannelDatabaseServerNamedInstanceName];Database=[ChannelDatabaseName];Integrated Security=True;Persist Security Info=False;Pooling=True;Encrypt=True;TrustServerCertificate=True" />
+			</AppSettings>
+		</WebApplication>
+	</WebSite>
+  </RetailServerInstance>
+</Settings>

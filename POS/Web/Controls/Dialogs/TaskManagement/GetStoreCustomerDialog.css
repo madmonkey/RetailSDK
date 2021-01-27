@@ -1,0 +1,11 @@
+﻿/* HighContrast settings used only for IE/Modern UI */
+@media (-ms-high-contrast) {
+    .getStoreCustomerDialog .customerItemContainer .primaryFontColor {
+        -ms-high-contrast-adjust: auto !important;
+    }
+}
+
+.getStoreCustomerDialog #customersList .win-container {
+    border-bottom: 1px solid #E1E3E5;
+    margin: 0px;
+}

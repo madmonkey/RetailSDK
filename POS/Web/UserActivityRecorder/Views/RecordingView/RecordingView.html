@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="recorderRecordingPanel" class="col height100Percent">
+        <div class="row no-shrink taskRecorderPanelHeader">
+            <div class="grow">
+                <div class="h4 title"
+                     data-bind="text: Title">
+                    Task recorder
+                </div>
+            </div>
+        </div>
+        <div class="row grow stretch padBottom12">
+            <div class="col width100Percent">
+                <div class="controlPanel">
+                    <div class="row grow taskRecorderControlPanelHeader">
+                        <div class="grow stretch recordingButton centerY">
+                            <div data-bind="visible: isPauseAllowed, buttonBlock: {
+                                    enabled: false,
+                                    buttonClass: 'iconRecording',
+                                    labelTextResx: 'string_10061', /* Recording */
+                                    ariaLabelResx: 'string_10061', /* Recording */
+                                }">
+                            </div>
+                            <div data-bind="visible: !isPauseAllowed(), buttonBlock: {
+                                    enabled: true,
+                                    buttonClass: 'iconRecording',
+                                    click: continueWithRecorder,
+                                    labelTextResx: 'string_10022', /* Record */
+                                    ariaLabelResx: 'string_10022', /* Record */
+                                }">
+                            </div>
+                        </div>
+                        <div class="grow stretch pauseButton centerY">
+                            <div data-bind="buttonBlock: {
+                                    enabled: isPauseAllowed,
+                                    buttonClass: 'iconPause',
+                                    click: pauseRecording,
+                                    labelTextResx: 'string_10023', /* Pause */
+                                    ariaLabelResx: 'string_10023', /* Pause */
+                                }">
+                            </div>
+                        </div>
+                        <div class="grow stretch stopButton centerY">
+                            <div data-bind="buttonBlock: {
+                                    buttonClass: 'iconStop',
+                                    click: stopRecording,
+                                    labelTextResx: 'string_10024', /* Stop */
+                                    ariaLabelResx: 'string_10024', /* Stop */
+                                }">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Only render if validation is allowed. -->
+                    <!-- ko if: isValidationAllowed -->
+                    <div class="row grow padTop20">
+                        <div class="width360 padLeft12 col" data-bind="toggleSwitch: {
+                                    title: 'string_10403', /* Enable validation mode */
+                                    labelOn: 'string_77',
+                                    labelOff: 'string_78',
+                                    enabled: isValidationModeEnabled,
+                                    checked: isValidationModeChecked,
+                                    onChange: setValidationState
+                                }">
+                            </div>
+                    </div>
+                    <!-- /ko -->
+                    <div class="row padTop20" data-bind="visible: isScreenshotsFeatureAvailable">
+                        <div class="width360 padLeft12 col"
+                             data-bind="toggleSwitch: {
+                                title: 'string_10025', /* Capture screenshots */
+                                labelOn: 'string_1357',
+                                labelOff:'string_1358',
+                                checked: session().isScreenshotsCapturingEnabled,
+                                onChange: toggleScreenCapture
+                             }">
+                        </div>
+                    </div>
+                    <div class="row padTop20 marginTop12 marginBottom12 marginLeft12">
+                        <h5 data-bind="resx: { textContent: 'string_10026' }"> Steps </h5>
+                    </div>
+                    <div class="controlPanel stepBorder row">
+                        <div class="col shrink" data-bind="buttonBlock: {
+                                buttonClass: 'iconIncreaseIndentLegacy',
+                                click: startTask,
+                                labelTextResx: 'string_10027', /* Start task */
+                                ariaLabelResx: 'string_10027', /* Start task */
+                            }">
+                        </div>
+                        <div class="col shrink" data-bind="buttonBlock: {
+                                enabled: isEndTaskEnabled,
+                                buttonClass: 'iconDecreaseIndentLegacy',
+                                click: endTask,
+                                labelTextResx: 'string_10028', /* End task */
+                                ariaLabelResx: 'string_10028', /* End task */
+                            }">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row stretch scrollY listSteps minHeight60 padTop10 stepBorder">
+                    <label class="padTop10 padLeft12" data-bind="visible: session().nodes().length === 0, resx: { textContent: 'string_10031' }"> We didn't find anything to show here. </label>
+                    <ul class="padTop10" data-bind="visible: session().nodes().length > 0, foreach: session().nodes">
+                        <li class="row h4 padLeft12">
+                            <div class="displayNumber wrapText width48 padTop10 padBottom10" data-bind="text: displayNumber, visible: numberable"> </div>
+                            <div class="iconCompleted textLeft width48 padTop14" data-bind="visible: numberable === false"> </div>
+                            <div class="grow stretch description wrapText minHeight12 padTop10 padBottom10" data-bind="text: description"> </div>
+                            <div class="center width40 height40" data-bind="visible: deletable">
+                                <div role="button" style="display: inline-flex; cursor: pointer;">
+                                    <button class="iconDelete" data-bind="click: $parent.deleteNode.bind($parent, $data), resx: { ariaLabel: 'string_3310' /* Delete */ }"></button>
+                                </div>
+                            </div>
+                            <div class="center width40 height40" data-bind="visible: deletable === false">
+                            </div>
+                            <div class="center width40 height40" data-bind="visible: editable">
+                                <div role="button" style="display: inline-flex; cursor: pointer;">
+                                    <button class="iconEdit" data-bind="click: $parent.editNode.bind($parent, $data), resx: { ariaLabel: 'string_10159' /* Edit */ }"></button>
+                                </div>
+                            </div>
+                            <div class="center width40 height40" data-bind="visible: editable === false">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

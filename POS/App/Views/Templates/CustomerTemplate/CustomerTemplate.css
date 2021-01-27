@@ -1,0 +1,9 @@
+﻿.contactInfoTemplate {
+    border-radius: 2px;
+}
+
+.receiptTextAlign {
+    margin: auto;
+    line-height: 20px;
+    height: 24px;
+}

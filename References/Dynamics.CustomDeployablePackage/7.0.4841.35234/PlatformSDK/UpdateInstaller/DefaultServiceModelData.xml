@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceModelData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Guid>76f46b4f-1849-4927-9da2-6c349430f349</Guid>
+  <Version>1.0.1.0</Version>
+  <ServiceModelList>
+    <ServiceModel>
+      <Name>AOSService</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>true</ContainDatabase>
+      <DependentServiceModelList>
+        <string>ReportingService</string>
+      </DependentServiceModelList>
+      <StagingPreprocessingScript>
+        <FileName>CreateAOSStagingEnv.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>staging preprocessing for AOSService</Description>
+      </StagingPreprocessingScript>
+      <StagingUpdateScript>
+        <FileName>SwapAOSStagingEnv.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Swap the staging and current env of AOSService</Description>
+      </StagingUpdateScript>
+      <StagingRestoreScript>
+        <FileName>RestoreAOSStagingEnv.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Swap the backup env with the current env of AOSService</Description>
+      </StagingRestoreScript>      
+      <StopScript>
+        <FileName>AutoStopAOS.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Stop AOS service and Batch service</Description>
+      </StopScript>
+      <BackupScript>
+        <FileName>AutoBackupAOSService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>backup AOS service</Description>
+	<TimeoutValue>75</TimeoutValue>
+      </BackupScript>
+      <RestoreScript>
+        <FileName>AutoRestoreAOSService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>restore AOS service</Description>
+      </RestoreScript>
+      <UpdateScript>
+        <FileName>AutoUpdateAOSService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>update AOS service</Description>
+        <InvokeWithPowershellProcess>false</InvokeWithPowershellProcess>
+      </UpdateScript>
+      <BackupConfigScript>
+        <FileName>AutoBackupConfigAOSService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>backup config for AOS service</Description>
+      </BackupConfigScript>
+      <UpdateConfigScript>
+        <FileName>AutoUpgradeConfigAosServicePlatformUpdate3.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>upgrade config for AOS service</Description>
+      </UpdateConfigScript>
+      <RestoreConfigScript>
+        <FileName>AutoRestoreConfigAOSService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>restore config for AOS service</Description>
+      </RestoreConfigScript>
+      <GlobalUpdateConfigScript>
+        <FileName>AutoImportLicense.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Import AX license file</Description>
+      </GlobalUpdateConfigScript>
+      <GlobalBackupScript>
+        <FileName>AutoBackupDB.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Please backup your ax database now, set this step to complete once you finished backup</Description>
+      </GlobalBackupScript>
+      <GlobalRestoreScript>
+        <FileName>ManualRestoreStep.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Please restore your ax database now, set this step to complete once you finished restore</Description>
+      </GlobalRestoreScript>
+      <GlobalUpdateScript>
+        <FileName>AutoDeployReportAndSyncDB.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Sync AX database</Description>
+        <RetryCount>0</RetryCount>
+      </GlobalUpdateScript>
+      <StartScript>
+        <FileName>AutoStartAOS.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Start AOS service and Batch service</Description>
+      </StartScript>
+      <DVTScript>
+        <FileName>AutoRunDVT.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Run the AOS DVTs</Description>
+      </DVTScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>MRApplicationService</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>true</ContainDatabase>
+      <DependentServiceModelList>
+        <string>AOSService</string>
+      </DependentServiceModelList>
+      <StopScript>
+        <FileName>Update\AutoStopMRApplicationService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Stop the financial reporting application service</Description>
+        <RetryCount>5</RetryCount>
+      </StopScript>
+      <BackupScript>
+        <FileName>Update\AutoBackupMR.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Backup the financial reporting services</Description>
+        <RetryCount>5</RetryCount>
+      </BackupScript>
+      <RestoreScript>
+        <FileName>Update\AutoRestoreMR.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Restore the financial reporting services</Description>
+      </RestoreScript>
+      <UpdateScript>
+        <FileName>Update\AutoUpdateMRBinaries.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Update the financial reporting application service</Description>
+        <RetryCount>5</RetryCount>
+      </UpdateScript>
+      <GlobalBackupScript>
+        <FileName>Update\ManualMRStep.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Please backup your financial reporting database now, set this step to complete once you finished backup</Description>
+      </GlobalBackupScript>
+      <GlobalRestoreScript>
+        <FileName>ManualRestoreStep.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Please restore your financial reporting database now, set this step to complete once you finished restore</Description>
+      </GlobalRestoreScript>
+      <GlobalUpdateScript>
+        <FileName>Update\AutoGlobalUpdateMR.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Updating the financial reporting database</Description>
+      </GlobalUpdateScript>
+      <StartScript>
+        <FileName>Update\AutoStartMRApplicationService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Start the financial reporting application service</Description>
+        <RetryCount>5</RetryCount>
+      </StartScript>
+      <DVTScript>
+        <FileName>Update\AutoRunDVT.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Run the financial reporting DVTs</Description>
+        <RetryCount>5</RetryCount>
+      </DVTScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>MRProcessService</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>false</ContainDatabase>
+      <DependentServiceModelList>
+           <string>MRApplicationService</string>
+      </DependentServiceModelList>
+      <StopScript>
+        <FileName>Update\AutoStopMRProcessService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Stop the financial reporting process service</Description>
+        <RetryCount>5</RetryCount>
+      </StopScript>
+      <BackupScript>
+        <FileName>Update\AutoBackupMR.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Backup the financial reporting services</Description>
+        <RetryCount>5</RetryCount>
+      </BackupScript>
+      <RestoreScript>
+        <FileName>Update\AutoRestoreMR.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Restore the financial reporting services</Description>
+      </RestoreScript>
+      <UpdateScript>
+        <FileName>Update\AutoUpdateMRBinaries.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Update the financial reporting process service</Description>
+        <RetryCount>5</RetryCount>
+      </UpdateScript>
+      <GlobalUpdateScript>
+        <FileName />
+        <Automated>false</Automated>
+        <Description />
+      </GlobalUpdateScript>
+      <StartScript>
+        <FileName>Update\AutoStartMRProcessService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Start the financial reporting process service</Description>
+        <RetryCount>5</RetryCount>
+      </StartScript>
+      <DVTScript>
+        <FileName>Update\AutoRunDVT.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Run the financial reporting DVTs</Description>
+        <RetryCount>5</RetryCount>
+      </DVTScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>MROneBox</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>true</ContainDatabase>
+      <DependentServiceModelList>
+        <string>AOSService</string>
+      </DependentServiceModelList>
+      <StopScript>
+        <FileName>Update\AutoStopMROneBox.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Stop the financial reporting services</Description>
+        <RetryCount>5</RetryCount>
+      </StopScript>
+      <BackupScript>
+        <FileName>Update\AutoBackupMR.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Backup the financial reporting services</Description>
+        <RetryCount>5</RetryCount>
+      </BackupScript>
+      <RestoreScript>
+        <FileName>Update\AutoRestoreMR.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Restore the financial reporting services</Description>
+      </RestoreScript>
+      <UpdateScript>
+        <FileName>Update\AutoUpdateMRBinaries.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Update the financial reporting services</Description>
+        <RetryCount>5</RetryCount>
+      </UpdateScript>
+      <GlobalBackupScript>
+        <FileName>Update\ManualMRStep.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Please backup your financial reporting database now, set this step to complete once you finished backup</Description>
+      </GlobalBackupScript>
+      <GlobalRestoreScript>
+        <FileName>Update\ManualMRStep.ps1</FileName>
+        <Automated>false</Automated>
+        <Description>Please restore your financial reporting database now, set this step to complete once you finished restore</Description>
+      </GlobalRestoreScript>
+      <GlobalUpdateScript>
+        <FileName>Update\AutoGlobalUpdateMR.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Update the financial reporting database</Description>
+      </GlobalUpdateScript>
+      <StartScript>
+        <FileName>Update\AutoStartMROneBox.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Start the financial reporting services</Description>
+        <RetryCount>5</RetryCount>
+      </StartScript>
+      <DVTScript>
+        <FileName>Update\AutoRunDVT.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Run the financial reporting DVTs</Description>
+        <RetryCount>5</RetryCount>
+      </DVTScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>PerfSDK</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>false</ContainDatabase>
+      <DependentServiceModelList>
+        <string>AOSService</string>
+      </DependentServiceModelList>
+      <StopScript>
+        <FileName>AutoStopPerfSDK.ps1</FileName>
+        <Automated>true</Automated>
+        <Description />
+      </StopScript>
+      <UpdateScript>
+        <FileName>UpdatePerfSDK.ps1</FileName>
+        <Automated>true</Automated>
+        <Description />
+        <InvokeWithPowershellProcess>false</InvokeWithPowershellProcess>
+      </UpdateScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>RetailServer</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>true</ContainDatabase>
+      <DependentServiceModelList>
+        <string>AOSService</string>
+      </DependentServiceModelList>
+      <StopScript>
+        <FileName>Stop-RetailServer.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Stop Retail Server</Description>
+        <InvokeWithPowershellProcess>true</InvokeWithPowershellProcess>
+      </StopScript>
+      <StartScript>
+        <FileName>Start-RetailServer.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Start Retail Server</Description>
+        <InvokeWithPowershellProcess>true</InvokeWithPowershellProcess>
+      </StartScript>
+      <BackupScript>
+        <FileName>Backup-RetailServer.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Backup Retail Server service website.</Description>
+      </BackupScript>
+      <RestoreScript>
+        <FileName>Restore-RetailServer.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Restore Retail Server service website.</Description>
+      </RestoreScript>
+      <UpdateScript>
+        <FileName>Upgrade\Core\UpdateRetailServer.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Update Retail Server service.</Description>
+        <InvokeWithPowershellProcess>true</InvokeWithPowershellProcess>
+      </UpdateScript>
+      <GlobalBackupScript>
+        <FileName>AutoBackupDB.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Please backup your retail database now, set this step to complete once you finished backup</Description>
+      </GlobalBackupScript>
+      <GlobalRestoreScript>
+        <FileName></FileName>
+        <Automated>false</Automated>
+        <Description>Please restore your retail database now, set this step to complete once you finished restore</Description>
+      </GlobalRestoreScript>
+      <GlobalUpdateScript>
+        <FileName>Upgrade\Core\UpdateRetailChannelDatabase.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Update the Retail Channel database.</Description>
+        <InvokeWithPowershellProcess>true</InvokeWithPowershellProcess>
+      </GlobalUpdateScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>RetailCloudPos</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>false</ContainDatabase>
+      <DependentServiceModelList>
+        <string>RetailServer</string>
+      </DependentServiceModelList>
+      <BackupScript>
+        <FileName>Backup-RetailCloudPos.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Backup Retail Cloud POS service website.</Description>
+      </BackupScript>
+      <RestoreScript>
+        <FileName>Restore-RetailCloudPos.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Restore Retail Cloud POS service website.</Description>
+      </RestoreScript>
+      <UpdateScript>
+        <FileName>Upgrade\Core\UpdateCloudPos.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Update Retail Cloud POS service.</Description>
+        <InvokeWithPowershellProcess>true</InvokeWithPowershellProcess>
+      </UpdateScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>RetailSDK</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>false</ContainDatabase>
+      <DependentServiceModelList />
+      <UpdateScript>
+        <FileName>Upgrade\UpdateRetailSDK.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Update Retail SDK.</Description>
+        <InvokeWithPowershellProcess>true</InvokeWithPowershellProcess>
+      </UpdateScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>RetailSelfService</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>false</ContainDatabase>
+      <DependentServiceModelList>
+        <string>AOSService</string>
+      </DependentServiceModelList>
+      <GlobalUpdateScript>
+        <FileName>Upgrade\UpdateRetailSelfService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Update Retail self service.</Description>
+        <InvokeWithPowershellProcess>true</InvokeWithPowershellProcess>
+      </GlobalUpdateScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>RetailStorefront</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>false</ContainDatabase>
+      <DependentServiceModelList>
+        <string>RetailServer</string>
+      </DependentServiceModelList>
+      <BackupScript>
+        <FileName>Backup-RetailStorefront.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Backup Retail Storefront service website.</Description>
+      </BackupScript>
+      <RestoreScript>
+        <FileName>Restore-RetailStorefront.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Restore Retail Storefront service website.</Description>
+      </RestoreScript>
+      <UpdateScript>
+        <FileName>Upgrade\Core\UpdateStorefront.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Update Retail Storefront service.</Description>
+        <InvokeWithPowershellProcess>true</InvokeWithPowershellProcess>
+      </UpdateScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>RetailHQConfiguration</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>false</ContainDatabase>
+      <DependentServiceModelList>
+        <string>AOSService</string>
+      </DependentServiceModelList>
+      <StopScript>
+        <FileName>AutoStopAOS.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Stop AOS service and Batch service</Description>
+      </StopScript>
+      <UpdateScript>
+        <FileName>CopyPaymentConnectorFiles.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Install payment connector</Description>
+        <InvokeWithPowershellProcess>true</InvokeWithPowershellProcess>
+      </UpdateScript>
+      <StartScript>
+        <FileName>AutoStartAOS.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Start AOS service and Batch service</Description>
+      </StartScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>ALMService</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>false</ContainDatabase>
+      <DependentServiceModelList>
+        <string>AOSService</string>
+      </DependentServiceModelList>
+      <UpdateScript>
+        <FileName>UpdateALM.ps1</FileName>
+        <Automated>true</Automated>
+        <Description />
+        <InvokeWithPowershellProcess>true</InvokeWithPowershellProcess>
+      </UpdateScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>DIXFService</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>      
+      <DependentServiceModelList>
+        <string>AOSService</string>
+      </DependentServiceModelList>
+      <StopScript>
+        <FileName>AutoStopDIXFService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Stop DIXF SSIS service</Description>
+      </StopScript>
+      <BackupScript>
+        <FileName>AutoBackupDIXFService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Backup DIXF service binaries</Description>
+      </BackupScript>
+      <RestoreScript>
+        <FileName>AutoRestoreDIXFService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Restore DIXF service binaries</Description>
+      </RestoreScript>
+      <UpdateScript>
+        <FileName>AutoUpdateDIXFService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Update DIXF service</Description>
+        <InvokeWithPowershellProcess>true</InvokeWithPowershellProcess>
+      </UpdateScript>
+      <StartScript>
+        <FileName>AutoStartDIXFService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Start DIXF service</Description>
+      </StartScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>ReportingService</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>false</ContainDatabase>
+      <DependentServiceModelList />
+      <StopScript>
+        <FileName>AutoStopReportingServices.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Stop reportserver service</Description>
+      </StopScript>
+      <BackupScript>
+        <FileName>AutoBackupReporting.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Backup reporting configurations, binaries, and database</Description>
+      </BackupScript>
+      <RestoreScript>
+        <FileName>AutoRestoreReporting.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Restore reporting configurations, binaries, and database</Description>
+      </RestoreScript>
+      <UpdateScript>
+        <FileName>AutoUpdateReporting.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>update Reporting</Description>
+        <InvokeWithPowershellProcess>false</InvokeWithPowershellProcess>
+      </UpdateScript>
+      <StartScript>
+        <FileName>AutoStartReportingServices.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Start reportserver service</Description>
+      </StartScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>DevToolsService</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>false</ContainDatabase>
+      <DependentServiceModelList>
+        <string>AOSService</string>
+      </DependentServiceModelList>
+      <StopScript>
+        <FileName>StopDevTools.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Prompt until user closes all Visual Studio instances or cancels the update operation</Description>
+      </StopScript>
+      <BackupScript>
+        <FileName>AutoBackupDevToolsService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>backup DevTools service</Description>
+      </BackupScript>
+      <RestoreScript>
+        <FileName>AutoRestoreDevToolsService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>restore Devtools service</Description>
+      </RestoreScript>
+      <UpdateScript>
+        <FileName>AutoUpdateDevToolsService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>update DevTools service</Description>
+        <InvokeWithPowershellProcess>false</InvokeWithPowershellProcess>
+      </UpdateScript>
+    </ServiceModel>
+    <ServiceModel>
+      <Name>PayrollTaxModule</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>false</ContainDatabase>
+      <DependentServiceModelList>
+        <string>AOSService</string>
+      </DependentServiceModelList>
+      <UpdateScript>
+        <FileName>AutoUpdateTaxModule.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Update Payroll tax module</Description>
+      </UpdateScript>
+    </ServiceModel>  
+    <ServiceModel>
+      <Name>SCMSelfService</Name>
+      <SelectedForUpdate>true</SelectedForUpdate>
+      <ContainDatabase>false</ContainDatabase>
+      <DependentServiceModelList>
+        <string>AOSService</string>
+      </DependentServiceModelList>
+      <BackupScript>
+        <FileName>AutoBackupSelfService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Backup SCM Self Service.</Description>
+      </BackupScript>
+      <RestoreScript>
+        <FileName>AutoRestoreSelfService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Restore SCM Self Service.</Description>
+      </RestoreScript>
+      <UpdateScript>
+        <FileName>UpdateSelfService.ps1</FileName>
+        <Automated>true</Automated>
+        <Description>Update SCM Self Service</Description>
+      </UpdateScript>
+    </ServiceModel>      
+  </ServiceModelList>
+</ServiceModelData>

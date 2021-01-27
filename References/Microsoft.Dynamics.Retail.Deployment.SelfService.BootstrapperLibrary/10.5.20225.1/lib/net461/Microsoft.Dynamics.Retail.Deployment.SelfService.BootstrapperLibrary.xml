@@ -1,0 +1,381 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.ContentExtractor">
+            <summary>
+            Class to extract content embedded to assembly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.ContentExtractor.#ctor(System.Reflection.Assembly,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.ContentExtractor" /> class.
+            </summary>
+            <param name="assembly">Assembly containing resources.</param>
+            <param name="assemblyRootNamespace">Root namespace of assembly (embedded resource name prefix).</param>
+            <param name="resourceExtractionDirectoryPath">Path to extract embedded content to.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.ContentExtractor.UnpackResources">
+            <summary>
+            Extracts resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.ContentExtractor.UnzipContent">
+            <summary>
+            Unzips content. Requires .NET 4.5.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.ContentExtractor.GetSetupExePath">
+            <summary>
+            Gets path to extracted setup.exe.
+            </summary>
+            <returns>Path to extracted setup.exe.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.ContentExtractor.GetContentExtractionPath">
+            <summary>
+            Gets the content extraction path.
+            </summary>
+            <returns>Path to the extracted contents.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.ErrorHandler">
+            <summary>
+            Class to handle errors.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.ErrorHandler.ShowErrorAndExit(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Displays error message and exits the installer application.
+            </summary>
+            <param name="userFriendlyMessage">User friendly message.</param>
+            <param name="detailedMessage">Detailed error message.</param>
+            <param name="logFilePath">Log file path.</param>
+            <param name="uiMode">Indicates whether installer is running in UI mode or not.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.ErrorHandler.ShowExceptionAndExit(System.Exception,System.String,System.Boolean)">
+            <summary>
+            Displays the exception and exits the installer application.
+            </summary>
+            <param name="ex">Exception to be displayed.</param>
+            <param name="logFilePath">Path to log file.</param>
+            <param name="uiMode">Whether app is running in UI mode or not.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.ErrorHandler.CurrentDomain_UnhandledException(System.String,System.UnhandledExceptionEventArgs,System.Boolean)">
+            <summary>
+            Event handler for unhandled exceptions for the application domain.
+            </summary>
+            <param name="logFilePath">Path to log file.</param>
+            <param name="e">Exception event arguments.</param>
+            <param name="uiMode">Whether app is running in UI mode or not.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.InstallerDiagnostics">
+            <summary>
+            Diagnostics class for self service packages \ zipper.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.InstallerDiagnostics.LogProgressMessage(System.String,System.String)">
+            <summary>
+            Logs the message to file.
+            </summary>
+            <param name="message">Message to log.</param>
+            <param name="logFilePath">Path to log file.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.InstallerDiagnostics.WriteToEventLog(System.String)">
+            <summary>
+            Writes message to self-service event log.
+            </summary>
+            <param name="message">Message to write.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.InstallerDiagnostics.WriteMessageToFile(System.String,System.String,System.Object[])">
+            <summary>
+            Writes message to given file.
+            </summary>
+            <param name="logFilePath">File path.</param>
+            <param name="message">Message format to write.</param>
+            <param name="args">Message format arguments.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.InstallerDiagnostics.CreateSelfServiceEventSource">
+            <summary>
+            Creates self-service event source.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.InstallerDiagnostics.GetExeLogFilePath(System.String,System.Reflection.Assembly)">
+            <summary>
+            Gets the installer executable log file path.
+            </summary>
+            <param name="logDirectoryPath">Path to the log directory.</param>
+            <param name="assembly">Executing assembly.</param>
+            <returns>Path to the installer executable log file.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.InstallerDiagnostics.CleanupLogDirectories(System.String)">
+            <summary>
+            Cleans up self-service log directories.
+            </summary>
+            <param name="cleanupDiagnosticsLogFilePath">Log file for cleanup diagnostics.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages">
+            <summary>
+            Class for all constants.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.ErrorMessageAnotherInstanceAlreadyRunning">
+            <summary>
+            Error message indicating another instance of installer is already running.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.NetPrerequisite45MissingMessage">
+            <summary>
+            Error message indicating .NET of version 4.5.1 pre-requisite is missing.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.NetPrerequisite461MissingMessage">
+            <summary>
+            Error message indicating .NET of version 4.6.1 pre-requisite is missing.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.ErrorMessageGeneralError">
+            <summary>
+            Error message indicating generic message.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.ErrorMessageFailedToUnpackContentMakeSureNoOtherSetupInstancesAreRunning">
+            <summary>
+            Error message indicating content unpack failure.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.ErrorMessageErrorOccuredContactSupport">
+            <summary>
+            Error message indicating generic error.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.ProgressMessageRunningMainSetupApp">
+            <summary>
+            Message indicating main setup is running.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.ProgressMessageUnpackingContent">
+            <summary>
+            Message indicating that content is being unpacked.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.ProgressMessageUnpackingResources">
+            <summary>
+            Message indicating that resources are being unpacked.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.ProgressMessageValidatingNet45Installed">
+            <summary>
+            Message indicating that .NET 4.5 installation is being validated.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.ProgressMessageSearchingForSettingsFilesInDirectory">
+            <summary>
+            Message for searching settings files in directory.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.ProgressMessageNoSettingsFilesFound">
+            <summary>
+            Message when no settings files were found.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.ProgressMessageFoundXSettingsFiles">
+            <summary>
+            Message when settings files were found.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.ProgressMessagePickingFileWithLatestCreationTime">
+            <summary>
+            Message when picking file with latest creation time.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.ProgressMessageSettingsFilePickedIs">
+            <summary>
+            Message when picked settings file.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Messages.ErrorMessageFileDoesNotExist">
+            <summary>
+            Message when file does not exist.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.MultipleRetriesCallbackRunner">
+            <summary>
+            Executes callback with retries.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.MultipleRetriesCallbackRunner.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.MultipleRetriesCallbackRunner" /> class.
+            </summary>
+            <param name="maxNumberOfRetries">Maximum number of retries.</param>
+            <param name="delayBetweenRetriesInSeconds">Delay between retries in seconds.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.MultipleRetriesCallbackRunner.#ctor(System.Int32,System.Int32,System.Action{System.Int32},System.Action{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.MultipleRetriesCallbackRunner" /> class.
+            This is constructor for unit tests.
+            </summary>
+            <param name="maxNumberOfRetries">Maximum number of retries.</param>
+            <param name="delayBetweenRetriesInSeconds">Delay between retries in seconds.</param>
+            <param name="sleepAction">Executes between failed attempts. Accepts number of milliseconds.</param>
+            <param name="diagnosticsLogger">Logs the exception if action run fails.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.MultipleRetriesCallbackRunner.Run(System.Action)">
+            <summary>
+            Runs action with retries.
+            </summary>
+            <param name="action">Action to run.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.UIHelper">
+            <summary>
+            Class for UI handlers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.UIHelper.ShowMainView(System.Boolean)">
+            <summary>
+            Shows the main UI view for the application.
+            </summary>
+            <param name="uiMode">Whether installer is running in UI or silent mode.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.UIHelper.HideMainView">
+            <summary>
+            Hides the main UI view of the application.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Utilities">
+            <summary>
+            Utility class for common helper functions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Utilities.RunProcess(System.String,System.String,System.Boolean)">
+            <summary>
+            Runs process for given path. Waits until process exits.
+            </summary>
+            <param name="exePath">Path to an .exe to run.</param>
+            <param name="arguments">Arguments to pass to process.</param>
+            <param name="createNoWindow">Flag indicating whether process should not be run in new window.</param>
+            <returns>Exit code that process returned.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Utilities.RunProcessAsyncAndExitWhenCompleted(System.String,System.String[])">
+            <summary>
+            Runs the installer application asynchronously and exits when completed.
+            </summary>
+            <param name="exePath">Path to setup file.</param>
+            <param name="args">Arguments to setup.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Utilities.ValidateNet45prereq(System.String,System.Boolean)">
+            <summary>
+            Validates whether .NET 4.5 is installed.
+            </summary>
+            <param name="logFilePath">Path to log file.</param>
+            <param name="uiMode">Whether app is running in UI mode or not.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Utilities.ValidateNet461prereq(System.String,System.Boolean)">
+            <summary>
+            Validates whether .NET 4.6.1 is installed.
+            </summary>
+            <param name="logFilePath">Path to log file.</param>
+            <param name="uiMode">Whether app is running in UI mode or not.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Utilities.ValidateNoProcessWithSameNameIsRunning(System.Diagnostics.Process,System.String,System.Boolean)">
+            <summary>
+            Checks if another setup instance is running.
+            </summary>
+            <param name="currentProcess">Current installer process.</param>
+            <param name="logFilePath">Path to log file.</param>
+            <param name="uiMode">Whether app is running in UI mode or not.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Utilities.GetResourceExtractionDirectoryPath(System.Reflection.Assembly)">
+            <summary>
+            Gets resource extraction path.
+            </summary>
+            <param name="assembly">Executing assembly.</param>
+            <returns>Path to resource file.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Utilities.CheckIfParameterExists(System.String[],System.String)">
+            <summary>
+            Checks if the given parameter exists in the command line arguments.
+            </summary>
+            <param name="args">Command line arguments.</param>
+            <param name="paramName">Parameter name to check.</param>
+            <returns>True if the parameter exists, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Utilities.GetArgsWithNonExistingParameterAppended(System.String[],System.String,System.String)">
+            <summary>
+            Append parameter if it does not exist.
+            </summary>
+            <param name="args">Command line parameters.</param>
+            <param name="paramName">Parameter name to set.</param>
+            <param name="paramValue">Parameter value to set.</param>
+            <returns>Command line arguments.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Utilities.GetCustomizedFilesPath(System.String)">
+            <summary>
+            Gets the path to customized files directory.
+            </summary>
+            <param name="contentDirectoryPath">Path to the content directory.</param>
+            <returns>Path to the customized files directory.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Utilities.GetSettingsFilePathIfExists(System.String,System.Action{System.String})">
+            <summary>
+            Gets path to a settings file that is expected to be side by side with installer.
+            </summary>
+            <param name="bootStrapperFilePath">Full path to entry setup .exe file.</param>
+            <param name="progressMessageLogger">Delegate to log progress messages.</param>
+            <returns>Path to settings file if it exists, or null if it does not.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Utilities.ValidateNetPrereq(System.Int32,System.String,System.Boolean,System.String)">
+            <summary>
+            Validates whether .NET of specified release version is installed.
+            </summary>
+            <param name="releaseVersion">Release version according to https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed</param>
+            <param name="logFilePath">Path to log file.</param>
+            <param name="uiMode">Whether app is running in UI mode or not.</param>
+            <param name="errorMessage">The message to be used when error validating the prereq.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Utilities.GetNet45ReleaseVersion">
+            <summary>
+            Returns the .net45+ release version from registry.
+            It assumes to be called
+            </summary>
+            <returns>The release value for .net framework installed in the system.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Zipper">
+            <summary>
+            Zips and unzips directories.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Zipper.CompressDirectory(System.String,System.String)">
+            <summary>
+            Compress the given directory to the out file.
+            </summary>
+            <param name="pathToCompress">The directory to compress.</param>
+            <param name="compressedOutFilePath">The output file path.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Zipper.DecompressToDirectory(System.String,System.String)">
+            <summary>
+            Decompresses a compressed directory to the output directory.
+            </summary>
+            <param name="compressedDirectoryPath">The path to the compressed file.</param>
+            <param name="outputDirectory">The directory where the uncompressed file will be placed.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.Zipper.DecompressToDirectory(System.IO.Stream,System.String)">
+            <summary>
+            Decompresses a compressed stream to the output directory.
+            </summary>
+            <param name="compressedDirectoryStream">Stream representing compressed directory.</param>
+            <param name="outputDirectory">The directory where the uncompressed file will be placed.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Deployment.PackageSetup.MainView">
+            <summary>
+            MainView
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Deployment.PackageSetup.MainView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

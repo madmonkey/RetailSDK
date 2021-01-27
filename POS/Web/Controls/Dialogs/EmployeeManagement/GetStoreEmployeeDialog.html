@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetStoreEmployeeDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'GetStoreEmployeeDialog'">
+        <div data-bind="dialog: {
+            title: title,
+            subTitle: subTitle,
+            visible: visible,
+            closeOnEscButton: true,
+            buttonClick: onButtonClick,
+            buttons: [
+                { label: Commerce.ViewModelAdapter.getResourceString('string_76') /* Cancel */, operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton', isPrimary: false },
+            ],
+        },
+        axBubbleAttr: 'getStoreEmployeeDialoglistInputDialog_getStoreEmployeeDialoglistInputDialog'">
+            <!-- Dialog content -->
+            <div class="col grow">
+                <!-- Search field -->
+                <div class="marginTop20">
+                    <label data-bind="resx: {textContent: 'string_13009' /* Scan or search */}" for="searchStoreEmployeesTextBox">Scan or search</label>
+                    <div class="row grow width100Percent searchWrapper">
+                        <input class="noBorder" id="searchStoreEmployeesTextBox" type="search"
+                               data-bind="value: searchText,
+                                    valueUpdate: 'afterkeydown',
+                                    clearMark: true,
+                                    enterKeyPress: performStoreEmployeeFilter" /> <!-- Search text box -->
+                        <button class="noBorder iconSearch margin0 height32 padRight8 searchButton" type="submit"
+                                data-bind="resx: { ariaLabel: 'string_50' /* Search */ },
+                                    click: performStoreEmployeeFilter,
+                                    axBubbleAttr: 'getStoreEmployeeDialoglistInputDialog_searchButton'"></button> <!-- Search button -->
+                    </div>
+                    <div class="marginBottom10 marginTop12 secondaryBackgroundColor highContrastRowLine height01"></div> <!-- Separator line -->
+                </div>
+
+                <!-- Store Employees list -->
+                <div id="storeEmployeesButtonGrid" class="grow col">
+                    <div id="storeEmployeesList"
+                         class="grow noMargin col"
+                         data-bind="dataList: {
+                             itemDataSource: items,
+                             defaultListType: Commerce.Controls.DataList.ListType.Card,
+                             selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                             itemInvoked: itemClickHandler,
+                             itemTemplates: [
+                                {
+                                    templateId: 'storeEmployeesGridTemplate',
+                                    cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                    deviceType: Commerce.Controls.DataList.DeviceType.All
+                                }
+                             ]
+                        }, axBubbleAttr: 'getStoreEmployeeDialoglistInputDialog_storeEmployeesButtonGrid'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Dynamics.Commerce.Runtime.RegisterAuditEventAustria</id>
+    <version>9.23.20226.11</version>
+    <authors>AX Retail team</authors>
+    <owners>AX Retail team</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://dynamics.microsoft.com/en-us/retail/overview/</projectUrl>
+    <description>The CommerceRuntime RegisterAuditEventAustria Localization library for Retail components.</description>
+    <tags>Microsoft Dynamics Dynamics365 Retail Commerce Runtime Localization RegisterAuditEventAustria</tags>
+    <repository url="https://msazure.visualstudio.com/D365/Retail Team/_git/Retail-Rainier-Channel" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Dynamics.Commerce.Runtime.Entities" version="9.23.20226.11" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Commerce.Runtime.Services.Messages" version="9.23.20226.11" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Commerce.Diagnostics" version="10.5.20226.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

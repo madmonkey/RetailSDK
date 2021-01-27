@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Views.OrderSummaryView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Converters"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    ColumnSpacing="20"
+    RowSpacing="10">
+    <Grid.Resources>
+        <ResourceDictionary>
+            <converters:ValueExistsConverter
+                x:Key="ValueExistsConverter" />
+            <converters:DimensionsToStringConverter
+                x:Key="DimensionsToStringConverter" />
+        </ResourceDictionary>
+    </Grid.Resources>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition
+            Width="Auto" />
+        <ColumnDefinition
+            Width="*" />
+    </Grid.ColumnDefinitions>
+    <Label
+        Grid.Row="0"
+        Grid.Column="0"
+        FontSize="Small"
+        Text="{localization:Translate Views_OrderSummaryView_SubTotalAmount}"
+        TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+    <Label
+        Grid.Row="0"
+        Grid.Column="1"
+        FontSize="Small"
+        HorizontalTextAlignment="End"
+        LineBreakMode="TailTruncation"
+        Text="{Binding Data.SubtotalAmount, StringFormat='{0:C}'}"
+        TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+    <Label
+        Grid.Row="1"
+        Grid.Column="0"
+        FontSize="Small"
+        Text="{localization:Translate Views_OrderSummaryView_EstimatedShippingAmount}"
+        TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+    <Label
+        Grid.Row="1"
+        Grid.Column="1"
+        FontSize="Small"
+        HorizontalTextAlignment="End"
+        LineBreakMode="TailTruncation"
+        Text="{Binding Data.ChargeAmount, StringFormat='{0:C}'}"
+        TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+    <Label
+        Grid.Row="2"
+        Grid.Column="0"
+        FontSize="Small"
+        Text="{localization:Translate Views_OrderSummaryView_TaxAmount}"
+        TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+    <Label
+        Grid.Row="2"
+        Grid.Column="1"
+        FontSize="Small"
+        HorizontalTextAlignment="End"
+        LineBreakMode="TailTruncation"
+        Text="{Binding Data.TaxAmount, StringFormat='{0:C}'}"
+        TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+    <Label
+        Grid.Row="3"
+        Grid.Column="0"
+        FontSize="Medium"
+        FontAttributes="Bold"
+        Text="{localization:Translate Views_OrderSummaryView_TotalAmount}"
+        TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+    <Label
+        Grid.Row="3"
+        Grid.Column="1"
+        FontSize="Medium"
+        FontAttributes="Bold"
+        HorizontalTextAlignment="End"
+        LineBreakMode="TailTruncation"
+        Text="{Binding Data.TotalAmount, StringFormat='{0:C}'}"
+        TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+    <Label
+        Grid.Row="4"
+        Grid.Column="0"
+        FontSize="Small"
+        IsVisible="{Binding Data.DiscountAmount, Converter={StaticResource ValueExistsConverter}}"
+        Text="{localization:Translate Views_OrderSummaryView_TotalDiscount}"
+        TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+    <Label
+        Grid.Row="4"
+        Grid.Column="1"
+        FontSize="Small"
+        HorizontalTextAlignment="End"
+        IsVisible="{Binding Data.DiscountAmount, Converter={StaticResource ValueExistsConverter}}"
+        LineBreakMode="TailTruncation"
+        Text="{Binding Data.DiscountAmount, StringFormat='{0:C}'}"
+        TextColor="{x:Static statics:Palette.PRICE}" />
+</Grid>

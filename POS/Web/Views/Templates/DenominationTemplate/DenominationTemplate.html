@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Denomination Templates</title>
+    <link href="DenominationTemplate.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- denomination dialog template -->
+    <script id="denominationDialogTemplate" type="text/html">
+        <div class="grow">
+            <!-- current denomination -->
+            <div class="h4 secondaryFontColor padTop16" data-bind="resx: {textContent: 'string_13250' }">Denomination</div>
+            <div class="row padBottom12 denominationLine">
+                <div class="grow centerY">
+                    <div class="h1" data-bind="text: currency">USD</div>
+                </div>
+                <div class="grow centerY alignRight">
+                    <div class="h1" data-bind="text: denominationLabel">1.00</div>
+                </div>
+            </div>
+            <!-- current calculated denomination -->
+            <div class="padTop12">
+                <div class="row padBottom12">
+                    <div class="grow">
+                        <div class="h4 secondaryFontColor" data-bind="text: denominationValueLabel">Denomination total</div>
+                    </div>
+                    <div class="grow textRight">
+                        <div class="h4" data-bind="text: denominationValue">0.00</div>
+                    </div>
+                </div>
+            </div>
+            <!-- calculated total -->
+            <div class="padTop12">
+                <div class="row padBottom12">
+                    <div class="grow">
+                        <div class="h4 secondaryFontColor" data-bind="resx: {textContent: 'string_13251' }">Currency total</div>
+                    </div>
+                    <div class="grow textRight">
+                        <div class="h4" data-bind="text: denominationTotalValue">0.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Denomination list template -->
+    <script id="denominationListTemplate" type="text/html">
+        <div class="row centerY height64 primaryPanelBackgroundColor denominationList">
+            <!-- Denomination -->
+            <div class="ratio2 col">
+                <div class="padLeft12 h3" data-bind="text: denominationAmountToDisplay">1.00</div>
+                <div class="padLeft12 h6 secondaryFontColor" data-bind="text: currency"></div>
+            </div>
+            <!-- Denomination quantity -->
+            <div tabindex="0" role="button" class="ratio4 textRight accentColor denominationBorder accentBorder" data-bind="click: $parent.quantityClicked.bind($parent, $data), enterKeyPress: $parent.quantityClicked.bind($parent, $data)">
+                <div class="h1 padRight12" data-bind="text: countedQuantity">0</div>
+            </div>
+            <!-- Denomination amount -->
+            <div tabindex="0" role="button" class="ratio4 textRight accentColor denominationBorder accentBorder" data-bind="click: $parent.amountClicked.bind($parent, $data), enterKeyPress: $parent.amountClicked.bind($parent, $data)">
+                <div class="h1 padLeft12" data-bind="text: countedAmountToDisplay">0.00</div>
+            </div>
+        </div>
+        <div class="denominationGap"></div>
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "Audit_event_price_lookup_error": "Chyba registrace události vyhledávání ceny: {0}",
+  "_Audit_event_price_lookup_error.comment": "Audit event registration log error message.",
+  "Audit_event_tax_override_error": "Chyba registrace události přepsání daně: {0}",
+  "_Audit_event_tax_override_error.comment": "Audit event registration log error message.",
+  "Audit_event_quantity_correction_error": "Chyba registrace události opravy množství: {0}",
+  "_Audit_event_quantity_correction_error.comment": "Audit event registration log error message.",
+  "Audit_event_open_cash_drawer_error": "Chyba registrace události otevření zásuvky s hotovostí: {0}",
+  "_Audit_event_open_cash_drawer_error.comment": "Audit event registration log error message.",
+  "Audit_event_price_lookup_event_message": "Registrována událost vyhledávání ceny",
+  "_Audit_event_price_lookup_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_tax_override_event_message": "Registrována událost přepsání daně",
+  "_Audit_event_tax_override_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_quantity_correction_event_message": "Registrována událost opravy množství",
+  "_Audit_event_quantity_correction_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_open_cash_drawer_event_message": "Událost otevření zásuvky s hotovostí zaregistrována.",
+  "_Audit_event_open_cash_drawer_event_message.comment": "Audit event database log string field value."
+}

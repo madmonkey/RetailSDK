@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Resume Shift View</title>
+    <link href="ResumeShiftView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="resumeShiftView fragment">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'resumeShiftView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div data-bind="pivotItem: { headerResx:'string_4053' }">
+                <!-- Main content -->
+                <div id="shiftsList" class="col grow" data-bind="dataList: {
+                    itemDataSource: availableShifts,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                    selectionChanged: shiftSelectionChangedHandler,
+                    ariaLabelResx: 'string_4053', /* Available shifts */
+                    columns: [
+                        { titleResx: 'string_4047', ratio: 20, collapseOrder: 7, minWidth: 136, field: 'StaffId' },
+                        { titleResx: 'string_4043', ratio: 20, collapseOrder: 6, minWidth: 136, field: 'TerminalId' },
+                        { titleResx: 'string_4135', ratio: 20, collapseOrder: 4, minWidth: 136, field: 'StatusValue', converter: 'Commerce.Core.Converter.shiftStatusEnumFormatter' },
+                        { titleResx: 'string_4052', ratio: 10, collapseOrder: 3, minWidth: 148, field: 'StatusDateTime', converter: 'Commerce.Core.Converter.ShortDateAndTime' },
+                        { titleResx: 'string_4264', ratio: 10, collapseOrder: 2, minWidth: 136, field: 'CashDrawer' },
+                        { titleResx: 'string_4265', ratio: 10, collapseOrder: 1, minWidth: 136, field: 'IsShared' },
+                        { titleResx: 'string_4044', ratio: 10, collapseOrder: 5, minWidth: 136, field: 'ShiftId', isRightAligned: true }
+                    ]
+                    },
+                    axBubbleAttr: 'resumeShiftView_availableShifts'">
+                </div>
+            </div>
+        </div>
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar:{}, axBubbleAttr: 'resumeShiftView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id:'cancelAppBar',
+                label:'Cancel',
+                extraClass: 'iconCancel',
+                onclick: cancelUseExistingShift,
+                labelResx: 'string_4015'
+                }, axBubbleAttr: 'resumeShiftView_cancelAppBar'"></button>
+
+            <button data-bind="appBarCommand: {
+                id:'okAppBar',
+                label:'OK',
+                extraClass: 'iconAccept',
+                onclick: useExistingShift,
+                labelResx:'string_4051',
+                enabled: isShiftSelected
+                }, axBubbleAttr: 'resumeShiftView_okAppBar'"></button>
+        </div>
+    </div>
+</body>
+</html>

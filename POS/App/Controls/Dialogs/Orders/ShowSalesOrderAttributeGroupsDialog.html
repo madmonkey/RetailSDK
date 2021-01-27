@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>EditSalesOrderAttributesDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'ShowSalesOrderAttributeGroupsDialog'">
+        <div data-bind="dialog: {
+                     title: title,
+                     visible: visible,
+                     closeOnEscButton: true,
+                     dialogCloseButtonClick: dialogCloseButtonClick
+                 },
+                 axBubbleAttr: 'showSalesOrderAttributeGroupsDialog_showSalesOrderAttributeGroupsDialog'" class="ShowSalesOrderAttributeGroupsDialog modalWindowContentSection">
+
+            <!-- dialog content -->
+            <div class="col height100Percent padRight12">
+                <!-- ko foreach: { data: attributeGroupViewModels, as: 'attributeGroupVm' } -->
+                <div data-bind="salesOrderAttributeGroup: { salesOrderAttributeGroupViewModel: attributeGroupVm }"></div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

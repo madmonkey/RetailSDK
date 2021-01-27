@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>StockCountDetailsView</title>
+    <link href="StockCountDetailsView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment stockCountDetailsView">
+        <div id="stockCountDetailsViewRecentPurchasePivot" data-bind="pivot: { headerItemsAxBubbleAttr: 'stockCountDetailsView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div id="stockCountDetailsViewRecentPurchasePivotProducts" class="col grow" data-bind="pivotItem: { headerResx: viewSubTitle }">
+                <!-- Main content -->
+                <!-- View for Stock Count Grid view -->
+                <div class="col grow height100Percent">
+                    <!-- Products Grid -->
+                    <div id="stockCountDetailsView_dataList" class="grow" data-bind="dataList: {
+                        itemDataSource: viewModel.stockCountLines,
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                        selectionChanged: viewModel.productSelectionChanged.bind(viewModel),
+                        ariaLabelResx: 'string_3387',
+                        columns: viewModel.stockCountLinesColumns
+                        },
+                        axBubbleAttr: 'stockCountDetailsView_listView'">
+                    </div>
+
+                    <div class="padBottom12">
+                        <!-- Total count results footer -->
+                        <div class="row padTop8 padBottom8 primaryPanelBarColor">
+                            <div class="padLeft12 padRight12" data-bind="css: viewModel.estimatedOnHandInventoryFeatureIsEnabled ? 'ratio9' : 'ratio7'">
+                                <div class="h4" data-bind="text: viewModel.totalProducts"></div>
+                                <div class="h4 secondaryFontColor" data-bind="resx: { textContent: 'string_12424' }"></div>
+                            </div>
+                            <div class="textRight padLeft12" data-bind="css: viewModel.estimatedOnHandInventoryFeatureIsEnabled ? 'ratio1 padRight12' : 'ratio2 padRight140'">
+                                <div class="h4" data-bind="text: viewModel.totalCounted"></div>
+                                <div class="h4 secondaryFontColor" data-bind="resx: { textContent: 'string_3361' }"></div>
+                            </div>
+                            <div class="ratio1 textRight padLeft12 padRight12" data-bind="visible: !viewModel.estimatedOnHandInventoryFeatureIsEnabled">
+                                <div class="h4" data-bind="text: viewModel.totalQuantity"></div>
+                                <div class="h4 secondaryFontColor" data-bind="resx: { textContent: 'string_3362' }"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="stockCountDetailsViewCommandAppBar" data-bind="appBar:{ extensionCommands: viewModel.extensionCommandViewModels }, axBubbleAttr: 'stockCountDetailsView_commandAppBar'">
+            <!-- Calculate variance-->
+            <button data-bind="appBarCommand: {
+                id:'onHandInventory',
+                extraClass: 'iconCalculate',
+                onclick: viewModel.calculateEstimatedOnHandInventory.bind(viewModel),
+                visible: viewModel.estimatedOnHandInventoryFeatureIsEnabled,
+                enabled: viewModel.hasStockCountLines,
+                labelResx: 'string_3326' },
+                axBubbleAttr: 'searchOrdersView_onHandInventory'"></button>
+
+            <!-- Location dialog for advanced warehousing process-->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconMapPin',
+                id:'changeLocation',
+                labelResx: 'string_3876',
+                onclick: viewModel.showLocationDialogAsync.bind(viewModel),
+                visible: viewModel.isAdvancedWarehousingEnabled }, axBubbleAttr: 'stockCountDetailsView_locationButton'"></button>
+
+            <!-- Opens dialog to add a new product -->
+            <button data-bind="appBarCommand: {
+                id: 'addProduct',
+                extraClass: 'iconAdd',
+                onclick: viewModel.addNewProductHandler.bind(viewModel),
+                labelResx: 'string_923'}, axBubbleAttr: 'stockCountDetailsView_addProductButton'"></button>
+
+            <!-- Opens dialog to edit quantity -->
+            <button data-bind="appBarCommand: {
+                id:'addQuantity',
+                extraClass: 'iconQuantity',
+                onclick: viewModel.performEditQuantity.bind(viewModel),
+                enabled: viewModel.isStockCountLineSelected,
+                labelResx: 'string_3374'}, axBubbleAttr: 'stockCountDetailsView_addQuantityButton'"></button>
+
+            <!-- Remove line -->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconDelete',
+                id:'removeProductLine',
+                onclick: viewModel.deleteProductLine.bind(viewModel),
+                labelResx: 'string_3320',
+                enabled: viewModel.isStockCountLineSelected}, axBubbleAttr: 'stockCountDetailsView_removeProductLineButton'"></button>
+
+            <!-- Refresh -->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconRefresh',
+                id:'refreshProductLines',
+                onclick: viewModel.refreshProductLinesValidator.bind(viewModel),
+                labelResx: 'string_3325',
+                disabled: viewModel.disableRefreshProductsInJournal}, axBubbleAttr: 'stockCountDetailsView_refreshProductLinesButton'"></button>
+
+            <!-- Save -->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconSave',
+                id:'saveJournal',
+                onclick: viewModel.saveJournalValidator.bind(viewModel),
+                labelResx: 'string_3324',
+                enabled: viewModel.hasStockCountLines}, axBubbleAttr: 'stockCountDetailsView_saveJournalButton'"></button>
+
+            <!-- Commit -->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAccept',
+                id:'commitJournal',
+                onclick: viewModel.commitJournalValidatorAsync.bind(viewModel),
+                labelResx: 'string_3323',
+                enabled: viewModel.hasStockCountLines}, axBubbleAttr: 'stockCountDetailsView_commitJournalButton'"></button>
+        </div>
+    </div>
+</body>
+</html>

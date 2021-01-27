@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>User Info Self Packing Item Template</title>
+</head>
+<body>
+    <script id="SelfPackingUserInfoUnpacked" type="text/html">
+        <button class="width144 height48 pad0 headerBackgroundColor headerBackgroundColorHover"
+                data-bind="click: onItemClickedHandler, axBubbleAttr: 'headerSplitView_userInfo',
+                           attr: { title: userAndShiftInfo }">
+            <div class="grow col padTop06 padBottom06 padLeft8 width144">
+                <div class="h4 ellipsis textLeft" data-bind="text: userImageOrInitialsOptions().name">Name</div>
+                <div class="h6 textTransformNone ellipsis textLeft opacity60" data-bind="text: shiftInfo()">Additional info</div>
+            </div>
+        </button>
+    </script>
+    <script id="SelfPackingUserInfoPacked" type="text/html">
+        <button class="row width240 height48 pad0"
+                data-bind="click: onItemClickedHandler,
+                           attr: { title: userAndShiftInfo }">
+            <div class="height48 width48 center">
+                <div data-bind="userImageOrInitials: userImageOrInitialsOptions" class="height28 width28 circleBorder h4"></div>
+            </div>
+            <div class="grow col padLeft8 padRight8 padTop4 width240">
+                <div class="h4 ellipsis textLeft" data-bind="text: userImageOrInitialsOptions().name">Name</div>
+                <div class="h6 textTransformNone padTop4 ellipsis textLeft opacity60" data-bind="text: shiftInfo()">Additional info</div>
+            </div>
+        </button>
+    </script>
+</body>
+</html>

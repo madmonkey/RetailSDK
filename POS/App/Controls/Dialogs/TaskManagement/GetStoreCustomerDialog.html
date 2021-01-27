@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetStoreCustomerDialog</title>
+    <link href="GetStoreCustomerDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="getStoreCustomerDialog" data-bind="customControlInternal: 'GetStoreCustomerDialog'">
+        <div data-bind="dialog: {
+            title: Commerce.ViewModelAdapter.getResourceString('string_7789'), /* Select a customer account */
+            visible: visible,
+            closeOnEscButton: true,
+            buttonClick: onButtonClick,
+            buttons: [
+                { label: Commerce.ViewModelAdapter.getResourceString('string_76') /* Cancel */, operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton', isPrimary: false },
+            ],
+        },
+        axBubbleAttr: 'getStoreCustomerDialoglistInputDialog_getStoreCustomerDialoglistInputDialog'">
+            <!-- Progress ring -->
+            <div data-bind="loader: { visible: viewModel.isBusy, restoreFocus: false, type: Commerce.Controls.Loader.LoaderType.Dialog }"></div>
+
+            <!-- Dialog content -->
+            <div class="col grow">
+                <!-- Search field -->
+                <div class="marginTop20">
+                    <label data-bind="resx: {textContent: 'string_13009' /* Scan or search */}" for="getStoreCustomerTextBox">Scan or search</label>
+                    <div class="row grow width100Percent searchWrapper">
+                        <input class="noBorder" id="getStoreCustomerTextBox" type="search"
+                               data-bind="value: searchText,
+                                    valueUpdate: 'afterkeydown',
+                                    clearMark: true,
+                                    enterKeyPress: performCustomerFilter" /> <!-- Search text box -->
+                        <button class="noBorder iconSearch margin0 height32 padRight8 searchButton" type="submit"
+                                data-bind="resx: { ariaLabel: 'string_50' /* Search */ },
+                                    click: performCustomerFilter,
+                                    axBubbleAttr: 'getStoreCustomerDialoglistInputDialog_searchButton'"></button> <!-- Search button -->
+                    </div>
+                    <div class="marginBottom10 marginTop12 secondaryBackgroundColor highContrastRowLine height01"></div> <!-- Separator line -->
+                </div>
+
+                <!-- Customers list after search -->
+                <div id="customersButtonGrid" class="grow col">
+                    <label class="marginTop20 marginBottom12 flexNone" data-bind="resx: {textContent: 'string_7788' /* Customer account*/}">Customer account</label>
+                    <div id="customersList"
+                         class="grow noMargin col"
+                         data-bind="dataList: {
+                             incrementalDataSource: {
+                             dataManager: viewModel,
+                             callerMethod: viewModel.searchCustomers,
+                             onLoading: viewModel.isBusyFlag,
+                             pageSize: 40,
+                             reloadCallBack: reloadCustomersCallback
+                             },
+                             defaultListType: Commerce.Controls.DataList.ListType.Card,
+                             selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                             itemInvoked: itemClickHandler,
+                             ariaLabelResx: 'string_7788', /* Customer account */
+                             itemTemplates: [
+                                {
+                                    templateId: 'customersGridTemplate',
+                                    cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                    deviceType: Commerce.Controls.DataList.DeviceType.All
+                                }
+                             ]
+                        }, axBubbleAttr: 'getCustomersDialoglistInputDialog_customersButtonGrid'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

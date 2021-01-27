@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="col height100Percent">
+        <!-- The Test Recorder loader needs to cover dialogs as a dialog can be opened on the content page when Test Recorder is processing -->
+        <div data-bind="loader: { visible: _indeterminateWaitVisible, type: Commerce.Controls.Loader.LoaderType.Dialog}"></div>
+        <div class="row no-shrink taskRecorderPanelHeader">
+            <div class="grow">
+                <div class="h4 title"
+                     data-bind="text: Title">
+                    TASK RECORDER
+                </div>
+            </div>
+        </div>
+        <div class="row grow stretch padLeft12 padTop12 padRight12 padBottom12">
+            <div class="col width100Percent">
+                <div class="row no-shrink">
+                    <h2 tabindex="0" data-bind="resx: { textContent: 'string_10047' }"> Your recording is ready </h2>
+                </div>
+                <div tabindex="0" class="col minHeight48 marginTop12 marginBottom20">
+                    <label class="row" data-bind="resx: { textContent: 'string_10048' }"> Name </label>
+                    <div class="h4 scrollY minHeight24 wrapText" data-bind="text: recordingName"></div>
+                </div>
+                <div class="row no-shrink padBottom10">
+                    <div class="col grow" data-bind="buttonBlock: {
+                                buttonClass: 'iconSave',
+                                click: saveToThisPC,
+                                labelTextResx: 'string_10120', /* Save to this PC */
+                                ariaLabelResx: 'string_10120', /* Save to this PC */
+                            }">
+                    </div>
+                </div>
+                <div class="row no-shrink padBottom10" data-bind="visible: isLcsAvailable()">
+                    <div class="col grow" data-bind="buttonBlock: {
+                                buttonClass: 'iconOperations',
+                                click: saveToLifecycleServices,
+                                labelTextResx: 'string_10058', /* Save to LCS */
+                                ariaLabelResx: 'string_10058', /* Save to LCS */
+                            }">
+                    </div>
+                </div>
+                <div class="row no-shrink padBottom10" data-bind="visible: isSaveToWordDocumentAllowed()">
+                    <div class="col grow" data-bind="buttonBlock: {
+                                buttonClass: 'iconWordLogo',
+                                click: saveWordDocument,
+                                labelTextResx: 'string_10051', /* Export as Word document */
+                                ariaLabelResx: 'string_10051', /* Export as Word document */
+                            }">
+                    </div>
+                </div>
+                <div class="row no-shrink padBottom10" data-bind="visible: isSaveToDocumentRecordingAllowed()">
+                    <div class="col grow" data-bind="buttonBlock: {
+                                buttonClass: 'iconSave',
+                                click: saveRecording,
+                                labelTextResx: 'string_10049', /* Save as developer recording */
+                                ariaLabelResx: 'string_10049', /* Save as developer recording */
+                            }">
+                    </div>
+                </div>
+                <div class="col wrapText minHeight20 marginTop12">
+                    <div tabindex="0" class="h4 scrollY secondaryFontColor" data-bind="html: privacyText, ariaLabel: privacyText">
+                        NOTICE: The recording file, training document, and business process modeler package are included in a
+                        single recording file and are not encrypted, and can be viewed by others with whom you share them.
+                        See the technical documentation for more information.
+                    </div>
+                </div>
+                <div class="grow"></div>
+                <div class="row no-shrink marginTop24">
+                    <div class="col grow">
+                        <button class="primaryButton" type="button" data-bind="resx: { textContent: 'string_10060', ariaLabel: 'string_10060' }, click: closeRecording">Done</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

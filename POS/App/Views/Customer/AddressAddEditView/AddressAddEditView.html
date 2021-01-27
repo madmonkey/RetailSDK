@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AddressAddEditView</title>
+    <link href="AddressAddEditView.css" rel="stylesheet" />
+</head>
+<body>
+    <form autocomplete="off">
+        <div class="fragment addressAddEditView">
+            <div class="section main marginLeft20 pad0" data-bind="resx: { ariaLabel: 'string_4454' }">
+                <!-- Main content -->
+                <div class="scrollY">
+                    <div class="row maxWidth680 minWidth520 grow-landscape">
+                        <!-- Left column -->
+                        <div class="col grow marginTop08" style="flex-basis: 0" data-bind="enterKeyPress: viewModel.saveAddressAsync.bind(viewModel)" role="button">
+
+                            <!-- Address Type -->
+                            <div class="height52 marginBottom20">
+                                <label for="addressTypeTab" data-bind="resx: { textContent: 'string_4800' }">Address Type</label>
+                                <!-- ko if: !viewModel.showMultipleAddressTypes() -->
+                                <select id="addressTypeTab"
+                                        data-bind="options: viewModel.addressPurposes,
+                                        optionsText: 'Description',
+                                        optionsValue: 'RecordId',
+                                        value: viewModel.addressProxy.LogisticsLocationRoleRecordId,
+                                        optionsCaption: Commerce.ViewModelAdapter.getResourceString('string_4801'),
+                                        axBubbleAttr: 'addressAddEditView_addressTypeTab',
+                                        attr: { 'title': Commerce.ViewModelAdapter.getResourceString('string_4801') }"></select>
+                                <!-- /ko -->
+                                <!-- ko if: viewModel.showMultipleAddressTypes() -->
+                                <select id="multipleAddressTypeTab"
+                                        data-bind="options: viewModel.multiAddressPurposes,
+                                        optionsText: 'Description',
+                                        optionsValue: 'RecordId',
+                                        axBubbleAttr: 'addressAddEditView_addressTypeTab',
+                                        attr: { 'title': Commerce.ViewModelAdapter.getResourceString('string_4801') },
+                                        resx: { textContent: 'string_4800' },
+                                        disable: true"></select>
+                                <!-- /ko -->
+                            </div>
+
+                            <!-- Primary address selection toggle -->
+                            <div class="height52">
+                                <div id="isPrimaryAddressToggle"
+                                    data-bind="toggleSwitch: {
+                                        title: 'string_4809', /* Primary Address */
+                                        labelOn: 'string_1357',
+                                        labelOff:'string_1358',
+                                        checked: isPrimary,
+                                        onChange: setAddressProxyIsPrimary }">
+                                </div>
+                            </div>
+
+                            <!-- Contact Information -->
+                            <div class="marginTop24" data-bind="sectionWrapper: {headerResx: 'string_4802' }">
+
+                                <!-- Address name -->
+                                <!-- not to be confused with the Customer's name: this is the Address name -->
+                                <div class="height52 marginBottom20">
+                                    <label for="nameTab" data-bind="resx: { textContent: 'string_4803' }">Name</label>
+                                    <input type="text" id="nameTab"
+                                           data-bind="value: viewModel.addressProxy.Name, validator: {
+                                data: viewModel.addressProxy,
+                                field: 'Name',
+                                validatorType: 'CustomerValidator'},
+                                axBubbleAttr: 'addressAddEditView_nameTab'" />
+                                </div>
+
+                                <!-- Address phone -->
+                                <!-- not to be confused with Phone from Customer model -->
+                                <div class="height52 marginBottom20">
+                                    <label for="phoneTab" data-bind="resx: { textContent: 'string_4805' }">Phone</label>
+                                    <input type="tel" id="phoneTab"
+                                           data-bind="
+                                               value: viewModel.addressProxy.Phone,
+                                               validator: {
+                                                   data: viewModel.addressProxy,
+                                                   field: 'Phone',
+                                                   validatorType: 'AddressValidator'
+                                               },
+                                           axBubbleAttr: 'addressAddEditView_phoneTab'" />
+                                </div>
+
+                                <!-- Address email -->
+                                <!-- not to be confused with ReceiptEmail from Customer model -->
+                                <div class="height52">
+                                    <label for="emailTab" data-bind="resx: { textContent: 'string_4845' }">Contact email address</label>
+                                    <input type="email" id="emailTab"
+                                           data-bind="
+                                               value: viewModel.addressProxy.Email, 
+                                               validator: {
+                                                   data: viewModel.addressProxy,
+                                                   field: 'Email',
+                                                   validatorType: 'AddressValidator'
+                                               },
+                                           axBubbleAttr: 'addressAddEditView_emailTab'" />
+                                </div>
+                                <div class="gutter40x40"></div>
+                            </div>
+
+                            <!-- Tax -->
+                            <div data-bind="sectionWrapper: {headerResx: 'string_4806' }">
+                                <!-- Tax group -->
+                                <div class="height52 marginBottom20">
+                                    <label for="taxGroupTab" data-bind="resx: { textContent: 'string_4807' }">Sales Tax Group</label>
+                                    <select id="taxGroupTab"
+                                            data-bind="options: Commerce.ViewControllers.AddressAddEditViewController.salesTaxGroups,
+                                            optionsText: 'TaxGroupName',
+                                            optionsValue: 'TaxGroup',
+                                            value: viewModel.addressProxy.TaxGroup,
+                                            optionsCaption: Commerce.ViewModelAdapter.getResourceString('string_4808'),
+                                            axBubbleAttr: 'addressAddEditView_taxGroupTab',
+                                            attr: { 'title': Commerce.ViewModelAdapter.getResourceString('string_4808') }"></select>
+                                </div>
+                            </div>
+
+                            <!-- ko foreach: { data: viewModel.customControlViewModels, as: 'control' } -->
+                            <div data-bind="customControl: control, visible: control.isVisible"></div>
+                            <!-- /ko -->
+                        </div>
+
+                        <div class="gutter40x40"></div>
+
+                        <div class="col grow" style="flex-basis: 0">
+                            <!-- Middle column -->
+
+                            <div data-bind="sectionWrapper: {headerResx: 'string_4810' }">
+                                <!-- Address Information -->
+                                <!-- Country/Region -->
+                                <div class="height52 marginBottom20" data-bind="enterKeyPress: viewModel.saveAddressAsync.bind(viewModel)" role="button">
+                                    <label for="countryRegionTabRead" data-bind="resx: { textContent: 'string_1314' }">Country/region</label>
+                                    <select id="countryRegionTabRead"
+                                            data-bind="options: viewModel.countryRegions,
+                                            optionsText: 'ShortName',
+                                            optionsValue: 'CountryRegionId',
+                                            value: viewModel.addressProxy.ThreeLetterISORegionName,
+                                            optionsCaption: Commerce.ViewModelAdapter.getResourceString('string_1315'),
+                                            axBubbleAttr: 'addressAddEditView_countryTabRead',
+                                            attr: { 'title': Commerce.ViewModelAdapter.getResourceString('string_1315') }"></select>
+                                </div>
+
+                                <!-- Street name -->
+                                <div class="height120 marginBottom20" data-bind="visible: showStreetName">
+                                    <label for="streetNameTabRead" data-bind="resx: { textContent: 'string_4811' }">Street Name</label>
+                                    <div class="height100">
+                                        <textarea id="streetNameTabRead" rows="5"
+                                                  data-bind="validator: {
+                                        data: viewModel.addressProxy,
+                                        field: 'Street',
+                                        validatorType: 'AddressValidator',
+                                        validatorField: 'Street'},
+                                        axBubbleAttr: 'addressAddEditView_streetNameTabRead'"></textarea>
+                                    </div>
+                                </div>
+                                <div>
+                                    <!-- Street number -->
+                                    <div class="height52 marginBottom20" data-bind="visible: showStreetNumber, enterKeyPress: viewModel.saveAddressAsync.bind(viewModel)" role="button">
+                                        <label for="streetNumberTabRead" data-bind="resx: { textContent: 'string_4838' }">Street Number</label>
+                                        <input type="text" id="streetNumberTabRead"
+                                               data-bind="validator: {
+                                    data: viewModel.addressProxy,
+                                    field: 'StreetNumber',
+                                    validatorType: 'AddressValidator',
+                                    validatorField: 'StreetNumber'},
+                                    axBubbleAttr: 'addressAddEditView_streetNumberTabRead'" />
+                                    </div>
+
+                                    <!-- Building complement -->
+                                    <div class="height52 marginBottom20" data-bind="visible: showBuildingComplement, enterKeyPress: viewModel.saveAddressAsync.bind(viewModel)" role="button">
+                                        <label for="bcTabRead" data-bind="resx: { textContent: 'string_4839' }">Building Complement</label>
+                                        <input type="text" id="bcTabRead"
+                                               data-bind="validator: {
+                                    data: viewModel.addressProxy,
+                                    field: 'BuildingCompliment',
+                                    validatorType: 'AddressValidator',
+                                    validatorField: 'BuildingCompliment'},
+                                    axBubbleAttr: 'addressAddEditView_bcTabRead'" />
+                                    </div>
+
+                                    <!-- City -->
+                                    <div class="height52 marginBottom20" data-bind="visible: showCity, enterKeyPress: viewModel.saveAddressAsync.bind(viewModel)" role="button">
+                                        <label for="cityTabRead" data-bind="resx: { textContent: 'string_1317' }">City</label>
+                                        <input type="text" id="cityTabRead"
+                                               data-bind="validator: {
+                                    data: viewModel.addressProxy,
+                                    field: 'City',
+                                    validatorType: 'AddressValidator',
+                                    validatorField: 'City'},
+                                    axBubbleAttr: 'addressAddEditView_cityTabRead'" />
+                                    </div>
+
+                                    <!-- County -->
+                                    <div class="height52 marginBottom20" data-bind="visible: showCounty, enterKeyPress: viewModel.saveAddressAsync.bind(viewModel)" role="button">
+                                        <label for="countyTabRead" data-bind="resx: { textContent: 'string_4840' }">County</label>
+                                        <input type="text" id="countyTabRead"
+                                               data-bind="validator: {
+                                    data: viewModel.addressProxy,
+                                    field: 'County',
+                                    validatorType: 'AddressValidator',
+                                    validatorField: 'County'},
+                                    axBubbleAttr: 'addressAddEditView_countyTabRead'" />
+                                    </div>
+
+                                    <!-- District -->
+                                    <div class="height52 marginBottom20" data-bind="visible: showDistrict, enterKeyPress: viewModel.saveAddressAsync.bind(viewModel)" role="button">
+                                        <label for="districtTabRead" data-bind="resx: { textContent: 'string_4841' }">District</label>
+                                        <input type="text" id="districtTabRead"
+                                               data-bind="validator: {
+                                    data: viewModel.addressProxy,
+                                    field: 'DistrictName',
+                                    validatorType: 'AddressValidator',
+                                    validatorField: 'DistrictName'},
+                                    axBubbleAttr: 'addressAddEditView_districtTabRead'" />
+                                    </div>
+
+                                    <!-- State -->
+                                    <div class="height52 marginBottom20" data-bind="visible: showState, enterKeyPress: viewModel.saveAddressAsync.bind(viewModel)" role="button">
+                                        <label for="stateTabRead" data-bind="resx: { textContent: 'string_1318' }">State</label>
+                                        <select id="stateTabRead"
+                                                data-bind="options: viewModel.states,
+                                            enable: enableState,
+                                            optionsText: 'StateName',
+                                            optionsValue: 'StateId',
+                                            value: viewModel.addressProxy.State,
+                                            optionsCaption: Commerce.ViewModelAdapter.getResourceString('string_1342'),
+                                            axBubbleAttr: 'addressAddEditView_stateTabRead',
+                                            attr: { 'title': Commerce.ViewModelAdapter.getResourceString('string_1342') }"></select>
+                                    </div>
+
+                                    <!-- Zip -->
+                                    <div class="height52 marginBottom20" data-bind="visible: showZip, enterKeyPress: zipCodeSaveClicked" role="button">
+                                        <label for="zipTabRead" data-bind="resx: { textContent: 'string_1319' }">Zip</label>
+                                        <input type="text" id="zipTabRead"
+                                               data-bind="validator: {
+                                    data: viewModel.addressProxy,
+                                    field: 'ZipCode',
+                                    validatorType: 'AddressValidator',
+                                    validatorField: 'ZipCode'},
+                                    axBubbleAttr: 'addressAddEditView_zipTabRead',
+                                    event: { blur: viewModel.zipCodeChangedAsync.bind(viewModel) }" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom app bar -->
+            <div class="commandAppBar" data-bind="appBar: { extensionCommands: viewModel.extensionCommandViewModels }, axBubbleAttr: 'addressAddEditView_commandAppBar'">
+                <button data-bind="appBarCommand: {
+                            extraClass: 'iconSave',
+                            id:'cmdSaveCustomerAddress',
+                            labelResx: 'string_1327',
+                            enabled: viewModel.canSave
+                        },
+                        invokeValidate: viewModel.saveAddressAsync.bind(viewModel),
+                        axBubbleAttr: 'addressAddEditView_cmdSaveCustomerAddress'"></button><!--Save-->
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>

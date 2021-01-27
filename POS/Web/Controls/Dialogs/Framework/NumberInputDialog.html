@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>NumberInputDialog</title>
+
+    <link href="NumberInputDialog.css" rel="stylesheet"/>
+</head>
+<body>
+<div data-bind="customControlInternal: 'NumberInputDialog'">
+
+    <div class="numberInputDialog">
+        <div data-bind="dialog:
+                {
+                    title: title,
+                    subTitle: subTitle,
+                    visible: visible,
+                    buttonClick: buttonClickHandler,
+                    subTitleCssClass: subTitleCssClass,
+                    showProgressIndicator: indeterminateWaitVisible,
+                    dialogCloseButtonClick: dialogCloseButtonClick
+                },
+                axBubbleAttr: 'numberInputDialog_numberInputDialog'" class="numberInputDialog modalWindowContentSection">
+
+            <!-- dialog content -->
+            <div class="grow"></div>
+            <div class="dialogSplitColumn" data-bind="axBubbleAttr: 'numberInputDialog_numberNumPad'">
+                <div data-bind="numericNumpad: {
+                            parser: new Commerce.NumberParser(),
+                            value: _numberContent,
+                            decimalPrecision: _decimalPrecision,
+                            labelDataBinding: { text: label },
+                            onEnter: onTextBoxEnterEventHandler,
+                            numPadInputSource: numPadInputBroker
+                        }"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

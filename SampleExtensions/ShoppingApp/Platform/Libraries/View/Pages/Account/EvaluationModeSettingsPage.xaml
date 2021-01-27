@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:EvaluationModeSettingsPageXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Pages.EvaluationModeSettingsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages"
+    xmlns:behaviors="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Behaviors"
+    xmlns:converters="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Converters"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics">
+    <StackLayout
+        Orientation="Vertical">
+        <StackLayout.Resources>
+            <ResourceDictionary>
+                <Style
+                    x:Key="baseStyle"
+                    TargetType="Label">
+                    <Setter Property="FontSize" Value="Small" />
+                    <Setter Property="TextColor" Value="Red" />
+                    <Setter Property="HorizontalTextAlignment" Value="Center" />
+                </Style>
+                <converters:BooleanToObjectConverter
+                    x:Key="boolToStyleUrl"
+                    x:TypeArguments="Style">
+                    <converters:BooleanToObjectConverter.FalseObject>
+                        <Style
+                            BasedOn="{StaticResource baseStyle}"
+                            TargetType="Label">
+                            <Setter Property="Text" Value="{localization:Translate Pages_EvaluationModeSettingsPage_UrlErrorMessage}" />
+                        </Style>
+                    </converters:BooleanToObjectConverter.FalseObject>
+
+                    <converters:BooleanToObjectConverter.TrueObject>
+                        <Style
+                            BasedOn="{StaticResource baseStyle}"
+                            TargetType="Label">
+                            <Setter Property="Text" Value="" />
+                        </Style>
+                    </converters:BooleanToObjectConverter.TrueObject>
+
+                </converters:BooleanToObjectConverter>
+
+                <converters:BooleanToObjectConverter
+                    x:Key="boolToStyleOperatingUnitNumber"
+                    x:TypeArguments="Style">
+                    <converters:BooleanToObjectConverter.FalseObject>
+                        <Style
+                            BasedOn="{StaticResource baseStyle}"
+                            TargetType="Label">
+                            <Setter Property="Text" Value="{localization:Translate Pages_EvaluationModeSettingsPage_OperatingUnitNumberErrorMessage}" />
+                        </Style>
+                    </converters:BooleanToObjectConverter.FalseObject>
+
+                    <converters:BooleanToObjectConverter.TrueObject>
+                        <Style
+                            BasedOn="{StaticResource baseStyle}"
+                            TargetType="Label">
+                            <Setter Property="Text" Value="" />
+                        </Style>
+                    </converters:BooleanToObjectConverter.TrueObject>
+
+                </converters:BooleanToObjectConverter>
+
+            </ResourceDictionary>
+        </StackLayout.Resources>
+
+        <Label
+            Margin="20,20,20,0"
+            FontSize="Medium"
+            HorizontalOptions="StartAndExpand"
+            Text="{localization:Translate Pages_EvaluationModeSettingsPage_DataServiceUrl}"
+            TextColor="{x:Static statics:Palette.TEXT_DARK}"
+            VerticalTextAlignment="Center" />
+        <Entry
+            x:Name="DataServiceUrlEntry"
+            Margin="20,0"
+            FontSize="Small"
+            Text="{Binding DataServiceUrl}">
+            <Entry.Behaviors>
+                <behaviors:UrlValidatorBehavior
+                    x:Name="dataServiceUrlValidator" />
+            </Entry.Behaviors>
+        </Entry>
+        <Label
+            Style="{Binding Source={x:Reference dataServiceUrlValidator}, Path=IsValid, Converter={StaticResource boolToStyleUrl}}" />
+
+        <Label
+            Margin="20,0"
+            FontSize="Medium"
+            HorizontalOptions="StartAndExpand"
+            Text="{localization:Translate Pages_EvaluationModeSettingsPage_MediaBaseUrl}"
+            TextColor="{x:Static statics:Palette.TEXT_DARK}"
+            VerticalTextAlignment="Center" />
+        <Entry
+            x:Name="MediaBaseUrlEntry"
+            Margin="20,0"
+            FontSize="Small"
+            Text="{Binding MediaBaseUrl}">
+            <Entry.Behaviors>
+                <behaviors:UrlValidatorBehavior
+                    x:Name="mediaBaseUrlValidator" />
+            </Entry.Behaviors>
+        </Entry>
+        <Label
+            Style="{Binding Source={x:Reference mediaBaseUrlValidator}, Path=IsValid, Converter={StaticResource boolToStyleUrl}}" />
+
+        <Label
+            Margin="20,0"
+            FontSize="Medium"
+            HorizontalOptions="StartAndExpand"
+            Text="{localization:Translate Pages_EvaluationModeSettingsPage_CardPaymentHostPageUrl}"
+            TextColor="{x:Static statics:Palette.TEXT_DARK}"
+            VerticalTextAlignment="Center" />
+        <Entry
+            x:Name="CardPaymentHostPageUrlEntry"
+            Margin="20,0"
+            FontSize="Small"
+            Text="{Binding CardPaymentHostPageUrl}">
+            <Entry.Behaviors>
+                <behaviors:UrlValidatorBehavior
+                    x:Name="cardPaymentHostPageUrlValidator" />
+            </Entry.Behaviors>
+        </Entry>
+        <Label
+            Style="{Binding Source={x:Reference cardPaymentHostPageUrlValidator}, Path=IsValid, Converter={StaticResource boolToStyleUrl}}" />
+
+        <Label
+            Margin="20,0"
+            FontSize="Medium"
+            HorizontalOptions="StartAndExpand"
+            Text="{localization:Translate Pages_EvaluationModeSettingsPage_OperatingUnitNumber}"
+            TextColor="{x:Static statics:Palette.TEXT_DARK}"
+            VerticalTextAlignment="Center" />
+        <Entry
+            x:Name="OperatingUnitNumberEntry"
+            Margin="20,0"
+            FontSize="Small"
+            Text="{Binding OperatingUnitNumber}">
+            <Entry.Behaviors>
+                <behaviors:NotEmptyValidatorBehavior
+                    x:Name="notEmptyValidator" />
+            </Entry.Behaviors>
+        </Entry>
+        <Label
+            Style="{Binding Source={x:Reference notEmptyValidator}, Path=IsValid, Converter={StaticResource boolToStyleOperatingUnitNumber}}" />
+
+        <StackLayout
+            HorizontalOptions="CenterAndExpand"
+            Orientation="Horizontal">
+            <Button
+                Style="{StaticResource actionButtonStyle}"
+                Clicked="SaveButtonClicked"
+                Command="{Binding SaveSettingsCommand}"
+                IsEnabled="True"
+                Text="Save">
+                <Button.Triggers>
+                    <DataTrigger
+                        Binding="{Binding Source={x:Reference dataServiceUrlValidator}, Path=IsValid}"
+                        TargetType="Button"
+                        Value="False">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding Source={x:Reference mediaBaseUrlValidator}, Path=IsValid}"
+                        TargetType="Button"
+                        Value="False">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding Source={x:Reference cardPaymentHostPageUrlValidator}, Path=IsValid}"
+                        TargetType="Button"
+                        Value="False">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding Source={x:Reference notEmptyValidator}, Path=IsValid}"
+                        TargetType="Button"
+                        Value="False">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button
+                Style="{StaticResource actionButtonStyle}"
+                Clicked="CancelButtonClicked"
+                Text="Cancel" />
+            <Button
+                Style="{StaticResource actionButtonStyle}"
+                Clicked="ResetButtonClicked"
+                Command="{Binding ResetSettingsCommand}"
+                Text="Reset" />
+        </StackLayout>
+    </StackLayout>
+</base:EvaluationModeSettingsPageXaml>

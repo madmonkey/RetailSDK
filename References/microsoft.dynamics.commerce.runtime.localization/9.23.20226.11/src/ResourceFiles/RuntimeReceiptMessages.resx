@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Added" xml:space="preserve">
+    <value>Added</value>
+    <comment>Text on hardcoded receipt. -- On X/Z report, Floating Entry</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Approved" xml:space="preserve">
+    <value>APPROVED</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_BagID" xml:space="preserve">
+    <value>Bag ID</value>
+    <comment>Text on hardcoded receipt..</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_BankDrop" xml:space="preserve">
+    <value>Bank drop</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_BankDropReceipt" xml:space="preserve">
+    <value>Bank Drop Receipt</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Canceled" xml:space="preserve">
+    <value>Canceled</value>
+    <comment>Order Status: Canceled.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Card" xml:space="preserve">
+    <value>Cards</value>
+    <comment>Pay with credit/debit cards.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Cash" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_CashOutGiftCards" xml:space="preserve">
+    <value>Cashed out gift card amount</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Change" xml:space="preserve">
+    <value>Change</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_ChangeBack" xml:space="preserve">
+    <value>Change back</value>
+    <comment>Merchant pay back to customer with cash.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_ChargeBack" xml:space="preserve">
+    <value>Charge back</value>
+    <comment>Merchant pay back to customer with card.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Charges" xml:space="preserve">
+    <value>Charges</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Check" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Closed" xml:space="preserve">
+    <value>Closed</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Collected" xml:space="preserve">
+    <value>Collected</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Confirmed" xml:space="preserve">
+    <value>Confirmed</value>
+    <comment>Order Status: Confirmed. </comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Counted" xml:space="preserve">
+    <value>Counted</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Created" xml:space="preserve">
+    <value>Created</value>
+    <comment>Order Status: Created.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_CreditMemo" xml:space="preserve">
+    <value>Credit Memo</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_CustomerAccount" xml:space="preserve">
+    <value>Customer Account</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_CustomerAccountDeposit" xml:space="preserve">
+    <value>Customer Account Deposit</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_CustomerOrder" xml:space="preserve">
+    <value>Customer Order</value>
+    <comment>Transaction type: Customer Order.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_CustomerOrders" xml:space="preserve">
+    <value>Customer orders</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_CustomerPickup" xml:space="preserve">
+    <value>Customer Pickup</value>
+    <comment>Delivery type: Customer pick up.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_CustomerQuote" xml:space="preserve">
+    <value>Customer Quote</value>
+    <comment>Transaction type: Customer Quote.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_SalesInvoice" xml:space="preserve">
+    <value>Sales Invoice</value>
+    <comment>Transaction type: Sales Invoice.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_CustomerSales" xml:space="preserve">
+    <value>Customer sales</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Date" xml:space="preserve">
+    <value>Date</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Declined" xml:space="preserve">
+    <value>DECLINED</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Delivered" xml:space="preserve">
+    <value>Delivered</value>
+    <comment>Order Status: Delivered.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_DepositCollected" xml:space="preserve">
+    <value>Deposit collected</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_DepositRedeemed" xml:space="preserve">
+    <value>Deposit redeemed</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_DepositRefunded" xml:space="preserve">
+    <value>Deposit refunded</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Discounts" xml:space="preserve">
+    <value>Discounts</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Edited" xml:space="preserve">
+    <value>Edited</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Employee" xml:space="preserve">
+    <value>Employee</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_EndDate" xml:space="preserve">
+    <value>End Date</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_EndTime" xml:space="preserve">
+    <value>End time</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Expense" xml:space="preserve">
+    <value>Expense</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_FloatEntryAmount" xml:space="preserve">
+    <value>Float Entry Amount</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_FloatEntryReceipt" xml:space="preserve">
+    <value>Float Entry Receipt</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GiftCard" xml:space="preserve">
+    <value>Gift Card</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GiftCardBalance" xml:space="preserve">
+    <value>Gift Card Balance</value>
+    <comment>Text on hardcoded receipt..</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GiftCardCashOut" xml:space="preserve">
+    <value>Gift Card Cash Out</value>
+    <comment>Text on hardcoded receipt..</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GiftCardReload" xml:space="preserve">
+    <value>Gift Card Reload</value>
+    <comment>Text on hardcoded receipt..</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GiftCardSale" xml:space="preserve">
+    <value>Gift Card Sale</value>
+    <comment>Text on hardcoded receipt..</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GiftCardNo" xml:space="preserve">
+    <value>Gift Card No.</value>
+    <comment>Text on hardcoded receipt..</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Income" xml:space="preserve">
+    <value>Income</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_IncomeExpense" xml:space="preserve">
+    <value>Income/Expense</value>
+    <comment>Transaction type: Income Expense Transaction.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Invoiced" xml:space="preserve">
+    <value>Invoiced</value>
+    <comment>Order Status: Invoiced.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_LogOn" xml:space="preserve">
+    <value>LogOn</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Lost" xml:space="preserve">
+    <value>Lost</value>
+    <comment>Order Status: Lost.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_LoyaltyCard" xml:space="preserve">
+    <value>Loyalty Card</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Mixed" xml:space="preserve">
+    <value>Mixed</value>
+    <comment>Delivery type: Mixed.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_NotApplicable" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_OpenDrawer" xml:space="preserve">
+    <value>Open drawer</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_OperatorID" xml:space="preserve">
+    <value>Operator ID</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_OrgNumber" xml:space="preserve">
+    <value>Org. Number</value>
+    <comment>Organization number</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Over" xml:space="preserve">
+    <value>Over</value>
+    <comment>Text on hardcoded receipt. -- On X/Z report, over short total.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Placed" xml:space="preserve">
+    <value>Placed</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Processing" xml:space="preserve">
+    <value>Processing</value>
+    <comment>Order Status: Processing.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_RegisterNumber" xml:space="preserve">
+    <value>Register number</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Removed" xml:space="preserve">
+    <value>Removed</value>
+    <comment>Text on hardcoded receipt. -- On X/Z report, RemoveTender</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_RemoveTenderAmount" xml:space="preserve">
+    <value>Remove Tender Amount</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_RemoveTenderReceipt" xml:space="preserve">
+    <value>Remove Tender Receipt</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Returns" xml:space="preserve">
+    <value>Returns</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Rounded" xml:space="preserve">
+    <value>Rounded</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_SafeDrop" xml:space="preserve">
+    <value>Safe drop</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_SafeDropReceipt" xml:space="preserve">
+    <value>Safe Drop Receipt</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Sales" xml:space="preserve">
+    <value>Sales</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_SalesTransaction" xml:space="preserve">
+    <value>Sales Transaction</value>
+    <comment>Transaction type: Sales Transaction.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Sent" xml:space="preserve">
+    <value>Sent</value>
+    <comment>Order Status: Sent.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_ShiftNumber" xml:space="preserve">
+    <value>Shift number</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Shipping" xml:space="preserve">
+    <value>Shipping</value>
+    <comment>Delivery type: Shipping.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Short" xml:space="preserve">
+    <value>Short</value>
+    <comment>Text on hardcoded receipt. -- On X/Z report, short total.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_StartDate" xml:space="preserve">
+    <value>Start date</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_StartingAmount" xml:space="preserve">
+    <value>Starting amount</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_StartingAmountReceipt" xml:space="preserve">
+    <value>Starting Amount Receipt</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_StartTime" xml:space="preserve">
+    <value>Start time</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Statistics" xml:space="preserve">
+    <value>Statistics</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_StoreId" xml:space="preserve">
+    <value>Store Id</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Suspended" xml:space="preserve">
+    <value>Suspended</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Taxes" xml:space="preserve">
+    <value>Taxes</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_TenderDeclarationReceipt" xml:space="preserve">
+    <value>Tender Declaration Receipt</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Tendered" xml:space="preserve">
+    <value>Tendered</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Tenders" xml:space="preserve">
+    <value>Tenders</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_TenderTotals" xml:space="preserve">
+    <value>Tender totals</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Time" xml:space="preserve">
+    <value>Time</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_ToAccount" xml:space="preserve">
+    <value>To account</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_TotalAmounts" xml:space="preserve">
+    <value>Total amounts</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_Transactions" xml:space="preserve">
+    <value>Transactions</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_VoidedLines" xml:space="preserve">
+    <value>Voided lines</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_VoidedSales" xml:space="preserve">
+    <value>Voided sales</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_XReport" xml:space="preserve">
+    <value>X-Report</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_ZReport" xml:space="preserve">
+    <value>Z-Report</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_ReprintMessage" xml:space="preserve">
+    <value>COPY</value>
+    <comment>Text on receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GiftCards" xml:space="preserve">
+    <value>Gift cards</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_OrgUnitName" xml:space="preserve">
+    <value>Store name</value>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_SuspendedTotal" xml:space="preserve">
+    <value>Suspended</value>
+    <comment>Shift status message</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_ReceiptCopiesTotal" xml:space="preserve">
+    <value>Receipt copies</value>
+    <comment>Total amount of receipt copies</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_ReceiptCopiesCount" xml:space="preserve">
+    <value>Receipt copies</value>
+    <comment>Number of receipt copies</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_SalesGrandTotal" xml:space="preserve">
+    <value>Grand sales</value>
+    <comment>Sales grand total accumulated amount</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_ReturnsGrandTotal" xml:space="preserve">
+    <value>Grand return</value>
+    <comment>Returns grand total accumulated amount</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_NetGrandTotal" xml:space="preserve">
+    <value>Grand net</value>
+    <comment>Net turnover grand total accumulated amount</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GoodsSoldQty" xml:space="preserve">
+    <value>Items sold</value>
+    <comment>Number of items sold</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_ServicesSoldQty" xml:space="preserve">
+    <value>Services sold</value>
+    <comment>Number of services sold</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_ReceiptsCount" xml:space="preserve">
+    <value>Cash receipts</value>
+    <comment>Number of receipts registered</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_ReturnsCount" xml:space="preserve">
+    <value>Returns</value>
+    <comment>Number of returns registered</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_TaxCodes" xml:space="preserve">
+    <value>Value added tax amounts</value>
+    <comment>Value added tax amounts</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_TaxCode" xml:space="preserve">
+    <value>{0}</value>
+    <comment>VAT amount header format string</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_StartingAmountTotal" xml:space="preserve">
+    <value>Starting amount</value>
+    <comment>Starting amount</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_SalesTotalExcludingTax" xml:space="preserve">
+    <value>Total Sales excluding VAT</value>
+    <comment>Total Sales excluding VAT</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_SalesTotalIncludingTax" xml:space="preserve">
+    <value>Total Sales including VAT</value>
+    <comment>Total Sales including VAT</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_VoidedSalesTotal" xml:space="preserve">
+    <value>Voided lines</value>
+    <comment>Total voided amount of all cash and carry transactions.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_TaxFlagExempt" xml:space="preserve">
+    <value>Exempt</value>
+    <comment>Text for tax flag on sales line indicating whether the tax was exempted.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_TaxFlagExemptAndZeroTax" xml:space="preserve">
+    <value>Exempt &amp; No Tax</value>
+    <comment>Text for tax flag on sales line indicating whether the tax was exempted and not assessed.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_TaxFlagZeroTax" xml:space="preserve">
+    <value>No Tax</value>
+    <comment>Text for tax flag on sales line indicating whether the tax was not assessed.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GiftCardAddedAmount" xml:space="preserve">
+    <value>Amount Added to Gift Card</value>
+    <comment>Text on hardcoded receipt.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_EntryStatusCanceled" xml:space="preserve">
+    <value>Canceled</value>
+    <comment>Text on hard coded receipt - RetailEntryStatus.Canceled.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_EntryStatusConcluded" xml:space="preserve">
+    <value>Concluded</value>
+    <comment>Text on hard coded receipt - RetailEntryStatus.Concluded.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_EntryStatusNormal" xml:space="preserve">
+    <value>Normal</value>
+    <comment>Text on hard coded receipt - RetailEntryStatus.None.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_EntryStatusOnHold" xml:space="preserve">
+    <value>On Hold</value>
+    <comment>Text on hard coded receipt - RetailEntryStatus.OnHold.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_EntryStatusPosted" xml:space="preserve">
+    <value>Posted</value>
+    <comment>Text on hard coded receipt - RetailEntryStatus.Posted.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_EntryStatusVoided" xml:space="preserve">
+    <value>Voided</value>
+    <comment>Text on hard coded receipt - RetailEntryStatus.Voided.</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GCOp_AddTo" xml:space="preserve">
+    <value>Add</value>
+    <comment>Receipt Text for RetailGiftCardOperation.AddTo</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GCOp_Issue" xml:space="preserve">
+    <value>Issue</value>
+    <comment>Receipt Text for RetailGiftCardOperation.Issue</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GCOp_None" xml:space="preserve">
+    <value>None</value>
+    <comment>Receipt Text for RetailGiftCardOperation.None</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GCOp_Redeem" xml:space="preserve">
+    <value>Redeem</value>
+    <comment>Receipt Text for RetailGiftCardOperation.Redeem</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GCOp_Refund" xml:space="preserve">
+    <value>Refund</value>
+    <comment>Receipt Text for RetailGiftCardOperation.Refund</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GCOp_UnlockManual" xml:space="preserve">
+    <value>Manual Unlock</value>
+    <comment>Receipt Text for RetailGiftCardOperation.ManualUnlock</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GCOp_UnlockOffline" xml:space="preserve">
+    <value>Offline Unlock</value>
+    <comment>Receipt Text for RetailGiftCardOperation.OfflineUnlock</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_GCOp_VoidIssue" xml:space="preserve">
+    <value>Void</value>
+    <comment>Receipt Text for RetailGiftCardOperation.VoidIssue</comment>
+  </data>
+  <data name="Microsoft_Dynamics_Commerce_Runtime_Receipt_ThisIsNotAReceipt" xml:space="preserve">
+    <value>This is not a receipt</value>
+    <comment>Text on empty Fiscal field replcament.</comment>
+  </data>
+</root>

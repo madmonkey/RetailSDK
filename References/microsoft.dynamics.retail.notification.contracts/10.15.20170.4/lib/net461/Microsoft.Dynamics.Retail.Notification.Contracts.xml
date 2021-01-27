@@ -1,0 +1,891 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.Notification.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ApplicationActiveState">
+            <summary>
+            Application active state.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.ApplicationActiveState.Unknown">
+            <summary>
+            The unknown.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.ApplicationActiveState.Startup">
+            <summary>
+            The startup.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.ApplicationActiveState.Shutdown">
+            <summary>
+            The shutdown.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ApplicationStateEvent">
+            <summary>
+            Application Startup/shutdown notification.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.IApplicationStateData">
+            <summary>
+            Application Startup/Shutdown Event Data.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.IApplicationStateDataV1">
+            <summary>
+            Application Startup/Shutdown Event Data Version One.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.IApplicationStateDataV1.State">
+            <summary>
+            Gets the state.
+            </summary>
+            <value>
+            The state.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ILineDisplayEventData">
+            <summary>
+            Line Display Event Notification - Data interface.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ILineDisplayEventDataV1">
+            <summary>
+            Version 1.0 - Line Display Event Notification.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ILineDisplayEventDataV1.ClearLines">
+            <summary>
+            Gets a value indicating whether all lines should be cleared.
+            </summary>
+            <value>
+              <c>true</c> if [clear lines]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ILineDisplayEventDataV1.DisplayAtLines">
+            <summary>
+            Gets the Display the lines identified (0 based).
+            </summary>
+            <remarks>Usually 2 lines are provided.  May be empty if just clearing the lines.  May be combined with ClearLines.</remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ILogOffEventData">
+            <summary>
+            Logon Event Data interface.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ILogOffEventDataV1">
+            <summary>
+            Version 1.0 of ILogOffEventData interface.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ILogOffEventDataV1.OperatorId">
+            <summary>
+            Gets the operator (e.g., cashier) id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ILogOffEventDataV1.OperatorName">
+            <summary>
+            Gets the name of the operator.
+            </summary>
+            <value>
+            The name of the operator (e.g., cashier).
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ILogOnEventData">
+            <summary>
+            Logon Event Data interface.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ILogOnEventDataV1">
+            <summary>
+            Version 1.0 of ILogOnEventData interface.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ILogOnEventDataV1.SuccessfulLogOn">
+            <summary>
+            Gets a value indicating whether successful log on.
+            </summary>
+            <value>
+              <c>true</c> if [successful log on]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ILogOnEventDataV1.OperatorId">
+            <summary>
+            Gets the operator identifier.
+            </summary>
+            <value>
+            The operator identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ILogOnEventDataV1.OperatorName">
+            <summary>
+            Gets the name of the operator.
+            </summary>
+            <value>
+            The name of the operator.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.INotificationCenter">
+            <summary>
+            Generic Notification Center that supports run-time notification creation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.INotificationCenter.Notifications">
+            <summary>
+            Gets the Event Aggregator used for notifications.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.IRequestAddCustomerEventData">
+            <summary>
+            The request add customer event data interface.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.IRequestAddCustomerEventDataV1">
+            <summary>
+            The request add customer event data interface (V1).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.IRequestAddCustomerEventDataV1.CustomerId">
+            <summary>
+            Gets the customer identifier.
+            </summary>
+            <value>
+            The customer identifier.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.IRequestAddItemEventData">
+            <summary>
+            The request add item event data interface.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.IRequestAddItemEventDataV1">
+            <summary>
+            The request add item event data interface, V1.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.IRequestAddItemEventDataV1.ItemId">
+            <summary>
+            Gets the item identifier.
+            </summary>
+            <value>
+            The item identifier.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ISessionEventData">
+            <summary>
+            Session event data.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ISessionEventDataV1">
+            <summary>
+            Session event data (version 1).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ISessionEventDataV1.SessionId">
+            <summary>
+            Gets the session id.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ITransactionStateEventData">
+            <summary>
+            Application Startup/Shutdown Event Data.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ITransactionStateEventDataV1">
+            <summary>
+            Transaction state event data interface V1.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ITransactionStateEventDataV1.State">
+            <summary>
+            Gets the state.
+            </summary>
+            <value>
+            The state.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.LineDisplayEvent">
+            <summary>
+            Line Display Event Notifications class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.LogOffEvent">
+            <summary>
+            LogOn notification class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.LogOnEvent">
+            <summary>
+            LogOn notification class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.RequestAddCustomerEvent">
+            <summary>
+            The request add customer event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.RequestAddItemEvent">
+            <summary>
+            The request add item event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.SessionEvent">
+            <summary>
+            Session Notification (base class).
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.TransactionState">
+            <summary>
+            The transaction state.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.TransactionState.Unknown">
+            <summary>
+            The unknown.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.TransactionState.Begin">
+            <summary>
+            The begin.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.TransactionState.End">
+            <summary>
+            The end.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.TransactionStateEvent">
+            <summary>
+            Application Startup/shutdown notification class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.FormType">
+            <summary>
+            Indicate what style would be used in affiliation form.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.FormType.None">
+            <summary>
+            Default style.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.FormType.Transaction">
+            <summary>
+            Editing style for transaction.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.FormType.Customer">
+            <summary>
+            Editing style for customer.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.AffiliationConfirmation">
+            <summary>
+            Confirmation object used for affiliation form interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.AffiliationConfirmation.AffiliationResults">
+            <summary>
+            Gets or sets the affiliation list of confirmation result.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.AffiliationConfirmation.SelectedAffiliations">
+            <summary>
+            Gets or sets the list of selected affiliations, would mark affiliations as selected in form.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.AffiliationConfirmation.FormType">
+            <summary>
+            Gets or sets the indicator if edit affiliations for customer.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.BarcodeConfirmation">
+            <summary>
+            Confirmation object used for Barcode form interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.BarcodeConfirmation.BarcodeTable">
+            <summary>
+            Gets or sets the data table of barcodes to display.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.BarcodeConfirmation.SelectedBarcodeId">
+            <summary>
+            Gets or sets the user selected barcode identifier.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.CartItem">
+            <summary>
+            Class to save the kit components to be added to cart.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.CartItem.ItemId">
+            <summary>
+            Gets or sets the Kit component item identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.CartItem.VariantId">
+            <summary>
+            Gets or sets the Kit component item variant identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.CartItem.Unit">
+            <summary>
+            Gets or sets the Kit component unit.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.CartItem.Quantity">
+            <summary>
+            Gets or sets the kit component item quantity.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.DimensionConfirmation">
+            <summary>
+            Confirmation object used for Dimension form interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.DimensionConfirmation.InventDimCombination">
+            <summary>
+            Gets or sets the dimensions to display.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.DimensionConfirmation.DimensionData">
+            <summary>
+            Gets or sets the the item dimensions (e.g. color, size, style).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.DimensionConfirmation.SelectDimCombination">
+            <summary>
+            Gets or sets the selected dimension combination.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.DimensionConfirmation.DisplayDialog">
+            <summary>
+            Gets or sets a value indicating whether to show or hide the dialog.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.DisbursementSlipCreationConfirmation">
+            <summary>
+            The disbursement slip creation confirmation class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.DisbursementSlipCreationConfirmation.DisbursementSlipInfo">
+            <summary>
+            Gets or sets disbursement slip information.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ExtendedLogOnConfirmation">
+            <summary>
+            Confirmation object used for extended log on assignment interactions.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.IInteractionView">
+            <summary>
+            InteractionView interface used to extend the POS system.
+            </summary>
+            [SuppressMessage("Microsoft.Design", "CA1040:AvoidEmptyInterfaces")]
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.IInteractionViewV1">
+            <summary>
+            Version 1.0 for InteractionView interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Notification.Contracts.IInteractionViewV1.Initialize``1(``0)">
+            <summary>
+            Initialize method called by Interaction service when object loaded.
+            </summary>
+            <typeparam name="TArgs">Type of interaction view.</typeparam>
+            <param name="args">Notification object passed as an argument for the Interaction.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Notification.Contracts.IInteractionViewV1.GetResults``1">
+            <summary>
+            Get the results from calling a certain Interaction.
+            </summary>
+            <typeparam name="TResults">Type of notification.</typeparam>
+            <returns>Notification result.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.IncomeExpenseAccountsConfirmation">
+            <summary>
+            Confirmation object used for IncomeExpenseAccounts form interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.IncomeExpenseAccountsConfirmation.IncomeExpenseAccounts">
+            <summary>
+            Gets or sets the data table of income expense accounts to display.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.IncomeExpenseAccountsConfirmation.TitleStringId">
+            <summary>
+            Gets or sets the string identifier for dialog title.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.IncomeExpenseAccountsConfirmation.SelectedAccountNumber">
+            <summary>
+            Gets or sets the user selected account number.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.InputType">
+            <summary>
+            Enumeration that defines the type of Input required for validation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.InputType.Normal">
+            <summary>
+            Normal input type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.InputType.Email">
+            <summary>
+            Email input type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.InputConfirmation">
+            <summary>
+            Confirmation object used for Input form interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.InputConfirmation.MaxLength">
+            <summary>
+            Gets or sets the maximum length of text the user can input.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.InputConfirmation.PromptText">
+            <summary>
+            Gets or sets the text displayed to user to prompt for data input.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.InputConfirmation.Text">
+            <summary>
+            Gets or sets the title for the dialog.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.InputConfirmation.InputType">
+            <summary>
+            Gets or sets the  type of text input (email type will have basic validation).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.InputConfirmation.EnteredText">
+            <summary>
+            Gets or sets the  text entered by the user.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.KitComponentSubstituteConfirmation">
+            <summary>
+            Confirmation object used for Kit Component Substitute form interaction.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.KitComponentSubstituteConfirmation.SelectedComponentLineRecId">
+            <summary>
+            Gets or sets the component line record identifier that is currently selected for substitution.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.KitComponentSubstituteConfirmation.IncludedComponents">
+            <summary>
+            Gets or sets the collection of components included in the kit before substitution.
+            </summary>
+            <remarks>Key: represents the component line record identifier and  Value: represents the product identifier.</remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.KitComponentSubstituteConfirmation.KitItemId">
+            <summary>
+            Gets or sets the item id of the kit the substitute belongs to.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.KitComponentSubstituteConfirmation.ResultData">
+            <summary>
+            Gets or sets the ResultData stores result of a selected Row for Kit Substitute (return to Product Details Form).
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.KitDisassemblyConfirmation">
+            <summary>
+            Confirmation object used for Kit Disassembly form interaction.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.KitDisassemblyConfirmation.KitQuantity">
+            <summary>
+            Gets or sets the Quantity of the kit.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.KitDisassemblyConfirmation.KitId">
+            <summary>
+            Gets or sets the Item id of the kit.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.KitDisassemblyConfirmation.KitVariantId">
+            <summary>
+            Gets or sets the VariantId of the selected kit.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.KitDisassemblyConfirmation.CartItems">
+            <summary>
+            Gets or sets the disassembled components of the kit to be added to cart.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.LogOnConfirmation">
+            <summary>
+            Confirmation object used for LogOn interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.LogOnConfirmation.LogOnStatus">
+            <summary>
+            Gets or sets the log on status.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.LoyaltyCardFormContext">
+            <summary>
+            Defines the context of the LoyaltyCardForm usage.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.LoyaltyCardFormContext.LoyaltyCardBalance">
+            <summary>
+            Loyalty card balance.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.LoyaltyCardFormContext.LoyaltyCardIssue">
+            <summary>
+            Issue loyalty card.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.LoyaltyCardConfirmation">
+            <summary>
+            Confirmation object used for LoyaltyCardForm interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.LoyaltyCardConfirmation.Context">
+            <summary>
+            Gets or sets the context if the LoyaltyCardForm usage.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.LoyaltyCardIssuedConfirmation">
+            <summary>
+            Confirmation object used for LoyaltyCardIssue form interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.LoyaltyCardIssuedConfirmation.LoyaltyCardNumber">
+            <summary>
+            Gets or sets the loyalty card number.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.LoyaltyCardIssuedConfirmation.PosTransaction">
+            <summary>
+            Gets or sets the POS transaction object.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.LoyaltyCardPayConfirmation">
+            <summary>
+            Confirmation object used for LoyaltyCardPay form interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.LoyaltyCardPayConfirmation.LoyaltyCardNumber">
+            <summary>
+            Gets or sets the Loyalty card number.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.LoyaltyCardPayConfirmation.RegisteredAmount">
+            <summary>
+            Gets or sets the Amount entered by the user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.LoyaltyCardPayConfirmation.BalanceAmount">
+            <summary>
+            Gets or sets the Balance amount.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.LoyaltyCardPayConfirmation.CurrencyCode">
+            <summary>
+            Gets or sets the Currency code.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ManagerAccessConfirmation">
+            <summary>
+            Confirmation object used for manager access interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ManagerAccessConfirmation.Operation">
+            <summary>
+            Gets or sets the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ManagerAccessConfirmation.OperatorId">
+            <summary>
+            Gets or sets the manager's operator identifier.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.PayCashConfirmation">
+            <summary>
+            Confirmation object used for PayCash form interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCashConfirmation.BalanceAmount">
+            <summary>
+            Gets or sets the balance amount.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCashConfirmation.ProposedPaymentAmount">
+            <summary>
+            Gets or sets the proposed payment amount.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCashConfirmation.TenderInfo">
+            <summary>
+            Gets or sets the tender information.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCashConfirmation.RegisteredAmount">
+            <summary>
+            Gets or sets the amount entered by the user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCashConfirmation.OperationDone">
+            <summary>
+            Gets or sets a value indicating whether operation is done.
+            </summary>
+            <value>
+              <c>true</c> if [operation done]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.PayCurrencyConfirmation">
+            <summary>
+            Confirmation object used for PayCurrency form interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCurrencyConfirmation.BalanceAmount">
+            <summary>
+            Gets or sets the balance amount.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCurrencyConfirmation.ProposedPaymentAmount">
+            <summary>
+            Gets or sets the proposed payment amount.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCurrencyConfirmation.TenderInfo">
+            <summary>
+            Gets or sets the tender information.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCurrencyConfirmation.RegisteredAmount">
+            <summary>
+            Gets or sets the amount entered by the user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCurrencyConfirmation.ExchangeRate">
+            <summary>
+            Gets or sets the exchange rate entered by the user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCurrencyConfirmation.CurrentCurrencyCode">
+            <summary>
+            Gets or sets the currency selected by the user.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.PayCustomerAccountConfirmation">
+            <summary>
+            Confirmation object used for PayCustomerAccount form interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCustomerAccountConfirmation.BalanceAmount">
+            <summary>
+            Gets or sets the balance amount.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCustomerAccountConfirmation.ProposedPaymentAmount">
+            <summary>
+            Gets or sets the proposed payment amount.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCustomerAccountConfirmation.TenderInfo">
+            <summary>
+            Gets or sets the tender information.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCustomerAccountConfirmation.PosTransaction">
+            <summary>
+            Gets or sets the POS transaction object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCustomerAccountConfirmation.RegisteredAmount">
+            <summary>
+            Gets or sets the amount entered by the user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCustomerAccountConfirmation.CustomerId">
+            <summary>
+            Gets or sets the customer selected by the user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PayCustomerAccountConfirmation.OperationDone">
+            <summary>
+            Gets or sets a value indicating whether [operation done].
+            </summary>
+            <value>
+              <c>true</c> if [operation done]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.PrintLabelReportNotification">
+            <summary>
+            Notification object used for PrintLabelReport form Interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.PrintLabelReportNotification.LabelType">
+            <summary>
+            Gets or sets type of the label report.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ProductDetailsConfirmation">
+            <summary>
+            Confirmation object used for viewing product details interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ProductDetailsConfirmation.ItemNumber">
+            <summary>
+            Gets or sets the item number.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ProductDetailsConfirmation.ItemVariant">
+            <summary>
+            Gets or sets the item variant.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ProductDetailsConfirmation.AddToSale">
+            <summary>
+            Gets or sets a value indicating whether the item should be added to sale.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ProductDetailsConfirmation.ResultData">
+            <summary>
+            Gets or sets the ResultData object [This can be Dimensions or BarCodeInfo object].
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ProductDetailsConfirmation.SourceContext">
+            <summary>
+            Gets or sets the Source Context string.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ProductDetailsSourceContext">
+            <summary>
+            Calling Context for Product Details Form.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.ProductDetailsSourceContext.ItemSearch">
+            <summary>
+            Context is from ItemSearch -> Product Details Form.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.ProductDetailsSourceContext.SalesTransaction">
+            <summary>
+            Context is from Item Sale -> Product Details Form.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.ProductDetailsSourceContext.DisassembleKit">
+            <summary>
+            Context is from Disassemble Kit -> Product Details Form.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.ProductDetailsSourceContext.InventoryLookup">
+            <summary>
+            Context is from Inventory Lookup -> Product Details Form.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Notification.Contracts.ProductDetailsSourceContext.ViewProductDetailsOperation">
+            <summary>
+            Context is from View Product Details Operations of Selected item from Cart -> Product Details Form.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ProductInformationConfirmation">
+            <summary>
+            Confirmation object used for product information interactions.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ProductSearchAttributesFilterConfirmation">
+            <summary>
+            Confirmation object used for viewing product details interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ProductSearchAttributesFilterConfirmation.SearchFilter">
+            <summary>
+            Gets or sets the IProductSearchFilter search filter.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ProductSearchAttributesFilterConfirmation.SearchFilterCache">
+            <summary>
+            Gets or sets the IProductSearchFilter search filter cache.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ProductSearchAttributesFilterConfirmation.CategoryId">
+            <summary>
+            Gets or sets the product category Id.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.RedeemLoyaltyPointsConfirmation">
+            <summary>
+            Confirmation object used for RedeemLoyaltyPoints form Interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.RedeemLoyaltyPointsConfirmation.CardNumber">
+            <summary>
+            Gets or sets the card number.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.RedeemLoyaltyPointsConfirmation.AmountAvailableForDiscount">
+            <summary>
+            Gets or sets the amount available for discount.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.RedeemLoyaltyPointsConfirmation.DiscountAmount">
+            <summary>
+            Gets or sets the discount amount.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.RegisterTimeNotification">
+            <summary>
+            Notification object used for RegisterTime form interactions.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ReportConfirmation">
+            <summary>
+            Confirmation object for Report (Used in View POS Report functionality).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ReportConfirmation.Success">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Microsoft.Dynamics.Retail.Notification.Contracts.ReportConfirmation"/> is success.
+            </summary>
+            <value>
+              <c>true</c> if success; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ReturnTransactionConfirmation">
+            <summary>
+            Confirmation object used for Return Transaction form interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ReturnTransactionConfirmation.PosTransaction">
+            <summary>
+            Gets or sets the POS transaction object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.ReturnTransactionConfirmation.ReturnedLineNumbers">
+            <summary>
+            Gets or sets the linked list of returned line numbers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.SaleRefundDisplayNotification">
+            <summary>
+            Notification object used for SaleRefundDetailForm interactions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Contracts.SaleRefundDisplayNotification.RetailTransaction">
+            <summary>
+            Gets or sets retail transaction.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Contracts.ViewTimeClockEntriesNotification">
+            <summary>
+            Notification object used for RegisterTime form interactions.
+            </summary>
+        </member>
+    </members>
+</doc>

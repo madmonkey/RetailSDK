@@ -1,0 +1,12 @@
+﻿{
+  "DeliveryOption": null,
+  "Data": {
+    "AmountDue": 0.0,
+    "AmountPaid": 0.0,
+    "CartLines": [],
+    "CartTypeValue": 1,
+    "Name": null,
+    "SubtotalAmount": 0.0,
+    "TotalAmount": 0.0
+  }
+}

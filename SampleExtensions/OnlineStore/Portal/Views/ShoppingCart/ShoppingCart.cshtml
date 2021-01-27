@@ -1,0 +1,16 @@
+@using Contoso.Retail.Ecommerce.Sdk.Controls
+@using Contoso.Retail.Ecommerce.Web.Storefront.Models;
+
+@{
+    ViewBag.Title = @ResourceHelper.GetLocalString("ShoppingCartViewTitle");
+}
+
+@section other {
+    @MvcHelperExtension.GetShoppingCartControlHeader("/Checkout", "/")
+}
+
+@MvcHelperExtension.GetShoppingCartControl()
+
+
+
+

@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TimelineCreateEditDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'TimelineCreateEditDialog'">
+        <div class="timelineCreateEditDialog">
+            <div data-bind="dialog:
+                {
+                    title: title,
+                    subTitle: subTitle,
+                    visible: visible,
+                    dialogType: Commerce.Controls.Dialog.DialogTypes.SEQUENCE,
+                    backButtonVisible: backButtonVisible,
+                    backClick: dialogGoBack,
+                    buttonClick: onButtonClick,
+                    dialogCloseButtonClick: dialogCloseButtonClick,
+                    showProgressIndicator: indeterminateWaitVisible,
+                    buttons: [
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_30238'), operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, isPrimary: true, visible: isOkButtonVisible, disable: isOkButtonDisabled },
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false }
+                    ],
+                },
+                axBubbleAttr: 'timelineCreateEditDialog_timelineCreateEditDialog'" class="timelineCreateEditDialog modalWindowContentSection">
+
+                <!-- dialog content -->
+                <div class="content col">
+                    <!-- Edit -->
+                    <div data-bind="ifnot: isReadOnly">
+                        <label for="timelineItemTypePicker" data-bind="resx: { textContent: 'string_30246' }, visible: isSelectTypeVisible"></label>
+                        <div id="timelineItemTypePicker" data-bind="selectTile: {
+                                    tileType: Commerce.Controls.SelectTile.SelectTileType.DoubleLine,
+                                    primaryText: timelineItemTypeDescription,
+                                    iconClass: timelineItemTypeIcon,
+                                    iteminvoked: selectTypeClickHandler.bind($data),
+                                    primaryTextCssClass: 'primaryFontColor',
+                                    secondaryTextCssClass: 'secondaryFontColor',
+                                    backgroundCssClass: 'backgroundTransparent',
+                                    cheveronCssClass:'accentColor',
+                                    displayBottomBorder: true
+                            }, visible: isSelectTypeVisible, axBubbleAttr: 'timelineCreateEditDialog_ItemType'">
+                        </div>
+                        <div>
+                            <!-- Title input -->
+                            <label for="timelineItemTitle" data-bind="resx: { textContent: 'string_30228' }">Title</label>
+                            <input type="text" id="timelineItemTitle" data-bind="value: timelineItemTitle,
+                                    valueUpdate:'input',
+                                    resx: { ariaLabel: 'string_30228'},
+                                    axBubbleAttr: 'timelineCreateEditDialog_ItemTitle'" maxlength="60" />
+                            <div class="marginBottom12"></div>
+                            <div data-bind="if: isEditDateTimeVisible">
+                                <!--Date picker dropdown-->
+                                <label for="timelineDatePicker" data-bind="resx: { textContent: 'string_30229' }">Date</label>
+                                <div id="timelineDatePicker" class="row marginBottom12"
+                                     data-bind="datePicker:{ datePattern: '{day.integer(2)} {dayofweek.full}',
+                                     current: timelineItemDate,
+                                     onChange: onDateChange.bind($data) },
+                                     resx: { ariaLabel: 'string_30229'},
+                                     axBubbleAttr: 'timelineCreateEditDialog_DatePicker'"></div>
+                                <!--Date picker dropdown-->
+                                <label for="timelineTimePicker" data-bind="resx: { textContent: 'string_30230' }">Time</label>
+                                <div id="timelineDatePicker" class="row marginBottom12"
+                                     data-bind="timePicker:{
+                                     current: timelineItemTime,
+                                     onChange: onTimeChange.bind($data)},
+                                     resx: { ariaLabel: 'string_30230'},
+                                     axBubbleAttr: 'timelineCreateEditDialog_TimePicker'"></div>
+                            </div>
+                            <div data-bind="ifnot: isEditDateTimeVisible">
+                                <label for="timelineDateReadOnly" data-bind="resx: { textContent: 'string_30229' }">Date</label>
+                                <div id="timelineDateReadOnly" class="h4 marginBottom12" data-bind="text: timelineItemDateReadOnly"></div>
+                            </div>
+                            <!-- Description input -->
+                            <label for="timelineItemDescription" data-bind="resx: { textContent: 'string_30231' }">Description</label>
+                            <textarea class="heigth120" type="text" id="timelineItemDescription" maxlength="255" rows="10" data-bind="value: timelineItemDescription,
+                                    valueUpdate:'input',
+                                    resx: { ariaLabel: 'string_30231'},
+                                    axBubbleAttr: 'timelineCreateEditDialog_ItemDescription'"></textarea>
+                        </div>
+                    </div>
+                    <div data-bind="if: isReadOnly">
+                        <label for="timelineItemTypeReadOnly" data-bind="resx: { textContent: 'string_30246' }"></label>
+                        <div id="timelineItemTypeReadOnly" class="h4 marginBottom12 ellipsis" data-bind="text: timelineItemTypeDescription, attr: { title: timelineItemTypeDescription }"></div>
+                        <label for="timelineItemTitleReadOnly" data-bind="resx: { textContent: 'string_30228' }">Title</label>
+                        <div id="timelineItemTitleReadOnly" class="h4 marginBottom12 ellipsis" data-bind="text: timelineItemTitle, attr: { title: timelineItemTitle }"></div>
+                        <label for="timelineDateReadOnly" data-bind="resx: { textContent: 'string_30229' }">Date</label>
+                        <div id="timelineDateReadOnly" class="h4 marginBottom12" data-bind="text: timelineItemDateReadOnly"></div>
+                        <label for="timelineItemDescriptionReadOnly" data-bind="resx: { textContent: 'string_30231' }">Description</label>
+                        <textarea class="heigth120 noBorder" type="text" id="timelineItemDescriptionReadOnly" maxlength="255" rows="10" data-bind="value: timelineItemDescription,
+                                    resx: { ariaLabel: 'string_30231'},
+                                    axBubbleAttr: 'timelineCreateEditDialog_ItemDescription'" readonly="readonly"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

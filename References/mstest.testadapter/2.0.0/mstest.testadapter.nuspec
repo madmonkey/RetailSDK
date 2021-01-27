@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>MSTest.TestAdapter</id>
+    <version>2.0.0</version>
+    <title>MSTest.TestAdapter</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://github.com/microsoft/testfx</projectUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</iconUrl>
+    <description>The adapter to discover and execute MSTest Framework based tests. 
+
+  Supported platforms: 
+   - .NET 4.5.0+ 
+   - .NET Core 1.0+ (Universal Windows Apps 10+) (Visual Studio 2017) 
+   - ASP.NET Core 1.0+ (Visual Studio 2017)</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>MSTest TestFramework TestAdapter VisualStudio Unittest MSTestV2 Microsoft</tags>
+    <dependencies>
+      <group targetFramework=".NETCoreApp1.0">
+        <dependency id="NETStandard.Library" version="1.6.1" />
+        <dependency id="System.Diagnostics.TextWriterTraceListener" version="4.3.0" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

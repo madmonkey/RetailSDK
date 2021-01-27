@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetVariantSelectionMethodDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'GetVariantSelectionMethodDialog'">
+        <div data-bind="dialog: {
+            title: title,
+            visible: visible,
+            buttonClick: buttonClickHandler,
+            buttons: [
+                { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false },
+            ],
+        },
+        axBubbleAttr: 'getVariantSelectionMethodDialog'">
+            <!-- Product card -->
+            <!-- ko ifnot: Commerce.ObjectExtensions.isNullOrUndefined(product()) -->
+            <div class="marginTop20 marginBottom16" data-bind="template: { name: 'productSearchResultNonInteractableSmallCard', data: product() }"></div>
+            <!-- /ko -->
+            
+            <!-- Selection method options -->
+            <div data-bind="selectTile: {
+                 primaryText: Commerce.ViewModelAdapter.getResourceString('string_2638'),   /* View all variants */
+                 iconClass: 'iconGridViewSmall',
+                 iteminvoked: viewAllVariantsOption
+            }"></div>
+
+            <div data-bind="selectTile: {
+                 primaryText: Commerce.ViewModelAdapter.getResourceString('string_2646'),   /* Select a variant */
+                 iconClass: 'iconProductVariant',
+                 iteminvoked: selectVariantOption
+            }"></div>
+        </div>
+    </div>
+</body>
+</html>

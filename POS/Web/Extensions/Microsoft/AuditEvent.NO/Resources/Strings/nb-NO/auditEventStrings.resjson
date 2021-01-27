@@ -1,0 +1,18 @@
+{
+  "Audit_event_price_lookup_error": "Registreringsfeil for prisoppslagshendelse: {0}",
+  "_Audit_event_price_lookup_error.comment": "Audit event registration log error message.",
+  "Audit_event_tax_override_error": "Registreringsfeil for avgiftsoverstyringshendelse: {0}",
+  "_Audit_event_tax_override_error.comment": "Audit event registration log error message.",
+  "Audit_event_quantity_correction_error": "Registreringsfeil for antallkorrigeringshendelse: {0}",
+  "_Audit_event_quantity_correction_error.comment": "Audit event registration log error message.",
+  "Audit_event_open_cash_drawer_error": "Feil ved registrering av åpning av kassaskuffhendelse: {0}",
+  "_Audit_event_open_cash_drawer_error.comment": "Audit event registration log error message.",
+  "Audit_event_price_lookup_event_message": "Prisoppslagshendelse registrert",
+  "_Audit_event_price_lookup_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_tax_override_event_message": "Avgiftsoverstyringshendelse registrert",
+  "_Audit_event_tax_override_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_quantity_correction_event_message": "Antallkorrigeringshendelse registrert",
+  "_Audit_event_quantity_correction_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_open_cash_drawer_event_message": "Registrert åpning av kassaskuffhendelse",
+  "_Audit_event_open_cash_drawer_event_message.comment": "Audit event database log string field value."
+}

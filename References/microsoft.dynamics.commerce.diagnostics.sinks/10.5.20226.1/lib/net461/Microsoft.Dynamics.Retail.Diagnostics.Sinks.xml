@@ -1,0 +1,613 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.Diagnostics.Sinks</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.DictionaryExtensions">
+            <summary>
+            Extension methods for dictionaries.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.DictionaryExtensions.GetValueOrDefault``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)">
+            <summary>
+            Will return a value associated with the specific key if it exists, otherwise it will return
+            a pre-defined default value.
+            </summary>
+            <typeparam name="TKey">The type of the key parameter.</typeparam>
+            <typeparam name="TValue">The type of the value parameter.</typeparam>
+            <param name="dictionary">The dictionary on which the lookup occurs.</param>
+            <param name="key">The key to use for the lookup.</param>
+            <param name="defaultValue">The default value to return in case the key is not present in the dictionary.</param>
+            <returns>The value associated with the key if it exists, otherwise the pre-defined default value.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when either the dictionary or key arguments are null.</exception>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink">
+            <summary>
+            Logs events to the ETW system.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink.NativeEtwTypes">
+            <summary>
+            List of natively supported ETW types.  We will log these "as-is" to make
+            sure they are sent to ETW as the same type.  For all other types that are
+            not known to ETW, we will just call ToString() and log them as a string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink.EventProvider">
+            <summary>
+            Gets or sets a local instance of the <see cref="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink.EventProvider"/> class
+            used to send events to the ETW system.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink.GetSupportedArguments(System.Object[])">
+            <summary>
+            Returns a set of support ETW arguments given a set of standard arguments.
+            </summary>
+            <param name="args">The set of arguments to transform into an ETW supported set of arguments.</param>
+            <returns>Supported set of ETW arguments.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink.WriteEvent(Microsoft.Dynamics.Retail.Diagnostics.EventData)">
+            <summary>
+            Writes an event parsed from a JSON logging request.
+            </summary>
+            <param name="eventData">The event data object parsed from the JSON format.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink.InternalWriteEvent(System.Diagnostics.Eventing.EventDescriptor,System.Object[])">
+            <summary>
+            Writes an event for a given event definition and set of arguments to ETW.
+            </summary>
+            <param name="eventDefinition">The event definition associated with the event being logged.</param>
+            <param name="args">The arguments that are used to log the event.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink.InternalInitializeEvents(System.Collections.Generic.IDictionary{Microsoft.Dynamics.Retail.Diagnostics.EventId,Microsoft.Dynamics.Retail.Diagnostics.EventDefinition})">
+            <summary>
+            Initializes the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            </summary>
+            <param name="eventDefinitions">The inventory of static event definitions associated with each events.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink.InternalInitializeConfig">
+            <summary>
+            Internal implementation of the initialize config.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink.InitializeConfig(Microsoft.Dynamics.Retail.Diagnostics.IDiagnosticsSinkConfigElement,Microsoft.Dynamics.Retail.Diagnostics.IDiagnosticsApplicationConfigElement)">
+            <summary>
+            Initializes the configuration of the sink based on the diagnostics config.
+            </summary>
+            <param name="diagnosticsSinkConfig">The diagnostics sinks config to consume.</param>
+            <param name="diagnosticsApplicationConfig">Reference to the diagnostics application config.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink.GetEventArgs(Microsoft.Dynamics.Retail.Diagnostics.EventData)">
+            <summary>
+            Retrieves an array of arguments for the event.
+            </summary>
+            <param name="eventData">The instance of the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.EventData"/> to retrieve the data for.</param>
+            <returns>Array of arguments.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink.CreateEventDescriptor(Microsoft.Dynamics.Retail.Diagnostics.EventDefinition)">
+            <summary>
+            Creates an instance of an <see cref="T:System.Diagnostics.Eventing.EventDescriptor"/> from
+            a given <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.EventDefinition"/>.
+            </summary>
+            <param name="eventDefinition">The <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.EventDefinition"/> from which to generate the <see cref="T:System.Diagnostics.Eventing.EventDescriptor"/>.</param>
+            <returns>An <see cref="T:System.Diagnostics.Eventing.EventDescriptor"/> created from a given <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.EventDefinition"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink.CreateEventDescriptor(Microsoft.Dynamics.Retail.Diagnostics.EventData)">
+            <summary>
+            Creates an instance of the <see cref="T:System.Diagnostics.Eventing.EventDescriptor"/> class into an instance
+            of the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.EventData"/> class.
+            </summary>
+            <param name="eventData">The instance of the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.EventData"/> class to convert.</param>
+            <returns>The instance of the <see cref="T:System.Diagnostics.Eventing.EventDescriptor"/> derived from the instance of the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.EventData"/> class.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink.GetKeywordValue(Microsoft.Dynamics.Retail.Diagnostics.EventAttribute)">
+            <summary>
+            Retrieves the keyword value for a specific <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.EventAttribute"/>.
+            </summary>
+            <param name="eventAttribute">The event attribute for which to retrieve the keyword value.</param>
+            <returns>The keyword value for the specific event attribute.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EtwSink.GetChannelKeywordValue(Microsoft.Dynamics.Retail.Diagnostics.EventChannel)">
+            <summary>
+            Retrieves the keyword base value based on an <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.EventChannel"/>.
+            </summary>
+            <param name="eventChannel">The <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.EventChannel"/> for which to generate the value for.</param>
+            <returns>Keyword value associated with the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.EventChannel"/>.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EventLogSink">
+            <summary>
+            Logs events to the windows event log.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EventLogSink.EventSourceName">
+            <summary>
+            Gets the name of the Event Source used by the Event Log Sink.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EventLogSink.WriteEvent(Microsoft.Dynamics.Retail.Diagnostics.EventLevel,System.String,System.Object[])">
+            <summary>
+            Writes a simple message to the emergency sink using string formatting.
+            </summary>
+            <param name="level">The level of the event.</param>
+            <param name="logMessage">The formatted message to write.</param>
+            <param name="args">The arguments to the formatted message string.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EventLogSink.InternalWriteEvent(Microsoft.Dynamics.Retail.Diagnostics.EventDefinition,System.Object[])">
+            <summary>
+            Write the event to the Event Log.
+            </summary>
+            <param name="eventDefinition">The event definition to use.</param>
+            <param name="args">The set of dynamics arguments to log with the event.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EventLogSink.InternalInitializeEvents(System.Collections.Generic.IDictionary{Microsoft.Dynamics.Retail.Diagnostics.EventId,Microsoft.Dynamics.Retail.Diagnostics.EventDefinition})">
+            <summary>
+            Initializes the event definitions.
+            </summary>
+            <param name="eventDefinitions">The event definitions to initialize.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.EventLogSink.InternalInitializeConfig">
+            <summary>
+            Internal implementation of the initialize config.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1">
+            <summary>
+            Base class for logging sink related functionality.
+            </summary>
+            <typeparam name="T">The type of the event definitions to use for the logging sink.</typeparam>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.DiagnosticsApplicationConfig">
+            <summary>
+            Gets the diagnostics application config.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.DiagnosticsSinksConfig">
+            <summary>
+            Gets the diagnostics sink config.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.IsInitialized">
+            <summary>
+            Gets a value indicating whether the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.ILoggingSink"/> is initialized.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.EventDefinitions">
+            <summary>
+            Gets or sets a list of Event Definitions that are used for logging,
+            uniquely identified by the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.EventId"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.InternalWriteEvent(`0,System.Object[])">
+            <summary>
+            Write the event to the actual logging sink implementation.
+            </summary>
+            <param name="eventDefinition">The event definition of the event to be logged.</param>
+            <param name="args">The arguments that are used to log the event.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.InternalInitializeEvents(System.Collections.Generic.IDictionary{Microsoft.Dynamics.Retail.Diagnostics.EventId,Microsoft.Dynamics.Retail.Diagnostics.EventDefinition})">
+            <summary>
+            Initializes the logging sink implementation.
+            </summary>
+            <param name="eventDefinitions">The inventory of static event definitions associated with each events.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.InternalInitializeConfig">
+            <summary>
+            Initializes the config in the logging sink implementation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.WriteEvent(Microsoft.Dynamics.Retail.Diagnostics.EventId,System.Object[])">
+            <summary>
+            Writes an event for a given event id and set of arguments to the logging sink.
+            </summary>
+            <param name="id">The unique event id associated with the event being logged.</param>
+            <param name="args">The arguments that are used to log the event.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.SetSessionInfo(Microsoft.Dynamics.Retail.Diagnostics.SessionInfo)">
+            <summary>
+            Sets the session information to be logged for the logging sink.
+            </summary>
+            <remarks>
+            At various points, only a subset of the Session information might be provided to the
+            sink.  By convention, an empty GUID is the equivalent of not sending the corresponding id.
+            </remarks>
+            <param name="sessionInfo">The Session info associated with the app.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.InitializeEvents(System.Collections.Generic.IDictionary{Microsoft.Dynamics.Retail.Diagnostics.EventId,Microsoft.Dynamics.Retail.Diagnostics.EventDefinition})">
+            <summary>
+            Initializes events in the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.ILoggingSink"/>.
+            </summary>
+            <param name="eventDefinitions">The inventory of static event definitions associated with each events.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.SetSessionPropertyValue(System.String,System.String)">
+            <summary>
+            Sets the session property information for consecutive events.
+            </summary>
+            <param name="propertyName">The session property name.</param>
+            <param name="propertyValue">The session property value.</param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if the method is called with null property name.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.GetSessionPropertyValue(System.String)">
+            <summary>
+            Gets the session property value.
+            </summary>
+            <param name="propertyName">The session property name.</param>
+            <returns>The current session property value.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if the method is called with null property name.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.FlushEvents">
+            <summary>
+            Flushes events in the sink when application exits.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.LoggingSink`1.InitializeConfig(Microsoft.Dynamics.Retail.Diagnostics.IDiagnosticsSinkConfigElement,Microsoft.Dynamics.Retail.Diagnostics.IDiagnosticsApplicationConfigElement)">
+            <summary>
+            Initializes the configuration of the sink based on the diagnostics config.
+            </summary>
+            <param name="diagnosticsSinkConfig">The diagnostics sinks config to consume.</param>
+            <param name="diagnosticsApplicationConfig">Reference to the diagnostics application config.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition">
+            <summary>
+            Defines all static information associated with an event that is being logged
+            to the TraceSource class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition.MaxEventLogMessageLength">
+            <summary>
+            Maximum length allowed for messages written to the Event Log.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition.levelTraceTypeMapping">
+            <summary>
+            Dictionary to map a EventLevel to the corresponding TraceEventType.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition.#ctor(Microsoft.Dynamics.Retail.Diagnostics.EventDefinition)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition"/> class.
+            </summary>
+            <param name="eventDefinition">
+            The <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.EventDefinition"/> from which to construct
+            initialize the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition"/>.
+            </param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition.#ctor(Microsoft.Dynamics.Retail.Diagnostics.EventDefinition,System.Collections.Generic.ICollection{System.Diagnostics.TraceSource})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition"/> class.
+            </summary>
+            <param name="eventDefinition">
+            The <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.EventDefinition"/> from which to construct
+            initialize the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition"/>.
+            </param>
+            <param name="traceSources">The trace sources the event definition maps to.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition.Message">
+            <summary>
+            Gets the formatted message associated with the event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition.EventType">
+            <summary>
+            Gets the type of the event to log.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition.EventCode">
+            <summary>
+            Gets the event code associated with the event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition.TraceSources">
+            <summary>
+            Gets the Trace Sources associated with the event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition.WriteEventToTraceSource(System.Object[])">
+            <summary>
+            Write the event to the corresponding TraceSources.
+            </summary>
+            <param name="args">List of arguments for the event.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceLoggingSink">
+            <summary>
+            Logs events to a given set of TraceSources retrieved
+            from a set of event definitions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceLoggingSink.InternalWriteEvent(Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceEventDefinition,System.Object[])">
+            <summary>
+            Writes an event with a given event definition and set of arguments to the TraceSource.
+            The message to be logged is retrieved from the corresponding event definitions.
+            </summary>
+            <param name="eventDefinition">The event definition associated with the event being logged.</param>
+            <param name="args">The arguments that are used to log the event.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceLoggingSink.InternalInitializeEvents(System.Collections.Generic.IDictionary{Microsoft.Dynamics.Retail.Diagnostics.EventId,Microsoft.Dynamics.Retail.Diagnostics.EventDefinition})">
+            <summary>
+            Initializes the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceLoggingSink"/>.
+            </summary>
+            <param name="eventDefinitions">The inventory of static event definitions associated with each events.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.TraceSourceLoggingSink.InternalInitializeConfig">
+            <summary>
+            Internal implementation of the initialize config.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet">
+            <summary>
+            Set of Windows Performance Counters used to track boundary operations.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.lastCounterLock">
+            <summary>
+            Lock used when updating "last" values.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Retail.Diagnostics.PerfCounterProperty})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet"/> class.
+            </summary>
+            <param name="categoryName">The name of the Performance Counter Category.</param>
+            <param name="instanceName">The name of the Performance Counter instance.</param>
+            <param name="customProperties">List of custom properties associated with the Performance Counter.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.#ctor(System.String,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Retail.Diagnostics.PerfCounterProperty})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet"/> class.
+            </summary>
+            <param name="categoryName">The name of the Performance Counter Category.</param>
+            <param name="customProperties">List of custom properties associated with the Performance Counter.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.TotalCalls">
+            <summary>
+            Gets or sets the Performance Counter indicating the total number
+            boundary operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.TotalCallsPerSecond">
+            <summary>
+            Gets or sets the Performance Counter indicating the total number
+            boundary operations per second.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.SucceededCalls">
+            <summary>
+            Gets or sets the Performance Counter indicating whether the
+            boundary operation was successful.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.SucceededCallsPerSecond">
+            <summary>
+            Gets or sets the Performance Counter indicating whether the
+            boundary operation was successful per second.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.SucceededCallsRatio">
+            <summary>
+            Gets or sets the Performance Counter indicating the ratio of
+            boundary operation that were successful.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.SucceededCallsRatioBase">
+            <summary>
+            Gets or sets the Performance Counter indicating the base for the ratio of
+            boundary operation that were successful.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.FailedCalls">
+            <summary>
+            Gets or sets the Performance Counter indicating whether the
+            boundary operation was successful.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.FailedCallsPerSecond">
+            <summary>
+            Gets or sets the Performance Counter indicating whether the
+            boundary operation was successful per sec.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.FailedCallsRatio">
+            <summary>
+            Gets or sets the Performance Counter indicating the ratio of
+            boundary operation that were successful.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.FailedCallsRatioBase">
+            <summary>
+            Gets or sets the Performance Counter indicating the base for the ratio of
+            boundary operation that were successful.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.AverageLatency">
+            <summary>
+            Gets or sets the Performance Counter indicating the average latency
+            of the boundary operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.AverageLatencyBase">
+            <summary>
+            Gets or sets the Performance Counter indicating the base
+            for the average latency of the boundary operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.LastLatency">
+            <summary>
+            Gets or sets the Performance Counter indicating the last latency
+            of the boundary operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.WriteEvent(System.TimeSpan,System.Boolean,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Int64}})">
+            <summary>
+            Writes an event to the Performance Counter Set.
+            </summary>
+            <param name="callDuration">The duration of the boundary operation associated with the event.</param>
+            <param name="callSuccessful">Flag indicating whether the boundary operation was successful.</param>
+            <param name="customProperties">List of custom properties associated with the Performance Counter.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.WriteEvent(System.String,System.TimeSpan,System.Boolean,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Int64}})">
+            <summary>
+            Writes an event to the Performance Counter Set.
+            </summary>
+            <param name="performanceCounterInstanceName">The instance name of the Boundary Performance Counter.</param>
+            <param name="callDuration">The duration of the boundary operation associated with the event.</param>
+            <param name="callSuccessful">Flag indicating whether the boundary operation was successful.</param>
+            <param name="customProperties">List of custom properties associated with the Performance Counter.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.BoundaryPerfCounterSet.Reset">
+            <summary>
+            Resets all counters to zero.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.NumberOfItemsCounterGroup">
+            <summary>
+            Defines a group of counters to track number of item related metrics.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.NumberOfItemsCounterGroup.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.NumberOfItemsCounterGroup"/> class.
+            </summary>
+            <param name="categoryName">The name of the Performance Counter Category.</param>
+            <param name="instanceName">The name of the Performance Counter instance.</param>
+            <param name="name">The name of the Performance Counter.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.NumberOfItemsCounterGroup.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.NumberOfItemsCounterGroup"/> class.
+            </summary>
+            <param name="categoryName">The name of the Performance Counter Category.</param>
+            <param name="name">The name of the Performance Counter.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.NumberOfItemsCounterGroup.Name">
+            <summary>
+            Gets the name of the counter group.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.NumberOfItemsCounterGroup.NumberOfItemsCounter">
+            <summary>
+            Gets or sets the performance counter for the number of items.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.NumberOfItemsCounterGroup.NumberOfItemsCounterAverage">
+            <summary>
+            Gets or sets the performance counter to calculate the
+            average for the number of items.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.NumberOfItemsCounterGroup.NumberOfItemsCounterAverageBase">
+            <summary>
+            Gets or sets the base performance counter to calculate
+            the average for the number of items.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.NumberOfItemsCounterGroup.IncrementBy(System.Int64)">
+            <summary>
+            Increments the counter group by a given value.
+            </summary>
+            <param name="value">The value by which to increment the counter.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.PerfCounterSet">
+            <summary>
+            Set of basic Performance Counters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.PerfCounterSet.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Retail.Diagnostics.PerfCounterProperty})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.PerfCounterSet"/> class.
+            </summary>
+            <param name="categoryName">The name of the Performance Counter Category.</param>
+            <param name="instanceName">The name of the Performance Counter instance.</param>
+            <param name="customProperties">List of custom properties associated with the Performance Counter.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.PerfCounterSet.#ctor(System.String,System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Retail.Diagnostics.PerfCounterProperty})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.PerfCounterSet"/> class.
+            </summary>
+            <param name="categoryName">The name of the Performance Counter Category.</param>
+            <param name="customProperties">List of custom properties associated with the Performance Counter.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.PerfCounterSet.CategoryName">
+            <summary>
+            Gets the name of the Performance Counter Category.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.PerfCounterSet.InstanceName">
+            <summary>
+            Gets the name of the Performance Counter instance name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.PerfCounterSet.PerfCounterProperties">
+            <summary>
+            Gets or sets a list of properties associated with the Performance Counter set.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.PerfCounterSet.WriteEvent(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Int64}})">
+            <summary>
+            Writes an event to the Performance Counter Set.
+            </summary>
+            <param name="customProperties">List of custom properties associated with the Performance Counter.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Diagnostics.Sinks.WinPerfCounterSink">
+            <summary>
+            Sink to write Performance Counter events to the Windows Performance Counter Infrastructure.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Diagnostics.Sinks.WinPerfCounterSink.SingleInstance">
+            <summary>
+            The default name for the instance key name on the performance counter sets dictionary for single instance performance counters.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Diagnostics.Sinks.WinPerfCounterSink.newInstanceLock">
+            <summary>
+            Lock used when creating new instances.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Diagnostics.Sinks.WinPerfCounterSink.PerfCounterSets">
+            <summary>
+            Gets or sets a list of Performance Counter Sets used by the sink.
+            It stores the category name, instance name ("None" if its a single instance counter) and the counter name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.WinPerfCounterSink.WriteBoundaryPerfContextEvent(System.String,System.TimeSpan,System.Boolean,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Int64}})">
+            <summary>
+            Writes a boundary performance context events to the Windows Performance Counter Sink.
+            </summary>
+            <param name="perfCounterName">The name of the Performance Counter the event was triggered for.</param>
+            <param name="callDuration">The duration of the boundary operation associated with the event.</param>
+            <param name="callSuccessful">Flag indicating whether the boundary operation was successful.</param>
+            <param name="customProperties">List of custom properties associated with the Performance Counter.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.WinPerfCounterSink.WriteBoundaryPerfContextEvent(System.String,System.String,System.TimeSpan,System.Boolean,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Int64}})">
+            <summary>
+            Writes a boundary performance context events to the Windows Performance Counter Sink.
+            </summary>
+            <param name="perfCounterName">The name of the Performance Counter the event was triggered for.</param>
+            <param name="perfCounterInstanceName">The name of the Performance Counter instance the event was triggered for.</param>
+            <param name="callDuration">The duration of the boundary operation associated with the event.</param>
+            <param name="callSuccessful">Flag indicating whether the boundary operation was successful.</param>
+            <param name="customProperties">List of custom properties associated with the Performance Counter.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.WinPerfCounterSink.Initialize(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Retail.Diagnostics.PerfCounterDefinition})">
+            <summary>
+            Initializes the Performance Counter Sink.
+            </summary>
+            <param name="perfCounterDefinitions">List of Performance Counter Definitions that are enabled.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Diagnostics.Sinks.WinPerfCounterSink.InitializeConfig(Microsoft.Dynamics.Retail.Diagnostics.IDiagnosticsSinkConfigElement,Microsoft.Dynamics.Retail.Diagnostics.IDiagnosticsApplicationConfigElement)">
+            <summary>
+            Initializes the configuration of the sink based on the diagnostics config.
+            </summary>
+            <param name="diagnosticsSinkConfig">The diagnostics sinks config to consume.</param>
+            <param name="diagnosticsApplicationConfig">Reference to the diagnostics application config.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.ReceiptsCzechia.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.ReceiptsCzechia.Contracts.FiscalServiceResponse">
+            <summary>
+            Fiscal service response for Czechia.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.ReceiptsCzechia.Contracts.FiscalServiceResponse.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.ReceiptsCzechia.Contracts.FiscalServiceResponse"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsCzechia.Contracts.FiscalServiceResponse.SequenceNumber">
+            <summary>
+            Gets or sets the sequence number.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsCzechia.Contracts.FiscalServiceResponse.TransactionDate">
+            <summary>
+            Gets or sets the transaction date.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsCzechia.Contracts.FiscalServiceResponse.TransactionNumber">
+            <summary>
+            Gets or sets the transaction number.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsCzechia.Contracts.FiscalServiceResponse.Tlt">
+            <summary>
+            Gets or sets the TLT.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsCzechia.Contracts.FiscalServiceResponse.Sec">
+            <summary>
+            Gets or sets the sec.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsCzechia.Contracts.FiscalServiceResponse.Fiscal">
+            <summary>
+            Gets or sets the fiscal.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsCzechia.Contracts.FiscalServiceResponse.Sign">
+            <summary>
+            Gets or sets the sign.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsCzechia.Contracts.FiscalServiceResponse.Info">
+            <summary>
+            Gets or sets the info.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsCzechia.Contracts.FiscalServiceResponse.SubmittedDocument">
+            <summary>
+            Gets or sets submitted fisal document.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsCzechia.Contracts.FiscalServiceResponse.Response">
+            <summary>
+            Gets or sets a response from fiscal service.
+            </summary>
+        </member>
+    </members>
+</doc>

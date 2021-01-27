@@ -1,0 +1,343 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSession">
+            <summary>
+            Download Session class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSession.Id">
+            <summary>
+            Gets or sets the download Session Id - comes from sync server.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSession.JobId">
+            <summary>
+            Gets or sets the job ID for the download session.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSession.JobDescription">
+            <summary>
+            Gets or sets the job description for the download session.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSession.FileSize">
+            <summary>
+            Gets or sets the file size.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSession.Checksum">
+            <summary>
+            Gets or sets the checksum.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSession.TerminalId">
+            <summary>
+            Gets or sets the terminal identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSession.DateRequested">
+            <summary>
+            Gets or sets the date when the download is requested.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSession.DateDownloaded">
+            <summary>
+            Gets or sets the date when downloaded.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSession.DateApplied">
+            <summary>
+            Gets or sets the date when the session is applied.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSession.Status">
+            <summary>
+            Gets or sets the status: DownloadSessionStatus.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSession.Message">
+            <summary>
+            Gets or sets the message string.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSessionStatus">
+            <summary>
+            DownloadSessionStatus indicates session download status.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSessionStatus.Started">
+            <summary>
+            A session creation is started.
+            </summary>
+            <remarks>This status is used by AX to indicate that a download session job has started processing.</remarks>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSessionStatus.Available">
+            <summary>
+            A download session is Available.
+            </summary>
+            <remarks>A session is in Available status when download session data file is created and meta data information is available in database.</remarks>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSessionStatus.Requested">
+            <summary>
+            A request is submitted to download session file.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSessionStatus.Downloaded">
+            <summary>
+            All session related files are downloaded by a client.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSessionStatus.Applied">
+            <summary>
+            A session is downloaded and applied successfully by a client.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSessionStatus.Canceled">
+            <summary>
+            A download session is canceled.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSessionStatus.CreateFailed">
+            <summary>
+            A download session failed to be created successfully.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSessionStatus.DownloadFailed">
+            <summary>
+            Failed to download a session's data file.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSessionStatus.ApplyFailed">
+            <summary>
+            A session failed to apply the data on the client side.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OfflineSyncStatsLine">
+            <summary>
+            OfflineSyncStatsLine class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OfflineSyncStatsLine.JobDescription">
+            <summary>
+            Gets or sets the job description.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OfflineSyncStatsLine.Status">
+            <summary>
+            Gets or sets the session status: DownloadSessionStatus or OfflineUploadSessionStatus.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OfflineSyncStatsLine.LastSyncDateTime">
+            <summary>
+            Gets or sets the last sync date time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OfflineSyncStatsLine.FileSize">
+            <summary>
+            Gets or sets the file size.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OfflineSyncStatsLine.IsUploadJob">
+            <summary>
+            Gets or sets that whether the record is upload job or not.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OfflineUploadSessionStatus">
+            <summary>
+            OfflineUploadSessionStatus indicates session upload status in offline database.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OfflineUploadSessionStatus.None">
+            <summary>
+            Unknown status.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OfflineUploadSessionStatus.Created">
+            <summary>
+            A session is in Created status when it is first created.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OfflineUploadSessionStatus.Applied">
+            <summary>
+            All session related files are applied to Retail Server database.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OfflineUploadSessionStatus.ApplyFailed">
+            <summary>
+            A session failed to apply the data on the Retail Server database.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OnlineUploadSessionStatus">
+            <summary>
+            OnlineUploadSessionStatus indicates upload session status in AX and channel database.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OnlineUploadSessionStatus.Started">
+            <summary>
+            Unknown status.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OnlineUploadSessionStatus.Available">
+            <summary>
+            The upload session status when it is first created.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OnlineUploadSessionStatus.Uploaded">
+            <summary>
+            The status indicating file is uploaded to Azure blob storage.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OnlineUploadSessionStatus.Applied">
+            <summary>
+            The status indicating upload session is applied in AX database.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OnlineUploadSessionStatus.Canceled">
+            <summary>
+            The status indicating upload session is canceled.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OnlineUploadSessionStatus.UploadFailed">
+            <summary>
+            The status indicating file failed to upload to Azure blob storage.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OnlineUploadSessionStatus.ApplyFailed">
+            <summary>
+            The status indicating file failed to apply to AX database.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OnlineUploadSessionStatus.ReadFailed">
+            <summary>
+            The status indicating data failed to be retrieved from channel database.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.TableReplicationLog">
+            <summary>
+            The table replication log.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.TableReplicationLog.Id">
+            <summary>
+            Gets or sets the primary key.
+            </summary>
+            <value>
+            The primary key.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.TableReplicationLog.UploadSessionId">
+            <summary>
+            Gets or sets the upload session id.
+            </summary>
+            <value>
+            The upload session id.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.TableReplicationLog.TableName">
+            <summary>
+            Gets or sets the name of the table.
+            </summary>
+            <value>
+            The name of the table.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.TableReplicationLog.FilterFieldName">
+            <summary>
+            Gets or sets the name of the filtered field (such as "REPLICATIONCOUNTER").
+            </summary>
+            <value>
+            The name of the filtered field.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.TableReplicationLog.FilterMin">
+            <summary>
+            Gets or sets the filter min.
+            </summary>
+            <value>
+            The filter min.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.TableReplicationLog.FilterMax">
+            <summary>
+            Gets or sets the filter max.
+            </summary>
+            <value>
+            The filter max.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession">
+            <summary>
+            Upload Session class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession.Id">
+            <summary>
+            Gets or sets the local upload session identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession.JobId">
+            <summary>
+            Gets or sets the job identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession.JobDescription">
+            <summary>
+            Gets or sets the job description.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession.Status">
+            <summary>
+            Gets or sets the current status of local upload session.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession.UploadPath">
+            <summary>
+            Gets or sets the upload path.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession.DateCreated">
+            <summary>
+            Gets or sets the created date time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession.DateUploaded">
+            <summary>
+            Gets or sets the uploaded date time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession.FileSize">
+            <summary>
+            Gets or sets the file size in kilobytes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession.Checksum">
+            <summary>
+            Gets or sets the checksum.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession.TerminalId">
+            <summary>
+            Gets or sets the terminal identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession.AXUploadSessionId">
+            <summary>
+            Gets or sets the AX upload session identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession.RerunUploadSessionId">
+            <summary>
+            Gets or sets the AX upload session identifier that is being rerun by the current AX upload session.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,3 @@
+﻿.stockCountDetailsView .dataList{
+    margin-bottom: 0px; /* overrides datalist margin-bottom:12px */
+}

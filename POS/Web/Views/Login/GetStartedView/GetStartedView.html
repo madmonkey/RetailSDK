@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetStartedView</title>
+</head>
+<body>
+    <div id="getStartedPanel" class="fragment dynamicsBackground center" data-bind="axBubbleAttr: 'getStartedView_getStartedPanel'">
+
+        <div id="getStartedSection" class="main row" data-bind="axBubbleAttr: 'getStartedView_getStartedSection'">
+            <div class="center">
+                <div class="width500 margin40 panelBackgroundColor highContrastBorderThin">
+
+                    <!-- Logo -->
+                    <div class="center">
+                        <img src="#" data-bind="attr: { src: 'Assets/ActivationLogo.png' }" />
+                    </div>
+
+                    <div class="padLeft40 padRight40 padBottom40">
+
+                        <!-- Title -->
+                        <div class="padBottom40">
+                            <div class="headerFont wrapTextWithoutHyphen" data-bind="text: appTitle">Activate Retail Modern POS</div>
+                        </div>
+
+                        <!-- Initial message -->
+                        <div>
+                            <div class="padBottom12">
+                                <h3 data-bind="resx: {textContent: 'string_8001'}">Before you start</h3>
+                            </div>
+
+                            <div>
+                                <div class="row padBottom20">
+                                    <div class="primaryFontColor iconGlobe icon-32x32"></div>
+                                    <div class="marginLeft20">
+                                        <div class="h4" data-bind="resx: {textContent: 'string_8002'}"></div>
+                                    </div>
+                                </div>
+                                <div class="row padBottom20">
+                                    <div class="primaryFontColor iconContact icon-32x32"></div>
+                                    <div class="marginLeft20">
+                                        <div class="h4" data-bind="resx: {textContent: 'string_8003'}"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="primaryFontColor iconCheckmark icon-32x32"></div>
+                                    <div class="marginLeft20">
+                                        <div class="h4" data-bind="resx: {textContent: 'string_8004'}"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Button to navigate to activation view -->
+                            <div class="padTop40 textRight">
+                                <button id="nextButton" class="primaryButton dynamicsBackground"
+                                        data-bind="resx: { textContent: 'string_8005' }, click: navigateToActivationPage, axBubbleAttr: 'getStartedView_nextButton'">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+           </div>
+        </div>
+           
+</div>
+</body>
+</html>

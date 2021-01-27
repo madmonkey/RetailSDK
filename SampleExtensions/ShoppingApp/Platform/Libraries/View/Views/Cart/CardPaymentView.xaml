@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<views:CardPaymentViewXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Views.CardPaymentView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Behaviors"
+    xmlns:extensions="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Extensions"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    Margin="10"
+    HorizontalOptions="FillAndExpand"
+    VerticalOptions="FillAndExpand">
+  <views:HybridWebView
+     x:Name="WebView"
+     Url="{extensions:ServiceSettings CardPaymentHostPageUrl}"
+     MessageReceived="WebViewMessageReceived" />
+</views:CardPaymentViewXaml>

@@ -1,0 +1,986 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager">
+            <summary>
+            Channel data manager to handle upload operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.#ctor(Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager"/> class.
+            </summary>
+            <param name="channelDbContext">The channel database context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager"/> class from being created.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GetMaxTableFieldValue(System.String,System.String,System.Int64)">
+            <summary>
+            Get max identity field value from table.
+            </summary>
+            <param name="tableName">The table name.</param>
+            <param name="fieldName">The table field name.</param>
+            <param name="minActiveRowVersion">The minimum active row version.</param>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GetFilterMaxLastTableReplicationLog(System.String,System.String,System.Int64)">
+            <summary>
+            Get the filter max in tableReplicationLog for SalesTransaction table.
+            </summary>
+            <param name="tableName">Name of the table.</param>
+            <param name="filterFieldName">Name of the filter field.</param>
+            <param name="rerunUploadSessionId">The rerun upload session id.</param>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GetMinActiveRowVersion">
+            <summary>
+            Gets minimum active row version.
+            </summary>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GeMaxRowVersionForSalesTransaction">
+            <summary>
+            Gets the max row version in SalesTransaction table for suspended transactions.
+            </summary>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GeMaxRowVersionForSuspendedTransaction">
+            <summary>
+            Gets the max row version in SuspendedTransaction table for suspended transactions.
+            </summary>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GetUploadTransactionSize(System.String)">
+            <summary>
+            Gets the batch transaction size from offline database.
+            </summary>
+            <param name="terminalId">The terminal identifier.</param>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GetColumnSchemaForChannelTable(System.String)">
+            <summary>
+            Gets the column schema for given table.
+            </summary>
+            <param name="tableName"> The name of table.</param>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GetMaxReplicationCounterForBatchTransaction(System.Int64,System.String,System.String)">
+            <summary>
+            Get max identity field value or transaction identifier based on a batch of transactions.
+            </summary>
+            <param name="numberOfTransactions">Number of transactions to upload.</param>
+            <param name="tableName">The table field name.</param>
+            <param name="replicationCounterColumnName">The replication counter column name.</param>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.PurgeOfflineTransactions(System.Data.Entity.IDbSet{Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.TableReplicationLog},System.Collections.Generic.Dictionary{System.String,System.Collections.ObjectModel.Collection{System.String}})">
+            <summary>
+            Purges offline transactions based on records in TableReplicationLog.
+            </summary>
+            <param name="tableReplicationLogSet">A collection of TableReplicationLog.</param>
+            <param name="sourceTableWithExtension">A collection of source table with extension table.</param>
+            <returns>True if purged successfully.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.CreateUploadSession(System.Int64,System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Creates the upload session.
+            </summary>
+            <param name="fileSize">The file size in kilobytes.</param>
+            <param name="jobId">The job identifier.</param>
+            <param name="jobDescription">The job description.</param>
+            <param name="terminalId">The terminal identifier.</param>
+            <param name="checkSum">The check sum of the file.</param>
+            <param name="storeSystemChannel">Indicates if this upload session is created for store system channel.</param>
+            <returns>The upload session.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.CreateUploadSession(Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession)">
+            <summary>
+            Creates the local upload session.
+            </summary>
+            <param name="uploadSessionToCreate">The upload session object needs to be created.</param>
+            <returns>The local upload session.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.UpdateOfflineUploadSession(System.Int64,Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OfflineUploadSessionStatus,System.String)">
+            <summary>
+            Updates the upload session in offline database.
+            </summary>
+            <param name="uploadSessionId">The upload session id.</param>
+            <param name="status">The status.</param>
+            <param name="message">The message (may be null).</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The uploadSessionId is not valid.</exception>
+            <exception cref="T:System.Data.DataException">The DataException.</exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.UpdateOfflineUploadSession(System.Int64,Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OfflineUploadSessionStatus)">
+            <summary>
+            Updates the upload session in offline database.
+            </summary>
+            <param name="uploadSessionId">The upload session id.</param>
+            <param name="status">The status.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The uploadSessionId is not valid.</exception>
+            <exception cref="T:System.Data.DataException">The DataException.</exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.UpdateUploadSession(Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession)">
+            <summary>
+            Updates the local upload session with the specified uploadSession object.
+            </summary>
+            <param name="uploadSessionToUpdate">The uploadSession object that needs to be updated.</param>
+            <exception cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.UploadSessionNullException">The uploadSessionId is not valid.</exception>
+            <exception cref="T:System.Data.DataException">The DataException.</exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GetUploadSession(System.Int64)">
+            <summary>
+            Gets the upload session.
+            </summary>
+            <param name="uploadSessionId">The upload session id.</param>
+            <returns>An upload session.</returns>
+            <exception cref="T:System.Data.DataException">The DataException.</exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GetIncompleteUploadSessions">
+            <summary>
+            Gets local upload sessions which are not available in AX.
+            </summary>
+            <returns>The upload session collection.</returns>
+            <exception cref="T:System.Data.DataException">The DataException.</exception>
+            <remarks>Incomplete upload sessions are local upload session records which have valid package in the blob but do not have a corresponding AX side upload session and hence won't be picked up by the target.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GetOfflineSwitchErrorCodes">
+            <summary>
+            Gets the configured offline switch error codes.
+            </summary>
+            <returns>A collection of error codes.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GetTableReplicationsLog">
+            <summary>
+            Gets the TableReplicationLog sets.
+            </summary>
+            <returns>The tableReplicationLog.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.RemoveTableReplicationLogs">
+            <summary>
+            Removes records from TableReplicationLog.
+            </summary>
+            <returns>If it is deleted successfully.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.RemoveTableReplicationLogs(System.Int64)">
+            <summary>
+            Removes records from TableReplicationLog based on uploadSessionId provided.
+            </summary>
+            <param name="uploadSessionId">The upload session identifier.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.RemoveUploadSession(System.Int64)">
+            <summary>
+            Removes record from UploadSession based on uploadSessionId.
+            </summary>
+            <param name="uploadSessionId">The upload session identifier.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GetTableReplicationLogCount(System.Int64,System.String,System.String)">
+            <summary>
+            Gets the table replication log count.
+            </summary>
+            <param name="uploadSessionId">The upload session identifier.</param>
+            <param name="tableName">Name of the table.</param>
+            <param name="filterFieldName">Name of the filter field.</param>
+            <returns>The table replication log count.</returns>
+            <exception cref="T:System.Data.DataException">The DataException.</exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.CreateTableReplicationLog(System.Int64,System.String,System.String,System.Int64,System.Int64)">
+            <summary>
+            Creates the table replication log.
+            </summary>
+            <param name="uploadSessionId">The upload session identifier.</param>
+            <param name="tableName">Name of the table.</param>
+            <param name="filterFieldName">Name of the filter field.</param>
+            <param name="min">The min.</param>
+            <param name="max">The max.</param>
+            <returns>The TableReplicationLog.</returns>
+            <exception cref="T:System.Data.DataException">The DataException.</exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GetTablePrimaryKeys(System.String,System.String)">
+            <summary>
+            Gets the primary keys of given table.
+            </summary>
+            <param name="schemaName">The table schema name.</param>
+            <param name="tableName">The table name.</param>
+            <returns>The collection of primary keys.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.BuildExtensionTablePurgeQuery(System.String,System.String,System.Collections.Generic.HashSet{System.String},System.String)">
+            <summary>
+            Build extension table purge query.
+            </summary>
+            <param name="extensionTable">The extension table.</param>
+            <param name="sourceTable">The source table</param>
+            <param name="primaryKeys">The primary keys of extension table</param>
+            <param name="filterFieldName">The filter field name</param>
+            <returns>The extension table purge query</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.ValidateQueryParameter(System.String,System.String)">
+            <summary>
+            Validates if table and replication counter field names are valid.
+            </summary>
+            <param name="tableName">The table in database.</param>
+            <param name="replicationCounterColumnName">The replication counter field name.</param>
+            <returns>True if the query parameters are valid, otherwise false.</returns>
+            <remarks>This method also validates views to support table extensions scenarios.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.ValidateTableName(System.String)">
+            <summary>
+            Validates if table name is valid.
+            </summary>
+            <param name="tableName">The table in database.</param>
+            <returns>True if the table exists, otherwise false.</returns>
+            <remarks>This method also validates views to support table extensions scenarios.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDataManager.GetTableReplicationLog(System.Int64,System.String,System.String)">
+            <summary>
+            Gets the TableReplicationLog of the uploadSessionId with tableName and filterFieldName.
+            </summary>
+            <param name="uploadSessionId">The upload session identifier.</param>
+            <param name="tableName">Name of the table.</param>
+            <param name="filterFieldName">Name of the filter field.</param>
+            <returns>The table replication log.</returns>
+            <exception cref="T:System.Data.DataException">The DataException.</exception>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDbContext">
+            <summary>
+            <c>ChannelDbContext</c> is the database context class for channel (e.g., store) Database.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDbContext.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDbContext"/> class.
+            </summary>
+            <param name="connectionString">The connection string.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDbContext.#ctor(System.Data.SqlClient.SqlConnection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDbContext"/> class.
+            </summary>
+            <param name="connection">The SQL connection object.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDbContext.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDbContext.DownloadSessions">
+            <summary>
+            Gets or sets the database set of download sessions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDbContext.TableReplicationLog">
+            <summary>
+            Gets or sets the <see cref="T:System.Data.Entity.DbSet"/> of <see cref="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDbContext.TableReplicationLog"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ChannelDbContext.UploadSessions">
+            <summary>
+            Gets or sets the <see cref="T:System.Data.Entity.DbSet"/> of UploadSessions.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerBase">
+            <summary>
+            DataManager is an abstract class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerBase"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerBase.#ctor(Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerBase"/> class.
+            </summary>
+            <param name="channelDbContext">The channel DB context.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerBase.ChannelDbContext">
+            <summary>
+            Gets the channel database context.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants">
+            <summary>
+            Data manager constants.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.CheckInitialPackageRequiredQuery">
+            <summary>
+            The SQL query to check if initial full package has been requested after DB upgrade.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.CheckTableOrViewExistsQuery">
+            <summary>
+            The SQL query to check if table or view exists in database.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.DefaultRetentionDay">
+            <summary>
+            The default retention day to delete expired sessions.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.DeleteExtensionTableQuery">
+            <summary>
+            The SQL query to delete records in extension table based on replication counters.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.DeleteFailedUploadSessionQuery">
+            <summary>
+            The SQL query to delete unsuccessful records in <c>UploadSession</c> table.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.DeleteQuery">
+            <summary>
+            The SQL query to delete records in <c>crt.tablereplicationlog</c> table based on replication counters.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.DeleteTableReplicationLogQuery">
+            <summary>
+            The SQL query to delete records in <c>crt.tablereplicationlog</c> table.
+            CRT.SALESTRANSACTION and AX.RETAILASYNCCUSTOMER tables will not purge data after each upload, so replication counter records should be kept.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.GetBatchTransactionSizeQuery">
+            <summary>
+            The SQL query to get upload transaction size.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.GetFilterMaxLastTableReplicationLogQuery">
+            <summary>
+            The SQL query to get the max replication counter in tableReplicationLog.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.GetMaxQuery">
+            <summary>
+            The SQL query to get maximum value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.GetMaxReplicationCounterQuery">
+            <summary>
+            The SQL query to get max replication counter from transaction specific tables based on a batch of transactions.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.GetMaxRowversionForSalesTransactionQuery">
+            <summary>
+            The SQL query to get the max row version in sales transaction table of suspended transaction records.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.GetMaxRowversionForSuspendedTransactionQuery">
+            <summary>
+            The SQL query to get the max row version in suspended transaction table of suspended transaction records.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.GetOfflineSwitchErrorCodesQuery">
+            <summary>
+            The SQL query to get offline switch error codes.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.GetOfflineSyncStatusQuery">
+            <summary>
+            The SQL query to get offline sync history.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DataManagerConstants.TableNameListNotPurgedAfterUpload">
+            <summary>
+            The table lists whose data are not purged after each upload.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DownloadSessionDataManager">
+            <summary>
+            DownloadSession data manager.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DownloadSessionDataManager.#ctor(Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DownloadSessionDataManager"/> class.
+            </summary>
+            <param name="channelDbContext">The channel database context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DownloadSessionDataManager.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DownloadSessionDataManager"/> class from being created.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DownloadSessionDataManager.GetDownloadSession(System.Int64)">
+            <summary>
+            Gets the download session.
+            </summary>
+            <param name="id">The session id.</param>
+            <returns>The download session.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DownloadSessionDataManager.GetOfflineSyncStats(System.String,System.String)">
+            <summary>
+            Gets offline sync history from offline database.
+            </summary>
+            <param name="offlineConnectionString">The offline database connection string.</param>
+            <param name="terminalId">The terminal identifier.</param>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DownloadSessionDataManager.CheckInitialFullPackageRequired">
+            <summary>
+            Check if initial full package has been requested after DB upgrade.
+            </summary>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DownloadSessionDataManager.DeleteExpiredSessions(System.String)">
+            <summary>
+            Delete expired sessions in offline database.
+            </summary>
+            <param name="offlineConnectionString">The offline database connection string.</param>
+            <returns>True if sessions are deleted successfully.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DownloadSessionDataManager.UpdateDownloadSession(System.Int64,System.String,System.String,System.Int64,System.String,System.String,Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSessionStatus,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Creates or update the download session in offline database.
+            </summary>
+            <param name="id">The session id.</param>
+            <param name="jobId">The job id.</param>
+            <param name="jobDescription">The job description.</param>
+            <param name="fileSizeInBytes">Size of the file.</param>
+            <param name="checksum">The checksum.</param>
+            <param name="terminalId">The terminal identifier.</param>
+            <param name="status">The download session status.</param>
+            <param name="dateRequested">The time when requesting download.</param>
+            <param name="dateDownloaded">The time when downloading the file.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when jobId or checksum is invalid.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when id is invalid.</exception>
+            <exception cref="T:System.Data.DataException">Thrown when failed to update database.</exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DownloadSessionDataManager.UpdateDownloadSession(System.Int64,System.String,System.String,System.Int64,System.String,Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSessionStatus,System.String)">
+            <summary>
+            Creates or update the download session in store system channel database.
+            </summary>
+            <param name="id">The session id.</param>
+            <param name="jobId">The job id.</param>
+            <param name="jobDescription">The job description.</param>
+            <param name="fileSize">Size of the file.</param>
+            <param name="checksum">The checksum.</param>
+            <param name="status">The download session status.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DownloadSessionDataManager.UpdateFullPackageRequestedAfterDBUpgrade(System.String)">
+            <summary>
+            Creates or update the download session.
+            </summary>
+            <param name="offlineConnectionString">The offline database connection string.</param>
+            <returns>True if the flag is updated successfully.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DownloadSessionDataManager.StripMasterData(System.String,System.String,System.Int32)">
+            <summary>
+            Strip master data that are not related to current offline database to reduce data volume.
+            </summary>
+            <param name="offlineConnectionString">The offline database connection string.</param>
+            <param name="dataStoreName">Offline database ID.</param>
+            <param name="sqlCommandTimeout">SQL command timeout.</param>
+            <returns>True if the strip master data stored procedure runs successfully.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.DownloadSessionDataManager.StripMasterDataStoreSystem(System.String,System.Int32)">
+            <summary>
+            Strip master data that are not related to current Store System database to reduce data volume.
+            </summary>
+            <param name="dataStoreName">Store system database ID.</param>
+            <param name="sqlCommandTimeout">SQL command timeout.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.RerunUploadSessionNotExistException">
+            <summary>
+            Represents an exception that upload session needs to rerun does not exist in store system channel database.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.RerunUploadSessionNotExistException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.RerunUploadSessionNotExistException"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.RerunUploadSessionNotExistException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.RerunUploadSessionNotExistException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.RerunUploadSessionNotExistException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.RerunUploadSessionNotExistException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.RerunUploadSessionNotExistException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.RerunUploadSessionNotExistException"/> class.
+            </summary>
+            <param name="info">The serialization information.</param>
+            <param name="context">The streaming context.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerAcquireLockException">
+            <summary>
+            Represents an exception when it attempts to acquire a lock using a <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLocker"/> object that is already holding a lock.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerAcquireLockException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerAcquireLockException"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerAcquireLockException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerAcquireLockException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerAcquireLockException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerAcquireLockException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerAcquireLockException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerAcquireLockException"/> class.
+            </summary>
+            <param name="info">The serialization information.</param>
+            <param name="context">The streaming context.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerInvalidOperationException">
+            <summary>
+            Represents an exception when it attempts to acquire a lock using a <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLocker"/> object that is already holding a lock.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerInvalidOperationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerInvalidOperationException"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerInvalidOperationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerInvalidOperationException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerInvalidOperationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerInvalidOperationException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerInvalidOperationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerInvalidOperationException"/> class.
+            </summary>
+            <param name="info">The serialization information.</param>
+            <param name="context">The streaming context.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.UploadSessionNullException">
+            <summary>
+            Represents an exception that is thrown when there is no upload session with provided upload session identifier.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.UploadSessionNullException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.UploadSessionNullException"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.UploadSessionNullException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.UploadSessionNullException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.UploadSessionNullException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.UploadSessionNullException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.UploadSessionNullException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.UploadSessionNullException"/> class.
+            </summary>
+            <param name="info">The serialization information.</param>
+            <param name="context">The streaming context.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager">
+            <summary>
+            Represents an interface for ChannelDataManager.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.GetMaxTableFieldValue(System.String,System.String,System.Int64)">
+            <summary>
+            Get max identity field value from table.
+            </summary>
+            <param name="tableName">The table name.</param>
+            <param name="fieldName">The table field name.</param>
+            <param name="minActiveRowVersion">The minimum active row version.</param>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.GetFilterMaxLastTableReplicationLog(System.String,System.String,System.Int64)">
+            <summary>
+            Get the filter max in tableReplicationLog for SalesTransaction table.
+            </summary>
+            <param name="tableName">Name of the table.</param>
+            <param name="filterFieldName">Name of the filter field.</param>
+            <param name="rerunUploadSessionId">The rerun upload session id.</param>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.GetUploadTransactionSize(System.String)">
+            <summary>
+            Gets the batch transaction size from offline database.
+            </summary>
+            <param name="terminalId">The terminal identifier.</param>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.GetMaxReplicationCounterForBatchTransaction(System.Int64,System.String,System.String)">
+            <summary>
+            Get max identity field value or transaction identifier based on a batch of transactions.
+            </summary>
+            <param name="numberOfTransactions">Number of transactions to upload.</param>
+            <param name="tableName">The table field name.</param>
+            <param name="replicationCounterColumnName">The replication counter column name.</param>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.GetMinActiveRowVersion">
+            <summary>
+            Gets minimum active row version.
+            </summary>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.CreateUploadSession(System.Int64,System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Creates the upload session.
+            </summary>
+            <param name="fileSize">The file size in kilobytes.</param>
+            <param name="jobId">The job identifier.</param>
+            <param name="jobDescription">The job description.</param>
+            <param name="terminalId">The terminal identifier.</param>
+            <param name="checkSum">The check sum of the file.</param>
+            <param name="storeSystemChannel">Indicates if this upload session is created for store system channel.</param>
+            <returns>The upload session.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.CreateUploadSession(Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession)">
+            <summary>
+            Creates the local upload session.
+            </summary>
+            <param name="uploadSessionToCreate">The upload session object needs to be created.</param>
+            <returns>The local upload session.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.GetUploadSession(System.Int64)">
+            <summary>
+            Gets the upload session.
+            </summary>
+            <param name="uploadSessionId">The upload session id.</param>
+            <returns>An upload session.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.GetIncompleteUploadSessions">
+            <summary>
+            Gets local upload sessions which are not available in AX.
+            </summary>
+            <returns>The upload session collection.</returns>
+            <exception cref="T:System.Data.DataException">The DataException.</exception>
+            <remarks>Incomplete upload sessions are local upload session records which have valid package in the blob but do not have a corresponding AX side upload session and hence won't be picked up by the target.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.UpdateUploadSession(Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.UploadSession)">
+            <summary>
+            Updates the local upload session with the specified uploadSession object.
+            </summary>
+            <param name="uploadSessionToUpdate">The uploadSession object that needs to be updated.</param>
+            <exception cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.UploadSessionNullException">The uploadSessionId is not valid.</exception>
+            <exception cref="T:System.Data.DataException">The DataException.</exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.GetTableReplicationsLog">
+            <summary>
+            Gets the TableReplicationLog sets.
+            </summary>
+            <returns>The tableReplicationLog.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.RemoveTableReplicationLogs(System.Int64)">
+            <summary>
+            Removes records from TableReplicationLog based on uploadSessionId provided.
+            </summary>
+            <param name="uploadSessionId">The upload session identifier.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.RemoveUploadSession(System.Int64)">
+            <summary>
+            Removes record from UploadSession based on uploadSessionId.
+            </summary>
+            <param name="uploadSessionId">The upload session identifier.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.GetTableReplicationLogCount(System.Int64,System.String,System.String)">
+            <summary>
+            Gets the table replication log count.
+            </summary>
+            <param name="uploadSessionId">The upload session identifier.</param>
+            <param name="tableName">Name of the table.</param>
+            <param name="filterFieldName">Name of the filter field.</param>
+            <returns>The table replication log count.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.CreateTableReplicationLog(System.Int64,System.String,System.String,System.Int64,System.Int64)">
+            <summary>
+            Creates the table replication log.
+            </summary>
+            <param name="uploadSessionId">The upload session identifier.</param>
+            <param name="tableName">Name of the table.</param>
+            <param name="filterFieldName">Name of the filter field.</param>
+            <param name="min">The min.</param>
+            <param name="max">The max.</param>
+            <returns>The TableReplicationLog.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.UpdateOfflineUploadSession(System.Int64,Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.OfflineUploadSessionStatus)">
+            <summary>
+            Updates the upload session in offline database.
+            </summary>
+            <param name="uploadSessionId">The upload session id.</param>
+            <param name="status">The status.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The uploadSessionId is not valid.</exception>
+            <exception cref="T:System.Data.DataException">The DataException.</exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.PurgeOfflineTransactions(System.Data.Entity.IDbSet{Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.TableReplicationLog},System.Collections.Generic.Dictionary{System.String,System.Collections.ObjectModel.Collection{System.String}})">
+            <summary>
+            Purges offline transactions based on records in TableReplicationLog.
+            </summary>
+            <param name="tableReplicationLogSet">A collection of TableReplicationLog.</param>
+            <param name="sourceTableWithExtension">A collection of source table with extension table.</param>
+            <returns>True if purged successfully.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDataManager.GetOfflineSwitchErrorCodes">
+            <summary>
+            Gets the configured offline switch error codes.
+            </summary>
+            <returns>A collection of error codes.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDbContext">
+            <summary>
+            cref = IChannelDbContext
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDbContext.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDbContext.DownloadSessions">
+            <summary>
+            Gets or sets the database set of download sessions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDbContext.TableReplicationLog">
+            <summary>
+            Gets or sets the <see cref="T:System.Data.Entity.DbSet"/> of <see cref="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDbContext.TableReplicationLog"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDbContext.UploadSessions">
+            <summary>
+            Gets or sets the <see cref="T:System.Data.Entity.DbSet"/> of UploadSessions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IChannelDbContext.SaveChanges">
+            <summary>
+            Save EF records to database
+            </summary>
+            <returns>int value</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IDownloadSessionDataManager">
+            <summary>
+            Represents an interface for DownloadSessionDataManager.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IDownloadSessionDataManager.GetDownloadSession(System.Int64)">
+            <summary>
+            Gets the download session.
+            </summary>
+            <param name="id">The session id.</param>
+            <returns>The download session.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IDownloadSessionDataManager.GetOfflineSyncStats(System.String,System.String)">
+            <summary>
+            Gets offline sync history from offline database.
+            </summary>
+            <param name="offlineConnectionString">The offline database connection string.</param>
+            <param name="terminalId">The terminal identifier.</param>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IDownloadSessionDataManager.CheckInitialFullPackageRequired">
+            <summary>
+            Check if initial full package has been requested after DB upgrade.
+            </summary>
+            <returns>The query result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IDownloadSessionDataManager.DeleteExpiredSessions(System.String)">
+            <summary>
+            Delete expired sessions in offline database.
+            </summary>
+            <param name="offlineConnectionString">The offline database connection string.</param>
+            <returns>True if sessions are deleted successfully.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IDownloadSessionDataManager.UpdateDownloadSession(System.Int64,System.String,System.String,System.Int64,System.String,System.String,Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSessionStatus,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Creates or update the download session in offline database.
+            </summary>
+            <param name="id">The session id.</param>
+            <param name="jobId">The job id.</param>
+            <param name="jobDescription">The job description.</param>
+            <param name="fileSizeInBytes">Size of the file.</param>
+            <param name="checksum">The checksum.</param>
+            <param name="terminalId">The terminal identifier.</param>
+            <param name="status">The download session status.</param>
+            <param name="dateRequested">The time when requesting download.</param>
+            <param name="dateDownloaded">The time when downloading the file.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IDownloadSessionDataManager.UpdateDownloadSession(System.Int64,System.String,System.String,System.Int64,System.String,Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.Business.DownloadSessionStatus,System.String)">
+            <summary>
+            Creates or update the download session in store system channel database.
+            </summary>
+            <param name="id">The session id.</param>
+            <param name="jobId">The job id.</param>
+            <param name="jobDescription">The job description.</param>
+            <param name="fileSize">Size of the file.</param>
+            <param name="checksum">The checksum.</param>
+            <param name="status">The download session status.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IDownloadSessionDataManager.UpdateFullPackageRequestedAfterDBUpgrade(System.String)">
+            <summary>
+            Creates or update the download session.
+            </summary>
+            <param name="offlineConnectionString">The offline database connection string.</param>
+            <returns>True if the flag is updated successfully.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IDownloadSessionDataManager.StripMasterData(System.String,System.String,System.Int32)">
+            <summary>
+            Strip master data that are not related to current offline database to reduce data volume.
+            </summary>
+            <param name="offlineConnectionString">The offline database connection string.</param>
+            <param name="dataStoreName">Offline database ID.</param>
+            <param name="sqlCommandTimeout">SQL command timeout.</param>
+            <returns>True if the flag is updated successfully.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.IDownloadSessionDataManager.StripMasterDataStoreSystem(System.String,System.Int32)">
+            <summary>
+            Strip master data that are not related to current channel database to reduce data volume.
+            </summary>
+            <param name="dataStoreName">Offline database ID.</param>
+            <param name="sqlCommandTimeout">SQL command timeout.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ISqlApplicationLocker">
+            <summary>
+            Represents an interface for SqlApplicationLocker
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ISqlApplicationLocker.AcquireLock">
+            <summary>
+            Acquires a exclusive lock for the application resource.
+            </summary>
+            <returns>True if the lock is successfully acquired; otherwise, false.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ISqlApplicationLockerCreator">
+            <summary>
+            The interface for SqlApplicationLockerCreator
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ISqlApplicationLockerCreator.CreateDownloadSessionLocker(System.String)">
+            <summary>
+            Creates a ISqlApplicationLocker object for download sessions.
+            </summary>
+            <param name="connectionString">The connection string to SQL database.</param>
+            <returns>An ISqlApplicationLocker object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ISqlApplicationLockerCreator.CreateRecoverIncompleteUploadSessionLocker(System.String)">
+            <summary>
+            Creates a ISqlApplicationLocker object for recovering incomplete upload sessions.
+            </summary>
+            <param name="connectionString">The connection string to SQL database.</param>
+            <returns>An ISqlApplicationLocker object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.ISqlApplicationLockerCreator.CreateUploadSessionLocker(System.String)">
+            <summary>
+            Creates a ISqlApplicationLocker object for upload sessions.
+            </summary>
+            <param name="connectionString">The connection string to SQL database.</param>
+            <returns>An ISqlApplicationLocker object.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLocker">
+            <summary>
+            Gets exclusive lock using SQL Server app lock mechanism.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLocker.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLocker"/> class.
+            </summary>
+            <param name="resourceName">The resrouce name to acquire the lock.</param>
+            <param name="connectionString">The SQL Server database connection string.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLocker.LockAcquired">
+            <summary>
+            Gets or sets a value indicating whether the lock has been acquired or not.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLocker.AcquireLock">
+            <summary>
+            Acquires a exclusive lock for the application resource.
+            </summary>
+            <returns>True if the lock is successfully acquired; otherwise, false.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLocker.Dispose">
+            <summary>
+            Disposes the object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLocker.Dispose(System.Boolean)">
+            <summary>
+            Disposes the object.
+            </summary>
+            <param name="disposing">True if disposing; otherwise, false.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLocker.CallGetAppLock">
+            <summary>
+            Calls the sp_getapplock stored procedure.
+            </summary>
+            <returns>The result of the stored procedure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLocker.CallReleaseAppLock">
+            <summary>
+            Calls the sp_releaseapplock stored procedure.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLocker.ReleaseLock">
+            <summary>
+            Releases the acquired lock.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerCreator">
+            <summary>
+            Creates a SqlApplicationLocker.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerCreator.CreateDownloadSessionLocker(System.String)">
+            <summary>
+            Creates a SqlApplicationLocker object for download sessions.
+            </summary>
+            <param name="connectionString">The connection string to SQL database.</param>
+            <returns>A SqlApplicationLocker object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerCreator.CreateRecoverIncompleteUploadSessionLocker(System.String)">
+            <summary>
+            Creates a SqlApplicationLocker object for recovering incomplete upload sessions.
+            </summary>
+            <param name="connectionString">The connection string to SQL database.</param>
+            <returns>A SqlApplicationLocker object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.CommerceDataExchange.AsyncClient.DataManager.SqlApplicationLockerCreator.CreateUploadSessionLocker(System.String)">
+            <summary>
+            Creates a SqlApplicationLocker object for upload sessions.
+            </summary>
+            <param name="connectionString">The connection string to SQL database.</param>
+            <returns>A SqlApplicationLocker object.</returns>
+        </member>
+    </members>
+</doc>

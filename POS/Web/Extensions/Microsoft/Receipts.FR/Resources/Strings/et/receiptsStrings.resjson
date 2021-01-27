@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Järgu numbri haldur: järgunumber on lisatud.",
+  "Build_number_successfull_log_message_text.comment": "Teade logitakse, kui kassa järgunumber lisati kandele.",
+  "Build_number_error_log_message_text": "Järgu numbri haldur: järgunumbri lisamine nurjus, tõrketeade: '{0}'.",
+  "Build_number_error_log_message_text.comment": "Teade logitakse, kui kassa järgunumbrit ei saanud kandele lisada."
+}

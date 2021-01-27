@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ReassignCustomersFromClientBookConfirmationDialog</title>
+</head>
+<body>
+    <div class="ReassignCustomersFromClientBookConfirmationDialog" data-bind="customControlInternal: 'ReassignCustomersFromClientBookConfirmationDialog'">
+        <div data-bind="dialog: {
+             title: Commerce.ViewModelAdapter.getResourceString('string_6555'),
+             visible: visible,
+             closeOnEscButton: true,
+             buttonClick: buttonClickHandler,
+             dialogType: Commerce.Controls.Dialog.DialogTypes.SEQUENCE,
+             buttons: [
+                {   
+                    label: Commerce.ViewModelAdapter.getResourceString('string_77'),
+                    operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK,
+                    cssClass: 'okButton',
+                    isPrimary: true,
+                },
+                {   
+                    label: Commerce.ViewModelAdapter.getResourceString('string_76'),
+                    operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK,
+                    cssClass: 'cancelButton',
+                },
+             ],
+        },
+        axBubbleAttr: 'ReassignCustomersFromClientBookConfirmationDialog_ReassignCustomersFromClientBookConfirmationDialog'" class="modalWindowContentSection">
+            <label class="marginTop20 h3 primaryFontColor flexNone" 
+                   data-bind="resx: {textContent: 'string_6567'}">Are you sure you want to re-assign customers to the selected employee?
+            </label>
+            <label class="marginTop20 marginBottom8 h4 flexNone" data-bind="resx: {textContent: 'string_6568'}">Selected employee</label>
+            <!-- Selected employee -->
+            <div id="employeeInformation" class="grow col">
+                <div class="marginTop10 h5" data-bind="resx: { textContent: name }"></div>
+                <div class="marginTop10 h6 secondaryFontColor" data-bind="resx: { textContent: staffId }"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Hareket tamamlanırken bir hata oluştu. İmza hizmeti hazır değil. Sistem yöneticinize başvurun.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Hareket tamamlanırken bir hata oluştu. Bağlı mali hareket biçimi yanlış olan veriler içeriyor. Sistem yöneticinize başvurun.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "Son hareketin dijital imzasını kurtarma sırasında bir hata oluştu. Büyük olasılıkla çevrimdışı veritabanı eşitlenmedi. Sistem yöneticinize başvurun.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

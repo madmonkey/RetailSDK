@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sales Invoice Details View</title>
+    <link href="SalesInvoiceDetailsView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment salesInvoiceDetailsView">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'salesInvoiceDetailsView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div data-bind="pivotItem: { headerResx: 'string_5012' }">
+                <div id="AvailableShiftsList" data-bind="dataList: {
+                    itemDataSource: viewModel.cartLinesForDisplay,
+                    onItemDataSourceUpdated: onItemDataSourceUpdated,
+                    selectionChanged: viewModel.handleSelection,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.MultiSelect,
+                    ariaLabelResx: 'string_1877', /* Line items */
+                    columns: [
+                        { titleResx: 'string_5006', ratio: 10, collapseOrder: 7, minWidth: 150,  field: 'ItemId' },
+                        { titleResx: 'string_5007', ratio: 30, collapseOrder: 5, minWidth: 200,  field: 'ProductName' },
+                        { titleResx: 'string_5018', ratio: 10, collapseOrder: 1, minWidth: 60,  field: 'SerialNumber' },
+                        { titleResx: 'string_5008', ratio: 10, collapseOrder: 2, minWidth: 100,  field: 'Price', converter: 'Commerce.Core.Converter.PriceFormatter', isRightAligned: true},
+                        { titleResx: 'string_5009', ratio: 10, collapseOrder: 3, minWidth: 60,  field: 'Quantity', converter: 'Commerce.Core.Converter.QuantityFormatter', isRightAligned: true},
+                        { titleResx: 'string_5014', ratio: 10, collapseOrder: 4, minWidth: 60,  field: 'QuantityReturnable', converter: 'Commerce.Core.Converter.QuantityFormatter', isRightAligned: true},
+                        { titleResx: 'string_5010', ratio: 20, collapseOrder: 6, minWidth: 100, field: 'ExtendedPrice', converter: 'Commerce.Core.Converter.PriceFormatter', isRightAligned: true }
+                    ]
+                },
+                axBubbleAttr: 'salesInvoiceDetailsView_cartLines'"></div>
+            </div>
+        </div>
+
+        <div id="commandAppBar" data-bind="appBar:{ extensionCommands: viewModel.extensionCommandViewModels }, axBubbleAttr: 'salesInvoiceDetailsView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id:'returnButton',
+                extraClass: 'iconProductReturn',
+                onclick: viewModel.returnCartLinesAsync.bind(viewModel),
+                disabled: viewModel.returnSalesInvoiceDisabled,
+                labelResx: 'string_5013'
+            }, axBubbleAttr: 'salesInvoiceDetailsView_returnButton'"></button>
+        </div>
+    </div>
+</body>
+</html>

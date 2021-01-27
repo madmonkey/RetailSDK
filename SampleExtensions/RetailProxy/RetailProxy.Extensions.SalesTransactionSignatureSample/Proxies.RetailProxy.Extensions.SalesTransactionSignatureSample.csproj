@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\..\..\BuildTools\Common.props" />
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyName>$(AssemblyNamePrefix).Commerce.RetailProxy.SalesTransactionSignatureSample</AssemblyName>
+    <RootNamespace>Contoso.Commerce.RetailProxy.SalesTransactionSignatureSample</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <CommerceProxyGeneratorExtendedAssemblyPaths Include="..\..\RetailServer\Extensions.SalesTransactionSignatureSample\bin\$(Configuration)\net461\$(AssemblyNamePrefix).RetailServer.SalesTransactionSignatureSample.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommerceRuntime\Extensions.SequentialSignatureRegister.Contracts\Runtime.Extensions.SequentialSignatureRegister.Contracts.csproj" />
+    <ProjectReference Include="..\..\CommerceRuntime\Extensions.SequentialSignatureRegister\Runtime.Extensions.SequentialSignatureRegister.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.0.3" />
+    <PackageReference Include="System.Composition" Version="1.2.0" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.RetailProxy" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Tools.ExtensionsProxyGenerator" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTransform" Version="15.1.0" />
+    <PackageReference Include="NuProj.Common" Version="0.11.30">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.6.0" />
+  </ItemGroup>
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

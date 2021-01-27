@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Inventory Lookup Matrix View</title>
+</head>
+<body>
+    <div class="inventoryLookupMatrixView fragment">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'inventoryLookupMatrixView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">  <!-- Main content -->
+            <div data-bind="pivotItem: { header: viewSubTitle() }">
+                <!-- Cell Template to pass to control -->
+                <script id="cellTemplate" type="text/html">
+                    <div class="col width100Percent">
+                        <div class="row marginBottom4">
+                            <div class="h6 secondaryFontColor padRight4" data-bind="resx: { textContent: 'string_2631'}">Reserved:</div>
+                            <div class="h6 bold" data-bind="text: Commerce.Formatters.NumberFormatter(PhysicalReserved),
+                                css: { secondaryFontColor: AvailableQuantity === 0 }"></div>
+                        </div>
+
+                        <div class="row marginBottom8">
+                            <div class="h6 secondaryFontColor padRight4" data-bind="resx: { textContent: 'string_2632' }">Ordered:</div>
+                            <div class="h6 bold" data-bind="text: Commerce.Formatters.NumberFormatter(OrderedSum),
+                                css: { secondaryFontColor: AvailableQuantity === 0 }"></div>
+                        </div>
+
+                        <div class="row alignRight">
+                            <div class="h3 accentColor" data-bind="text: Commerce.Formatters.NumberFormatter(AvailableQuantity)"></div>
+                            <div class="h6 alignBottom marginBottom03 padLeft4 secondaryFontColor" data-bind="text: UnitOfMeasure"></div>
+                        </div>
+                    </div>
+                </script>
+
+                <!-- Matrix control -->
+                <!-- ko if: viewModel.isMatrixVisible -->
+                <div id="inventoryLookupVariantMatrix" class="col grow" data-bind="variantMatrix: {
+                        dimensions: viewModel.productDimensionDetails,
+                        cellTemplateId: 'cellTemplate',
+                        cellClickHandler: cellClickHandler,
+                        cellCallerMethod: getCellData,
+                        isCellSlashStyleVisible: viewModel.isItemAvailable,
+                        pageSize: 20
+                    },
+                    axBubbleAttr: 'inventoryLookupMatrixView_variantMatrix'">
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+
+        <!-- Menu for cell interactions -->
+        <div id="cellInteractionMenu" data-bind="menu: { anchorElement: menuAnchor, placement: 'bottom', alignment: 'center', visible: isMenuVisible }">
+            <button data-bind="menuCommand: { id: 'sellNow', onClick: viewModel.sellNowAsync.bind(viewModel) },
+                        resx: { label: 'string_2633' },
+                        winControl: { disabled: viewModel.disableAddToTransaction }"></button>
+            <button data-bind="menuCommand: { id: 'pickupInStore', onClick: viewModel.pickUpInStoreAsync.bind(viewModel) },
+                        resx: { label: 'string_2611' }"></button>
+            <button data-bind="menuCommand: { id: 'shipProduct', onClick: viewModel.shipFromStoreAsync.bind(viewModel) },
+                        resx: { label: 'string_2634' }"></button>
+            <button data-bind="menuCommand: { id: 'availability', onClick: viewModel.showStoreAvailableToPromise.bind(viewModel) },
+                        resx: { label: 'string_2635' }"></button>
+            <button data-bind="menuCommand: { id: 'showAllLocations', onClick: viewModel.showAllLocations.bind(viewModel) },
+                        resx: { label: 'string_2644' }"></button>
+            <button data-bind="menuCommand: { id: 'viewProductDetails', onClick: viewModel.viewProductDetails.bind(viewModel) },
+                        resx: { label: 'string_2645' }"></button>
+
+            <!-- HTML lint is disabled below due to a false positive. The menu command binding generates the label. -->
+            <!-- HTMLLint Disable LabelExistsValidator -->
+            <!-- ko foreach: { data: viewModel.menuCommandViewModels, as: 'vm' } -->
+            <button data-bind="menuCommand: { id: vm.id, onClick: vm.execute.bind(vm), label: vm.label }, winControl: { enabled: vm.enabled }"></button>
+            <!-- /ko -->
+            <!-- HTMLLint Enable LabelExistsValidator -->
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar:{}, axBubbleAttr: 'inventoryLookupMatrixView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id: 'storeButton',
+                label: 'Store',
+                extraClass: 'iconRetail',
+                onclick: changeStore,
+                labelResx: 'string_2636'
+                }, axBubbleAttr: 'inventoryLookupMatrixView_storeButton'"></button>
+        </div>
+    </div>
+</body>
+</html>

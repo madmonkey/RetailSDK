@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout pivot handler.</title>
+    <link href="knockout.pivot.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/html" id="groupedPivotTemplate">
+        <!-- ko foreach: $data-->
+        <div data-bind="pivotItem: { header: groupDetails.Name }" class="marginTop12">
+            <div id="pivotItemList"
+                 data-bind="dataList: {
+                    itemTemplates: [
+                        { templateId: templateName }
+                    ],
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                    itemDataSource: groupItems,
+                    defaultListType: Commerce.Controls.DataList.ListType.Card,
+                    ariaLabelResx: 'string_612',
+                    itemInvoked: itemInvokedHandler
+                 }">
+            </div>
+        </div>
+        <!--/ko-->
+    </script>
+</body>
+</html>

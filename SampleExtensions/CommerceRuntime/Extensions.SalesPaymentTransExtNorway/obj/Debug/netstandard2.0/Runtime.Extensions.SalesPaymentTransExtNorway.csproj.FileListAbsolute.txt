@@ -1,0 +1,12 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtNorway\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesPaymentTransExtNorway.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtNorway\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesPaymentTransExtNorway.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtNorway\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesPaymentTransExtNorway.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtNorway\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesPaymentTransExt.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtNorway\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesPaymentTransExt.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtNorway\obj\Debug\netstandard2.0\Runtime.Extensions.SalesPaymentTransExtNorway.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtNorway\obj\Debug\netstandard2.0\Runtime.Extensions.SalesPaymentTransExtNorway.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtNorway\obj\Debug\netstandard2.0\Runtime.Extensions.SalesPaymentTransExtNorway.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtNorway\obj\Debug\netstandard2.0\Runtime.Extensions.SalesPaymentTransExtNorway.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtNorway\obj\Debug\netstandard2.0\Runtime.Extensions.SalesPaymentTransExtNorway.csproj.CopyComplete
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtNorway\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesPaymentTransExtNorway.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtNorway\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesPaymentTransExtNorway.pdb

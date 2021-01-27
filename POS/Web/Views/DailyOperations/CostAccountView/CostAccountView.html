@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cost Accounts View</title>
+    <link href="CostAccountView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="costAccountView fragment" data-bind="with: viewModel">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'costAccountView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div data-bind="pivotItem: { headerResx:'string_4054' }">
+                <!-- Main content -->
+                <div class="col grow height100Percent" data-bind="visible: viewMode() == Commerce.ViewModels.CostAccountMode.AccountSelection">
+                    <div id="costAccountList" data-bind="dataList: {
+                        itemDataSource: accounts,
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                        selectionChanged: onAccountSelectionChanged,
+                        ariaLabelResx: 'string_4054', /* Accounts */
+                        columns: [
+                            { titleResx: 'string_4057', ratio: 30, collapseOrder: 3, minWidth: 150, field: 'AccountNumber' },
+                            { titleResx: 'string_4058', ratio: 40, collapseOrder: 2, minWidth: 200, field: 'AccountName' },
+                            { titleResx: 'string_4059', ratio: 30, collapseOrder: 1, minWidth: 150, field: 'AccountNameAlias', isRightAligned: true },
+                        ]
+                        },
+                    axBubbleAttr: 'costAccountView_accounts'">
+                    </div>
+                </div>
+                <div class="width320" data-bind="visible: viewMode() == Commerce.ViewModels.CostAccountMode.AmountEntry, axBubbleAttr: 'costAccountView_costAccountAmountInputNumpad'">
+                    <!-- Num pad -->
+                    <div data-bind="currencyNumpad: {
+                                labelDataBinding: { resx: { textContent: 'string_4011' /* Enter amount */ } },
+                                inputDataBinding: { resx: { ariaLabel: 'string_4011' /* Enter amount */ } },
+                                onEnter: onSaveAccountAsync,
+                                value: amountInput,
+                                numPadInputSource: $parent.numPadInputBroker
+                            }">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom app bar -->
+        <div id="costAccountCommandAppBar" data-bind="appBar: {}, axBubbleAttr: 'costAccountView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id:'selectAccountAppBar',
+                extraClass: 'iconAccept',
+                onclick: onConfirmSelectAccount,
+                labelResx: 'string_4051',
+                visible: viewMode() == Commerce.ViewModels.CostAccountMode.AccountSelection,
+                disabled: isAccountSelected }, axBubbleAttr: 'costAccountView_selectAccountAppBar'">
+            </button>
+
+            <button data-bind="appBarCommand: {
+                id:'saveAppBar',
+                extraClass: 'iconSave',
+                onclick: onSaveAccountAsync,
+                labelResx: 'string_4016',
+                visible: viewMode() == Commerce.ViewModels.CostAccountMode.AmountEntry }, axBubbleAttr: 'costAccountView_saveAppBar'">
+            </button>
+        </div>
+    </div>
+</body>
+</html>

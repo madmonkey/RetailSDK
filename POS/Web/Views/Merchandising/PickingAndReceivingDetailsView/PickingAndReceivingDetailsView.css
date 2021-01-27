@@ -1,0 +1,30 @@
+﻿.pickingAndReceivingDetailsView .receiptPreview {
+    color: #000000;
+    background-color: #ffffff;
+    align-self: stretch;
+    overflow-x: auto;
+    overflow-y: auto;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/*Have to use monospace font here to make sure the alignment works fine.*/
+.pickingAndReceivingDetailsView .receiptPreview pre {
+    font-family:'Lucida Console';
+}
+
+body[dir="rtl"] .pickingAndReceivingDetailsView .receiptPreview {
+    margin-right: -40px;
+    margin-left: 0; 
+}
+
+@media (orientation: portrait) {
+    .pickingAndReceivingDetailsView .receiptPreview {
+        margin-left: 0;
+    }
+
+    body[dir="rtl"] .pickingAndReceivingDetailsView .receiptPreview {
+        margin-right: 0;
+    }
+
+}

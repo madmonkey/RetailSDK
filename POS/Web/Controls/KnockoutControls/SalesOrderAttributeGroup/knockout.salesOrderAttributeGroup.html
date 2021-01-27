@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SalesOrderAttributeGroupControl template</title>
+    <link href="knockout.salesOrderAttributeGroup.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/html" id="salesOrderAttributeGroupTemplate">
+        <div class="borderBottomThin">
+            <div class="row no-shrink">
+                <div class="col grow h6 marginTop12 marginBottom12 wrapText" data-bind="text: attributeGroupFriendlyName">
+                </div>
+                <div class="col">
+                    <button class="iconEdit width48 height40 accentColor" data-bind="click: editAsync"></button>
+                </div>
+                <div class="col marginLeft4">
+                    <button class="width48 height40" data-bind="css: { iconChevronDown: isCollapsed(), iconChevronUp: !isCollapsed() },
+                                click: toggleCollapsed"></button>
+                </div>
+            </div>
+            <div class="col no-shrink" data-bind="visible: !isCollapsed()">
+                <!-- ko foreach: { data: attributeViewModels, as: 'attributeVm' } -->
+                <!-- ko if: attributeVm.isVisible -->
+                <label class="wrapText" data-bind="text: attributeVm.attributeFriendlyName">
+                </label>
+                <div class="h4 minHeight20 marginBottom8 wrapText">
+                    <span data-bind="text: attributeVm.displayValue"></span>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+            </div>
+        </div>
+    </script>
+</body>
+</html>

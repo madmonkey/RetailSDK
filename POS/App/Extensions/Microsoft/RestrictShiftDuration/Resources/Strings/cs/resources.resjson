@@ -1,0 +1,10 @@
+{
+  "Warning_title": "Upozornění",
+  "_Warning_title.comment": "POS warning message title.",
+  "Shift_closing_warning": "Směnu musíte uzavřít do {0}.",
+  "_Shift_closing_warning.comment": "POS warning message when the cashier performs an operation within the shift closing interval.",
+  "Error_title": "Chyba",
+  "_Error_title.comment": "POS error message title.",
+  "Shift_closing_error": "Trvání směny překračuje limit. Pozastavte transakci, ukončete směnu a otevřete novou směnu.",
+  "_Shift_closing_error.comment": "POS warning message when the cashier performs an operation after the shift closing time."
+}

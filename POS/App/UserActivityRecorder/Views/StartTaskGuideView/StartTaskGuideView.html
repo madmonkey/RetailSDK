@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="col height100Percent">
+        <div class="row no-shrink taskRecorderPanelHeader">
+            <div class="grow">
+                <div class="h4 title"
+                    data-bind="resx: { textContent: 'string_10069' }">
+                    HELP
+                </div>
+            </div>
+        </div>
+        <div class="row height48 no-shrink">
+            <button class="iconBack icon-24x24 height48 marginLeft4 marginRight12" aria-label="Back" type="button" data-bind="click: navigateBack, resx: { ariaLabel: 'string_10139' }"></button>
+            <div class="h2 ellipsis shrink padTop05" data-bind="text: recording().name"> </div>
+        </div>
+        <!-- Progress ring -->
+        <div class="center grow" data-bind="loader: { visible: indeterminateWaitVisible, type: Commerce.Controls.Loader.LoaderType.Nested }"></div>
+        <!-- ko if: isRecordingReady -->
+        <div class="row grow stretch">
+            <div class="col width100Percent">
+                <div class="row height20">
+                    <label data-bind="resx: { textContent: 'string_10081' }"> Description </label>
+                </div>
+                <div class="row height20">
+                    <div class="h4 ellipsis" data-bind="text: recording().description"> </div>
+                </div>
+                <div class="row height48 padTop12 padBottom8">
+                    <div class="h2" data-bind="resx: { textContent: 'string_10082' }"> Steps </div>
+                </div>
+                <div class="row scrollY controlPanel minHeight52 marginTop4 padTop8 width100Percent">
+                    <div class="width100Percent" data-bind="foreach: recording().nodes">
+                        <div class="row marginBottom20">
+                            <div class="wrapText width48">
+                                <div class="h4" data-bind="text: displayNumber"> </div>
+                            </div>
+                            <div class="grow width100Percent wrapText">
+                                <div class="h4" data-bind="text: description"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row height40 marginTop24">
+                    <div class="col grow" data-bind="buttonBlock: {
+                        buttonClass: 'iconWordLogo icon-18x18',
+                        click: saveWordDocument,
+                        labelTextResx: 'string_10051', /* Export as Word document */
+                        ariaLabelResx: 'string_10051', /* Export as Word document */
+                    }">
+                    </div>
+                </div>
+                <!-- playback feature is not implemented yet -->
+                <div class="row no-shrink marginTop36" data-bind="visible: false">
+                    <div class="col grow no-shrink">
+                        <button tabindex="0" class="primaryButton" type="button" data-bind="resx: { textContent: 'string_10083', ariaLabel: 'string_10083' }">Start task guide</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- ko if: !isRecordingReady -->
+        <!-- /ko -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.DataModelEFR\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.DocumentProvider.DataModelEFR.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.DataModelEFR\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.DocumentProvider.DataModelEFR.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.DataModelEFR\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.DocumentProvider.DataModelEFR.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.DataModelEFR\obj\Debug\netstandard2.0\Runtime.Extensions.DocumentProvider.DataModelEFR.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.DataModelEFR\obj\Debug\netstandard2.0\Runtime.Extensions.DocumentProvider.DataModelEFR.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.DataModelEFR\obj\Debug\netstandard2.0\Runtime.Extensions.DocumentProvider.DataModelEFR.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.DataModelEFR\obj\Debug\netstandard2.0\Runtime.Extensions.DocumentProvider.DataModelEFR.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.DataModelEFR\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.DocumentProvider.DataModelEFR.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.DocumentProvider.DataModelEFR\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.DocumentProvider.DataModelEFR.pdb

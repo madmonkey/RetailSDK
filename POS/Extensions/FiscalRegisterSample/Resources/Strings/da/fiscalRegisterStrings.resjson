@@ -1,0 +1,23 @@
+{
+  "Fiscal_register_not_enabled_error": "Regnskabsregister er aktiveret for POS, men hardwarestation er ikke aktiveret.",
+  "_Fiscal_register_not_enabled_error.comment": "Fiscal register error message.",
+  "Fiscal_register_not_available_error": "Regnskabsregister er aktiveret for POS, men hardwarestation er ikke tilgængelig.",
+  "_Fiscal_register_not_available_error.comment": "Fiscal register error message.",
+  "Fiscal_register_unregistered_comleted_transactions_error": "Der er fuldførte salgstransaktioner, som ikke er registreret i regnskabsregisteret. Handlingen annulleres.",
+  "_Fiscal_register_unregistered_comleted_transactions_error.comment": "Fiscal register error message.",
+  "Ok_Button_Label": "OK",
+  "_Ok_Button_Label.comment": "Message dialog button label.",
+  "Cancel_Button_Label": "Annuller",
+  "_Cancel_Button_Label.comment": "Message dialog button label.",
+  "Skip_Button_Label": "Spring over",
+  "_Skip_Button_Label.comment": "Message dialog button label.",
+  "Run_Refiscalization_Dialog_Title": "Regnskabsregister",
+  "_Run_Refiscalization_Dialog_Title.comment": "Message dialog message.",
+  "Run_Refiscalization_Dialog_Message": "Der er {0} fuldførte salgstransaktioner, som er ikke registreret i regnskabsregisteret. Klik på OK for at registrere disse transaktioner.",
+  "Skip_Refiscalize_Dialog_Title": "Fejl i regnskabsregister",
+  "_Skip_Refiscalize_Dialog_Title.comment": "Message dialog title.",
+  "Skip_Refiscalize_Dialog_Message": "Salgstransaktionen kan ikke registreres i regnskabsregisteret. Du kan springe regnskabsregistreringen over eller annullere handlingen.",
+  "_Skip_Refiscalize_Dialog_Message.comment": "Message dialog message.",
+  "Confirm_Skip_Refiscalization_Dialog_Message": "Er du sikker på, at du vil springe regnskabsregistreringen over for transaktions-id: '{0}', dato og klokkeslæt for transaktion: '{1}', kvitterings-id: '{2}', samlet tilgangsbeløb: '{3}'? Hvis du springer regnskabsregistreringen over, registreres dette i transaktionen.",
+  "_Confirm_Skip_Refiscalization_Dialog_Message.comment": "Message dialog message."
+}

@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetCashManagementTransactionSourceDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'GetCashManagementTransactionSourceDialog'">
+        <div class="getCashManagementTransactionSourceDialog">
+            <div data-bind="dialog: {
+                    title: title,
+                    visible: visible,
+                    buttonClick: buttonClickHandler,
+                    closeOnEscButton: true,
+                    dialogCloseButtonClick: dialogCloseButtonClick,
+                    buttons: [
+                        { label: cancelButtonLabel, operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton', isPrimary: false } /* Cancel */
+                    ],
+                },
+                axBubbleAttr: 'getCashManagementTransactionSourceDialog_getCashManagementTransactionSourceDialog'">
+
+                <div data-bind="selectTile: {
+                            tileType: Commerce.Controls.SelectTile.SelectTileType.DoubleLine,
+                            primaryText: viewModel.newTranscationButtonLabel,
+                            secondaryText: viewModel.secondaryText,
+                            iconClass: newTranscationIconCssClass,
+                            iteminvoked: newCashManagementOperationButtonClick,
+                            primaryTextCssClass: 'primaryFontColor',
+                            secondaryTextCssClass: 'secondaryFontColor',
+                            backgroundCssClass: 'backgroundTransparent',
+                            cheveronCssClass:'accentColor',
+                            displayBottomBorder: true
+                        }"></div>
+
+                <!-- ko if: viewModel.hasAvailableEntries -->
+                <div class="h5 primaryFontColor marginTop12 marginBottom12" data-bind="text: viewModel.avaialbleTransactionsLabel"></div>
+                <!-- /ko -->
+                <!-- dialog content -->
+                <div class="content scrollY" data-bind="with: viewModel">
+
+                    <!--Available Entries-->
+                    <!-- ko if: hasAvailableEntries -->
+                    <div>
+                        <!-- ko foreach: availableEntriesForDisplay -->
+                        <div role="button" class="itemContainer marginRight12 marginBottom12 width100Percent highContrastBorder cardBorder"
+                             data-bind="click: $root.availableEntryClickHandler.bind($root, $data.availableEntry)">
+                            <div class="row">
+                                <div class="col backgroundLightGrey centerY alignRight pad12">
+                                    <div class="h1" data-bind="text: Commerce.Formatters.PriceFormatter(amount)"></div>
+                                </div>
+                            </div>
+                            <div class="col grow pad12 padTop8">
+                                <div class="row">
+                                    <!-- Icon -->
+                                    <div class="height40">
+                                        <div class="width32 marginRight12 padTop4 center">
+                                            <!-- ko if: sourceDestinationType === Commerce.Proxy.Entities.CashManagementTransactionContext.Shift -->
+                                            <div class="h4 center" data-bind="css: 'iconCashDrawer icon-20x20 accentColor'"></div>
+                                            <!-- /ko -->
+                                            <!-- ko if: sourceDestinationType === Commerce.Proxy.Entities.CashManagementTransactionContext.Safe -->
+                                            <div class="h4 center" data-bind="css: 'iconSafe icon-20x20 accentColor'"></div>
+                                            <!-- /ko -->
+                                        </div>
+                                    </div>
+                                    <!-- Double lines of text -->
+                                    <div class="marginRight12">
+                                        <div class="width100Percent">
+                                            <div class="h5 primaryFontColor" data-bind="text: sourceDestinationPrimaryText"></div>
+                                            <div class="h6 secondaryFontColor" data-bind="text: sourceDestinationSecondaryText"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col grow pad12 padTop8">
+                                <div class="row">
+                                    <!-- Icon -->
+                                    <div class="height40">
+                                        <div class="width32 marginRight12 padTop4 center">
+                                            <div class="h4 center width28 height28 accentBackgroundColor backgroundCircle" data-bind="text: staffInitials"></div>
+                                        </div>
+                                    </div>
+                                    <!-- Double lines of text -->
+                                    <div class="marginRight12">
+                                        <div class="width100Percent">
+                                            <div class="h5 primaryFontColor" data-bind="text: staffName"></div>
+                                            <div class="h6 secondaryFontColor" data-bind="text: staffId"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="no-shrink">
+                                <div class="line-separator"></div>
+                            </div>
+                            <div class="col grow pad12">
+                                <div class="row">
+                                    <div class="marginRight12">
+                                        <div class="width100Percent minHeight32 maxHeight64">
+                                            <div class="h6 textTransformNone wrapText" data-bind="text: description"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

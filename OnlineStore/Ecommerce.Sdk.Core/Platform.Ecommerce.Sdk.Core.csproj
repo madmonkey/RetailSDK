@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyName>$(AssemblyNamePrefix).Retail.Ecommerce.Sdk.Core</AssemblyName>
+    <RootNamespace>Contoso.Retail.Ecommerce.Sdk.Core</RootNamespace>
+    <ShippingSourceCode>true</ShippingSourceCode>
+    <SkipAssemblyClsCompliant>true</SkipAssemblyClsCompliant>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Publishing\CrtUtilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Publishing\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Storefront\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Publishing\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Storefront\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Composition" Version="1.2.0" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.KeyVault.Contracts" Version="$(ToolsRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.RetailProxy" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="2.14.201151115" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTransform" Version="15.1.0" />
+  </ItemGroup>
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

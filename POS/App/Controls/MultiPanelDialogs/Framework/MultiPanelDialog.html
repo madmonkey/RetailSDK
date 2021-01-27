@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>MultiPanelDialog</title>
+
+    <link href="MultiPanelDialogDialog.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script id="multiPanelDialog.Dialog" type="text/html">
+        <div data-bind="customControlInternal: 'MultiPanelDialog'">
+            <div data-bind="dialog:
+                {
+                    title: viewModel.title,
+                    subTitle: viewModel.subTitle,
+                    visible: isVisible,
+                    backButtonVisible: !viewModel.isFirstStep(),
+                    backButtonEnabled: viewModel.isGoBackAllowed,
+                    backClick: viewModel.goBack,
+                    buttonClick: viewModel.runOperation,
+                    closeButtonEnabled: viewModel.isCancellationAllowed,
+                    showProgressIndicator: viewModel.isProcessing,
+                    dialogCloseButtonClick: viewModel.cancelWorkflow,
+                    buttons: buttons,
+                    dialogType: dialogType,
+                    setSetFocusInDialogHandler: setSetFocusInDialogHandler.bind($data)
+                },
+                attr: { 'aria-label': ariaLabel },
+                axBubbleAttr: 'multiPanelDialog_multiPanelDialog'" class="multiPanelDialog modalWindowContentSection">
+
+                <!-- Container div so the dialog has a handle to contents even if the panels are not displayed -->
+                <div>
+                    <!-- List of panels to display -->
+                    <!-- ko if: showPanels -->
+                    <div data-bind="dynamicPanel: { panel: dataPanel, shouldFadeIn: false }, visible: dataPanel.viewModel.isVisible">
+                    </div>
+
+                    <div data-bind="dynamicPanel: { panel: currentPanel, shouldFadeIn: shouldMainPanelFadeIn, onShow: onMainPanelShow.bind($data) }">
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

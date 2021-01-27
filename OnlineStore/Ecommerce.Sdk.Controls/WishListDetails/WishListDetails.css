@@ -1,0 +1,58 @@
+.msax-WishListDetails table {
+    color: #272727;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border: 0;
+    width: 100%;
+}
+
+.msax-WishListDetails .msax-ItemsGrid {
+        word-wrap: break-word;
+    }
+
+    .msax-WishListDetails .msax-ItemsGrid .msax-Price {
+        text-align: right;
+    }
+
+    .msax-WishListDetails .msax-ItemsGrid .msax-Quantity {
+        text-align: center;
+    }
+
+    .msax-WishListDetails .msax-ItemsGrid .msax-Total {
+        text-align: right;
+    }
+
+        .msax-WishListDetails .msax-ItemsGrid .msax-Total .msax-LineDiscount {
+            color: #999999;
+        }
+
+    .msax-WishListDetails .msax-ItemsGrid tr.msax-KitComponents > *:first-child, .msax-WishListDetails .msax-ItemsGrid tr.msax-NoOfComponentsInKit > *:first-child {
+        padding-left: 60px;
+    }
+
+    .msax-WishListDetails .msax-ItemsGrid tr.msax-KitComponents > *:last-child {
+        padding-right: 10px; /* overriding the inherited padding-right */
+    }
+
+.msax-WishListDropDown {
+    margin-bottom: 20px;
+}
+
+.msax-WishListCheckBox {
+    border-radius: 3px;
+    margin-top: 5px;
+}
+
+.msax-WishListDetails .row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.msax-WishListDetails .msax-GridHeader {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.msax-AddToCartButton {
+    margin-top: 20px !important;
+}

@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MainTabs_Products" xml:space="preserve">
+    <value>Shop</value>
+  </data>
+  <data name="Pages_CategoryListPage_Products" xml:space="preserve">
+    <value>Shop</value>
+  </data>
+  <data name="MainTabs_Account" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Pages_AccountPage_AccountInformation" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="MainTabs_Cart" xml:space="preserve">
+    <value>Cart</value>
+  </data>
+  <data name="Pages_SignInPage_GoogleSignIn" xml:space="preserve">
+    <value>Sign in with Google</value>
+  </data>
+  <data name="Pages_SignInPage_SignIn_Title" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="Pages_AccountPage_OrderHistory" xml:space="preserve">
+    <value>Orders</value>
+  </data>
+  <data name="Pages_AccountPage_SignIn" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="Pages_AccountPage_SignOut" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="MenuPage_Products" xml:space="preserve">
+    <value>Shop</value>
+  </data>
+  <data name="Pages_OrderDetailsPage_Title" xml:space="preserve">
+    <value>Order detail</value>
+  </data>
+  <data name="Pages_OrderDetailsPage_CreatedDateTime" xml:space="preserve">
+    <value>Order date</value>
+  </data>
+  <data name="Views_OrderSummaryView_EstimatedShippingAmount" xml:space="preserve">
+    <value>Shipping and handling</value>
+  </data>
+  <data name="Pages_OrderDetailsPage_SalesId" xml:space="preserve">
+    <value>Order number</value>
+  </data>
+  <data name="Views_AddressLabelView_ShippingAddress" xml:space="preserve">
+    <value>Shipping address</value>
+  </data>
+  <data name="Pages_OrderDetailsPage_StatusValue" xml:space="preserve">
+    <value>Order status</value>
+  </data>
+  <data name="Views_OrderSummaryView_SubTotalAmount" xml:space="preserve">
+    <value>Subtotal</value>
+  </data>
+  <data name="Views_OrderSummaryView_TaxAmount" xml:space="preserve">
+    <value>Tax</value>
+  </data>
+  <data name="Views_OrderSummaryView_TotalDiscount" xml:space="preserve">
+    <value>Total savings</value>
+  </data>
+  <data name="Views_OrderLinesView_Savings" xml:space="preserve">
+    <value>Savings</value>
+  </data>
+  <data name="Pages_CartPage_Savings" xml:space="preserve">
+    <value>Savings</value>
+  </data>
+  <data name="Pages_OrderDetailsPage_TotalAmount" xml:space="preserve">
+    <value>Order total</value>
+  </data>
+  <data name="Views_OrderSummaryView_TotalAmount" xml:space="preserve">
+    <value>Order total</value>
+  </data>
+  <data name="Views_SearchToolBarItem_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Views_CartToolBarItem_Cart" xml:space="preserve">
+    <value>Cart</value>
+  </data>
+  <data name="Enum_SalesStatus_Canceled" xml:space="preserve">
+    <value>Canceled</value>
+  </data>
+  <data name="Enum_SalesStatus_Confirmed" xml:space="preserve">
+    <value>Confirmed</value>
+  </data>
+  <data name="Enum_SalesStatus_Created" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="Enum_SalesStatus_Delivered" xml:space="preserve">
+    <value>Delivered</value>
+  </data>
+  <data name="Enum_SalesStatus_Lost" xml:space="preserve">
+    <value>Lost</value>
+  </data>
+  <data name="Enum_SalesStatus_Processing" xml:space="preserve">
+    <value>Processing</value>
+  </data>
+  <data name="Enum_SalesStatus_Sent" xml:space="preserve">
+    <value>Sent</value>
+  </data>
+  <data name="Enum_SalesStatus_Unknown" xml:space="preserve">
+    <value>Processing</value>
+  </data>
+  <data name="Enum_SalesStatus_Invoiced" xml:space="preserve">
+    <value>Invoiced</value>
+  </data>
+  <data name="Pages_CartPage_Quantity_Abbreviation" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="Views_OrderLinesView_Quantity_Abbreviation" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="Separator_String" xml:space="preserve">
+    <value>, </value>
+  </data>
+  <data name="Pages_ProductSearchPage_SearchBar_Placeholder" xml:space="preserve">
+    <value>Search For Products</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Pages_EvaluationModeSettingsPage_UrlErrorMessage" xml:space="preserve">
+    <value>Enter a valid URL</value>
+  </data>
+  <data name="Pages_AccountPage_EvaluationModeSettings" xml:space="preserve">
+    <value>Evaluation mode settings</value>
+  </data>
+  <data name="Pages_EvaluationModeSettingsPage_DataServiceUrl" xml:space="preserve">
+    <value>Data service URL</value>
+  </data>
+  <data name="Pages_EvaluationModeSettingsPage_MediaBaseUrl" xml:space="preserve">
+    <value>Media base URL</value>
+  </data>
+  <data name="Pages_EvaluationModeSettingsPage_CardPaymentHostPageUrl" xml:space="preserve">
+    <value>Card payment host page URL</value>
+  </data>
+  <data name="Pages_EvaluationModeSettingsPage_OperatingUnitNumber" xml:space="preserve">
+    <value>Operating unit number for online channel</value>
+  </data>
+  <data name="Pages_EvaluationModeSettingsPage_OperatingUnitNumberErrorMessage" xml:space="preserve">
+    <value>Enter an Operating Unit Number for online channel</value>
+  </data>
+  <data name="Enum_ProductDimensionType_Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="Enum_ProductDimensionType_Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Enum_ProductDimensionType_Style" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="Pages_ProductPage_ProductDetails_PickerTitle" xml:space="preserve">
+    <value>Choose a {0}</value>
+  </data>
+  <data name="Pages_ProductDetail_AddToCart" xml:space="preserve">
+    <value>Add to cart</value>
+  </data>
+  <data name="Pages_CartPage_Title" xml:space="preserve">
+    <value>Shopping Cart</value>
+  </data>
+  <data name="Pages_CartPage_ItemCount" xml:space="preserve">
+    <value>Total product lines: </value>
+  </data>
+  <data name="Pages_CartPage_Delete" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Pages_CartPage_SubTotalAmount" xml:space="preserve">
+    <value>Subtotal</value>
+  </data>
+  <data name="Pages_CartPage_TotalDiscount" xml:space="preserve">
+    <value>Total savings</value>
+  </data>
+  <data name="Pages_CheckoutPage_Cart_OrderResultMessage" xml:space="preserve">
+    <value>Thank you for your purchase. Your order number is {0}.</value>
+  </data>
+  <data name="Pages_CartPage_Checkout" xml:space="preserve">
+    <value>Proceed to checkout</value>
+  </data>
+  <data name="Pages_CardPaymentPage_Title" xml:space="preserve">
+    <value>Credit card</value>
+  </data>
+  <data name="Pages_CheckoutPage_Title" xml:space="preserve">
+    <value>Checkout</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_AddressLine" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="Pages_CheckoutDeliveryOptionsPage_Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_Email" xml:space="preserve">
+    <value>Email address</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_ConfirmEmail" xml:space="preserve">
+    <value>Confirm email address</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_Name" xml:space="preserve">
+    <value>Shipping name</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_State" xml:space="preserve">
+    <value>State (Two letter code e.g. WA)</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_Update_Address" xml:space="preserve">
+    <value>Update existing address</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_ZipCode" xml:space="preserve">
+    <value>ZIP</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_Title" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_CountryPickerTitle" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Pages_CheckoutPage_SelectShipping" xml:space="preserve">
+    <value>Select shipping address</value>
+  </data>
+  <data name="Pages_CardPaymentPage_Done" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="Pages_CheckoutPage_PaymentDetails" xml:space="preserve">
+    <value>Provide credit card information</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Contoso</value>
+  </data>
+  <data name="Pages_MenuPage_AppName" xml:space="preserve">
+    <value>Contoso</value>
+  </data>
+  <data name="Pages_CheckoutDeliveryOptionsPage_Title" xml:space="preserve">
+    <value>Shipping Options</value>
+  </data>
+  <data name="Pages_CheckoutDeliveryOptionsPage_PickerTitle" xml:space="preserve">
+    <value>Select Delivery Option</value>
+  </data>
+  <data name="Pages_CheckoutPage_PlaceOrder" xml:space="preserve">
+    <value>Place order</value>
+  </data>
+  <data name="Pages_AboutPage_CopyRightInfo" xml:space="preserve">
+    <value>Copyright </value>
+  </data>
+  <data name="Pages_AboutPage_PrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Pages_AboutPage_TermsOfUse" xml:space="preserve">
+    <value>License terms</value>
+  </data>
+  <data name="Pages_AboutPage_Title" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Pages_AboutPage_VersionNumber" xml:space="preserve">
+    <value>Version: 1.0.0.0</value>
+  </data>
+  <data name="Pages_AccountPage_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Pages_CheckoutPage_CreditCard" xml:space="preserve">
+    <value>Credit card</value>
+  </data>
+  <data name="Pages_ProductDescriptionPage_Title" xml:space="preserve">
+    <value>Product Description</value>
+  </data>
+  <data name="CountryRegion_CAN" xml:space="preserve">
+    <value>Canada</value>
+  </data>
+  <data name="CountryRegion_USA" xml:space="preserve">
+    <value>United States of America</value>
+  </data>
+  <data name="Pages_CheckoutDeliveryOptionsPage_Label" xml:space="preserve">
+    <value>Choose a shipping option</value>
+  </data>
+  <data name="Pages_ProductPage_PriceLabel" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Enum_ToastNotificationType_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ServiceNotAvailable" xml:space="preserve">
+    <value>The service is currently not available. Check your network connection and try again later.</value>
+  </data>
+  <data name="ServiceNotAvailableEvaluationMode" xml:space="preserve">
+    <value>The service is currently not available. Check your evaluation mode settings and network connection, and try again later.</value>
+  </data>
+  <data name="Pages_CartPage_CartLineQuantityUpdateErrorMessage" xml:space="preserve">
+    <value>Please enter a valid quantity.</value>
+  </data>
+  <data name="Pages_CartPage_CartLineQuantityUpdateSuccessMessage" xml:space="preserve">
+    <value>Quantity has been updated for {0}</value>
+  </data>
+  <data name="Pages_ProductPage_ProductDetail_AddToCartMessage" xml:space="preserve">
+    <value>{0} has been added to cart.</value>
+  </data>
+  <data name="Pages_CartPage_ValidationFailed" xml:space="preserve">
+    <value>Validation failed</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_ValidationFailed" xml:space="preserve">
+    <value>Validation failed</value>
+  </data>
+  <data name="Enum_ToastNotificationType_Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="Enum_ToastNotificationType_Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Enum_ToastNotificationType_Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="Enum_ToastNotificationType_Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Pages_OrderHistoryPage_CustomerNotSignedUp" xml:space="preserve">
+    <value>You have not signed up as a customer. Sign up as a customer and try again.</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_CustomerNotSignedUp" xml:space="preserve">
+    <value>You have not signed up as a customer. You have been signed out and will check out as guest.</value>
+  </data>
+  <data name="Views_CardPaymentView_CardTypeNotSupported" xml:space="preserve">
+    <value>The selected credit card type is not supported.</value>
+  </data>
+  <data name="AttributeDataTypeFormatBoolean" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="AttributeDataTypeFormatCurrency" xml:space="preserve">
+    <value>{0}{1:0.00}</value>
+  </data>
+  <data name="AttributeDataTypeFormatDateTime" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="AttributeDataTypeFormatDecimal" xml:space="preserve">
+    <value>{0:0.00}</value>
+  </data>
+  <data name="AttributeDataTypeFormatInteger" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="Pages_CartPage_CartIsEmptyMessage" xml:space="preserve">
+    <value>Add products to the shopping cart to checkout.</value>
+  </data>
+  <data name="Pages_CheckoutPage_Place_Order_Error" xml:space="preserve">
+    <value>Please provide all the required details before placing the order.</value>
+  </data>
+  <data name="Pages_ProductPage_AddToCartError" xml:space="preserve">
+    <value>Please select all required options (size, color, style) and try again.</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_DeliveryOption_Error" xml:space="preserve">
+    <value>Delivery options cannot be found. Check your address (e.g., State code) and try again.</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_UpdatePrimaryAddress_Error" xml:space="preserve">
+    <value>Unable to save your primary address for next checkout.</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_EmailNotEqual_Error" xml:space="preserve">
+    <value>Email addresses do not match.</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_AddressIsEmptyMessage" xml:space="preserve">
+    <value>Please provide all the required details (Name, Street, City, State, Zipcode, Email)</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_StateCodeInvalidFormat" xml:space="preserve">
+    <value>Only two letter state code (e.g. WA) is allowed.</value>
+  </data>
+  <data name="Pages_CheckoutAddressPage_EmailNotValid_Error" xml:space="preserve">
+    <value>Please enter a valid email address.</value>
+  </data>
+  <data name="Pages_CheckoutPage_ShippingOption" xml:space="preserve">
+    <value>Shipping option</value>
+  </data>
+  <data name="Pages_CartPage_CartIsEmpty" xml:space="preserve">
+    <value>Your cart is currently empty.</value>
+  </data>
+  <data name="Pages_AboutPage_ThirdPartyNotices" xml:space="preserve">
+    <value>Third party notices</value>
+  </data>
+</root>

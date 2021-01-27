@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<base:CheckoutAddressPageXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Pages.CheckoutAddressPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages"
+    xmlns:behaviors="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Behaviors"
+    xmlns:converters="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Converters"
+    xmlns:extensions="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Extensions"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    Title="{localization:Translate Pages_CheckoutAddressPage_Title}">
+    <ScrollView>
+        <ScrollView.Resources>
+            <ResourceDictionary>
+                <converters:InverseBooleanConverter
+                    x:Key="InverseBooleanConverter" />
+            </ResourceDictionary>
+        </ScrollView.Resources>
+        <StackLayout
+            Spacing="0">
+            <ActivityIndicator
+                IsEnabled="{Binding IsBusy}"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}" />
+            <Entry
+                x:Name="ShippingName"
+                Style="{StaticResource fieldEntryStyle}"
+                Placeholder="{localization:Translate Pages_CheckoutAddressPage_Name}"
+                Text="{Binding Address.Data.Name}" />
+            <Entry
+                x:Name="AddressLine1"
+                Style="{StaticResource fieldEntryStyle}"
+                Placeholder="{localization:Translate Pages_CheckoutAddressPage_AddressLine}"
+                Text="{Binding Address.Data.Street}" />
+            <Entry
+                x:Name="CityEntry"
+                Style="{StaticResource fieldEntryStyle}"
+                Placeholder="{localization:Translate Pages_CheckoutAddressPage_City}"
+                Text="{Binding Address.Data.City}" />
+            <Entry
+                x:Name="State"
+                Style="{StaticResource fieldEntryStyle}"
+                Keyboard="Text"
+                Placeholder="{localization:Translate Pages_CheckoutAddressPage_State}"
+                Text="{Binding Address.Data.State}">
+                <Entry.Behaviors>
+                    <behaviors:UpperCaseBehavior />
+                </Entry.Behaviors>
+            </Entry>
+            <Entry
+                x:Name="Zip"
+                Style="{StaticResource fieldEntryStyle}"
+                Keyboard="Numeric"
+                Placeholder="{localization:Translate Pages_CheckoutAddressPage_ZipCode}"
+                Text="{Binding Address.Data.ZipCode}" />
+            <Picker
+                x:Name="CountryPicker"
+                Title="{localization:Translate Pages_CheckoutAddressPage_CountryPickerTitle}"
+                Style="{StaticResource fieldPickerStyle}"
+                SelectedIndexChanged="CountryPickerSelectedIndexChanged" />
+            <Entry
+                x:Name="EmailId"
+                Style="{StaticResource fieldEntryStyle}"
+                Keyboard="Email"
+                Placeholder="{localization:Translate Pages_CheckoutAddressPage_Email}"
+                Text="{Binding Address.Data.Email}" />
+            <Entry
+                x:Name="ConfirmEmailAddress"
+                Style="{StaticResource fieldEntryStyle}"
+                Keyboard="Email"
+                Placeholder="{localization:Translate Pages_CheckoutAddressPage_ConfirmEmail}"
+                Text="{Binding ConfirmEmailAddress}" />
+            <StackLayout
+                Margin="20,5"
+                Orientation="Horizontal">
+                <Switch
+                    Margin="0,0,10,0"
+                    IsToggled="{Binding ShouldSaveAddress}"
+                    IsVisible="{Binding IsToggleVisible}" />
+                <Label
+                    HorizontalOptions="StartAndExpand"
+                    IsVisible="{Binding IsToggleVisible}"
+                    Text="{localization:Translate Pages_CheckoutAddressPage_Update_Address}"
+                    VerticalTextAlignment="Center" />
+            </StackLayout>
+            <Button
+                Margin="20"
+                IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
+                BackgroundColor="{extensions:Palette ActionButtonBackground}"
+                Clicked="ContinueButtonClicked"
+                Text="{localization:Translate Pages_CheckoutAddressPage_Continue}"
+                TextColor="{extensions:Palette ActionButtonText}" />
+        </StackLayout>
+    </ScrollView>
+</base:CheckoutAddressPageXaml>

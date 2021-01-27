@@ -1,0 +1,23 @@
+{
+  "Fiscal_register_not_enabled_error": "会計登録は、POS に対して有効になっていますが、ハードウェア ステーションが有効になっていません。",
+  "_Fiscal_register_not_enabled_error.comment": "Fiscal register error message.",
+  "Fiscal_register_not_available_error": "会計登録は、POS に対して有効になっていますが、ハードウェア ステーションが使用できません。",
+  "_Fiscal_register_not_available_error.comment": "Fiscal register error message.",
+  "Fiscal_register_unregistered_comleted_transactions_error": "会計登録に登録されていない完了済みの販売トランザクションがあります。操作がキャンセルされました。",
+  "_Fiscal_register_unregistered_comleted_transactions_error.comment": "Fiscal register error message.",
+  "Ok_Button_Label": "OK",
+  "_Ok_Button_Label.comment": "Message dialog button label.",
+  "Cancel_Button_Label": "キャンセル",
+  "_Cancel_Button_Label.comment": "Message dialog button label.",
+  "Skip_Button_Label": "スキップ",
+  "_Skip_Button_Label.comment": "Message dialog button label.",
+  "Run_Refiscalization_Dialog_Title": "会計登録",
+  "_Run_Refiscalization_Dialog_Title.comment": "Message dialog message.",
+  "Run_Refiscalization_Dialog_Message": "会計登録に登録されていない {0} 完了済み販売トランザクションがあります。これらのトランザクションを登録するには、[OK] をクリックします。",
+  "Skip_Refiscalize_Dialog_Title": "会計登録エラー",
+  "_Skip_Refiscalize_Dialog_Title.comment": "Message dialog title.",
+  "Skip_Refiscalize_Dialog_Message": "会計登録に販売トランザクションを登録できません。会計登録をスキップするか、操作をキャンセルします。",
+  "_Skip_Refiscalize_Dialog_Message.comment": "Message dialog message.",
+  "Confirm_Skip_Refiscalization_Dialog_Message": "次の会計登録をスキップしようとしています。トランザクション ID: '{0}'、トランザクション日付/時刻: '{1}'、入庫 ID: '{2}'、受領書の合計金額: '{3}'。会計登録をスキップする場合は、このトランザクションに記録されます。",
+  "_Confirm_Skip_Refiscalization_Dialog_Message.comment": "Message dialog message."
+}

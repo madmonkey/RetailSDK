@@ -1,0 +1,7 @@
+{
+    "Audit_event_print_receipt_copy_event_message": "Receipt copy is printed for transaction '{0}'.",
+    "Audit_event_print_receipt_copy_event_message.comment": "Audit event database log string field value.",
+
+    "Audit_event_registration_error_message": "Registration error for event '{0}': {1}.",
+    "Audit_event_registration_error_message.comment": "Audit event registration log error message."
+}

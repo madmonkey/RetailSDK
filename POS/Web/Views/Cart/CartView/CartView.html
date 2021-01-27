@@ -1,0 +1,577 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cart View</title>
+    <link href="CartView.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- The content that will be loaded and displayed. -->
+    <div class="cartView col">
+
+        <!--padTop12 is needed for the following till layout root div to support backaward compatibility whose Top starts at 60px instead of 48px.-->
+        <div aria-label="Main content" class="main tillLayout-TransactionScreenLayout padTop12">
+            <div class="positionRelative">
+                <!-- ButtonGrid1 -->
+                <div id="ButtonGrid1" class="layoutControl" data-bind="axBubbleAttr: 'cartView_buttonGrid1'">
+                    <div id="ButtonGrid1Control" data-bind="buttonGrid: {
+                        visible: true,
+                        buttonClick: operationsButtonGridClick,
+                        data: viewModel.buttonGrids()[0],
+                        preventButtonInteraction: { prevent: viewModel.isProcessTextRunning, actionsToNotPrevent: [Commerce.Operations.RetailOperation.ItemSale] }
+                    },
+                    axBubbleAttr: 'cartView_buttonGrid1Control'">
+                    </div>
+                </div>
+                <!-- ButtonGrid2 -->
+                <div id="ButtonGrid2" class="layoutControl" data-bind="axBubbleAttr: 'cartView_buttonGrid2'">
+                    <div id="ButtonGrid2Control" data-bind="buttonGrid: {
+                        visible: true,
+                        buttonClick: operationsButtonGridClick,
+                        data: viewModel.buttonGrids()[1],
+                        preventButtonInteraction: { prevent: viewModel.isProcessTextRunning, actionsToNotPrevent: [Commerce.Operations.RetailOperation.ItemSale] }
+                    },
+                    axBubbleAttr: 'cartView_buttonGrid2Control'">
+                    </div>
+                </div>
+                <!-- ButtonGrid3 -->
+                <div id="ButtonGrid3" class="layoutControl" data-bind="axBubbleAttr: 'cartView_buttonGrid3'">
+                    <div id="ButtonGrid3Control" data-bind="buttonGrid: {
+                        visible: true,
+                        buttonClick: operationsButtonGridClick,
+                        data: viewModel.buttonGrids()[2],
+                        preventButtonInteraction: { prevent: viewModel.isProcessTextRunning, actionsToNotPrevent: [Commerce.Operations.RetailOperation.ItemSale] }
+                    },
+                    axBubbleAttr: 'cartView_buttonGrid3Control'">
+                    </div>
+                </div>
+                <!-- ButtonGrid4 -->
+                <div id="ButtonGrid4" class="layoutControl" data-bind="axBubbleAttr: 'cartView_buttonGrid4'">
+                    <div id="ButtonGrid4Control" data-bind="buttonGrid: {
+                        visible: true,
+                        buttonClick: operationsButtonGridClick,
+                        data: viewModel.buttonGrids()[3],
+                        preventButtonInteraction: { prevent: viewModel.isProcessTextRunning, actionsToNotPrevent: [Commerce.Operations.RetailOperation.ItemSale] }
+                    },
+                    axBubbleAttr: 'cartView_buttonGrid4Control'">
+                    </div>
+                </div>
+                <!-- ButtonGrid5 -->
+                <div id="ButtonGrid5" class="layoutControl" data-bind="axBubbleAttr: 'cartView_buttonGrid5'">
+                    <div id="ButtonGrid5Control" data-bind="buttonGrid: {
+                    visible: true,
+                    buttonClick: operationsButtonGridClick,
+                    data: viewModel.buttonGrids()[4],
+                    preventButtonInteraction: { prevent: viewModel.isProcessTextRunning, actionsToNotPrevent: [Commerce.Operations.RetailOperation.ItemSale] }
+                },
+                axBubbleAttr: 'cartView_buttonGrid5Control'">
+                    </div>
+                </div>
+                <!-- ButtonGrid6 -->
+                <div id="ButtonGrid6" class="layoutControl" data-bind="axBubbleAttr: 'cartView_buttonGrid6'">
+                    <div id="ButtonGrid6Control" data-bind="buttonGrid: {
+                    visible: true,
+                    buttonClick: operationsButtonGridClick,
+                    data: viewModel.buttonGrids()[5]
+                },
+                axBubbleAttr: 'cartView_buttonGrid6Control'">
+                    </div>
+                </div>
+                <!-- ButtonGrid7 -->
+                <div id="ButtonGrid7" class="layoutControl" data-bind="axBubbleAttr: 'cartView_buttonGrid7'">
+                    <div id="ButtonGrid7Control" data-bind="buttonGrid: {
+                    visible: true,
+                    buttonClick: operationsButtonGridClick,
+                    data: viewModel.buttonGrids()[6]
+                },
+                axBubbleAttr: 'cartView_buttonGrid7Control'">
+                    </div>
+                </div>
+                <!-- ButtonGrid8 -->
+                <div id="ButtonGrid8" class="layoutControl" data-bind="axBubbleAttr: 'cartView_buttonGrid8'">
+                    <div id="ButtonGrid8Control" data-bind="buttonGrid: {
+                    visible: true,
+                    buttonClick: operationsButtonGridClick,
+                    data: viewModel.buttonGrids()[7]
+                },
+                axBubbleAttr: 'cartView_buttonGrid8Control'">
+                    </div>
+                </div>
+                <!-- ButtonGrid9 -->
+                <div id="ButtonGrid9" class="layoutControl" data-bind="axBubbleAttr: 'cartView_buttonGrid9'">
+                    <div id="ButtonGrid9Control" data-bind="buttonGrid: {
+                    visible: true,
+                    buttonClick: operationsButtonGridClick,
+                    data: viewModel.buttonGrids()[8]
+                },
+                axBubbleAttr: 'cartView_buttonGrid9Control'">
+                    </div>
+                </div>
+                <!-- ButtonGrid10 -->
+                <div id="ButtonGrid10" class="layoutControl" data-bind="axBubbleAttr: 'cartView_buttonGrid10'">
+                    <div id="ButtonGrid10Control" data-bind="buttonGrid: {
+                    visible: true,
+                    buttonClick: operationsButtonGridClick,
+                    data: viewModel.buttonGrids()[9]
+                },
+                axBubbleAttr: 'cartView_buttonGrid10Control'">
+                    </div>
+                </div>
+                <!-- ProductRecommendations-->
+                <div id="ProductRecommendations" class="layoutControl" data-bind="axBubbleAttr: 'cartView_productRecommendations', preventInteraction: $root.viewModel.isProcessTextRunning">
+                    <div class="titleAboveControl padBottom12 hide">
+                        <h2 data-bind="resx: { textContent: 'string_129' }"></h2> <!--Recommended Products-->
+                    </div>
+                    <div data-bind="invokeButtonList: {
+                        data: viewModel.recommendedProducts,
+                        template: 'productSearchResultSquareCardTemplate',
+                        itemInvoked: viewRecommendedProductDetails.bind($data) }">
+                    </div>
+                    <div class="h4 textCenter textMiddle wrapText" data-bind="text: viewModel.productRecommendationsPlaceholderMessage"></div>
+                </div>
+
+                <!-- Custom controls -->
+                <!-- ko foreach: { data: viewModel.customControlViewModels, as: 'control' } -->
+                <div class="layoutControl" data-bind="customControl: control, attr: { 'id': control.layoutId }, style: {
+                        top: control.top + 'px',
+                        left: control.left + 'px',
+                        width: control.width + 'px',
+                        height: control.height + 'px',
+                        display: 'block'
+                    }">
+                </div>
+                <!-- /ko -->
+
+                <!-- Customer details pane -->
+                <div id="CustomerPanel" class="panel layoutControl customerBox" data-bind="axBubbleAttr: 'cartView_customerPanel'">
+                    <div class="center primaryPanelBackgroundColor highContrastBorderThin" data-bind="visible: !customerDetailsVisible(), preventInteraction: $root.viewModel.isProcessTextRunning, axBubbleAttr: 'cartView_addCustomerButton'">
+                        <div class="textCenter">
+                            <button id="addCustomerButton" class="iconAdd icon-20x20 inlineBlock marginBottom05 accentColor" tabindex="0" data-bind="resx: { ariaLabel: 'string_109' }, click: onAddCustomerClick, axBubbleAttr: 'cartView_action_addCustomer'"></button>   <!-- Add customer -->
+                            <a href="#" class="h4" data-bind="resx: { textContent: 'string_109' },
+                                    click: onAddCustomerClick,
+                                    axBubbleAttr: 'cartView_addCustomerText'">Add customer</a>
+                        </div>
+                    </div>
+                    <div class="right01 top01 overLayZIndex">
+                        <button class="iconCancel noBorder" data-bind="visible: customerDetailsVisible, click: removeCustomer, resx: { ariaLabel: 'string_4401' }, preventInteraction: $root.viewModel.isProcessTextRunning, axBubbleAttr: 'cartView_removeCustomerButton'"></button>    <!-- Remove customer -->
+                    </div>
+
+                    <!-- customer card template -->
+                    <div data-bind="customerTillLayoutCard: { data: viewModel.customerCardViewModel,
+                        template: 'customerDetailsCardTemplate',
+                        screenName: 'transactionScreenLayout',
+                        panelName: 'CustomerPanel'}"></div>
+                </div>
+
+                <!-- Input pane -->
+                <div id="NumberPad" class="layoutControl" data-bind="axBubbleAttr: 'cartView_numberPad'">
+                    <div class="height100Percent" data-bind="transactionNumpad: {
+                        labelDataBinding: { resx: { textContent: 'string_53' /* Search or enter quantity */ } },
+                        inputDataBinding: { resx: { ariaLabel: 'string_53' /* Search or enter quantity */ } },
+                        placeholder: 'string_53',
+                        onEnter: onNumPadEnterEventHandler,
+                        containerId:'NumberPad',
+                        viewName: 'transactionScreenLayout',
+                        value: searchText,
+                        numPadInputSource: numPadInputBroker
+                        }">
+                    </div>
+                </div>
+
+                <!-- Transaction lines -->
+                <!-- ID below ('TransactionGrid') should match the designer JSON definition -->
+                <div id="TransactionGrid" class="layoutControl transactionLinesPane overflowVisible" data-bind="axBubbleAttr: 'cartView_transactionGrid'">
+                    <div class="row pivotHeader" role="tablist">
+                        <div class="shrink marginRight40">
+                            <button class="h2 tabFontColor outlineFocus noBorder" 
+                                    role="tab"
+                                    data-bind="attr: { 'aria-selected': viewModel.viewMode() == Commerce.ViewModels.CartViewTransactionDetailViewMode.items },
+                                            css: { active: viewModel.viewMode() == Commerce.ViewModels.CartViewTransactionDetailViewMode.items },
+                                            click: showLinesGrid,
+                                            resx: { textContent: 'string_181' },
+                                            axBubbleAttr: 'grid_products'">lines
+                            </button>
+                        </div>
+                        <div class="shrink marginRight40">
+                            <button class="h2 tabFontColor outlineFocus noBorder"
+                                    role="tab"
+                                    data-bind="attr: { 'aria-selected': viewModel.viewMode() == Commerce.ViewModels.CartViewTransactionDetailViewMode.payments },
+                                            css: { active: viewModel.viewMode() == Commerce.ViewModels.CartViewTransactionDetailViewMode.payments },
+                                            click: showPaymentsGrid, resx: { textContent: 'string_182' },
+                                            axBubbleAttr: 'grid_payments'">payments
+                            </button>
+                        </div>
+                        <div class="shrink">
+                            <button class="h2 tabFontColor outlineFocus noBorder" 
+                                    role="tab"
+                                    data-bind="attr: { 'aria-selected': viewModel.viewMode() == Commerce.ViewModels.CartViewTransactionDetailViewMode.delivery }, 
+                                            css: { active: viewModel.viewMode() == Commerce.ViewModels.CartViewTransactionDetailViewMode.delivery },
+                                            click: showDeliveryGrid,
+                                            visible: showDeliveryUI,
+                                            resx: { textContent: 'string_188' },
+                                            axBubbleAttr: 'grid_delivery'">delivery
+                            </button>
+                        </div>
+                    </div>
+                    <script type="text/html" id="lineItemColspan">
+                        <div class="lineItemVariant secondaryFontColor row" data-bind="visible: Commerce.Formatters.VariantNameFormatter($data).length > 0">
+                            <div class="h4" data-bind="textConverter: { data: $data, field: '$data', converter: 'Commerce.Formatters.VariantNameFormatter' }"></div>
+                        </div>
+                        <div class="lintItemPriceOverrideText secondaryFontColor row" data-bind="visible: $data.IsPriceOverridden">
+                            <div class="h4" data-bind="text: $root.getPriceOverrideText($data)"></div>
+                        </div>
+                        <div class="lineItemComment secondaryFontColor row" data-bind="visible: $data.Comment.length > 0">
+                            <div class="h4" data-bind="text: $data.IsGiftCardLine ? '' : $data.Comment"></div>
+                        </div>
+                        <div class="lineItemSerialNumber secondaryFontColor row" data-bind="visible: $data.SerialNumber.length > 0">
+                            <div class="h4" data-bind="text: $data.SerialNumber"></div>
+                        </div>
+                        <div class="lineItemWarrantableSerialNumber secondaryFontColor row" data-bind="visible: $data.WarrantableSerialNumber.length > 0">
+                            <div class="h4" data-bind="text: $data.WarrantableSerialNumber"></div>
+                        </div>
+                        <div class="lineItemBarcode secondaryFontColor row" data-bind="visible: $data.Barcode.length > 0">
+                            <div class="h4" data-bind="text: $data.Barcode"></div>
+                        </div>
+                        <!-- ko if: Commerce.ApplicationContext.Instance.deviceConfiguration.DisplayTaxExemptInLineDetails && !Commerce.StringExtensions.isNullOrWhitespace($data.TaxOverrideCode) && $data.IsTaxOverideCodeTaxExempt-->
+                        <div class="taxOverrideCodeLabel secondaryFontColor row">
+                            <div class="h4" data-bind="resx: { textContent: 'string_4487' }">Tax Exempt</div>
+                        </div>
+                        <div class="taxOverrideCode secondaryFontColor row">
+                            <div class="h4" data-bind="text: Commerce.Formatters.taxExemptCodeFormatter($data.TaxOverrideCode)">
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <div class="secondaryFontColor col" data-bind="foreach: { data: $root.viewModel.formatReasonCodeLineDescriptions($data.ReasonCodeLines), as: 'lineDescription' }">
+                            <div class="row marginBottom12 minHeight12" data-bind="visible: lineDescription.length > 0">
+                                <div class="h4 marginBottom0" data-bind="text: lineDescription"></div>
+                            </div>
+                        </div>
+                        <div class="secondaryFontColor col" data-bind="foreach: { data: $data.DiscountLines, as: 'discountLine' }">
+                            <div class="h4" data-bind="text: Commerce.DiscountsHelper.getDiscountTypeName(discountLine, $parent.Price, $parent.Quantity)"></div>
+                        </div>
+                        <div class="secondaryFontColor" data-bind="foreach: { data: $root.viewModel.getKitComponentDescriptions($data), as: 'kitComponentDescription' }">
+                            <div class="row height20">
+                                <div class="marginRight05">
+                                    <div class="h4 ellipsis" data-bind="text: kitComponentDescription"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="secondaryFontColor row" data-bind="visible: $root.viewModel.isSerialNumberWarningVisible($data)">
+                            <div class="h4" data-bind="resx: { textContent: 'string_199' }">Serial number not provided</div>
+                        </div>
+                        <!-- ko foreach: $root.viewModel.lineGridViewModel.customItemSubfieldsViewModel.customGridItemSubfields -->
+                        <div class="secondaryFontColor row" data-bind="visible: $data.isVisible($parent)">
+                            <div class="h4 wrapTextWithLineBreaks" data-bind="text: $data.computeValue($parent)"></div>
+                        </div>
+                        <!-- /ko -->
+                    </script>
+                    <script type="text/html" id="ShowJournalCustomerAccountDepositLineItemColspan">
+                        <div class="lineItemComment secondaryFontColor row" data-bind="visible: $data.Comment.length > 0">
+                            <div class="h4" data-bind="text: $data.Comment"></div>
+                        </div>
+                    </script>
+                    <!-- Line Item List -->
+                    <div class="pivotContainer" data-bind="css: { selectedContainer: viewModel.viewMode() == Commerce.ViewModels.CartViewTransactionDetailViewMode.items }">
+                        <div id="lineItemListView"
+                                class="listViewContainer"
+                                data-bind="visible: ((viewModel.cart().CartTypeValue != Commerce.Proxy.Entities.CartType.IncomeExpense) && (viewModel.cart().CartTypeValue != Commerce.Proxy.Entities.CartType.AccountDeposit)),
+                                        listView: {
+                                            itemDataSource: viewModel.originalCartLines,
+                                            selectionchanged: { eventHandlerCallBack: lineItemSelectionHandler },
+                                            selectionMode: 'single',
+                                            headerRowClass: 'tillLayout-SelectedLinesFields',
+                                            rowClass: 'tillLayout-SelectedLinesFields',
+                                            tapBehavior:'toggleSelect',
+                                            strikethroughRowConverter: viewModel.isCartLineVoided.bind(viewModel),
+                                            displayMode: isAlwaysExpand ? Commerce.Controls.ListView.DisplayMode.AlwaysExpanded : Commerce.Controls.ListView.DisplayMode.Expandable,
+                                            expandableRowConverter: viewModel.isTransactionGridRowExpandable.bind(viewModel),
+                                            rowExpandedTemplateId: 'lineItemColspan',
+                                            emptyListViewTemplate: 'emptyProductsGridMessage',
+                                            scrollToBottom: true,
+                                            headerRowTemplate: 'cartLineGridHeaderTemplate',
+                                            rowTemplate: 'cartLineGridRowTemplate',
+                                            templateViewModel: viewModel.lineGridViewModel,
+                                            showColumnHeaderLabels: showLinesGridColumnHeaders,
+                                            ariaLabelResx: 'string_181' // Lines
+                                        },
+                                        axBubbleAttr: 'cartView_lineItemList'">
+                        </div>
+                        <script type="text/html" id="emptyProductsGridMessage">
+                            <div class="width400 height100 textCenter" data-bind="axBubbleAttr: 'cartView_addProductButton'">
+                                <button id="addProductButton" tabindex="0" class="iconAdd icon-20x20 inlineBlock marginBottom05 accentColor" data-bind="resx: { ariaLabel: 'string_4455' }, click: browseProducts"></button>   <!-- Add product to sale -->
+                                <a href="#" class="h4" data-bind="resx: { textContent: 'string_4475' },
+                                    click: browseProducts">Add product</a>
+                                <div class="h4 padTop12" data-bind="resx: { textContent: 'string_113' }">There are no products in this transaction</div>
+                            </div>
+                        </script>
+
+                        <!-- Income expense list -->
+                        <div class="listViewContainer" data-bind="visible: viewModel.cart().CartTypeValue == Commerce.Proxy.Entities.CartType.IncomeExpense">
+                            <div class="listViewContainer" data-bind="listView: {
+                                itemDataSource: viewModel.incomeExpenseAccountLines,
+                                tapBehavior: 'toggleSelect',
+                                selectionMode: 'single',
+                                columns: [
+                                    { titleResx: 'string_4131', cssClass: 'ratio3', field: 'AccountTypeValue', converter: 'Commerce.Core.Converter.IncomeExpenseAccountTypeFormatter' },
+                                    { titleResx: 'string_4057', cssClass: 'textRight', field: 'IncomeExpenseAccount' },
+                                    { titleResx: 'string_4024', cssClass: 'ratio3 textRight', field: 'Amount', converter: 'Commerce.Core.Converter.PriceFormatter' },
+                                ],
+                                ariaLabelResx: 'string_4054' /* Accounts */
+                            },
+                            axBubbleAttr: 'cartView_accoutns'">
+                            </div>
+                        </div>
+
+                        <!-- Customer account deposit -->
+                        <div class="listViewContainer" data-bind="visible: viewModel.cart().CartTypeValue == Commerce.Proxy.Entities.CartType.AccountDeposit">
+                            <div class="listViewContainer" data-bind="listView: {
+                                itemDataSource: viewModel.customerAccountDepositLines,
+                                tapBehavior: 'none',
+                                selectionMode: 'none',
+                                displayMode: Commerce.Controls.ListView.DisplayMode.Expandable,
+                                expandableRowConverter: isCustomerAccountDepositGridRowExpandable.bind($root),
+                                rowExpandedTemplateId: 'ShowJournalCustomerAccountDepositLineItemColspan',
+                                columns: [
+                                    { titleResx: 'string_110', cssClass: 'ratio7', defaultValueResx: 'string_1927' },
+                                    { titleResx: 'string_4024', cssClass: 'ratio3 textRight', field: 'Amount', converter: 'Commerce.Core.Converter.PriceFormatter' }
+                                ],
+                                ariaLabelResx: 'string_6158' /* Customer account deposit */
+                            },
+                            axBubbleAttr: 'cartView_customerAccountDeposit'">
+                            </div>
+                        </div>
+
+                        <!-- Indeterminate wait -->
+                        <div class="center top0" data-bind="loader: { visible: viewModel.isGridBusy, type: Commerce.Controls.Loader.LoaderType.NestedWithBackground, delayedAppearance: true } "></div>
+                    </div>
+
+                    <!-- Payment Line List -->
+                    <div class="pivotContainer" data-bind="css: { selectedContainer: viewModel.viewMode() == Commerce.ViewModels.CartViewTransactionDetailViewMode.payments }">
+                        <div class="listViewContainer" data-bind="listView: {
+                            itemDataSource: viewModel.tenderLines,
+                            selectionchanged: { eventHandlerCallBack: tenderLinesSelectionChanged },
+                            selectionMode: 'single',
+                            useWinJSListView: false,
+                            tapBehavior: 'toggleSelect',
+                            strikethroughRowConverter: viewModel.isCartTenderLineVoided.bind(viewModel),
+                            headerRowClass: 'tillLayout-SelectedPaymentsFields',
+                            rowClass: 'tillLayout-SelectedPaymentsFields',
+                            emptyListViewTemplate: 'emptyPaymentGridMessage',
+                            headerRowTemplate: 'cartPaymentGridHeaderTemplate',
+                            showColumnHeaderLabels: showPaymentGridColumnHeaders,
+                            rowTemplate: 'cartPaymentGridRowTemplate',
+                            templateViewModel: viewModel.paymentGridViewModel,
+                            ariaLabelResx: 'string_182' /* Payments */
+                        },
+                        axBubbleAttr: 'cartView_paymentLineList'">
+                        </div>
+                        <script type="text/html" id="emptyPaymentGridMessage">
+                            <div class="width400 height100 textCenter" data-bind="axBubbleAttr: 'cartView_addPaymentButton'">
+                                <button id="addPaymentButton" class="iconAdd icon-20x20 inlineBlock marginBottom05 accentColor" tabindex="0" data-bind="click: executeShowPaymentFlow, resx: { ariaLabel: 'string_4456' }"></button>   <!-- Add payment -->
+                                <a href="#" class="h4" data-bind="resx: { textContent: 'string_4476' },
+                                    click: executeShowPaymentFlow">Add payment</a>
+                                <div class="h4 padTop12" data-bind="resx: { textContent: 'string_192' }">There are no payments in this transaction</div>
+                            </div>
+                        </script>
+
+                        <!-- Indeterminate wait -->
+                        <div class="center top0" data-bind="loader: { visible: viewModel.isGridBusy, type: Commerce.Controls.Loader.LoaderType.NestedWithBackground, delayedAppearance: true } "></div>
+                    </div>
+
+                    <!-- Delivery -->
+                    <div class="pivotContainer" data-bind="if: showDeliveryUI, css: { selectedContainer: viewModel.viewMode() == Commerce.ViewModels.CartViewTransactionDetailViewMode.delivery }">
+                        <div id="deliveryListView"
+                                class="listViewContainer"
+                                data-bind="listView: {
+                                            itemDataSource: viewModel.originalCartLines,
+                                            selectionchanged: { eventHandlerCallBack: deliverySelectionHandler },
+                                            tapBehavior: 'toggleSelect',
+                                            strikethroughRow: viewModel.isCartLineVoided.bind(viewModel),
+                                            selectionMode: 'single',
+                                            displayMode: Commerce.Controls.ListView.DisplayMode.Expandable,
+                                            expandableRowConverter: isDeliveryRowExpandable.bind($root),
+                                            headerRowClass: 'tillLayout-SelectedDeliveryFields',
+                                            rowClass: 'tillLayout-SelectedDeliveryFields',
+                                            headerRowTemplate: 'cartDeliveryGridHeaderTemplate',
+                                            rowTemplate: 'cartDeliveryGridRowTemplate',
+                                            templateViewModel: viewModel.deliveryGridViewModel,
+                                            showColumnHeaderLabels: showDeliveryGridColumnHeaders,
+                                            ariaLabelResx: 'string_188' // Delivery
+                                        },
+                                        axBubbleAttr: 'cartView_deliveryList'">
+                        </div>
+
+                        <!-- Indeterminate wait -->
+                        <div class="center top0" data-bind="loader: { visible: viewModel.isGridBusy, type: Commerce.Controls.Loader.LoaderType.NestedWithBackground, delayedAppearance: true } "></div>
+                    </div>
+                </div>
+
+                <!-- Totals panel -->
+                <!-- IDs below ('TotalsPanel', 'LinesField', etc.) should match the designer JSON definition -->
+                <div id="TotalsPanel" class="panel layoutControl transactionDetails primaryPanelBackgroundColor highContrastBorderThin"
+                        data-bind="totalsPanel: {
+                        view: 'transactionScreenLayout',
+                        customFieldViewModels: viewModel.totalsPanelCustomFieldViewModels
+                        },
+                        axBubbleAttr: 'cartView_totalsPanel'">
+                    <div class="col height100Percent">
+                        <div class="fields row">
+                            <div class="left">
+                                <!--LINES-->
+                                <div id="LinesField" data-bind="totalsPanelField: {
+                                        captionResourceId: 'string_117', /* LINES */
+                                        value: viewModel.cartLinesTotalCount
+                                    },
+                                    axBubbleAttr: 'cartView_linesField'">
+                                </div>
+                                <!--DISCOUNTS-->
+                                <div id="DiscountsField" data-bind="totalsPanelField: {
+                                        captionResourceId: discountLabelResourceId,
+                                        value: viewModel.discountAmount,
+                                        isCurrency: true
+                                        },
+                                        axBubbleAttr: 'cartView_discountsField'">
+                                </div>
+                                <!--TAX-->
+                                <div id="TaxField" data-bind="totalsPanelField: {
+                                        captionResourceId: 'string_119', /* TAX */
+                                        value: viewModel.taxAmount,
+                                        isCurrency: true
+                                        },
+                                        axBubbleAttr: 'cartView_taxField'">
+                                </div>
+                                <!--DEPOSIT DUE-->
+                                <div id="DepositeDueField" data-bind="totalsPanelField: {
+                                        captionResourceId: 'string_4326', /* DEPOSIT DUE */
+                                        value: viewModel.amountDue,
+                                        isCurrency: true
+                                        },
+                                        visible: viewModel.isCustomerOrder,
+                                        axBubbleAttr: 'cartView_depositeDueField'">
+                                </div>
+                                <!--CHARGES-->
+                                <div id="ChargesField" data-bind="totalsPanelField: {
+                                        captionResourceId: 'string_4323', /* CHARGES */
+                                        value: viewModel.chargeAmount,
+                                        isCurrency: true
+                                        },
+                                        visible: viewModel.cartHasCharges,
+                                        axBubbleAttr: 'cartView_chargesField'">
+                                </div>
+                                <!--SUBTOTAL-->
+                                <div id="SubtotalField" data-bind="totalsPanelField: {
+                                        captionResourceId: 'string_120', /* SUBTOTAL */
+                                        value: viewModel.subtotalAmountWithoutTax,
+                                        isCurrency: true
+                                        },
+                                        axBubbleAttr: 'cartView_subtotalField'">
+                                </div>
+                                <!--DEPOSIT-->
+                                <div id="DepositField" data-bind="totalsPanelField: {
+                                        captionResourceId: 'string_121', /* DEPOSIT */
+                                        value: viewModel.requiredDepositAmount,
+                                        isCurrency: true
+                                        },
+                                        visible: viewModel.isCustomerOrder,
+                                        axBubbleAttr: 'cartView_depositField'">
+                                </div>
+                                <!--RETURN AMOUNT-->
+                                <div id="ReturnAmountField" data-bind="totalsPanelField: {
+                                        captionResourceId: 'string_4327', /* RETURN AMOUNT */
+                                        value: viewModel.totalReturnAmount,
+                                        isCurrency: true
+                                        },
+                                        visible: viewModel.isCustomerOrderExchange,
+                                        axBubbleAttr: 'cartView_returnAmountField'">
+                                </div>
+                                <!--CARRY OUT AMOUNT-->
+                                <div id="CarryoutAmountField" data-bind="totalsPanelField: {
+                                        captionResourceId: 'string_4328', /* CARRY OUT AMOUNT */
+                                        value: viewModel.totalCarryoutAmount,
+                                        isCurrency: true
+                                        },
+                                        visible: viewModel.isCustomerOrderCreationOrEdition,
+                                        axBubbleAttr: 'cartView_carryoutAmountField'">
+                                </div>
+                                <!--PAYMENTS-->
+                                <div id="PaymentsField" data-bind="totalsPanelField: {
+                                        captionResourceId: 'string_122', /* PAYMENTS */
+                                        value: viewModel.amountPaid,
+                                        isCurrency: true
+                                        },
+                                        axBubbleAttr: 'cartView_paymentsField'">
+                                </div>
+                                <!--TOTAL QUANTITY-->
+                                <div id="TotalItemsField" data-bind="totalsPanelField: {
+                                            captionResourceId: 'string_125', /* TOTAL QUANTITY */
+                                            value: viewModel.totalItems,
+                                            },
+                                        axBubbleAttr: 'cartView_totalQuantityField'">
+                                </div>
+                                <!--TOTAL AMOUNT-->
+                                <div id="TotalAmountField" data-bind="totalsPanelField: {
+                                        captionResourceId: 'string_124', /* TOTAL AMOUNT */
+                                        value: viewModel.totalAmount,
+                                        isCurrency: true
+                                        }">
+                                </div>
+                                <!--DEPOSIT PAID-->
+                                <div id="DepositPaidField" data-bind="totalsPanelField: {
+                                        captionResourceId: 'string_4325', /* DEPOSIT PAID */
+                                        value: viewModel.depositPaid,
+                                        isCurrency: true
+                                        },
+                                        visible: viewModel.isCustomerOrder,
+                                        axBubbleAttr: 'cartView_depositPaidField'">
+                                </div>
+                                <!--DEPOSIT APPLIED-->
+                                <div id="DepositAppliedField" data-bind="totalsPanelField: {
+                                        captionResourceId: 'string_4329', /* DEPOSIT APPLIED */
+                                        value: viewModel.depositApplied,
+                                        isCurrency: true
+                                        },
+                                        visible: viewModel.isCustomerOrderPickup,
+                                        axBubbleAttr: 'cartView_depositAppliedField'">
+                                </div>
+                                <!--TAX ON CANCELLATION CHARGE-->
+                                <div id="TaxOnCancelField" data-bind="totalsPanelField: {
+                                        captionResourceId: 'string_4331', /* TAX ON CANCELLATION */
+                                        value: viewModel.taxOnCancellationCharge,
+                                        isCurrency: true
+                                        },
+                                        visible: viewModel.isCustomerOrderCancellation,
+                                        axBubbleAttr: 'cartView_taxOnCancelField'">
+                                </div>
+                            </div>
+                            <div class="right">
+                            </div>
+                        </div>
+                        <!--BALANCE DUE-->
+                        <div class="panel-footer row padLeft12 padRight12 padTop04 padBottom04" data-bind="preventInteraction: $root.viewModel.isProcessTextRunning">
+                            <div class="secondaryFontColor padBottom08"><div class="h6" data-bind="resx: { textContent: Commerce.ObjectExtensions.isNumber(viewModel.cart().AmountDue) && viewModel.cart().AmountDue <= 0 ? 'string_1816' : 'string_123' }">BALANCE DUE</div></div>
+                            <div class="textRight"><a class="h1" href="#" tabindex="0" data-bind="formatPrice: viewModel.cart().AmountDue, attr: {'aria-label': $root.viewModel.ariaLabelAmountDue()}, click: $root.executeShowPaymentFlow.bind($root), axBubbleAttr: 'cartView_amountDueLink'"></a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logo panel -->
+                <div id="Logo" class="layoutControl logo" data-bind="axBubbleAttr: 'cartView_logo'">
+                </div>
+
+                <!-- Attributes panel -->
+                <div id="AttributesPanel" class="layoutControl" data-bind="salesOrderAttributes: {
+                        salesOrderAttributesViewModel: viewModel.salesOrderAttributesViewModel
+                        },
+                        axBubbleAttr: 'cartView_attributesPanel'">
+                </div>
+
+                <!-- TabControl MUST BE Last to let apply binding to the all layouts. -->
+                <div id="TabControl" class="layoutControl" data-bind="axBubbleAttr: 'cartView_tabControl'">
+                    <div data-bind="tabControl: { view: 'transactionScreenLayout', id: 'TabControl', eventManager: layoutTabControlMessageHandler }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>LockRegisterView</title>
+    <link href="LockRegister.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="fragment lockRegisterView" data-bind="css: { loginBackgroundImage: !_isPortraitOrientation(), loginBackgroundImagePortrait: _isPortraitOrientation() }">
+
+        <!--Lock Register panel for displaying operator id and accepting password-->
+        <div id="lockRegisterSection" class="section main full-screen center margin0" data-bind="resx: { ariaLabel: 'string_4454' /* Main content */ }, axBubbleAttr: 'lockRegister_lockRegisterSection'">
+            <!-- Main content -->
+            <div class="col width100Percent height100Percent padLeft32 padRight32 padTop20 padBottom20 lockRegisterPanel highContrastBorderThin scrollY">
+                <div class="loginLogoImage height40" data-bind="visible: viewModel.showLogo()"></div>
+
+                <div class="padTop12">
+                    <h1 class="ellipsis" data-bind="resx: { textContent: 'string_6700' }">Locked</h1>
+                </div>
+
+                <div class="padTop12">
+                    <label data-bind="resx: { textContent: 'string_6709' }">Store / Register</label>
+                    <div class="ellipsis h4" data-bind="text: viewModel.storeAndRegister">Store / Register</div>
+                </div>
+
+                <div class="padTop12">
+                    <label for="lockRegisterOperatorIdText" data-bind="resx: { textContent: 'string_6703' }">Operator Id</label>
+
+                    <!-- ko if: !viewModel.isOperatorIdSelectVisible  -->
+                    <div class="centerY heightAuto">
+                        <input id="lockRegisterOperatorIdText" type="text" role="textbox" data-bind="value: viewModel.operatorId" class="ellipsis" disabled />
+                        <!-- ko if: viewModel.showNumPad()  -->
+                        <!-- If the numpad exists, there will not be button for the switch user, need a new button here -->
+                        <div class="center accentColor iconSwitchUser icon-24x24 width24 clickable marginLeft20" role="button" tabindex="0"
+                            data-bind="click: switchUserButtonClick,
+                                enterKeyPress: switchUserButtonClick,
+                                axBubbleAttr: 'lockRegister_switchUserButton',
+                                resx: { ariaLabel: 'string_6707' /* Switch user */ }"
+                            data-retail-numpad-ignore-keys="enter"></div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+
+                    <!-- People picker -->
+                    <!-- ko if: viewModel.isOperatorIdSelectVisible  -->
+                    <div id="operatorBox" class="centerY heightAuto marginTop8">
+                        <div data-bind="userImageOrInitials: userImageOrInitialsOptions" class="height48 width48 circleBorder h4"></div>
+                        <div class="padLeft12 col grow overflowHidden">
+                            <div class="ellipsis h4 primaryFontColor inlineBlock" data-bind="text: userImageOrInitialsOptions.name"></div>
+                            <div id="lockRegisterOperatorIdText" class="ellipsis h4 primaryFontColor inlineBlock" data-bind="text: viewModel.operatorId"></div>
+                        </div>
+                        <div class="center accentColor iconChevronRight icon-24x24 width24 clickable" role="button" tabindex="0"
+                            data-bind="click: switchUserButtonClick,
+                                enterKeyPress: switchUserButtonClick,
+                                axBubbleAttr: 'lockRegister_switchUserButton',
+                                resx: { ariaLabel: 'string_6707' /* Switch user */ }"
+                            data-retail-numpad-ignore-keys="enter"></div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+
+                <!-- ko if: !viewModel.showNumPad() -->
+                <div class="padTop12">
+                    <label data-bind="resx: { textContent: 'string_6704' }" for="passwordBox">Password</label>
+
+                    <input id="passwordBox" class="passwordBox" type="password" required="required" role="textbox"
+                        data-bind="value:viewModel.password,
+                        valueUpdate: 'afterkeydown',
+                        enterKeyPress: unlockRegisterButtonClick,
+                        validator: {
+                        validatorField: 'Password',
+                        validatorType: 'ConnectionRequestValidator'
+                        },
+                        axBubbleAttr: 'lockRegister_lockRegisterView_passwordBox'" />
+                </div>
+                <!-- /ko -->
+
+                <!-- ko if: viewModel.useAad || !viewModel.showNumPad() -->
+                <div class="padTop40 flexRow">
+                    <div class="flexGrow100 flexRow">
+                        <button class="primaryButton flexGrow100" data-bind="resx: { textContent: 'string_6705' }, click: unlockRegisterButtonClick, disable: disableUnlockButton, axBubbleAttr: 'lockRegister_unlockButton'">
+                            Unlock register
+                        </button>
+                    </div>
+                    <!-- ko if: viewModel.isOperatorIdTextVisible  -->
+                    <div class="marginLeft8 flexGrow100 flexRow">
+                        <button class="secondaryButton flexGrow100" data-bind="resx: { textContent: 'string_6707' }, click: switchUserButtonClick, axBubbleAttr: 'lockRegister_switchUserButton'">
+                            Switch user
+                        </button>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <!-- /ko -->
+
+                <!-- ko ifnot: viewModel.useAad || !viewModel.showNumPad() -->
+                <div class="col grow numpad marginTop16 no-shrink" data-bind="multipleTextInputNumpad: {
+                        inputOptions: numpadInputOptions,
+                        onCompleted: onNumpadComplete.bind($root),
+                        numPadInputSource: numPadInputBroker
+                    },
+                    setElementRef: numpadElement">
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

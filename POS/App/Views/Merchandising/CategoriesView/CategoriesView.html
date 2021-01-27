@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CategoriesView</title>
+
+    <link href="CategoriesView.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- These templates are used to display each item in the DataList declared below. -->
+    <script id="headertemplate" type="text/html">
+        <div class="baseFont maxWidth400 minHeight40 padBottom12 padTop8" data-bind="attr: { selectedCategory: SelectedGroupHeader }">
+            <h2 class="ellipsis" data-bind="text: Commerce.Formatters.GroupHeaderFormatter(SelectedGroupHeader)"></h2>
+        </div>
+    </script>
+
+    <div class="fragment groupedItemsPage">
+        <div class="section main scrollY" data-bind="resx: { ariaLabel: 'string_4454' }">
+            <!-- Main content -->
+            <div id="categoriesList" class="padLeft20" data-bind="dataList: {
+                    itemDataSource: viewModel.categories,
+                    defaultListType: Commerce.Controls.DataList.ListType.Card,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                    itemInvoked: itemInvokedHandler,
+                    ariaLabelResx: 'string_612',
+                    groupedDataListInformation: {
+                        groupKeySelector: 'ParentCategory',
+                        groupDataSelector: 'RecordId',
+                        parentId: viewModel.rootCategoryRecordId,
+                        keyName: 'Name',
+                        headerTemplate: 'headertemplate',
+                        headerInvoked: categoriesCommand
+                    },
+                    itemTemplates: [
+                        {
+                            cardType: Commerce.Controls.DataList.CardType.Static,
+                            deviceType: Commerce.Controls.DataList.DeviceType.Tablet,
+                            templateId: 'categoryCatalogTemplate',
+                        }
+                    ],
+                },
+                axBubbleAttr: 'categoriesView_categories'">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

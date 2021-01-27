@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Build number manager: Build number was added successfully.",
+  "Build_number_successfull_log_message_text.comment": "Message Logged when the POS build number is successfully added to the transaction.",
+  "Build_number_error_log_message_text": "Build number manager: Build number adding failed, error message: '{0}'.",
+  "Build_number_error_log_message_text.comment": "Message Logged when the POS build number is unsuccessfully added to the transaction."
+}

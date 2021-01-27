@@ -1,0 +1,347 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Search View</title>
+    <link href="SearchView.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Empty list template for products list -->
+    <script id="productResultZero" type="text/html">
+        <div class="center col" data-bind="axBubbleAttr: 'searchView_productResultZero'">
+            <div class="h3" data-bind="resx: { textContent: 'string_1032' }">We didn't find anything to display here.</div>
+            <a href="#" class="h3" data-bind="resx: { textContent: 'string_1033' },
+                                        click: changeStoreAndCatalogs,
+                                        visible: allowChangeStoreAndCatalog,
+                                        axBubbleAttr: 'searchView_productResultZero_changeStoreAndCatalogs'"></a>
+        </div>
+    </script>
+
+    <!-- Empty list template for related products list -->
+    <script id="relatedProductResultZero" type="text/html">
+        <div class="center col height100 width400" data-bind="axBubbleAttr: 'searchView_relatedProductResultZero'">
+            <div class="h3" data-bind="resx: { textContent: 'string_1032' }">We didn't find anything to display here.</div>
+            <a href="#" class="h3" data-bind="resx: { textContent: 'string_1033' }, click: changeStoreAndCatalogs, axBubbleAttr: 'searchView_relatedProductResultZero_changeStoreAndCatalogs'"></a>
+        </div>
+    </script>
+
+    <!-- Empty list template for prepopulated products list -->
+    <script id="prePopulatedProductResultZero" type="text/html">
+        <div class="center col height100 width400" data-bind="axBubbleAttr: 'searchView_relatedProductResultZero'">
+            <div class="h3" data-bind="resx: { textContent: 'string_1032' }">We didn't find anything to display here.</div>
+            <a href="#" class="h3" data-bind="resx: { textContent: 'string_1033' }, click: changeStoreAndCatalogs, axBubbleAttr: 'searchView_relatedProductResultZero_changeStoreAndCatalogs'"></a>
+        </div>
+    </script>
+
+    <!-- Empty list template for customer search results list -->
+    <script id="displayZeroCustomersText" type="text/html">
+        <div class="center col" data-bind="axBubbleAttr: 'searchView_displayZeroCustomersText'">
+            <div class="h3" data-bind="resx: { textContent: 'string_1032' }">We didn't find anything to display here.</div>
+            <a href="#" class="h3" data-bind="resx: { textContent: 'string_1152' },
+                                        click: addNewCustomer,
+                                        axBubbleAttr: 'searchView_displayZeroCustomersText_createCustomer'"></a>
+        </div>
+    </script>
+
+    <div class="fragment searchView" data-bind="interaction: { activateCustomersPivot: { selectPivot: '#searchViewPivotCustomers' }, activateProductsPivot: { selectPivot: '#searchViewPivotProducts' }}">
+        <div class="height100Percent col" data-bind="with: viewModel, resx: { ariaLabel: 'string_4454' }">
+            <div id="searchViewPivot" data-bind="pivot: { onselectionchanged: $root.switchSearchMode.bind($root), headerItemsAxBubbleAttr: 'searchView_pivotItemsHeader'}">
+                <!-- ko if: selectionMode !== Commerce.ViewModels.SearchViewSelectionMode.Customer -->
+                <div id="searchViewPivotProducts" data-bind="pivotItem: { header: Commerce.ViewModelAdapter.getResourceString('string_1016') }, axBubbleAttr: 'searchView_productsPivot'">
+                    <div class="col grow height100Percent" data-bind="visible: !viewCustomers()">
+                        <!-- ko if: !viewPrePopulatedProductSearchResults() -->
+                        <div id="productsview"
+                             data-bind="dataList: {
+                                defaultListType: Commerce.Controls.DataList.ListType.List,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOrMulti,
+                                itemInvoked: showProductDetails,
+                                selectionChanged: setSelectedItems,
+                                emptyDataListTemplate: 'productResultZero',
+                                autoSelectFirstItem: true,
+                                autoFocusFirstItem: true,
+                                ariaLabelResx: 'string_925', /* Collection of products */
+                                incrementalDataSource: {
+                                    dataManager: $data,
+                                    callerMethod: searchProducts,
+                                    pageSize: Commerce.ViewModels.SearchViewModel.DEFAULT_PAGE_SIZE,
+                                    pageLoadCallBack: $data.productSearchPageLoaded,
+                                    onLoading: isProductDataLoading,
+                                    reloadCallBack: resetProductsHandler
+                                },
+                                columns: productSearchColumns,
+                                itemTemplates: [
+                                    {
+                                        name: 'string_939', /* Show cards */
+                                        templateId: 'productSearchResultLargeCardTemplate',
+                                        cardType: Commerce.Controls.DataList.CardType.Static,
+                                        deviceType: Commerce.Controls.DataList.DeviceType.Tablet
+                                    },
+                                    {
+                                        name: 'string_939', /* Show cards */
+                                        templateId: 'productSearchResultSmallCardTemplatePhone',
+                                        cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                        deviceType: Commerce.Controls.DataList.DeviceType.Phone
+                                    }
+                                ]
+                                },
+                                axBubbleAttr: 'searchView_productsView'">
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko if: viewPrePopulatedProductSearchResults() -->
+                        <div class="height100Percent">
+                            <div id="prePopulatedProductSearchResultsView"
+                                 data-bind="dataList: {
+                                    defaultListType: Commerce.Controls.DataList.ListType.Card,
+                                    itemDataSource: products,
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOrSingle,
+                                    itemInvoked: showProductDetails,
+                                    selectionChanged: setSelectedItems,
+                                    emptyDataListTemplate: 'prePopulatedProductResultZero',
+                                    ariaLabelResx: 'string_925', /* Collection of products */
+                                    incrementalDataSource: {
+                                         dataManager: $data,
+                                         callerMethod: refineProductsByCriteriaAsync,
+                                         pageSize: Commerce.ViewModels.SearchViewModel.DEFAULT_PAGE_SIZE,
+                                         pageLoadCallBack: $data.productSearchPageLoaded,
+                                         onLoading: isProductDataLoading,
+                                         reloadCallBack: resetProductsHandler
+                                     },
+                                    columns: productSearchColumns,
+                                    itemTemplates: [
+                                        {
+                                            name: 'string_939', /* Show cards */
+                                            templateId: 'productSearchResultLargeCardTemplate',
+                                            cardType: Commerce.Controls.DataList.CardType.Static,
+                                            deviceType: Commerce.Controls.DataList.DeviceType.Tablet
+                                        },
+                                        {
+                                            name: 'string_939', /* Show cards */
+                                            templateId: 'productSearchResultSmallCardTemplatePhone',
+                                            cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                            deviceType: Commerce.Controls.DataList.DeviceType.Phone
+                                        }
+                                    ]
+                                    },
+                                    axBubbleAttr: 'searchView_prePopulatedProductSearchResultsView'">
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: selectionMode !== Commerce.ViewModels.SearchViewSelectionMode.Product && !viewPrePopulatedProductSearchResults()  -->
+                <div id="searchViewPivotCustomers" data-bind="pivotItem: {header: Commerce.ViewModelAdapter.getResourceString('string_1017') }, axBubbleAttr: 'searchView_customersPivot'">
+                    <div class="col grow height100Percent">
+                        <!-- Auto format detection is disabled in customer search result view, otherwise IE and Microsoft Edge will auto hyperlink phone numbers. -->
+                        <div id="customerSearchResultListView"
+                             x-ms-format-detection="none"
+                             data-bind="dataList: {
+                                defaultListType: Commerce.Controls.DataList.ListType.List,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOrSingle,
+                                itemInvoked: showCustomerDetailsAsync,
+                                selectionChanged: setSelectedCustomers,
+                                emptyDataListTemplate: 'displayZeroCustomersText',
+                                autoSelectFirstItem: true,
+                                autoFocusFirstItem: true,
+                                ariaLabelResx: 'string_1037', /* List of customers */
+                                incrementalDataSource: {
+                                        dataManager: $data,
+                                        callerMethod: searchCustomers,
+                                        pageSize: Commerce.ViewModels.SearchViewModel.DEFAULT_PAGE_SIZE,
+                                        pageLoadCallBack: $data.customerSearchPageLoaded,
+                                        onLoading: isCustomerDataLoading,
+                                        reloadCallBack: resetCustomersHandler
+                                },
+                                columns: customerSearchColumns,
+                                itemTemplates: [
+                                    {
+                                        name: 'string_939', /* Show cards */
+                                        templateId: 'customersLargeCardTemplate',
+                                        cardType: Commerce.Controls.DataList.CardType.Static,
+                                        deviceType: Commerce.Controls.DataList.DeviceType.Tablet
+                                    },
+                                    {
+                                        name: 'string_939', /* Show cards */
+                                        templateId: 'customersSmallCardTemplatePhone',
+                                        cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                        deviceType: Commerce.Controls.DataList.DeviceType.Phone
+                                    }
+                                ]
+                                },
+                                visible: viewCustomers,
+                                axBubbleAttr: 'searchView_customerSearchResultListView'">
+                        </div>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+
+
+        <!-- Sort menu -->
+        <div id="searchViewSortLayout" data-bind="menu: {
+             anchor: '#searchViewSortResults',
+             placement: 'top',
+             alignment: 'left',
+             itemDataSource: viewModel.sortMenuItems,
+             template: 'searchResultsSortMenuTemplate' }, axBubbleAttr: 'searchResults_sortFlyout'">
+        </div>
+
+        <!-- ko if: viewModel.selectionMode !== Commerce.ViewModels.SearchViewSelectionMode.Customer -->
+        <div id="commandAppBarProduct" data-bind="appBar: { extensionCommands: viewModel.productSearchExtensionCommandViewModels }, visible: !viewModel.viewCustomers(), axBubbleAttr: 'searchView_commandAppBarProduct'">
+            <button data-bind="appBarCommand: {
+                    id: 'searchViewSortResults',
+                    extraClass: 'iconSort',
+                    type: 'flyout',
+                    flyout: '#searchViewSortLayout',
+                    labelResx: 'string_13186',
+                    }, axBubbleAttr: 'searchView_sort'">
+            </button>
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconFilter',
+                        id:'applyFilter',
+                        onclick: showRefinerDialog,
+                        labelResx: 'string_935',
+                        visible: viewModel.canRefineItems,
+                        enabled: viewModel.isCurrentStore
+                    },
+                    axBubbleAttr: 'searchView_applyFilter'"></button><!--Filter-->
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconMultiSelect',
+                        id:'showMultiSelect',
+                        labelResx: 'string_6405',
+                        visible: !viewModel.viewPrePopulatedProductSearchResults(),
+                        enabled: viewModel.canSelectProduct
+                    },
+                    gridSelectionMode:{ id: '#productsview'},
+                    axBubbleAttr: 'searchView_showMultiSelectProduct'"></button><!--Select-->
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconMultiSelect',
+                        id:'showSingleSelectPrePopulatedProductSearchResults',
+                        labelResx: 'string_6405',
+                        visible: viewModel.viewPrePopulatedProductSearchResults(),
+                        enabled: viewModel.canSelectRelatedProduct
+                    },
+                    gridSelectionMode:{ id: '#prePopulatedProductSearchResultsView'},
+                    axBubbleAttr: 'searchView_showSingleSelectPrePopulatedProductSearchResults'"></button><!--single select action for pre-populated product search results grid-->
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconView',
+                        id:'showProductsViewMenu',
+                        labelResx: 'string_1035',
+                        visible: !viewModel.viewPrePopulatedProductSearchResults()
+                    },
+                    templateSwitcher: { listId: '#productsview' },
+                    axBubbleAttr: 'searchView_showProductsViewMenu'"></button><!-- Change View -->
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconView',
+                        id:'showPrepopulatedProductsViewMenu',
+                        labelResx: 'string_1035',
+                        visible: viewModel.viewPrePopulatedProductSearchResults(),
+                    },
+                    templateSwitcher: { listId: '#prePopulatedProductSearchResultsView' },
+                    axBubbleAttr: 'searchView_showPrepopulatedProductsViewMenu'"></button><!-- Change View -->
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconTwoPage',
+                        id:'compare',
+                        onclick: viewModel.compareSelectedItems.bind(viewModel),
+                        labelResx: 'string_903',
+                        visible: viewModel.selectionMode === Commerce.ViewModels.SearchViewSelectionMode.None,
+                        enabled: viewModel.canCompareSelectedItems
+                    },
+                    axBubbleAttr: 'searchView_compareButton'"></button><!-- Compare -->
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconAdd',
+                        id:'addToSale',
+                        onclick: viewModel.addSelectedItemsToCart.bind(viewModel),
+                        labelResx: 'string_1009',
+                        visible: viewModel.selectionMode === Commerce.ViewModels.SearchViewSelectionMode.None,
+                        enabled: viewModel.areAnyItemsSelected
+                    },
+                    axBubbleAttr: 'searchView_addToSaleButton'"></button><!--Add to sale-->
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconBuy',
+                        id:'addToSaleSelectedItem',
+                        onclick: viewModel.quickSellSelectedItems.bind(viewModel),
+                        labelResx: 'string_922',
+                        visible: viewModel.selectionMode === Commerce.ViewModels.SearchViewSelectionMode.None,
+                        enabled: viewModel.areAnyItemsSelected
+                    },
+                    axBubbleAttr: 'searchView_sellNowButton'"></button><!--Sell now-->
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconAccept',
+                        id:'addProductToReasonCode',
+                        onclick: viewModel.performItemSelectAction.bind(viewModel),
+                        labelResx: 'string_75',
+                        visible: viewModel.selectionMode === Commerce.ViewModels.SearchViewSelectionMode.Product,
+                        enabled: viewModel.canSelectItem
+                    },
+                    axBubbleAttr: 'searchView_addProductToReasonCodeButton'"></button><!--ok-->
+        </div>
+        <!-- /ko -->
+        <!-- ko if: viewModel.selectionMode !== Commerce.ViewModels.SearchViewSelectionMode.Product && !viewModel.viewPrePopulatedProductSearchResults() -->
+        <div id="commandBarCustomer" data-bind="appBar: { extensionCommands: viewModel.customerSearchExtensionCommandViewModels }, visible: viewModel.viewCustomers, axBubbleAttr: 'searchView_commandAppBarCustomer'">
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconMultiSelect',
+                        id:'showSingleSelect',
+                        labelResx: 'string_6405',
+                        enabled: viewModel.canSelectCustomer
+                    },
+                    gridSelectionMode:{ id: '#customerSearchResultListView'},
+                    axBubbleAttr: 'searchView_showSingleSelectCustomer'"></button><!--select-->
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconView',
+                        id:'showCustomersViewMenu',
+                        labelResx: 'string_1036',
+                        enabled: viewModel.isAddNewCustomerAvailable
+                    },
+                    templateSwitcher: { listId: '#customerSearchResultListView' },
+                    axBubbleAttr: 'searchView_showCustomersViewMenu'"></button><!--Change view-->
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconSearch',
+                        id:'howSearchCustomerFilterButton',
+                        onclick: searchByAdvancedSearchClickHandler,
+                        labelResx: 'string_1042'
+                    },
+                    axBubbleAttr: 'searchView_showSearchCustomerFilterButton'"></button><!--Show customer search filter-->
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconAddFriend',
+                        id:'addNewCustomer',
+                        onclick: addNewCustomer,
+                        labelResx: 'string_1019'
+                    },
+                    axBubbleAttr: 'searchView_addNewCustomerButton'"></button><!--Create customer-->
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconAdd',
+                        id:'addCustomerToSale',
+                        onclick: viewModel.addSelectedCustomerToCart.bind(viewModel),
+                        labelResx: 'string_1009',
+                        visible: viewModel.selectionMode === Commerce.ViewModels.SearchViewSelectionMode.None,
+                        enabled: viewModel.isSingleCustomerSelected
+                    },
+                    axBubbleAttr: 'searchView_addCustomerToSaleButton'"></button><!--Add to sale-->
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconAccept',
+                        id:'selectCustomer',
+                        onclick: viewModel.performCustomerSelectAction.bind(viewModel),
+                        labelResx: 'string_6405',
+                        visible: viewModel.selectionMode === Commerce.ViewModels.SearchViewSelectionMode.Customer,
+                        enabled: viewModel.isSingleCustomerSelected
+                    },
+                    axBubbleAttr: 'searchView_selectCustomerButton'"></button><!--Select-->
+        </div>
+        <!-- /ko -->
+    </div>
+</body>
+</html>

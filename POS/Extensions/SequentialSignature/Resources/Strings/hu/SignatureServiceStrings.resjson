@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Hiba történt a tranzakció befejezésekor. az aláírásszolgáltatás nem áll készen. Forduljon a rendszergazdához.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Hiba történt a tranzakció befejezésekor. a kapcsolódó pénzügyi tranzakció hibás formátumú adatokat tartalmaz. Forduljon a rendszergazdához.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "Hiba történt az utolsó tranzakció digitális aláírásának visszaigénylése során. Az offline adatbázis valószínűleg nincs szinkronizálva. Forduljon a rendszergazdához.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

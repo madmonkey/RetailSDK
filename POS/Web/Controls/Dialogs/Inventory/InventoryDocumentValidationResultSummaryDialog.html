@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Inventory Document Validation Result Summary Dialog</title>
+    <link href="InventoryDocumentValidationResultSummaryDialog.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="inventoryDocumentValidationResultSummaryDialog" data-bind="customControlInternal: 'InventoryDocumentValidationResultSummaryDialog'">
+        <div data-bind="dialog: {
+            title: viewModel.title(),
+            visible: visible,
+            buttons: [{
+                label: Commerce.ViewModelAdapter.getResourceString('string_12904'), // Continue to finish
+                operationId: okButtonOperationId(),
+                isPrimary: viewModel.isFinishButtonPrimary(),
+                visible: viewModel.isFinishButtonVisible()
+            }, {
+                label: Commerce.ViewModelAdapter.getResourceString('string_12905'), // Go to review
+                operationId: reviewButtonOperationId(),
+                isPrimary: viewModel.isReviewButtonPrimary(),
+                visible: viewModel.isReviewButtonVisible()
+            }, {
+                label: Commerce.ViewModelAdapter.getResourceString('string_75'), // OK
+                operationId: okButtonOperationId(),
+                isPrimary: viewModel.isOkButtonPrimary(),
+                visible: viewModel.isOkButtonVisible()
+            }, {
+                label: Commerce.ViewModelAdapter.getResourceString('string_76'), // Cancel
+                operationId: cancelButtonOperationId(),
+                visible: viewModel.isCancelButtonVisible()
+            }],
+            buttonClick: buttonClickHandler,
+            dialogCloseButtonClick: closeClickHandler
+        },
+        attr: { 'aria-label': viewModel.title() }">
+            <div class="inventoryDocumentValidationResultSummaryDialog">
+                <div class="row height100Percent">
+                    <!-- Header details tab -->
+                    <div class="col grow highContrastBorderThin">
+                        <div class="col grow highContrastBorderThin">
+                            <!-- Validation Error-->
+                            <!-- ko if: viewModel.hasValidationError() -->
+                                <div class="row marginTop20">
+                                    <div class="col grow"></div>
+                                    <div class="col iconWarning icon-50x50 errorColor"></div>
+                                    <div class="col grow"></div>
+                                </div>
+                                <div class="errorSection h5 marginTop20 marginBottom20 padTop8 padBottom8 padLeft8 padRight8" data-bind="resx: { textContent: viewModel.errorPrompt() }"></div><!-- Update the following lines before you submit this receipt/shipment. -->
+
+                                <!-- ko foreach: viewModel.validationErrorDetails() -->
+                                    <!-- ko if: hasError -->
+                                        <div class="marginBottom20">
+                                            <div class="h4 secondaryFontColor" data-bind="resx: { textContent: categoryName }"></div>
+                                            <div class="h1 primaryFontColor" data-bind="text: errorCount"></div>
+                                        </div>
+                                    <!-- /ko -->
+                                <!-- /ko -->
+                            <!-- /ko -->
+
+                            <!-- Validation Warning -->
+                            <!-- ko if: viewModel.hasValidationWarning() -->
+                                <div class="warningSection h5 marginTop20 marginBottom20 padTop8 padBottom8 padLeft8 padRight8" data-bind="resx: { textContent: viewModel.warningPrompt() }"></div><!-- Consider updating the following lines. -->
+                                <!-- ko foreach: viewModel.validationWarningDetails() -->
+                                    <!-- ko if: hasError -->
+                                        <div class="marginBottom20">
+                                            <div class="h4 secondaryFontColor" data-bind="resx: { textContent: categoryName }"></div>
+                                            <div class="h1 primaryFontColor" data-bind="text: errorCount"></div>
+                                        </div>
+                                    <!-- /ko -->
+                                <!-- /ko -->
+                            <!-- /ko -->
+
+                            <!-- Validation Passed -->
+                            <!-- ko if: !viewModel.hasValidationResult() -->
+                                <div class="row marginTop20">
+                                    <div class="col grow"></div>
+                                    <div class="col iconInfo icon-50x50 warningColor"></div>
+                                    <div class="col grow"></div>
+                                </div>
+                                <div class="warningSection h5 marginTop20 marginBottom20 padTop8 padBottom8 padLeft8 padRight8" data-bind="resx: { textContent: viewModel.okPrompt() }"></div><!-- Everything looks okay with this receipt/shipment. -->
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

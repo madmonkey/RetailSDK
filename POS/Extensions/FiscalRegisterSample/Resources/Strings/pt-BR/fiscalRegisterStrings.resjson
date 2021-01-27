@@ -1,0 +1,23 @@
+{
+  "Fiscal_register_not_enabled_error": "O registro fiscal está habilitado para o PDV, mas a estação de hardware não está habilitada.",
+  "_Fiscal_register_not_enabled_error.comment": "Fiscal register error message.",
+  "Fiscal_register_not_available_error": "O registro fiscal está habilitado para o PDV, mas a estação de hardware não está disponível.",
+  "_Fiscal_register_not_available_error.comment": "Fiscal register error message.",
+  "Fiscal_register_unregistered_comleted_transactions_error": "Há transações de venda concluídas não registradas no registro fiscal. Operação cancelada.",
+  "_Fiscal_register_unregistered_comleted_transactions_error.comment": "Fiscal register error message.",
+  "Ok_Button_Label": "OK",
+  "_Ok_Button_Label.comment": "Message dialog button label.",
+  "Cancel_Button_Label": "Cancelar",
+  "_Cancel_Button_Label.comment": "Message dialog button label.",
+  "Skip_Button_Label": "Ignorar",
+  "_Skip_Button_Label.comment": "Message dialog button label.",
+  "Run_Refiscalization_Dialog_Title": "Registro fiscal",
+  "_Run_Refiscalization_Dialog_Title.comment": "Message dialog message.",
+  "Run_Refiscalization_Dialog_Message": "Há {0} transações de venda concluídas não registradas no registro fiscal. Clique em OK para registrar essas transações.",
+  "Skip_Refiscalize_Dialog_Title": "Erro no registro fiscal",
+  "_Skip_Refiscalize_Dialog_Title.comment": "Message dialog title.",
+  "Skip_Refiscalize_Dialog_Message": "A transação de venda não pode ser registrada no registro fiscal. Você pode ignorar o registro fiscal ou cancelar a operação.",
+  "_Skip_Refiscalize_Dialog_Message.comment": "Message dialog message.",
+  "Confirm_Skip_Refiscalization_Dialog_Message": "Deseja ignorar o registro fiscal para a ID de transação: '{0}', data/hora da transação: '{1}', ID do recibo: '{2}', valor total do recibo: '{3}'? Se você ignorar o registro fiscal, essa informação será registrada na transação.",
+  "_Confirm_Skip_Refiscalization_Dialog_Message.comment": "Message dialog message."
+}

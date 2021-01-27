@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Connection Status Self Packing Item Template</title>
+    <link href="ConnectionStatusSelfPackingItem.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script id="SelfPackingConnectionStatusUnpacked" type="text/html">
+        <button class="width48 height48 pad0 headerBackgroundColor headerBackgroundColorHover center"
+                data-bind="click : showConnectivityStatusDialog,
+                           css:{ buttonBlocked: !isConnected(), pulse: isConnectionStatusPulsing },
+                           resx: { ariaLabel: 'string_8097', /* Database Connectivity */ },
+                           attr: {title: Commerce.ViewModelAdapter.getResourceString('string_8097'), /* Database Connectivity */ },
+                           axBubbleAttr: 'headerSplitView_connectivityStatusButton'">
+            <div class="buttonIcon height20" data-bind="css:{ iconSync: isConnected, iconBlocked: !isConnected() } ">
+            </div>
+        </button>
+    </script>
+    <script id="SelfPackingConnectionStatusPacked" type="text/html">
+        <button class="row width240 height48 pad0"
+                data-bind="click: showConnectivityStatusDialog,
+                           css:{ pulse: isConnectionStatusPulsing },
+                           resx: { ariaLabel: 'string_8097', /* Database Connectivity */ },
+                           axBubbleAttr: 'headerSplitView_connectivityStatusButton'">
+            <div class="buttonIcon height20 margin12" data-bind="css:{ iconSync: isConnected, iconBlocked: !isConnected() }">
+            </div>
+            <div class="grow col marginLeft8 padTop4">
+                <div class="h4 row" data-bind="resx: { textContent: 'string_8097' /* Database Connectivity */ }"></div>
+                <div class="h4 row opacity60" data-bind="text: connectivityStatus"></div>
+            </div>
+        </button>
+    </script>
+</body>
+</html>

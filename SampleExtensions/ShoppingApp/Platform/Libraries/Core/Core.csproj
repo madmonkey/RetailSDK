@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\..\..\..\..\BuildTools\Common.props" />
+  <Import Project="..\..\..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Contoso.Commerce.Client</RootNamespace>
+    <AssemblyName>$(AssemblyNamePrefix).Commerce.Client</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.0.0" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="4.0.0.7" />
+  </ItemGroup>
+
+</Project>

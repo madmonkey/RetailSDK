@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PrintReceiptDialog</title>
+
+    <!-- WinJS references -->
+    <link href="PrintReceiptDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'PrintReceiptDialog'">
+        <div class="printReceiptDialog">
+            <div data-bind="dialog: {
+                    title: Commerce.ViewModelAdapter.getResourceString('string_1806'),
+                    message: Commerce.ViewModelAdapter.getResourceString('string_1807'),
+                    visible: visible,
+                    showProgressIndicator: indeterminateWaitVisible,
+                    buttonClick: printButtonClick,
+                    buttons: [
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_1808'), disable: okButtonDisabled, operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, cssClass: 'okButton' },
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_1825'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton' }]
+                },
+                axBubbleAttr: 'printReceiptDialog_printReceiptDialog'"
+                 class="printReceiptDialog">
+
+                <!-- dialog content -->
+                <div class="grow content win-ui-light marginBottom12">
+                    <div class="col maxWidth320 scrollY">
+                        <div class="col grow" data-bind="foreach: _printableReceiptsToDisplay, axBubbleAttr: 'printReceiptDialog_printableReceipts'">
+                            <div class="row" data-bind="if: shouldPrompt">
+                                <div class="row marginTop12 width140">
+                                    <div class="no-shrink marginTop12">
+                                        <div class="iconPrint icon-20x20 center noBorder" data-bind="css: { 'icon-disableHoverToggle': !shouldPrintObservable() }"></div>
+                                    </div>
+                                    <div class="gutter20x20"></div>
+                                    <div class="col grow">
+                                        <div class="h3 margin0 ellipsis" data-bind="text: $root.getReceiptTitle($data)">RECEIPT_NAME</div>
+                                        <div class="h4 margin0 secondaryFontColor ellipsis" data-bind="text: printerName">PRINTER_NAME</div>
+                                    </div>
+                                </div>
+                                <div class="gutter40x40"></div>
+                                <div class="no-shrink">
+                                    <div class="noWinLabel" data-bind="toggleSwitch: { checked: shouldPrintObservable, onChange: $root.onShouldPrintToggle.bind($root) },
+                                          resx: { ariaLabel: 'string_1808' }"></div> <!-- Print -->
+                                </div>
+                            </div>
+                            <div class="gutter12x12"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

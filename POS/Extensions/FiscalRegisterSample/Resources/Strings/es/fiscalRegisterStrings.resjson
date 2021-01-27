@@ -1,0 +1,23 @@
+{
+  "Fiscal_register_not_enabled_error": "El registro fiscal está habilitado para el PDV, pero la estación de hardware no está habilitada.",
+  "_Fiscal_register_not_enabled_error.comment": "Fiscal register error message.",
+  "Fiscal_register_not_available_error": "El registro fiscal está habilitado para el PDV, pero la estación de hardware no está disponible.",
+  "_Fiscal_register_not_available_error.comment": "Fiscal register error message.",
+  "Fiscal_register_unregistered_comleted_transactions_error": "Hay transacciones de venta completadas no registradas en el registro fiscal. La operación se canceló.",
+  "_Fiscal_register_unregistered_comleted_transactions_error.comment": "Fiscal register error message.",
+  "Ok_Button_Label": "Aceptar",
+  "_Ok_Button_Label.comment": "Message dialog button label.",
+  "Cancel_Button_Label": "Cancelar",
+  "_Cancel_Button_Label.comment": "Message dialog button label.",
+  "Skip_Button_Label": "Omitir",
+  "_Skip_Button_Label.comment": "Message dialog button label.",
+  "Run_Refiscalization_Dialog_Title": "Registro fiscal",
+  "_Run_Refiscalization_Dialog_Title.comment": "Message dialog message.",
+  "Run_Refiscalization_Dialog_Message": "Hay {0} transacciones de venta completadas no registradas en el registro fiscal. Haga clic para registrar estas transacciones.",
+  "Skip_Refiscalize_Dialog_Title": "Error de registro fiscal",
+  "_Skip_Refiscalize_Dialog_Title.comment": "Message dialog title.",
+  "Skip_Refiscalize_Dialog_Message": "La transacción de venta no puede registrarse en el registro fiscal. Puede omitir el registro fiscal o cancelar la operación.",
+  "_Skip_Refiscalize_Dialog_Message.comment": "Message dialog message.",
+  "Confirm_Skip_Refiscalization_Dialog_Message": "¿Seguro de que desea omitir el registro fiscal para el identificador de transacción: '{0}', fecha y hora de la transacción: '{1}', id. de recibo: '{2}', importe total de la recepción: '{3}'. Si omite el registro fiscal, esto quedará registrado en la transacción.",
+  "_Confirm_Skip_Refiscalization_Dialog_Message.comment": "Message dialog message."
+}

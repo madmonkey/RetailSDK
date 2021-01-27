@@ -1,0 +1,17 @@
+﻿{
+  "$schema": "../schemas/manifestSchema.json",
+  "name": "Sales_Trans_Build_Number_Sample",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "7.2.0.0",
+  "components": {
+    "extend": {
+      "triggers": [
+        {
+          "triggerType": "PreEndTransaction",
+          "modulePath": "TriggerHandlers/SalesTransBuildNumberPreEndTransactionTrigger"
+        }
+      ]
+    }
+  }
+}

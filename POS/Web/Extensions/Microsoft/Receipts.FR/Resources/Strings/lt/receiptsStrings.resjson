@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Versijos numerio tvarkytuvas: versijos numeris sėkmingai įtrauktas.",
+  "Build_number_successfull_log_message_text.comment": "Pranešimas užregistruotas, kai į operaciją EKA versijos numeris sėkmingai įtrauktas.",
+  "Build_number_error_log_message_text": "Versijos numerio tvarkytuvas: nepavyko įtraukti versijos numerio; klaidos pranešimas: {0}.",
+  "Build_number_error_log_message_text.comment": "Pranešimas užregistruotas, kai į operaciją nepavyko įtraukti EKA versijos numerio."
+}

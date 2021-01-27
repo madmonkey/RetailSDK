@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CreateOrUpdateInventoryDocumentHeaderDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'CreateOrUpdateInventoryDocumentHeaderDialog'">
+        <div data-bind="dialog: {
+                title: viewModel.title,
+                visible: visible,
+                buttonClick: buttonClickHandler,
+                showProgressIndicator: indeterminateWaitVisible,
+                hideOnEscape: true,
+                buttons: [
+                    {
+                        label: viewModel.primaryButtonLabel,
+                        operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK,
+                        isPrimary: true,
+                        disable: viewModel.disableOkButton
+                    },
+                    {
+                        label: Commerce.ViewModelAdapter.getResourceString('string_76'),
+                        operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK,
+                        isPrimary: false
+                    }
+                ],
+                dialogCloseButtonClick: closeClickHandler,
+            },
+            axBubbleAttr: 'CreateOrUpdateInventoryDocumentHeaderDialog_CreateOrUpdateInventoryDocumentHeaderDialog',attr: { 'aria-label': viewModel.title() }">
+            <!-- Progress ring -->
+            <div data-bind="loader: { visible: viewModel.isBusy, restoreFocus: false, type: Commerce.Controls.Loader.LoaderType.Dialog }"></div>
+
+            <!-- Dialog content -->
+            <div class="createOrUpdateInventoryDocumentHeaderDialog">
+                <!-- ko if: viewModel.isDocumentInitialized -->
+                <!-- ko ifnot: viewModel.isCreationOperation -->
+                <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12631' }"></h4><!-- Order number -->
+                <h4 class="marginBottom20" data-bind="text: viewModel.document().DocumentId "></h4>
+                <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12635' }"></h4><!-- Order status -->
+                <h3 class="marginBottom20" data-bind="text: Commerce.Formatters.InventoryDocumentStatusEnumFormatter(viewModel.document())"></h3>
+                <!-- /ko -->
+
+                <h4 class="marginBottom8 secondaryFontColor" data-bind="resx: { textContent: 'string_12624' }"></h4><!-- Transfer from -->
+                <div data-bind="selectTile: {
+                        tileType: Commerce.Controls.SelectTile.SelectTileType.DoubleLine,
+                        primaryText: viewModel.transferFromWarehouseLabel,
+                        secondaryText: viewModel.transferFromWarehouseDetails,
+                        iconClass: viewModel.transferFromTileIconClass,
+                        displayChevron: viewModel.isInbound,
+                        cheveronCssClass: viewModel.transferFromCheveronCssClass,
+                        iteminvoked: onSelectFromWarehouse,
+                        primaryTextCssClass: 'primaryFontColor',
+                        secondaryTextCssClass: 'secondaryFontColor',
+                        backgroundCssClass:'backgroundTransparent',
+                        displayBottomBorder: true,
+                        disabled: !viewModel.isInbound(),
+                    }"></div>
+
+                <h4 class="marginBottom8 marginTop8 secondaryFontColor" data-bind="resx: { textContent: 'string_12625' }"></h4><!-- Transfer to -->
+                <div data-bind="selectTile: {
+                        tileType: Commerce.Controls.SelectTile.SelectTileType.DoubleLine,
+                        primaryText: viewModel.transferToWarehouseLabel,
+                        secondaryText: viewModel.transferToWarehouseDetails,
+                        iconClass: viewModel.transferToTileIconClass,
+                        displayChevron: !viewModel.isInbound(),
+                        cheveronCssClass: viewModel.transferToCheveronCssClass,
+                        iteminvoked: onSelectToWarehouse,
+                        primaryTextCssClass: 'primaryFontColor',
+                        secondaryTextCssClass: 'secondaryFontColor',
+                        backgroundCssClass:'backgroundTransparent',
+                        displayBottomBorder: true,
+                        disabled: viewModel.isInbound(),
+                    }"></div>
+
+                <h4 class="marginBottom4 marginTop8 secondaryFontColor" data-bind="resx: { textContent: 'string_12626' }"></h4><!-- Ship date -->
+                <div id="shipDate"
+                     class="row marginBottom16"
+                     data-bind="datePicker: {
+                            datePattern: '{day.integer(2)} {dayofweek.full}',
+                            current: viewModel.shipDate,
+                         },
+                         resx: { ariaLabel: 'string_12626'},
+                         axBubbleAttr: 'createOrUpdateInventoryDocumentHeaderDialog_shipDate'"></div>
+
+                <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12627' }"></h4><!-- Receive date -->
+                <div id="receiveDate"
+                     class="row marginBottom16"
+                     data-bind="datePicker: {
+                            datePattern: '{day.integer(2)} {dayofweek.full}',
+                            current: viewModel.receiveDate,
+                         },
+                         resx: { ariaLabel: 'string_12627'},
+                         axBubbleAttr: 'createOrUpdateInventoryDocumentHeaderDialog_receiveDate'"></div>
+
+                <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12628' }"></h4><!-- Mode of delivery -->
+                <select id="deliveryModes"
+                    data-bind="options: viewModel.deliveryModes,
+                       optionsText: 'Description',
+                       optionsValue: 'Code',
+                       value: viewModel.selectedDeliveryModeId,
+                       resx: { ariaLabel: 'string_12628'}">
+                </select>
+
+                <div class="col marginTop20">
+                    <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12440' }"></h4><!-- Notes -->
+                    <!-- ko if: viewModel.isNoteEmpty -->
+                    <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onUpdateNoteAsync, axBubbleAttr: 'createOrUpdateInventoryDocumentHeaderDialog_addANote'">
+                        <div class="col center width16 height16 marginRight8">
+                            <div class="h2 iconAddTo icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12441' }"></div><!--Add a note-->
+                        </div>
+                        <h4 class="accentColor" data-bind="resx: { textContent: 'string_12441' }"></h4><!--Add a note-->
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko ifnot: viewModel.isNoteEmpty -->
+                    <h4 class="marginBottom8" data-bind="text: viewModel.note"></h4>
+                    <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onUpdateNoteAsync, axBubbleAttr: 'createOrUpdateInventoryDocumentHeaderDialog_editNote'">
+                        <div class="col center width16 height16 marginRight8">
+                            <div class="h2 iconEdit icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12450' }"></div><!--Edit note-->
+                        </div>
+                        <h4 class="accentColor" data-bind="resx: { textContent: 'string_12450' }"></h4><!--Edit note-->
+                    </div>
+                    <!-- /ko -->
+                </div>
+
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

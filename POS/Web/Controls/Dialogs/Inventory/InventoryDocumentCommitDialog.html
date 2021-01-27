@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>InventoryDocumentCommitDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'InventoryDocumentCommitDialog'">
+        <div data-bind="dialog: {
+                title: computedTitle,
+                visible: visible,
+                buttonClick: buttonClickHandler,
+                showProgressIndicator: indeterminateWaitVisible,
+                hideOnEscape: true,
+                buttons: [
+                    {
+                        label: Commerce.ViewModelAdapter.getResourceString('string_12464'),
+                        operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK,
+                        isPrimary: true,
+                        disable: disableOkButton
+                    },
+                    {
+                        label: Commerce.ViewModelAdapter.getResourceString('string_76'),
+                        operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK,
+                        isPrimary: false
+                    }
+                ],
+                dialogCloseButtonClick: closeClickHandler,
+            },
+            axBubbleAttr: 'InventoryDocumentCommitDialog_InventoryDocumentCommitDialog',attr: { 'aria-label': computedTitle() + contentTitle() }">
+            <!-- Dialog content -->
+            <div class="inventoryDocumentCommitDialogContent">
+                <h3 class="wrapText marginBottom20" data-bind="text: contentTitle"></h3>
+
+                <!-- ko if: showReceiptId -->
+                <label for="receiptId" class="h4 marginTop20 secondaryFontColor marginBottom4" data-bind="resx: { textContent: 'string_12461' }"></label><!--Receipt number-->
+                <input id="receiptId" type="text" data-bind="value: receiptId, valueUpdate: 'afterkeydown'" />
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

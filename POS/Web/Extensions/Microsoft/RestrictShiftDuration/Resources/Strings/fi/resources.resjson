@@ -1,0 +1,10 @@
+{
+  "Warning_title": "Varoitus",
+  "_Warning_title.comment": "POS warning message title.",
+  "Shift_closing_warning": "Vuoro on suljettava {0} mennessä.",
+  "_Shift_closing_warning.comment": "POS warning message when the cashier performs an operation within the shift closing interval.",
+  "Error_title": "Virhe",
+  "_Error_title.comment": "POS error message title.",
+  "Shift_closing_error": "Vuoron kesto ylittää enimmäisrajan. Keskeytä tapahtuma, sulje vuoro ja avaa uusi vuoro.",
+  "_Shift_closing_error.comment": "POS warning message when the cashier performs an operation after the shift closing time."
+}

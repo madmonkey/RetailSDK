@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SelectAllowedReturnOptionDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'SelectAllowedReturnOptionDialog'">
+        <div data-bind="dialog:
+            {
+                title: Commerce.ViewModelAdapter.getResourceString('string_1260'), /* Return payment */
+                visible: visible,
+                buttonClick: buttonClickHandler,
+                dialogCloseButtonClick: dialogCloseButtonClick,
+                buttons: [
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false }
+                ],
+            },
+            axBubbleAttr: 'SelectAllowedReturnOptionDialog_SelectAllowedReturnOptionDialog'" class="modalWindowContentSection">
+
+            <!-- dialog content -->
+            <!-- return amount due -->
+            <div class="padTop12">
+                <label data-bind="resx: { textContent: 'string_1261' }">Return amount due</label>
+                <div class="padBottom8 height52 textRight">
+                    <div class="h1" data-bind="formatPrice: amountToRefund"></div>
+                </div>
+            </div>
+            <!-- Line separator -->
+            <div class="padTop12 padBottom8 no-shrink">
+                <div class="line-separator"></div>
+            </div>
+            <div data-bind="visible: shouldShowAllPaymentMethodsOption">
+
+                <!-- Manager override -->
+                <div class="padBottom8">
+                    <label data-bind="resx: { textContent: 'string_1267' }">Manager override</label>
+                </div>
+
+                <!-- Show all payment methods -->
+                <div class="padBottom8"
+                     data-bind="selectTile: {
+                     tileType: Commerce.Controls.SelectTile.SelectTileType.SingleLine,
+                     primaryText: Commerce.ViewModelAdapter.getResourceString('string_1266'),
+                     iteminvoked: showAllPaymentMethodsClicked,
+                     displayChevron: true,
+                     iconClass: 'iconBulletedList'}">
+                </div>
+            </div>
+            
+            <!-- Allowed payment options -->
+            <div class="padBottom8">
+                <label data-bind="resx: { textContent: 'string_1265' }">Allowed refund options</label>
+            </div>
+            <!-- ko foreach: availableRefundOptions -->
+            <div data-bind="selectTile: {
+                 tileType: Commerce.Controls.SelectTile.SelectTileType.SmallDoubleLine,
+                 primaryText: Commerce.NumberExtensions.formatCurrency(amount),
+                 secondaryText: secondaryText,
+                 iteminvoked: function () { $parent.optionClickHandler($data); },
+                 displayChevron: false}">
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "Error_Title": "Hiba",
+  "_Error_Title.comment": "POS error message title.",
+
+  "Advance_Invoice_Printing_Error": "Előlegszámla nyomtatási hibája.",
+  "_Advance_Invoice_Printing_Error.comment": "Error message while printing advance invoice report.",
+
+  "Print_Advance_Invoice": "Előlegszámla nyomtatása",
+  "_Print_Advance_Invoice.comment": "Print advance invoice button label.",
+
+  "Windows_Printer_Not_Defined": "A Windows-nyomtató nincs meghatározva. Ellenőrizze az eszközt, vagy forduljon a rendszergazdához.",
+  "_Windows_Printer_Not_Defined.comment": "Windows printer peripheral device failure."
+}

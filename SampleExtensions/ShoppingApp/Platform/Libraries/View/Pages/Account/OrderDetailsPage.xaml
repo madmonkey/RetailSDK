@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<base:OrderDetailsPageXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Pages.OrderDetailsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages"
+    xmlns:converters="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Converters"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    Title="{localization:Translate Pages_OrderDetailsPage_Title}">
+    <ScrollView>
+        <ScrollView.Resources>
+            <ResourceDictionary>
+                <converters:ShortDatePatternConverter x:Key="ShortDatePatternConverter" />
+                <converters:SalesStatusColorConverter x:Key="SalesStatusColorConverter" />
+                <converters:DimensionsToStringConverter x:Key="DimensionsToStringConverter" />
+                <converters:EnumToTranslatedTextConverter x:Key="EnumToTranslatedTextConverter" />
+                <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+                <converters:ValueExistsConverter x:Key="ValueExistsConverter" />
+            </ResourceDictionary>
+        </ScrollView.Resources>
+        <StackLayout Spacing="0">
+            <Grid
+                Margin="10"
+                ColumnSpacing="20"
+                RowSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    FontSize="Small"
+                    Text="{localization:Translate Pages_OrderDetailsPage_CreatedDateTime}"
+                    TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontSize="Small"
+                    LineBreakMode="TailTruncation"
+                    Text="{Binding Order.Data.CreatedDateTime, Converter={StaticResource ShortDatePatternConverter}}"
+                    TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                    VerticalTextAlignment="Center" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    FontSize="Small"
+                    Text="{localization:Translate Pages_OrderDetailsPage_SalesId}"
+                    TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontSize="Small"
+                    LineBreakMode="TailTruncation"
+                    Text="{Binding Order.OrderNumber}"
+                    TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                    VerticalTextAlignment="Center" />
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    FontSize="Small"
+                    Text="{localization:Translate Pages_OrderDetailsPage_StatusValue}"
+                    TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    FontSize="Small"
+                    LineBreakMode="TailTruncation"
+                    Text="{Binding Order.Status, Converter={StaticResource EnumToTranslatedTextConverter}}"
+                    TextColor="{Binding Order.Status, Converter={StaticResource SalesStatusColorConverter}}"
+                    VerticalTextAlignment="Center" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    FontSize="Small"
+                    Text="{localization:Translate Pages_OrderDetailsPage_TotalAmount}"
+                    TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    FontSize="Small"
+                    LineBreakMode="TailTruncation"
+                    Text="{Binding Order.Data.TotalAmount, StringFormat='{0:C}'}"
+                    TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+            <BoxView
+                HeightRequest="0.5"
+                Color="{x:Static statics:Palette.SEPARATOR}" />
+            <StackLayout
+                x:Name="ListViewStackLayout"
+                Padding="0,10"
+                Spacing="0">
+                <ActivityIndicator
+                    IsEnabled="{Binding IsBusy}"
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}" />
+                <views:OrderLinesView
+                    IsVisible="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
+                    ItemsSource="{Binding OrderLines}" />
+            </StackLayout>
+            <BoxView
+                HeightRequest="0.5"
+                IsVisible="{Binding Order.Data.ShippingAddress, Converter={StaticResource ValueExistsConverter}}"
+                Color="{x:Static statics:Palette.SEPARATOR}" />
+            <views:AddressLabelView
+                Margin="10"
+                BindingContext="{Binding Order.Data.ShippingAddress}"
+                IsVisible="{Binding Order.Data.ShippingAddress, Converter={StaticResource ValueExistsConverter}}" />
+            <BoxView
+                HeightRequest="0.5"
+                Color="{x:Static statics:Palette.SEPARATOR}" />
+            <views:OrderSummaryView 
+                Margin="10"
+				BindingContext="{Binding Order}"/>
+        </StackLayout>
+    </ScrollView>
+</base:OrderDetailsPageXaml>

@@ -1,0 +1,1059 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.ExecutionAdapter`1">
+            <summary>
+            Base class for request handler/trigger adapter to switch between async and sync execution.
+            </summary>
+            <typeparam name="TExecutor">Type of object to wrap (handler or trigger).</typeparam>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.ExecutionAdapter`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.ExecutionAdapter`1"/> class.
+            </summary>
+            <param name="executor">Async handler/trigger to adapt.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ExecutionAdapter`1.SupportedRequestTypes">
+            <summary>
+            Gets handler supported types
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ExecutionAdapter`1.WrappedExecutor">
+            <summary>
+            Gets wrapped request handler/trigger.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.ExecutionAdapter`1.GetWrappedExecutor">
+            <summary>
+            Gets wrapped request handler/trigger.
+            </summary>
+            <returns>Wrapped instance of request handler/trigger.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.IExecutionAdapter">
+            <summary>
+            Interface for request handler/trigger adapter to switch between async and sync execution.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.IExecutionAdapter.GetWrappedExecutor">
+            <summary>
+            Gets wrapped request handler/trigger.
+            </summary>
+            <returns>Wrapped instance of request handler/trigger.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.RequestHandlerAdapter">
+            <summary>
+            Adapter for RequestHandler that convert async execute in sync one.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.RequestHandlerAdapter.#ctor(Microsoft.Dynamics.Commerce.Runtime.IRequestHandlerAsync)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.RequestHandlerAdapter"/> class.
+            </summary>
+            <param name="handler">Async handler that have to be covered in sync one.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.RequestHandlerAdapter.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.RequestHandlerAsyncAdapter">
+            <summary>
+            Adapter for RequestHandler that convert sync execute in async one.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.RequestHandlerAsyncAdapter.#ctor(Microsoft.Dynamics.Commerce.Runtime.IRequestHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.RequestHandlerAsyncAdapter"/> class.
+            </summary>
+            <param name="handler">Async handler that have to be covered in sync one.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.RequestHandlerAsyncAdapter.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.RequestTriggerAdapter">
+            <summary>
+            Adapter for RequestTrigger that convert async execute in sync one.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.RequestTriggerAdapter.#ctor(Microsoft.Dynamics.Commerce.Runtime.IRequestTriggerAsync)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.RequestTriggerAdapter"/> class.
+            </summary>
+            <param name="trigger">The async request trigger</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.RequestTriggerAdapter.OnExecuting(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Invoked before request has been processed by <see cref="T:Microsoft.Dynamics.Commerce.Runtime.IRequestHandler"/>.
+            </summary>
+            <param name="request">The incoming request message.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.RequestTriggerAdapter.OnExecuted(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.Messages.Response)">
+            <summary>
+            Invoked after request has been processed by <see cref="T:Microsoft.Dynamics.Commerce.Runtime.IRequestHandler"/>.
+            </summary>
+            <param name="request">The request message processed by handler.</param>
+            <param name="response">The response message generated by handler.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.RequestTriggerAsyncAdapter">
+            <summary>
+            Adapter for RequestTriggerAsync that convert sync execute in async one.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.RequestTriggerAsyncAdapter.#ctor(Microsoft.Dynamics.Commerce.Runtime.IRequestTrigger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.RequestTriggerAsyncAdapter"/> class.
+            </summary>
+            <param name="trigger">The async request trigger</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.RequestTriggerAsyncAdapter.OnExecuting(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Invoked before request has been processed by <see cref="T:Microsoft.Dynamics.Commerce.Runtime.IRequestHandler"/>.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The empty Task</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.RequestTriggerAsyncAdapter.OnExecuted(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.Messages.Response)">
+            <summary>
+            Invoked after request has been processed by <see cref="T:Microsoft.Dynamics.Commerce.Runtime.IRequestHandler"/>.
+            </summary>
+            <param name="request">The request message processed by handler.</param>
+            <param name="response">The response message generated by handler.</param>
+            <returns>The empty Task</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime">
+            <summary>
+            Encapsulates the async part of the runtime entry point.
+            </summary>
+            <summary>
+            Encapsulates the entry point of the runtime.
+            </summary>
+            <summary>
+            Encapsulates the async part of the runtime entry point.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.NotifyAsync(Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.Messages.Notification)">
+            <summary>
+            Notifies the specified context.
+            </summary>
+            <param name="context">The request context.</param>
+            <param name="notification">The notification.</param>
+            <returns>The empty task.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.ExecuteAsync``1(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Executes the specified request using the specified request context.
+            </summary>
+            <typeparam name="TResponse">The response type of the request.</typeparam>
+            <param name="request">The request to execute.</param>
+            <param name="context">The request context.</param>
+            <returns>The TResponse typed Task of the request from the request handler.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.ExecuteAsync``1(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Boolean)">
+            <summary>
+            Executes the specified request using the specified request context.
+            </summary>
+            <typeparam name="TResponse">The response type of the request.</typeparam>
+            <param name="request">The request to execute.</param>
+            <param name="context">The request context.</param>
+            <param name="skipRequestTriggers">True to skip triggers; otherwise false.</param>
+            <returns>The TResponse typed Task of the request from the request handler.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.ExecuteAsync``1(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.IRequestHandlerAsync)">
+            <summary>
+            Executes the specified request using the specified request context and handler.
+            </summary>
+            <typeparam name="TResponse">The response type of the request.</typeparam>
+            <param name="request">The request to execute.</param>
+            <param name="context">The request context.</param>
+            <param name="handler">The request handler to invoke the request.</param>
+            <returns>The TResponse typed Task of the request from the request handler.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.ExecuteAsync``1(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.IRequestHandlerAsync,System.Boolean)">
+            <summary>
+            Executes the specified request using the specified request context and handler.
+            </summary>
+            <typeparam name="TResponse">The response type of the request.</typeparam>
+            <param name="request">The request to execute.</param>
+            <param name="context">The request context. Optional. If null, a new context is created.</param>
+            <param name="handler">The request handler to invoke the request. Optional. If null, default pipeline handler is used.</param>
+            <param name="skipRequestTriggers">True to skip triggers; otherwise false.</param>
+            <returns>The TResponse typed Task of the request from the request handler.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.GetAsyncRequestHandlers``1(System.Type)">
+            <summary>
+            Gets all request handlers as async handlers of type <typeparamref name="THandler"/> that support the <paramref name="requestType"/> request type.
+            </summary>
+            <typeparam name="THandler">The type of handler(s) to return.</typeparam>
+            <param name="requestType">The request type.</param>
+            <returns>The matching async request handlers or sync request handlers adapters.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.GetAsyncRequestHandlers(System.Type,System.String)">
+            <summary>
+            Gets all request handlers as async handlers that support the <paramref name="requestType"/> request type by name.
+            </summary>
+            <param name="requestType">The request type.</param>
+            <param name="handlerName">The name of request handler.</param>
+            <returns>The matching async request handlers. or sync request handlers adapters</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.GetAsyncRequestHandler(System.Type,System.String)">
+            <summary>
+            Gets all request handler as async handler that support the <paramref name="requestType"/> request type by name.
+            </summary>
+            <param name="requestType">The request type.</param>
+            <param name="handlerName">The name of request handler.</param>
+            <returns>The matching async request handler or sync request handler adapter.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.GetAsyncRequestHandlers(System.Type,System.Int32)">
+            <summary>
+            Gets all async request handlers that support the <paramref name="requestType"/> request type by operation identifier.
+            </summary>
+            <param name="requestType">The request type.</param>
+            <param name="operationIdentifier">The operation identifier.</param>
+            <returns>The matching async request handlers or sync request handlers adapters.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.GetAsyncRequestHandler(System.Type,System.Int32)">
+            <summary>
+            Gets async request handler that support the <paramref name="requestType"/> request type by operation identifier.
+            </summary>
+            <param name="requestType">The request type.</param>
+            <param name="operationIdentifier">The operation identifier.</param>
+            <returns>The matching async request handler or sync request handler adapter.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.#ctor(Microsoft.Dynamics.Commerce.Runtime.ICommerceRuntimeConfiguration,Microsoft.Dynamics.Commerce.Runtime.ICommercePrincipal,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime"/> class.
+            </summary>
+            <param name="configuration">The runtime configuration.</param>
+            <param name="currentPrincipal">The principal to execute requests from this runtime instance.</param>
+            <param name="locale">The locale for the current instance.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.Configuration">
+            <summary>
+            Gets the runtime configuration.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.Locale">
+            <summary>
+            Gets the locale of the commerce runtime instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.CurrentPrincipal">
+            <summary>
+            Gets the current principal.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.Create(Microsoft.Dynamics.Commerce.Runtime.ICommerceRuntimeConfiguration)">
+            <summary>
+            Creates a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime"/> class.
+            </summary>
+            <param name="configuration">The runtime configuration.</param>
+            <returns>
+            A new instance of the runtime.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.Create(Microsoft.Dynamics.Commerce.Runtime.ICommerceRuntimeConfiguration,Microsoft.Dynamics.Commerce.Runtime.ICommercePrincipal)">
+            <summary>
+            Creates a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime"/> class.
+            </summary>
+            <remarks>This routine should be typically used, use this routine when the caller is passing the CommercePrincipal explicitly.</remarks>
+            <param name="configuration">The runtime configuration.</param>
+            <param name="principal">The principal to use create the runtime instance.</param>
+            <returns>A new instance of the runtime.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.Create(Microsoft.Dynamics.Commerce.Runtime.ICommerceRuntimeConfiguration,Microsoft.Dynamics.Commerce.Runtime.ICommercePrincipal,System.String)">
+            <summary>
+            Creates a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime"/> class.
+            </summary>
+            <remarks>This routine should be typically used, use this routine when the caller is passing the CommercePrincipal explicitly.</remarks>
+            <param name="configuration">The runtime configuration.</param>
+            <param name="principal">The principal to use create the runtime instance.</param>
+            <param name="locale">The locale for the current instance.</param>
+            <returns>A new instance of the runtime.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.GetCacheProvider(System.String)">
+            <summary>
+            Gets the cache provider based the cache provider name.
+            </summary>
+            <param name="cacheProviderName">Name of the provider specified in the metadata attribute.</param>
+            <returns>
+            The instance of the specified cache or <c>NULL</c> if none could be found.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.GetComponents``1(System.String)">
+            <summary>
+            Gets the component that implements the contracts.
+            </summary>
+            <typeparam name="T">Specify the contract to get the implemented component.</typeparam>
+            <param name="contractName">The contract name of the type T object to return.</param>
+            <returns>Returns the component that implements the contract.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.GetComponents(System.Type,System.String)">
+            <summary>
+            Gets all the components of the given type that implment the supplied contract.
+            </summary>
+            <param name="exportType">The type to look for.</param>
+            <param name="contractName">The contract name to look for.</param>
+            <returns>The found component or null if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.Execute``1(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.ISupportedTypesAware,System.Boolean,System.Boolean)">
+            <summary>
+            Executes the specified request using the specified request context and handler.
+            </summary>
+            <typeparam name="TResponse">The response type of the request.</typeparam>
+            <param name="request">The request to execute.</param>
+            <param name="context">The request context. Optional. If null, a new context is created.</param>
+            <param name="handler">The request handler to invoke the request. Optional. If null, default pipeline handler is used.</param>
+            <param name="skipRequestTriggers">True to skip triggers; otherwise false.</param>
+            <param name="isAsync">True when execution called in async mode.</param>
+            <returns>The TResponse typed Task of the request from the request handler.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.Notify(Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.Messages.Notification)">
+            <summary>
+            Notifies the specified context.
+            </summary>
+            <param name="context">The request context.</param>
+            <param name="notification">The notification.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.Execute``1(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Executes the specified request using the specified request context and handler.
+            </summary>
+            <typeparam name="TResponse">The response type of the request.</typeparam>
+            <param name="request">The request to execute.</param>
+            <param name="context">The request context. If 'null' new request context will be created.</param>
+            <returns>The response of the request from the request handler.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.Execute``1(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Boolean)">
+            <summary>
+            Executes the specified request using the specified request context.
+            </summary>
+            <typeparam name="TResponse">The response type of the request.</typeparam>
+            <param name="request">The request to execute.</param>
+            <param name="context">The request context.</param>
+            <param name="skipRequestTriggers">True to skip triggers; otherwise false.</param>
+            <returns>The response of the request from the request handler.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.Execute``1(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.IRequestHandler)">
+            <summary>
+            Executes the specified request using the specified request context and handler.
+            </summary>
+            <typeparam name="TResponse">The response type of the request.</typeparam>
+            <param name="request">The request to execute.</param>
+            <param name="context">The request context. Optional. If null, a new context is created.</param>
+            <param name="handler">The request handler to invoke the request. Optional. If null, default pipeline handler is used.</param>
+            <returns>The response of the request from the request handler.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.Execute``1(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.IRequestHandler,System.Boolean)">
+            <summary>
+            Executes the specified request using the specified request context and handler.
+            </summary>
+            <typeparam name="TResponse">The response type of the request.</typeparam>
+            <param name="request">The request to execute.</param>
+            <param name="context">The request context. Optional. If null, a new context is created.</param>
+            <param name="handler">The request handler to invoke the request. Optional. If null, default pipeline handler is used.</param>
+            <param name="skipRequestTriggers">True to skip triggers; otherwise false.</param>
+            <returns>The response of the request from the request handler.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.GetRequestHandlers``1(System.Type)">
+            <summary>
+            Gets all request handlers of type <typeparamref name="THandler"/> that support the <paramref name="requestType"/> request type.
+            </summary>
+            <typeparam name="THandler">The type of handler(s) to return.</typeparam>
+            <param name="requestType">The request type.</param>
+            <returns>The matching request handlers.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.GetRequestHandlers(System.Type,System.String)">
+            <summary>
+            Gets all request handlers that support the <paramref name="requestType"/> request type by name.
+            </summary>
+            <param name="requestType">The request type.</param>
+            <param name="handlerName">The name of request handler.</param>
+            <returns>The matching request handlers.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.GetRequestHandler(System.Type,System.String)">
+            <summary>
+            Gets all request handler that support the <paramref name="requestType"/> request type by name.
+            </summary>
+            <param name="requestType">The request type.</param>
+            <param name="handlerName">The name of request handler.</param>
+            <returns>The matching request handlers.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.GetRequestHandlers(System.Type,System.Int32)">
+            <summary>
+            Gets all request handlers that support the <paramref name="requestType"/> request type by operation identifier.
+            </summary>
+            <param name="requestType">The request type.</param>
+            <param name="operationIdentifier">The operation identifier.</param>
+            <returns>The matching request handlers.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntime.GetRequestHandler(System.Type,System.Int32)">
+            <summary>
+            Gets all request handler that support the <paramref name="requestType"/> request type by operation identifier.
+            </summary>
+            <param name="requestType">The request type.</param>
+            <param name="operationIdentifier">The operation identifier.</param>
+            <returns>The matching request handlers.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration">
+            <summary>
+            Encapsulates configuration data relevant to the runtime.
+            </summary>
+            <remarks>
+            This configuration data is shared across all channels of the runtime.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.#ctor(Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeSection,Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeExtensionsSection,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,System.Boolean,System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration"/> class.
+            </summary>
+            <param name="commerceRuntimeSection">The commerce runtime configuration.</param>
+            <param name="extensionsSection">The commerce runtime extensions configuration which will be ordered before Microsoft configuration.</param>
+            <param name="connectionString">The connection string to the database that contains the storage lookup view.</param>
+            <param name="storageLookupConnectionStrings">The mapping between storage identifier and connection string.</param>
+            <param name="isOverride">A value indicating whether the specified connection string is the override connection string to use.</param>
+            <param name="isMasterDatabaseConnectionString">A value indicating whether the specified connection string points to the active master database.</param>
+            <param name="extensibleEnumerationTypes">The type of the classes that derives from <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Framework.ExtensibleEnumeration"/> and need to be initialized.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.#ctor(Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeSection,Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeExtensionsSection,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration"/> class.
+            </summary>
+            <param name="commerceRuntimeSection">The commerce runtime configuration.</param>
+            <param name="extensionsSection">The commerce runtime extensions configuration which will be ordered before Microsoft configuration.</param>
+            <param name="connectionString">The connection string to the database that contains the storage lookup view.</param>
+            <param name="storageLookupConnectionStrings">The mapping between storage identifier and connection string.</param>
+            <param name="isOverride">A value indicating whether the specified connection string is the override connection string to use.</param>
+            <param name="isMasterDatabaseConnectionString">A value indicating whether the specified connection string points to the active master database.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.#ctor(Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeSection,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration"/> class.
+            </summary>
+            <param name="commerceRuntimeSection">The commerce runtime configuration.</param>
+            <param name="connectionString">The connection string to the database that contains the storage lookup view.</param>
+            <param name="storageLookupConnectionStrings">The mapping between storage identifier and connection string.</param>
+            <param name="isOverride">A value indicating whether the specified connection string is the override connection string to use.</param>
+            <param name="isMasterDatabaseConnectionString">A value indicating whether the specified connection string points to the active master database.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.#ctor(Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeSection,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration"/> class.
+            </summary>
+            <param name="commerceRuntimeSection">The commerce runtime configuration.</param>
+            <param name="connectionString">The connection string to the database that contains the storage lookup view.</param>
+            <param name="storageLookupConnectionStrings">The mapping between storage identifier and connection string.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.#ctor(Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeSection,Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeExtensionsSection,Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeExtensionsSection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration"/> class.
+            </summary>
+            <param name="commerceRuntimeSection">The commerce runtime configuration.</param>
+            <param name="preloadCommerceRuntimeSection">The pre loaded commerce runtime section.</param>s
+            <param name="extensionsSection">The commerce runtime extensions configuration which will be ordered before Microsoft configuration.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.#ctor(Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeSection,Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeExtensionsSection,Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration"/> class.
+            </summary>
+            <param name="commerceRuntimeSection">The commerce runtime configuration.</param>
+            <param name="extensionsSection">The commerce runtime extensions configuration which will be ordered before Microsoft configuration.</param>
+            <param name="compositionLoader">The composition loader.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.#ctor(Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeSection,Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeExtensionsSection,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration"/> class.
+            </summary>
+            <param name="commerceRuntimeSection">The commerce runtime configuration.</param>
+            <param name="extensionsSection">The commerce runtime extensions configuration which will be ordered before Microsoft configuration.</param>
+            <param name="connectionString">The connection string.</param>
+            <param name="storageLookupConnectionStrings">The mapping between storage identifier and connection string.</param>
+            <param name="isOverride">A value indicating whether the specified connection string is the override connection string to use.</param>
+            <param name="compositionLoader">The composition loader.</param>
+            <param name="isMasterDatabaseConnectionString">A value indicating whether the specified connection string points to the active master database.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.#ctor(Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeSection,Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeExtensionsSection,Microsoft.Dynamics.Commerce.Runtime.Configuration.ICommerceRuntimeExtensionsSection,Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration"/> class.
+            </summary>
+            <param name="commerceRuntimeSection">The commerce runtime configuration.</param>
+            <param name="extensionsSection">The commerce runtime extensions configuration which will be ordered before Microsoft configuration.</param>
+            <param name="preloadCommerceRuntimeSection">The pre-loaded commerce runtime section.</param>
+            <param name="compositionLoader">The composition loader.</param>
+            <param name="connectionString">The connection string.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.ConnectionString">
+            <summary>
+            Gets or sets the connection string to the database that contains the storage lookup view.
+            </summary>
+            <remarks>
+            If <see cref="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.IsConnectionStringOverridden"/> is set to <c>true</c>, then storage resolution
+            is not attempted.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.StorageLookupConnectionStrings">
+            <summary>
+            Gets or sets the mapping between storage identifier and connection string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.IsConnectionStringOverridden">
+            <summary>
+            Gets a value indicating whether the specified connection string has been overridden.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.IsMasterDatabaseConnectionString">
+            <summary>
+            Gets a value indicating whether the specified connection string points to the active master database.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.RealtimeService">
+            <summary>
+            Gets the real time service configuration.
+            </summary>
+            <returns>The real time service element of the configuration, which contains the configuration settings for real time service. See the config file for examples.</returns>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.AggregateCatalog">
+            <summary>
+            Gets the aggregate catalog used during service composition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.Storage">
+            <summary>
+            Gets the storage element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.DataAccessSettings">
+            <summary>
+            Gets the data access element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.Settings">
+            <summary>
+            Gets the settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.CacheControl">
+            <summary>
+            Gets or sets the flags controlling caching behavior.
+            </summary>
+            <returns>The cache control element of the configuration, which contains the flags controlling the caching behavior. See the config file for examples.</returns>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.DatabaseProvider">
+            <summary>
+            Gets the database provider instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.ExtensibleEnumerationInitializer">
+            <summary>
+            Gets the extensible enumeration initializer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.Composition">
+            <summary>
+            Gets the composition.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.Initialize">
+            <summary>
+            Assures the composition defined on the configuration has been composed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.LogCompositionElements(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.Configuration.ICompositionElement},System.Action{System.String,System.String})">
+            <summary>
+            Logs all source, value tags with the specified loggerFunction which takes two strings and returns void.
+            </summary>
+            <param name="composition">The set of ICompositionElements to log</param>
+            <param name="retailLoggerMethod">The Retail Logger method which receives string source, string value as parameters</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.LogCrtExtensionHandlersSupportedRequests(Microsoft.Dynamics.Commerce.Runtime.CompositionLoader)">
+             <summary>
+             Logs all the supported request types of all handlers specified in the composition
+             </summary>
+             <param name="composition">The composition specifying the handlers and triggers</param>
+            
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CommerceRuntimeConfiguration.LogCrtExtensionTriggersSupportedRequests(Microsoft.Dynamics.Commerce.Runtime.CompositionLoader)">
+            <summary>
+            Logs all the supported request types of all triggerss specified in the composition
+            </summary>
+            <param name="composition">The composition specifying the handlers and triggers</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader">
+            <summary>
+            Encapsulates functionality for MEF-based composition.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.#ctor(System.Composition.Hosting.ContainerConfiguration,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader"/> class.
+            </summary>
+            <param name="containerConfiguration">A container configuration.</param>
+            <param name="useSingletonHandlers">Whether the composition loader should instantiate new instances
+            of the request handlers or not.
+            </param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.DatabaseProvider">
+            <summary>
+            Gets the database provider instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.ExtensibleEnumerationInitializer">
+            <summary>
+            Gets the initializer that is used to initialize the extensible enumeration classes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.Create(System.Composition.Hosting.ContainerConfiguration)">
+            <summary>
+            Creates a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader"/> class.
+            </summary>
+            <param name="containerConfiguration">A container configuration.</param>
+            <returns>The composition loader.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.Create(System.Composition.Hosting.ContainerConfiguration,System.Boolean)">
+            <summary>
+            Creates a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader"/> class.
+            </summary>
+            <param name="containerConfiguration">A container configuration.</param>
+            <param name="useSingletonHandlers">Whether the composition loader should instantiate new instances
+            of the request handlers or not.
+            </param>
+            <returns>The composition loader.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.GetRequestHandler(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Gets the request handler based on the specified request type.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The matching request handler or <c>NULL</c> if no matching handler is found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.GetAsyncRequestHandler(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Gets the async request handler based on the specified request type.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The matching async request handler or <c>NULL</c> if no matching handler is found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.GetAllRequestHandlers">
+            <summary>
+            Gets all request handlers as RequestHandler.
+            </summary>
+            <returns>The matching request handlers.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.GetAllAsyncRequestHandlers">
+            <summary>
+            Gets all request handlers as RequestHandlerAsync.
+            </summary>
+            <returns>The matching request handlers.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.GetAllRequestTriggers">
+            <summary>
+            Gets all request triggers
+            </summary>
+            <returns>The matching request triggers</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.GetAllAsyncRequestTriggers">
+            <summary>
+            Gets all request triggers as RequestTriggerAsync
+            </summary>
+            <returns>The matching request triggers</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.GetRequestHandlers(System.Type)">
+            <summary>
+            Gets all request handlers as RequestHandler that support the specified request type.
+            </summary>
+            <param name="requestType">The request type.</param>
+            <returns>The matching request handlers.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.GetAsyncRequestHandlers(System.Type)">
+            <summary>
+            Gets all request handlers as RequestHandlerAsync that support the specified request type.
+            </summary>
+            <param name="requestType">The request type.</param>
+            <returns>The matching request handlers.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.GetRequestTriggers(System.Type)">
+            <summary>
+            Gets all request triggers as RequestTrigger that support the specified request type.
+            </summary>
+            <param name="requestType">The request type.</param>
+            <returns>The matching request triggers.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.GetAsyncRequestTriggers(System.Type)">
+            <summary>
+            Gets all request triggers as RequestTriggerAsync that support the specified request type.
+            </summary>
+            <param name="requestType">The request type.</param>
+            <returns>The matching request triggers.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.AddRequestHandlers(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.IRequestHandler})">
+            <summary>
+            Add request handlers into Composition. Added handlers have higher priority over existing handlers.
+            </summary>
+            <param name="handlers">The request handlers.</param>
+            <remarks>
+            Handlers order in passed parameter is important. First handler has higher priority than others.
+            If there are more than one handlers supported the same request type, only first will be called as handler for the request type.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.AddRequestHandlers(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.IRequestHandlerAsync})">
+            <summary>
+            Add async request handlers into Composition. Added handlers have higher priority over existing handlers.
+            </summary>
+            <param name="handlers">The request handlers.</param>
+            <remarks>
+            Handlers order in passed parameter is important. First handler has higher priority than others.
+            If there are more than one handlers supported the same request type, only first will be called as handler for the request type.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.AddRequestTriggers(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.IRequestTrigger})">
+            <summary>
+            Add request triggers into Composition.
+            </summary>
+            <param name="triggers">The request triggers.</param>
+            <remarks>
+            Triggers order in passed parameter is important. First trigger be executed earlier than others for the same request type.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.AddRequestTriggers(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.IRequestTriggerAsync})">
+            <summary>
+            Add async request triggers into Composition.
+            </summary>
+            <param name="triggers">The request triggers.</param>
+            <remarks>
+            Triggers order in passed parameter is important. First trigger be executed earlier than others for the same request type.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.GetCacheProvider(System.String)">
+            <summary>
+            Gets the cache provider given the name.
+            </summary>
+            <param name="cacheProviderName">Cache provider name.</param>
+            <returns>Returns the instance of cache provider.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.GetComponents``1(System.String)">
+            <summary>
+            Gets all the components that implements the contract.
+            </summary>
+            <typeparam name="T">Specify the contract to get the implemented component.</typeparam>
+            <param name="contractName">The contract name of the type T object to return.</param>
+            <returns>Returns the component that implements the contract.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.GetComponents(System.Type,System.String)">
+            <summary>
+            Gets all the components of the given type that implment the supplied contract.
+            </summary>
+            <param name="exportType">The type to look for.</param>
+            <param name="contractName">The contract name to look for.</param>
+            <returns>The found component or null if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.ExportDatabaseProvider">
+            <summary>
+            Gets the instance to the single database provider implementation.
+            </summary>
+            <returns>The database provider.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.ExportExtensibleEnumerationInitializer">
+            <summary>
+            Gets the instance to the single extensible enumeration initializer implementation.
+            </summary>
+            <returns>The extensible enumeration initializer.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.ExportRequestHandlersAndRequestTriggers">
+            <summary>
+            Exports the collection of request handlers and request triggers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.InitializeHandlersAndTriggersMap">
+            <summary>
+            Initialize lazy dictionaries for type/request handlers and type/request triggers maps.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.AddRequestHandlersInternal(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.ISupportedTypesAware})">
+            <summary>
+            Add request handlers into Composition. It overrides existing handlers if type are the same.
+            </summary>
+            <param name="handlers">The request handlers.</param>
+            <remarks>
+            Handlers order in passed parameter is important. First handler has higher priority than others.
+            If there are more than one handlers supported the same request type, only first will be called as handler for the request type.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoader.AddRequestTriggersInternal(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.ISupportedTypesAware})">
+            <summary>
+            Add request triggers into Composition.
+            </summary>
+            <param name="triggers">The request triggers.</param>
+            <remarks>
+            Triggers order in passed parameter is important. First trigger be executed earlier than others for the same request type.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.CompositionLoaderExtensions">
+            <summary>
+            Composition loader extensions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoaderExtensions.GetRequestHandler(Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader,Microsoft.Dynamics.Commerce.Runtime.Messages.Request,System.String)">
+            <summary>
+            Gets first request handler satisfied request type and available country/region code if the request handler implements ICountryRegionAware.
+            </summary>
+            <param name="compositionLoader">The ICompositionLoader instance</param>
+            <param name="request">The request</param>
+            <param name="countryRegionIsoCode">The country/region ISO code</param>
+            <returns>The matching request handler or null</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoaderExtensions.GetRequestHandlers(Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader,Microsoft.Dynamics.Commerce.Runtime.Messages.Request,System.String)">
+            <summary>
+            Gets first request handler satisfied request type and available country/region code if the request handler implements ICountryRegionAware.
+            </summary>
+            <param name="compositionLoader">The ICompositionLoader instance</param>
+            <param name="request">The request</param>
+            <param name="countryRegionIsoCode">The country/region ISO code</param>
+            <returns>The matching request handlers or null</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoaderExtensions.GetRequestTriggers(Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader,System.Type,System.String)">
+            <summary>
+            Gets all request triggers supported the specified request type and checked if the request trigger available in the current country/region ISO code.
+            </summary>
+            <param name="compositionLoader">The ICompositionLoader instance</param>
+            <param name="requestType">The request type</param>
+            <param name="countryRegionIsoCode">The country/region ISO code</param>
+            <returns>All matching request triggers</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoaderExtensions.GetAsyncRequestHandler(Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader,Microsoft.Dynamics.Commerce.Runtime.Messages.Request,System.String)">
+            <summary>
+            Gets first request handler satisfied request type and available country/region code if the request handler implements ICountryRegionAware.
+            </summary>
+            <param name="compositionLoader">The ICompositionLoader instance</param>
+            <param name="request">The request</param>
+            <param name="countryRegionIsoCode">The country/region ISO code</param>
+            <returns>The matching request handler or null</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoaderExtensions.GetAsyncRequestHandlers(Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader,Microsoft.Dynamics.Commerce.Runtime.Messages.Request,System.String)">
+            <summary>
+            Gets first request handler satisfied request type and available country/region code if the request handler implements ICountryRegionAware.
+            </summary>
+            <param name="compositionLoader">The ICompositionLoader instance</param>
+            <param name="request">The request</param>
+            <param name="countryRegionIsoCode">The country/region ISO code</param>
+            <returns>The matching request handlers or null</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoaderExtensions.GetAsyncRequestTriggers(Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader,System.Type,System.String)">
+            <summary>
+            Gets all request triggers supported the specified request type and checked if the request trigger available in the current country/region ISO code.
+            </summary>
+            <param name="compositionLoader">The ICompositionLoader instance</param>
+            <param name="requestType">The request type</param>
+            <param name="countryRegionIsoCode">The country/region ISO code</param>
+            <returns>All matching request triggers</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoaderExtensions.GetRequestHandlers(Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader,System.Type,System.String,System.Boolean)">
+            <summary>
+            Gets request handlers satisfied request type and available country/region code if the request handler implements ICountryRegionAware.
+            </summary>
+            <param name="compositionLoader">The ICompositionLoader instance</param>
+            <param name="requestType">The request type</param>
+            <param name="countryRegionIsoCode">The country/region ISO code</param>
+            <param name="isAsync">'True' to get async handlers.</param>
+            <returns>The matching request handlers or null</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoaderExtensions.GetRequestTriggers(Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader,System.Type,System.String,System.Boolean)">
+            <summary>
+            Gets request triggers satisfied request type and available country/region code if the request handler implements ICountryRegionAware.
+            </summary>
+            <param name="compositionLoader">The ICompositionLoader instance</param>
+            <param name="requestType">The request type</param>
+            <param name="countryRegionIsoCode">The country/region ISO code</param>
+            /// <param name="isAsync">'True' to get async triggers.</param>
+            <returns>The matching request handlers or null</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoaderExtensions.GetRequestHandlers(Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader,System.Type,System.String)">
+            <summary>
+            Gets all request handlers as sync handlers that support the <paramref name="requestType"/> request type by name.
+            </summary>
+            <param name="compositionLoader">The ICompositionLoader instance</param>
+            <param name="requestType">The request type.</param>
+            <param name="handlerName">The name of request handler.</param>
+            <returns>The matching async request handlers or sync request handlers adapters</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoaderExtensions.GetAsyncRequestHandlers(Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader,System.Type,System.String)">
+            <summary>
+            Gets all request handlers as async handlers that support the <paramref name="requestType"/> request type by name.
+            </summary>
+            <param name="compositionLoader">The ICompositionLoader instance</param>
+            <param name="requestType">The request type.</param>
+            <param name="handlerName">The name of request handler.</param>
+            <returns>The matching async request handlers or sync request handlers adapters</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoaderExtensions.GetRequestHandlers(Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader,System.Type,System.Int32)">
+            <summary>
+            Gets all request handlers that support the <paramref name="requestType"/> request type by operation identifier.
+            </summary>
+            <param name="compositionLoader">The ICompositionLoader instance</param>
+            <param name="requestType">The request type.</param>
+            <param name="operationIdentifier">The operation identifier.</param>
+            <returns>The matching request handlers.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.CompositionLoaderExtensions.GetAsyncRequestHandlers(Microsoft.Dynamics.Commerce.Runtime.ICompositionLoader,System.Type,System.Int32)">
+            <summary>
+            Gets all async request handlers that support the <paramref name="requestType"/> request type by operation identifier.
+            </summary>
+            <param name="compositionLoader">The ICompositionLoader instance</param>
+            <param name="requestType">The request type.</param>
+            <param name="operationIdentifier">The operation identifier.</param>
+            <returns>The matching async request handlers or sync request handlers adapters.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionManager">
+            <summary>
+            A helper class used to manage composition from a .NET configuration file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionManager.CreateContainerConfiguration(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.Configuration.ICompositionElement})">
+            <summary>
+            Gets the composition parts from the configuration section.
+            </summary>
+            <param name="compositionElementCollection">The composition element collection.</param>
+            <returns>
+            The container configuration for composition.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionManager.CreateContainerConfiguration(System.Collections.Generic.IEnumerable{Microsoft.Dynamics.Commerce.Runtime.Configuration.ICompositionElement},System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Gets the composition parts from the configuration section.
+            </summary>
+            <param name="compositionElementCollection">The composition element collection.</param>
+            <param name="typeOfInterfaces">The collection of interface types.</param>
+            <returns>
+            The container configuration for composition.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionManager.GetHighestExtensionClass(System.Reflection.TypeInfo,System.Reflection.TypeInfo)">
+            <summary>
+            Gets the highest ancestor of a given type which implements/extends a given interface/abstract class
+            </summary>
+            <param name="extendingClass">The type whose ancestor will be returned.</param>
+            <param name="baseType">The interface/abstract class which should be checked</param>
+            <returns>The highest ancestor of extendingClass which extends/implements baseType, or null if none exist.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionManager.GetType(System.String)">
+            <summary>
+            Gets the type based on the type name.
+            </summary>
+            <param name="typeName">Name of the type.</param>
+            <returns>The loaded type.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionManager.GetAssembly(System.String)">
+            <summary>
+            Gets the assembly based on the assembly name.
+            </summary>
+            <param name="assemblyName">Name of the assembly.</param>
+            <returns>The loaded assembly.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionManager.LogCrtExtensionAssemblyInformation(System.Reflection.Assembly)">
+            <summary>
+            Log CRT extension assembly information
+            </summary>
+            <param name="assembly">The assembly from which information will be extracted </param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Tracing.ExecutionSpan">
+            <summary>
+            Encapsulates information about request handler execution time.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Tracing.ExecutionSpan.#ctor(Microsoft.Dynamics.Commerce.Runtime.Tracing.ExecutionSpan)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Tracing.ExecutionSpan"/> class.
+            </summary>
+            <param name="parentSpan">The span within which this one should be created.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Tracing.ExecutionSpan.InclusiveExecutionTimeMilliseconds">
+            <summary>
+            Gets inclusive execution time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Tracing.ExecutionSpan.ExclusiveExecutionTimeMilliseconds">
+            <summary>
+            Gets exclusive execution time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Tracing.ExecutionSpan.IsRunning">
+            <summary>
+            Gets a value indicating whether this span was finished or still executing.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Tracing.ExecutionSpan.ParentSpan">
+            <summary>
+            Gets parent execution span.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Tracing.ExecutionSpan.ChildSpans">
+            <summary>
+            Gets child spans.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Tracing.ExecutionSpan.Start">
+            <summary>
+            Starts the measurement of execution time.
+            </summary>
+            <returns>This object itself.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Tracing.ExecutionSpan.Finish">
+            <summary>
+            Finishing the measurement of execution time.
+            </summary>
+            <returns>This object itself.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Tracing.ExecutionSpan.AddChildSpan(Microsoft.Dynamics.Commerce.Runtime.Tracing.ExecutionSpan)">
+            <summary>
+            Adds child span to this one.
+            </summary>
+            <param name="span">The span that started within this one.</param>
+            <returns>This object itself.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Tracing.SpanManager">
+            <summary>
+            Provides a few methods for execution spans management.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Tracing.SpanManager.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Tracing.SpanManager"/> class.
+            </summary>
+            <param name="trackSpansHierarchy">Should be set to 'true' when spans hierarchy need to be built.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Tracing.SpanManager.ActiveSpan">
+            <summary>
+            Gets current active execution span.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Tracing.SpanManager.StartNewSpan">
+            <summary>
+            Creates new span, starts it and makes it active.
+            </summary>
+            <returns>Created span.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Tracing.SpanManager.FinishActiveSpan">
+            <summary>
+            Finishes currently active span.
+            </summary>
+            <returns>Finished span.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout header markup.</title>
+    <link href="knockout.headerSplitView.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script id="headerSplitViewNavButtonTemplate" type="text/html">
+        <div data-bind="attr: { class: 'width48 height48 buttonIcon center ' + iconCssClass }"></div>
+        <div class="grow height48 navButtonLabel" data-bind="ifnot: Commerce.StringExtensions.isNullOrWhitespace($data.labelResx)">
+            <div class="h5 textLeft centerY" data-bind="resx: { textContent: labelResx }">Text</div>
+        </div>
+    </script>
+    <script id="headerSplitViewUserTemplate" type="text/html">
+        <div class="row height48 win-interactive">
+            <div class="height48 width48 center">
+                <div data-bind="userImageOrInitials: userImageOrInitialsOptions" class="height40 width40 circleBorder h4"></div>
+            </div>
+            <div class="grow col padLeft8 padTop4">
+                <div class="h4 primaryFontColor row" data-bind="text: userImageOrInitialsOptions().name">Name</div>
+                <div class="h6 primaryFontColor textTransformNone padTop4 row opacity60" data-bind="text: shiftInfo()">Additional info</div>
+            </div>
+        </div>
+    </script>
+    <script id="headerSplitViewTopTemplate" type="text/html">
+        <div data-bind="css: {
+            'accentBackground width100Percent headerSplitViewHeader headerBackgroundColor': isHeaderContentVisible,
+            'top0 width48': !isHeaderContentVisible(), compactMode: isCompactMode() }">
+            <div data-bind="loader: { visible: isBusy }"></div>
+            <div class="height48 centerY grow headerHighContrastBorderThin" data-bind="css: { flexRow: !isSearchCollapsed() }">
+                <div class="splitViewTitleSection row" data-bind="css: { grow: !isHeaderContentVisible(), flexGrow33: isCompactMode(), flexGrow27: !isCompactMode() }">
+                    <div data-bind="visible: isHeaderSplitViewToggleButtonVisible">
+                        <button class="headerSplitViewToggleButton iconGlobalNavButton"
+                                data-bind="splitViewPaneToggle: { onClick: hideAllExtraPanels.bind($data), splitViewElement: headerSplitViewElement },
+                                        attr: { title: Commerce.ViewModelAdapter.getResourceString('string_48') },
+                                        resx: { ariaLabel: 'string_48' },
+                                        css: { togglefor200Percent: !splitViewTitleSectionRatioEnabled() }"></button>
+                    </div>
+                    <div class="splitViewTitle grow height48 centerY"
+                         data-bind="visible: isHeaderContentVisible && !Commerce.StringExtensions.isNullOrWhitespace(title()),
+                                    setElementRef: splitViewTitleElement">
+                        <div class="h5 marginLeft08 padRight28 clip" data-bind="text: title">Section Title</div>
+                    </div>
+                </div>
+                <!-- ko if: isLoggedOn() -->
+                <div class="splitViewSearchControl row grow marginTop8"
+                     data-bind="headerSearch: {
+                        searchText: searchText,
+                        searchClicked: searchClicked,
+                        isSearchCollapsed: isSearchCollapsed,
+                        searchBySearchFieldClicked: searchBySearchFieldClicked,
+                        splitViewTitleSelector: splitViewTitleElement(),
+                        searchType: searchType,
+                        setFocusOnSearchText: setFocusOnSearchText,
+                        showCustomerSearchFields: showCustomerSearchFields,
+                        hideCustomerSearchCategory: hideCustomerHeaderSearchCategory,
+                        hideProductSearchCategory: hideProductHeaderSearchCategory,
+                        isSearchBarVisible: isSearchBarVisible
+                    },
+                    visible: isHeaderContentVisible(),
+                    css: { flexGrow33: !isSearchCollapsed() },
+                    axBubbleAttr: 'headerSplitView_searchSection'">
+                </div>
+                <!-- /ko -->
+                <div class="selfPackingControlSection no-shrink row alignRight" data-bind="css: { flexGrow33: !isSearchCollapsed() }, visible: isHeaderContentVisible() && isLoggedOn()">
+                    <div class="headerSplitViewSelfPackingList grow" data-bind="selfPackingList: selfPackingListItems"></div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="headerSplitViewExpandedPaneTemplate" type="text/html">
+        <div class="stretch col" data-bind="css: { compactMode: isCompactMode() }">
+            <div class="height48 centerY">
+                <button class="headerSplitViewToggleButton expandedNavButton iconGlobalNavButton"
+                        data-bind="splitViewPaneToggle: { onClick: hideAllExtraPanels.bind($data), splitViewElement: headerSplitViewElement },
+                                   attr: { title: Commerce.ViewModelAdapter.getResourceString('string_48') },
+                                   resx: { ariaLabel: 'string_48' },
+                                   axBubbleAttr: 'headerSplitView_expand'"></button>
+            </div>
+
+            <div class="col grow navigationButtonsContainer">
+                <div class="grow scrollY">
+                    <div data-bind="if: Commerce.HeaderSplitViewModel.isBackButtonAllowed">
+                        <button data-bind="visible: navigateBackVisible, headerSplitViewButton: { iconCssClass: 'iconBack', click: navigateBack, labelResx: 'string_49' },
+                                axBubbleAttr: 'headerSplitView_navigateBack',
+                                resx: { ariaLabel: 'string_49' }"
+                                data-ui-automation="navigate-back-click-element">
+                            <!-- Back -->
+                        </button>
+                        <div class="width48 height48" data-bind="visible: !navigateBackVisible()"></div>
+                    </div>
+                    <div data-bind="if: isLoggedOn">
+                        <button data-bind="headerSplitViewButton: { iconCssClass: 'iconHome', labelResx: 'string_21' },
+                                           click: navigateToHomeView,
+                                           axBubbleAttr: 'headerSplitView_navHome',
+                                           resx: { ariaLabel: 'string_21' },
+                                           css: {active: (isOnHomeView() && !isCategoriesPanelOpen() && !isMiniCartPanelOpen())}">
+                            <!-- Home -->
+                        </button>
+                        <button data-bind="headerSplitViewButton: { iconCssClass: 'iconProductVariant', labelResx: 'string_82' },
+                                           click: navigateToCategoriesView,
+                                           axBubbleAttr: 'headerSplitView_navCatalog',
+                                           resx: { ariaLabel: 'string_82' },
+                                           css: {active: (isOnCategoriesView() && !isCategoriesPanelOpen() && !isMiniCartPanelOpen())}">
+                            <!-- categories -->
+                        </button>
+                        <button class="splitViewToggleCategoriesButton"
+                                data-bind="headerSplitViewButton: { iconCssClass: 'iconList', labelResx: 'string_47', click: showCategories},
+                                           axBubbleAttr: 'headerSplitView_navCategory',
+                                           resx: { ariaLabel: 'string_47' },
+                                           css: {active: isCategoriesPanelOpen()}">
+                            <!-- categories -->
+                        </button>
+                        <button data-bind="headerSplitViewButton: { iconCssClass: 'iconShop', labelResx: 'string_108' },
+                                           click: navigateToCartView,
+                                           axBubbleAttr: 'headerSplitView_navMiniCart',
+                                           resx: { ariaLabel: 'string_108' },
+                                           css: {active: (isOnCartView() && !isCategoriesPanelOpen() && !isMiniCartPanelOpen())}">
+                            <!-- Transaction -->
+                        </button>
+                        <button class="row" data-bind="headerSplitViewButton: { click: showMiniCart },
+                                axBubbleAttr: 'headerSplitView_miniCartButton',
+                                resx: { ariaLabel: transactionSummaryOptionsText() },
+                                css: {active: isMiniCartPanelOpen()}">
+                            <div class="h3 height48 width48 center primaryFontColor" data-bind="text: $data.currentCartItemCount, visible:!$data.reduceItemCountDescriptionSize()">
+                                <!-- Cart Count -->
+                            </div>
+                            <div class="h5 height48 width48 center primaryFontColor" data-bind="text: $data.currentCartItemCount, visible:$data.reduceItemCountDescriptionSize()">
+                                <!-- Cart Count -->
+                            </div>
+                            <div class="grow height48 navButtonLabel">
+                                <div class="h5 textLeft centerY" data-bind="text: transactionSummaryOptionsText()">Text</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="no-shrink marginTop20" data-bind="visible: Commerce.UI.HelpBubbles.BubbleControl.instance().isInProgress">
+                    <div class="height48 width48 center">
+                        <div class="bubble-close" role="button" data-bind="click: Commerce.UI.Tutorial.stopBubbleTour, axBubbleAttr: 'nav_stopTour', resx: { ariaLabel: 'string_7618' /* You can click here to turn off the tour any time. */ }" tabindex="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div data-bind="ifnot: isLoggedOn">
+                    <button data-bind="headerSplitViewButton: { iconCssClass: 'iconSettings icon-20x20', labelResx: 'string_7400' },
+                                       click: navigateToSettingsView,
+                                       axBubbleAttr: 'headerSplitView_settingsButton',
+                                       resx: { ariaLabel: 'string_7400' }"
+                            css: {active: (isOnSettingsView() && !isCategoriesPanelOpen() && !isMiniCartPanelOpen())}">
+                        <!-- Settings -->
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pane area -->
+            <!--NavBarExtension: Categories  -->
+            <div class="col splitViewBackgroundColor padLeft20 left48 maxWidth272 scrollX splitViewCategoriesPanel" data-bind="if: renderCategoryTree" style="display:none">
+                <div class="row height48 center padBottom12"
+                     data-bind="buttonBlock: {
+                        buttonClass: 'iconSwitch',
+                        labelTextResx: 'string_34', /* Change catalog */
+                        click: navigateToCatalogsView
+                     },
+                     axBubbleAttr: 'headerSplitView_changeCatalogButton'">
+                </div>
+                <div class="height20"></div>
+                <div class="scrollY"
+                     data-bind="incrementalScrollableControl: {
+                         dataRenderer: createCategoryTreeRenderer()
+                     },
+                     axBubbleAttr: 'headerSplitView_categoryList'">
+                </div>
+            </div>
+
+            <!--NavBarExtension: MiniCart  -->
+            <div class="col splitViewBackgroundColor padLeft12 padRight12 padTop48 left48 maxWidth272 scrollX splitViewMiniCartPanel" style="display:none">
+                <div class="padTop8 padLeft8 height48">
+                    <div class="h2" data-bind="text: miniCartItemCount"></div>
+                </div>
+
+                <div class="height48" data-bind="with : miniCart">
+                    <div class="h1 textRight" data-bind="formatPrice: TotalAmount"></div>
+                </div>
+                <div class="height20"></div>
+                <div class="scrollY col" data-bind="with : miniCart">
+                    <div data-bind="foreach: { data: CartLines, as: 'miniCartLine' }">
+                        <!-- ko ifnot: miniCartLine.IsVoided -->
+                        <div class="height72 row marginBottom12">
+                            <div class="width72 height72 col">
+                                <div class="width72 height40" data-bind="with : Commerce.HeaderSplitViewModel.getProductPrimaryImage(miniCartLine)()">
+                                    <img class="width72 height72" src="#" data-bind="attr: {
+                                         src: Uri,
+                                         alt: AltText }, setImageOnError: Commerce.DefaultImages.ProductSmall" />
+                                </div>
+                                <div class="width72 height32 overLayZIndex primaryBackgroundColor padTop12 padLeft12">
+                                    <div class="h4 ellipsis" data-bind="text: miniCartLine.Quantity"></div>
+                                </div>
+                            </div>
+                            <div class="padLeft12 width192 padRight12 padTop12">
+                                <div class="h4 ellipsis" data-bind="textConverter: { data: miniCartLine, field: '$data', converter: 'Commerce.Core.Converter.ProductNameFormatter' }"></div>
+                                <div class="h4 ellipsis" data-bind="text: miniCartLine.ItemId"></div>
+                                <div class="h4 secondaryFontColor ellipsis " data-bind="textConverter: { data: miniCartLine, field: '$data', converter: 'Commerce.Formatters.VariantNameFormatter' }"></div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <div class="height52"></div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

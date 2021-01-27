@@ -1,0 +1,11 @@
+LANGUAGE 0x9,0x1
+1 11 "Microsoft.Dynamics.Retail.Diagnostics.Sinks.man_MSG00001.bin"
+1 WEVT_TEMPLATE "Microsoft.Dynamics.Retail.Diagnostics.Sinks.manTEMP.BIN"
+#define VER_FILEVERSION 10,5,20226,1
+#define VER_FILEVERSION_STR "10.5.20226.1"
+#define VER_FILENAME_STR "Microsoft.Dynamics.Retail.Diagnostics.Sinks.dll"
+#define COMPANY_STR "Microsoft"
+#define COPYRIGHT_STR "\251 2014 Microsoft.  All rights reserved."
+#define PRODUCTNAME_STR "Microsoft Dynamics AX"
+#define TRADEMARK_STR "Microsoft Dynamics is a registered trademark of Microsoft."
+#include "D:\a\1\s\src\DiagnosticsManifestGenerator\\Build.Retail.Diagnostics.Host.VersionInfo.rc"

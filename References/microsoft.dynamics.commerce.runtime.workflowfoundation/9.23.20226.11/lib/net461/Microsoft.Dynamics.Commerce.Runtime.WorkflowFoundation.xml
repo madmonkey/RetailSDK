@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.ActivityCache">
+            <summary>
+            Thread safe in-memory workflows cache.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.ActivityCache.Resolve(Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowLocation,Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.IWorkflowDispatcher)">
+            <summary>
+            Gets workflow from cache.
+            </summary>
+            <param name="location">Location of the workflow.</param>
+            <param name="dispatcher">Dispatcher to load workflow if it is not found in cache.</param>
+            <returns>Cached instance of <see cref="T:System.Activities.Activity"/>.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowFoundationConfiguration">
+            <summary>
+            Represents the access point for configuration of WF request handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowFoundationConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowFoundationConfiguration"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowFoundationConfiguration.WorkflowMappings">
+            <summary>
+            Gets workflow mappings collection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowFoundationConfiguration.Dispatcher">
+            <summary>
+            Gets instance of workflow dispatcher.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowFoundationConfiguration.LoadType(System.String)">
+            <summary>
+            Gets the Type with the specified name, performing a case-sensitive search.
+            </summary>
+            <param name="typeName">The assembly-qualified name of the type to get. See System.AssemblyQualifiedName. </param>
+            <returns>The type with the specified name.</returns>
+            <remarks>Throws <see cref="T:System.Configuration.ConfigurationErrorsException"/> if type not found.</remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowFoundationSection">
+            <summary>
+            Represents the configuration section for the WorkflowFoundation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowFoundationSection.DefaultSectionName">
+            <summary>
+            Represents root element name of configuration file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowFoundationSection.StoragePath">
+            <summary>
+            Gets base location of workflows.
+            </summary>
+            <remarks>For example can be folder path or database name.</remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowFoundationSection.DispatcherType">
+            <summary>
+            Gets full name of the workflow dispatcher class.
+            </summary>
+            <remarks>Has to implement  the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.IWorkflowDispatcher"/> interface.</remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowFoundationSection.DispatcherAssembly">
+            <summary>
+            Gets assembly name to load dispatcher from.
+            </summary>
+            <remarks>Has to be fully qualified name.</remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowFoundationSection.WorkflowMappings">
+            <summary>
+            Gets the workflow mappings collection.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.IWorkflowDispatcher">
+            <summary>
+            Interface for workflow dispatcher.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.IWorkflowDispatcher.Load(Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowLocation)">
+            <summary>
+            Loads workflow from specified location.
+            </summary>
+            <param name="location">Location of the workflow.</param>
+            <returns>Loaded workflow.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.RequestHandler">
+            <summary>
+            Handler that executes WF workflows.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.RequestHandler.SupportedRequestTypes">
+            <summary>
+            Gets list of supported request types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.RequestHandler.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>The outgoing response message.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.RequestHandler.Process(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Executes workflow and processes the request.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>Result of executed workflow.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowLocation">
+            <summary>
+            Represents the information requires to load workflow.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowLocation.StoragePath">
+            <summary>
+            Gets or sets workflow storage location.
+            </summary>
+            <remarks>For example can be folder path or database name.</remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowLocation.Location">
+            <summary>
+            Gets or sets location of specific workflow.
+            </summary>
+            <remarks>For example file name or row id in table.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowLocation.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowLocation.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with this instance.</param>
+            <returns>
+            A value indicating whether the specified <see cref="T:System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowLocation.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowLocation.Equals(Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowLocation)">
+            <summary>
+            Determines whether the specified <see cref="T:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowLocation"/> is equal to this instance.
+            </summary>
+            <param name="other">The <see cref="T:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowLocation"/> to compare with this instance.</param>
+            <returns>A value indicating whether the specified <see cref="T:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowLocation"/> is equal to this instance; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowXamlFileDispatcher">
+            <summary>
+            Loads workflow from XAML file in file system.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowXamlFileDispatcher.Load(Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.WorkflowLocation)">
+            <summary>
+            Loads workflow from XAML file.
+            </summary>
+            <param name="location">Location of the workflow.</param>
+            <returns>Workflow definition instance loaded from XAML.</returns>
+        </member>
+    </members>
+</doc>

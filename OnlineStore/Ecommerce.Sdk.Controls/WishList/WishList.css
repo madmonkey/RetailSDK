@@ -1,0 +1,70 @@
+.msax-WishList {
+    margin: 0 0 20px;
+}
+
+.msax-WishList > p  {
+    clear: both;
+    line-height: 20px;
+    color: #6A6C6E;
+}
+
+.msax-CreateWishListButton {
+    border-spacing: 0;
+    margin-left: 10px !important;
+    margin-top: 20px !important;
+}
+
+.msax-ViewWishListsLink,
+.msax-MyAccountLink {
+    background: url('/<%=WebResource("Contoso.Retail.Ecommerce.Sdk.Controls.Common.Images.i_Arrow_Right_16_on.png")%>') no-repeat 0 0;
+    border: 0 none transparent;
+    color: #0066CC;
+    float: right;
+    height: 16px;
+    padding: 0 0 0 20px;
+}
+    .msax-ViewWishListsLink:hover,
+    .msax-MyAccountLink:hover {
+        text-decoration: underline;
+        background-color: transparent;
+    }
+
+.msax-WishListTable {
+    border-spacing: 0;
+    margin-left: 10px;
+}
+
+    .msax-WishListTable th, 
+    .msax-WishListTable td {
+        padding: 0px 10px 0px 10px;
+    }
+
+    .msax-WishListTable thead tr {
+        background-color: #F3F4F4;
+        color: #5D5D5E;
+        text-transform: uppercase;
+    }
+
+    .msax-WishListTable > thead > tr > th {
+        background-color: #F3F4F4;
+        text-transform: uppercase;
+        vertical-align: middle;
+        font-size: 11px;
+        padding: 10px;
+        text-align: left;
+        color: #5d5d5e;
+        font-weight: normal;
+    }
+
+    .msax-WishlistItemCount {
+        color: #444 !important;
+    }
+
+.msax-WishListName {
+    margin: 0px 10px 30px 10px;
+}
+
+.msax-DefaultWishList {
+    display: inline;
+    vertical-align: super;
+}

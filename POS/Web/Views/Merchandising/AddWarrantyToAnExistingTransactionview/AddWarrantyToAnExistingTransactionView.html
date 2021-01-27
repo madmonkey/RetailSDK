@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AddWarrantyToAnExistingTransaction</title>
+</head>
+<body>
+    <!-- Main page -->
+    <div class="fragment AddWarrantyToAnExistingTransactionView">
+        <div data-bind="pivot: {}, resx: { ariaLabel: 'string_4454' }">
+            <div data-bind="pivotItem: { headerResx: 'string_29882' }">
+                <!-- Main content -->
+                <div class="standardGrid salesOrderLinesGrid height100Percent">
+                    <div id="salesOrderLinesView" data-bind="listView: {
+                        itemDataSource: viewModel.salesLinesForDisplay,
+                        selectionMode: 'multi',
+                        tapBehavior: 'toggleSelect',
+                        selectionchanged: { eventHandlerCallBack: salesOrderLineListSelectionChangedEventHandler },
+                        displayMode: Commerce.Controls.ListView.DisplayMode.AlwaysExpandedWithCheckbox,
+                        rowExpandedTemplateId: 'SalesLineColspan',
+                        columns: salesLineColumns,
+                        ariaLabelResx: 'string_1249',
+                        },
+                        axBubbleAttr: 'AddWarrantyToAnExistingTransactionView_salesOrderLinesView'">
+                        <!-- List of sales line for an order -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="commandAppBar" data-bind="appBar: {}, axBubbleAttr: 'AddWarrantyToAnExistingTransactionView_commanAppBar'">
+
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconClearSelection',
+                    id: 'clearSelectionButton',
+                    labelResx: 'string_1248',
+                    enabled: viewModel.hasSelectedSalesLines,
+                    onclick: deselectAll
+                },
+                axBubbleAttr: 'AddWarrantyToAnExistingTransactionView_clearAllButton'"></button> <!--Clear Selection-->
+
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconSelectAll',
+                    id: 'selectAll',
+                    labelResx: 'string_1213',
+                    enabled: viewModel.hasSalesLinesForDisplay,
+                    onclick: selectAll
+                },
+                axBubbleAttr: 'AddWarrantyToAnExistingTransactionView_selectAllButton'"></button> <!--Select All-->
+
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconCertificate',
+                    id: 'addWarranty',
+                    labelResx: 'string_29879',
+                    onclick: addWarrantyForSalesOrderLines
+                },
+                axBubbleAttr: 'AddWarrantyToAnExistingTransactionView_returnButton'"></button> <!--Sell Warranty-->
+        </div>
+    </div>
+</body>
+</html>

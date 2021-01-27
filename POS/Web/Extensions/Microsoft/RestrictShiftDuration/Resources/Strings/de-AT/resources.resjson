@@ -1,0 +1,10 @@
+{
+  "Warning_title": "Warnung",
+  "_Warning_title.comment": "POS warning message title.",
+  "Shift_closing_warning": "Sie müssen die Schicht bis {0} schließen.",
+  "_Shift_closing_warning.comment": "POS warning message when the cashier performs an operation within the shift closing interval.",
+  "Error_title": "Fehler",
+  "_Error_title.comment": "POS error message title.",
+  "Shift_closing_error": "Die Schicht dauert zu lang. Setzen Sie die Buchung aus, schließen Sie die Schicht, und öffnen Sie eine neue Schicht.",
+  "_Shift_closing_error.comment": "POS warning message when the cashier performs an operation after the shift closing time."
+}

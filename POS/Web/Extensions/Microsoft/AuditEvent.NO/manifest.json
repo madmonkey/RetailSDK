@@ -1,0 +1,94 @@
+﻿{
+  "$schema": "../Api/dist/manifestSchema.json",
+  "name": "Extensions_AuditEvent_NO",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "9.16.0.0",
+  "supportedCountryRegions": [ "NO" ],
+  "components": {
+    "resources": {
+      "supportedUICultures": [
+        "ar",
+        "cs",
+        "da",
+        "de",
+        "de-AT",
+        "de-CH",
+        "en-AU",
+        "en-CA",
+        "en-GB",
+        "en-IE",
+        "en-IN",
+        "en-MY",
+        "en-NZ",
+        "en-SG",
+        "en-US",
+        "en-ZA",
+        "es",
+        "es-MX",
+        "et",
+        "fi",
+        "fr",
+        "fr-BE",
+        "fr-CA",
+        "fr-CH",
+        "hu",
+        "is",
+        "it",
+        "it-CH",
+        "ja",
+        "lt",
+        "lv",
+        "nb-NO",
+        "nl",
+        "nl-BE",
+        "pl",
+        "pt-BR",
+        "ru",
+        "sv",
+        "th",
+        "tr",
+        "zh-Hans"
+      ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources/Strings",
+      "stringResourcesFileName": "auditEventStrings.resjson"
+    },
+    "extend": {
+      "triggers": [
+        {
+          "triggerType": "PreOverrideLineProductTax",
+          "modulePath": "TriggerHandlers/PreOverrideLineProductTaxTrigger"
+        },
+        {
+          "triggerType": "PostOverrideLineProductTax",
+          "modulePath": "TriggerHandlers/PostOverrideLineProductTaxTrigger"
+        },
+        {
+          "triggerType": "PreOverrideTransactionTax",
+          "modulePath": "TriggerHandlers/PreOverrideTransactionTaxTrigger"
+        },
+        {
+          "triggerType": "PostOverrideTransactionTax",
+          "modulePath": "TriggerHandlers/PostOverrideTransactionTaxTrigger"
+        },
+        {
+          "triggerType": "PostPriceCheck",
+          "modulePath": "TriggerHandlers/PostPriceCheckTrigger"
+        },
+        {
+          "triggerType": "PreSetQuantity",
+          "modulePath": "TriggerHandlers/PreSetQuantityTrigger"
+        },
+        {
+          "triggerType": "PostSetQuantity",
+          "modulePath": "TriggerHandlers/PostSetQuantityTrigger"
+        },
+        {
+          "triggerType": "PostOpenCashDrawer",
+          "modulePath": "TriggerHandlers/PostOpenCashDrawerTrigger"
+        }
+      ]
+    }
+  }
+}

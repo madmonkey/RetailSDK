@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>InventoryDocumentCreationView</title>
+    <link href="InventoryDocumentCreationView.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="inventoryDocumentCreationView fragment" data-bind="with: viewModel">
+        <div class="row height100Percent">
+            <div class="col grow flexBasis100Percent">
+                <div id="inventoryDocumentCreationViewPivot" class="grow" data-bind="pivot: {
+                        headerItemsAxBubbleAttr: 'inventoryDocumentCreationViewPivot_pivotItemsHeader' },
+                        resx: { ariaLabel: 'string_4454' }"><!--Main content-->
+                    <div id="inventoryDocumentCreationViewPivotFullOrderList" data-bind="pivotItem: { header : fullOrderListHeader() }, axBubbleAttr: 'inventoryDocumentCreationView_fullOrderListPivot'">
+                        <div class="col grow height100Percent">
+                            <div id="fullOrderDataList" data-bind="dataList: {
+                                    incrementalDataSource: {
+                                        dataManager: $data,
+                                        callerMethod: getFullOrderLinesAsync,
+                                        pageSize: defaultPageSize,
+                                        reloadCallBack: reloadFullOrderListCallback,
+                                        updateItemCallBack: updateFullOrderLineCallback
+                                    },
+                                    autoSelectFirstItem: true,
+                                    autoFocusFirstItem: true,
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    selectionChanged: onFullOrderListSelectionChanged,
+                                    ariaLabelResx: 'string_12432',
+                                    columns: dataListColumns(),
+                                }, axBubbleAttr: 'inventoryDocumentCreationView_fullOrderList'">
+                            </div><!--List of full order lines-->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="statsPane" class="primaryPanelBackgroundColor row height56 marginLeft20 marginRight20">
+                    <div class="marginLeft20 marginTop4 marginBottom8">
+                        <h3 data-bind="text: totalLines "></h3>
+                        <h6 data-bind="resx: { textContent: 'string_12424' }"></h6><!--TOTAL LINE-->
+                    </div>
+                    <div class="grow"></div>
+                    <div class="marginRight20 marginTop4 marginBottom8 textRight">
+                        <h3 data-bind="text: totalQuantity "></h3>
+                        <h6 data-bind="resx: { textContent: 'string_12425' }"></h6><!--TOTAL QUANTITY-->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Line details pane -->
+            <div id="detailsCol" class="col">
+                <div class="row marginBottom4">
+                    <h2 class="title marginTop12" data-bind="if: isDetailsPaneVisible(), resx: { textContent: 'string_12422' }"></h2><!--Details-->
+                    <div class="grow"></div>
+                    <a href="#" id="btnToggleDetailsPane" class="icon-20x20 width40 height40 margin4 center fixedToggleDetailsPaneButton"
+                        data-bind="click: onToggleDetailsPane,
+                            css: isDetailsPaneVisible() ? 'iconClosePane' : 'iconOpenPane',
+                            resx: { ariaLabel: 'string_13156' },
+                            axBubbleAttr: 'inventoryDocumentCreationView_toggleDetailsPane'"></a><!--Toggle details pane-->
+                </div>
+
+                <div id="detailsView" class="no-shrink width320 col grow primaryPanelBackgroundColor height100Percent marginRight20" data-bind="slideVisible: { isShowed: isDetailsPaneVisible() }">
+                    <div class="inventoryDocumentLineDetails grow scrollY marginBottom48">
+                        <!-- Placeholder for nothing selected -->
+                        <!-- ko ifnot: hasSelectedLine -->
+                        <div class="col grow highContrastBorderThin marginBottom12">
+                            <div class="textCenter padTop40">
+                                <div class="row center height72">
+                                    <div class="h1 icon-42x42 secondaryFontColor iconProduct" data-bind="
+                                        resx: { ariaLabel: 'string_12712' }">
+                                    </div><!--To start, begin scanning products or select the \"Add product\"-->
+                                </div>
+                                <h2 class="marginLeft12 marginRight12 wrapText" data-bind="resx: { textContent: 'string_12712' }"></h2><!--To start, begin scanning products or select the \"Add product\"-->
+                            </div>
+                        </div>
+                        <!-- /ko -->
+
+                        <!-- ko if: singleSelectedLine() -->
+                        <!-- Product Information Section -->
+                        <div data-bind="template: {
+                            name: 'inventoryDocumentLineProductInformationTemplate',
+                            data: {
+                                primaryImageUrl: singleSelectedLine().product.PrimaryImageUrl,
+                                itemName: singleSelectedLine().product.Name,
+                                itemId: singleSelectedLine().product.ItemId,
+                                productDimensionsDescription: singleSelectedLineProductDimensionsDescription }}"></div>
+
+                        <!-- Update Now Quantity Section -->
+                        <div class="col marginLeft12 marginRight12 marginBottom20">
+                            <h4 class="marginBottom12 secondaryFontColor" data-bind="resx: { textContent: 'string_12713' }"></h4><!--Quantity-->
+                            <div class="row centerY borderBottomExtraThin clickable" role="button" tabindex="0" data-bind="click: onUpdateLineQuantityAsync, axBubbleAttr: 'inventoryDocumentCreationView_detailsPaneReceivingQuantity'">
+                                <h1 class="marginLeft8 marginBottom8" data-bind="text: singleSelectedLine().QuantityToUpdate"></h1>
+                                <div class="grow"></div>
+                                <div class="col center width48 height48 marginBottom8">
+                                    <div class="h2 iconChevronRight icon-24x24 accentColor" data-bind="resx: { ariaLabel: 'string_12713' }"></div><!--Quantity-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Location Section -->
+                        <!-- ko if: !isReceivingOperation() && isSingleSelectedLineLocationActive() -->
+                        <div class="col marginLeft12 marginRight12 marginBottom20">
+                            <div data-bind="template: { name: 'inventoryDocumentLineWmsLocationTemplate',
+                                data: { onUpdateLocation: onUpdateLineLocationAsync.bind($data), wmsLocationId: singleSelectedLine().LocationId, isWmsLocationIdEmpty: isSingleSelectedLineWmsLocationIdEmpty() }}">
+                            </div>
+                        </div>
+                        <!-- /ko -->
+
+                        <!-- Note Section -->
+                        <div class="col marginLeft12 marginRight12 marginBottom8">
+                            <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12440' }"></h4><!--Note-->
+                            <!-- ko if: isSingleSelectedLineNoteEmpty -->
+                            <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onUpdateLineNoteAsync, axBubbleAttr: 'inventoryDocumentCreationView_detailsPaneAddANote'">
+                                <div class="col center width16 height16 marginRight8">
+                                    <div class="h2 iconAddTo icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12441' }"></div><!--Add a note-->
+                                </div>
+                                <h4 class="accentColor" data-bind="resx: { textContent: 'string_12441' }"></h4><!--Add a note-->
+                            </div>
+                            <!-- /ko -->
+                            <!-- ko ifnot: isSingleSelectedLineNoteEmpty -->
+                            <h4 class="marginBottom8" data-bind="text: singleSelectedLine().Note"></h4>
+                            <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onUpdateLineNoteAsync, axBubbleAttr: 'inventoryDocumentCreationView_detailsPaneEditNote'">
+                                <div class="col center width16 height16 marginRight8">
+                                    <div class="h2 iconEdit icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12450' }"></div><!--Edit note-->
+                                </div>
+                                <h4 class="accentColor" data-bind="resx: { textContent: 'string_12450' }"></h4><!--Edit note-->
+                            </div>
+                            <!-- /ko -->
+                        </div>
+
+                        <!-- /ko -->
+                    </div>
+                </div>
+
+                <!-- Minimized placeholder for details pane -->
+                <div class="col grow no-shrink marginRight20 marginBottom12" data-bind="visible: !isDetailsPaneVisible(), resx: { ariaLabel: 'string_12423' }"><!--Details section, unexpanded-->
+                    <div id="minimizedDetailsView" class="col no-shrink grow primaryPanelBackgroundColor width48"></div>
+                </div>
+            </div>
+            <!-- End line details pane -->
+
+        </div>
+
+        <!-- Bottom appbar buttons -->
+        <div id="inventoryDocumentCreationViewCommandAppBar" data-bind="appBar: {}, axBubbleAttr: 'inventoryDocumentCreationView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconPageHeader',
+                    id: 'onShowHeaderAsync',
+                    onclick: onShowHeaderAsync,
+                    labelResx: 'string_12403',
+                },
+                axBubbleAttr: 'inventoryDocumentCreationView_shownHeader'"></button><!-- Header -->
+
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconDelete',
+                    id: 'onDeleteLineAsync',
+                    onclick: onDeleteLineAsync,
+                    enabled: hasSelectedLine,
+                    labelResx: 'string_12647',
+                },
+                axBubbleAttr: 'inventoryDocumentCreationView_deleteLine'"></button><!-- Delete -->
+
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconSave',
+                    id: 'onSaveLinesAsync',
+                    onclick: onSaveLinesAsync,
+                    labelResx: 'string_12709',
+                },
+                axBubbleAttr: 'inventoryDocumentCreationView_saveLines'"></button><!-- Save -->
+
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconAccept',
+                    id: 'onSubmitLinesAsync',
+                    onclick: onSubmitLinesAsync,
+                    enabled: hasLines,
+                    labelResx: 'string_12710',
+                },
+                axBubbleAttr: 'inventoryDocumentCreationView_submitRequest'"></button><!-- Submit request -->
+
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconAdd',
+                    id: 'onKeyInProductAsync',
+                    onclick: onKeyInProductAsync,
+                    labelResx: 'string_12711',
+                },
+                axBubbleAttr: 'inventoryDocumentCreationView_addProduct'"></button><!-- Add product -->
+        </div>
+    </div>
+</body>
+</html>

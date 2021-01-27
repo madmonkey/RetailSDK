@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.NotificationSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.NotificationSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.NotificationSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.NotificationSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.NotificationSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.NotificationSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.NotificationSample\obj\Debug\netstandard2.0\Runtime.Extensions.NotificationSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.NotificationSample\obj\Debug\netstandard2.0\Runtime.Extensions.NotificationSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.NotificationSample\obj\Debug\netstandard2.0\Runtime.Extensions.NotificationSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.NotificationSample\obj\Debug\netstandard2.0\Runtime.Extensions.NotificationSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.NotificationSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.NotificationSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.NotificationSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.NotificationSample.pdb

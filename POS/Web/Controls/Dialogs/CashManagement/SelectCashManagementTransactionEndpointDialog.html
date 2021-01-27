@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SelectCashManagementTransactionEndpointDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'SelectCashManagementTransactionEndpointDialog'">
+        <div data-bind="dialog: {
+            title: title,
+            subTitle: subTitle,
+            visible: visible,
+            buttonClick: buttonClickHandler,
+            closeOnEscButton: true,
+            dialogCloseButtonClick: dialogCloseButtonClick,
+            buttons: [
+                { label: cancelButtonLabel, operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false },
+            ],
+        },
+        axBubbleAttr: 'selectStoreSafeDialog_selectStoreSafeDialog'">
+            <!-- Select StoreSafe Or Shift-->
+            <div class="grow col marginTop12">
+                <!-- ko foreach: storeSafesForDisplay -->
+                <div id="selectSafeList"
+                     data-bind="selectTile: {
+                         tileType: Commerce.Controls.SelectTile.SelectTileType.DoubleLine,
+                         primaryText: storeSafe.Name,
+                         secondaryText: safeNumberForDisplay,
+                         iconClass: 'iconSafe icon-20x20 accentColor',
+                         iteminvoked: function(){$parent.selectStoreSafeHandler($data.storeSafe)},
+                         displayChevron: false,
+                         isPreSelected: isPreSelected,
+                         primaryTextCssClass: 'primaryFontColor',
+                         secondaryTextCssClass: 'secondaryFontColor',
+                         backgroundCssClass:'backgroundTransparent',
+                         displayBottomBorder:true
+                     }"></div>
+                <!-- /ko -->
+                <!-- ko foreach: shiftsForDisplay -->
+                <div id="selectShiftList"
+                     data-bind="selectTile: {
+                         tileType: Commerce.Controls.SelectTile.SelectTileType.DoubleLine,
+                         primaryText: shift.TerminalId,
+                         secondaryText: shiftIdForDisplay,
+                         iconClass: 'iconCashDrawer icon-20x20 accentColor',
+                         iteminvoked: function(){$parent.selectShiftHandler($data.shift)},
+                         displayChevron: false,
+                         isPreSelected: isPreSelected,
+                         primaryTextCssClass: 'primaryFontColor',
+                         secondaryTextCssClass: 'secondaryFontColor',
+                         backgroundCssClass:'backgroundTransparent',
+                         displayBottomBorder:true
+                     }"></div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+﻿.customerDetails progress.nestedIndeterminateWait {
+    position: absolute;
+    left: calc(50% - 40px);
+    top: 40%;
+}
+
+.customerDetails .customerSummary .customerImage {
+    background-color: #fff;
+}
+
+/* Needed to fix Chrome-specific issue where list containers don't have 100% of their height, so the list doesn't display */
+.customerDetails .flexBasis100Percent {
+    flex-basis: 100% !important;
+}

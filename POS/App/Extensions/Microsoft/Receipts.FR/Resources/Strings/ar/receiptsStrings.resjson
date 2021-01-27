@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "مدير رقم الإصدار: تمت إضافة رقم الإصدار بنجاح.",
+  "Build_number_successfull_log_message_text.comment": "يتم تسجيل الرسالة عند إضافة رقم إصدار نقطة البيع (POS) إلى الحركة بنجاح.",
+  "Build_number_error_log_message_text": "مدير رقم الإصدار: فشلت عملية إضافة رقم الإصدار، رسالة الخطأ: \"{0}''.",
+  "Build_number_error_log_message_text.comment": "يتم تسجيل الرسالة عند عدم نجاح إضافة رقم إصدار نقطة البيع (POS) إلى الحركة."
+}

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\_SharedPackagingProjectComponents\internalPackagePaths.settings" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props') And '$(MicrosoftCommonPropsHasBeenImported)' != 'true'" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <ProjectGuid>{C1FA65A7-88A0-438C-8EF5-DB58FFED7AA6}</ProjectGuid>
+    <PackageName>RetailHQConfiguration</PackageName>
+    <InstallationInfoDllFullPath>$(PkgDynamics_CustomDeployablePackage)\PlatformSDK\UpdateInstaller\Microsoft.Dynamics.AX.AXInstallationInfo.dll</InstallationInfoDllFullPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <_Code_Assemblies_File Include="@(AOSPaymentsAssemblies_CustomizableFile)" />
+    <_Scripts_File Include="$(PkgDynamics_Servicing_RetailDeployment_72)\ServiceModels\RetailHQConfiguration\Scripts\Common-Configuration.ps1" />
+    <_Scripts_File Include="$(PkgDynamics_Servicing_RetailDeployment_72)\ServiceModels\RetailHQConfiguration\Scripts\Common-Web.ps1" />
+    <_Scripts_File Include="$(PkgDynamics_Servicing_RetailDeployment_72)\ServiceModels\RetailHQConfiguration\Scripts\AutoStartAOS.ps1" />
+    <_Scripts_File Include="$(PkgDynamics_Servicing_RetailDeployment_72)\ServiceModels\RetailHQConfiguration\Scripts\AutoStopAOS.ps1" />
+    <_Scripts_File Include="$(PkgDynamics_Servicing_RetailDeployment_72)\ServiceModels\RetailHQConfiguration\Scripts\CopyPaymentConnectorFiles.ps1" />
+    <_Update_Installer_Files Include="$(PkgDynamics_CustomDeployablePackage)\PlatformSDK\UpdateInstaller\*" />
+  </ItemGroup>
+  <Target Name="Build">
+    <CreateItem Include="$(PaymentsIPaymentProcessorAssemblies_RootFolder)\**\*.*">
+      <Output TaskParameter="Include" ItemName="All_PaymentsIPaymentProcessorAssemblies_Files" />
+    </CreateItem>
+    <CreateItem Include="$(PaymentsWebArtifacts_RootFolder)\**\*.*">
+      <Output TaskParameter="Include" ItemName="All_PaymentsWebArtifacts_Files" />
+    </CreateItem>
+  </Target>
+  <Target Name="IncrementalBuild" AfterTargets="Build" Inputs="$(MSBuildAllProjects);@(_Code_Assemblies_File);@(All_PaymentsIPaymentProcessorAssemblies_Files);@(All_PaymentsWebArtifacts_Files);@(_Scripts_File);@(_ServiceModel_File);@(_Update_Installer_Files)" Outputs="$(OutputPath)content.zip">
+    <CallTarget Targets="CopyPackageFiles" />
+    <Delete Files="$(OutputPath)content.zip" />
+    <GenerateHotfixInstallationInfo ContentFolder="$(OutputPath)content.folder" InstallationInfoDllFullPath="$(InstallationInfoDllFullPath)" />
+    <Zip OutputFileName="$(OutputPath)content.zip" InputFolder="$(OutputPath)content.folder" />
+  </Target>
+  <Target Name="CopyPackageFiles">
+    <RemoveDir Directories="$(OutputPath)content.folder" />
+    <Copy SourceFiles="@(_Code_Assemblies_File)" DestinationFolder="$(OutputPath)content.folder\$(PackageName)\Code\Assemblies" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(All_PaymentsIPaymentProcessorAssemblies_Files)" DestinationFiles="@(All_PaymentsIPaymentProcessorAssemblies_Files-&gt;Replace('$(PaymentsIPaymentProcessorAssemblies_RootFolder)', 'Code\\Assemblies')-&gt;'$(OutputPath)content.folder\$(PackageName)\%(RelativeDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(All_PaymentsWebArtifacts_Files)" DestinationFiles="@(All_PaymentsWebArtifacts_Files-&gt;Replace('$(PaymentsWebArtifacts_RootFolder)', 'Code\\WebArtifacts')-&gt;'$(OutputPath)content.folder\$(PackageName)\%(RelativeDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Scripts_File)" DestinationFolder="$(OutputPath)content.folder\$(PackageName)\Scripts" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Update_Installer_Files)" DestinationFolder="$(OutputPath)content.folder" SkipUnchangedFiles="true" />
+  </Target>
+  <Target Name="BuildGenerated" />
+  <Target Name="BuildCompiled" />
+  <Target Name="BuildLinked" />
+  <Target Name="Rebuild">
+    <CallTarget Targets="Clean" />
+    <CallTarget Targets="Build" />
+  </Target>
+  <Target Name="Clean">
+    <RemoveDir Directories="$(OutputPath)content.folder" />
+    <Delete Files="$(OutputPath)content.zip" />
+  </Target>
+  <Import Project="$(SdkRootPath)\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

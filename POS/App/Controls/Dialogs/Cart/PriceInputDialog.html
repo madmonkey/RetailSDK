@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PriceInputDialog</title>
+
+    <link href="PriceInputDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'PriceInputDialog'">
+
+        <div class="priceInputDialog">
+            <div data-bind="dialog:
+                {
+                    title: title,
+                    message: subTitle,
+                    visible: visible,
+                    buttonClick: buttonClickHandler,
+                    showProgressIndicator: indeterminateWaitVisible,
+                    subTitleCssClass: subTitleCssClass,
+                    dialogCloseButtonClick: dialogCloseButtonClick
+                },
+                axBubbleAttr: 'priceInputDialog_priceInputDialog'" class="priceInputDialog modalWindowContentSection">
+
+                <!-- dialog content -->
+                <div class="grow"></div>
+                <div class="content" data-bind="axBubbleAttr: 'priceInputDialog_priceInputNumPad'">
+                    <div data-bind="currencyNumpad: {
+                                    value: _priceContent,
+                                    labelDataBinding: { text: label },
+                                    onEnter: onTextBoxEnterEventHandler,
+                                    numPadInputSource: numPadInputBroker
+                                }">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

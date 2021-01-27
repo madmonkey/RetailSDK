@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.HealthCheckSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.HealthCheckSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.HealthCheckSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.HealthCheckSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.HealthCheckSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.HealthCheckSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.HealthCheckSample\obj\Debug\netstandard2.0\Runtime.Extensions.HealthCheckSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.HealthCheckSample\obj\Debug\netstandard2.0\Runtime.Extensions.HealthCheckSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.HealthCheckSample\obj\Debug\netstandard2.0\Runtime.Extensions.HealthCheckSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.HealthCheckSample\obj\Debug\netstandard2.0\Runtime.Extensions.HealthCheckSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.HealthCheckSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.HealthCheckSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.HealthCheckSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.HealthCheckSample.pdb

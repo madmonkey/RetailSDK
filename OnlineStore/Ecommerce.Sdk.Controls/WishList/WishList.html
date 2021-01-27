@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Wish Lists</title>
+</head>
+
+<body>
+    <!--CONTENT_START-->
+    <div id="WishListControl" class="msax-WishList msax-MarginTop30" data-model="Contoso.Retail.Ecommerce.Sdk.Controls.WishList">
+        <div class="msax-Loading msax-DisplayNone">
+            <div id="LoadingSpinner" class="msax-Spinner msax-MarginTop50"></div>
+            <div id="LoadingText" class="msax-LoadingText msax-MarginTop20"></div>
+        </div>
+
+        <div id="ErrorPanel" class="msax-ErrorPanel msax-DisplayNone" data-bind="foreach: errorMessages">
+            <div data-bind="text: $data"></div>
+        </div>
+
+        <div id="WishList" class="msax-WishList msax-MarginTop30" data-bind="template: 'WishListContent'"></div>
+
+        <script id="WishListContent" type="text/html">
+            <div id="WishListWrapper" class="msax-WishListWrapper msax-ClearBoth">
+                <div data-bind="visible: !wishListsExist()">
+                    <div class="msax-NoWishListsMessage msax-MarginLeft10 msax-ClearBoth">
+                        <span data-bind="resx: {textContent: 'String_247' }"></span> <!-- You have not created any wish lists yet. -->
+                    </div>
+                    <div class="msax-WishListInfo msax-MarginLeft10 msax-MarginTop10 msax-ClearBoth">
+                        <span data-bind="resx: {textContent: 'String_248' }"></span> <!-- Make a wish list to keep track of the things you really want. -->
+                    </div>
+                </div>
+                <div data-bind="visible: wishListsExist()">
+
+                    <table id="WishListGrid" class="msax-WishListTable msax-WidthRatio100">
+                        <thead>
+                            <tr>
+                                <th class="msax-WishListNameField msax-UpperCase msax-WidthRatio40" data-bind="resx: {textContent: 'String_29' }"></th> <!-- Name -->
+                                <th class="msax-WishListItemsField msax-UpperCase msax-WidthRatio20" data-bind="resx: {textContent: 'String_255' }"></th> <!-- Items -->
+                                <th class="msax-WishListActionsField msax-UpperCase msax-WidthRatio40" data-bind="resx: {textContent: 'String_256' }"></th> <!-- Actions -->
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: wishLists">
+                            <tr class="msax-BorderTop1">
+                                <td>
+                                    <a class="msax-WishListName" data-bind="attr: { href: $root.getWishListDetailsUrl($data) }, text: Name" />
+                                </td>
+                                <td>
+                                    <a class="msax-WishlistItemCount" data-bind="text: CommerceListLines.length"></a>
+                                </td>
+                                <td>
+                                    <button class="msax-Delete24" title="Remove" data-bind="click: $root.openDeleteWishListConfirmationDialog.bind($root, $data)" ></button> <!-- Delete -->
+                                    <button class="msax-Favorite24" title="Default" data-bind="click: $root.markWishListAsFavorite.bind($root)"></button> <!-- Default -->
+                                    <button class="msax-Edit24" title="Edit" data-bind="click: $root.openEditWishListDialog.bind($root, $data)"></button> <!-- Edit -->
+                                    <!-- ko if: IsFavorite -->
+                                    <div class="msax-DefaultWishList">
+                                        <span>Default</span>
+                                    </div>
+                                    <!-- /ko -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button id="CreateWishListButton" type="button" class="msax-CreateWishListButton" data-bind="click: $root.openCreateWishListDialog, resx: {textContent: 'String_243' }">
+                    <!-- Create a wish list -->
+                </button>
+            </div>
+        </script>
+
+        <div class="msax-Modal modal fade msax-CreateWishListModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" data-bind="resx: {textContent: 'String_246' }" />
+                    </div>
+                    <div class="modal-body">
+                        <ul class="msax-CreateWishList">
+                            <li class="msax-CreateWishListInput">
+                                <span class="msax-SecondaryColor" data-bind="resx: {textContent: 'String_244' }"></span> <!-- Please enter a name for the wish list -->
+                                <div class="msax-PaddingTop30">
+                                    <input id="CreateWishListTextBox" type="text" class="msax-CreateWishListTextBox msax-MarginBottom30" data-bind="validator: { validatorType: 'WishListValidator', validatorField: 'WishListName' }" />
+                                </div>
+                            </li>
+                            <li class="msax-ButtonSection">
+                                <button id="DoneCreateWishList" class="msax-Done msax-MarginRight20" data-bind="submitIfValid: { submit: $root.createWishList.bind($root), containerSelector: '.msax-CreateWishList' }, resx: {textContent: 'String_124' }" />
+                                <button id="CancelCreateWishList" class="msax-Cancel msax-Grey" data-bind="click: $root.closeCreateWishListDialog.bind($root), resx: {textContent: 'String_123' }" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="msax-Modal modal fade msax-EditWishListModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" data-bind="resx: {textContent: 'String_249' }" />
+                    </div>
+                    <div class="modal-body">
+                        <ul class="msax-EditWishList">
+                            <li class="msax-EditWishListInput">
+                                <span class="msax-SecondaryColor" data-bind="resx: {textContent: 'String_250' }"></span> <!-- Please enter a new name for the wish list -->
+                                <div class="msax-PaddingTop30">
+                                    <input id="EditWishListTextBox" type="text" class="msax-EditWishListTextBox msax-MarginBottom30" data-bind="validator: { validatorType: 'WishListValidator', validatorField: 'WishListName' }" />
+                                </div>
+                            </li>
+                            <li class="msax-ButtonSection">
+                                <button id="DoneEditWishList" class="msax-Done msax-MarginRight20" data-bind="submitIfValid: { submit: $root.updateWishList.bind($root), containerSelector: '.msax-EditWishList' }, resx: {textContent: 'String_124' }" />
+                                <button id="CancelEditWishList" class="msax-Cancel" data-bind="click: $root.closeEditWishListDialog.bind($root), resx: {textContent: 'String_123' }" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="msax-Modal modal fade msax-DeleteWishListConfirmationModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" data-bind="resx: {textContent: 'String_265' }" />
+                    </div>
+                    <div class="modal-body">
+                        <ul class="msax-deleteWishListConfirmation">
+                            <li class="msax-deleteWishListConfirmationQuestion">
+                                <h4 class="msax-deleteWishListConfirmationQuestionText" data-bind="resx: {textContent: 'String_266' }" />
+                            </li>
+                            <li class="msax-ButtonSection">
+                                <button id="msax-DeleteBtn" class="msax-MarginRight20" data-bind="click: $root.deleteWishList.bind($root), resx: {textContent: 'String_267' }" />
+                                <button id="msax-CancelBtn" class="msax-Grey" data-bind="click: $root.closeDeleteWishListConfirmationDialog.bind($root), resx: {textContent: 'String_123' }" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--CONTENT_END-->
+    </div>
+</body>
+</html>

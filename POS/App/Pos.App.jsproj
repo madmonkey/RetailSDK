@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="$(TypeScriptRootPath)\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('$(TypeScriptRootPath)\build\Microsoft.TypeScript.MSBuild.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props') And '$(MicrosoftCommonPropsHasBeenImported)' != 'true'" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <OutputPath>bin</OutputPath>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <UWPlatform Condition="'$(UWPlatform)'==''">x86</UWPlatform>
+    <UWPlatformDropTarget Condition="'$(UWPlatformDropTarget)'==''">i386</UWPlatformDropTarget>
+    <Platform Condition="'$(BuildingInsideVisualStudio)'!='true'">$(UWPlatform)</Platform>
+    <PlatformTarget Condition="'$(BuildingInsideVisualStudio)'!='true'">$(UWPlatform)</PlatformTarget>
+    <PackageCertificateKeyFile Condition="'$(ModernPOSPackageCertificateThumbprint)' == ''">$(ModernPOSPackageCertificateKeyFile)</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>$(ModernPOSPackageCertificateThumbprint)</PackageCertificateThumbprint>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup>
+    <WindowsAppContainer>true</WindowsAppContainer>
+    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <ProjectGuid>{A36B7924-55Db-420B-88A8-7C6Ffb43A59B}</ProjectGuid>
+    <AppxPackageName>RetailModernPOS_$(Platform)</AppxPackageName>
+    <WMSJSProject>WJProject</WMSJSProject>
+    <WMSJSProjectDirectory>Javascript</WMSJSProjectDirectory>
+    <AppxBundle>Never</AppxBundle>
+    <ShouldGenerateJSONBuildVersionFile>true</ShouldGenerateJSONBuildVersionFile>
+    <OutputType>WindowsWebApplication</OutputType>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props')" />
+  <ItemGroup>
+    <AppxManifest Include="package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <PRIResource Include="$(MsBuildThisFileDirectory)\Assets\**\*.resjson" >
+      <InProject>true</InProject>
+      <Visible>false</Visible>
+    </PRIResource>
+    <Reference Include="$(MsBuildThisFileDirectory)\**\*.winmd" Exclude="$(MsBuildThisFileDirectory)\bin\**\*;$(MsBuildThisFileDirectory)\bld\**\*;$(MsBuildThisFileDirectory)\AppPackages\**\*">
+      <HintPath>%(RecursiveDir)%(Filename).winmd</HintPath>
+      <IsWinMDFile>true</IsWinMDFile>
+    </Reference>
+    <Content Include="$(MsBuildThisFileDirectory)\**\*.*" Exclude="$(MsBuildThisFileDirectory)\bin\**\*.*;$(MsBuildThisFileDirectory)\bld\**\*.*;$(MsBuildThisFileDirectory)\AppPackages\**\*;$(MsBuildThisFileDirectory)\**\*.appxmanifest;$(MsBuildThisFileDirectory)\Assets\**\*.resjson;$(MsBuildThisFileDirectory)\**\*.winmd">
+      <InProject>true</InProject>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4a0dddb5-7a95-4fbf-97cc-616d07737a77}" />
+  </ItemGroup>
+  <Import Project="..\SharedApp\Pos.SharedApp.projitems" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets')" />
+  <Import Project="$(TypeScriptPath)\Microsoft.TypeScript.targets" Condition="Exists('$(TypeScriptPath)\Microsoft.TypeScript.targets')" />
+  <Import Project="$(SdkRootPath)\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

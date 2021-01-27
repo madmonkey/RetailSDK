@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sales Line Fulfillment View</title>
+    <link href="FulfillmentLineView.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment fulfillmentLineView" data-bind="with: viewModel">
+        <div class="row height100Percent" data-bind="visible: !isPackingSlipDataSelected()">
+            <div class="col grow flexBasis100Percent">
+                <div id="fulfillmentLineViewPivot" data-bind="pivot: {}, resx: { ariaLabel: 'string_4454' }">
+                    <div id="fulfillmentLineViewPivotItem" data-bind="pivotItem: { headerResx: 'string_13160' }">
+                        <!-- Main content -->
+                        <div id="fulfillmentLineList" class="dataList" data-bind="dataList: {
+                                defaultListType: Commerce.Controls.DataList.ListType.List,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOrMulti,
+                                itemInvoked: selectFulfillmentLine,
+                                selectionChanged: onSelectionChanged,
+                                selectInvokedItem: true,
+                                autoSelectFirstItem: false,
+                                autoFocusFirstItem: true,
+                                ariaLabelResx: 'string_1877', /* Line items */
+                                incrementalDataSource: {
+                                dataManager: $data,
+                                callerMethod: getFulfillmentLines,
+                                pageSize: defaultPageSize,
+                                onLoading: isBusyFlag,
+                                reloadCallBack: reloadFulfillmentLinesCallback
+                                },
+                                columns: fulfillmentLinesColumns
+                                },
+                                axBubbleAttr: 'fulfillmentLineView_fulfillmentLines'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#" id="btnToggleDetailsPane" class="icon-20x20 width40 height40 margin4 center fixedToggleDetailsPaneButton"
+                data-bind="click: toggleHeader, css: isHeaderVisible() ? 'iconClosePane' : 'iconOpenPane', resx: { ariaLabel: 'string_13156' }"></a>
+
+            <!-- Line header details tabs -->
+            <div class="col no-shrink width320 marginTop48 marginRight20" data-bind="slideVisible: { isShowed: isHeaderVisible() }">
+
+                <!-- ko if: numberOfSelectedLines() === 1 -->
+
+                <div class="row primaryFontColor">
+                    <div class="col width88 marginBottom12 marginLeft12">
+                        <div id="lineDetailsTabText" class="h6 row center padTop8 padBottom8" tabindex="0" role="tab"
+                                data-bind="css: { active: fulfillmentLineDetailsMode() === Commerce.ViewModels.FulfillmentLineDetailsMode.Line },
+                                        click: function() { toggleFulfillmentLineDetailsMode(Commerce.ViewModels.FulfillmentLineDetailsMode.Line); },
+                                        enterKeyPress: function() { toggleFulfillmentLineDetailsMode(Commerce.ViewModels.FulfillmentLineDetailsMode.Line); },
+                                        resx: { textContent: 'string_13119' },
+                                        axBubbleAttr: 'fulfillmentLineView_lineDetailsTabText'">
+                            Line
+                        </div>
+                        <div class="row height4"
+                                data-bind="css: fulfillmentLineDetailsMode() === Commerce.ViewModels.FulfillmentLineDetailsMode.Line
+                                                    ? 'accentBackground' : 'splitViewBackgroundColor'"></div>
+                    </div>
+                    <div class="col width88 marginBottom12 marginLeft12">
+                        <div id="orderDetailsTabText" class="h6 row center padTop8 padBottom8" tabindex="0" role="tab"
+                                data-bind="css: { active: fulfillmentLineDetailsMode() === Commerce.ViewModels.FulfillmentLineDetailsMode.Order },
+                                    click: function() { toggleFulfillmentLineDetailsMode(Commerce.ViewModels.FulfillmentLineDetailsMode.Order); },
+                                    enterKeyPress: function() { toggleFulfillmentLineDetailsMode(Commerce.ViewModels.FulfillmentLineDetailsMode.Order); },
+                                    resx: { textContent: 'string_13118' },
+                                    axBubbleAttr: 'fulfillmentLineView_orderDetailsTabText'">
+                            Order
+                        </div>
+                        <div class="row height4"
+                                data-bind="css: fulfillmentLineDetailsMode() === Commerce.ViewModels.FulfillmentLineDetailsMode.Order
+                                                    ? 'accentBackground' : 'splitViewBackgroundColor'"></div>
+                    </div>
+                    <div class="col width88 marginBottom12 marginLeft12">
+                        <div id="inventoryDetailsTabText" class="h6 row center padTop8 padBottom8" tabindex="0" role="tab"
+                                data-bind="css: { active: fulfillmentLineDetailsMode() === Commerce.ViewModels.FulfillmentLineDetailsMode.Inventory },
+                                    click: function() { toggleFulfillmentLineDetailsMode(Commerce.ViewModels.FulfillmentLineDetailsMode.Inventory); },
+                                    enterKeyPress: function() { toggleFulfillmentLineDetailsMode(Commerce.ViewModels.FulfillmentLineDetailsMode.Inventory); },
+                                    resx: { textContent: 'string_2603' },
+                                    axBubbleAttr: 'fulfillmentLineView_inventoryDetailsTabText'">
+                            Inventory
+                        </div>
+                        <div class="row height4"
+                                data-bind="css: fulfillmentLineDetailsMode() === Commerce.ViewModels.FulfillmentLineDetailsMode.Inventory
+                                                    ? 'accentBackground' : 'splitViewBackgroundColor'"></div>
+                    </div>
+
+                </div>
+
+                <!-- ko with: selectedLineForDetail -->
+
+                <div class="col grow primaryPanelBackgroundColor highContrastBorderThin marginBottom12" data-bind="visible: $root.viewModel.fulfillmentLineDetailsMode() === Commerce.ViewModels.FulfillmentLineDetailsMode.Line">
+                    <div data-bind="fadeVisible: { isShowed: $root.viewModel.fulfillmentLineDetailsMode() === Commerce.ViewModels.FulfillmentLineDetailsMode.Line }">
+                        <!-- Ordered & Remaining -->
+                        <div class="pad12 marginBottom8 row">
+                            <div class="col grow marginRight20">
+                                <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_4652' }">ORDERED</div>
+                                <div class="h1 primaryFontColor" data-bind="text: QuantityOrdered"></div>
+                            </div>
+                            <div class="col grow">
+                                <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_13120' }">REMAINING</div>
+                                <div class="h1 primaryFontColor" data-bind="text: $root.viewModel.selectedLineOrderRemaining"></div>
+                            </div>
+                        </div>
+                        <!-- Picked -->
+                        <div class="marginRight12 marginBottom12 marginLeft12">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_13127' }">PICKED</div>
+                            <div class="h4 primaryFontColor" data-bind="text: QuantityPicked"></div>
+                        </div>
+                        <!-- Packed -->
+                        <div class="marginRight12 marginBottom12 marginLeft12">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_13129' }">PACKED</div>
+                            <div class="h4 primaryFontColor" data-bind="text: QuantityPacked"></div>
+                        </div>
+                        <!-- Shipped -->
+                        <div class="marginRight12 marginBottom12 marginLeft12">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_4570' }">INVOICED</div>
+                            <div class="h4 primaryFontColor" data-bind="text: QuantityInvoiced"></div>
+                        </div>
+                        <!-- Mode of delivery -->
+                        <div class="marginRight12 marginBottom12 marginLeft12">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_13115' }">MODE OF DELIVERY</div>
+                            <div class="h4 primaryFontColor" data-bind="textConverter: { data: $data, field: 'DeliveryModeCode', converter: 'Commerce.Formatters.DeliveryModeCodeValueFormatter', type: 'text', defaultValue: '' }"></div>
+                        </div>
+                        <!-- Delivery address -->
+                        <div class="marginRight12 marginBottom12 marginLeft12">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_13166' }">DELIVERY ADDRESS</div>
+                            <div class="h4 primaryFontColor">
+                                <!-- ko foreach: Commerce.AddressHelper.getFormattedAddress(ShippingAddress) -->
+                                <span data-bind="text: $data"></span><br />
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                        <!-- Detailed Line Status -->
+                        <div class="marginRight12 marginBottom12 marginLeft12" data-bind="visible: $root.viewModel.isAllowPartialOrderEditingFeatureEnabled">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_13194' }">LINE STATUS</div>
+                            <div class="h4 primaryFontColor" data-bind="textConverter: { data: $data, field: 'DetailedLineStatusValue', converter: 'Commerce.Formatters.DetailedSalesLineStatusFormatter', type: 'text', defaultValue: '' }"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col grow primaryPanelBackgroundColor highContrastBorderThin marginBottom12" data-bind="visible: $root.viewModel.fulfillmentLineDetailsMode() === Commerce.ViewModels.FulfillmentLineDetailsMode.Order">
+                    <div data-bind="fadeVisible: { isShowed: $root.viewModel.fulfillmentLineDetailsMode() === Commerce.ViewModels.FulfillmentLineDetailsMode.Order }">
+                        <!-- Cutomer name & account number -->
+                        <div class="pad12 marginBottom8">
+                            <a href="#" class="h5 padBottom4" data-bind="click: $root.viewModel.navigateToCustomerDetailsView.bind($root.viewModel),
+                                text: CustomerName,
+                                axBubbleAttr: 'fulfillmentLineView_customerNameLink'"></a>
+                            <div class="h4" data-bind="text: CustomerId"></div>
+                        </div>
+                        <!-- Order number -->
+                        <div class="marginRight12 marginBottom12 marginLeft12">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_4588' }">ORDER NUMBER</div>
+                            <div class="h4 primaryFontColor" data-bind="text: SalesId"></div>
+                        </div>
+                        <!-- Originating store -->
+                        <div class="marginRight12 marginBottom12 marginLeft12">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_13161' }">ORIGINATING STORE NUMBER</div>
+                            <div class="h4 primaryFontColor" data-bind="text: SalesPersonStoreId"></div>
+                        </div>
+                        <!-- Sales representative -->
+                        <div class="marginRight12 marginBottom12 marginLeft12">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_4447' }">SALES REPRESENTATIVE</div>
+                            <div class="h4 primaryFontColor" data-bind="text: Commerce.Formatters.FulfillmentSalesPersonInfoFormatter(SalesPersonId, SalesPersonFirstName, SalesPersonLastName)"></div>
+                        </div>
+                        <!-- Order total -->
+                        <div class="marginRight12 marginBottom12 marginLeft12">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_4507' }">ORDER TOTAL</div>
+                            <div class="h4 primaryFontColor" data-bind="formatPrice: TotalAmount"></div>
+                        </div>
+                        <!-- Balance -->
+                        <div class="marginRight12 marginBottom12 marginLeft12">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_5153' }">BALANCE</div>
+                            <div class="h4 primaryFontColor" data-bind="formatPrice: Balance"></div>
+                        </div>
+                        <!-- Detailed Order Status -->
+                        <div class="marginRight12 marginBottom12 marginLeft12" data-bind="visible: $root.viewModel.isAllowPartialOrderEditingFeatureEnabled">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_13193' }">ORDER STATUS</div>
+                            <div class="h4 primaryFontColor" data-bind="textConverter: { data: $data, field: 'DetailedOrderStatusValue', converter: 'Commerce.Formatters.DetailedSalesOrderStatusFormatter', type: 'text', defaultValue: '' }"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col grow primaryPanelBackgroundColor highContrastBorderThin marginBottom12" data-bind="visible: $root.viewModel.fulfillmentLineDetailsMode() === Commerce.ViewModels.FulfillmentLineDetailsMode.Inventory">
+                    <div data-bind="fadeVisible: { isShowed: $root.viewModel.fulfillmentLineDetailsMode() === Commerce.ViewModels.FulfillmentLineDetailsMode.Inventory }">
+                        <!-- Inventory -->
+                        <div class="pad12 marginBottom8 row">
+                            <div class="col grow">
+                                <div class="h6 secondaryFontColor" data-bind="resx: { textContent: 'string_2603' }">INVENTORY</div>
+                                <div class="h1 primaryFontColor" data-bind="text: StoreInventoryTotalQuantity"></div>
+                            </div>
+                        </div>
+                        <!-- Reserved -->
+                        <div class="marginRight12 marginBottom12 marginLeft12">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_2630' }">RESERVED</div>
+                            <div class="h4 primaryFontColor" data-bind="text: StoreInventoryReservedQuantity"></div>
+                        </div>
+                        <!-- Ordered -->
+                        <div class="marginRight12 marginBottom12 marginLeft12">
+                            <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_2629' }">ORDERED</div>
+                            <div class="h4 primaryFontColor" data-bind="text: StoreInventoryOrderedQuantity"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko if: numberOfSelectedLines() !== 1 -->
+                <div class="col grow primaryPanelBackgroundColor highContrastBorderThin marginBottom12">
+                    <div class="textCenter padTop56">
+                        <div class="center">
+                            <div class="h1 iconProductVariant icon-40x40 secondaryFontColor" data-bind="resx: { ariaLabel: 'string_13157' }"></div>
+                        </div>
+                        <div data-bind="if: numberOfSelectedLines() === 0">
+                            <div class="h2 wrapText" data-bind="resx: { textContent: 'string_13158' }"></div>
+                        </div>
+                        <div data-bind="if: numberOfSelectedLines() > 1">
+                            <div class="h2" data-bind="text: Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_13155'), numberOfSelectedLines())"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /ko -->
+
+            </div>
+
+            <div class="col no-shrink width48 marginTop48 marginRight20" data-bind="visible: !isHeaderVisible()">
+                <div class="col grow primaryPanelBackgroundColor highContrastBorderThin marginBottom12"></div>
+            </div>
+            <!-- End line header details tabs -->
+
+        </div>
+        <div class="row grow primaryPanelBackgroundColor margin20 pad20 packingSlipPreview" data-bind="visible: isPackingSlipDataSelected()">
+            <pre data-bind="html: packingSlipPreviewText"></pre>
+        </div>
+
+        <!-- Pick menu -->
+        <div id="pickFlyout" data-bind="menu: { anchor: '#pickAppBar', placement: 'top', alignment: 'left' }, axBubbleAttr: 'fulfillmentLineView_pickFlyout'">
+            <button data-bind="menuCommand: {id:'pick'}, resx: { label: 'string_13145' }, click: pickLinesAsync, winControl: { enabled: canDoPickingOperations }, axBubbleAttr: 'fulfillmentLineView_pickLines'"></button>
+            <button data-bind="menuCommand: {id:'printPickingList'}, resx: { label: 'string_13147' }, click: printPickingListAsync, winControl: { enabled: canDoPickingOperations }, axBubbleAttr: 'fulfillmentLineView_printPickingList'"></button>
+            <button data-bind="menuCommand: {id:'markAsPicked'}, resx: { label: 'string_13146' }, click: markAsPickedAsync, winControl: { enabled: canDoPickingOperations }, axBubbleAttr: 'fulfillmentLineView_markAsPicked'"></button>
+        </div>
+
+        <!-- Pack menu -->
+        <div id="packFlyout" data-bind="menu: { anchor: '#packAppBar', placement: 'top', alignment: 'left' }, axBubbleAttr: 'fulfillmentLineView_packFlyout'">
+            <button data-bind="menuCommand: {id:'viewPackingSlips'}, resx: { label: 'string_13175' }, click: viewPackingSlips, winControl: { enabled: canViewPackingSlips }, axBubbleAttr: 'fulfillmentLineView_viewPackingSlips'"></button>
+            <button data-bind="menuCommand: {id:'markAsPacked'}, resx: { label: 'string_13149' }, click: markAsPackedAsync, winControl: { enabled: canDoPackingOperations }, axBubbleAttr: 'fulfillmentLineView_markAsPacked'"></button>
+        </div>
+
+        <!-- Sort menu -->
+        <div id="sortFlyout" data-bind="menu: { anchor: '#sortFulfillmentLine', placement: 'top', alignment: 'left' }, axBubbleAttr: 'fulfillmentLineView_sortFlyout'">
+            <!-- ko foreach: sortMenuItems -->
+            <button data-bind="toggleMenuCommand: {id: $data.buttonId}, resx: { label: $data.displayName }, click: $data.clickEvent, axBubbleAttr: $data.axBubbleAttr"></button>
+            <!-- /ko -->
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="fulfillmentLineViewCommandAppBar" data-bind="appBar: { extensionCommands: extensionCommandViewModels }, axBubbleAttr: 'fulfillmentLineView_commandAppBar'">
+            <!-- Buttons visible in default mode -->
+            <button data-bind="appBarCommand: {
+                    id: 'fulfillmentLineView_showMultiSelect',
+                    extraClass: 'iconMultiSelect',
+                    labelResx: 'string_6405',
+                    visible: !isPackingSlipDataSelected()
+                },
+                gridSelectionMode: { id: '#fulfillmentLineList' },
+                axBubbleAttr: 'fulfillmentLineView_showMultiSelectLine'"></button><!--Select-->
+            <button data-bind="appBarCommand: {
+                id:'acceptLines',
+                extraClass: 'iconAccept',
+                onclick: acceptLinesAsync,
+                enabled: canAcceptLines,
+                labelResx: 'string_13143',
+                visible: !isPackingSlipDataSelected()}, axBubbleAttr: 'fulfillmentLineView_acceptLines'"></button><!--Accept-->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconCancel',
+                id:'fulfillmentLineView_rejectOrder',
+                labelResx: 'string_13168',
+                enabled: canReject,
+                onclick: rejectClickedAsync,
+                visible: !isPackingSlipDataSelected()},
+                axBubbleAttr: 'fulfillmentLineView_rejectOrderLine'"></button><!--Reject Order-->
+            <button data-bind="appBarCommand: {
+                id:'editFulfillmentLine',
+                extraClass: 'iconEdit',
+                onclick: editLinesAsync,
+                enabled: canEditLines,
+                labelResx: 'string_13172',
+                visible: !isPackingSlipDataSelected()},
+                axBubbleAttr: 'fulfillmentLineView_editFulfillmentLine'"></button><!-- Edit -->
+            <button data-bind="appBarCommand: {
+                id:'pickAppBar',
+                type: 'flyout',
+                flyout: '#pickFlyout',
+                extraClass:'iconTrackers',
+                enabled: canDoPickingOperations,
+                labelResx: 'string_13144',
+                visible: !isPackingSlipDataSelected()}, axBubbleAttr: 'fulfillmentLineView_pickLines'"></button><!--Pick-->
+            <button data-bind="appBarCommand: {
+                id:'packAppBar',
+                type: 'flyout',
+                flyout: '#packFlyout',
+                extraClass:'iconPackage',
+                enabled: enablePackFlyout,
+                labelResx: 'string_13148',
+                visible: !isPackingSlipDataSelected()}, axBubbleAttr: 'fulfillmentLineView_packLines'"></button><!--Pack-->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconDeliveryTruck',
+                id:'shipLines',
+                enabled: canShipLines,
+                onclick: shipLinesAsync,
+                labelResx: 'string_13171',
+                visible: !isPackingSlipDataSelected()}, axBubbleAttr: 'fulfillmentLineView_shipLines'"></button><!--Ship-->
+            <button data-bind="appBarCommand: {
+                id:'pickUpLines',
+                extraClass: 'iconPickup',
+                onclick: pickUpLinesAsync,
+                enabled: canPickUpLines,
+                labelResx: 'string_13162',
+                visible: !isPackingSlipDataSelected()}, axBubbleAttr: 'fulfillmentLineView_pickUpLines'"></button><!--Pick up-->
+            <button data-bind="appBarCommand: {
+                id:'filterFulfillmentLine',
+                extraClass: 'iconFilter' ,
+                onclick: $root.viewModel.filterFulfillmentLines.bind($root.viewModel),
+                labelResx: 'string_935',
+                visible: !isPackingSlipDataSelected()},
+                axBubbleAttr: 'fulfillmentLineView_filterFulfillmentLine'"></button><!-- Filter -->
+            <button data-bind="appBarCommand: {
+                id:'sortFulfillmentLine',
+                extraClass: 'iconSort',
+                type: 'flyout',
+                flyout: '#sortFlyout',
+                enabled: hasDisplayLines,
+                labelResx: 'string_13186',
+                visible: !isPackingSlipDataSelected()},
+                axBubbleAttr: 'fulfillmentLineView_sort'"></button><!-- Sort -->
+            <!-- Buttons visible in preview mode -->
+            <button data-bind="appBarCommand: {
+                id:'printPackingSlipsCommand',
+                extraClass: 'iconPrint',
+                labelResx: 'string_1808',
+                onclick: printPackingSlipAsync,
+                enabled: isPackingSlipPrintable,
+                visible: isPackingSlipDataSelected },
+                axBubbleAttr: 'showJournalView_printReceiptsCommand'"></button><!--Print-->
+            <button data-bind="appBarCommand: {
+                id:'cancelShowPackingSlipCommand',
+                extraClass: 'iconCancel',
+                onclick: $root.viewModel.clearPackingSlipSelection.bind($root.viewModel),
+                labelResx: 'string_80',
+                visible: isPackingSlipDataSelected },
+                axBubbleAttr: 'showJournalView_cancelShowReceiptCommand'"></button><!--Close-->
+        </div>
+    </div>
+</body>
+</html>

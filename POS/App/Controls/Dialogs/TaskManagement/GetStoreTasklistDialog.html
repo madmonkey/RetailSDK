@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetStoreTasklistDialog</title>
+</head>
+<body>
+    <div class="getStoreTasklistDialog" data-bind="customControlInternal: 'GetStoreTasklistDialog'">
+        <div data-bind="dialog: {
+            title: Commerce.ViewModelAdapter.getResourceString('string_7783'), /* Assign to a task list */
+            visible: visible,
+            closeOnEscButton: true,
+            buttonClick: onButtonClick,
+            buttons: [
+                { label: Commerce.ViewModelAdapter.getResourceString('string_76') /* Cancel */, operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton', isPrimary: false },
+            ],
+        },
+        axBubbleAttr: 'getStoreTasklistDialoglistInputDialog_getStoreTasklistDialoglistInputDialog'">
+            <!-- Progress ring -->
+            <div data-bind="loader: { visible: viewModel.isBusy, restoreFocus: false, type: Commerce.Controls.Loader.LoaderType.Dialog }"></div>
+
+            <!-- Dialog content -->
+            <div class="col grow">
+                <!-- List for store's task lists -->
+                <div id="storeTasklistsButtonGrid" class="grow col">
+                    <div id="storeAdhocTasklist" class="row cardBorderBottom marginTop12" role="button" tabindex="0"
+                         data-bind="click: adHocTasklistClick.bind($root), axBubbleAttr: 'getStoreTasklistDialoglistInputDialog_adHocTasklistTile'">
+                        <div class="row centerY">
+                            <div class="h6 iconTask icon-24x24 icon height48 width48 center accentColorImportant marginRight8"></div>
+                            <div class="grow marginTop16 marginBottom16">
+                                <div class="h4 primaryFontColor ellipsis marginBottom4" data-bind="resx: {textContent: 'string_7774' /* Ad-hoc task */}"></div>
+                            </div>
+                            <div class="h6 iconChevronRight icon-24x24 icon height48 width48 center accentColorImportant"></div>
+                        </div>
+                    </div>
+                    <label class="row marginTop20 marginBottom8 flexNone" data-bind="resx: {textContent: 'string_7708' /* Task lists */}">Task lists</label>
+                    <div id="storeTasklistsList"
+                         data-bind="dataList: {
+                            incrementalDataSource: {
+                            dataManager: viewModel,
+                            callerMethod: viewModel.getChecklists,
+                            onLoading: viewModel.isBusyFlag,
+                            pageSize: 40,
+                            },
+                            defaultListType: Commerce.Controls.DataList.ListType.Card,
+                            selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                            itemInvoked: itemInvokedHandler,
+                            ariaLabelResx: 'string_7708', /* Task lists */
+                            itemTemplates: [
+                            {
+                                templateId: 'storeTasklistsGridTemplate',
+                                cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                deviceType: Commerce.Controls.DataList.DeviceType.All
+                            }
+                            ]
+                    }, axBubbleAttr: 'getStoreTasklistDialoglistInputDialog_tasklistsButtonGrid'" class="row grow stretch"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

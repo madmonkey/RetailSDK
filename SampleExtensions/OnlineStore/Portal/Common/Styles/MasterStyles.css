@@ -1,0 +1,189 @@
+body {
+    font-size: 12px;
+    font-family: "Segoe UI", "Segoe", Tahoma, Helvetica, Arial, sans-serif, "Droid Sans";
+    margin: 0 auto;
+}
+
+.msax-MyAccount .msax-OrderHistoryLink,
+.msax-MyAccount .msax-ViewWishListsLink,
+.msax-MyAccountLink {
+    font-size: 12px !important;
+}
+
+.msax-OrderHistoryDescription,.msax-RecentOrdersDescription,
+.msax-WishListDescription, .msax-NoWishLists {
+    float: left;
+    color: #6A6C6E;
+    margin: 10px 0px 20px 10px;
+}
+
+.msax-Button {
+    cursor: pointer;
+    outline-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+.msax-LargeButton {
+    height: 38px;
+    width: 140px;
+    position: relative;
+    display:inline;
+}
+
+.msax-LargeButton .msax-Button {
+        font-size: 14px;
+        border-style: none;
+        margin: 0;
+        position: absolute;
+        width: 100%;
+        height: 38px;
+        background-color: rgba(96, 157, 238, 1);
+        z-index: 1;
+        left: 0;
+    }
+
+    .msax-LargeButton .msax-Button .msax-ButtonText {
+        color: #FFF;
+        line-height: 14px;
+    }
+
+    .msax-LargeButton.msax-LeftAlign .msax-Button .msax-ButtonText {
+        position: absolute;
+        left: 20px;
+        top: 12px;
+    }
+
+	
+.msax-LargeButton.msax-RightAlign .msax-Button .msax-ButtonText {
+    position: absolute;
+    right: 20px;
+    top: 12px;
+}
+
+.msax-LargeButton.msax-Blue {
+    background: url('../IMG/btn_lrg_bl_bg.png') repeat-x scroll 0 0 transparent;
+}
+
+    .msax-LargeButton.msax-Blue .large-button-left {
+        background: url('../IMG/btn_lrg_bl_left.png');
+    }
+
+    .msax-LargeButton.msax-Blue .large-button-right {
+        background: url('../IMG/btn_lrg_bl_right.png');
+    }
+
+.large-button-right {
+    width: 10px;
+    height: 38px;
+    position: absolute;
+    right: 0;
+}
+
+.msax-OrderDate:hover,
+.msax-OrderStatus:hover {
+    text-decoration: none !important;
+}
+
+.msax-OrderDate,
+.msax-OrderStatus {
+    color: #444 !important;
+}
+
+.msax-NoOrdersMessage,
+.msax-NoAddressesMessage,
+.msax-NoWishListsMessage,
+.msax-WishListInfo {
+    color: #444;
+}
+
+.msax-NoAddressesMessage {
+    margin-top: 36px;
+}
+
+.msax-HeaderOrderDate {
+    width: 90px;
+}
+
+.msax-PageTitle {
+    margin: 20px 10px 30px;
+    font-size: 18px;
+    color: #272727;
+    font-weight: 400;
+}
+
+.msax-PageTitle > h1 {
+    margin: 20px 10px 30px 0px;
+    font-size: 18px;
+    color: #272727;
+    font-weight: 400;
+}
+
+.msax-PageSubTitle > h1 {
+    margin-top: 0px !important;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #272727;
+    font-weight: 400;
+    float: left;
+}
+
+.msax-PageSubTitle {
+    font-size: 14px;
+    color: #272727;
+    font-weight: 400;
+}
+
+.msax-Link > a {
+    float: right;
+}
+
+.msax-PaddingRight20 {
+    padding-right: 20px;
+}
+
+.msax-PaddingRight5 {
+    padding-right: 5px;
+}
+
+#ProductsGrid {
+    width: 800px;
+    float: left;
+}
+
+.msax-PaddingBottom20 {
+    padding-bottom: 20px;
+}
+
+footer {
+    width:100%;
+	background: grey;
+    bottom: 0;
+    color: white;
+    font-size: 12px;
+    height: 80px;
+    left: 0;
+    margin-top: 100px;
+    position: relative;
+    float:left;
+}
+
+footer > div {
+    padding-top: 5px;
+    padding-left: 30%;
+}
+
+#ctrlShoppingCart {
+    float: left;
+}
+
+#ctrlCheckout {
+    float: left;
+}
+
+#ctrlMiniCart {
+    width: 80px;
+    float: right;
+    margin-bottom: 20px;
+}

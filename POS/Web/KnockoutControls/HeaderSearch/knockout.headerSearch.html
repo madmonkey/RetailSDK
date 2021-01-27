@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>header search control</title>
+    <link href="knockout.headerSearch.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/html" id="headerSearchTemplate">
+        <form class="noBorder row width100Percent alignRight">
+            <div class="col grow headerSearchControl">
+                <div class="row grow">
+                    <div class="row grow width100Percent splitViewSearchPane" style="display:none" data-bind="css: { active: isSplitViewSearchPaneActive }">
+                        <button class="searchButton iconSearch margin0 height32 width24 splitViewSearchButton padLeft8 headerBackgroundColorHover" type="submit"
+                                data-bind="resx: { ariaLabel: 'string_50' },
+                                hasFocus: searchTextAreaHasFocus,
+                                invokeValidate: searchInvokeValidate,
+                                axBubbleAttr: 'headerSplitView_searchButton'"></button> <!-- Search -->
+                        <input class="searchBoxColor margin0 ratio height32 splitViewSearchText" type="search" autocomplete="off" placeholder="Search"
+                               data-bind="validator: {data: $data , validatorField: 'SearchText', validatorType: 'SearchValidator'},
+                                    valueUpdate: 'afterkeydown',
+                                    value: searchText,
+                                    clearMark: true,
+                                    event: { keydown: searchBoxKeyDown },
+                                    hasFocus: searchTextAreaHasFocus,
+                                    resx: { ariaLabel: 'string_30262' /* Enter keyword to find */ },
+                                    attr: { title: Commerce.ViewModelAdapter.getResourceString('string_50') }" />  <!-- Search -->
+                    </div>
+                    <div class="row alignRight grow splitViewShowSearch">
+                        <button class="searchButton iconSearch margin0 height32 width24 splitViewSearchButton" type="button"
+                                data-bind="resx: { ariaLabel: 'string_50' },
+                                click: showSearchButtonClick,
+                                axBubbleAttr: 'headerSplitView_showSearchButton'"></button> <!-- Search -->
+                    </div>
+                </div>
+                <!-- ko if: searchHelperVisible -->
+                <div class="col grow width100Percent searchControlList scrollY marginTop02">
+                    <!-- ko foreach: headerSearchSuggestionsCategories -->
+                    <!-- Show a separator if either the category to display has subcategories or the preceeding sibling category to display has subcategories -->
+                    <div class="no-shrink"
+                         data-bind="visible: $parent.shouldTopSeperatorForHeaderSearchCategoryBeDisplayed($index()),
+                                    css: { 'padLeft16 padRight16': !$parent.isSearchCollapsed(), 'padLeft8 padRight8': $parent.isSearchCollapsed() }">
+                        <div class="line-separator"></div>
+                    </div>
+                    <div class="no-shrink height40 padTop8 searchOptionHoverBackgroundColor searchOptions categorySearchOptions row" tabindex="-1" role="menuitem"
+                         data-bind="click: $parent.invokeSearch.bind($parent, $data),
+                                    attr: { 'aria-label': getAriaLabel($parent.searchText()) },
+                                    css: { 'padLeft16 padRight16': !$parent.isSearchCollapsed(), 'padLeft8 padRight8': $parent.isSearchCollapsed() }"
+                         data-retail-numpad-ignore-keys="enter">
+                        <!-- Use h5 instead of <div class="h5" to support click-through functionality on IE -->
+                        <!-- Allowed as these h5 elements are aria-hidden -->
+                        <h5 class="nowrap whitespaceNoWrap" aria-hidden="true" data-bind="text: label, css: { 'fontWeight500': searchType == $parent.searchType() }">Text</h5>
+                        <h5 class="nowrap" aria-hidden="true" data-bind="resx: { textContent: 'string_1048' }, css: { 'fontWeight500': searchType == $parent.searchType() }">:</h5>
+                        <h5 class="nowrap textTransformNone" aria-hidden="true">&nbsp;</h5>
+                        <h5 class="nowrap searchText ellipsis" aria-hidden="true" data-bind="text: $parent.searchText"></h5>
+                    </div>
+                    <!-- ko if: areSubCategoriesDisplayable -->
+                    <!-- ko foreach: subCategories -->
+                    <div class="no-shrink height40 padTop8 searchOptionHoverBackgroundColor searchOptions categorySearchOptions row" tabindex="-1" role="menuitem"
+                         data-bind="click: $parents[1].invokeSearch.bind($parents[1], $parent, $data),
+                                    attr: { 'aria-label': getAriaLabel($parent.label, $parents[1].searchText()) },
+                                    css: { 'padLeft32 padRight32': !$parents[1].isSearchCollapsed(), 'padLeft16 padRight16': $parents[1].isSearchCollapsed() }"
+                         data-retail-numpad-ignore-keys="enter">
+                        <!-- Use h4 instead of <div class="h4" to support click-through functionality on IE -->
+                        <!-- Allowed as these h4 elements are aria-hidden -->
+                        <h4 class="nowrap textTransformNone whitespaceNoWrap" aria-hidden="true" data-bind="text: label">Text</h4>
+                        <h4 class="nowrap" aria-hidden="true" data-bind="resx: { textContent: 'string_1048' }">:</h4>
+                        <h4 class="nowrap textTransformNone" aria-hidden="true">&nbsp;</h4>
+                        <h4 class="nowrap textTransformNone searchText ellipsis" aria-hidden="true" data-bind="text: $parents[1].searchText"></h4>
+                    </div>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko if: productSearchSuggestionsVisible -->
+                    <div class="no-shrink"
+                         data-bind="using: $parent,
+                                    css: { 'padLeft16 padRight16': !isSearchCollapsed(), 'padLeft8 padRight8': isSearchCollapsed() }">
+                        <div class="line-separator"></div>
+                    </div>
+                    <div class="no-shrink height40 padTop8 row" tabindex="-1" role="menuitem"
+                         data-bind="using: $parent,
+                                    css: { 'padLeft16 padRight16': !isSearchCollapsed(), 'padLeft8 padRight8': isSearchCollapsed() }">
+                        <!-- Use h5 instead of <div class="h5" to support click-through functionality on IE -->
+                        <!-- Allowed as these h5 elements are aria-hidden -->
+                        <h5 class="nowrap textTransformNone whitespaceNoWrap" aria-hidden="true" data-bind="resx: { textContent: 'string_30255' /* Product suggestions */ }"></h5>
+                        <h5 class="nowrap" aria-hidden="true" data-bind="resx: { textContent: 'string_1048' }">:</h5>
+                        <h5 class="nowrap textTransformNone" aria-hidden="true">&nbsp;</h5>
+                        <h5 class="nowrap searchText ellipsis" aria-hidden="true" data-bind="text: searchText()"></h5>
+                    </div>
+
+                    <!-- ko foreach: productSearchSuggestions -->
+                    <div class="no-shrink height40 padTop8 searchOptionHoverBackgroundColor searchOptions productSearchSuggestionSearchOption row" tabindex="-1" role="menuitem"
+                         data-bind="click: $parent.invokeSearchByProductSearchSuggestion.bind($parent),
+                                    attr: { 'aria-label': getAriaLabel(plainText),
+                                    css: { 'padLeft32 padRight32': !$parent.isSearchCollapsed(), 'padLeft16 padRight16': $parent.isSearchCollapsed() } }"
+                         data-retail-numpad-ignore-keys="enter">
+                        <!-- Use h4 instead of <div class="h4" to support click-through functionality on IE -->
+                        <!-- Allowed as these h4 elements are aria-hidden -->
+                        <h4 class="nowrap textTransformNone ellipsis" aria-hidden="true" data-bind="html: Commerce.Formatters.SearchTextSuggestionFormatterWithHtmlEscape(htmlString)"></h4>
+                    </div>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko if: productSearchScopedCategorySuggestionsVisible -->
+                    <div class="no-shrink"
+                         data-bind="using: $parent,
+                                    css: { 'padLeft16 padRight16': !isSearchCollapsed(), 'padLeft8 padRight8': isSearchCollapsed() }">
+                        <div class="line-separator"></div>
+                    </div>
+                    <div class="no-shrink height40 padTop8 row" tabindex="-1" role="menuitem"
+                         data-bind="using: $parent,
+                                    css: { 'padLeft16 padRight16': !isSearchCollapsed(), 'padLeft8 padRight8': isSearchCollapsed() }">
+                        <!-- Use h5 instead of <div class="h5" to support click-through functionality on IE -->
+                        <!-- Allowed as these h5 elements are aria-hidden -->
+                        <h5 class="nowrap textTransformNone whitespaceNoWrap" aria-hidden="true" data-bind="resx: { textContent: 'string_30256' /* Category suggestions */ }"></h5>
+                        <h5 class="nowrap" aria-hidden="true" data-bind="resx: { textContent: 'string_1048' }">:</h5>
+                        <h5 class="nowrap textTransformNone" aria-hidden="true">&nbsp;</h5>
+                        <h5 class="nowrap searchText ellipsis" aria-hidden="true" data-bind="text: searchText()"></h5>
+                    </div>
+
+                    <!-- ko foreach: productSearchScopedCategorySuggestions -->
+                    <div class="no-shrink height40 padTop8 searchOptionHoverBackgroundColor searchOptions productSearchSuggestionSearchOption row" tabindex="-1" role="menuitem"
+                         data-bind="click: $parent.invokeSearchByProductSearchSuggestion.bind($parent),
+                                    attr: { 'aria-label': getAriaLabel(plainText) },
+                                    css: { 'padLeft32 padRight32': !$parent.isSearchCollapsed(), 'padLeft16 padRight16': $parent.isSearchCollapsed() }"
+                         data-retail-numpad-ignore-keys="enter">
+                        <!-- Use h4 instead of <div class="h4" to support click-through functionality on IE -->
+                        <!-- Allowed as these h4 elements are aria-hidden -->
+                        <h4 class="nowrap textTransformNone ellipsis" aria-hidden="true" data-bind="html: Commerce.Formatters.SearchTextSuggestionFormatterWithHtmlEscape(htmlString)"></h4>
+                    </div>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko if: productSearchKeywordSuggestionsVisible -->
+                    <div class="no-shrink"
+                         data-bind="using: $parent,
+                                    css: { 'padLeft16 padRight16': !isSearchCollapsed(), 'padLeft8 padRight8': isSearchCollapsed() }">
+                        <div class="line-separator"></div>
+                    </div>
+                    <div class="no-shrink height40 padTop8 row" tabindex="-1" role="menuitem"
+                         data-bind="using: $parent,
+                                    css: { 'padLeft16 padRight16': !isSearchCollapsed(), 'padLeft8 padRight8': isSearchCollapsed() }">
+                        <!-- Use h5 instead of <div class="h5" to support click-through functionality on IE -->
+                        <!-- Allowed as these h5 elements are aria-hidden -->
+                        <h5 class="nowrap textTransformNone whitespaceNoWrap" aria-hidden="true" data-bind="resx: { textContent: 'string_30257' /* Keyword suggestions */ }"></h5>
+                        <h5 class="nowrap" aria-hidden="true" data-bind="resx: { textContent: 'string_1048' }">:</h5>
+                        <h5 class="nowrap textTransformNone" aria-hidden="true">&nbsp;</h5>
+                        <h5 class="nowrap searchText ellipsis" aria-hidden="true" data-bind="text: searchText()"></h5>
+                    </div>
+
+                    <!-- ko foreach: productSearchKeywordSuggestions -->
+                    <div class="no-shrink height40 padTop8 searchOptionHoverBackgroundColor searchOptions productSearchSuggestionSearchOption row" tabindex="-1" role="menuitem"
+                         data-bind="click: $parent.invokeSearchByProductSearchSuggestion.bind($parent),
+                                    attr: { 'aria-label': getAriaLabel(plainText) },
+                                    css: { 'padLeft32 padRight32': !$parent.isSearchCollapsed(), 'padLeft16 padRight16': $parent.isSearchCollapsed() }"
+                         data-retail-numpad-ignore-keys="enter">
+                        <!-- Use h4 instead of <div class="h4" to support click-through functionality on IE -->
+                        <!-- Allowed as these h4 elements are aria-hidden -->
+                        <h4 class="nowrap textTransformNone ellipsis" aria-hidden="true" data-bind="html: Commerce.Formatters.SearchTextSuggestionFormatterWithHtmlEscape(htmlString)"></h4>
+                    </div>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="searchSuggestionOffScreenClickOverlay" data-bind="visible: searchHelperVisible, event: { mousedown: searchSuggestionOffScreenClickHandler, keypress: searchSuggestionOffScreenClickHandler}"></div>
+        </form>
+    </script>
+</body>
+</html>

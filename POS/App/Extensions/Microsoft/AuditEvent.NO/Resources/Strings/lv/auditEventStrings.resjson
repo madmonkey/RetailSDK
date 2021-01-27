@@ -1,0 +1,18 @@
+{
+  "Audit_event_price_lookup_error": "Cenu pārlūkošanas notikuma reģistrācijas kļūda: {0}",
+  "_Audit_event_price_lookup_error.comment": "Audit event registration log error message.",
+  "Audit_event_tax_override_error": "Nodokļu ignorēšanas notikuma reģistrācijas kļūda: {0}",
+  "_Audit_event_tax_override_error.comment": "Audit event registration log error message.",
+  "Audit_event_quantity_correction_error": "Daudzuma labošanas notikuma reģistrācijas kļūda: {0}",
+  "_Audit_event_quantity_correction_error.comment": "Audit event registration log error message.",
+  "Audit_event_open_cash_drawer_error": "Naudas kases atvēršanas notikuma reģistrācijas kļūda: {0}",
+  "_Audit_event_open_cash_drawer_error.comment": "Audit event registration log error message.",
+  "Audit_event_price_lookup_event_message": "Cenu pārlūkošanas notikums reģistrēts",
+  "_Audit_event_price_lookup_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_tax_override_event_message": "Nodokļu ignorēšanas notikums reģistrēts",
+  "_Audit_event_tax_override_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_quantity_correction_event_message": "Daudzuma labošanas notikums reģistrēts",
+  "_Audit_event_quantity_correction_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_open_cash_drawer_event_message": "Naudas kases atvēršanas notikums reģistrēts",
+  "_Audit_event_open_cash_drawer_event_message.comment": "Audit event database log string field value."
+}

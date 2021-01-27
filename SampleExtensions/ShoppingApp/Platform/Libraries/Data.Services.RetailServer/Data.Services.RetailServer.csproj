@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\..\..\..\..\BuildTools\Common.props" />
+  <Import Project="..\..\..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Contoso.Commerce.Client.Data.Services.RetailServer</RootNamespace>
+    <AssemblyName>$(AssemblyNamePrefix).Commerce.Client.Data.Services.RetailServer</AssemblyName>
+    <ReleaseVersion>2.1.1</ReleaseVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Data.Entities\Data.Entities.csproj" />
+    <ProjectReference Include="..\Data.Services\Data.Services.csproj" />
+  </ItemGroup>
+
+</Project>

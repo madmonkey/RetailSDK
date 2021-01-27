@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Date and Time Self Packing Item Template</title>
+</head>
+<body>
+    <script id="SelfPackingDateAndTimeInfoUnpacked" type="text/html">
+        <div class="width80 height48 pad0 headerBackgroundColor headerBackgroundColorHover">
+            <div class="grow col padTop06 padBottom06">
+                <div class="h4 row center" data-bind="text: currentTime">Time</div>
+                <div class="h6 textTransformNone row opacity60 center" data-bind="text: currentDate">Date</div>
+            </div>
+        </div>
+    </script>
+    <script id="SelfPackingDateAndTimeInfoPacked" type="text/html">
+        <div class="row width240 height48 pad0">
+            <div class="iconDateTime buttonIcon height20 margin12"></div>
+            <div class="grow col marginLeft8 padTop4">
+                <div class="h4 row" data-bind="text: currentTime">Time</div>
+                <div class="h6 textTransformNone padTop4 row opacity60" data-bind="text: currentDate">Date</div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

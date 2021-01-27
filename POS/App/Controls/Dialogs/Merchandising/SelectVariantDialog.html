@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SelectVariantDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'SelectVariantDialog'">
+        <div data-bind="dialog: {
+            title: title,
+            visible: visible,
+            buttonClick: dialogButtonClick,
+            showProgressIndicator: indeterminateWaitVisible,
+            dialogType: Commerce.Controls.Dialog.DialogTypes.SEQUENCE,
+            backButtonVisible: viewModel.allowUndoPreviousSelection,
+            backClick: undoPreviousSelection,
+            buttons: [
+                { label: Commerce.ViewModelAdapter.getResourceString('string_76'), isPrimary: false, operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton' }
+            ],
+            dialogCloseButtonClick: onClickClose
+        },
+        axBubbleAttr: 'selectVariantDialog_selectVariantDialog',
+             attr: { 'aria-label': title() }">
+                <div class="marginBottom20">
+                    <div class="h4" data-bind="text: subTitle"></div>
+                </div>
+                <!-- ko if: viewModel.selectedValuesText()  -->
+                <div class="marginBottom20">
+                    <div class="h4 secondaryFontColor" data-bind="text: viewModel.selectedValuesText"></div>
+                </div>
+                <!-- /ko -->
+                <div class="marginBottom4">
+                    <div id="selectionType" class="h4 secondaryFontColor" data-bind="text: viewModel.selectionType"></div>
+                </div>
+                <div id="selectVariantDialogButtonGrid" 
+                     data-bind="tileList: {
+                        iteminvoked: selectionInvokedHandler,
+                        itemDataSource: viewModel.selectionOptions,
+                        field: 'Value',
+                        focusOnFirstTileCallback: focusOnFirstElementCallback
+                    },
+                    axBubbleAttr: 'selectVariantDialog_buttonGrid'">
+                </div>
+            </div>
+    </div>
+</body>
+</html>

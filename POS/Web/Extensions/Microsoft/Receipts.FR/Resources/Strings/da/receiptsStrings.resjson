@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Styring af buildnummeret: Buildnummeret blev tilføjet.",
+  "Build_number_successfull_log_message_text.comment": "Meddelelse, der logføres, når POS-buildnummeret blev føjet til transaktionen.",
+  "Build_number_error_log_message_text": "Styring af buildnummeret: Buildnummer blev ikke tilføjet, fejlmeddelelse: '{0}'.",
+  "Build_number_error_log_message_text.comment": "Meddelelse, der logføres, når POS-buildnummeret ikke blev føjet til transaktionen."
+}

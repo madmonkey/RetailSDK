@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout ListView handler templates</title>
+    <link href="knockout.listView.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/html" id="listViewHeaderTemplate">
+        <div data-bind="attr: { 'class': cssClass}">
+            <div class="h6" data-bind="text: title, attr: {title: title}"></div>
+        </div>
+    </script>
+
+    <!-- Binding template that dynamically generates the row content based on the value in the column provided. -->
+    <script type="text/html" id="enhancedGridDynamicRowTemplate">
+        <div data-bind="attr: { 'class': 'enhancedGridDynamicRowTemplate ' + (listViewColumn.cssClass || '') }">
+            <!-- primary text -->
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: listViewColumn.field, converter: listViewColumn.converter, defaultValue: listViewColumn.defaultValue, type: listViewColumn.type, columnToBind: listViewColumn.title, ariaLabel: 'true' }"></div>
+
+            <div class="extendedInfo secondaryFontColor shrink" data-bind="foreach: { data: listViewColumn.lines, as: 'extendedLine' }">
+                <div class="h4" data-bind="textConverter: { data: dataRow, field: extendedLine.field, converter: extendedLine.converter, defaultValue: extendedLine.defaultValue, type: extendedLine.type, columnToBind: listViewColumn.title, ariaLabel: 'true' }, attr: { 'class': extendedLine.cssClass }"></div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Simple list used by default except when we need to have expandable row, linethrough or additional info rows  -->
+    <script type="text/html" id="listViewStandardGridTemplate">
+        <div class="standardGridItemTemplate">
+            <div tabindex="0" class="itemContainer listViewLine" data-bind="foreach: columns">
+                <div data-bind="attr: {'class': cssClass}">
+                    <!-- For IE Narrator won't read aria-label. Add an invisible text for Narrator to read. -->
+                    <div class="h4" data-bind="visible: false, text:title"></div>
+                    <div class="h4" data-bind="css: field, attr: {'data-win-bind': 'textContent:' + field + ' ' + converter}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="standardGrid listViewHandler">
+            <div class="listViewHeader" data-bind="template: { name: 'listViewHeaderTemplate', foreach: columns }">
+            </div>
+            <div class="tableContent listViewPlaceholder win-selectionstylefilled">
+            </div>
+            <div class="center listViewEmptyContentPlaceholder"></div>
+        </div>
+    </script>
+
+    <!-- Enhanced grid provide the ability to add expandable linethrough and rows with extended information for each column. Also colspan row for custom content. -->
+    <script type="text/html" id="listViewEnhancedGridTemplate">
+        <!-- Header div will load the the appropriate header template based on the row type of the list view.  If the row type is 'None' the header will be generated based on the information in the columns. -->
+        <div class="listViewHeader"
+             data-bind="template: Commerce.StringExtensions.isNullOrWhitespace(headerRowTemplate) ? { name: 'listViewHeaderTemplate', foreach: columns } : { name: headerRowTemplate, data: { templateViewModel: templateViewModel } },
+             css: { expandable: Commerce.Controls.ListView.isExpandable($data) }, visible: showColumnHeaderLabels">
+        </div>
+        <div class="tableContent dataRows" role="listbox" data-bind="foreach: { data: itemDataSource, as: 'dataRow', afterRender: dataRowsAfterRender }, css: { 'win-itemsblock': Commerce.Controls.ListView.showsCheckbox($data) }">
+            <div class="itemContainer win-selectionstylefilled shrink" data-bind="css: { 'win-selectionmode win-surface': Commerce.Controls.ListView.showsCheckbox($parent) }">
+                <div class="listViewLine" data-bind="css: {
+                        expandable: Commerce.Controls.ListView.isExpandable($parent),
+                        strikethrough: ($parent.strikethroughRowConverter || $parent.strikethroughRow)
+                            ? ($parent.strikethroughRow ? dataRow[$parent.strikethroughRow] : $parent.strikethroughRowConverter(dataRow))
+                            : false
+                    }">
+                    <button class="expandButton iconChevronDown icon-14x14 win-interactive" aria-expanded="false"
+                            data-bind="style:
+                                {
+                                    visibility: Commerce.Controls.ListView.isAlwaysExpanded($parent)
+                                        ? 'hidden'
+                                        : ($parent.expandableRowConverter || $parent.expandableRow
+                                                ? ($parent.expandableRow ? dataRow[$parent.expandableRow] : $parent.expandableRowConverter(dataRow))
+                                                : true
+                                        ) === true
+                                            ? ''
+                                            : 'hidden'
+                                }, attr: { 'aria-label': Commerce.ViewModelAdapter.getResourceString('string_4397') }"></button>
+                    <!-- Row div will load the appropriate row template based on the list view's row template type. -->
+                    <div class="row">
+                        <!-- DO NOT ADD ANYTHING HERE, ANY CONTENT WILL BE REPLACED BY 'afterRenderHandler'. -->
+                    </div>
+                </div>
+
+                <!-- expanded information secondary text -->
+                <div class="colspanRow secondaryFontColor" data-bind="visible: $parent.rowExpanded,
+                    css: {
+                        expandable: Commerce.Controls.ListView.isExpandable($parent),
+                        strikethrough: ($parent.strikethroughRowConverter || $parent.strikethroughRow)
+                            ? ($parent.strikethroughRow ? dataRow[$parent.strikethroughRow] : $parent.strikethroughRowConverter(dataRow))
+                            : false
+                    }">
+                    <!-- DO NOT ADD ANYTHING HERE, ANY CONTENT WILL BE REPLACED BY THE BINDING HANDLER (as configured by 'updateSecondaryTextContext'). -->
+                </div>
+            </div>
+        </div>
+        <div class="center listViewEmptyContentPlaceholder"></div>
+    </script>
+
+    <!-- Empty list view template -->
+    <script type="text/html" id="emptyListViewTemplate">
+        <div class="textCenter">
+            <div class="h3 wrapText" data-bind="resx: { textContent: 'string_1032' }"></div><!-- We didn't find anything to display here. -->
+        </div>
+    </script>
+</body>
+</html>

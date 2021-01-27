@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>InventoryDocumentAsyncFeedbackDialog</title>
+    <link href="InventoryDocumentAsyncFeedbackDialog.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'InventoryDocumentAsyncFeedbackDialog'">
+        <div data-bind="dialog: {
+                title: computedTitle,
+                visible: visible,
+                buttonClick: buttonClickHandler,
+                showProgressIndicator: indeterminateWaitVisible,
+                hideOnEscape: true,
+                buttons: [
+                    {
+                        label: Commerce.ViewModelAdapter.getResourceString('string_75'),
+                        operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK,
+                        isPrimary: true
+                    },
+                ],
+                dialogCloseButtonClick: closeClickHandler
+            },
+            axBubbleAttr: 'InventoryDocumentAsyncFeedbackDialog_InventoryDocumentAsyncFeedbackDialog',attr: { 'aria-label': computedTitle() }">
+            <!-- Dialog content -->
+            <div class="inventoryDocumentAsyncFeedbackDialogContent marginTop20">
+                <div class="col center">
+                    <div class="iconCompleted icon-50x50 circleCheck accentColor"></div>
+                    <h4 class="marginTop16" data-bind="text: doneExecutionLabel"></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

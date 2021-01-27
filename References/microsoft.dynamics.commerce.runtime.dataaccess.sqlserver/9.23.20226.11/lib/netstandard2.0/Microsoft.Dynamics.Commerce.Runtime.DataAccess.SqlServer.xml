@@ -1,0 +1,701 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseConnection">
+            <summary>
+            Represents a database connection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseConnection.#ctor(System.Data.SqlClient.SqlConnection,System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseConnection"/> class.
+            </summary>
+            <param name="sqlConnection">The SQL server connection.</param>
+            <param name="connectionPoolSize">The connection pool size.</param>
+            <param name="isReadOnly">A value indicating whether the connection should declare application intent as read-only.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseConnection.DatabaseServer">
+            <summary>
+            Gets the database server name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseConnection.DatabaseName">
+            <summary>
+            Gets the database name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseConnection.SqlConnection">
+            <summary>
+            Gets the actual underlying connection implementation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseConnection.Dispose">
+            <summary>
+            Disposes the connection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseConnection.Open">
+            <summary>
+            Opens the connection on the database.
+            </summary>
+            <remarks>This operation must be performed on the connection before any other action can be executed using the connection.
+            The connection should be disposed calling <see cref="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseConnection.Dispose"/> on this object.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseConnection.OpenAsync">
+            <summary>
+            Opens the connection on the database asynchronous.
+            </summary>
+            <returns>The async task.</returns>
+            <remarks>This operation must be performed on the connection before any other action can be executed using the connection.
+            The connection should be disposed calling <see cref="M:System.IDisposable.Dispose"/> on this object.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseConnection.BeginTransaction">
+            <summary>
+            Begins a transaction on this connection.
+            </summary>
+            <returns>The transaction object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseConnection.Open(System.Boolean)">
+            <summary>
+            Opens the connection on the database.
+            </summary>
+            <param name="isAsync">True if the connection should be opened asynchronous.</param>
+            <returns>The async task.</returns>
+            <remarks>This operation must be performed on the connection before any other action can be executed using the connection.
+            The connection should be disposed calling <see cref="M:System.IDisposable.Dispose"/> on this object.</remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult">
+            <summary>
+            Represents the result of a database operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.#ctor(System.Data.SqlClient.SqlDataReader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult"/> class.
+            </summary>
+            <param name="reader">The SQL server reader.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.FieldCount">
+            <summary>
+            Gets the number of fields available in the current result set.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.MonitoringNumberOfReads">
+            <summary>
+            Gets the number of reads executed against this result.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.SqlReader">
+            <summary>
+            Gets or sets the underlying SQL reader used to compose this result.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.IsMonitoringEnabled">
+            <summary>
+            Gets a value indicating whether monitoring is enabled or not.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.ConfigureMonitoringEvent(System.Guid,System.Diagnostics.Stopwatch,System.String)">
+            <summary>
+            Configures this <paramref name="databaseEventCorrelationId"/> with monitoring event parameters so when the result is consumed, it records a termination event.
+            </summary>
+            <param name="databaseEventCorrelationId">The <see cref="T:System.Guid"/> representing the correction identifier for the database event.</param>
+            <param name="elapsed">A stopwatch to measure the elapsed time associated with this result.</param>
+            <param name="fromClause">The from clause used to trace the request associated with this result.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.NextResult">
+            <summary>
+            Moves to the next result set.
+            </summary>
+            <returns>Whether new result set exists or not.</returns>
+            <remarks>No call to this method is require to read the initial result set.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.NextResultAsync">
+            <summary>
+            Moves to the next result set.
+            </summary>
+            <returns>Whether new result set exists or not.</returns>
+            <remarks>No call to this method is require to read the initial result set.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.Read">
+            <summary>
+            Reads the next result set row.
+            </summary>
+            <returns>Whether new result set row exists or not.</returns>
+            <remarks>To read the first row in the result set, as well as all subsequent rows, a call to this method is necessary for each row to be read.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.ReadAsync">
+            <summary>
+            Reads the next result set row.
+            </summary>
+            <returns>Whether new result set row exists or not.</returns>
+            <remarks>To read the first row in the result set, as well as all subsequent rows, a call to this method is necessary for each row to be read.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.GetValue``1(System.Int32)">
+            <summary>
+            Gets the value for a specific field in the current result set row.
+            </summary>
+            <typeparam name="T">The expected type of the field being read.</typeparam>
+            <param name="index">The index of the field to be read.</param>
+            <returns>The field value read.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.GetValue(System.Int32,System.Type)">
+            <summary>
+            Gets the value for a specific field in the current result set row.
+            </summary>
+            <param name="index">The index of the field to be read.</param>
+            <param name="valueType">The expected type of the field being read.</param>
+            <returns>The field value read.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.GetValue``1(System.String)">
+            <summary>
+            Gets the value for a specific field in the current result set row.
+            </summary>
+            <typeparam name="T">The expected type of the field being read.</typeparam>
+            <param name="fieldName">The name of the field to be read.</param>
+            <returns>The field value read.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.GetValue(System.String,System.Type)">
+            <summary>
+            Gets the value for a specific field in the current result set row.
+            </summary>
+            <param name="fieldName">The name of the field to be read.</param>
+            <param name="valueType">The expected type of the field being read.</param>
+            <returns>The field value read.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.GetName(System.Int32)">
+            <summary>
+            Gets the name of the field in a specific index.
+            </summary>
+            <param name="index">The index of the field being queried.</param>
+            <returns>The name of the field.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.GetFieldIndex(System.String)">
+            <summary>
+            Gets the index of the field by a specific name.
+            </summary>
+            <param name="fieldName">The name of the field.</param>
+            <returns>The index of the field.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.NextResult(System.Boolean)">
+            <summary>
+            Moves to the next result set.
+            </summary>
+            <param name="isAsync">True if the next result should be get asynchronous.</param>
+            <returns>Whether new result set exists or not.</returns>
+            <remarks>No call to this method is require to read the initial result set.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseResult.Read(System.Boolean)">
+            <summary>
+            Reads the next result set row.
+            </summary>
+            <param name="isAsync">True if the read should be performed asynchronous.</param>
+            <returns>Whether new result set row exists or not.</returns>
+            <remarks>To read the first row in the result set, as well as all subsequent rows, a call to this method is necessary for each row to be read.</remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseTransaction">
+            <summary>
+            Represents a transaction on the database.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseTransaction.isFinalized">
+            <summary>
+            Represents whether this transaction has been finalized (committed or rolled back).
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseTransaction.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseConnection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseTransaction"/> class.
+            </summary>
+            <param name="databaseConnection">The database connection.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseTransaction.Commit">
+            <summary>
+            Commit the changes made during the transaction.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseTransaction.Rollback">
+            <summary>
+            Rolls back the transaction.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.DatabaseTransaction.Dispose">
+            <summary>
+            Ends the transaction. If it hasn't been finalized (committed or rolled back) then it will be rolled back.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCache">
+            <summary>
+            Shared cache of connection strings, which are built by SqlConnectionStringBuilder
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCache.GetConnectionString(Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters)">
+            <summary>
+            Lookup cached result of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheResult"/>, based on <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters"/> class.
+            </summary>
+            <param name="parameters">A group of parameters for constructing SqlConnectionStringBuilder</param>
+            <returns>Result from connection strings</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters">
+            <summary>
+            Store a group of parameters for constructing a SqlConnectionStringBuilder.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters.#ctor(System.String,System.Int32,System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters"/> class.
+            </summary>
+            <param name="connectionString">Base connection string.</param>
+            <param name="maxPoolSize">Max pool size.</param>
+            <param name="applicationName">Application name.</param>
+            <param name="isReadOnly">Application intent.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters.ConnectionString">
+            <summary>
+            Gets the connection string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters.MaxPoolSize">
+            <summary>
+            Gets the max pool size.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters.ApplicationName">
+            <summary>
+            Gets the application name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the application intent is readonly or not.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters.Equals(Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters)">
+            <summary>
+            Compare to another group of parameters to see if their values are equal.
+            </summary>
+            <param name="target">Target group of parameters to compare.</param>
+            <returns>True if values of two groups are equal, else false.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters.GetHashCode">
+            <summary>
+            Override default GetHashCode() method using ConnectionString.GetHashCode() as a cheaper hash.
+            Since if any of the parameters will be changed, it will be mostly the connection string.
+            Collisions will be handled by calling Equals. This will be better than having an expensive hash.
+            </summary>
+            <returns>Self defined hash code.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheResult">
+            <summary>
+            Store result from connection strings which built by SqlConnectionStringBuilder.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheResult.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheResult"/> class.
+            </summary>
+            <param name="parameters">A group of parameters for constructing <see cref="T:System.Data.SqlClient.SqlConnectionStringBuilder"/></param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheResult.ConnectionString">
+            <summary>
+            Gets the connection string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheResult.ConnectionStringForTrace">
+            <summary>
+            Gets the connection string for trace.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheResult.DataSource">
+            <summary>
+            Gets the connection string for trace.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheResult.InitialCatalog">
+            <summary>
+            Gets the connection string for trace.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringCacheParametersComparer">
+            <summary>
+            Store a group of parameters for constructing a SqlConnectionStringBuilder.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringCacheParametersComparer.Equals(Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters,Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters)">
+            <summary>
+            Compare two groups of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters"/> to see if their values are equal.
+            </summary>
+            <param name="param1">Group 1 of parameters to compare.</param>
+            <param name="param2">Group 2 of parameters to compare.</param>
+            <returns>True if values of two groups are equal, else false.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringCacheParametersComparer.GetHashCode(Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlConnectionStringBuilderCacheParamerters)">
+            <summary>
+            Get the hash code of a group of parameters.
+            </summary>
+            <param name="param">A group of parameters.</param>
+            <returns>Hash code.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlQuerySanitizer">
+            <summary>
+            Removes all potential entry of client's sensitive data from SQL query.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlQuerySanitizer.Sanitize(System.String)">
+            <summary>
+            Removes all potential entry of client's sensitive data from SQL query.
+            </summary>
+            <param name="query">SQL query to be sanitized.</param>
+            <returns>Sanitized SQL query.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider">
+            <summary>
+            Implements the database provider for SQLServer.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.CrtDatabaseSchemaName">
+            <summary>
+            CrtDatabaseSchemaName.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.FormatSchemaName(System.String)">
+            <summary>
+            Formats the schema name, prepending the default CRT schema if none is defined.
+            </summary>
+            <param name="name">The name of the table type or stored procedure.</param>
+            <returns>The full name of the table type or stored procedure, including the schema name.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.Configure(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Configures the database provider.
+            </summary>
+            <param name="configurationDictionary">A dictionary of key pair values for configuring the database provider.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.GetConnection(System.String)">
+            <summary>
+            Gets a connection to operate against the database.
+            </summary>
+            <param name="connectionString">The connection string to obtain the connection for.</param>
+            <returns>A connection to operate against the database.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.GetConnection(System.String,System.Boolean)">
+            <summary>
+            Gets a connection to operate against the database.
+            </summary>
+            <param name="connectionString">The connection string to obtain the connection for.</param>
+            <param name="isReadOnly">A value indicating whether the connection string should declare read-only application intent.</param>
+            <returns>A connection to operate against the database.</returns>
+            <remarks>
+            The read only flag is only honored if EnableReadScaleOut has been set to true in the Commerce Runtime configuration.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.GetRetryPolicy">
+            <summary>
+            Provides the implementation of the retry mechanism for unreliable actions and transient conditions.
+            </summary>
+            <returns>The retry policy.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.ExecuteQuery(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseConnection,Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery)">
+            <summary>
+            Executes a command against the database.
+            </summary>
+            <param name="connection">The database connection in which to execute the command.</param>
+            <param name="query">The query to be executed against the database.</param>
+            <returns>The database result object containing the results for the executed command.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.ExecuteQueryAsync(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseConnection,Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery)">
+            <summary>
+            Executes a command against the database.
+            </summary>
+            <param name="connection">The database connection in which to execute the command.</param>
+            <param name="query">The query to be executed against the database.</param>
+            <returns>The database result object containing the results for the executed command.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.ExecuteStoredProcedure(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseConnection,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}},System.Collections.Generic.IDictionary{System.String,System.Object},System.Action{Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult},System.Nullable{System.Int32}@)">
+            <summary>
+            Executes a store procedure against the database.
+            </summary>
+            <param name="connection">The database connection.</param>
+            <param name="procedureName">The store procedure name.</param>
+            <param name="parameters">The set of input parameters for the procedure.</param>
+            <param name="outputParameters">The set of output parameters for the procedure.</param>
+            <param name="resultCallback">A callback action to be executed to consume the database result. The procedure results must be fully consumed before the output parameter values are accessed.</param>
+            <param name="storeProcedureResultValue">The return value of the stored procedure.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.ExecuteStoredProcedureAsync(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseConnection,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}},System.Collections.Generic.IDictionary{System.String,System.Object},System.Func{Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult,System.Threading.Tasks.Task})">
+            <summary>
+            Executes a store procedure against the database.
+            </summary>
+            <param name="connection">The database connection.</param>
+            <param name="procedureName">The store procedure name.</param>
+            <param name="parameters">The set of input parameters for the procedure.</param>
+            <param name="outputParameters">The set of output parameters for the procedure.</param>
+            <param name="resultCallback">A callback action to be executed to consume the database result. The procedure results must be fully consumed before the output parameter values are accessed.</param>
+            <returns>The Task with stored procedure execution result.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.GetDatabaseQueryBuilder">
+            <summary>
+             Returns SQL server implementation of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQueryBuilder"/>.
+            </summary>
+            <returns>Returns a specific implementation of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQueryBuilder"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.CreateInputParameters(System.Data.SqlClient.SqlCommand,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+            <summary>
+            Creates the input parameters for a SQL command.
+            </summary>
+            <param name="command">The SQL command.</param>
+            <param name="inputParameters">The input parameter collection.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.CreateOutputParameters(System.Data.SqlClient.SqlCommand,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+            <summary>
+            Creates the output parameters for a SQL command.
+            </summary>
+            <param name="command">The SQL command.</param>
+            <param name="outputParameters">The output parameter collection.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.ReadOutputParameters(System.Data.SqlClient.SqlCommand,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Reads the output parameters from a  SQL command.
+            </summary>
+            <param name="command">The SQL command.</param>
+            <param name="outputParameters">The output parameter dictionary.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.GetDatabaseConnection(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseConnection)">
+            <summary>
+            Gets the SQL connection based on the instance of the interface connection.
+            </summary>
+            <param name="connection">The database connection.</param>
+            <returns>A SQL server database connection.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.AddReturnValueParameter(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            Adds the return parameter to a SQL command.
+            </summary>
+            <param name="sqlCommand">The SQL command.</param>
+            <returns>The SQL return parameter added to the command.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.GetCallerName">
+            <summary>
+            Retrieves the name of the business method higher in stack which indirectly calls this method.
+            </summary>
+            <returns>String with the class name and method name.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.TryParseDataAccessConfigurationValue(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Int32@)">
+            <summary>
+            Parses integer values from the data access configuration.
+            </summary>
+            <param name="configurationDictionary">The data access configuration dictionary.</param>
+            <param name="key">The configuration key.</param>
+            <param name="value">The value for the configuration.</param>
+            <returns>True if the value was parsed correctly; otherwise, false.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.TryParseDataAccessConfigurationValue(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Boolean@)">
+            <summary>
+            Parses boolean values from the data access configuration.
+            </summary>
+            <param name="configurationDictionary">The data access configuration dictionary.</param>
+            <param name="key">The configuration key.</param>
+            <param name="value">The value for the configuration.</param>
+            <returns>True if the value was parsed correctly; otherwise, false.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.ExecuteQuery(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseConnection,Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseQuery,System.Boolean)">
+            <summary>
+            Executes a command against the database.
+            </summary>
+            <param name="connection">The database connection in which to execute the command.</param>
+            <param name="query">The query to be executed against the database.</param>
+            <param name="isAsync">True if the query should be executed asynchronous.</param>
+            <returns>The database result object containing the results for the executed command.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseProvider.ExecuteStoredProcedure(Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseConnection,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}},System.Collections.Generic.IDictionary{System.String,System.Object},System.Action{Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult},System.Func{Microsoft.Dynamics.Commerce.Runtime.Data.IDatabaseResult,System.Threading.Tasks.Task},System.Boolean)">
+            <summary>
+            Executes a store procedure against the database.
+            </summary>
+            <param name="connection">The database connection.</param>
+            <param name="procedureName">The store procedure name.</param>
+            <param name="parameters">The set of input parameters for the procedure.</param>
+            <param name="outputParameters">The set of output parameters for the procedure.</param>
+            <param name="syncResultCallback">A callback action to be executed to consume the database result. The procedure results must be fully consumed before the output parameter values are accessed.</param>
+            <param name="asyncResultCallback">An async callback action to be executed to consume the database result. The procedure results must be fully consumed before the output parameter values are accessed.</param>
+            <param name="isAsync">True if the procedure should be executed asynchronous.</param>
+            <returns>The return value of the stored procedure.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseQueryBuilder">
+            <summary>
+            Represents a SQL server database query builder that can build final SQL syntax from the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseQueryParts"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseQueryBuilder.BuildCore(System.Text.StringBuilder,Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseQueryParts,System.Globalization.CultureInfo)">
+            <summary>
+            Writes parts to a builder based on a specified culture.
+            </summary>
+            <param name="builder">A string builder which aggregates a final SQL query.</param>
+            <param name="parts">A database query parts.</param>
+            <param name="builderCulture">A string builder culture.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseQueryBuilder.BuildDenseRankPart(System.Text.StringBuilder,Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseQueryParts,Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseQueryBuilder.ResultLimitationMode)">
+            <summary>
+            Adds the dense rank part to a string builder.
+            </summary>
+            <param name="builder">Builds a SQL query.</param>
+            <param name="parts">Defines parts required to build a complete query.</param>
+            <param name="limitationMode">Limitation mode for result.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseQueryBuilder.BuildOrderByPart(System.Text.StringBuilder,Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseQueryParts,Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerDatabaseQueryBuilder.ResultLimitationMode)">
+            <summary>
+            Adds order by clause to a string builder.
+            </summary>
+            <param name="builder">Builds a SQL query.</param>
+            <param name="parts">Defines parts required to build a complete query.</param>
+            <param name="limitationMode">Limitation mode for result.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerExtensibleEnumerationInitializer">
+            <summary>
+            Implements extensible enumeration initializer for SQLServer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerExtensibleEnumerationInitializer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerExtensibleEnumerationInitializer"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerExtensibleEnumerationInitializer.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerExtensibleEnumerationInitializer.DatabaseProvider">
+            <summary>
+            Gets or sets the database provider to read data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerExtensibleEnumerationInitializer.InitializeExtensibleEnumeration(System.Type)">
+            <summary>
+            Initializes an extensible enumeration class.
+            </summary>
+            <param name="extensibleEnumType">The type of extensible enumeration class.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerExtensibleEnumerationInitializer.PrepareData(System.Type)">
+            <summary>
+            Prepare the data to initialize a specific extensible enumeration type.
+            </summary>
+            <param name="extensibleEnumerationType">The extensible enumeration type to initialize.</param>
+            <returns>The data to initialize the extensible enumeration type.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerExtensibleEnumerationInitializer.AddToDataCache(System.Collections.Generic.Dictionary{System.String,System.Collections.ObjectModel.Collection{System.Collections.Generic.KeyValuePair{System.String,System.Int32}}},System.String,System.String,System.Int32)">
+            <summary>
+            Add a record to the current data dictionary.
+            </summary>
+            <param name="data">The data dictionary to add records to.</param>
+            <param name="type">The name of the extensible enumeration type.</param>
+            <param name="name">The name of the extensible enumeration member.</param>
+            <param name="value">The value of the extensible enumeration member.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerExtensibleEnumerationInitializer.InitializeExtensibleEnum(System.Type)">
+            <summary>
+            Initialize a specific extensible enumeration type and return all of its members.
+            </summary>
+            <param name="extensibleEnumerationType">The extensible enumeration type.</param>
+            <returns>All initialized members.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerTransientErrorDetectionStrategy">
+            <summary>
+            A SQL Server specific error detection strategy for transient errors that can be safely retried.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlServerTransientErrorDetectionStrategy.IsTransient(System.Exception)">
+            <summary>
+            Determines whether the specified exception represents a transient failure that can be compensated by a retry.
+            </summary>
+            <param name="exception">The exception.</param>
+            <returns>A value indicating whether the specified exception could be retried.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlTypeHelper">
+            <summary>
+            Helper class for type conversions.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlTypeHelper.MinSqlDateTimeOffset">
+            <summary>
+            Minimum value of <see cref="T:System.DateTimeOffset"/> that can be stored in SQL server.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlTypeHelper.MaxSqlDateTimeOffset">
+            <summary>
+            Maximum value of <see cref="T:System.DateTimeOffset"/> that can be stored in SQL server.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlTypeHelper.CachedEmptySystemTables">
+            <summary>
+            Cached schema data table collection of SQL Server User Defined Table Type(UDTT).
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlTypeHelper.ConvertToSystemDataTable(System.Data.SqlClient.SqlConnection,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable)">
+            <summary>
+            Converts a <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable"/> into a <see cref="T:System.Data.DataTable"/>.
+            </summary>
+            <param name="connection">The database connection.</param>
+            <param name="dataTable">The data table to be converted.</param>
+            <returns>The converted data table.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlTypeHelper.HandleException(System.Exception,System.String)">
+            <summary>
+            Maps a SQL server exception to <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.DatabaseException"/> and throws it.
+            </summary>
+            <param name="exception">The SQL exception.</param>
+            <param name="operation">The operation associated with the exception.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlTypeHelper.ConvertToManagedValue(System.Object)">
+            <summary>
+            Converts a SQL Server value into a managed value.
+            </summary>
+            <param name="databaseValue">The SQL server value.</param>
+            <returns>The managed value.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlTypeHelper.ConvertToDatabaseValue(System.Object)">
+            <summary>
+            Converts a managed value into SQL Server value.
+            </summary>
+            <param name="managedValue">The managed value.</param>
+            <returns>The SQL Server value.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlTypeHelper.TryGetTable(System.Object,Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable@)">
+            <summary>
+            Tries to convert <paramref name="value"/> into a <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable"/>.
+            </summary>
+            <param name="value">The value object to be tested.</param>
+            <param name="table">The output of value as a <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable"/>.</param>
+            <returns>Whether <paramref name="value"/> can be converted to a <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Data.Types.DataTable"/> or not.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlTypeHelper.IsSchemaMismatchedError(System.Data.SqlClient.SqlException)">
+            <summary>
+            Gets a flag indicating whether the SQL exception object contains database schema mismatched error type.
+            </summary>
+            <param name="exception">The SQL exception object.</param>
+            <returns>A boolean value.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlTypeHelper.GetConvertedSystemDataTable(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            Gets system data table contains schema definition only.
+            </summary>
+            <param name="connection">The SQL connection object.</param>
+            <param name="dataTableName">The name of the data table.</param>
+            <returns>The system data table contains schema definition.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.SqlTypeHelper.GetClrType(System.String)">
+            <summary>
+            Gets the matched CLR type for a given SQL database type.
+            </summary>
+            <param name="sqlDbType">The SQL database type.</param>
+            <returns>A CLR type.</returns>
+        </member>
+    </members>
+</doc>

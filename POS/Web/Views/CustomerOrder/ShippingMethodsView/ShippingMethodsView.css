@@ -1,0 +1,5 @@
+﻿.deliveryModesGrid {
+    /* The subtraction is needed to account for the size of the Shipping Methods label and header.
+        If the label is taller than the amount of pixels subtracted here, then some of the delivery modes may be cutoff */
+    height: calc(100% - 120px);
+}

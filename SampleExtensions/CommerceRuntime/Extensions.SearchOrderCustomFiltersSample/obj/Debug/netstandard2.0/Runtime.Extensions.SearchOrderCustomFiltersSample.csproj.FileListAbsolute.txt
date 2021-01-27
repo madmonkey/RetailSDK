@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SearchOrderCustomFiltersSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SearchOrderCustomFiltersSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SearchOrderCustomFiltersSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SearchOrderCustomFiltersSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SearchOrderCustomFiltersSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SearchOrderCustomFiltersSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SearchOrderCustomFiltersSample\obj\Debug\netstandard2.0\Runtime.Extensions.SearchOrderCustomFiltersSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SearchOrderCustomFiltersSample\obj\Debug\netstandard2.0\Runtime.Extensions.SearchOrderCustomFiltersSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SearchOrderCustomFiltersSample\obj\Debug\netstandard2.0\Runtime.Extensions.SearchOrderCustomFiltersSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SearchOrderCustomFiltersSample\obj\Debug\netstandard2.0\Runtime.Extensions.SearchOrderCustomFiltersSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SearchOrderCustomFiltersSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.SearchOrderCustomFiltersSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SearchOrderCustomFiltersSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.SearchOrderCustomFiltersSample.pdb

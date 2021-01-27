@@ -1,0 +1,428 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector">
+            <summary>
+            The Customer Insights service connector class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector" /> class.
+            </summary>
+            <param name="applicationId">The application Id.</param>
+            <param name="secret">The secret.</param>
+            <param name="authority">The authority.</param>
+            <param name="serviceUrl">The service Url.</param>
+            <param name="serviceResourceId">The service resource Id.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector.RestClient">
+            <summary>
+            Gets or sets the Rest client for the connector.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector.GetCustomerTimelineItems(System.String,System.String,System.String)">
+            <summary>
+            Gets the customer timeline items.
+            </summary>
+            <param name="customerId">The customer Id.</param>
+            <param name="alternativeCustomerIdFieldName">The alternative customer Id field name.</param>
+            <param name="instanceId">The Customer Insights service instance Id.</param>
+            <returns>A collection of customer timeline items.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector.GetCustomerMeasurements(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.String,System.String)">
+            <summary>
+            Gets the customer measurements.
+            </summary>
+            <param name="customerIds">The customer Id list.</param>
+            <param name="measurementNames">The customer measurement names.</param>
+            <param name="alternativeCustomerIdFieldName">The alternative customer Id field name.</param>
+            <param name="instanceId">The Customer Insights service instance Id.</param>
+            <returns>A collection of customer measurements.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector.GetAllEnvironments">
+            <summary>
+            Gets all environments.
+            </summary>
+            <returns>The environment list.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector.GetEnvironmentByName(System.String)">
+            <summary>
+            Gets the environment by environment name.
+            </summary>
+            <param name="environmentName">The environment name.</param>
+            <returns>The environment object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector.GetCustomerMeasurementNames(System.String)">
+            <summary>
+            Gets the customer measurement names.
+            </summary>
+            <param name="instanceId">The instance Id.</param>
+            <returns>The collection of customer measurement names.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector.GetCustomerMeasurementSchemas(System.String)">
+            <summary>
+            Gets the customer measurement schemas.
+            </summary>
+            <param name="instanceId">The instance Id.</param>
+            <returns>The collection of customer measurement schemas.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector.GetAllEntities(System.String)">
+            <summary>
+            Gets all entities.
+            </summary>
+            <param name="instanceId">The instance Id.</param>
+            <returns>The entities list.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector.ValidateAlternativeCustomerIdFieldName(System.String,System.String,System.String)">
+            <summary>
+            Validates the field name of the alternative customer Id.
+            </summary>
+            <param name="alternativeCustomerIdFieldName">The alternative customer Id field name.</param>
+            <param name="instanceId">The Customer Insights service instance Id.</param>
+            <param name="customerIdToVerify">The customer Id to verify.</param>
+            <returns>The value indicates whether the alternative customer Id is valid or not.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector.TestServiceConnection">
+            <summary>
+            Tests the service connection.
+            </summary>
+            <returns>The value indicates whether the connection is successful.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.CustomerInsightsServiceConnector.Dispose(System.Boolean)">
+            <summary>
+            Dispose current object base on state.
+            </summary>
+            <param name="disposing">Whether to dispose resource.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.ICustomerInsightsServiceConnector">
+            <summary>
+            The interface of the Customer Insights service connector.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.ICustomerInsightsServiceConnector.GetAllEnvironments">
+            <summary>
+            Gets all environments.
+            </summary>
+            <returns>The environment list.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.ICustomerInsightsServiceConnector.GetEnvironmentByName(System.String)">
+            <summary>
+            Gets the environment by environment name.
+            </summary>
+            <param name="environmentName">The environment name.</param>
+            <returns>The environment object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.ICustomerInsightsServiceConnector.GetAllEntities(System.String)">
+            <summary>
+            Gets all entities.
+            </summary>
+            <param name="instanceId">The instance Id.</param>
+            <returns>The entities list.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.ICustomerInsightsServiceConnector.GetCustomerTimelineItems(System.String,System.String,System.String)">
+            <summary>
+            Gets the customer timeline items.
+            </summary>
+            <param name="customerId">The customer Id.</param>
+            <param name="alternativeCustomerIdFieldName">The alternative customer Id field name.</param>
+            <param name="instanceId">The Customer Insights service instance Id.</param>
+            <returns>A collection of customer timeline items.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.ICustomerInsightsServiceConnector.GetCustomerMeasurements(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.String,System.String)">
+            <summary>
+            Gets the customer measurements.
+            </summary>
+            <param name="customerIds">The customer Id list.</param>
+            <param name="measurementNames">The customer measurement names.</param>
+            <param name="alternativeCustomerIdFieldName">The alternative customer Id field name.</param>
+            <param name="instanceId">The Customer Insights service instance Id.</param>
+            <returns>A collection of customer measurements.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.ICustomerInsightsServiceConnector.GetCustomerMeasurementNames(System.String)">
+            <summary>
+            Gets the customer measurement names.
+            </summary>
+            <param name="instanceId">The instance Id.</param>
+            <returns>The collection of customer measurement names.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.ICustomerInsightsServiceConnector.GetCustomerMeasurementSchemas(System.String)">
+            <summary>
+            Gets the customer measurement schemas.
+            </summary>
+            <param name="instanceId">The instance Id.</param>
+            <returns>The collection of customer measurement schemas.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.ICustomerInsightsServiceConnector.ValidateAlternativeCustomerIdFieldName(System.String,System.String,System.String)">
+            <summary>
+            Validates the field name of the alternative customer Id.
+            </summary>
+            <param name="alternativeCustomerIdFieldName">The alternative customer Id field name.</param>
+            <param name="instanceId">The Customer Insights service instance Id.</param>
+            <param name="customerIdToVerify">The customer Id to verify.</param>
+            <returns>The value indicates whether the alternative customer Id is valid or not.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.ICustomerInsightsServiceConnector.TestServiceConnection">
+            <summary>
+            Tests the service connection.
+            </summary>
+            <returns>The value indicates whether the connection is successful.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.IRestClient">
+            <summary>
+            The REST client interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.IRestClient.GetAsync(System.Uri,System.Threading.CancellationToken)">
+            <summary>
+            The get method.
+            </summary>
+            <param name="uri">The uri.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The rest result body.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Attribute">
+            <summary>
+            The attribute class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Attribute.Name">
+            <summary>
+            Gets or sets the name of the attribute.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Attribute.FriendlyName">
+            <summary>
+            Gets or sets the of friendly name the attribute.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Attribute.BaseName">
+            <summary>
+            Gets or sets the base name of the attribute.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Attribute.DataType">
+            <summary>
+            Gets or sets the data type of the attribute.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Entity">
+            <summary>
+            The entity class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Entity.Name">
+            <summary>
+            Gets or sets the name of the entity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Entity.QualifiedEntityName">
+            <summary>
+            Gets or sets the qualified entity name of the entity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Entity.DataSourceName">
+            <summary>
+            Gets or sets the data source name of the entity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Entity.FriendlyName">
+            <summary>
+            Gets or sets the friendly name of the entity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Entity.DataSourceId">
+            <summary>
+            Gets or sets the data source Id of the entity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Entity.EntityType">
+            <summary>
+            Gets or sets the entity type of the entity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Entity.Attributes">
+            <summary>
+            Gets or sets the attributes of the entity.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Environment">
+            <summary>
+            Class for Customer Insights environment.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Environment.InstanceId">
+            <summary>
+            Gets or sets the instance Id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Environment.TenantId">
+            <summary>
+            Gets or sets the tenant Id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Environment.TenantName">
+            <summary>
+            Gets or sets the tenant name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Environment.ScaleUnitUri">
+            <summary>
+            Gets or sets the scale unit URI.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Environment.Name">
+            <summary>
+            Gets or sets the name of the environment.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Environment.InstanceType">
+            <summary>
+            Gets or sets the instance type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.Environment.Region">
+            <summary>
+            Gets or sets the region of the environment.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.MeasurementAttribute">
+            <summary>
+            Class for Customer Insights measurement attribute.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.MeasurementAttribute.Name">
+            <summary>
+            Gets or sets the name of the measurement.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.MeasurementAttribute.DisplayName">
+            <summary>
+            Gets or sets the display name of the measurement.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.MeasurementDefinition">
+            <summary>
+            Class for Customer Insights measurement definition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.MeasurementDefinition.MeasurementType">
+            <summary>
+            Gets or sets the measurement type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.MeasurementDefinition.Attribute">
+            <summary>
+            Gets or sets the attribute of the measurement.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.MeasurementSchema">
+            <summary>
+            Class for Customer Insights measurement schema.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.MeasurementSchema.Name">
+            <summary>
+            Gets or sets the name of the measurement.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.MeasurementSchema.DisplayName">
+            <summary>
+            Gets or sets the display name of the measurement.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.MeasurementSchema.Definition">
+            <summary>
+            Gets or sets the definition of the measurement.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.UnifiedActivity">
+            <summary>
+            The unified activity class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.UnifiedActivity.ActivityId">
+            <summary>
+            Gets or sets the unique identifier of this activity in Customer Insights system.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.UnifiedActivity.CustomerId">
+            <summary>
+            Gets or sets the customer identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.UnifiedActivity.Description">
+            <summary>
+            Gets or sets the description of the activity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.UnifiedActivity.StartDateTime">
+            <summary>
+            Gets or sets the activity start time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.UnifiedActivity.Title">
+            <summary>
+            Gets or sets the title.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.UnifiedActivity.ActivityType">
+            <summary>
+            Gets or sets the activity type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.RestClient">
+            <summary>
+            The REST client class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.RestClient.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.RestClient" /> class.
+            </summary>
+            <param name="applicationId">The application Id.</param>
+            <param name="secret">The secret.</param>
+            <param name="authority">The authority.</param>
+            <param name="serviceUrl">The service Url.</param>
+            <param name="serviceResourceId">The service resource Id.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.RestClient.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.RestClient.GetAsync(System.Uri,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.RestClient.Dispose(System.Boolean)">
+            <summary>
+            Dispose current object base on state.
+            </summary>
+            <param name="disposing">Whether to dispose resource.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.RestClient.CreateHttpRequestMessageAsync(System.Net.Http.HttpMethod,System.Uri)">
+            <summary>
+            Creates the HTTP request message.
+            </summary>
+            <param name="method">The method.</param>
+            <param name="requestUri">The request URI.</param>
+            <returns>The request message.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.RestClient.CustomerInsightsHttpTransientErrorsStrategy">
+            <summary>
+            Implements a strategy that detect Customer Insights transient errors for retry.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.RestClient.CustomerInsightsHttpTransientErrorsStrategy.IsTransient(System.Exception)">
+            <summary>
+            Detects whether the exception is transient or not.
+            </summary>
+            <param name="exception">The exception.</param>
+            <returns>The value indicating whether the exception is transient or not.</returns>
+        </member>
+    </members>
+</doc>

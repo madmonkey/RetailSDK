@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CheckedListInputDialog</title>
+    <link href="CheckedListInputDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="checkedListInputDialog" data-bind="customControlInternal: 'checkedListInputDialog'">
+        <div data-bind="dialog: {
+            title: title,
+            subTitle: subTitle,
+            visible: visible,
+            buttonClick: buttonClickHandler,
+            closeOnEscButton:true,
+            buttons: [
+                { label: Commerce.ViewModelAdapter.getResourceString('string_75'), operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, cssClass: 'okButton', isPrimary:true },
+                { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton' },
+            ],
+        },
+        axBubbleAttr: 'checkedListInputDialog_checkedListInputDialog'">
+            <!-- dialog content -->
+            <div class="scrollY stretch">
+                <div class="col" data-bind="foreach: items, axBubbleAttr: 'checkedListInputDialog_checkedList'">
+                    <div class="row padTop8 padBottom8">
+                        <input type="checkbox" data-bind="click: $root.checkboxClickHandler.bind($root), attr: { 'aria-label': key }" />
+                        <div class="h4" data-bind="text: key"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

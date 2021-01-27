@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyName>$(AssemblyNamePrefix).SampleExtensions.IntegrationTests</AssemblyName>
+    <RootNamespace>Contoso.SampleExtensions.IntegrationTests</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <CodeSigningEnabled>false</CodeSigningEnabled>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <Authors>Dynamics Retail and Commerce team</Authors>
+    <Company>Microsoft Corporation</Company>
+    <Product>Microsoft Dynamics 365 Commerce</Product>
+    <PackageLicenseUrl>http://www.microsoft.com/license</PackageLicenseUrl>
+    <RepositoryUrl>https://msazure.visualstudio.com/D365/Retail%20Team/_git/Retail-Rainier-Samples</RepositoryUrl>
+    <PackageTags>SampleExtensions;IntegrationTest</PackageTags>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommerceRuntime\Extensions.StoreHoursSample\Runtime.Extensions.StoreHoursSample.csproj" />
+    <ProjectReference Include="..\..\RetailProxy\RetailProxy.Extensions.StoreHoursSample\Proxies.RetailProxy.Extensions.StoreHoursSample.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Composition" Version="1.2.0" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Tests.Utilities" Version="$(ToolsRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTransform" Version="15.1.0" />
+  </ItemGroup>
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Inventory Document List View Phone</title>
+    <link href="InventoryDocumentListView.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment inventoryDocumentListView" data-bind="with: viewModel">
+        <div class="row height100Percent">
+            <div class="col grow flexBasis100Percent" data-bind="visible: !isPhoneDetailVisible()">
+                <div data-bind="pivot: { onselectionchanged: $root.switchDocumentStatusFilter.bind($root), headerItemsAxBubbleAttr: 'inventoryDocumentListView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }"><!--Main content-->
+                    <div id="activeInventoryDocumentListPivotItem" data-bind="pivotItem: { headerResx: 'string_12603' }"><!--Active-->
+                        <!-- ko if: isInActiveView() || isActiveDatalistLoaded() -->
+                        <div id="activeInventoryDocumentList" class="dataList" data-bind="dataList: {
+
+                                defaultListType: Commerce.Controls.DataList.ListType.List,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                selectionChanged: onSelectionChanged,
+                                autoSelectFirstItem: false,
+                                autoFocusFirstItem: true,
+                                ariaLabelResx: 'string_1877', /* Line items */
+                                incrementalDataSource: {
+                                    dataManager: $data,
+                                    callerMethod: getActiveInventoryDocumentsAsync,
+                                    pageSize: 80,
+                                    reloadCallBack: reloadActiveInventoryDocumentsCallback
+                                },
+                                columns: activeInventoryDocumentColumns
+                            },
+                            axBubbleAttr: 'activeInventoryDocumentListView_documents'">
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <div id="draftInventoryDocumentListPivotItem" data-bind="pivotItem: { headerResx: 'string_12608' }"><!--Draft-->
+                        <!-- ko if: isInDraftView() || isDraftDatalistLoaded() -->
+                        <div id="draftInventoryDocumentList" class="dataList" data-bind="dataList: {
+                            defaultListType: Commerce.Controls.DataList.ListType.List,
+                            selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                            selectionChanged: onSelectionChanged,
+                            autoSelectFirstItem: false,
+                            autoFocusFirstItem: true,
+                            ariaLabelResx: 'string_1877', /* Line items */
+                            incrementalDataSource: {
+                                dataManager: $data,
+                                callerMethod: getDraftInventoryDocumentsAsync,
+                                pageSize: 80,
+                                reloadCallBack: reloadDraftInventoryDocumentsCallback
+                            },
+                            columns: draftInventoryDocumentColumns
+                            },
+                            axBubbleAttr: 'inventoryDocumentListView_draftDocuments'">
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <div id="completeInventoryDocumentListPivotItem" data-bind="pivotItem: { headerResx: 'string_12604' }"><!--Complete-->
+                        <!-- ko if: isInCompleteView() || isCompleteDatalistLoaded() -->
+                        <div id="completeInventoryDocumentList" class="dataList" data-bind="dataList: {
+                                defaultListType: Commerce.Controls.DataList.ListType.List,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                selectionChanged: onSelectionChanged,
+                                autoSelectFirstItem: false,
+                                autoFocusFirstItem: true,
+                                ariaLabelResx: 'string_1877', /* Line items */
+                                incrementalDataSource: {
+                                    dataManager: $data,
+                                    callerMethod: getCompleteInventoryDocumentsAsync,
+                                    pageSize: 80,
+                                    reloadCallBack: reloadCompleteInventoryDocumentsCallback
+                                },
+                                columns: completeInventoryDocumentColumns
+                            },
+                            axBubbleAttr: 'completeInventoryDocumentListView_documents'">
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header details tab -->
+            <div id="detailsCol" class="col grow height100Percent" data-bind="visible: isPhoneDetailVisible()">
+                <div class="col grow height100Percent scrollY primaryPanelBackgroundColor" data-bind="slideVisible: { isShowed: isPhoneDetailVisible() }">
+                    <!-- ko if: isDocumentSelected -->
+                    <h2 class="marginLeft12 marginRight12 marginTop8 marginBottom8" data-bind="text: selectedDocumentOrderNumber"></h2>
+                    <div class="marginLeft12 marginRight12 pad12 primaryPanelBackgroundColor">
+                        <!-- ko if: isSelectedDocumentErrorPopulated() -->
+                        <div class="col marginBottom20">
+                            <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: toggleDetailsPaneErrorMessage, axBubbleAttr: 'inventoryDocumentListView_detailsPaneToggleErrorMessage'">
+                                <h6 class="secondaryFontColor textTransformNone" data-bind="resx: { textContent: 'string_12641' }"></h6><!--ERROR DETAILS-->
+                                <div class="grow"></div>
+                                <div class="col center width32 height16 positionRelative">
+                                    <!-- ko if: !isDetailsPaneErrorMessageExpanded() -->
+                                    <div class="h2 iconChevronDown icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12423' }"></div><!-- Details section, unexpanded -->
+                                    <!-- /ko -->
+                                    <!-- ko if: isDetailsPaneErrorMessageExpanded() -->
+                                    <div class="h2 iconChevronUp icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12422' }"></div><!-- Details -->
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                            <!-- ko if: isDetailsPaneErrorMessageExpanded() -->
+                            <div class="row marginTop12">
+                                <div class="h4 iconWarning icon-15x15 errorColor marginRight4 marginTop4" data-bind="resx: { ariaLabel: 'string_12423' }"></div><!-- Details section, unexpanded -->
+                                <div class="h4" data-bind="text: selectedDocument().OperationResultMessage"></div>
+                            </div>
+                            <!-- /ko -->
+                        </div>
+                        <!-- /ko -->
+
+                        <div data-bind="template: { name: 'inventoryDocumentHeaderDetailsTemplate',
+                            data: {
+                                'onToggleDetailsPaneQuantity': onToggleDetailsPaneQuantity.bind($data),
+                                'isDetailsPaneQuantityExpanded': isDetailsPaneQuantityExpanded(),
+                                'quantityNotStarted': selectedDocumentQuantityNotStarted(),
+                                'quantityInProgress': selectedDocumentWorkInProgressQuantity(),
+                                'quantityReceived': selectedDocumentQuantityReceived(),
+                                'quantityShipped': selectedDocumentQuantityShipped(),
+                                'quantityOrdered': selectedDocumentQuantityOrdered(),
+                                'quantityCanceled': selectedDocumentQuantityCanceled(),
+                                'quantityOverReceived': selectedDocumentQuantityOverReceived(),
+                                'quantityOverShipped': selectedDocumentQuantityOverShipped(),
+                                'quantityDecimalPrecision': selectedDocumentDecimalPrecision(),
+                                'showQuantitySection': isDetailsPaneQuantitySectionVisible(),
+                                'showExpandableQuantitySection': isDetailsPaneQuantitySectionVisible(),
+                                'isPurchaseOrder': isSelectedDocumentPurchaseOrder(),
+                                'sender': selectedDocumentSender(),
+                                'senderDetails': selectedDocumentSenderDetails(),
+                                'receiver': selectedDocumentReceiver(),
+                                'receiverDetails': selectedDocumentReceiverDetails(),
+                                'deliveryMode': selectedDocumentDeliveryMode(),
+                                'isInboundOperation': isInboundOperation(),
+                                'shipDate': selectedDocumentShipDate(),
+                                'receiveDate': selectedDocumentReceiveDate(),
+                                'displayInDialog': false,
+                            }}">
+                        </div>
+
+                        <!-- Notes -->
+                        <div class="marginBottom20">
+                            <!-- ko if: isSelectedDocumentNotePopulated -->
+                            <h4 class="secondaryFontColor marginBottom4" data-bind="resx: { textContent: 'string_12440' }"></h4><!--Notes-->
+                            <h4 class="primaryFontColor" data-bind="text: selectedDocument().Note"></h4>
+                            <!-- /ko -->
+                            <!-- ko if: !isSelectedDocumentNotePopulated() && isInActiveView() -->
+                            <h4 class="secondaryFontColor marginBottom4" data-bind="resx: { textContent: 'string_12440' }"></h4><!--Notes-->
+                            <!-- /ko -->
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

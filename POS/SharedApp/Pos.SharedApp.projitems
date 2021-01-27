@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="PosExtensionsContent">
+    <Content Include="$(MsBuildThisFileDirectory)Extensions\**\*.js">
+      <DependentUpon>Extensions\%(RecursiveDir)%(Filename).ts</DependentUpon>
+      <Link>Extensions\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <InProject>True</InProject>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(MsBuildThisFileDirectory)Extensions\**\*.html">
+      <Link>Extensions\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <InProject>True</InProject>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(MsBuildThisFileDirectory)Extensions\**\*.jpg">
+      <Link>Extensions\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <InProject>True</InProject>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(MsBuildThisFileDirectory)Extensions\**\*.png">
+      <Link>Extensions\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <InProject>True</InProject>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(MsBuildThisFileDirectory)Extensions\**\*.css">
+      <Link>Extensions\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <InProject>True</InProject>
+      <Visible>False</Visible>
+    </Content>
+    <None Include="$(MsBuildThisFileDirectory)Extensions\**\*.scss">
+      <Link>Extensions\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <InProject>True</InProject>
+      <Visible>False</Visible>
+    </None>
+    <Content Include="$(MsBuildThisFileDirectory)Extensions\**\*.min.css.map">
+      <DependentUpon>Extensions\%(RecursiveDir)%(Filename).scss</DependentUpon>
+      <Link>Extensions\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <InProject>True</InProject>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(MsBuildThisFileDirectory)Extensions\**\*.json">
+      <Link>Extensions\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <InProject>True</InProject>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(MsBuildThisFileDirectory)Extensions\**\*.resjson">
+      <Link>Extensions\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <InProject>True</InProject>
+      <Visible>False</Visible>
+    </Content>
+  </ItemGroup>
+</Project>

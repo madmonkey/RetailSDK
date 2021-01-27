@@ -1,0 +1,51 @@
+﻿{
+  "$schema": "../schemas/manifestSchema.json",
+  "name": "Pos_Warranty_And_Return_Sample",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "7.2.1746.0",
+  "components": {
+    "resources": {
+      "supportedUICultures": [ "en-US" ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources/Strings",
+      "stringResourcesFileName": "resourceStrings.resjson"
+    },
+    "extend": {
+      "views": {
+        "ShowJournalView": {
+          "appBarCommands": [
+            {
+              "modulePath": "ViewExtensions/ShowJournal/BuyWarrantyCommand"
+            }
+          ],
+          "transactionListConfiguration": { "modulePath": "ViewExtensions/ShowJournal/TransactionListColumns" }
+        }
+      },
+      "triggers": [
+        {
+          "triggerType": "PreReturnTransaction",
+          "modulePath": "TriggerHandlers/ReturnPolicyTrigger"
+        }
+      ]
+    },
+    "create": {
+      "views": [
+        {
+          "title": "Warranty enabled products",
+          "pageName": "WarrantyEnabledProductsView",
+          "phonePageName": "WarrantyEnabledProductsView",
+          "viewDirectory": "Views/Warranty/",
+          "viewControllerPath": "Views/Warranty/WarrantyEnabledProductsView"
+        },
+        {
+          "title": "Buy Warranty",
+          "pageName": "BuyWarrantyView",
+          "phonePageName": "BuyWarrantyView",
+          "viewDirectory": "Views/Warranty/",
+          "viewControllerPath": "Views/Warranty/BuyWarrantyView"
+        }
+      ]
+    }
+  }
+}

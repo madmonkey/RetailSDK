@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Help Self Packing Item Template</title>
+</head>
+<body>
+    <script id="SelfPackingHelpUnpacked" type="text/html">
+        <button class="width48 height48 pad0 headerBackgroundColor headerBackgroundColorHover center"
+                data-bind="click: openHelpPane, resx: { ariaLabel: 'string_7' /* Help */ },
+                attr: {title: Commerce.ViewModelAdapter.getResourceString('string_7'), /* Help */ },
+                axBubbleAttr: 'headerSplitView_helpButton'">
+            <div class="iconHelp buttonIcon height20">
+            </div>
+        </button>
+    </script>
+    <script id="SelfPackingHelpPacked" type="text/html">
+        <button class="row width240 height48 pad0"
+                data-bind="click: openHelpPane, resx: { ariaLabel: 'string_7' /* Help */ }, axBubbleAttr: 'headerSplitView_helpButton'">
+            <div class="iconHelp buttonIcon height20 margin12">
+            </div>
+            <div class="grow col marginLeft8 padTop12">
+                <div class="h4 row" data-bind="resx: { textContent: 'string_7' /* Help */ }"></div>
+            </div>
+        </button>
+    </script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SettingsView</title>
+</head>
+<body>
+    <div class="fragment settingsView" data-bind="with: viewModel">
+        <div class="section main row marginLeft16" data-bind="resx: { ariaLabel: 'string_4454' }">
+            <!-- Main content -->
+            <!-- About -->
+            <div class="marginLeft4" data-bind="sectionWrapper: {headerResx: 'string_7402' }">
+                <div class="col width320">
+                    <div>
+                        <label data-bind="text: applicationName"></label>
+                    </div>
+                    <div>
+                        <label data-bind="text: applicationPublisher"></label>
+                    </div>
+                    <div>
+                        <label data-bind="text: applicationVersion"></label>
+                    </div>
+                    <!-- ko if: isBuildDateAvailable -->
+                    <div>
+                        <label data-bind="text: buildDate"></label>
+                    </div>
+                    <!-- /ko -->
+                    <div class="marginTop12" data-bind="visible: !Commerce.Session.instance.isLoggedOn">
+                        <div class="h4 marginBottom12" data-bind="resx: { textContent: 'string_1422' }">Reset application</div>
+                        <button id="resetApplicationButton" class="primaryButton"
+                                data-bind="resx: { textContent: 'string_1423' }, click: resetApplicationHandlerAsync, axBubbleAttr: 'settingsView_resetApplicationButton'">
+                            Reset
+                        </button>
+                        <label class="marginTop12" data-bind="resx: { textContent: 'string_1424' }"></label>
+                    </div>
+                    <div>
+                        <a class="h4 marginTop12 wrapText" target="_blank" href="https://lcs.dynamics.com/Logon/Legal" data-bind="resx: { textContent: 'string_7425', ariaLabel: 'string_7425' }">Microsoft Legal terms</a>
+                    </div>
+                    <div>
+                        <a class="h4 marginTop12 wrapText" target="_blank" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bind="resx: { textContent: 'string_7426', ariaLabel: 'string_7426' }">Privacy and Cookies</a>
+                    </div>
+                    <div>
+                        <a class="h4 marginTop12 wrapText" target="_blank" href="https://go.microsoft.com/fwlink/p/?linkid=857875" data-bind="resx: { textContent: 'string_7427', ariaLabel: 'string_7427' }">Notice to End Users</a>
+                    </div>
+                    <!-- ko ifnot: Commerce.StringExtensions.isEmptyOrWhitespace(legalTermsUrl()) -->
+                    <div>
+                        <a class="h4 marginTop12 wrapText" target="_blank" data-bind="attr: { href: legalTermsUrl }, resx: { textContent: 'string_7423', ariaLabel: 'string_7423' }">Your organization's legal terms</a>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko ifnot: Commerce.StringExtensions.isEmptyOrWhitespace(privacyAndCookiesUrl()) -->
+                    <div>
+                        <a class="h4 marginTop12 wrapText" target="_blank" data-bind="attr: { href: privacyAndCookiesUrl }, resx: { textContent: 'string_7424', ariaLabel: 'string_7424' }">Your organization's Privacy and Cookies</a>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div> <!-- end about -->
+
+            <div class="gutter40x40" data-bind="visible: showDatabaseConnectionStatus"></div>
+
+            <div data-bind="visible: showDatabaseConnectionStatus">
+                <div data-bind="sectionWrapper: {headerResx: 'string_6600' }">
+                    <div class="col width320">
+                        <label data-bind="resx: { textContent: 'string_6603' }" for="connectionStatusBox">Connected</label>
+                        <div class="h4" id="connectionStatusBox" data-bind="text: connectionStatus, attr: { 'aria-label': connectionStatus }"></div>
+                        <div class="marginTop12">
+                            <button id="connectionButton" class="primaryButton"
+                                    data-bind="text: connectionButtonText, click: toggleConnection, axBubbleAttr: 'settingsView_connectionButton'">
+                                Disconnect
+                            </button>
+                        </div>
+                    </div>
+                </div> <!-- end database connection status -->
+            </div>
+
+            <div class="gutter40x40"></div>
+
+            <!-- Session -->
+            <div data-bind="sectionWrapper: {headerResx: 'string_7403' }">
+                <!-- Session information -->
+                <div class="col width320">
+                    <div class="marginBottom20">
+                        <label data-bind="resx: { textContent: 'string_7404' }"></label> <!-- Application session ID -->
+                        <div class="h4 selectable" data-bind="text: appSessionId"></div>
+                    </div>
+                    <div class="marginBottom20">
+                        <label data-bind="resx: { textContent: 'string_7405' }"></label> <!-- User session ID -->
+                        <div class="h4 selectable" data-bind="text: userSessionId"></div>
+                    </div>
+                    <div class="marginBottom20">
+                        <label data-bind="resx: { textContent: 'string_7419' }"></label> <!-- Screen layout ID -->
+                        <div class="h4 selectable" data-bind="text: layoutId"></div>
+                    </div>
+                    <div class="marginBottom20">
+                        <label data-bind="resx: { textContent: 'string_7420' }"></label> <!-- Layout resolution -->
+                        <div class="h4 selectable" data-bind="text: layoutResolution"></div>
+                    </div>
+                    <div class="marginBottom20">
+                        <label data-bind="resx: { textContent: 'string_7421' }"></label> <!-- App window resolution -->
+                        <div class="h4 selectable" data-bind="text: windowResolution"></div>
+                    </div>
+                </div>
+            </div> <!-- end Session -->
+            <!-- Memory usage -->
+            <div data-bind="sectionWrapper: {headerResx: 'string_7416' },  visible: isMemoryUsageVisible">
+                <!-- Memory usage information -->
+                <div class="col width320">
+                    <div class="marginBottom20">
+                        <label data-bind="resx: { textContent: 'string_7418' }"></label> <!-- App's memory usage limit -->
+                        <div class="h4 selectable" data-bind="text: appMemoryUsageLimit"></div>
+                    </div>
+                    <div class="marginBottom20">
+                        <label data-bind="resx: { textContent: 'string_7417' }"></label> <!-- App's current memory usage -->
+                        <div class="h4 selectable" data-bind="text: appCurrentMemoryUsage"></div>
+                    </div>
+                </div>
+            </div> <!-- end Memory usage -->
+
+            <div class="gutter40x40" data-bind="visible: isMemoryUsageVisible"></div>
+
+            <!-- Device Deactivation -->
+            <div class="width320" data-bind="visible: Commerce.Session.instance.isLoggedOn">
+                <div class="col grow" data-bind="userControl: { name: 'DeviceDeactivation' }"></div>
+            </div> <!-- end Device Deactivation -->
+
+            <div class="gutter40x40" data-bind="visible: Commerce.Session.instance.isLoggedOn"></div>
+
+            <!-- Task and Test Recorder -->
+            <div data-bind="sectionWrapper: {headerResx: 'string_10011' }, visible: areRecordingsAllowed">
+                <div class="width320">
+                    <div class="marginBottom12">
+                        <label data-bind="resx: { textContent: 'string_10054' }">
+                            Use Task recorder to record scenario walkthroughs and create files that can be used for tutorials and documentation. Use Test recorder to record scenarios and create files for automated user acceptance testing using Regression Suite Automation Tool (RSAT).
+                        </label>
+                    </div>
+                    <div id="taskRecorderButton" class="marginBottom12">
+                        <div data-bind="buttonBlock: {
+                        buttonClass: 'iconTrackers',
+                        click: activateTaskRecorder,
+                        labelTextResx: 'string_10056', /* Open task recorder */
+                        ariaLabelResx: 'string_10056', /* Open task recorder */
+                    }">
+                        </div>
+                    </div>
+                    <div id="testRecorderButton" class="marginBottom12">
+                        <div data-bind="buttonBlock: {
+                            buttonClass: 'iconTrackers',
+                            click: activateTestRecorder,
+                            enabled: isTestRecorderAllowed,
+                            labelTextResx: 'string_10401', /* Open test recorder */
+                            ariaLabelResx: 'string_10401', /* Open test recorder */
+                        }">
+                        </div>
+                        <label class="buttonBlockDisabledText" data-bind="visible: !isTestRecorderAllowed,
+                               resx: { textContent: 'string_10404' },
+                               css: { wrapTextWithoutHyphen: Commerce.Config.isPhone }">
+                            Test recorder can only be used in Cloud POS using Google Chrome.
+                        </label>
+                    </div>
+                </div>
+            </div> <!-- end Task Recorder -->
+
+            <div class="gutter40x40" data-bind="visible: areRecordingsAllowed"></div>
+
+            <!-- Developer mode -->
+            <div class="width352 scrollY no-shrink" data-bind="visible: isDeveloperModeEnabled">
+                <div class="marginRight20" data-bind="userControl: {
+                    name: 'DeveloperMode',
+                    options: {
+                    onDeveloperModeDisabled: $root.onDeveloperModeDisabled.bind($root),
+                    config: $root.config,
+                    controlHandle: developerModeUserControlID
+                    }
+                    }">
+                </div>
+            </div> <!-- end developer mode -->
+
+            <div class="gutter40x40" data-bind="visible: isDeveloperModeEnabled"></div>
+
+            <!-- Application help -->
+            <div class="marginRight20 marginBottom20" data-bind="sectionWrapper: {headerResx: 'string_7407' }, visible: Commerce.UI.Tutorial.instance.isTutorialModeEnabled()">
+                <div class="width360 padRight20 col">
+                    <div class="padBottom12"
+                            data-bind="toggleSwitch: {
+                            labelOn: 'string_7411',
+                            labelOff:'string_7412',
+                            checked: enableBubbleTour,
+                            onChange: toggleBubbleTour,
+                            title: 'string_7408' /* Show app tour after sign in */
+                        },
+                        axBubbleAttr: 'settingsView_showAppTourToggle'">
+                    </div>
+                </div>
+                <div class="marginTop12 padTop12">
+                    <div class="padBottom12"
+                            data-bind="toggleSwitch: {
+                            labelOn: 'string_7411',
+                            labelOff:'string_7412',
+                            checked: enableVideoTutorial,
+                            onChange: toggleVideoTutorial,
+                            title: 'string_7409' /* Show app introduction after sign in */
+                        },
+                        axBubbleAttr: 'settingsView_showAppIntroToggle'">
+                    </div>
+                </div>
+                <div class="marginTop12 padTop12">
+                    <button data-bind="click: startTutorial, resx: { textContent: 'string_7410' }, axBubbleAttr: 'settingsView_startTutorialButton'"
+                            class="primaryButton">
+                        Open app introduction
+                    </button>
+                </div>
+            </div> <!-- end application help -->
+            <!-- Extension packages -->
+            <div class="height100Percent padRight20 padBottom60 marginRight20 marginBottom20" data-bind="sectionWrapper: { headerResx: 'string_7432' /* Extension Packages */ }">
+                <div data-bind="template: {
+                                            name: 'extensionPackagesLoadInfoTemplate',
+                                            data: { extensionPackagesViewModel: extensionPackagesViewModel }
+                                        }"
+                        class="height100Percent">
+                </div>
+            </div> <!-- end extension packages -->
+
+        </div>
+    </div>
+</body>
+</html>

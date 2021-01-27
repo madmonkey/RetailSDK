@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extension Packages Load Info Template</title>
+    <link href="ExtensionPackagesLoadInfoTemplate.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/html" id="extensionPackageLoadInfoTileTemplate">
+        <!-- ko ifnot: extensionPackageViewModel.extensionPackageLoadFailed -->
+        <div class="width320 row pad12 marginBottom12 cardBorder">
+            <div class="width100Percent height100Percent">
+                <!-- Extension package summary-->
+                <div class="row">
+                    <div class="col">
+                        <div class="iconAddIn secondaryFontColor icon-24x24 center width40 height40" data-bind="attr: { 'aria-label': extensionPackageViewModel.extensionPackageName }">
+                        </div>
+                    </div>
+                    <div class="width100Percent col marginLeft12">
+                        <div class="row">
+                            <div class="h5 ratio8 wordBreakAll col" data-bind="text: extensionPackageViewModel.extensionPackageName"></div>
+                            <div class="h5 secondaryFontColor ratio2 wordBreakAll col textRight" data-bind="text: extensionPackageViewModel.extensionPackageVersion"></div>
+                        </div>
+                        <div class="row">
+                            <div class="h6 secondaryFontColor extensionPublisher" data-bind="text: extensionPackageViewModel.extensionPackagePublisherDisplayText"></div>
+                        </div>
+                        <!-- ko if: extensionPackageViewModel.extensionPackageDescription -->
+                        <div class="row">
+                            <div class="h4 marginTop8" data-bind="text: extensionPackageViewModel.extensionPackageDescription"></div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+
+                <div class="highContrastRowLine height01 secondaryBackgroundColor marginBottom12 marginTop12"></div>
+
+                <!-- Extension package load summary-->
+                <div class="row marginBottom12">
+                    <!-- ko ifnot: extensionPackageViewModel.extensionPackageLoadSkipped || extensionPackageViewModel.extensionsLoadFailureCount > 0 -->
+                    <div class="iconCompleted width20 height20 center" data-bind="resx: { ariaLabel: 'string_7439' }"></div>
+                    <div class="h4 marginLeft4" data-bind="resx: { textContent: 'string_7439' }"></div>
+                    <!-- /ko -->
+                    <!-- ko if: extensionPackageViewModel.extensionsLoadFailureCount > 0 -->
+                    <div class="iconError errorColor width20 height20 center" data-bind="attr: { 'aria-label': extensionPackageViewModel.extensionsLoadFailureCountDisplayText }"></div>
+                    <div class="h4 errorColor marginLeft4" data-bind="text: extensionPackageViewModel.extensionsLoadFailureCountDisplayText"></div>
+                    <!-- /ko -->
+                    <!-- ko if: extensionPackageViewModel.extensionPackageLoadSkipped -->
+                    <div class="iconBlocked width20 height20 center" data-bind="resx: { ariaLabel: 'string_7440' }"></div>
+                    <div class="h4 marginLeft4" data-bind="resx: { textContent: 'string_7440' }"></div>
+                    <!-- /ko -->
+                </div>
+
+                <!-- ko ifnot: extensionPackageViewModel.extensionPackageLoadSkipped -->
+                <!-- View extension package load details -->
+                <div class="row">
+                    <button data-bind="click: extensionPackageViewModel.viewExtensionPackageDetails, resx: { textContent: 'string_7434' }, axBubbleAttr: 'extensionPackageLoadInfo_viewDetails'"
+                            class="primaryButton height40">
+                        View details
+                    </button>
+                </div>
+                <!-- /ko -->
+
+                <!-- ko if: extensionPackageViewModel.extensionPackageLoadSkipped -->
+                <!-- View extension package skip reason -->
+                <div class="row">
+                    <div class="h4" data-bind="text: extensionPackageViewModel.extensionPackageLoadSkipReasonDisplayText"></div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- ko if: extensionPackageViewModel.extensionPackageLoadFailed -->
+        <div class="errorBorderColor border width320 row padLeft12 padRight12 padBottom12 marginBottom12 extensionPackageLoadInfo">
+            <div class="width100Percent col">
+                <div class="row center height72">
+                    <div class="iconError icon-42x42 errorColor center width72 height72" data-bind="resx: { ariaLabel: 'string_7442' }"></div>
+                </div>
+                <!-- height24 to match h5 line's height -->
+                <div class="h5 row center height24 marginBottom12" data-bind="resx: { textContent: 'string_7442' }"></div>
+                <div class="h4 row" data-bind="text: extensionPackageViewModel.extensionPackageLoadFailureReasonDisplayText"></div>
+                <div class="highContrastRowLine height01 secondaryBackgroundColor marginTop12 marginBottom12"></div>
+                <div class="h4 row" data-bind="text: extensionPackageViewModel.extensionPackageBaseUrlDisplayText"></div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </script>
+
+    <!-- Extension packages load info template -->
+    <script type="text/html" id="extensionPackagesLoadInfoTemplate">
+        <div class="height100Percent col extensionPackagesLoadInfo">
+            <!-- ko if: extensionPackagesViewModel.extensionPackagesLoadSucceeded() -->
+            <!-- ko if: extensionPackagesViewModel.hasExtensionPackageViewModels() -->
+            <div data-bind="template: {
+                                name: 'extensionPackageLoadInfoTileTemplate',
+                                foreach: extensionPackagesViewModel.extensionPackageViewModels(),
+                                as: 'extensionPackageViewModel'
+                            }"
+                 class="scrollY padRight40">
+            </div>
+            <!-- /ko -->
+            <!-- ko ifnot: extensionPackagesViewModel.hasExtensionPackageViewModels() -->
+            <div class="h4 width320" data-bind="resx: { textContent: 'string_7441' }">
+            </div>
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko ifnot: extensionPackagesViewModel.extensionPackagesLoadSucceeded() -->
+            <div class="errorBorderColor border width320 row padLeft12 padRight12 padBottom12 marginBottom12 extensionPackageLoadInfo">
+                <div class="width100Percent col">
+                    <div class="row center height72">
+                        <div class="iconError icon-42x42 errorColor center width72 height72" data-bind="resx: { ariaLabel: 'string_7433' }"></div>
+                    </div>
+                    <div class="h5 row center height24" data-bind="resx: { textContent: 'string_7433' }">Unable to load extension packages</div>
+                    <div class="highContrastRowLine height01 secondaryBackgroundColor marginTop12 marginBottom12"></div>
+                    <div class="h4 row wordBreakAll scrollY" data-bind="text: extensionPackagesViewModel.extensionPackagesLoadErrorMessage"></div>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </script>
+</body>
+</html>

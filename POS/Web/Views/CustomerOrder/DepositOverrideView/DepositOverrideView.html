@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Deposit Override View</title>
+    <link href="DepositOverrideView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment depositOverrideView" data-bind="with: viewModel">
+        <!-- Content -->
+        <div class="section main row noflip marginBottom12 marginLeft20 marginRight20 ">
+
+            <div class="minWidth260 maxWidth320">
+                <div data-bind="sectionWrapper: {headerResx: 'string_4601' }">
+                    <!-- Current deposit amount -->
+                    <a href="#" class="h1" data-bind="formatPrice: currentDeposit, attr: {'aria-label': ariaLabelCurrentDeposit},
+                        click: setFullOverridenDepositAmount, axBubbleAttr: 'depositOverrideView_setFullOverridenDepositAmountLink'"></a>
+                </div>
+
+                <div data-bind="sectionWrapper: {headerResx: 'string_4606' }, visible: isCustomerOrderPickup">
+                    <!-- Available deposit amount -->
+                    <a href="#" class="h1" data-bind="formatPrice: availableDepositAmount, attr: {'aria-label': ariaLabelAvailableDeposit},
+                        click: setDepositAvailableAmount, axBubbleAttr: 'depositOverrideView_setDepositAvailableAmountLink'"></a>
+                </div>
+
+                <div data-bind="sectionWrapper: {headerResx: 'string_4607' }, visible: isCustomerOrderCreateOrEdit">
+                    <!-- Maximum override amount -->
+                    <a href="#" class="h1" data-bind="formatPrice: maximumOverrideAmount, attr: {'aria-label': ariaLabelMaximumOverrideAmount},
+                        click: setMaximumOverrideAmount, axBubbleAttr: 'depositOverrideView_setMaximumOverrideAmountLink'"></a>
+                </div>
+
+                <div data-bind="sectionWrapper: {headerResx: 'string_4608' }, visible: isCustomerOrderPickup">
+                    <!-- Amount due now -->
+                    <a href="#" class="h1" data-bind="formatPrice: totalSalesAmountDue, attr: {'aria-label': ariaLabelAmountDueNow},
+                        click: setCartAmountDueNow, axBubbleAttr: 'depositOverrideView_setCartAmountDueNowLink'"></a>
+                </div>
+            </div>
+
+            <div class="gutter40x40"></div>
+
+            <div class="width320 marginTop12" data-bind="axBubbleAttr: 'depositOverrideView_depositAmountNumpad'">
+                <div data-bind="currencyNumpad: {
+                    labelDataBinding: { resx: { textContent: 'string_4605' /* New deposit amount */ } },
+                    inputDataBinding: { resx: { ariaLabel: 'string_4605' /* New deposit amount */ } },
+                    onEnter: overrideDeposit,
+                    value: depositAmountToOverride,
+                    numPadInputSource: $parent.numPadInputBroker
+                    }">
+                </div>
+            </div>
+        </div>
+        <div id="commandAppBar" data-bind="appBar:{}, axBubbleAttr: 'depositOverrideView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconUndo',
+                id:'clearDepositOverride',
+                onclick: clearDepositOverride,
+                labelResx: 'string_4603' }, axBubbleAttr: 'depositOverrideView_clearDepositOverrideButton'"></button><!--Clear deposit override-->
+
+        </div>
+    </div>
+</body>
+</html>

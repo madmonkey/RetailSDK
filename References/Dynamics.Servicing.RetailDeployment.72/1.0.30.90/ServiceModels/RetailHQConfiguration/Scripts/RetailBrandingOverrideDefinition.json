@@ -1,0 +1,9 @@
+{
+    "Overrides" : [
+        {
+            "overrideAction" : "CopyFile",
+            "sourceFile" : "%_axDeploymentAosWebRoot%\\Resources\\Retail\\app-config.retail.js",
+            "targetFile" : "%_axDeploymentAosWebRoot%\\Resources\\app-config.js"
+        }
+    ]
+}

@@ -1,0 +1,78 @@
+﻿{
+  "Dimensions": [
+    {
+      "DisplayOrderIndex": 0,
+      "SelectedOptionIndex": -1,
+      "IsEnabled": true,
+      "Options": [
+        {
+          "Value": "32"
+        },
+        {
+          "Value": "36"
+        },
+        {
+          "Value": "38"
+        },
+        {
+          "Value": "40"
+        },
+        {
+          "Value": "42"
+        },
+        {
+          "Value": "44"
+        },
+        {
+          "Value": "46"
+        },
+        {
+          "Value": "48"
+        }
+      ],
+      "Data": {
+        "DimensionTypeValue": 3,
+        "DimensionValue": null
+      }
+    },
+    {
+      "DisplayOrderIndex": 1,
+      "SelectedOptionIndex": -1,
+      "IsEnabled": false,
+      "Options": [],
+      "Data": {
+        "DimensionTypeValue": 1,
+        "DimensionValue": null
+      }
+    },
+    {
+      "DisplayOrderIndex": 2,
+      "SelectedOptionIndex": -1,
+      "IsEnabled": false,
+      "Options": [],
+      "Data": {
+        "DimensionTypeValue": 4,
+        "DimensionValue": null
+      }
+    }
+  ],
+  "Data": {
+    "Name": "Trim Fit Suit",
+    "Description": "When you have to perform your best, why not look your best too? Our suits and sport coats ensure that you are making your best impression from the boardroom to the ballroom.",
+    "Price": 499.99,
+    "Dimensions": [
+      {
+        "DimensionTypeValue": 3,
+        "DimensionValue": null
+      },
+      {
+        "DimensionTypeValue": 1,
+        "DimensionValue": null
+      },
+      {
+        "DimensionTypeValue": 4,
+        "DimensionValue": null
+      }
+    ]
+  }
+}

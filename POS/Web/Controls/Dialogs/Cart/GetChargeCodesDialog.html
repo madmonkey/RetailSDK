@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetChargeCodesDialog</title>
+</head>
+<body>
+    <div class="GetChargeCodesDialog" data-bind="customControlInternal: 'GetChargeCodesDialog'">
+        <div data-bind="dialog: {
+             title: title,
+             visible: visible,
+             closeOnEscButton: true,
+             buttonClick: buttonClickHandler,
+             dialogCloseButtonClick: dialogCloseButtonClick,
+             buttons: [{ label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false }]
+        },
+        axBubbleAttr: 'getChargeCodesDialog_getChargeCodesDialog'" class="modalWindowContentSection">
+
+            <!-- ko ifnot: Commerce.ObjectExtensions.isNullOrUndefined(product()) -->
+            <div class="marginTop20" data-bind="template: { name: 'productSearchResultNonInteractableSmallCard', data: product() }"></div>
+            <!-- /ko -->
+
+            <label class="marginTop20 marginBottom8 h4 flexNone" data-bind="resx: {textContent: 'string_5947'}">Select a charge</label>
+            <!-- Charge Codes list -->
+            <div id="chargeCodeListsButtonGrid" class="grow col">
+                <div id="chargeCodeListsList"
+                     data-bind="dataList: {
+                            incrementalDataSource: {
+                            dataManager: viewModel,
+                            callerMethod: viewModel.getChargeCodes,
+                            pageSize: 40,
+                            },
+                            defaultListType: Commerce.Controls.DataList.ListType.Card,
+                            selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                            itemInvoked: itemInvokedHandler,
+                            itemTemplates: [
+                            {
+                                templateId: 'addChargesLocationGridTemplate',
+                                cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                deviceType: Commerce.Controls.DataList.DeviceType.Both
+                            }
+                            ]
+                    }, axBubbleAttr: 'getChargeCodesDialog_optionsButtonGrid'"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props') And '$(MicrosoftCommonPropsHasBeenImported)' != 'true'" />
+  <Import Project="$(MSBuildThisFileDirectory)\DropSharedPackagingProjectAssets.proj" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ShippingSourceCode>true</ShippingSourceCode>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworkProfile />
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <ApplicationManifest>uac.manifest</ApplicationManifest>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <AuthenticodeSignEnabled>true</AuthenticodeSignEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="$(PkgMicrosoft_Dynamics_Retail_Deployment_SelfService_BootstrapperLibrary)\lib\net461\Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.dll" />
+    <Reference Include="$(PkgMicrosoft_Dynamics_Retail_Deployment_Toolkit)\lib\net461\Microsoft.Dynamics.Retail.Deployment.Toolkit.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <!-- ItemGroup for Modern POS app dependencies. These dependencies are agnostic of Configuration = Debug or Release. For any new dependency, please add it below -->
+  <ItemGroup>
+    <AppXFile Include="$(SdkRootPath)\Pos\App\AppPackages\RetailModernPOS_x86_Test\RetailModernPOS_x86.appx" />
+    <AppxDependencyCoreRuntime Include="$(SdkRootPath)\Pos\App\AppPackages\RetailModernPOS_x86_Test\Dependencies\x86\Microsoft.NET.CoreRuntime*.appx" />
+    <ModifiableExtAssets Include="$(SdkAssetsPath)\CommerceRuntime.MPOSOffline.Ext.config" />
+    <ModifiableExtAssets Include="$(SdkAssetsPath)\RetailProxy.MPOSOffline.Ext.config" />
+    <ModifiableAssets Include="$(SdkAssetsPath)\CommerceRuntime.MPOSOffline.config" />
+    <ModifiableAssets Include="$(SdkAssetsPath)\DLLHost.exe.config" />
+    <ModifiableAssets Include="$(SdkAssetsPath)\HardwareStation.Dedicated.config" />
+    <ModifiableAssets Include="$(SdkAssetsPath)\HardwareStation.Extension.config" />
+  </ItemGroup>
+  <!-- ItemGroup for Modern POS app dependencies which depend on Configuration = Debug or Release. For any new dependency, please add it below -->
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <AppxDependencyVClibs Include="$(SdkRootPath)\Pos\App\AppPackages\RetailModernPOS_x86_Test\Dependencies\x86\Microsoft.VCLibs.x86.Debug.$(VisualStudioVersion)0.appx" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <AppxDependencyVClibs Include="$(SdkRootPath)\Pos\App\AppPackages\RetailModernPOS_x86_Test\Dependencies\x86\Microsoft.VCLibs.x86.$(VisualStudioVersion)0.appx" />
+  </ItemGroup>
+  <Target Name="StageFilesAndZipResult" BeforeTargets="BeforeBuild">
+    <CallTarget Targets="CopyPaymentFiles" />
+    <CallTarget Targets="GenerateContentZip" />
+  </Target>
+  <Target Name="CopyPaymentFiles">
+    <CreateItem Include="$(PaymentsIPaymentDeviceAssemblies_RootFolder)\**\*.*">
+      <Output TaskParameter="Include" ItemName="All_PaymentsIPaymentDeviceAssemblies_Files" />
+    </CreateItem>
+    <CreateItem Include="$(PaymentsIPaymentProcessorAssemblies_RootFolder)\**\*.*">
+      <Output TaskParameter="Include" ItemName="All_PaymentsIPaymentProcessorAssemblies_Files" />
+    </CreateItem>
+  </Target>
+  <Target Name="GenerateContentZip" Inputs="$(MSBuildAllProjects);@(AppXFile);@(AppxDependencyCoreRuntime);@(AppxDependencyVClibs);@(All_PaymentsIPaymentDeviceAssemblies_Files);@(All_PaymentsIPaymentProcessorAssemblies_Files);@(ClientBroker_CustomizableFile);@(ModifiableExtAssets);@(ModifiableAssets)" Outputs="$(OutputPath)content.zip">
+    <CallTarget Targets="CopyPackageFiles" />
+    <Delete Files="$(OutputPath)content.zip" />
+    <Zip OutputFileName="$(OutputPath)content.zip" InputFolder="$(OutputPath)content.folder" />
+  </Target>
+  <Target Name="CopyPackageFiles">
+    <CreateItem Include="%(HardwareStation_CustomizableFile.RootDir)%(HardwareStation_CustomizableFile.Directory)*\%(HardwareStation_CustomizableFile.Filename).resources.dll">
+      <Output TaskParameter="Include" ItemName="SatelliteAssemblies" />
+    </CreateItem>
+    <Copy SourceFiles="@(AppXFile)" DestinationFolder="$(OutputPath)content.folder\CustomizedFiles" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(AppxDependencyCoreRuntime)" DestinationFolder="$(OutputPath)content.folder\CustomizedFiles\Dependencies\x86\%(RecursiveDir)" SkipUnchangedFiles="true" Condition="Exists('%(FullPath)')" />
+    <Copy SourceFiles="@(ModifiableExtAssets)" DestinationFolder="$(OutputPath)content.folder\CustomizedFiles\ClientBroker\ext" />
+    <!-- Don't skip unchanged, we want to overwrite every time -->
+    <Copy SourceFiles="@(ModifiableAssets)" DestinationFolder="$(OutputPath)content.folder\CustomizedFiles\ClientBroker\" />
+    <!-- Don't skip unchanged, we want to overwrite every time -->
+    <!-- AppxDependencyVClibs is being renamed to its release name version to avoid dependency error caused by installer generated in debug flavor. -->
+    <Copy SourceFiles="@(AppxDependencyVClibs)" DestinationFiles="$(OutputPath)content.folder\CustomizedFiles\Dependencies\x86\Microsoft.VCLibs.x86.$(VisualStudioVersion)0.appx" SkipUnchangedFiles="true" Condition="Exists('%(FullPath)')" />
+    <Copy SourceFiles="@(ClientBroker_CustomizableFile)" DestinationFolder="$(OutputPath)content.folder\CustomizedFiles\ClientBroker\ext\%(RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(HardwareStation_CustomizableFile)" DestinationFolder="$(OutputPath)content.folder\CustomizedFiles\ClientBroker" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(SatelliteAssemblies)" DestinationFolder="$(OutputPath)content.folder\CustomizedFiles\ClientBroker\%(RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(All_PaymentsIPaymentDeviceAssemblies_Files)" DestinationFiles="@(All_PaymentsIPaymentDeviceAssemblies_Files-&gt;Replace('$(PaymentsIPaymentDeviceAssemblies_RootFolder)', 'CustomizedFiles\ClientBroker')-&gt;'$(OutputPath)content.folder\%(RelativeDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(All_PaymentsIPaymentProcessorAssemblies_Files)" DestinationFiles="@(All_PaymentsIPaymentProcessorAssemblies_Files-&gt;Replace('$(PaymentsIPaymentProcessorAssemblies_RootFolder)', 'CustomizedFiles\ClientBroker')-&gt;'$(OutputPath)content.folder\%(RelativeDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+  <ItemGroup>
+    <EmbeddedResource Include="$(PkgMicrosoft_Dynamics_Retail_Deployment_SelfService_BootstrapperLibrary)\lib\net461\Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary.dll">
+      <IgnoreDuringSdkGeneration>true</IgnoreDuringSdkGeneration>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(PkgMicrosoft_Dynamics_Retail_Deployment_Resources)\lib\net461\Microsoft.Dynamics.Retail.Deployment.Resources.dll">
+      <IgnoreDuringSdkGeneration>true</IgnoreDuringSdkGeneration>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(PkgMicrosoft_Dynamics_Retail_Deployment_Toolkit)\lib\net461\Microsoft.Dynamics.Retail.Deployment.Toolkit.dll">
+      <IgnoreDuringSdkGeneration>true</IgnoreDuringSdkGeneration>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(OutputPath)content.zip">
+      <IgnoreDuringSdkGeneration>true</IgnoreDuringSdkGeneration>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SdkRootPath)\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

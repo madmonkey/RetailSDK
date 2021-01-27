@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales order templates</title>
+</head>
+<body>
+    <script type="text/html" id="SalesLineColspan">
+        <div class="lineItemUnitPrice secondaryFontColor row" data-bind="visible: true">
+            <div class="h4" data-bind="text: Commerce.ViewModelAdapter.getResourceString('string_1208')"></div> <!-- UNIT PRICE -->
+            <div class="h4">:&nbsp;</div>
+            <div class="h4" data-bind="text: Commerce.NumberExtensions.formatCurrency($data.Price, $data.currencyCode)"></div>
+        </div>
+        <div class="lineItemExtendedPrice secondaryFontColor row" data-bind="visible: true">
+            <div class="h4" data-bind="text: Commerce.ViewModelAdapter.getResourceString('string_1210')"></div> <!-- TOTAL -->
+            <div class="h4">:&nbsp;</div>
+            <div class="h4" data-bind="text: Commerce.NumberExtensions.formatCurrency($data.TotalAmount, $data.currencyCode)"></div>
+        </div>
+        <div class="lineItemVariant secondaryFontColor row" data-bind="visible: !Commerce.StringExtensions.isNullOrWhitespace($data.variantDescription)">
+            <div class="h4" data-bind="text: $data.variantDescription"></div>
+        </div>
+        <div class="lintItemPriceOverrideText secondaryFontColor" data-bind="visible: $data.IsPriceOverridden">
+            <div class="h4" data-bind="text: $data.priceOverrideInformation"></div>
+        </div>
+        <div class="lineItemComment secondaryFontColor row" data-bind="visible: !Commerce.StringExtensions.isNullOrWhitespace($data.Comment)">
+            <div class="h4" data-bind="text: $data.IsGiftCardLine ? '' : $data.Comment"></div>
+        </div>
+        <div class="lineItemSerialNumber secondaryFontColor row" data-bind="visible: !Commerce.StringExtensions.isNullOrWhitespace($data.SerialNumber)">
+            <div class="h4" data-bind="text: $data.SerialNumber"></div>
+        </div>
+        <div class="lineItemBarcode secondaryFontColor row" data-bind="visible: !Commerce.StringExtensions.isNullOrWhitespace($data.Barcode)">
+            <div class="h4" data-bind="text: $data.Barcode"></div>
+        </div>
+        <div class="secondaryFontColor" data-bind="foreach: { data: $data.DiscountLines, as: 'discountLine' }">
+            <div class="row">
+                <div class="h4" data-bind="text: Commerce.DiscountsHelper.getDiscountTypeName(discountLine, $parent.Price, $parent.Quantity)"></div>
+            </div>
+        </div>
+        <!-- ko if: $root.viewModel.salesOrderLinesGridItemSubfieldsViewModel -->
+        <!-- ko foreach: $root.viewModel.salesOrderLinesGridItemSubfieldsViewModel.customGridItemSubfields -->
+        <div class="secondaryFontColor row" data-bind="visible: $data.isVisible($parent)">
+            <div class="h4" data-bind="text: $data.computeValue($parent)"></div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+    </script>
+
+    <script id="barcodeScannerTemplate" type="text/html">
+        <div class="col center">
+            <div class="iconBarcodeScanner icon-50x50 accentColor"></div>
+            <h4 class="marginTop16 width292 wrapText" data-bind="text: scannerHint"></h4>
+        </div>
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout totals panel template.</title>
+</head>
+<body>
+    <script type="text/html" id="totalsPanelFieldTemplate">
+        <div class="row pad12 padBottom0">
+            <div class="secondaryFontColor"><div class="h6" data-bind="resx: { textContent: captionResourceId }"></div></div>
+            <!-- ko if: isCurrency -->
+            <div class="textRight"><div class="h4" data-bind="formatPrice: value"></div></div>
+            <!-- /ko -->
+            <!-- ko ifnot: isCurrency -->
+            <div class="textRight"><div class="h4" data-bind="text: value"></div></div>
+            <!-- /ko -->
+        </div>
+    </script>
+</body>
+</html>

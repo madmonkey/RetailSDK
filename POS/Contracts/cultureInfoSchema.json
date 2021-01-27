@@ -1,0 +1,101 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {},
+  "description": "Schema for overriding culture info.",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "overrides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "culture": { "type": "string" },
+          "cultureInfo": {
+            "type": "object",
+            "properties": {
+              "numberFormat": {
+                "type": "object",
+                "properties": {
+
+                  "pattern": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+
+                  "groupSizes": {
+                    "type": "array",
+                    "items": { "type": "integer" },
+                    "minItems": 1
+                  },
+
+                  "percent": {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "type": "array",
+                        "items": { "type": "string" },
+                        "minItems": 2,
+                        "maxItems": 2
+                      },
+                      "groupSizes": {
+                        "type": "array",
+                        "items": { "type": "integer" },
+                        "minItems": 1
+                      },
+                      ",": { "type": "string" },
+                      ".": { "type": "string" }
+                    }
+                  },
+
+                  "currency": {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "type": "array",
+                        "items": { "type": "string" },
+                        "minItems": 2,
+                        "maxItems": 2
+                      },
+                      "groupSizes": {
+                        "type": "array",
+                        "items": { "type": "integer" },
+                        "minItems": 1
+                      },
+                      ",": { "type": "string" },
+                      ".": { "type": "string" }
+                    }
+                  }
+
+                }
+              },
+
+              "calendars": {
+                "type": "object",
+                "properties": {
+                  "standard": {
+                    "type": "object",
+                    "properties": {
+                      "/": { "type": "string" },
+                      ":": { "type": "string" },
+                      "patterns": {
+                        "type": "object",
+                        "properties": {
+                          "d": { "type": "string" },
+                          "t": { "type": "string" },
+                          "T": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

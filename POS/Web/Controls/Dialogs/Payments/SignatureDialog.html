@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SignatureDialog</title>
+    <link href="SignatureDialog.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'SignatureDialog'">
+        <div class="signatureDialog">
+            <div data-bind="dialog:
+                {
+                    title: title,
+                    visible: visible,
+                    buttonClick: buttonClickHandler,
+                    buttons: [
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_6902'), operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, disable: hasNoSignatureData, focus: focusOnOk, isPrimary: true }, /* Accept */
+                        { label: secondaryButtonText, operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false }, /* Skip */
+                    ]
+                },
+                axBubbleAttr: 'signatureCaptureDialog_signatureCaptureDialog'">
+                <div class="marginBottom8">
+                    <canvas class="height200 signatureCanvas" id="signaturecanvas" data-bind="css: { signatureEntry: allowSignatureEntry }, axBubbleAttr: 'signatureCaptureDialog_signaturecanvas'"></canvas>
+                </div>
+                <div class="col marginBottom8" data-bind="visible: allowClear">
+                    <button id="btnClear"
+                            class="primaryButton"
+                            data-bind="resx: { textContent: 'string_6901' },
+                            click: clearCanvas">
+                        Clear
+                    </button>
+                </div>
+                <div class="col marginBottom8" data-bind="visible: allowRecapture">
+                    <button id="btnRecapture"
+                            class="primaryButton"
+                            data-bind="resx: { textContent: 'string_6910' },
+                            click: recaptureSignature">
+                        Recapture
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

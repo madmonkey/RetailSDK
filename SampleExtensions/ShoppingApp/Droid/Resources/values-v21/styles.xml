@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="ShoppingAppTheme" parent="ShoppingAppTheme.Base">
+    <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+  </style>
+</resources>

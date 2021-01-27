@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TestData>
+  <PaymentProcessor_BalanceOnGiftCard_Basic>
+    <TestDescriptor>Basic</TestDescriptor>
+    <ConnectorType>Portable</ConnectorType>
+    <ConnectorName>TestConnector</ConnectorName>
+    <MerchantAccountXmlPath>MerchantAccount_TestConnectorPortable.xml</MerchantAccountXmlPath>
+    <CardType>GiftCard</CardType>
+    <CardNumber>5680281692665013</CardNumber>
+    <ExpirationYear>2025</ExpirationYear>
+    <ExpirationMonth>12</ExpirationMonth>
+    <CurrencyCode>USD</CurrencyCode>
+    <Amount>1000</Amount>
+    <IndustryType>Retail</IndustryType>
+    <IsSwipe>False</IsSwipe>
+    <TerminalId>0001</TerminalId>
+    <Description>Activation</Description>
+    <ExternalCustomerId>Cust0001</ExternalCustomerId>
+    <ExternalInvoiceNumber>Inv0001</ExternalInvoiceNumber>
+    <ExternalReferenceId>Ref0001</ExternalReferenceId>
+    <IsTestMode>True</IsTestMode>
+  </PaymentProcessor_BalanceOnGiftCard_Basic>
+</TestData>

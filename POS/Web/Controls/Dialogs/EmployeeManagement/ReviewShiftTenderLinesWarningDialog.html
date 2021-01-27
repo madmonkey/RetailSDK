@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ReviewShiftTenderLinesWarningDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'ReviewShiftTenderLinesWarningDialog'">
+        <div data-bind="dialog:
+            {
+                title: Commerce.ViewModelAdapter.getResourceString('string_30601'), /* Close shift */
+                visible: visible,
+                buttonClick: buttonClickHandler,
+                dialogCloseButtonClick: cancelDialog,
+                buttons: [
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_30603'), operationId: reviewButtonOperationId, isPrimary: true }, /* Review tender lines */
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_30600'), operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, isPrimary: false } /* Continue */
+                ],
+            },
+            axBubbleAttr: 'ReviewShiftTenderLinesWarningDialog_ReviewShiftTenderLinesWarningDialog'" class="modalWindowContentSection">
+
+            <!-- dialog content -->
+            <div>
+                <label class="padTop12"
+                       data-bind="resx: { textContent: 'string_30632' } /*There are differences between the declared amount and the system computed amount, which fall outside the define tolerance for at least one of the tenders in the statement line. We recommend that you review these differences before closing the shift. */ ,
+                       visible: showAmountDifferenceMessage">
+                </label>
+                <label class="padTop12"
+                       data-bind="resx: { textContent: 'string_30633' } /* There are offline transactions for this shift that are not synchronized to the channel database. Closing the shift without accounting for these transactions can create a financial discrepancy. We recommend that you review the impact of these transactions in each statement line. */ ,
+                       visible: showOfflineTransactionsMessage">
+                </label>
+                <label class="padTop12"
+                       data-bind="resx: { textContent: 'string_30636' } /* Do you want to close the shift? */ ">
+                </label>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

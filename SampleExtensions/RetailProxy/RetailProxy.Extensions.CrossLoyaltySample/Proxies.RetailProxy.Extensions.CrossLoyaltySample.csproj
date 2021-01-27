@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\..\..\BuildTools\Common.props" />
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyName>$(AssemblyNamePrefix).Commerce.RetailProxy.CrossLoyaltySample</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <RootNamespace>Contoso.Commerce.RetailProxy.CrossLoyaltySample</RootNamespace>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <CommerceProxyGeneratorExtendedAssemblyPaths Include="..\..\RetailServer\Extensions.CrossLoyaltySample\bin\$(Configuration)\net461\$(AssemblyNamePrefix).RetailServer.CrossLoyaltySample.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommerceRuntime\Extensions.CrossLoyaltySample\Runtime.Extensions.CrossLoyaltySample.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Dynamics.Commerce.KeyVault.Contracts" Version="$(ToolsRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.RetailProxy" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Tools.ExtensionsProxyGenerator" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTransform" Version="15.1.0" />
+  </ItemGroup>
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

@@ -1,0 +1,377 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.PaymentTerminal.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.ButtonPressEventArgs">
+            <summary>
+            Button Press Event Argument
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.ButtonPressEventArgs.ButtonToken">
+            <summary>
+            Button Token (name)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.ButtonPressEventArgs.ButtonValue">
+            <summary>
+            Button Value (if any)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.ButtonPressEventArgs.#ctor">
+            <summary>
+            Default ctor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.ButtonPressEventArgs.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.ButtonPressEventArgs"/> class.
+            </summary>
+            <param name="button">The button.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.ButtonPressEventArgs.#ctor(System.String,System.String)">
+            <summary>
+            Designated ctor
+            </summary>
+            <param name="button"></param>
+            <param name="value"></param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.DeviceErrorEventArgs">
+            <summary>
+            Device error event arguments
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.DeviceErrorEventArgs.ErrorCode">
+            <summary>
+            Gets or sets the error code.
+            </summary>
+            <value>
+            The error code.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.DeviceErrorEventArgs.ErrorMessage">
+            <summary>
+            Gets or sets the error message.
+            </summary>
+            <value>
+            The error message.
+            </value>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.DeviceErrorEventArgs.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.DeviceErrorEventArgs"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.DeviceErrorEventArgs.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.DeviceErrorEventArgs"/> class.
+            </summary>
+            <param name="errorMessage">The error message.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalFactory">
+            <summary>
+            [Optional] factory for creating payment terminals based upon session object
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalFactoryV1">
+            <summary>
+            Version 1.0 of the IPaymentTerminalFactory
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalFactoryV1.GetHandler(System.Object)">
+            <summary>
+            Gets the handler.
+            </summary>
+            <param name="hostSession">The rte session.</param>
+            <returns>the handler (or null) for the session provided</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandler">
+            <summary>
+            Payment Terminal Handler
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1">
+            <summary>
+            Version 1.0 of the IPaymentTerminalHandler
+            </summary>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.CardSwipe">
+            <summary>
+            Card swipe event
+            </summary>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.ButtonPress">
+            <summary>
+            Button press event
+            </summary>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.PinEntry">
+            <summary>
+            PIN entry event
+            </summary>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.SignatureEntry">
+            <summary>
+            Signature Entry event
+            </summary>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.DeviceError">
+            <summary>
+            Device Error Event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.Initialize">
+            <summary>
+            Try to Initialize or opent the handler
+            </summary>
+            <returns>Returns true on success</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.Close">
+            <summary>
+            Close the handler connection (some devices may not require any action)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.ShowForm(System.String)">
+            <summary>
+            Show the form with the name specifed
+            </summary>
+            <param name="formName">Form Name</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.SetVariable(System.String,System.String)">
+            <summary>
+            Set the varilable to the value specified
+            </summary>
+            <param name="variableName">Variable name</param>
+            <param name="variableValue">Value to set</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.GetVariable(System.String)">
+            <summary>
+            Get the device variable value
+            </summary>
+            <param name="variableName">Variable name</param>
+            <returns>The value or null</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.DisplayLines(System.Boolean,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Displays the lines.
+            </summary>
+            <param name="clearLines">if set to <c>true</c> [clear lines].</param>
+            <param name="displayLinesAt">The display lines at (0 based)</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.CardReaderEnable(System.Boolean)">
+            <summary>
+            Enable/Disable the Card Reader
+            <remarks>Only requied for devices where the form does not do this automatically</remarks>
+            </summary>
+            <param name="enable">True to enable the reader</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.PinEntryEnable(System.String,System.String)">
+            <summary>
+            Enable PIN entry using the form and account number specified
+            </summary>
+            <param name="formName">The Form name</param>
+            <param name="accountNumber">The Card account number</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.PinEntryEnable(System.String,System.String,System.Decimal)">
+            <summary>
+            Enable PIN entry using the form and account number specified
+            </summary>
+            <param name="formName">Name of the form.</param>
+            <param name="accountNumber">The account number.</param>
+            <param name="amount">The amount.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.SignatureEntryEnable(System.String)">
+            <summary>
+            Enable signature entry using the form spceified
+            </summary>
+            <param name="formName">The form name</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandlerV1.ClearData">
+            <summary>
+            Called at beginning or end of transcation to ensure that all Personal Identifialbe data is cleared
+            </summary>
+            <remarks>Not required by all devices when the forms do this</remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalLoader">
+            <summary>
+            API for loading and deleting forms on a Hydra device
+            </summary>
+            <remark>This is an optional interface for loading forms onto the device</remark>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalLoader.DeleteAllFiles">
+            <summary>
+            Delete all files/content on the device
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalLoader.DeleteFile(System.String)">
+            <summary>
+            Delete the specified file on the device
+            </summary>
+            <param name="fileName">filename</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalLoader.LoadFile(System.String,System.String)">
+            <summary>
+            Load a file onto the device
+            </summary>
+            <param name="directoryPath">full path</param>
+            <param name="fileName">file name</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalLoader.LoadPackage(System.String)">
+            <summary>
+            Load a package onto the device
+            </summary>
+            <param name="directoryPath">path for the folder containing the package</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.PinPadEventArgs">
+            <summary>
+            Pin Pad - Event Arguments
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.PinPadEventArgs.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.PinPadEventArgs"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.PinPadEventArgs.#ctor(System.Boolean,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.PinPadEventArgs"/> class.
+            </summary>
+            <param name="pinEntered">'True' if pin was intered.</param>
+            <param name="encryptedPin">The encrypted pin.</param>
+            <param name="additionalSecurityInfo">The additional security information.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.PinPadEventArgs.PinEntered">
+            <summary>
+            User entered the PIN when true, user rejected when false.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.PinPadEventArgs.EncryptedPin">
+            <summary>
+            Gets or sets the encrypted pin.
+            </summary>
+            <value>
+            The encrypted pin.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.PinPadEventArgs.AdditionalSecurityInfo">
+            <summary>
+            Gets or sets the additional security information.
+            </summary>
+            <value>
+            The additional security information.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.SignatureCaptureEventArgs">
+            <summary>
+            Signature Caputure - Event Arguments
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.SignatureCaptureEventArgs.UserApprovedSignature">
+            <summary>
+            Gets or sets a value indicating whether user approved signature.
+            </summary>
+            <value>
+              <c>true</c> if [user approved signature]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.SignatureCaptureEventArgs.SignatureData">
+            <summary>
+            Gets the signature data.
+            </summary>
+            <value>
+            The signature data.
+            </value>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.SignatureCaptureEventArgs.#ctor">
+            <summary>
+            default ctor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.SignatureCaptureEventArgs.#ctor(System.Boolean,System.Collections.Generic.IList{System.Drawing.Point})">
+            <summary>
+            Designated ctor
+            </summary>
+            <param name="signatureApproved">Signature is approved.</param>
+            <param name="signatureData">UPOS point array for a signature.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.SwipeEventArgs">
+            <summary>
+              <remarks>Sentinals and LRC may not be included by all devcies</remarks>
+            Track1 -
+            Start Sentinel ("%")
+            Format code ("B")
+            Primary Account Number (PAN) - up to 19 characters
+            Field Seperator ("^")
+            Name - 2 to 26 characters
+            Field Seperator ("^")
+            Expiration date - YYMM
+            Service code - 3 char
+            Discretionary data
+            End sentinel ("?")
+            LRC - 1 character (not always supported)
+            Track2 -
+            start sentinel - ";"
+            PAN
+            Seperator - 1 char ("=")
+            Expiration date - YYMM
+            Service code - 3 digits
+            Discretionalry data -
+            End sentinel ("?")
+            LRC - 1 char
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.SwipeEventArgs.Track1">
+            <summary>
+            Gets or sets the track1.
+            </summary>
+            <value>
+            The track1.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.SwipeEventArgs.Track2">
+            <summary>
+            Gets or sets the track2.
+            </summary>
+            <value>
+            The track2.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.SwipeEventArgs.Track3">
+            <summary>
+            Gets or sets the track3.
+            </summary>
+            <value>
+            The track3.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.SwipeEventArgs.Track4">
+            <summary>
+            Gets or sets the track4.
+            </summary>
+            <value>
+            The track4.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.SwipeEventArgs.AccountNo">
+            <summary>
+            Gets or sets the account no.
+            </summary>
+            <value>
+            The account no.
+            </value>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.SwipeEventArgs.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.SwipeEventArgs"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.SwipeEventArgs.#ctor(System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="track1"></param>
+             <param name="track2"></param>
+        </member>
+    </members>
+</doc>

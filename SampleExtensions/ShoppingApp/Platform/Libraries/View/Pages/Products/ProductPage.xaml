@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<base:ProductPageXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Pages.ProductPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages"
+    xmlns:converters="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Converters"
+    xmlns:extensions="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Extensions"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    Title="{Binding Product.Name}">
+    <ContentPage.ToolbarItems>
+        <views:SearchToolbarItem
+            Navigation="{Binding Navigation}" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <ScrollView.Resources>
+            <ResourceDictionary>
+                <converters:EnumerableToBoolConverter
+                    x:Key="IEnumerableToBoolConverter" />
+                <converters:InverseBooleanConverter
+                    x:Key="InverseBooleanConverter" />
+            </ResourceDictionary>
+        </ScrollView.Resources>
+
+        <StackLayout
+            Spacing="0">
+
+            <ActivityIndicator
+                BindingContext="{x:Reference ProductImage}"
+                HeightRequest="{x:Static statics:RowSizes.LargeRowHeightDouble}"
+                IsEnabled="{Binding IsLoading}"
+                IsRunning="{Binding IsLoading}"
+                IsVisible="{Binding IsLoading}" />
+
+            <Image
+                x:Name="ProductImage"
+                Aspect="AspectFit"
+                Source="{Binding Product.ImageUrl}" />
+
+            <BoxView
+                HeightRequest="0.5"
+                Color="{x:Static statics:Palette.SEPARATOR}" />
+            <ContentView
+                Padding="20,15"
+                HeightRequest="{x:Static statics:RowSizes.SmallRowHeightDouble}">
+                <StackLayout
+                      Orientation="Horizontal"
+                      HorizontalOptions="FillAndExpand">
+                <StackLayout
+                  Orientation="Horizontal"
+                  HorizontalOptions="StartAndExpand">
+                  <Label
+                      FontSize="Large"
+                      HorizontalTextAlignment="Start"
+                      Text="{localization:Translate Pages_ProductPage_PriceLabel}"
+                      TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                      VerticalTextAlignment="Center" />
+                </StackLayout>
+                <StackLayout
+                  Orientation="Horizontal"
+                  HorizontalOptions="EndAndExpand">
+                  <Label
+                      FontSize="Large"
+                      FontAttributes="Bold"
+                      HorizontalTextAlignment="End"
+                      Text="{Binding Product.ActivePrice.AdjustedPrice, StringFormat='{0:C}'}"
+                      TextColor="{extensions:Palette PrimaryDark}"
+                      VerticalTextAlignment="Center" />
+                </StackLayout>
+              </StackLayout>
+            </ContentView>
+
+            <BoxView
+                HeightRequest="0.5"
+                Color="{x:Static statics:Palette.SEPARATOR}" />
+            <!--  Name  -->
+            <Label
+                Margin="20,20,20,10"
+                FontSize="Large"
+                LineBreakMode="CharacterWrap"
+                Text="{Binding Product.Data.Name}"
+                TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+            <!--  description  -->
+            <ContentView>
+                <StackLayout
+                    Orientation="Horizontal"
+                    Spacing="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnProductDescriptionControlClicked" />
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout
+                        HorizontalOptions="StartAndExpand"
+                        Orientation="Vertical">
+                        <Label
+                            Margin="20,10"
+                            FontSize="Default"
+                            Text="{Binding Product.Data.Description}"
+                            TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+                    </StackLayout>
+                    <Image
+                        Margin="10"
+                        Aspect="AspectFit"
+                        HeightRequest="{x:Static statics:Sizes.ChevronSizeDouble}"
+                        Source="chevron_right"
+                        WidthRequest="{x:Static statics:Sizes.ChevronSizeDouble}" />
+                </StackLayout>
+            </ContentView>
+
+            <ContentView>
+                <StackLayout
+                    x:Name="PickerSection" />
+            </ContentView>
+
+            <Button
+                Style="{StaticResource actionButtonStyle}"
+                Command="{Binding AddToCartCommand}"
+                IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
+                Text="{localization:Translate Pages_ProductDetail_AddToCart}" />
+        </StackLayout>
+    </ScrollView>
+</base:ProductPageXaml>

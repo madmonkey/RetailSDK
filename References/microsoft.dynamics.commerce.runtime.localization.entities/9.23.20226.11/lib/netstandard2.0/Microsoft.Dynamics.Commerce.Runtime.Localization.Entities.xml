@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.Localization.Entities</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.DataModel.RequireFiscalCustomerForTransactionParameters">
+            <summary>
+            This class holds parameters for RequireFiscalCustomerForTransaction feature.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.DataModel.RequireFiscalCustomerForTransactionParameters.ProfileIdColumn">
+            <summary>
+            The profile identifier column name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.DataModel.RequireFiscalCustomerForTransactionParameters.IsFiscalCustomerRequiredForTransactionColumn">
+            <summary>
+            The IsFiscalCustomerRequiredForTransaction column name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.DataModel.RequireFiscalCustomerForTransactionParameters.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.DataModel.RequireFiscalCustomerForTransactionParameters"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.DataModel.RequireFiscalCustomerForTransactionParameters.ProfileId">
+            <summary>
+            Gets or sets the profile identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.DataModel.RequireFiscalCustomerForTransactionParameters.IsFiscalCustomerRequiredForTransaction">
+            <summary>
+            Gets or sets a value indicating whether whether or not a fiscal customer is required for the transaction.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.DataModel.SequentialSignatureRegistrationResult">
+            <summary>
+            Sequential signature registartion result.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.DataModel.SequentialSignatureRegistrationResult.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.DataModel.SequentialSignatureRegistrationResult"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.DataModel.SequentialSignatureRegistrationResult.Signature">
+            <summary>
+            Gets or sets the current signature.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.DataModel.SequentialSignatureRegistrationResult.CertificateThumbprint">
+            <summary>
+            Gets or sets the key version used for signature.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.TableTypes.FiscalCustomerTableType">
+            <summary>
+            The table type for the fiscal customer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.TableTypes.FiscalCustomerTableType.#ctor(System.String,System.String,System.String,System.Int64,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.TableTypes.FiscalCustomerTableType"/> class.
+            </summary>
+            <param name="transactionId">The transaction identifier.</param>
+            <param name="storeId">The store identifier.</param>
+            <param name="terminalId">The terminal identifier.</param>
+            <param name="channelId">The channel identifier.</param>
+            <param name="dataAreaId">The data area for the current invent location.</param>
+            <param name="serializedData">The serialized fiscal customer data object.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.TableTypes.FiscalCustomerTableType.CreateTableSchema">
+            <summary>
+            Creates the table schema.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Localization.Entities.TableTypes.FiscalCustomerTableType.GetDataRow(System.String,System.String,System.String,System.Int64,System.String,System.String)">
+            <summary>
+            Gets a data row for the fiscal customer.
+            </summary>
+            <param name="transactionId">The transaction identifier.</param>
+            <param name="storeId">The store identifier.</param>
+            <param name="terminalId">The terminal identifier.</param>
+            <param name="channelId">The channel identifier.</param>
+            <param name="dataAreaId">The data area for the current invent location.</param>
+            <param name="serializedData">The serialized fiscal customer data object.</param>
+            <returns>The data row.</returns>
+        </member>
+    </members>
+</doc>

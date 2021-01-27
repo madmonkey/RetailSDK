@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Erro ao concluir a transação. O serviço de assinatura não está pronto. Contate o administrador do sistema.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Erro ao concluir a transação. A transação fiscal vinculada contém dados de um formato incorreto. Contate o administrador do sistema.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "Houve um erro na recuperação da última transação de assinatura digital. Possivelmente, o banco de dados offline não está sincronizado. Contate o administrador do sistema.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

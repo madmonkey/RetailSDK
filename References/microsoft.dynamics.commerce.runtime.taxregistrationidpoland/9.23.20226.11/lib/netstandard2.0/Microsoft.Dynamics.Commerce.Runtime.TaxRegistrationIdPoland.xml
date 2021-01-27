@@ -1,0 +1,579 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.DataModel.FiscalCustomerData">
+            <summary>
+            Represents the fiscal customer data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.DataModel.FiscalCustomerData.VatId">
+            <summary>
+            Gets or sets the VAT identifier.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Helpers.CustomerDataHelper">
+            <summary>
+            Fiscal customer data helper.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Helpers.CustomerDataHelper.ExtractFiscalCustomerJsonData(Microsoft.Dynamics.Commerce.Runtime.Framework.ExtensibleObject)">
+            <summary>
+            Extracts the fiscal customer data as JSON string from a cart or sales transaction.
+            </summary>
+            <param name="extensibleObject">The cart or sales transaction.</param>
+            <returns>The fiscal customer data as JSON string.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Helpers.CustomerDataHelper.ValidateFiscalCustomerData(Microsoft.Dynamics.Commerce.Runtime.RequestContext,Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.DataModel.FiscalCustomerData)">
+            <summary>
+            Validates a fiscal customer data.
+            </summary>
+            <param name="requestContext">The request context.</param>
+            <param name="fiscalCustomerData">The fiscal customer data.</param>
+            <returns>The normalized and validated fiscal customer data.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.GetFiscalCustomerDataDataRequest">
+            <summary>
+            The request to get a <see cref="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.DataModel.FiscalCustomerData"/> entity.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.GetFiscalCustomerDataDataRequest.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.GetFiscalCustomerDataDataRequest"/> class.
+            </summary>
+            <param name="transactionId">The transaction identifier.</param>
+            <param name="terminalId">The terminal identifier.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.GetFiscalCustomerDataDataRequest.TransactionId">
+            <summary>
+            Gets the transaction identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.GetFiscalCustomerDataDataRequest.TerminalId">
+            <summary>
+            Gets the terminal identifier.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.SaveFiscalCustomerDataDataRequest">
+            <summary>
+            The request to save a fiscal customer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.SaveFiscalCustomerDataDataRequest.#ctor(System.String,System.String,Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.DataModel.FiscalCustomerData)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.SaveFiscalCustomerDataDataRequest"/> class.
+            </summary>
+            <param name="transactionId">The transaction identifier.</param>
+            <param name="terminalId">The terminal identifier.</param>
+            <param name="fiscalCustomerData">The <see cref="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.SaveFiscalCustomerDataDataRequest.FiscalCustomerData"/> object.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.SaveFiscalCustomerDataDataRequest.TransactionId">
+            <summary>
+            Gets the transaction identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.SaveFiscalCustomerDataDataRequest.TerminalId">
+            <summary>
+            Gets the terminal identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.SaveFiscalCustomerDataDataRequest.FiscalCustomerData">
+            <summary>
+            Gets the fiscal customer data.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateCustomerVatIdRequest">
+            <summary>
+            The request to validate the customer VAT identifier.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateCustomerVatIdRequest.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateCustomerVatIdRequest"/> class.
+            </summary>
+            <param name="vatId">The customer VAT identifier to validate.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateCustomerVatIdRequest.VatId">
+            <summary>
+            Gets the customer VAT identifier to validate.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateCustomerVatIdResponse">
+            <summary>
+            The response with normalized and validated customer VAT identifier.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateCustomerVatIdResponse.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateCustomerVatIdResponse"/> class.
+            </summary>
+            <param name="normalizedVatId">The normalized and validated customer VAT identifier.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateCustomerVatIdResponse.NormalizedVatId">
+            <summary>
+            Gets the normalized and validated customer VAT identifier.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateFiscalCustomerDataRequest">
+            <summary>
+            The request to validate the fiscal customer data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateFiscalCustomerDataRequest.#ctor(Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.DataModel.FiscalCustomerData)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateFiscalCustomerDataRequest"/> class.
+            </summary>
+            <param name="fiscalCustomerData">The fiscal customer data to validate.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateFiscalCustomerDataRequest.FiscalCustomerData">
+            <summary>
+            Gets the fiscal customer data to validate.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateFiscalCustomerDataResponse">
+            <summary>
+            The response with normalized and validated fiscal customer data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateFiscalCustomerDataResponse.#ctor(Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.DataModel.FiscalCustomerData)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateFiscalCustomerDataResponse"/> class.
+            </summary>
+            <param name="normalizedFiscalCustomerData">The normalized and validated fiscal customer data.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateFiscalCustomerDataResponse.NormalizedFiscalCustomerData">
+            <summary>
+            Gets the normalized and validated fiscal customer data.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Properties.Resources.Messages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Properties.Resources.Messages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Properties.Resources.Messages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Properties.Resources.Messages.Vat_Id_Validation_Error">
+            <summary>
+              Looks up a localized string similar to VAT number is not valid..
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdFiscalCustomerDataService">
+            <summary>
+            Represents a data service for the fiscal customer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdFiscalCustomerDataService.SupportedRequestTypes">
+            <summary>
+            Gets the supported request types.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdFiscalCustomerDataService.SupportedCountryRegions">
+            <summary>
+            Gets the supported countries.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdFiscalCustomerDataService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            The entry point to <see cref="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdFiscalCustomerDataService"/> service.
+            </summary>
+            <param name="request">The request to execute.</param>
+            <returns>Result of executing request, or null object for void operations.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdFiscalCustomerDataService.GetSalesTransactionFiscalCustomer(Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.GetFiscalCustomerDataDataRequest)">
+            <summary>
+            Gets a fiscal customer.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdFiscalCustomerDataService.SaveSalesTransactionFiscalCustomer(Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.SaveFiscalCustomerDataDataRequest)">
+            <summary>
+            Saves a fiscal customer.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The null response.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdFiscalCustomerService">
+            <summary>
+            Handles sales order creating requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdFiscalCustomerService.SupportedCountryRegions">
+            <summary>
+            Gets the supported countries.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdFiscalCustomerService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            The entry point to <see cref="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdFiscalCustomerService"/> service.
+            </summary>
+            <param name="request">The request to execute.</param>
+            <returns>Result of executing request, or null object for void operations.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdFiscalCustomerService.HandleSaveCartRequest">
+            <summary>
+            Validates the cart's fiscal customer data on cart saving.
+            </summary>
+            <returns>The not handled response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdFiscalCustomerService.HandleCreateSalesOrderServiceRequest">
+            <summary>
+            Handles saving the fiscal customer from a sales transaction.
+            </summary>
+            <returns>The not handled response.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdReceiptService">
+            <summary>
+            The extended service to get custom sales receipt field.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdReceiptService.SupportedRequestTypes">
+            <summary>
+            Gets the supported request types.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdReceiptService.SupportedCountryRegions">
+            <summary>
+            Gets the supported countries.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdReceiptService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Executes the request.
+            </summary>
+            <param name="request">The request parameter.</param>
+            <returns>The <see href="GetCustomReceiptFieldServiceResponse"/> that contains the receipt fields.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdReceiptService.GetLocalizationCustomReceiptField(Microsoft.Dynamics.Commerce.Runtime.Services.Messages.GetLocalizationCustomReceiptFieldServiceRequest)">
+            <summary>
+            Gets the custom receipt field value for sales receipt.
+            </summary>
+            <param name="request">The service request to get custom receipt field value.</param>
+            <returns>The value of custom receipt field.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdReceiptService.GetFiscalCustomerVatId(Microsoft.Dynamics.Commerce.Runtime.Services.Messages.GetLocalizationCustomReceiptFieldServiceRequest)">
+            <summary>
+            Gets the fiscal customer VAT identifier.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The lottery code or an empty string if not exists.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdValidationService">
+            <summary>
+            The tax registration ID validation service.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdValidationService.VatIdPattern">
+            <summary>
+            VAT identifier validation pattern.
+            </summary>
+            <example>
+            0123456789
+            </example>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdValidationService.SupportedRequestTypes">
+            <summary>
+            Gets the supported request types.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdValidationService.SupportedCountryRegions">
+            <summary>
+            Gets the supported countries.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdValidationService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            The entry point to <see cref="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdValidationService"/> service.
+            </summary>
+            <param name="request">The request to execute.</param>
+            <returns>Result of executing request, or null object for void operations.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdValidationService.GetValidationError(System.String)">
+            <summary>
+            Gets a required attribute validation error with the specified error message.
+            </summary>
+            <param name="errorMessage">The error message.</param>
+            <returns>The data validation failure.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdValidationService.ValidateFiscalCustomer(Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateFiscalCustomerDataRequest)">
+            <summary>
+            Validates a fiscal customer.
+            </summary>
+            <param name="request">The request with the fiscal customer.</param>
+            <returns>The <see cref="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateFiscalCustomerDataResponse"/> if validation passed, otherwise throws a <see cref="T:Microsoft.Dynamics.Commerce.Runtime.DataValidationException"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdValidationService.ValidateCustomerVatId(Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Messages.ValidateCustomerVatIdRequest)">
+            <summary>
+            Validates a customer VAT identifier.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The Response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Services.TaxRegistrationIdValidationService.ValidateVatId(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.String,System.Boolean,Microsoft.Dynamics.Commerce.Runtime.DataValidationFailure@,System.String@)">
+            <summary>
+            Validates a VAT identifier.
+            </summary>
+            <param name="requestContext">The request context.</param>
+            <param name="vatId">The VAT identifier.</param>
+            <param name="allowEmpty">The flag indicating whether or not an empty value is allowed.</param>
+            <param name="validationFailure">The validation failure if validation fails, otherwise null.</param>
+            <param name="normalizedVatId">The normalized and validated VAT identifier.</param>
+            <returns>True if validation succeeds, otherwise false.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.TaxRegistrationIdPolandConstants">
+            <summary>
+            Contains the extension's constants.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.TaxRegistrationIdPolandConstants.CustomerTaxRegistrationExtensionPropertyKey">
+            <summary>
+            The name of the extension property which holds the customer tax registration entity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.TaxRegistrationIdPolandConstants.CustomerVatIdExtensionPropertyKey">
+            <summary>
+            The name of the extension property which holds the customer VAT identifier.
+            </summary>
+            <remarks>
+            This constant is deprecated, but is kept to avoid a breaking change.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.TaxRegistrationIdPolandConstants.FiscalCustomerDataExtensionPropertyKey">
+            <summary>
+            The name of the extension property which holds the customer tax information entity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.TaxRegistrationIdPolandConstants.IsFiscalCustomerRequiredForTransactionExtensionPropertyKey">
+            <summary>
+            The name of the extension property which holds the IsFiscalCustomerRequiredForTransaction value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.TaxRegistrationIdPolandLocalizer">
+            <summary>
+            Encapsulates localization functionality for the extension.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.TaxRegistrationIdPolandLocalizer.Instance">
+            <summary>
+            Gets the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.TaxRegistrationIdPolandLocalizer"/> instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.TaxRegistrationIdPolandLocalizer.Translate(System.String,System.String)">
+            <summary>
+            Translates the specified text identifier according to culture name.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="textId">The text identifier.</param>
+            <returns>The localized string.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.CreateSalesOrderServiceRequestTrigger">
+            <summary>
+            The trigger for <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Services.Messages.CreateSalesOrderServiceRequest"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.CreateSalesOrderServiceRequestTrigger.SupportedRequestTypes">
+            <summary>
+            Gets the supported request types.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.CreateSalesOrderServiceRequestTrigger.SupportedCountryRegions">
+            <summary>
+            Gets the supported countries/regions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.CreateSalesOrderServiceRequestTrigger.OnExecuting(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Invoked before request has been processed by <see cref="T:Microsoft.Dynamics.Commerce.Runtime.IRequestHandler"/>.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.CreateSalesOrderServiceRequestTrigger.OnExecuted(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.Messages.Response)">
+            <summary>
+            Invoked after request has been processed by <see cref="T:Microsoft.Dynamics.Commerce.Runtime.IRequestHandler"/>.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="response">The response.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.GetCustomersServiceRequestTrigger">
+            <summary>
+            The trigger for <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Services.Messages.GetCustomersServiceRequest"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.GetCustomersServiceRequestTrigger.SupportedRequestTypes">
+            <summary>
+            Gets the supported request types.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.GetCustomersServiceRequestTrigger.SupportedCountryRegions">
+            <summary>
+            Gets the supported countries.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.GetCustomersServiceRequestTrigger.OnExecuting(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Invoked before request has been processed by <see cref="T:Microsoft.Dynamics.Commerce.Runtime.IRequestHandler"/>.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.GetCustomersServiceRequestTrigger.OnExecuted(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.Messages.Response)">
+            <summary>
+            Invoked after request has been processed by <see cref="T:Microsoft.Dynamics.Commerce.Runtime.IRequestHandler"/>.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="response">The response</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.GetDeviceConfigurationRequestTrigger">
+            <summary>
+            This trigger adds extension properties for requiring fiscal customer for transaction to the DeviceConfiguration entity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.GetDeviceConfigurationRequestTrigger.SupportedRequestTypes">
+            <summary>
+            Gets the supported requests for this trigger.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.GetDeviceConfigurationRequestTrigger.SupportedCountryRegions">
+            <summary>
+            Gets the supported countries.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.GetDeviceConfigurationRequestTrigger.OnExecuting(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Invoked before request has been processed by <see cref="T:Microsoft.Dynamics.Commerce.Runtime.IRequestHandler"/>.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.GetDeviceConfigurationRequestTrigger.OnExecuted(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.Messages.Response)">
+            <summary>
+            Invoked after request has been processed by <see cref="T:Microsoft.Dynamics.Commerce.Runtime.IRequestHandler"/>.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="response">The response</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.GetDeviceConfigurationRequestTrigger.GetParameters(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.String)">
+            <summary>
+            Gets the RequireFiscalCustomerForTransaction parameters for the given functionality profile.
+            </summary>
+            <param name="requestContext">The RequestContext instance.</param>
+            <param name="profileId">Functionality profile Id.</param>
+            <returns>The RequireFiscalCustomerForTransaction parameters.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCartRequestTrigger">
+            <summary>
+            The trigger for <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Messages.SaveCartRequest"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCartRequestTrigger.SupportedRequestTypes">
+            <summary>
+            Gets the supported request types.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCartRequestTrigger.SupportedCountryRegions">
+            <summary>
+            Gets the supported countries/regions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCartRequestTrigger.OnExecuting(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Invoked before request has been processed by <see cref="T:Microsoft.Dynamics.Commerce.Runtime.IRequestHandler"/>.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCartRequestTrigger.OnExecuted(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.Messages.Response)">
+            <summary>
+            Invoked after request has been processed by <see cref="T:Microsoft.Dynamics.Commerce.Runtime.IRequestHandler"/>.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="response">The response.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCustomerServiceRequestTrigger">
+            <summary>
+            The trigger for <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Services.Messages.SaveCustomerServiceRequest"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCustomerServiceRequestTrigger.CustomerTaxRegistrationsExtensionPropertyKey">
+            <summary>
+            The name of the extension property which holds the customer tax registrations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCustomerServiceRequestTrigger.SupportedRequestTypes">
+            <summary>
+            Gets the supported request types.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCustomerServiceRequestTrigger.SupportedCountryRegions">
+            <summary>
+            Gets the supported countries.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCustomerServiceRequestTrigger.OnExecuting(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Invoked before request has been processed by <see cref="T:Microsoft.Dynamics.Commerce.Runtime.IRequestHandler"/>.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCustomerServiceRequestTrigger.OnExecuted(Microsoft.Dynamics.Commerce.Runtime.Messages.Request,Microsoft.Dynamics.Commerce.Runtime.Messages.Response)">
+            <summary>
+            Invoked after request has been processed by <see cref="T:Microsoft.Dynamics.Commerce.Runtime.IRequestHandler"/>.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="response">The response.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCustomerServiceRequestTrigger.UpdateAddresses(System.Collections.Generic.IReadOnlyCollection{System.Tuple{Microsoft.Dynamics.Commerce.Runtime.DataModel.TaxRegistration,Microsoft.Dynamics.Commerce.Runtime.DataModel.Address}},Microsoft.Dynamics.Commerce.Runtime.DataModel.Customer)">
+            <summary>
+            Updates customer addresses.
+            </summary>
+            <param name="taxRegistrationAddressTuples">The collection of tuples of tax registration and address.</param>
+            <param name="customer">The customer.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCustomerServiceRequestTrigger.SaveVatIds(System.Collections.Generic.IReadOnlyCollection{System.Tuple{Microsoft.Dynamics.Commerce.Runtime.DataModel.TaxRegistration,Microsoft.Dynamics.Commerce.Runtime.DataModel.Address}},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Saves VAT identifiers.
+            </summary>
+            <param name="taxRegistrationAddressTuples">The collection of tuples of tax registration and address.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCustomerServiceRequestTrigger.SaveVatId(System.Tuple{Microsoft.Dynamics.Commerce.Runtime.DataModel.TaxRegistration,Microsoft.Dynamics.Commerce.Runtime.DataModel.Address},Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Saves a VAT identifier.
+            </summary>
+            <param name="taxRegistrationAddressTuple">The tuple of tax registration and address.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCustomerServiceRequestTrigger.CreateOrUpdateTaxRegistration(System.String,Microsoft.Dynamics.Commerce.Runtime.DataModel.Address,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Creates or updates a tax registration entity.
+            </summary>
+            <param name="vatId">The VAT identifier.</param>
+            <param name="address">The address containing the VAT identifier.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCustomerServiceRequestTrigger.DeleteTaxRegistration(Microsoft.Dynamics.Commerce.Runtime.DataModel.TaxRegistration,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Deletes a tax registration entity.
+            </summary>
+            <param name="taxRegistration">The tax registration entity to delete.</param>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.TaxRegistrationIdPoland.Triggers.SaveCustomerServiceRequestTrigger.ExtractAndValidateTaxRegistrationsFromAddresses(Microsoft.Dynamics.Commerce.Runtime.DataModel.Customer,Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Extracts tax registrations from a customer's addresses.
+            </summary>
+            <param name="customer">The customer.</param>
+            <param name="context">The request context.</param>
+            <returns>The collection of tuples of tax registration and address.</returns>
+        </member>
+    </members>
+</doc>

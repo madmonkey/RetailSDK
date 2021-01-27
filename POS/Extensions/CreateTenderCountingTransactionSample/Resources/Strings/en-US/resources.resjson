@@ -1,0 +1,8 @@
+﻿{
+    //======================== Enter envelope number dialog. ========================
+    "string_1"                                     : "Envelope number",
+    "_string_1.comment"                            : "Enter envelope number dialog title.",
+
+    "string_2"                                     : "Enter envelope number:",
+    "_string_2.comment"                            : "Enter envelope number label."
+}

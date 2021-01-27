@@ -1,0 +1,9 @@
+﻿body[dir=ltr] .fixedToggleDetailsPaneButton {
+    position: fixed;
+    right: 20px;
+}
+
+body[dir=rtl] .fixedToggleDetailsPaneButton {
+    position: fixed;
+    left: 20px;
+}

@@ -1,0 +1,344 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>InventoryDocumentValidationViewPhone</title>
+    <link href="InventoryDocumentValidationView.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="inventoryDocumentValidationView fragment" data-bind="with: viewModel">
+        <div class="row height100Percent">
+            <div class="col grow flexBasis100Percent" data-bind="visible: !isPhoneDetailVisible()">
+                <div id="inventoryDocumentValidationViewPivot" class="grow" data-bind="pivot: {
+                        onselectionchanged: switchSelectionMode.bind($data),
+                        pivotItemVisibilities: [
+                            { pivotItemId: 'inventoryDocumentValidationViewPivotSerialNumberList', visible: isSerialNumberListViewVisible },
+                            { pivotItemId: 'inventoryDocumentValidationViewPivotLocationList', visible: isLocationListViewVisible },
+                            { pivotItemId: 'inventoryDocumentValidationViewPivotOvershippingList', visible: isOvershippingListViewVisible },
+                            { pivotItemId: 'inventoryDocumentValidationViewPivotOverreceivingList', visible: isOverreceivingListViewVisible },
+                            { pivotItemId: 'inventoryDocumentValidationViewPivotUndershippingList', visible: isUndershippingListViewVisible },
+                            { pivotItemId: 'inventoryDocumentValidationViewPivotUnderreceivingList', visible: isUnderreceivingListViewVisible },
+                            { pivotItemId: 'inventoryDocumentValidationViewPivotSourceLineDeletedList', visible: isSourceLineDeletedListViewVisible },
+                        ]},
+                        resx: { ariaLabel: 'string_4454' }"><!-- Main content -->
+                    <div id="inventoryDocumentValidationViewPivotSerialNumberList" data-bind="pivotItem: { headerResx: 'string_12800' }"><!-- Serial number -->
+                        <div class="col grow height100Percent">
+                            <div id="serialNumberDataList" data-bind="dataList: {
+                                    incrementalDataSource: {
+                                        dataManager: $data,
+                                        callerMethod: getSerialNumberLinesAsync,
+                                        pageSize: defaultPageSize,
+                                        updateItemCallBack: updateSerialNumberLineCallback
+                                    },
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    selectionChanged: onDataListSelectionChanged,
+                                    ariaLabelResx: 'string_12419',
+                                    columns: dataListColumns(),
+                                }">
+                            </div><!-- List of serial number validation result lines -->
+                        </div>
+                    </div>
+
+                    <div id="inventoryDocumentValidationViewPivotLocationList" data-bind="pivotItem: { headerResx: 'string_12438' }"><!-- Location -->
+                        <div class="col grow height100Percent">
+                            <div id="locationDataList" data-bind="dataList: {
+                                    incrementalDataSource: {
+                                        dataManager: $data,
+                                        callerMethod: getLocationLinesAsync,
+                                        pageSize: defaultPageSize,
+                                        updateItemCallBack: updateLocationLineCallback
+                                    },
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    selectionChanged: onDataListSelectionChanged,
+                                    ariaLabelResx: 'string_12419',
+                                    columns: dataListColumns(),
+                                }">
+                            </div><!-- List of location validation result lines -->
+                        </div>
+                    </div>
+
+                    <div id="inventoryDocumentValidationViewPivotOvershippingList" data-bind="pivotItem: { headerResx: 'string_12916' }"><!-- Over-shipping -->
+                        <div class="col grow height100Percent">
+                            <div id="overShippingDataList" data-bind="dataList: {
+                                    incrementalDataSource: {
+                                        dataManager: $data,
+                                        callerMethod: getOvershippingLinesAsync,
+                                        pageSize: defaultPageSize,
+                                        updateItemCallBack: updateOvershippingLineCallback
+                                    },
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    selectionChanged: onDataListSelectionChanged,
+                                    ariaLabelResx: 'string_12419',
+                                    columns: dataListColumns(),
+                                }">
+                            </div><!-- List of over shipping validation result lines -->
+                        </div>
+                    </div>
+
+                    <div id="inventoryDocumentValidationViewPivotOverreceivingList" data-bind="pivotItem: { headerResx : 'string_12907' }"><!-- Over-receiving -->
+                        <div class="col grow height100Percent">
+                            <div id="overReceivingDataList" data-bind="dataList: {
+                                    incrementalDataSource: {
+                                        dataManager: $data,
+                                        callerMethod: getOverreceivingLinesAsync,
+                                        pageSize: defaultPageSize,
+                                        updateItemCallBack: updateOverreceivingLineCallback
+                                    },
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    selectionChanged: onDataListSelectionChanged,
+                                    ariaLabelResx: 'string_12432',
+                                    columns: dataListColumns(),
+                                }">
+                            </div><!-- List of over receiving validation result lines -->
+                        </div>
+                    </div>
+
+                    <div id="inventoryDocumentValidationViewPivotUndershippingList" data-bind="pivotItem: { headerResx: 'string_12917' }"><!-- Under-shipping -->
+                        <div class="col grow height100Percent">
+                            <div id="underShippingDataList" data-bind="dataList: {
+                                    incrementalDataSource: {
+                                        dataManager: $data,
+                                        callerMethod: getUndershippingLinesAsync,
+                                        pageSize: defaultPageSize,
+                                        updateItemCallBack: updateUndershippingLineCallback
+                                    },
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    selectionChanged: onDataListSelectionChanged,
+                                    ariaLabelResx: 'string_12419',
+                                    columns: dataListColumns(),
+                                }">
+                            </div><!-- List of under shipping validation result lines -->
+                        </div>
+                    </div>
+
+                    <div id="inventoryDocumentValidationViewPivotUnderreceivingList" data-bind="pivotItem: { headerResx: 'string_12908' }"><!-- Under-receiving -->
+                        <div class="col grow height100Percent">
+                            <div id="underReceivingDataList" data-bind="dataList: {
+                                    incrementalDataSource: {
+                                        dataManager: $data,
+                                        callerMethod: getUnderreceivingLinesAsync,
+                                        pageSize: defaultPageSize,
+                                        updateItemCallBack: updateUnderreceivingLineCallback
+                                    },
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    selectionChanged: onDataListSelectionChanged,
+                                    ariaLabelResx: 'string_12419',
+                                    columns: dataListColumns(),
+                                }">
+                            </div><!-- List of under receiving validation result lines -->
+                        </div>
+                    </div>
+
+                    <div id="inventoryDocumentValidationViewPivotSourceLineDeletedList" data-bind="pivotItem: { headerResx : 'string_12909' }"><!-- Deleted -->
+                        <div class="col grow height100Percent">
+                            <div id="sourceSourceLineDeletedDataList" data-bind="dataList: {
+                                    incrementalDataSource: {
+                                        dataManager: $data,
+                                        callerMethod: getSourceLineDeletedLinesAsync,
+                                        pageSize: defaultPageSize,
+                                        updateItemCallBack: updateSourceLineDeletedLineCallback
+                                    },
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    selectionChanged: onDataListSelectionChanged,
+                                    ariaLabelResx: 'string_12432',
+                                    columns: dataListColumns(),
+                                }">
+                            </div><!-- List of line deleted validation result lines -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="statsPane" class="primaryPanelBackgroundColor row height56 marginLeft12 marginRight12">
+                    <div class="marginLeft20 marginTop4 marginBottom8">
+                        <h3 data-bind="text: totalLines "></h3>
+                        <h6 data-bind="resx: { textContent: 'string_12424' }"></h6><!-- TOTAL LINE -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Line details pane for phone -->
+            <div class="row grow height100Percent" data-bind="visible: isPhoneDetailVisible() ">
+                <div class="col grow height100Percent marginBottom48 primaryPanelBackgroundColor" data-bind="slideVisible: { isShowed: isPhoneDetailVisible() }">
+                    <div class="inventoryDocumentLineDetails grow scrollY">
+                        <!-- Placeholder for nothing selected -->
+                        <!-- ko ifnot: singleSelectedDocumentLine() -->
+                            <div class="col grow highContrastBorderThin marginBottom12">
+                                <div class="textCenter padTop40">
+                                    <div class="row center height72">
+                                        <div class="h1 icon-42x42 secondaryFontColor" data-bind="
+                                            resx: { ariaLabel: 'string_12431' },
+                                            css: { iconProduct: true }">
+                                        </div><!-- Select a line -->
+                                    </div>
+                                    <h2 class="marginLeft12 marginRight12 wrapText" data-bind="resx: { textContent: 'string_12431' }"></h2><!-- Select a line -->
+                                </div>
+                            </div>
+                        <!-- /ko -->
+
+                        <!-- ko if: singleSelectedDocumentLine() -->
+                            <!-- Product Information Section -->
+                            <div data-bind="template: {
+                                name: 'inventoryDocumentLineProductInformationTemplate',
+                                data: {
+                                    primaryImageUrl: singleSelectedDocumentLine().product.PrimaryImageUrl,
+                                    itemName: singleSelectedDocumentLine().product.Name,
+                                    itemId: singleSelectedDocumentLine().product.ItemId,
+                                    productDimensionsDescription: singleSelectedLineProductDimensionsDescription() }}">
+                            </div>
+                            <div data-bind="template: {
+                                name: 'inventoryDocumentValidationErrorSection',
+                                data: {
+                                    isCategoryActive: isSourceLineDeletedCategoryActive,
+                                    isError: isSingleSelectedLineError(),
+                                    isWarning: isSingleSelectedLineWarning(),
+                                    errorMessage: singleSelectedLineErrorMessage(),
+                                }}">
+                            </div>
+
+                            <!-- Update Now Quantity Section -->
+                            <div class="col marginLeft12 marginRight12 marginBottom20">
+                                <h4 class="marginBottom12 secondaryFontColor" data-bind="resx: { textContent: detailsPaneUpdateNowQuantityLabel() }"></h4>
+                                <div class="row centerY clickable" role="button" tabindex="0" data-bind="css: { borderBottomExtraThin: !(isQuantityActive()) }, click: onUpdateLineQuantityAsync">
+                                    <h1 class="marginLeft8 SegoeUISemilight" data-bind="text: singleSelectedDocumentLine().QuantityToUpdate"></h1>
+                                    <div class="grow"></div>
+                                    <div class="col center width48 height48">
+                                        <div class="h2 iconChevronRight icon-24x24 accentColor" data-bind="resx: { ariaLabel: detailsPaneEditUpdateNowQuantityLabel() }"></div>
+                                    </div>
+                                </div>
+                                <div data-bind="template: {
+                                    name: 'inventoryDocumentValidationErrorSection',
+                                    data: {
+                                        isCategoryActive: isQuantityActive(),
+                                        isError: isSingleSelectedLineError(),
+                                        isWarning: isSingleSelectedLineWarning(),
+                                        errorMessage: singleSelectedLineErrorMessage(),
+                                    }}">
+                                </div>
+                            </div>
+
+                            <!-- Expandable Quantity Section -->
+                            <div class="col marginLeft12 marginRight12 marginBottom20">
+                                <div class="col borderBottomExtraThin">
+                                    <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onToggleDetailsPaneQuantity">
+                                        <h6 class="marginBottom8 secondaryFontColor" data-bind="resx: { textContent: 'string_12442' }"></h6><!-- PRODUCT QUANTITY -->
+                                        <div class="grow"></div>
+                                        <div class="col center width48 height28 marginBottom4 positionRelative">
+                                            <!-- ko if: !isDetailsPaneQuantityExpanded() -->
+                                                <div class="h2 iconChevronDown icon-24x24 accentColor" data-bind="resx: { ariaLabel: 'string_12444' }"></div><!-- Unexpanding product quantity section -->
+                                            <!-- /ko -->
+                                            <!-- ko if: isDetailsPaneQuantityExpanded() -->
+                                                <div class="h2 iconChevronUp icon-24x24 accentColor" data-bind="resx: { ariaLabel: 'string_12443' }"></div><!-- Expand product quantity section -->
+                                            <!-- /ko -->
+                                        </div>
+                                    </div>
+                                    <!-- ko if: isDetailsPaneQuantityExpanded() -->
+                                        <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12453' }"></h4><!-- Remaining -->
+                                        <h4 data-bind="text: detailsPaneQuantityRemaining"></h4>
+                                        <h4 class="marginTop12 marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12445' }"></h4><!-- Shipped -->
+                                        <h4 data-bind="text: singleSelectedDocumentLine().SourceDocumentLine.QuantityShipped"></h4>
+                                        <h4 class="marginTop12 marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12447' }"></h4><!-- Canceled -->
+                                        <h4 class="marginBottom20" data-bind="text: singleSelectedDocumentLine().SourceDocumentLine.QuantityCancelled"></h4>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+
+                            <!-- Location Section -->
+                            <!-- ko if: isSingleSelectedLineLocationActive() -->
+                                <div class="col marginLeft12 marginRight12 marginBottom20">
+                                    <h4 class="marginBottom16 secondaryFontColor" data-bind="resx: { textContent: 'string_12438' }"></h4><!-- Location -->
+                                    <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onUpdateLineLocationAsync, css: {sectionBorder: !isLocationCategoryActive()}">
+                                        <div class="col center width48 height48 marginRight8 marginBottom8">
+                                            <div class="h2 icon-24x24 accentColor" data-bind="resx: { ariaLabel: 'string_12439' },
+                                                css: { iconMapPin: !isSingleSelectedLineWmsLocationIdEmpty(), iconPOILocationNotFound: isSingleSelectedLineWmsLocationIdEmpty() }">
+                                            </div><!-- Edit location -->
+                                        </div>
+                                        <div class="grow col centerY marginBottom8">
+                                            <div class="col">
+                                                <!-- ko ifnot: isSingleSelectedLineWmsLocationIdEmpty -->
+                                                    <h5 data-bind="text: singleSelectedDocumentLine().LocationId"></h5>
+                                                <!-- /ko -->
+                                                <!-- ko if: isSingleSelectedLineWmsLocationIdEmpty -->
+                                                    <h5 data-bind="resx: { textContent: 'string_12434' }"></h5><!-- Location not set -->
+                                                <!-- /ko -->
+                                            </div>
+                                        </div>
+                                        <div class="col center width48 height48 marginBottom8">
+                                            <div class="h2 iconChevronRight icon-24x24 accentColor" data-bind="resx: { ariaLabel: 'string_12439' }"></div><!-- Edit location -->
+                                        </div>
+                                    </div>
+                                    <div data-bind="template: {
+                                        name: 'inventoryDocumentValidationErrorSection',
+                                        data: {
+                                            isCategoryActive: isLocationCategoryActive(),
+                                            isError: isSingleSelectedLineError(),
+                                            isWarning: isSingleSelectedLineWarning(),
+                                            errorMessage: singleSelectedLineErrorMessage(),
+                                        }}">
+                                    </div>
+                                </div>
+                            <!-- /ko -->
+
+                            <!-- Serial Number Section -->
+                            <!-- ko if: isSingleSelectedLineSerialNumberActive() -->
+                                <div class="col marginLeft12 marginRight12 marginBottom20">
+                                    <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12800' }"></h4><!-- Serial number -->
+                                    <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onNavigateToSerialNumberViewAsync">
+                                        <div class="col center width16 height16 marginRight8">
+                                            <div class="h2 iconNumberSymbol icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12804' }"></div><!-- Manage serial number -->
+                                        </div>
+                                        <h4 class="accentColor" data-bind="resx: { textContent: 'string_12804' }"></h4><!-- Manage serial number -->
+                                    </div>
+                                    <div data-bind="template: {
+                                        name: 'inventoryDocumentValidationErrorSection',
+                                        data: {
+                                            isCategoryActive: isSerialNumberCategoryActive(),
+                                            isError: isSingleSelectedLineError(),
+                                            isWarning: isSingleSelectedLineWarning(),
+                                            errorMessage: singleSelectedLineErrorMessage(),
+                                        }}">
+                                    </div>
+                                </div>
+                            <!-- /ko -->
+
+                            <!-- Note Section -->
+                            <div class="col marginLeft12 marginRight12 marginBottom8">
+                                <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12440' }"></h4><!-- Notes -->
+                                <!-- ko if: isSingleSelectedLineNoteEmpty -->
+                                <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onUpdateLineNoteAsync">
+                                    <div class="col center width16 height16 marginRight8">
+                                        <div class="h2 iconAddTo icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12441' }"></div><!-- Add a note -->
+                                    </div>
+                                    <h4 class="accentColor" data-bind="resx: { textContent: 'string_12441' }"></h4><!-- Add a note -->
+                                </div>
+                                <!-- /ko -->
+                                <!-- ko ifnot: isSingleSelectedLineNoteEmpty -->
+                                <h4 class="marginBottom8" data-bind="text: singleSelectedDocumentLine().Note"></h4>
+                                <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onUpdateLineNoteAsync">
+                                    <div class="col center width16 height16 marginRight8">
+                                        <div class="h2 iconEdit icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12450' }"></div><!-- Edit note -->
+                                    </div>
+                                    <h4 class="accentColor" data-bind="resx: { textContent: 'string_12450' }"></h4><!-- Edit note -->
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+            <!-- End line details pane for phone -->
+        </div>
+
+        <!-- Bottom appbar buttons -->
+        <div id="inventoryDocumentValidationViewCommandAppBar" data-bind="appBar: {}">
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconAccept',
+                    id: 'OK',
+                    onclick: onClickOK,
+                    labelResx: 'string_75', // OK
+                }"><!-- OK -->
+            </button>
+        </div>
+    </div>
+</body>
+</html>

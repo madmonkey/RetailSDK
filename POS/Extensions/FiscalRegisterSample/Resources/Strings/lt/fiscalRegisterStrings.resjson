@@ -1,0 +1,23 @@
+{
+  "Fiscal_register_not_enabled_error": "Įjungtas EKA fiskalinis blokas, bet aparatūros stotis neįjungta.",
+  "_Fiscal_register_not_enabled_error.comment": "Fiscal register error message.",
+  "Fiscal_register_not_available_error": "Įjungtas EKA fiskalinis blokas, bet aparatūros stoties nėra.",
+  "_Fiscal_register_not_available_error.comment": "Fiscal register error message.",
+  "Fiscal_register_unregistered_comleted_transactions_error": "Turite užbaigtą (-ų) pardavimo operaciją (-ų), neužregistruotą (-ų) fiskaliniame bloke. Operacija atšaukta.",
+  "_Fiscal_register_unregistered_comleted_transactions_error.comment": "Fiscal register error message.",
+  "Ok_Button_Label": "Gerai",
+  "_Ok_Button_Label.comment": "Message dialog button label.",
+  "Cancel_Button_Label": "Atšaukti",
+  "_Cancel_Button_Label.comment": "Message dialog button label.",
+  "Skip_Button_Label": "Praleisti",
+  "_Skip_Button_Label.comment": "Message dialog button label.",
+  "Run_Refiscalization_Dialog_Title": "Fiskalinis blokas",
+  "_Run_Refiscalization_Dialog_Title.comment": "Message dialog message.",
+  "Run_Refiscalization_Dialog_Message": "Turite tiek užbaigtų pardavimo operacijų, neužregistruotų fiskaliniame bloke: {0}. Norėdami užregistruoti šias operacijas spustelėkite Gerai.",
+  "Skip_Refiscalize_Dialog_Title": "Fiskalinio bloko klaida",
+  "_Skip_Refiscalize_Dialog_Title.comment": "Message dialog title.",
+  "Skip_Refiscalize_Dialog_Message": "Pardavimo operacijos neįmanoma užregistruoti fiskaliniame bloke. Galite praleisti fiskalinę registraciją arba atšaukti operaciją.",
+  "_Skip_Refiscalize_Dialog_Message.comment": "Message dialog message.",
+  "Confirm_Skip_Refiscalization_Dialog_Message": "Ar tikrai norite praleisti fiskalinę operacijos, kurios ID: {0}, operacijos data / laikas: {1}, kvito ID: {2}, bendra kvito suma: {3}, registraciją? Jei praleisite fiskalinę registraciją, tai bus įrašyta operacijoje.",
+  "_Confirm_Skip_Refiscalization_Dialog_Message.comment": "Message dialog message."
+}

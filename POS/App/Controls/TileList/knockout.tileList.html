@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout tile list handler.</title>
+    <link href="knockout.tileList.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- List with a tile that has two sections bottom left and center. -->
+    <script type="text/html" id="tileListTemplate">
+        <div class="stretch" data-bind="if:tileType == Commerce.Controls.TileList.TileType.Flat, visible: tileType == Commerce.Controls.TileList.TileType.Flat ">
+            <div role="menu" class="col itemList" data-bind="template: { name: 'flatTileTemplate',foreach: itemDataSource, as: 'dataRow', afterRender: afterRender}">
+            </div>
+        </div>
+        <div class="stretch" data-bind="if:tileType == Commerce.Controls.TileList.TileType.Square, visible: tileType == Commerce.Controls.TileList.TileType.Square ">
+            <div class="row wrap itemList" data-bind="template: { name: 'squareTileTemplate',foreach: itemDataSource, as: 'dataRow', afterRender: afterRender}">
+            </div>
+        </div>
+        <div class="stretch" data-bind="if: tileType === Commerce.Controls.TileList.TileType.DoubleLine, visible: tileType === Commerce.Controls.TileList.TileType.DoubleLine ">
+            <div class="col itemList" data-bind="template: { name: 'doubleLineTileTemplate', foreach: itemDataSource, as: 'dataRow', afterRender: afterRender }">
+            </div>
+        </div>
+    </script>
+
+    <!-- Flat type TileTemplate starts-->
+    <script type="text/html" id="flatTileTemplate">
+        <div class="itemContainer accentBackground marginRight12 marginBottom12" data-bind="css: { disabled: dataRow.disabled }, attr: {disabled: dataRow.disabled}">
+            <div class="col grow pad12 padBottom0">
+                <div class="row">
+                    <!--Used for adding icon to the tile  -->
+                    <div class="row height32" data-bind="if: $parent.iconCssClassField">
+                        <div class="marginRight12">
+                            <div class="h4 margin0 noBorder textStart" data-bind="textConverter: {
+                                    data: dataRow,
+                                    cssClassField: $parent.iconCssClassField
+                                    }"></div>
+                        </div>
+                    </div>
+                    <div class="marginRight12 row">
+                        <div class="bottomLeft padBottom12">
+                            <div class="h4 margin0" data-bind="textConverter: {
+                                    data: dataRow,
+                                    field:  $parent.field,
+                                    converter:  $parent.converter
+                                    }, attr: {disabled: dataRow.disabled}"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </script>
+
+    <!-- Square type TileTemplate starts-->
+    <script type="text/html" id="squareTileTemplate">
+        <div class="itemContainer accentBackground col marginRight12 marginBottom12" data-bind="css: { disabled: dataRow.disabled }, attr: {disabled: dataRow.disabled}">
+            <div class="col grow pad12 padBottom0">
+                <!--Used for adding icon to the tile  -->
+                <div class="row">
+                    <div class="row height32" data-bind="if: $parent.iconCssClassField">
+                        <div class="h4 margin0 noBorder textStart"
+                             data-bind="textConverter: {
+                                        data: dataRow,
+                                        cssClassField: $parent.iconCssClassField }">
+                        </div>
+                    </div>
+                </div>
+                <div class="left12 marginRight12 row bottom06 textPanel">
+                    <div class="bottomLeft width100Percent">
+                        <div class="h4 margin0 wrapTextWithoutHyphen" data-bind="textConverter: {
+                                    data: dataRow,
+                                    field:  $parent.field,
+                                    converter:  $parent.converter
+                                    }, attr: {disabled: dataRow.disabled}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- DoubleLine type TileTemplate starts -->
+    <script type="text/html" id="doubleLineTileTemplate">
+        <div class="itemContainer accentBackground marginRight12 marginBottom12" data-bind="css: { disabled: dataRow.disabled }, attr: { disabled: dataRow.disabled }">
+            <div class="col grow pad12 padTop8">
+                <div class="row">
+                    <!-- Used for adding icon to the tile -->
+                    <div class="row height40" data-bind="if: $parent.iconCssClassField">
+                        <div class="width36 marginRight12 padTop4 center">
+                            <div class="h4 margin0 noBorder textStart" data-bind="textConverter: {
+                                data: dataRow,
+                                cssClassField: $parent.iconCssClassField }"></div>
+                        </div>
+                    </div>
+
+                    <div class="marginRight12 row">
+                        <div class="width100Percent">
+                            <div class="h5 margin0" data-bind="textConverter: {
+                                data: dataRow,
+                                field: $parent.field,
+                                converter: $parent.converter
+                            }, attr: { disabled: dataRow.disabled }"></div>
+
+                            <div class="h6 textTransformNone opacity60" data-bind="textConverter: {
+                                data: dataRow,
+                                field: $parent.secondaryField,
+                                converter: $parent.secondaryConverter
+                            }, attr: { disabled: dataRow.disabled }"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

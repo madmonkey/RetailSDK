@@ -1,0 +1,61 @@
+﻿{
+    "Tax_Registration_ID_PL_OK_Button_Label": "OK",
+    "_Tax_Registration_ID_PL_OK_Button_Label.comment": "Button text.",
+
+    "Tax_Registration_ID_PL_Cancel_Button_Label": "Cancel",
+    "_Tax_Registration_ID_PL_Cancel_Button_Label.comment": "Button text",
+
+    "Tax_Registration_ID_PL_Yes_Button_Label": "Yes",
+    "_Tax_Registration_ID_PL_Yes_Button_Label.comment": "Button text.",
+
+    "Tax_Registration_ID_PL_No_Button_Label": "No",
+    "_Tax_Registration_ID_PL_No_Button_Label.comment": "Button text",
+
+    "Tax_Registration_ID_PL_Tax_Registration_ID_Title": "Tax registration numbers",
+    "_Tax_Registration_ID_PL_Tax_Registration_ID_Title.comment": "Customer form field group title.",
+
+    "Tax_Registration_ID_PL_Vat_Number_Input_Empty_Placeholder": "No VAT number",
+    "_Tax_Registration_ID_PL_Vat_Number_Input_Empty_Placeholder.comment": "Empty input placeholder.",
+
+    "Tax_Registration_ID_PL_Tax_Lottery_Confirmation_Dialog_Title": "Enter customer information",
+    "_Tax_Registration_ID_PL_Tax_Lottery_Confirmation_Dialog_Title.comment": "Dialog title.",
+
+    "Tax_Registration_ID_PL_Tax_Lottery_Confirmation_Dialog_Message": "Ask if the customer wants to provide personal information",
+    "_Tax_Registration_ID_PL_Tax_Lottery_Confirmation_Dialog_Message.comment": "Dialog message.",
+
+    "Tax_Registration_ID_PL_Enter_Manually_Action_Label": "Enter manually",
+    "_Tax_Registration_ID_PL_Enter_Manually_Action_Label.comment": "Action name.",
+
+    "Tax_Registration_ID_PL_Copy_From_Transaction_Customer_Action_Label": "Copy from transaction customer",
+    "_Tax_Registration_ID_PL_Copy_From_Transaction_Customer_Action_Label.comment": "Action name.",
+
+    "Tax_Registration_ID_PL_Clear_Action_Label": "Clear",
+    "_Tax_Registration_ID_PL_Clear_Action_Label.comment": "Action name (verb).",
+
+    "Tax_Registration_ID_PL_Fiscal_Customer_Action_Dialog_Title": "Customer information",
+    "_Tax_Registration_ID_PL_Fiscal_Customer_Action_Dialog_Title.comment": "Dialog title.",
+
+    "Tax_Registration_ID_PL_Fiscal_Customer_Action_Dialog_SubTitle": "Select an action:",
+    "_Tax_Registration_ID_PL_Fiscal_Customer_Action_Dialog_SubTitle.comment": "Dialog subtitle.",
+
+    "Tax_Registration_ID_PL_Edit_Fiscal_Customer_Dialog_Subtitle": "Enter customer information:",
+    "_Tax_Registration_ID_PL_Edit_Fiscal_Customer_Dialog_Subtitle.comment": "Dialog subtitle.",
+
+    "Tax_Registration_ID_PL_Check_Fiscal_Customer_Dialog_Subtitle": "Verify customer information:",
+    "_Tax_Registration_ID_PL_Check_Fiscal_Customer_Dialog_Subtitle.comment": "Dialog subtitle.",
+
+    "Tax_Registration_ID_PL_Clear_Dialog_Message": "Are you sure you want to clear customer information?",
+    "_Tax_Registration_ID_PL_Clear_Dialog_Message.comment": "Dialog message.",
+
+    "Tax_Registration_ID_PL_Fiscal_Customer_Save_Unexpected_Error_Message": "An unexpected error occurred.",
+    "_Tax_Registration_ID_PL_Fiscal_Customer_Save_Unexpected_Error_Message.comment": "Error message text.",
+
+    "Tax_Registration_ID_PL_Fiscal_Customer_Save_Error_Title": "Customer information is not valid",
+    "_Tax_Registration_ID_PL_Fiscal_Customer_Save_Error_Title.comment": "Error message title.",
+
+    "Tax_Registration_ID_PL_Fiscal_Customer_Save_Error_Subtitle": "Unable to save the customer information. Make sure that the information is correct and try again.",
+    "_Tax_Registration_ID_PL_Fiscal_Customer_Save_Error_Subtitle.comment": "Error message subtitle.",
+
+    "Tax_Registration_ID_PL_Vat_Number_Input_Label": "VAT number",
+    "_Tax_Registration_ID_PL_Vat_Number_Input_Label.comment": "VAT number."
+}

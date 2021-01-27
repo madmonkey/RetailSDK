@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Invoiced Sales Lines View</title>
+</head>
+<body>
+    <div class="fragment invoicedSalesLinesView" data-bind="with: viewModel">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'invoicedSalesLinesView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div data-bind="pivotItem: { headerResx: 'string_5012' }">
+                <div id="AvailableInvoicedLines" data-bind="dataList: {
+                    defaultListType: Commerce.Controls.DataList.ListType.List,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.MultiSelect,
+                    selectionChanged: onSelectionChanged,
+                    autoSelectFirstItem: false,
+                    incrementalDataSource: {
+                        dataManager: $data,
+                        callerMethod: getInvoicedSalesLines,
+                        pageSize: defaultPageSize,
+                    },
+                    columns: [
+                        { titleResx: 'string_5019', ratio: 10, collapseOrder: 2, minWidth: 120,  field: 'InvoicedSalesId' },
+                        { titleResx: 'string_5002', ratio: 10, collapseOrder: 3, minWidth: 120,  field: 'InvoiceId' },
+                        { titleResx: 'string_4446', ratio: 10, collapseOrder: 10, minWidth: 120,  field: 'ItemId' },
+                        { titleResx: 'string_5020', ratio: 10, collapseOrder: 9, minWidth: 200,  field: 'productName' },
+                        { titleResx: 'string_5017', ratio: 10, collapseOrder: 8 , minWidth: 200,  field: 'variantDescription' },
+                        { titleResx: 'string_5018', ratio: 10, collapseOrder: 1, minWidth: 180,  field: 'SerialNumber' },
+                        { titleResx: 'string_5008', ratio: 10, collapseOrder: 4, minWidth: 120,  field: 'Price', converter: 'Commerce.Core.Converter.PriceFormatter', isRightAligned: true},
+                        { titleResx: 'string_5016', ratio: 10, collapseOrder: 6, minWidth: 120,  field: 'Quantity', converter: 'Commerce.Core.Converter.NegativeQuantityFormatter', isRightAligned: true},
+                        { titleResx: 'string_5014', ratio: 10, collapseOrder: 7, minWidth: 120,  field: 'QuantityReturnable', converter: 'Commerce.Core.Converter.NegativeQuantityFormatter', isRightAligned: true},
+                        { titleResx: 'string_5010', ratio: 10, collapseOrder: 5, minWidth: 120, field: 'NetAmount', converter: 'Commerce.Core.Converter.PriceFormatterNegation', isRightAligned: true }
+                    ]},
+                    axBubbleAttr: 'invoicedSalesLinesView_salesLines'"></div>
+            </div>
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="invoicedSalesLinesCommandAppBar" data-bind="appBar:{}, axBubbleAttr: 'invoicedSalesLinesView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id:'returnButton',
+                extraClass: 'iconProductReturn',
+                onclick: returnSelectedInvoices,
+                disabled: returnSalesInvoiceDisabled,
+                labelResx: 'string_5013'
+            }, axBubbleAttr: 'invoicedSalesLinesView_returnButton'"></button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "Warning_title": "Avertissement",
+  "_Warning_title.comment": "POS warning message title.",
+  "Shift_closing_warning": "Vous devez clôturer l'équipe de travail d'ici {0}.",
+  "_Shift_closing_warning.comment": "POS warning message when the cashier performs an operation within the shift closing interval.",
+  "Error_title": "Erreur",
+  "_Error_title.comment": "POS error message title.",
+  "Shift_closing_error": "La durée de l'équipe de travail dépasse la limite. Suspendez la transaction, fermez l'équipe de travail et ouvrez une nouvelle équipe de travail.",
+  "_Shift_closing_error.comment": "POS warning message when the cashier performs an operation after the shift closing time."
+}

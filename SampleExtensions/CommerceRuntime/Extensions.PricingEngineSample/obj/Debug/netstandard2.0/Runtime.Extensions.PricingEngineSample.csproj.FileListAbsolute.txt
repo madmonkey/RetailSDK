@@ -1,0 +1,12 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingEngineSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingEngineSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingEngineSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingEngineSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingEngineSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingEngineSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingEngineSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingDataServicesSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingEngineSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingDataServicesSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingEngineSample\obj\Debug\netstandard2.0\Runtime.Extensions.PricingEngineSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingEngineSample\obj\Debug\netstandard2.0\Runtime.Extensions.PricingEngineSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingEngineSample\obj\Debug\netstandard2.0\Runtime.Extensions.PricingEngineSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingEngineSample\obj\Debug\netstandard2.0\Runtime.Extensions.PricingEngineSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingEngineSample\obj\Debug\netstandard2.0\Runtime.Extensions.PricingEngineSample.csproj.CopyComplete
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingEngineSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingEngineSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingEngineSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingEngineSample.pdb

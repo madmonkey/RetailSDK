@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>EditChecklistTaskDialog</title>
+    <link href="EditChecklistTaskDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="editChecklistTaskDialog" data-bind="customControlInternal: 'EditChecklistTaskDialog'">
+        <div data-bind="dialog:
+            {
+                title: title,
+                visible: visible,
+                buttonClick: onButtonClick,
+                closeOnEscButton: true,
+                dialogCloseButtonClick: dialogCloseButtonClick,
+                buttons: [
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_4484') /* Save */, operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, isPrimary: true, cssClass: 'okButton' },
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_76') /* Cancel */, operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton' }]
+            },
+            axBubbleAttr: 'editChecklistTaskDialog_editChecklistTaskDialog'">
+
+            <!-- dialog content -->
+            <div class="col height100Percent">
+                <!--Title-->
+                <div class="marginBottom20">
+                    <label class="h4 secondaryFontColor padTop4 padBottom4" for="checklistTaskInput_Name" data-bind="resx: { textContent: 'string_7718' /* Name */ }">Name</label>
+                    <input type="text" class="textInputArea" maxlength="60" id="checklistTaskInput_Name" data-bind="value: name">
+                </div>
+
+                <!--Due date-->
+                <div class="marginBottom20">
+                    <label class="h4 secondaryFontColor padBottom4" for="dueDatePicker" data-bind="resx: { textContent: 'string_7757' /* Due date */ }">Due date</label>
+                    <div id="dueDatePicker" class="primaryFontColor width100Percent"
+                         data-bind="datePicker:{ current: dueDateTime,
+                                     onChange: onDueDateChange.bind($root) },
+                                     resx: { ariaLabel: 'string_7757'},
+                                     axBubbleAttr: 'editChecklistTaskDialog_DueDatePicker'"></div>
+                </div>
+
+                <!--Assign to-->
+                <div class="marginBottom20">
+                    <div class="h4 secondaryFontColor padBottom8" data-bind="resx: { textContent: 'string_7785' /* Assign to */ }"></div>
+                    <div class="cardBorderBottom clickable outlineFocus" role="button" tabindex="0"
+                         data-bind="click: changeAssignTo.bind($root), axBubbleAttr: 'editChecklistTaskDialog_assignedToTile'">
+                        <div class="row centerY">
+                            <div class="h6 iconContact icon-24x24 icon height48 width48 center accentColorImportant marginRight8"></div>
+                            <div class="grow marginTop16 marginBottom16">
+                                <div class="h4 primaryFontColor ellipsis marginBottom4" data-bind="text: assignedWorkerName"></div>
+                                <!-- ko ifnot: Commerce.StringExtensions.isNullOrWhitespace(assignedWorkerPersonnelNumber()) -->
+                                <div class="h6 secondaryFontColor">
+                                    <span data-bind="text: Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_7790') /* ID: {0} */, assignedWorkerPersonnelNumber())"></span>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                            <div class="h6 iconChevronRight icon-24x24 icon height48 width48 center accentColorImportant"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Task list-->
+                <!-- ko if: isNewTask -->
+                <div class="marginBottom20">
+                    <div class="h4 secondaryFontColor padBottom8" data-bind="resx: { textContent: 'string_7720' /* Task list */ }"></div>
+                    <div class="cardBorderBottom clickable outlineFocus" role="button" tabindex="0"
+                         data-bind="click: changeTasklist.bind($root), axBubbleAttr: 'editChecklistTaskDialog_tasklistTile'">
+                        <div class="row centerY">
+                            <div class="h6 iconTrackers icon-24x24 icon height48 width48 center accentColorImportant marginRight8"></div>
+                            <div class="grow marginTop16 marginBottom16">
+                                <div class="h4 primaryFontInColor ellipsis marginBottom4" data-bind="text: tasklistName"></div>
+                                <!-- ko ifnot: Commerce.StringExtensions.isNullOrWhitespace(tasklistId()) -->
+                                <div class="ellipsis">
+                                    <span class="h6 secondaryFontColor inlineBlock tasksCount" data-bind="text: Commerce.StringExtensions.format((tasklistTasksCount() > 1 ?
+                                                                                                     Commerce.ViewModelAdapter.getResourceString('string_7779') /* {0} tasks */ :
+                                                                                                     Commerce.ViewModelAdapter.getResourceString('string_7787') /* {0} task */),
+                                                                                                     Commerce.Formatters.NumberFormatter(tasklistTasksCount()))"></span>
+                                    <span class="h6 secondaryFontColor inlineBlock marginLeft8 marginRight8">|</span>
+                                    <span class="h6 secondaryFontColor inlineBlock" data-bind="text: Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_7780') /* Created {0} */,
+                                                                                                     Commerce.Formatters.DateWithoutLocalTime(tasklistStartDatetime()))"></span>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                            <div class="h6 iconChevronRight icon-24x24 icon height48 width48 center accentColorImportant"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!--Notes-->
+                <div class="marginBottom20">
+                    <label class="h4 secondaryFontColor padBottom4" for="checklistTaskInput_Notes" data-bind="resx: { textContent: 'string_7721' /* Notes */  }"></label>
+                    <div>
+                        <textarea type="text" id="checklistTaskInput_Notes" class="height100" data-bind="value: instructions,
+                                    valueUpdate:'input',
+                                    resx: { ariaLabel: 'string_7721'},
+                                    axBubbleAttr: 'editChecklistTaskDialog_checklistTaskInput_Notes'"></textarea>
+                    </div>
+                </div>
+
+                <!--Status-->
+                <div class="marginBottom20">
+                    <label class="h4 secondaryFontColor padBottom8" data-bind="resx: { textContent: 'string_7730' /* Status */ }"></label>
+                    <div class="cardBorderBottom clickable outlineFocus" role="button" tabindex="0"
+                         data-bind="click: changeStatus.bind($root), axBubbleAttr: 'editChecklistTaskDialog_changeStatusButton'">
+                        <div class="row centerY">
+                            <!-- ko if: statusValue() === Commerce.Proxy.Entities.ChecklistTaskStatus.NotStarted -->
+                            <div class="h6 iconTaskStateNotStarted icon-24x24 icon height48 width48 center accentColorImportant marginRight8"></div>
+                            <!-- /ko -->
+                            <!-- ko if: statusValue() === Commerce.Proxy.Entities.ChecklistTaskStatus.InProgress -->
+                            <div class="h6 iconTaskStateProcess icon-24x24 icon height48 width48 center accentColorImportant marginRight8"></div>
+                            <!-- /ko -->
+                            <!-- ko if: statusValue() === Commerce.Proxy.Entities.ChecklistTaskStatus.Completed -->
+                            <div class="h6 iconTaskStateCompleted icon-24x24 icon height48 width48 center accentColorImportant marginRight8"></div>
+                            <!-- /ko -->
+                            <div class="grow marginTop16 marginBottom16">
+                                <div class="h4 primaryFontColor ellipsis marginBottom4" data-bind="text: localizedTaskStatus"></div>
+                            </div>
+                            <div class="h6 iconChevronRight icon-24x24 icon height48 width48 center accentColorImportant"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--Contact person-->
+                <div class="marginBottom20">
+                    <div class="h4 secondaryFontColor padBottom8" data-bind="resx: { textContent: 'string_7745' /* Contact person */ }"></div>
+                    <div class="cardBorderBottom clickable outlineFocus" role="button" tabindex="0"
+                         data-bind="click: changeContactPerson.bind($root), axBubbleAttr: 'editChecklistTaskDialog_contactPersonTile'">
+                        <div class="row centerY">
+                            <div class="h6 iconContact icon-24x24 icon height48 width48 center accentColorImportant marginRight8"></div>
+                            <div class="grow marginTop16 marginBottom16">
+                                <div class="h4 primaryFontColor ellipsis marginBottom4" data-bind="text: contactPersonName"></div>
+                                <!-- ko ifnot: Commerce.StringExtensions.isNullOrWhitespace(contactPersonPersonnelNumber()) -->
+                                <div class="h6 secondaryFontColor">
+                                    <span data-bind="text: Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_7790') /* ID: {0} */, contactPersonPersonnelNumber())"></span>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                            <div class="h6 iconChevronRight icon-24x24 icon height48 width48 center accentColorImportant"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Task link-->
+                <div class="marginBottom20">
+                    <label class="h4 secondaryFontColor inlineBlock padBottom4" for="checklistTaskInput_TaskLinkType" data-bind="resx: { textContent: 'string_7771' /* Task link */  }"></label>
+                    <select id="checklistTaskInput_TaskLinkType" class="marginBottom20" data-bind="options: taskLinkTypes,
+                                                                                                           optionsText: 'name',
+                                                                                                           optionsValue: 'value',
+                                                                                                           value: deepLinkTypeValue,
+                                                                                                           event:{ change: changeTaskLinkType.bind($root) },
+                                                                                                           css: { 'secondaryFontColor': deepLinkTypeValue() === Commerce.Proxy.Entities.ChecklistTaskDeepLinkType.None },
+                                                                                                           axBubbleAttr: 'editChecklistTaskDialog_taskLinkTypeSelector' "></select>
+                    <!-- ko if: deepLinkTypeValue() === Commerce.Proxy.Entities.ChecklistTaskDeepLinkType.Url -->
+                    <input aria-label="checklistTaskInput_TaskLinkUrl" type="text"
+                           class="textInputArea"
+                           data-bind="value: deepLink, resx: { ariaLabel: 'checklistTaskInput_TaskLinkUrl' }">
+                    <!-- /ko -->
+                    <!-- ko if: deepLinkTypeValue() === Commerce.Proxy.Entities.ChecklistTaskDeepLinkType.PosOperation -->
+                    <select class="marginBottom20" data-bind="options: taskLinkPOSOperations,
+                                                              optionsText: 'name',
+                                                              optionsValue: 'value',
+                                                              value: deepLink,
+                                                              attr: { 'aria-label': 'checklistTaskInput_TaskLinkPOSOperation' },
+                                                              event:{ change: changeTaskLinkPOSOperation.bind($root) },
+                                                              axBubbleAttr: 'checklistTaskInput_TaskLinkPOSOperation' "></select>
+                    <!-- /ko -->
+                    <!-- ko if: deepLinkTypeValue() === Commerce.Proxy.Entities.ChecklistTaskDeepLinkType.CustomerAccount -->
+                    <div class="cardBorderBottom clickable outlineFocus" role="button" tabindex="0"
+                         data-bind="click: changeCustomerAccount.bind($root), axBubbleAttr: 'editChecklistTaskDialog_customerAccountTile'">
+                        <div class="row centerY">
+                            <div class="h6 iconContact icon-24x24 icon height48 width48 center accentColorImportant marginRight8"></div>
+                            <div class="grow marginTop16 marginBottom16">
+                                <!-- ko ifnot: Commerce.StringExtensions.isNullOrWhitespace(deepLinkCustomerAccountName()) -->
+                                <div class="h4 primaryFontColor ellipsis marginBottom4" data-bind="text: deepLinkCustomerAccountName"></div>
+                                <div class="h6 secondaryFontColor">
+                                    <span data-bind="text: Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_7790') /* ID: {0} */, deepLink())"></span>
+                                </div>
+                                <!-- /ko -->
+                                <!-- ko if: Commerce.StringExtensions.isNullOrWhitespace(deepLinkCustomerAccountName()) -->
+                                <div class="h4 primaryFontColor ellipsis marginBottom4" data-bind="resx: { textContent: 'string_7789' /* Select a customer account */ }">Select a customer account</div>
+                                <!-- /ko -->
+                            </div>
+                            <div class="h6 iconChevronRight icon-24x24 icon height48 width48 center accentColorImportant"></div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

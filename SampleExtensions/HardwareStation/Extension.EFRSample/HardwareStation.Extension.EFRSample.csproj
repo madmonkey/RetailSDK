@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\..\..\BuildTools\Common.props" />
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyName>$(AssemblyNamePrefix).Commerce.HardwareStation.EFRSample</AssemblyName>
+    <RootNamespace>Contoso.Commerce.HardwareStation.EFRSample</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Contoso.Commerce.Runtime.DocumentProvider.DataModelEFR">
+      <HintPath>..\..\..\References\Contoso.Commerce.Runtime.DocumentProvider.DataModelEFR.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configuration\ConnectorEFRSample.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Dynamics.Commerce.HardwareStation.Core" Version="$(HardwareRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.HardwareStation.Localization" Version="$(HardwareRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.HardwareStation.PeripheralRequests" Version="$(HardwareRepoPackagesVersion)" />
+  </ItemGroup>
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Notification Self Packing Item Template</title>
+</head>
+<body>
+    <script id="SelfPackingNotificationUnpacked" type="text/html">
+        <button class="width48 height48 pad0 headerBackgroundColor headerBackgroundColorHover center"
+                data-bind="click : showNotificationCenterDialog,
+                           resx: { ariaLabel: 'string_13200', /* Notifications */ },
+                           attr: {title: Commerce.ViewModelAdapter.getResourceString('string_13200'), /* Notifications */ },
+                           axBubbleAttr: 'headerSplitView_notificationCenterButton',
+                           visible: showNotificationIcon">
+            <div class="buttonIcon height20"
+                 data-bind="css:{ iconActionCenter: !isNewNotifications(), iconActionCenterNotification: isNewNotifications },
+                            resx: { ariaLabel: 'string_13200', /* Notifications */ }">
+            </div>
+        </button>
+    </script>
+    <script id="SelfPackingNotificationPacked" type="text/html">
+        <button class="row width240 height48 pad0"
+                data-bind="click: showNotificationCenterDialog,
+                           resx: { ariaLabel: 'string_13200', /* Notifications */ },
+                           axBubbleAttr: 'headerSplitView_notificationCenterButton',
+                           visible: showNotificationIcon">
+            <div class="buttonIcon height20 margin12" data-bind="css:{ iconActionCenter: !isNewNotifications(), iconActionCenterNotification: isNewNotifications }">
+            </div>
+            <div class="grow col marginLeft8 padTop12">
+                <div class="h4 row" data-bind="resx: { textContent: 'string_13200' /* Notifications */ }"></div>
+            </div>
+        </button>
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Change Delivery Mode View</title>
+</head>
+<body>
+    <div class="fragment" data-bind="with: viewModel">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'ChangeDeliveryModeView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' /* Main content */}">
+            <div data-bind="pivotItem: { header: subTitle }">
+                <div id="deliveredCartLinesList" data-bind="dataList: {
+                    itemDataSource: deliveredSalesLines,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.MultiSelect,
+                    selectionChanged: selectedSalesLines,
+                    ariaLabelResx: 'string_5740',  /* Change mode of delivery */
+                    columns: [
+                        { titleResx: 'string_5956', ratio: 15, collapseOrder: 1, minWidth: 40, field: 'ItemId' },
+                        { titleResx: 'string_5943', ratio: 30, collapseOrder: 2, minWidth: 100, field: '$data', converter: 'Commerce.Core.Converter.ProductNameFormatter' },
+                        { titleResx: 'string_5952', ratio: 10, collapseOrder: 3, minWidth: 100, field: 'variantDescription' },
+                        { titleResx: 'string_5743', ratio: 15, collapseOrder: 4, minWidth: 100, field: 'Quantity', isRightAligned: true },
+                        { titleResx: 'string_5744', ratio: 30, collapseOrder: 5, minWidth: 120, field: '$data', converter: 'Commerce.Formatters.DeliveryDescriptionAndDateFormatter' },
+                    ]
+                }"></div>
+            </div>
+        </div>
+
+        <div id="commandAppBar" data-bind="appBar: {}, axBubbleAttr: 'changeDeliveryModeView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id:'clearAllSelectionAppBar',
+                extraClass: 'iconClearSelection',
+                enabled: hasSelectedAllSalesLines(),
+                onclick: $root.deselectAll.bind($root),
+                labelResx: 'string_1248' /* Clear all */},
+                axBubbleAttr: 'changeDeliveryModeView_clearAllSelectionAppBar'"></button>
+
+            <button data-bind="appBarCommand: {
+                id:'selectAllAppBar',
+                extraClass: 'iconSelectAll',
+                enabled: !hasSelectedAllSalesLines(),
+                onclick: $root.selectAll.bind($root),
+                labelResx: 'string_1213' /* Select all */},
+                axBubbleAttr: 'changeDeliveryModeView_selectAllAppBar'"></button>
+
+            <button data-bind="appBarCommand: {
+                id:'getDeliveryOptionsAppBar',
+                extraClass: 'iconDeliveryLine',
+                enabled: atLeastOneSalesLineSelected(),
+                onclick: getDeliveryOptions,
+                labelResx: 'string_5745' /* Get options for delivery mode */},
+                axBubbleAttr: 'changeDeliveryModeView_getDeliveryOptionsAppBar'"></button>
+        </div>
+    </div>
+</body>
+</html>

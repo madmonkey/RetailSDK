@@ -1,0 +1,23 @@
+{
+  "Fiscal_register_not_enabled_error": "Financial register is enabled for the POS, but Hardware station is not enabled.",
+  "_Fiscal_register_not_enabled_error.comment": "Fiscal register error message.",
+  "Fiscal_register_not_available_error": "Financial register is enabled for the POS, but Hardware station is not available.",
+  "_Fiscal_register_not_available_error.comment": "Fiscal register error message.",
+  "Fiscal_register_unregistered_comleted_transactions_error": "There are completed sales transaction(s) not registered in the financial register. Operation is cancelled.",
+  "_Fiscal_register_unregistered_comleted_transactions_error.comment": "Fiscal register error message.",
+  "Ok_Button_Label": "OK",
+  "_Ok_Button_Label.comment": "Message dialog button label.",
+  "Cancel_Button_Label": "Cancel",
+  "_Cancel_Button_Label.comment": "Message dialog button label.",
+  "Skip_Button_Label": "Skip",
+  "_Skip_Button_Label.comment": "Message dialog button label.",
+  "Run_Refiscalization_Dialog_Title": "Financial register",
+  "_Run_Refiscalization_Dialog_Title.comment": "Message dialog message.",
+  "Run_Refiscalization_Dialog_Message": "There are {0} completed sales transaction(s) not registered in the financial register. Click OK to register these transactions.",
+  "Skip_Refiscalize_Dialog_Title": "Financial register error",
+  "_Skip_Refiscalize_Dialog_Title.comment": "Message dialog title.",
+  "Skip_Refiscalize_Dialog_Message": "Sales transaction cannot be registered in the financial register. You can skip the financial registration or cancel the operation.",
+  "_Skip_Refiscalize_Dialog_Message.comment": "Message dialog message.",
+  "Confirm_Skip_Refiscalization_Dialog_Message": "Are you sure you want to skip the fiscal registration for transaction ID: '{0}', transaction date/time: '{1}', receipt ID: '{2}', receipt total amount: '{3}'? If you skip the fiscal registration, this will be recorded in the transaction.",
+  "_Confirm_Skip_Refiscalization_Dialog_Message.comment": "Message dialog message."
+}

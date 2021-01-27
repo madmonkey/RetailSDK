@@ -1,0 +1,23 @@
+{
+  "Fiscal_register_not_enabled_error": "Фискальный регистратор включен для POS, но станция оборудования не включена.",
+  "_Fiscal_register_not_enabled_error.comment": "Fiscal register error message.",
+  "Fiscal_register_not_available_error": "Фискальный регистратор включен для POS, но станция оборудования недоступна.",
+  "_Fiscal_register_not_available_error.comment": "Fiscal register error message.",
+  "Fiscal_register_unregistered_comleted_transactions_error": "Существуют завершенные проводки по продажам, которые не зарегистрированы в фискальном регистраторе. Операция отменена.",
+  "_Fiscal_register_unregistered_comleted_transactions_error.comment": "Fiscal register error message.",
+  "Ok_Button_Label": "OK",
+  "_Ok_Button_Label.comment": "Message dialog button label.",
+  "Cancel_Button_Label": "Отмена",
+  "_Cancel_Button_Label.comment": "Message dialog button label.",
+  "Skip_Button_Label": "Пропустить",
+  "_Skip_Button_Label.comment": "Message dialog button label.",
+  "Run_Refiscalization_Dialog_Title": "Фискальный регистратор",
+  "_Run_Refiscalization_Dialog_Title.comment": "Message dialog message.",
+  "Run_Refiscalization_Dialog_Message": "Существуют завершенные проводки по продажам ({0}), которые не зарегистрированы в фискальном регистраторе. Нажмите кнопку OK, чтобы зарегистрировать эти проводки.",
+  "Skip_Refiscalize_Dialog_Title": "Ошибка фискального регистратора",
+  "_Skip_Refiscalize_Dialog_Title.comment": "Message dialog title.",
+  "Skip_Refiscalize_Dialog_Message": "Невозможно зарегистрировать проводки по продажам в фискальном регистраторе. Можно пропустить финансовую регистрацию или отменить операцию.",
+  "_Skip_Refiscalize_Dialog_Message.comment": "Message dialog message.",
+  "Confirm_Skip_Refiscalization_Dialog_Message": "Пропустить финансовую регистрацию для проводки со следующими характеристиками: код: '{0}'; дата и время проводки: '{1}'; код поступления: '{2}'; общая сумма поступления: '{3}'? Если пропустить финансовую регистрацию, это будет зафиксировано в проводке.",
+  "_Confirm_Skip_Refiscalization_Dialog_Message.comment": "Message dialog message."
+}

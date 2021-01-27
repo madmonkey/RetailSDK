@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cash Management View</title>
+    <link href="CashManagementView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="cashManagementView fragment" data-bind="with: viewModel, interaction: { AmountByKeywordFound: { selectPivot: '#cashManagementViewPivotOperations' }}">
+        <!-- Main content -->
+        <div id="cashManagementViewPivot" data-bind="pivot: { resx: { ariaLabel: 'string_4454' } }">
+            <!-- Amount entry area -->
+            <div id="cashManagementViewPivotAmount" data-bind="pivotItem: { headerResx: 'string_4011' }">
+                <!-- Num pad -->
+                <div data-bind="currencyNumpad: {
+                            inputDataBinding: { resx: { ariaLabel: 'string_4011' /* Enter amount */ } },
+                            onEnter: $parent.enterAmount.bind($parent),
+                            value: amountToChange,
+                            numPadInputSource: $parent.numPadInputBroker
+                        }">
+                </div>
+            </div>
+            <!-- Operation details area -->
+            <div id="cashManagementViewPivotOperations" data-bind="pivotItem: { headerResx: 'string_4012' }">
+                <div class="h1 textRight" data-bind="formatPrice: totalAmountToDeclare"></div>
+
+                <div class="col no-shrink marginBottom12">
+                    <label for="cashManagementCurrencyValue" data-bind="resx: { textContent: 'string_4013' }">Currency</label>
+                    <div class="h2" id="cashManagementCurrencyValue" data-bind="text: storeCurrency"></div>
+                </div>
+
+                <div>
+                    <label for="cashManagementNotesTextArea" data-bind="resx: { textContent: 'string_4014' }">Notes</label>
+                    <div class="col no-shrink height332">
+                        <textarea id="cashManagementNotesTextArea" tabindex="2"
+                                    data-bind="value: operationComment,
+                                valueUpdate: 'afterkeydown',
+                                axBubbleAttr: 'cashManagementView_cashManagementNotesTextArea'"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="cashManagementAppBar" data-bind="appBar: {}, axBubbleAttr: 'cashManagementView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+            id: 'denominationCountAppBar',
+            extraClass: 'iconCount',
+            onclick: navigateToDenominationView,
+            enabled: isDenominationAvailable,
+            labelResx: 'string_13255' },
+            axBubbleAttr: 'cashManagementView_CountButton'"></button>
+            <button data-bind="appBarCommand: {
+            id: 'performOperationAppBar',
+            extraClass: 'iconSave',
+            onclick: processOperationAsync,
+            disabled: isSaveDisabled,
+            labelResx: 'string_1327' },
+            axBubbleAttr: 'cashManagementView_SaveButton'"></button>
+        </div>
+    </div>
+</body>
+</html>

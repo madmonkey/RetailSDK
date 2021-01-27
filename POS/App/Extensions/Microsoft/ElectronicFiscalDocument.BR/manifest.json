@@ -1,0 +1,48 @@
+﻿{
+  "$schema": "../Api/dist/manifestSchema.json",
+  "name": "Extensions_ElectronicFiscalDocument_BR",
+  "description": "An extension package providing support for Brazil-specific electronic fiscal document logic.",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "9.21.0.0",
+  "supportedCountryRegions": [ "BR" ],
+  "components": {
+    "resources": {
+      "name": "Resources and culture settings for the extension.",
+      "description": "Resources and culture settings for the extension.",
+      "supportedUICultures": [ "en-US", "pt-BR" ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources/Strings",
+      "stringResourcesFileName": "resources.resjson"
+    },
+    "extend": {
+      "views": {
+        "ShowJournalView": {
+          "appBarCommands": [ { "modulePath": "ViewExtensions/ShowJournal/CancelTransactionOperationCommand" } ]
+        }
+      },
+      "triggers": [
+        {
+          "triggerType": "PreEndTransaction",
+          "modulePath": "Triggers/PreEndTransactionTrigger"
+        }
+      ]
+    },
+    "create": {
+      "operations": [
+        {
+          "operationId": "3510",
+          "name": "Cancel transaction",
+          "description": "Cancel transaction operation handler.",
+          "operationRequestHandlerPath": "Operations/CancelTransactionOperationRequestHandler",
+          "operationRequestFactoryPath": "Operations/CancelTransactionOperationRequestFactory"
+        }
+      ],
+      "requestHandlers": [
+        {
+          "modulePath": "RequestHandlers/CancelTransactionHandler"
+        }
+      ]
+    }
+  }
+}

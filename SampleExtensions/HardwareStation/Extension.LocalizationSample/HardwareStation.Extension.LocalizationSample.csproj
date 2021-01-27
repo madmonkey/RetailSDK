@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\..\..\BuildTools\Common.props" />
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyName>$(AssemblyNamePrefix).Commerce.HardwareStation.Extension.LocalizationSample</AssemblyName>
+    <RootNamespace>Contoso.Commerce.HardwareStation.LocalizationSample</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Exception\HardwareStationExceptionMessages.resx">
+      <SubType>Designer</SubType>
+      <ManifestResourceName>Microsoft.Dynamics.Commerce.HardwareStation.LocalizationSample.HardwareStationExceptionMessages</ManifestResourceName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Dynamics.Commerce.HardwareStation.Localization" Version="$(HardwareRepoPackagesVersion)" />
+  </ItemGroup>
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

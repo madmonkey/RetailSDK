@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>employeeClientBookView</title>
+</head>
+<body>
+    <div class="fragment employeeClientBookView" data-bind="with:viewModel">
+        <div class="height100Percent row">
+            <div id="employeeClientBookViewPivot" data-bind="pivot: {}, resx: { ariaLabel: 'string_6550' }">
+                <div id="employeeClientBookViewPivotItem" data-bind="pivotItem: { headerResx: 'string_6550' }">
+                    <div class="col grow height100Percent">
+                        <!-- Main content -->
+                        <div id="employeeClientBook_employeeClientBookListView" data-bind="dataList: {
+                            incrementalDataSource: {
+                                dataManager: $data,
+                                callerMethod: getClientBookCustomers,
+                                onLoading: clientListIsLoading,
+                                reloadCallBack: reloadGetClientBookCustomers,
+                                pageSize: 20
+                            },
+                            itemInvoked: showCustomerDetailsAsync.bind($data),
+                            defaultListType: Commerce.Controls.DataList.ListType.Card,
+                            selectionChanged: setSelectedCustomers.bind($data),
+                            selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOrMulti,
+                            ariaLabelResx: 'string_612',
+                            itemTemplates: [
+                                {
+                                    name: 'string_939', /* Show cards */
+                                    templateId: 'employeeClientBookViewCustomerLargeCardTemplate',
+                                    cardType: Commerce.Controls.DataList.CardType.Static,
+                                    deviceType: Commerce.Controls.DataList.DeviceType.All,
+                                },
+                                {
+                                    name: 'string_1006', /* Show small cards */
+                                    templateId: 'employeeClientBookViewCustomerSmallCardTemplate',
+                                    cardType: Commerce.Controls.DataList.CardType.Static,
+                                    deviceType: Commerce.Controls.DataList.DeviceType.All,
+                                }
+                        ],
+                    },
+                    axBubbleAttr: 'employeeClientBookView_customers'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- appBar content-->
+        <div id="employeeClientBook_commandAppBar" data-bind="appBar: {}">
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconMultiSelect',
+                    id:'employeeClientBook_showSingleSelect',
+                    labelResx: 'string_6405',
+                },
+                gridSelectionMode:{ id: '#employeeClientBook_employeeClientBookListView'},
+                axBubbleAttr: 'employeeClientBookView_showSelectCustomer'"></button><!--select-->
+
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconView',
+                    id:'employeeClientBook_changeViewAppBar',
+                    labelResx: 'string_1036',
+                },
+                templateSwitcher: { listId: '#employeeClientBook_employeeClientBookListView' },
+                axBubbleAttr: 'employeeClientBookView_showSmallCardView'"></button><!--Change view-->
+
+            <button data-bind="appBarCommand: {
+                id:'employeeClientBook_applyFilter',
+                extraClass: 'iconFilter',
+                onclick: filterClientBookCustomers,
+                labelResx: 'string_935' },
+                axBubbleAttr: 'employeeClientBookView_applyFilter'"></button><!-- Filter -->
+
+            <button data-bind="appBarCommand: {
+                id:'employeeClientBook_removeCustomerFromClientBook',
+                extraClass: 'iconPeopleBlock',
+                onclick: removeCustomersClientBookAsync.bind($data),
+                labelResx: 'string_6564',
+                enabled: canRemoveSelectedCustomers},
+                axBubbleAttr: 'employeeClientBookView_remove'"></button> <!--Remove-->
+
+            <button data-bind="appBarCommand: {
+                id:'employeeClientBook_addCustomerToClientBook',
+                extraClass: 'iconAdd',
+                onclick: addToCartClick.bind($data),
+                labelResx: 'string_1009',
+                enabled: canAddSelectedCustomer},
+                axBubbleAttr: 'employeeClientBookView_addToSale'"></button> <!--Add to sale-->
+
+        </div>
+    </div>
+</body>
+</html>

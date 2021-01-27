@@ -1,0 +1,18 @@
+{
+  "Audit_event_price_lookup_error": "Kainų peržiūros įvykių registracijos klaida: {0}",
+  "_Audit_event_price_lookup_error.comment": "Audit event registration log error message.",
+  "Audit_event_tax_override_error": "Mokesčių perrašymo įvykių registracijos klaida: {0}",
+  "_Audit_event_tax_override_error.comment": "Audit event registration log error message.",
+  "Audit_event_quantity_correction_error": "Kiekių koregavimo įvykių registracijos klaida: {0}",
+  "_Audit_event_quantity_correction_error.comment": "Audit event registration log error message.",
+  "Audit_event_open_cash_drawer_error": "Atidaryto grynųjų pinigų stalčiaus įvykio registracijos klaida: {0}",
+  "_Audit_event_open_cash_drawer_error.comment": "Audit event registration log error message.",
+  "Audit_event_price_lookup_event_message": "Užregistruotas kainų peržiūros įvykis",
+  "_Audit_event_price_lookup_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_tax_override_event_message": "Užregistruotas mokesčių perrašymo įvykis",
+  "_Audit_event_tax_override_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_quantity_correction_event_message": "Užregistruotas kiekių koregavimo įvykis",
+  "_Audit_event_quantity_correction_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_open_cash_drawer_event_message": "Užregistruotas atidaryto grynųjų pinigų stalčiaus įvykis",
+  "_Audit_event_open_cash_drawer_event_message.comment": "Audit event database log string field value."
+}

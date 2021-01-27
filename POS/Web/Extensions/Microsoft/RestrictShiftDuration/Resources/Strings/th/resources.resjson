@@ -1,0 +1,10 @@
+{
+  "Warning_title": "คำเตือน",
+  "_Warning_title.comment": "POS warning message title.",
+  "Shift_closing_warning": "คุณต้องปิดกะภายใน {0}",
+  "_Shift_closing_warning.comment": "POS warning message when the cashier performs an operation within the shift closing interval.",
+  "Error_title": "เกิดข้อผิดพลาด",
+  "_Error_title.comment": "POS error message title.",
+  "Shift_closing_error": "ระยะเวลาของกะเกินขีดจำกัด ระงับธุรกรรม ปิดกะ และเปิดกะใหม่",
+  "_Shift_closing_error.comment": "POS warning message when the cashier performs an operation after the shift closing time."
+}

@@ -1,0 +1,10 @@
+{
+  "Warning_title": "警告",
+  "_Warning_title.comment": "POS warning message title.",
+  "Shift_closing_warning": "{0} までにシフトをクローズする必要があります。",
+  "_Shift_closing_warning.comment": "POS warning message when the cashier performs an operation within the shift closing interval.",
+  "Error_title": "エラー",
+  "_Error_title.comment": "POS error message title.",
+  "Shift_closing_error": "シフト期間が上限を超えています。トランザクションを中断し、シフトをクローズして、新しいシフトをオープンしてください。",
+  "_Shift_closing_error.comment": "POS warning message when the cashier performs an operation after the shift closing time."
+}

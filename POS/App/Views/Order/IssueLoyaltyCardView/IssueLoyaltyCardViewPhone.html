@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Issue Loyalty Card</title>
+    <link href="IssueLoyaltyCardView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment issueLoyaltyCardView">
+        <!-- Content -->
+        <div id="IssueLoyaltyCardPivot" data-bind="pivot: {resx: { ariaLabel: 'string_4454' }}">
+            <div id="IssueLoyaltyCardPivotNumPad" data-bind="pivotItem: { header:Commerce.ViewModelAdapter.getResourceString('string_4701') }">
+                <!-- Card area -->
+                <div data-ax-bubble="issueLoyaltyCardView_cardNumberNumpad" class="col no-shrink marginLeft20 marginRight20">
+                    <!-- ko if: !viewModel.isAutoGenerateLoyaltyCardNumberEnabled() -->
+                    <div data-bind="alphanumericNumpad: {
+                                onEnter: issueLoyaltyCard,
+                                value: viewModel.loyaltyCardNumber,
+                                inputDataBinding: { resx: { ariaLabel: 'string_4701' /* Card number */ } },
+                                numPadInputSource: numPadInputBroker
+                            }">
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: viewModel.isAutoGenerateLoyaltyCardNumberEnabled -->
+                    <div class="h4 wrapTextWithoutHyphen" data-bind="resx: { textContent: 'string_280' }">
+                        Card number will be generated automatically by the system when issued
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <!-- Buffer between the Card Area and Account Details Area -->
+            </div>
+
+            <div id="IssueLoyaltyCardPivotAccountDetails" data-bind="pivotItem: { header:Commerce.ViewModelAdapter.getResourceString('string_1150') }">
+                <!-- Account details area -->
+                <div class="col no-shrink marginRight20 maxWidth320">
+                    <!-- Customer Panel (Small - Name and Account) -->
+                    <div id="CustomerPanel" data-ax-bubble="issueLoyaltyCardView_customerPanel" class="col listViewThemeColor width220 height80 padLeft12 padTop20 positionRelative" data-bind="visible: viewModel.hasCustomer">
+                        <div class="right0 top0 overLayZIndex" data-bind="visible: viewModel.allowSwitchCustomer">
+                            <button data-ax-bubble="issueLoyaltyCardView_removeCustomerButton" class="iconCancel noBorder" data-bind="resx: { ariaLabel: 'string_4401' }, click: viewModel.removeCustomer.bind(viewModel)"></button>    <!-- Remove customer -->
+                        </div>
+                        <a data-ax-bubble="issueLoyaltyCardView_customerDetailsLink" href="#" class="h3 ellipsis" data-bind="text: viewModel.customerName, click: navigateToCustomerDetails"></a>
+                        <div class="h4" data-bind="text: viewModel.customerAccountNumber"></div>
+                    </div>
+
+                    <!-- Add or search customer -->
+                    <div data-bind="visible: !viewModel.hasCustomer()">
+                        <div data-ax-bubble="issueLoyaltyCardView_createNewCustomerButton"
+                                data-bind="buttonBlock: {  buttonClass: 'iconAdd',
+                                    labelTextResx: 'string_1152', /* Create new customer */
+                                    click: createNewCustomer
+                            }">
+                        </div>
+                        <div data-ax-bubble="issueLoyaltyCardView_searchCustomersButton"
+                                data-bind="buttonBlock: {  buttonClass: 'iconSearch',
+                                    labelTextResx: 'string_1153', /* Search customers */
+                                    click: searchCustomers
+                            }">
+                        </div>
+                    </div>
+
+                    <!-- Change customer -->
+                    <div data-bind="visible: viewModel.hasCustomer() && viewModel.allowSwitchCustomer">
+                        <div data-ax-bubble="issueLoyaltyCardView_changeCustomerButton"
+                                data-bind="buttonBlock: {  buttonClass: 'iconSwitch',
+                                    labelTextResx: 'string_1151', /* Change customer account */
+                                    click: searchCustomers
+                            }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="issueLoyaltyCardAppBar" data-bind="appBar:{}">
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAccept',
+                id: 'issueLoyaltyCardAppBar',
+                onclick: activateLoyaltyCard,
+                labelResx: issueLoyaltyCardAppBarCommandLabelResourceId,
+                enabled: viewModel.enableLoyaltyCardAction }"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconGo',
+                id: 'issueAndAddLoyaltyCardAppBar',
+                onclick: issueLoyaltyCardAndAddToTransaction,
+                labelResx: 'string_4706',
+                visible: viewModel.allowAddToTransaction,
+                enabled: viewModel.enableIssueLoyaltyCardAction }"></button>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfContosoDiscountData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <ContosoDiscountData>
+    <OfferId>EXT-LineFilter01BP</OfferId>
+    <OfferName>Extensibility - validation period on the discount line.</OfferName>
+    <CurrencyCode>USD</CurrencyCode>
+    <ConcurrencyMode>BestPrice</ConcurrencyMode>
+    <DateValidationType>Standard</DateValidationType>
+    <PercentOfValue>0</PercentOfValue>
+    <ValidFromOffsetInMinutes>-2880</ValidFromOffsetInMinutes>
+    <ValidToOffsetInMinutes>2880</ValidToOffsetInMinutes>
+    <DiscountLines>
+      <PeriodicDiscountLineData xsi:type="ContosoDiscountLineData">
+        <ItemId>0025</ItemId>
+        <Symbol>ea</Symbol>
+        <DiscountOfferMethod>DiscountPercent</DiscountOfferMethod>
+        <DiscountOfferValue>15</DiscountOfferValue>
+        <ContosoPeriodId>NegDateRange</ContosoPeriodId>
+      </PeriodicDiscountLineData>
+      <PeriodicDiscountLineData>
+        <ItemId>0055</ItemId>
+        <Symbol>ea</Symbol>
+        <DiscountOfferMethod>DiscountAmount</DiscountOfferMethod>
+        <DiscountOfferValue>11</DiscountOfferValue>
+      </PeriodicDiscountLineData>
+    </DiscountLines>
+    <PriceGroups>
+      <string>EXTOLF01BP</string>
+    </PriceGroups>
+  </ContosoDiscountData>
+
+</ArrayOfContosoDiscountData>

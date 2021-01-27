@@ -1,0 +1,340 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.KeyVault.Desktop</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.Middlewares.MemoryCacheSecretMiddleware">
+            <summary>
+            Defines a caching middleware that caches secrets in memory.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.KeyVault.Middlewares.MemoryCacheSecretMiddleware.PendingMarker">
+            <summary>
+            Represents a marker used to indicate whether the entry in the cache is being populated by an operation, but the final value is not yet available.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Middlewares.MemoryCacheSecretMiddleware.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.Middlewares.MemoryCacheSecretMiddleware"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Middlewares.MemoryCacheSecretMiddleware.#ctor(Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.Middlewares.MemoryCacheSecretMiddleware"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.Middlewares.MemoryCacheSecretMiddleware.MaxCacheTime">
+            <summary>
+            Gets or sets the maximum time a secret will be in cache.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.Middlewares.MemoryCacheSecretMiddleware.ConcurrentResolutionWaitTimeOut">
+            <summary>
+            Controls the amount of time a task will wait on other tasks when there is a race condition when different tasks try to resolve the same secret.
+            </summary>
+            <remarks>The default value is 30 seconds.</remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.Middlewares.MemoryCacheSecretMiddleware.Next">
+            <summary>
+            Gets or sets the next policy in the chain.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Middlewares.MemoryCacheSecretMiddleware.InvokeAsync``1(System.Uri)">
+            <summary>
+            Invokes this middleware when a secret retrievel request occurs.
+            </summary>
+            <typeparam name="TSecret">The type of the expected secret.</typeparam>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>The secret, if found, or null otherwise.</returns>
+            <remarks>This implementation is thread-safe.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Middlewares.MemoryCacheSecretMiddleware.Dispose">
+            <summary>
+            Disposes this instance.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureActiveDirectoryAccessTokenProvider">
+            <summary>
+            A provider to retrieve access tokens from Azure Active Directory.
+            </summary>
+            <remarks>This provider will utilize Azure Manage Identity, if available, and fall back to client secret or certificate AAD authentication, if available.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureActiveDirectoryAccessTokenProvider.#ctor(System.String,Microsoft.Extensions.Logging.ILogger,Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential,Microsoft.IdentityModel.Clients.ActiveDirectory.IClientAssertionCertificate,System.Boolean,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureActiveDirectoryAccessTokenProvider"/> class.
+            </summary>
+            <param name="authority">The Azure AD instance / authority (e.g. https://login.microsoftonline.com).</param>
+            <param name="logger">The logger instance.</param>
+            <param name="clientCredential">The client credential used to authenticate with AAD. This parameter is optinal. If provided, it will enable this provider to try to obtain the access token when Azure Managed Identity flow is not available.</param>
+            <param name="clientCertificate">The client certificate used to authenticate with AAD. This parameter is optinal. If provided, it will enable this provider to try to obtain the access token when Azure Managed Identity flow is not available.</param>
+            <param name="disableAzureManagedIdentity">A value indicating whether Azure Managed Identity is not to be used. Default is false.</param>
+            <param name="azureAuthenticationConnectionString">The connection string to be used by azure authenticator. See https://docs.microsoft.com/en-us/azure/key-vault/service-to-service-authentication for details.</param>
+            <remarks>Azure Managed Identity will fall back to the default authority if it cannot connect to the autority provided. This is a beahvior of the underlying AME library.
+            Each instance of this class will hold a separate AAD token cache.</remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureActiveDirectoryAccessTokenProvider.SupportedLocationScheme">
+            <summary>
+            Gets the <see cref="P:System.Uri.Scheme"/> supported by this provider.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureActiveDirectoryAccessTokenProvider.ValidateAuthority">
+            <summary>
+            Gets or sets a value indicating whether the authority should be validated.
+            </summary>
+            <value>Default is true.</value>
+            <remarks>This value may be set to false to support some on-premisse scenarios.
+            Do not disable this validation for Cloud scenarios unless you absolutely understand the security implications.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureActiveDirectoryAccessTokenProvider.IsLocationSupported(System.Uri)">
+            <summary>
+            Returns a <see cref="T:System.Boolean"/> indicating whether the <paramref name="location"/> is supported by this provider.
+            </summary>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>A <see cref="T:System.Boolean"/> indicating whether the <paramref name="location"/> is supported by this provider.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureActiveDirectoryAccessTokenProvider.RetrieveSecretAsync``1(System.Uri)">
+            <summary>
+            Retrieves a secret specified by the <paramref name="location"/> <see cref="T:System.Uri"/>.
+            </summary>
+            <typeparam name="TSecret">The type of the expected secret. If the secret cannot to converted to type, <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException"/> is thrown.</typeparam>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>The secret if found or throws a <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException"/> otherwise.</returns>
+            <remarks>This implementation is thread-safe.</remarks>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretLocationNotSupported">If the <paramref name="location"/> is not supported by this provider.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException">If the <typeparamref name="TSecret"/> is not of same type of the secret returned.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException">If the location is supported but it resolves to no secret.</exception>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureKeyVaultProvider">
+            <summary>
+            A provider to retrieve secrets from Azure KeyVault.
+            </summary>
+            <remarks>
+            When using the <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureKeyVaultProvider"/> class follow these links:
+            <para>
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.rest.transientfaulthandling.retrypolicy-1?view=azure-dotnet" target="_blank">RetryPolicy</a>,<br/>
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.rest.transientfaulthandling.httpstatuscodeerrordetectionstrategy?view=azure-dotnet" target="_blank">HttpStatusCodeErrorDetectionStrategy</a>.<br/>
+            </para>
+            <para>
+            HttpStatusCodeErrorDetectionStrategy handles the next status codes:
+            <para><list type="number">
+            <item>RequestTimeout (408),</item>
+            <item>TooManyRequests (429),</item>
+            <item>InternalServerError and so on (>=500) when there was no NotImplemented (501) and HttpVersionNotSupported (505) status codes.</item>
+            </list></para>
+            </para>
+            <para>
+            There are three available retry strategies:
+            <para>
+            1. <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.rest.transientfaulthandling.fixedintervalretrystrategy?view=azure-dotnet" target="_blank">FixedIntervalRetryStrategy</a>,<br/>
+            2. <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.rest.transientfaulthandling.exponentialbackoffretrystrategy?view=azure-dotnet" target="_blank">ExponentialBackoffRetryStrategy</a>,<br/>
+            3. <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.rest.transientfaulthandling.incrementalretrystrategy?view=azure-dotnet" target="_blank">IncrementalRetryStrategy</a>.<br/>
+            </para>
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureKeyVaultProvider.#ctor(Microsoft.Azure.KeyVault.IKeyVaultClient,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureKeyVaultProvider"/> class.
+            </summary>
+            <param name="keyVaultClient">The key vault client.</param>
+            <param name="logger">The instance to log to.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureKeyVaultProvider.KeyStorageFlags">
+            <summary>
+            Gets or sets the key storage flags.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureKeyVaultProvider.SupportedLocationScheme">
+            <summary>
+            Gets the <see cref="P:System.Uri.Scheme"/> supported by this provider.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureKeyVaultProvider.IsLocationSupported(System.Uri)">
+            <summary>
+            Returns a <see cref="T:System.Boolean"/> indicating whether the <paramref name="location"/> is supported by this provider.
+            </summary>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>A <see cref="T:System.Boolean"/> indicating whether the <paramref name="location"/> is supported by this provider.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.AzureKeyVaultProvider.RetrieveSecretAsync``1(System.Uri)">
+            <summary>
+            Retrieves a secret specified by the <paramref name="location"/> <see cref="T:System.Uri"/>.
+            </summary>
+            <typeparam name="TSecret">The type of the expected secret.</typeparam>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>The secret, if found, or null otherwise.</returns>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretLocationNotSupported">If the <paramref name="location"/> is not supported by this provider.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException">If the <typeparamref name="TSecret"/> is not of same type of the secret returned.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException">If the location is supported but it resolves to no secret.</exception>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.Providers.Base64CertificateProvider">
+            <summary>
+            Provider capable of deserializing an <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2"/> from base64.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.Providers.Base64CertificateProvider.SupportedLocationScheme">
+            <summary>
+            Gets the <see cref="P:System.Uri.Scheme"/> supported by this provider.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.Base64CertificateProvider.IsLocationSupported(System.Uri)">
+            <summary>
+            Returns a <see cref="T:System.Boolean"/> indicating whether the <paramref name="location"/> is supported by this provider.
+            </summary>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>A <see cref="T:System.Boolean"/> indicating whether the <paramref name="location"/> is supported by this provider.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.Base64CertificateProvider.RetrieveSecretAsync``1(System.Uri)">
+            <summary>
+            Retrieves a secret specified by the <paramref name="location"/> <see cref="T:System.Uri"/>.
+            </summary>
+            <typeparam name="TSecret">The type of the expected secret. If the secret cannot to converted to type, <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException"/> is thrown.</typeparam>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>The secret if found or throws a <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException"/> otherwise.</returns>
+            <remarks>This implementation is thread-safe.</remarks>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretLocationNotSupported">If the <paramref name="location"/> is not supported by this provider.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException">If the <typeparamref name="TSecret"/> is not of same type of the secret returned.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException">If the location is supported but it resolves to no secret.</exception>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.Providers.PlainTextProvider">
+            <summary>
+            A provider to retrieve secrets in plain text.
+            </summary>
+            <remarks>If a secret location has no schema, then it is considered plain text.</remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.Providers.PlainTextProvider.SupportedLocationScheme">
+            <summary>
+            Gets the <see cref="P:System.Uri.Scheme"/> supported by this provider.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.PlainTextProvider.IsLocationSupported(System.Uri)">
+            <summary>
+            Returns a <see cref="T:System.Boolean"/> indicating whether the <paramref name="location"/> is supported by this provider.
+            </summary>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>A <see cref="T:System.Boolean"/> indicating whether the <paramref name="location"/> is supported by this provider.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.PlainTextProvider.RetrieveSecretAsync``1(System.Uri)">
+            <summary>
+            Retrieves a secret specified by the <paramref name="location"/> <see cref="T:System.Uri"/>.
+            </summary>
+            <typeparam name="TSecret">The type of the expected secret. If the secret cannot to converted to type, <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException"/> is thrown.</typeparam>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>The secret if found or throws a <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException"/> otherwise.</returns>
+            <remarks>This implementation is thread-safe.</remarks>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretLocationNotSupported">If the <paramref name="location"/> is not supported by this provider.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException">If the <typeparamref name="TSecret"/> is not of same type of the secret returned.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException">If the location is supported but it resolves to no secret.</exception>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.Providers.SecretAggregatorProvider">
+            <summary>
+            Provider capable of aggregating other <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.ISecretProvider"/> and returning secrets supported by any of those.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.Providers.SecretAggregatorProvider.SupportedLocationScheme">
+            <summary>
+            Gets the <see cref="P:System.Uri.Scheme"/> supported by this provider.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.SecretAggregatorProvider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.Providers.SecretAggregatorProvider"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.Providers.SecretAggregatorProvider.Next">
+            <summary>
+            Gets or sets the next middleware in the chain.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.SecretAggregatorProvider.AddSecretProvider(Microsoft.Dynamics.Commerce.KeyVault.ISecretProvider)">
+            <summary>
+            Add a secret providers to the aggregator.
+            </summary>
+            <param name="secretProvider">The secret provider to be added.</param>
+            <remarks>This implementation is not thread-safe.</remarks>
+            <returns>Itself.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.SecretAggregatorProvider.ConfigureMiddleware(Microsoft.Dynamics.Commerce.KeyVault.ISecretMiddleware)">
+            <summary>
+            Configures a middleware to be enforced by this aggregator.
+            </summary>
+            <param name="secretMiddleware">The secret middleware (or middlewares) to be configured.</param>
+            <remarks>This implementation is not thread-safe.
+            Policies are executed synchronously in the order of configuration.</remarks>
+            <returns>Itself.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.SecretAggregatorProvider.IsLocationSupported(System.Uri)">
+            <summary>
+            Returns a <see cref="T:System.Boolean"/> indicating whether the <paramref name="location"/> is supported by this provider.
+            </summary>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>A <see cref="T:System.Boolean"/> indicating whether the <paramref name="location"/> is supported by this provider.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.SecretAggregatorProvider.RetrieveSecretAsync``1(System.Uri)">
+            <summary>
+            Retrieves a secret specified by the <paramref name="location"/> <see cref="T:System.Uri"/>.
+            </summary>
+            <typeparam name="TSecret">The type of the expected secret. If the secret cannot to converted to type, <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException"/> is thrown.</typeparam>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>The secret if found or throws a <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException"/> otherwise.</returns>
+            <remarks>This implementation is thread-safe.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.SecretAggregatorProvider.InvokeAsync``1(System.Uri)">
+            <summary>
+            Invokes this policy when a secret retrievel request occurs.
+            </summary>
+            <typeparam name="TSecret">The type of the expected secret.</typeparam>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>The secret, if found, or null otherwise.</returns>
+            <remarks>This implementation is thread-safe.</remarks>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretLocationNotSupported">If the <paramref name="location"/> is not supported by this provider.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException">If the <typeparamref name="TSecret"/> is not of same type of the secret returned.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException">If the location is supported but it resolves to no secret.</exception>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.KeyVault.Providers.X509StoreProvider">
+            <summary>
+            A provider to retrieve certificates from the .NET <see cref="T:System.Security.Cryptography.X509Certificates.X509Store"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.X509StoreProvider.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.Providers.X509StoreProvider"/> class.
+            </summary>
+            <param name="fetchOnlyValidCertificates">true to allow only valid certificates to be returned from the search; otherwise, false.</param>
+            <param name="allowMultipleResults">true to allow an <see cref="T:System.Collections.Generic.IEnumerable`1"/> as a result to retrieving one or more certificates.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.KeyVault.Providers.X509StoreProvider.SupportedLocationScheme">
+            <summary>
+            Gets the <see cref="P:System.Uri.Scheme"/> supported by this provider.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.X509StoreProvider.IsLocationSupported(System.Uri)">
+            <summary>
+            Returns a <see cref="T:System.Boolean"/> indicating whether the <paramref name="location"/> is supported by this provider.
+            </summary>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>A <see cref="T:System.Boolean"/> indicating whether the <paramref name="location"/> is supported by this provider.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.X509StoreProvider.RetrieveSecret``1(System.Uri)">
+            <summary>
+            Retrieves a secret specified by the <paramref name="location"/> <see cref="T:System.Uri"/>.
+            </summary>
+            <typeparam name="TSecret">The type of the expected secret.</typeparam>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>The secret, if found, or null otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.KeyVault.Providers.X509StoreProvider.RetrieveSecretAsync``1(System.Uri)">
+            <summary>
+            Retrieves a secret specified by the <paramref name="location"/> <see cref="T:System.Uri"/>.
+            </summary>
+            <typeparam name="TSecret">The type of the expected secret. If the secret cannot to converted to type, <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException"/> is thrown.</typeparam>
+            <param name="location">An <see cref="T:System.Uri"/> that points to the secret location.</param>
+            <returns>The secret if found or throws a <see cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException"/> otherwise.</returns>
+            <remarks>This implementation is thread-safe.</remarks>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretLocationNotSupported">If the <paramref name="location"/> is not supported by this provider.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.InvalidSecretTypeException">If the <typeparamref name="TSecret"/> is not of same type of the secret returned.</exception>
+            <exception cref="T:Microsoft.Dynamics.Commerce.KeyVault.SecretNotFoundException">If the location is supported but it resolves to no secret.</exception>
+        </member>
+    </members>
+</doc>

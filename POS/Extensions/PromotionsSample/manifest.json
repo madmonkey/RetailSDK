@@ -1,0 +1,34 @@
+﻿{
+  "name": "Pos_Extensibility_Promotions_Sample",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "7.2.1768.0",
+  "components": {
+    "resources": {
+      "supportedUICultures": [ "en-US" ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources/Strings",
+      "stringResourcesFileName": "resources.resjson"
+    },
+    "extend": {
+      "views": {
+        "SearchView": {
+          "productAppBarCommands": [
+            { "modulePath": "ViewExtensions/Search/ShowPromotionsCommand" }
+          ]
+        }
+      }
+    },
+    "create": {
+      "views": [
+        {
+          "title": "Promotions",
+          "pageName": "PromotionsView",
+          "phonePageName": "PromotionsViewPhone",
+          "viewDirectory": "Views/",
+          "viewControllerPath": "Views/PromotionsView"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.FIF.Connector.Messages</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.GetServiceStatusConnectorRequest">
+            <summary>
+            The connector request to check service status.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.GetServiceStatusConnectorRequest.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationServiceInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.GetServiceStatusConnectorRequest"/> class.
+            </summary>
+            <param name="fiscalIntegrationServiceInfo">The fiscal integration service info.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.GetServiceStatusConnectorRequest.FiscalIntegrationServiceInfo">
+            <summary>
+            Gets the fiscal integration service info.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.GetServiceStatusConnectorResponse">
+            <summary>
+            Response for request to check service status.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.GetServiceStatusConnectorResponse.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationServiceStatus)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.GetServiceStatusConnectorResponse"/> class.
+            </summary>
+            <param name="serviceStatus">The response from the fiscal service.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.GetServiceStatusConnectorResponse.ServiceStatus">
+            <summary>
+            Gets a value indicating whether the fiscal service is ready.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.SubmitDocumentConnectorRequest">
+            <summary>
+            The connector request to submit fiscal document.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.SubmitDocumentConnectorRequest.#ctor(System.String,Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationServiceInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.SubmitDocumentConnectorRequest"/> class.
+            </summary>
+            <param name="document">The document to submit.</param>
+            <param name="fiscalIntegrationServiceInfo">The fiscal integration service info.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.SubmitDocumentConnectorRequest.Document">
+            <summary>
+            Gets the document to submit.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.SubmitDocumentConnectorRequest.FiscalIntegrationServiceInfo">
+            <summary>
+            Gets the fiscal integration service info.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.SubmitDocumentConnectorResponse">
+            <summary>
+            The response for request to submit fiscal document.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.SubmitDocumentConnectorResponse.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationServiceCommunicationResult)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.SubmitDocumentConnectorResponse"/> class.
+            </summary>
+            <param name="serviceCommunicationResult">The fiscal integration service communication result.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.Connector.Messages.SubmitDocumentConnectorResponse.ServiceCommunicationResult">
+            <summary>
+            Gets the service communication result.
+            </summary>
+        </member>
+    </members>
+</doc>

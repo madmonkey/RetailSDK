@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ReportsDetailsView</title>
+    <link href="ReportDetailsView.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- The content that will be loaded and displayed. -->
+    <div class="fragment reportdetailsview">
+        <div class="h2 marginTop8 marginBottom8 marginLeft20" data-bind="text: viewModel.reportTitle()"></div>
+
+        <!-- Report result -->
+        <!-- ko if: viewModel.visibleReportResults -->
+        <div class="h4 resultsCaption marginLeft20" data-bind="text: viewModel.resultsCaption"></div>
+        <div aria-label="Main content" class="section main panoramic row noflip height100Percent marginBottom0">
+            <div class="col marginBottom12">
+                <div data-bind="listView: summaryReportOptions, axBubbleAttr: 'reportDetailsView_summaryReportOptions'" class="grow"></div>
+                <!-- ko if: viewModel.isTotalsEnabled -->
+                <div class="listViewTotal row headerBackground height52" data-bind="foreach: viewModel.totalColumns">
+                    <div class="col" data-bind="css: cssClass">
+                        <div class="col">
+                            <div class="h4" data-bind="text: value, attr: {'aria-label': title + ' ' + value}" ></div>
+                        </div>
+                        <div class="col">
+                            <div class="h6 secondaryFontColor ellipsis" data-bind="text: title"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <div tabindex="0" class="row marginTop12 height12" data-bind="visible: viewModel.hasDisclaimer">
+                    <div class="iconWarning secondaryFontColor"></div>
+                    <div class="marginTop01">
+                        <div class="h4 secondaryFontColor" data-bind="resx: {textContent: 'string_2402' }"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gutter40x40" data-bind="visible: viewModel.chartVisible()[0]"></div>
+            <div class="col minWidth720 ratio5 height100Percent padTop40" data-bind="visible: viewModel.chartVisible()[0]">
+                <div tabindex="0" id="chartPlaceHolder1" class="marginBottom40 grow no-shrink chartPlaceHolder" data-bind="axBubbleAttr: 'reportDetailsView_chartPlaceHolder1'"></div>
+            </div>
+            <div class="gutter40x40" data-bind="visible: viewModel.chartVisible()[1]"></div>
+            <div class="col minWidth720 ratio5 height100Percent padTop40" data-bind="visible: viewModel.chartVisible()[1]">
+                <div tabindex="0" id="chartPlaceHolder2" class="marginBottom40 grow no-shrink chartPlaceHolder" data-bind="axBubbleAttr: 'reportDetailsView_chartPlaceHolder2'"></div>
+            </div>
+            <div class="gutter40x40" data-bind="visible: viewModel.chartVisible()[2]"></div>
+            <div class="col minWidth720 ratio5 height100Percent padTop40" data-bind="visible: viewModel.chartVisible()[2]">
+                <div tabindex="0" id="chartPlaceHolder3" class="marginBottom40 grow no-shrink chartPlaceHolder" data-bind="axBubbleAttr: 'reportDetailsView_chartPlaceHolder3'"></div>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- ko ifnot: viewModel.visibleReportResults -->
+        <div class="center col resultZero" data-bind="axBubbleAttr: 'reportDetailsView_resultZero'">
+            <div class="h3" data-bind="resx: { textContent: 'string_2411' }">This report hasn’t been run yet.</div>
+            <a href="#" class="h3" data-bind="resx: { textContent: 'string_2412' },
+                                    click: getReportFilterValuesAsync,
+                                    axBubbleAttr: 'reportDetailsView_resultZero_getReportFilterValuesAsync'"></a>
+        </div>
+        <!-- /ko -->
+
+        <div id="ReportDetailsViewCommandAppBar" data-bind="appBar: { extensionCommands: viewModel.extensionCommandViewModels }, axBubbleAttr: 'reportDetailsView_commandAppBar'">
+            <button tabindex="0" data-bind="appBarCommand: {
+                        extraClass: 'iconFilter',
+                        id:'applyFilter',
+                        onclick: getReportFilterValuesAsync,
+                        labelResx: 'string_935'
+                    },
+                    axBubbleAttr: 'reportsDetailsView_applyFilter'"></button><!--Filter-->
+        </div>
+    </div>
+</body>
+</html>

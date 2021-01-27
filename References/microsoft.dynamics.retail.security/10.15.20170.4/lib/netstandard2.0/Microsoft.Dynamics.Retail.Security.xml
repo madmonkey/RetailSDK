@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.Security</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.Security.DataProtection">
+            <summary>
+            The data protection class used to encrypt/decrypt data blobs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Security.DataProtection.HashData2(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Hashes data string and returns result.
+            </summary>
+            <param name="data">Data string.</param>
+            <param name="algorithm">Algorithm name.</param>
+            <param name="invariant">Invariant value.</param>
+            <param name="salt">Salt value.</param>
+            <param name="legacyLocalContext">Legacy LocalContext [Optional].</param>
+            <param name="legacyRegistryKeyData2Value">Legacy Registry Key Data2 value [Optional].</param>
+            <returns>A hashed string value.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Security.DataProtection.HashData2(System.String,System.String,System.String,System.String)">
+            <summary>
+            Hashes data string and returns result.
+            </summary>
+            <param name="data">Data string.</param>
+            <param name="algorithm">Algorithm name.</param>
+            <param name="invariant">Invariant value.</param>
+            <param name="salt">Salt value.</param>
+            <returns>A hashed string value.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Security.DataProtection.HashData2(System.Security.SecureString,System.String,System.String,System.String)">
+            <summary>
+            Hashes secure string data and returns result.
+            </summary>
+            <param name="data">Secure string.</param>
+            <param name="algorithm">Algorithm name.</param>
+            <param name="invariant">Invariant value.</param>
+            <param name="salt">Salt value.</param>
+            <returns>A hashed string value.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Security.DataProtection.GenerateRandomSalt">
+            <summary>
+            Generate random Salt for Hashing.
+            </summary>
+            <returns>Random salt for hashing.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Security.DPAPICipher">
+            <summary>
+            Class that encapsulates DPAPI cipher functionality.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Security.DPAPICipher.Unprotect(System.String)">
+            <summary>
+            Decrypts the specified string.
+            </summary>
+            <param name="value">The encrypted string.</param>
+            <returns>The decrypted string as a secure string.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Security.DPAPICipher.Protect(System.Security.SecureString)">
+            <summary>
+            Encrypts the specified secure string.
+            </summary>
+            <param name="value">The plain string as a secure string.</param>
+            <returns>The encrypted string.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Security.DPAPICipher.ConvertToUnsecureString(System.Security.SecureString)">
+            <summary>
+            Converts a secure string to a plain text string.
+            </summary>
+            <param name="value">The secure string.</param>
+            <returns>The plain text string.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Security.DPAPICipher.ConvertToSecureString(System.String)">
+            <summary>
+            Converts a plain text string to a secure string.
+            </summary>
+            <param name="value">The plain text string.</param>
+            <returns>The secure string.</returns>
+        </member>
+    </members>
+</doc>

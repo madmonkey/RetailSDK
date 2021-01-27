@@ -1,0 +1,75 @@
+﻿{
+    // Columns
+    "ItemIdColumnName"                  : "Item ID",
+    "_ItemIdColumnName.comment"         : "Item ID column name",
+
+    "NameColumnName"                    : "Name",
+    "_NameColumnName.comment"           : "Name column name",
+
+    "QuantityColumnName"                : "Quantity",
+    "_QuantityColumnName.comment"       : "Quantity column name",
+
+    "PriceColumnName"                   : "Price",
+    "_PriceColumnName.comment"          : "Price column name",
+
+    "PlanIdColumnName"                  : "Plan ID",
+    "_PlanIdColumnName.comment"         : "Plan ID column name",
+
+    "OperatorIdColumnName"              : "Operator ID",
+    "_OperatorIdColumnName.comment"     : "Operator ID column name",
+
+    "RegisterColumnName"                : "Register",
+    "_RegisterColumnName.comment"       : "Register column name",
+
+    "TypeColumnName"                    : "Type",
+    "_TypeColumnName.comment"           : "Type column name",
+
+    "TotalColumnName"                   : "Total",
+    "_TotalColumnName.comment"          : "Total column name",
+
+    "ReceiptColumnName"                 : "Receipt",
+    "_ReceiptColumnName.comment"        : "Receipt column name",
+
+    "DateColumnName"                    : "Date",
+    "_DateColumnName.comment"           : "Date column name",
+
+    "ServiceChargeAmountColumnName"             : "Service charge amount",
+    "_ServiceChargeAmountColumnName.comment"    : "Service charge amount column name",
+
+    "ReturnRemainingDaysColumnName"             : "Return remaining days",
+    "_ReturnRemainingDaysColumnName.comment"    : "Return remaining days column name",
+
+    // Titles
+    "WarrantyPlansTitle"                            : "Warranty plans",
+    "_WarrantyPlansTitle.comment"                   : "Warranty plans view title",
+
+    "WarrantyEnabledProductsTitleFormat"            : "Add warranty : {0}",
+    "_WarrantyEnabledProductsTitleFormat.comment"   : "Warranty enabled products view title format",
+
+    // Labels
+    "AddToTransactionLabel" : "Add to transaction",
+    "_AddToTransactionLabel.comment" : "Add to transaction label",
+
+    "BuyWarrantyLabel" : "Buy warranty",
+    "_BuyWarrantyLabel.comment" : "Buy warranty label",
+
+    "ShowWarrantyPlansLabel" : "Show warranty plans",
+    "_ShowWarrantyPlansLabel.comment" : "Show warranty plans label",
+
+    "WarrantyEnabledProductsHeaderLabel" : "Warranty enabled products",
+    "_WarrantyEnabledProductsHeaderLabel.comment" : "Warranty enabled products header label",
+
+    // Messages
+    "NoWarrantyEnabledProductsMessage": "There are no warranty enabled products to show.",
+    "_NoWarrantyEnabledProductsMessage.comment": "No warranty enabled products to show message.",
+
+    "NotAvailableMessage": "N/A",
+    "_NotAvailableMessage.comment": "Not available message.",
+
+    // Error messages
+    "ReturnPolicyTriggerInvalidOptionsMessage"          : "The options provided to the ReturnPolicyTrigger were invalid. Please select a transaction and try again.",
+    "_ReturnPolicyTriggerInvalidOptionsMessage.comment" : "Invalid options error message.",
+
+    "ReturnPolicyTriggerCannotReturnTransactionMessage"             : "The transaction cannot be returned anymore.",
+    "_ReturnPolicyTriggerCannotReturnTransactionMessage.comment"    : "Cannot return transaction error message."
+}

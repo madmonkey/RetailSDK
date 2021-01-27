@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>EditSalesOrderAttributesDialog</title>
+    <link href="EditSalesOrderAttributesDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'EditSalesOrderAttributesDialog'">
+        <div class="editSalesOrderAttributesDialog" data-bind="dialog: {
+                 title: title,
+                 visible: visible,
+                 buttonClick: buttonClickHandler,
+                 closeOnEscButton: true,
+                 dialogCloseButtonClick: dialogCloseButtonClick,
+                 buttons: [
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_4484'), operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, isPrimary: true, cssClass: 'okButton' },
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton' }]
+                 },
+                 axBubbleAttr: 'editSalesOrderAttributesDialog_editSalesOrderAttributesDialog'" class="EditSalesOrderAttributesDialog modalWindowContentSection">
+
+            <!-- dialog content -->
+            <div class="col height100Percent">
+                <div class="h6 marginTop12 marginBottom12 wrapText" data-bind="text: attributeGroupName">Attribute group name</div>
+                <!-- ko foreach: { data: attributeViewModels, as: 'attributeVm' } -->
+                <!-- ko if: attributeVm.isVisible -->
+                <div class="col no-shrink padTop12">
+                    <!-- HTMLLint Disable LabelExistsValidator -->
+                    <label class="wrapText" data-bind="text: attributeVm.attributeFriendlyName,
+                                attr: { for: 'attributeInput_' + attributeVm.name }">Attribute friendly name</label>
+                    <input type="text" class="textInputArea" data-bind="value: attributeVm.editValue,
+                                            attr: { id: 'attributeInput_' + attributeVm.name }">
+                    <!-- HTMLLint Enable LabelExistsValidator -->
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

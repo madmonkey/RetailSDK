@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AffiliationsView</title>
+    <link href="AffiliationsView.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="fragment affiliationsView" data-bind="with: viewModel">
+
+        <!-- Page Content -->
+        <div id="affiliationViewPivot" data-bind="pivot: { }, resx: { ariaLabel: 'string_4454' }">
+            <div id="affiliationsPivotItem" data-bind="pivotItem: { headerResx: 'string_5200' }">
+
+                <div id="affiliationviewlist" data-bind="dataList: {
+                    itemDataSource: affiliations,
+                    onItemDataSourceUpdated: preSelectAffiliations,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.MultiSelect,
+                    selectionChanged: selectAffiliations,
+                    ariaLabelResx: 'string_5200', /* Affiliations */
+                    columns: [
+                        { titleResx: 'string_5202', ratio: 40, collapseOrder: 2, minWidth: 200, field: 'Name' },
+                        { titleResx: 'string_5203', ratio: 60, collapseOrder: 1, minWidth: 200, field: 'Description' }
+                    ]
+                    },
+                    axBubbleAttr: 'affiliationsView_affiliations'"></div>
+
+            </div>
+        </div>
+
+        <div id="commandAppBar" data-bind="appBar: {}">
+            <button data-bind="appBarCommand: {
+                id:'addAffiliationsAppBar',
+                extraClass: 'iconAccept',
+                onclick: addAffiliationsToCartAsync,
+                labelResx: 'string_75',
+                axBubbleAttr: 'affiliationsView_addAffiliationsAppBar'}"></button><!--Ok-->
+        </div>
+
+    </div>
+</body>
+</html>

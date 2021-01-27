@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Reconcile Shifts Transactions Line View</title>
+</head>
+<body>
+    <div class="fragment" data-bind="interaction: { activateActiveTabPivotItem: { selectPivot: '#activeTabPivotItem' }, activateCompletedTabPivotItem: { selectPivot: '#completedTabPivotItem' } }">
+
+        <!-- Page header -->
+        <div class="fragment" data-bind="with: viewModel">
+            <div data-bind="pivot: { onselectionchanged: switchReconciliationModeByEventAsync.bind($data), resx: { ariaLabel: 'string_4454' } }">
+                <div id="activeTabPivotItem" data-bind="pivotItem: { headerResx: 'string_2145'}">
+                    <div id="activeReconciliationLinesList" data-bind="dataList: {
+                        itemDataSource: activeReconciliationLines,
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.MultiSelect,
+                        selectionChanged: setSelectedShiftReconciliationLines,
+                        ariaLabelResx: 'string_2154',  /* Unreconciled shift reconciliation lines */
+                        columns: [
+                            { titleResx: 'string_2134', ratio: 15, collapseOrder: 9, minWidth: 150, field: 'TransactionTypeValue', converter: 'Commerce.Core.Converter.TransactionTypeFormatter' },
+                            { titleResx: 'string_2135', ratio: 10, collapseOrder: 7, minWidth: 100, field: 'ShiftId' },
+                            { titleResx: 'string_2136', ratio: 15, collapseOrder: 6, minWidth: 120, field: 'ShiftTerminalId' },
+                            { titleResx: 'string_2137', ratio: 10, collapseOrder: 5, minWidth: 100, field: 'ToShiftId' },
+                            { titleResx: 'string_2138', ratio: 10, collapseOrder: 4, minWidth: 120, field: 'ToShiftTerminalId' },
+                            { titleResx: 'string_2139', ratio: 10, collapseOrder: 2, minWidth: 100, field: 'StaffId' },
+                            { titleResx: 'string_2140', ratio: 10, collapseOrder: 3, minWidth: 150, field: 'CreatedDateTime', converter: 'Commerce.Core.Converter.ShortDateAndTime' },
+                            { titleResx: 'string_2156', ratio: 10, collapseOrder: 1, minWidth: 150, field: 'Description' },
+                            { titleResx: 'string_2141', ratio: 10, collapseOrder: 8, minWidth: 120, field: 'TotalAmount', converter: 'Commerce.Core.Converter.PriceFormatter', isRightAligned: true }
+                        ]},axBubbleAttr: 'reconcileShiftsView_availableShifts'">
+                    </div>
+                </div>
+                <div id="completedTabPivotItem" data-bind="pivotItem: { headerResx: 'string_2146' }">
+                    <div id="completedReconciliationLinesList" data-bind="dataList: {
+                        itemDataSource: completedReconciliationLines,
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.MultiSelect,
+                        selectionChanged: setSelectedShiftReconciliationLines,
+                        ariaLabelResx: 'string_2155',  /* Reconciled shift reconciliation lines */
+                        columns: [
+                                { titleResx: 'string_2142', ratio: 10, collapseOrder: 10, minWidth: 120, field: 'GroupId' },
+                                { titleResx: 'string_2134', ratio: 10, collapseOrder: 9, minWidth: 200, field: 'TransactionTypeValue', converter: 'Commerce.Core.Converter.TransactionTypeFormatter' },
+                                { titleResx: 'string_2135', ratio: 10, collapseOrder: 7, minWidth: 100, field: 'ShiftId' },
+                                { titleResx: 'string_2136', ratio: 10, collapseOrder: 6, minWidth: 120, field: 'ShiftTerminalId' },
+                                { titleResx: 'string_2137', ratio: 10, collapseOrder: 5, minWidth: 100, field: 'ToShiftId' },
+                                { titleResx: 'string_2138', ratio: 10, collapseOrder: 4, minWidth: 120, field: 'ToShiftTerminalId' },
+                                { titleResx: 'string_2139', ratio: 10, collapseOrder: 2, minWidth: 100, field: 'StaffId' },
+                                { titleResx: 'string_2140', ratio: 10, collapseOrder: 3, minWidth: 150, field: 'CreatedDateTime', converter: 'Commerce.Core.Converter.ShortDateAndTime' },
+                                { titleResx: 'string_2158', ratio: 10, collapseOrder: 1, minWidth: 200, field: 'GroupDescription' },
+                                { titleResx: 'string_2141', ratio: 10, collapseOrder: 8, minWidth: 120, field: 'TotalAmount', converter: 'Commerce.Core.Converter.PriceFormatter', isRightAligned: true}
+                            ]
+                        },
+                        axBubbleAttr: 'reconcileShiftsView_availableShifts'">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom app bar -->
+            <div id="commandAppBar" data-bind="appBar:{}, axBubbleAttr: 'reconcileShiftsView_appBar'">
+                <button data-bind="appBarCommand: {
+                    extraClass: 'iconRedo',
+                    id:'undoReconcile',
+                    label:'Undo',
+                    enabled: canUndoCompletedLines,
+                    onclick: undoReconcileLinesAsync,
+                    labelResx: 'string_2143'},
+                    axBubbleAttr: 'reconcileShiftsView_undoReconcileAppBar'"></button>
+                <button data-bind="appBarCommand: {
+                    extraClass: 'iconCompleted',
+                    id:'reconcile',
+                    label:'Resolve',
+                    enabled: canResolveActiveLines,
+                    onclick: reconcileLinesAsync,
+                    labelResx: 'string_2144'},
+                    axBubbleAttr: 'reconcileShiftsView_reconcileAppBar'"></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

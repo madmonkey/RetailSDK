@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:CartPageXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Pages.CartPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Converters"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:pages="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    Title="{localization:Translate Pages_CartPage_Title}">
+    <ContentPage.ToolbarItems>
+        <views:SearchToolbarItem
+            Navigation="{Binding Navigation}" />
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <ScrollView.Resources>
+            <ResourceDictionary>
+                <converters:ShortDatePatternConverter
+                    x:Key="ShortDatePatternConverter" />
+                <converters:SalesStatusColorConverter
+                    x:Key="SalesStatusColorConverter" />
+                <converters:DimensionsToStringConverter
+                    x:Key="DimensionsToStringConverter" />
+                <converters:EnumToTranslatedTextConverter
+                    x:Key="EnumToTranslatedTextConverter" />
+                <converters:DecimalToStringConverter
+                    x:Key="DecimalToStringConverter" />
+                <converters:InverseBooleanConverter
+                    x:Key="InverseBooleanConverter" />
+                <converters:ValueExistsConverter
+                    x:Key="ValueExistsConverter" />
+                <converters:ValueNotExistsConverter
+                    x:Key="ValueNotExistsConverter" />
+            </ResourceDictionary>
+        </ScrollView.Resources>
+        <StackLayout>
+            <ContentView
+                HorizontalOptions="CenterAndExpand"
+                IsVisible="{Binding CartLines.Count, Converter={StaticResource ValueNotExistsConverter}}"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        IsVisible="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
+                        Text="{localization:Translate Pages_CartPage_CartIsEmpty}"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
+            </ContentView>
+            <ContentView
+                IsVisible="{Binding CartLines.Count, Converter={StaticResource ValueExistsConverter}}">
+                <StackLayout
+                    Spacing="0">
+                    <StackLayout
+                        Margin="10"
+                        Orientation="Horizontal">
+                        <Label
+                            FontSize="Small"
+                            Text="{localization:Translate Pages_CartPage_ItemCount}"
+                            TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+                        <Label
+                            FontSize="Small"
+                            Text="{Binding Cart.Data.CartLines.Count}" />
+                    </StackLayout>
+                    <BoxView
+                        HeightRequest="0.5"
+                        Color="{x:Static statics:Palette.SEPARATOR}" />
+                    <StackLayout
+                        Padding="0,10"
+                        Spacing="0">
+                        <StackLayout
+                            HeightRequest="{x:Static statics:RowSizes.XXLargeRowHeightDouble}"
+                            IsVisible="{Binding AreCartLinesLoaded, Converter={StaticResource InverseBooleanConverter}}">
+                            <ActivityIndicator
+                                IsRunning="True"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                        <views:NonPersistentSelectedItemListView
+                            x:Name="CartLinesListView"
+                            HasUnevenRows="false"
+                            IsVisible="{Binding AreCartLinesLoaded}"
+                            ItemsSource="{Binding CartLines}"
+                            RowHeight="{x:Static statics:RowSizes.XXLargeRowHeightInt}"
+                            SeparatorColor="Transparent">
+                            <views:NonPersistentSelectedItemListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ContentView
+                                            Padding="10,5">
+                                            <StackLayout
+                                                Orientation="Horizontal"
+                                                Spacing="5">
+                                                <AbsoluteLayout
+                                                    WidthRequest="{x:Static statics:RowSizes.XLargeRowHeightDouble}">
+                                                    <ActivityIndicator
+                                                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                                        AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional"
+                                                        BindingContext="{x:Reference ThumbnailImage}"
+                                                        IsEnabled="{Binding IsLoading}"
+                                                        IsRunning="{Binding IsLoading}"
+                                                        IsVisible="{Binding IsLoading}"
+                                                        WidthRequest="{x:Static statics:RowSizes.XLargeRowHeightDouble}" />
+                                                    <Image
+                                                        x:Name="ThumbnailImage"
+                                                        AbsoluteLayout.LayoutBounds="0,0,AutoSize,AutoSize"
+                                                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                                                        Aspect="AspectFit"
+                                                        Source="{Binding ImageUrl}"
+                                                        WidthRequest="{x:Static statics:RowSizes.XLargeRowHeightDouble}" />
+                                                </AbsoluteLayout>
+                                                <StackLayout
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Spacing="0">
+                                                    <Label
+                                                        FontSize="Small"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="{Binding SimpleProduct.Name}"
+                                                        TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                                                        VerticalTextAlignment="Center" />
+                                                    <Label
+                                                        Margin="0,5,0,0"
+                                                        FontSize="Small"
+                                                        FontAttributes="Bold"
+                                                        Text="{Binding Data.ExtendedPrice, StringFormat='{0:C}'}"
+                                                        TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+                                                    <StackLayout
+                                                        IsVisible="{Binding Data.DiscountAmount, Converter={StaticResource ValueExistsConverter}}"
+                                                        Orientation="Horizontal"
+                                                        Spacing="2">
+                                                        <Label
+                                                            FontSize="Small"
+                                                            Text="{localization:Translate Pages_CartPage_Savings}"
+                                                            TextColor="{x:Static statics:Palette.Discount}" />
+                                                        <Label
+                                                            FontSize="Small"
+                                                            FontAttributes="Bold"
+                                                            LineBreakMode="TailTruncation"
+                                                            Text="{Binding Data.DiscountAmount, StringFormat='{0:C}'}"
+                                                            TextColor="{x:Static statics:Palette.Discount}" />
+                                                    </StackLayout>
+                                                    <Label
+                                                        FontSize="Small"
+                                                        IsVisible="{Binding Data.DiscountAmount, Converter={StaticResource ValueExistsConverter}}"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="{Binding FormattedDiscountNames}"
+                                                        TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                                                        VerticalTextAlignment="Center" />
+                                                    <Label
+                                                        FontSize="Small"
+                                                        Text="{Binding SimpleProduct.Dimensions, Converter={StaticResource DimensionsToStringConverter}}"
+                                                        TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+                                                    <StackLayout
+                                                        Orientation="Horizontal"
+                                                        Spacing="0">
+                                                        <Label
+                                                            FontSize="Small"
+                                                            Text="{localization:Translate Pages_CartPage_Quantity_Abbreviation}"
+                                                            TextColor="{x:Static statics:Palette.TEXT_LIGHT}"
+                                                            VerticalOptions="Center" />
+                                                        <Label
+                                                            FontSize="Small"
+                                                            Text=": "
+                                                            TextColor="{x:Static statics:Palette.TEXT_LIGHT}"
+                                                            VerticalOptions="Center" />
+                                                        <Entry
+                                                            x:Name="QuantityEntry"
+                                                            FontSize="Small"
+                                                            IsEnabled="{Binding Source={x:Reference CartLinesListView}, Path=BindingContext.IsBusy, Converter={StaticResource InverseBooleanConverter}}"
+                                                            Keyboard="Numeric"
+                                                            Text="{Binding NewQuantity}"
+                                                            Unfocused="CartLineQuantityEntryUnfocused"
+                                                            VerticalOptions="Center"
+                                                            WidthRequest="40" />
+                                                        <Button
+                                                            Margin="10,0,0,0"
+                                                            Clicked="DeleteCartLineButtonClicked"
+                                                            IsEnabled="{Binding Source={x:Reference CartLinesListView}, Path=BindingContext.IsBusy, Converter={StaticResource InverseBooleanConverter}}"
+                                                            Text="{localization:Translate Pages_CartPage_Delete}" />
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </ContentView>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </views:NonPersistentSelectedItemListView.ItemTemplate>
+                        </views:NonPersistentSelectedItemListView>
+                    </StackLayout>
+                    <BoxView
+                        HeightRequest="0.5"
+                        Color="{x:Static statics:Palette.SEPARATOR}" />
+                    <Grid
+                        Margin="10"
+                        ColumnSpacing="20"
+                        RowSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                Width="Auto" />
+                            <ColumnDefinition
+                                Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            Text="{localization:Translate Pages_CartPage_SubTotalAmount}"
+                            TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="End"
+                            LineBreakMode="TailTruncation"
+                            Text="{Binding Cart.Data.SubtotalAmount, StringFormat='{0:C}'}"
+                            TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontSize="Small"
+                            IsVisible="{Binding Cart.Data.DiscountAmount, Converter={StaticResource ValueExistsConverter}}"
+                            Text="{localization:Translate Pages_CartPage_TotalDiscount}"
+                            TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontSize="Small"
+                            HorizontalTextAlignment="End"
+                            IsVisible="{Binding Cart.Data.DiscountAmount, Converter={StaticResource ValueExistsConverter}}"
+                            LineBreakMode="TailTruncation"
+                            Text="{Binding Cart.Data.DiscountAmount, StringFormat='{0:C}'}"
+                            TextColor="{x:Static statics:Palette.PRICE}" />
+                    </Grid>
+                    <Button
+                        Style="{StaticResource actionButtonStyle}"
+                        Clicked="CheckoutButtonClicked"
+                        IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
+                        Text="{localization:Translate Pages_CartPage_Checkout}" />
+                </StackLayout>
+            </ContentView>
+        </StackLayout>
+    </ScrollView>
+</pages:CartPageXaml>

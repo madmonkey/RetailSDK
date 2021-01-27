@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.Resources.Strings</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.Resources.Strings.StringLocalizer">
+            <summary>
+            The string resources localizer class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.Resources.Strings.StringLocalizer.resourceManager">
+            <summary>
+            The resource manager.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Resources.Strings.StringLocalizer.#ctor(System.String,System.Reflection.Assembly)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Resources.Strings.StringLocalizer"/> class by resource file name.
+            </summary>
+            <param name="resouceFileName">The base resource file name.</param>
+            <param name="assembly">The assembly containing the resource file(s).</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Resources.Strings.StringLocalizer.Translate(System.String,System.String)">
+            <summary>
+            Translates the specified text identifier according to culture name.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="textId">The text identifier.</param>
+            <returns>The localized string.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Resources.Strings.StringLocalizer.Translate(System.String,System.String,System.Object[])">
+            <summary>
+            Translates the specified text identifier according to culture name.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="textId">The text identifier.</param>
+            <param name="args">The arguments for the string.</param>
+            <returns>The localized string.</returns>
+        </member>
+    </members>
+</doc>

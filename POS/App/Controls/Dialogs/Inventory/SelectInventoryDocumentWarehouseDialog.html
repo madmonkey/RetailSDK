@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SelectInventoryDocumentWarehouseDialog</title>
+</head>
+<body>
+    <div class="selectInventoryDocumentWarehouseDialog" data-bind="customControlInternal: 'selectInventoryDocumentWarehouseDialog'">
+        <div data-bind="dialog: {
+             title: title,
+             visible: visible,
+             closeOnEscButton: true,
+             dialogType: Commerce.Controls.Dialog.DialogTypes.SEQUENCE,
+             backButtonVisible: true,
+             backClick: onClickBack,
+             buttonClick: buttonClickHandler,
+             dialogCloseButtonClick: dialogCloseButtonClick,
+             buttons: [{ label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false }]
+        },
+        axBubbleAttr: 'selectInventoryDocumentWarehouseDialog_SelectInventoryDocumentWarehouseDialog'" class="modalWindowContentSection">
+            <!-- Progress ring -->
+            <div data-bind="loader: { visible: viewModel.isBusy, restoreFocus: false, type: Commerce.Controls.Loader.LoaderType.Dialog }"></div>
+
+            <!-- Dialog content -->
+            <div class="col grow">
+                <!-- Search field -->
+                <div class="marginTop20">
+                    <label data-bind="resx: {textContent: 'string_12456'}" for="searchWarehouseTextBox"></label><!--Search-->
+                    <div class="row grow width100Percent searchWrapper">
+                        <input class="noBorder" id="searchWarehouseTextBox" type="search"
+                                data-bind="value: viewModel.searchText,
+                                    valueUpdate: 'afterkeydown',
+                                    clearMark: true,
+                                    enterKeyPress: viewModel.performWarehouseSearch.bind(viewModel)" /> <!-- Search text box -->
+                        <button class="noBorder iconSearch margin0 height32 padRight8 searchButton" type="submit"
+                                data-bind="resx: { ariaLabel: 'string_50' },
+                                    click: viewModel.performWarehouseSearch.bind(viewModel),
+                                    axBubbleAttr: 'selectInventoryDocumentWarehouseDialog_searchButton'"></button> <!-- Search button -->
+                    </div>
+                </div>
+
+                <!-- Warehouse locations list -->
+                <div id="warehousesButtonGrid" class="grow col">
+                    <label class="marginTop20 marginBottom12 flexNone" data-bind="resx: {textContent: 'string_12715'}"></label><!--Select a store-->
+                    <div id="warehousesList"
+                         class="grow noMargin col"
+                         data-bind="dataList: {
+                             incrementalDataSource: {
+                                dataManager: viewModel,
+                                callerMethod: viewModel.getWarehousesAsync,
+                                pageSize: 40,
+                                onLoading: viewModel.isBusyFlag,
+                                reloadCallBack: viewModel.reloadWarehousesCallback,
+                             },
+                             defaultListType: Commerce.Controls.DataList.ListType.Card,
+                             selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                             itemInvoked: itemInvokedHandler,
+                             itemTemplates: [
+                                {
+                                    templateId: 'inventoryDocumentWarehouseGridTemplate',
+                                    cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                    deviceType: Commerce.Controls.DataList.DeviceType.All
+                                }
+                             ]
+                        }, axBubbleAttr: 'selectInventoryDocumentWarehouseDialog_optionsButtonGrid'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Dual display view</title>
+</head>
+<body>
+    <div class="fragment" data-bind="with: viewModel">
+
+        <!-- ko ifnot: hasCustomControlViewModels -->
+        <div class="margin4">
+            <h1>Dual display</h1>
+
+            <div class="row marginTop4">
+                <div class="h2 marginRight4">Amount due:</div>
+                <div class="h2" data-bind="text: amountDue">
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+
+        <!-- ko if: hasCustomControlViewModels -->
+        <div class="height100Percent width100Percent" data-bind="customControl: customControlViewModels[0]">
+        </div>
+        <!-- /ko -->
+    </div>
+</body>
+</html>

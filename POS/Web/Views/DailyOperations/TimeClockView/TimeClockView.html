@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Time Clock View</title>
+    <link href="TimeClockView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="timeClockView fragment" data-bind="with: viewModel">
+        <!-- Main content -->
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'timeClockView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div data-bind="pivotItem: { headerResx: 'string_4088' }">
+
+                <div id="LogbookList" data-bind="dataList: {
+                    itemDataSource: timeRegistrations,
+                    ariaLabelResx: 'string_4088', /* Logbook */
+                    columns: [
+                        { titleResx: 'string_4091', ratio: 40, collapseOrder: 3, minWidth: 200, field: 'Activity' },
+                        { titleResx: 'string_4064', ratio: 40, collapseOrder: 2, minWidth: 200, field: 'ActivityDateTimeOffset', converter: 'Commerce.Core.Converter.ShortDateAndTime' },
+                        { titleResx: 'string_4092', ratio: 20, collapseOrder: 1, minWidth: 150, field: 'StoreNumber', isRightAligned: true},
+                    ]
+                },
+                axBubbleAttr: 'timeClockView_timeRegistrations'">
+                </div>
+            </div>
+        </div>
+
+        <script type="text/html" id="selectStoreMenuTemplate">
+            <button data-bind="menuCommand: { id: $data.store, label: $data.store }, click: $data.filter"></button>
+        </script>
+
+        <div id="storeSelectionFlyout" data-bind="menu: {
+                anchor: '#selectAStoreFilter', placement: 'top', alignment: 'left', itemDataSource: availableStores, template: 'selectStoreMenuTemplate' },
+                axBubbleAttr: 'timeClockView_storeSelectionFlyout'">
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar:{}, axBubbleAttr: 'timeClockView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                    id: 'last24HourFilter',
+                    label: 'Last 24 hours',
+                    extraClass: 'iconCalendarDay',
+                    onclick: filterLast24HoursAsync,
+                    labelResx: 'string_4093'
+            },
+            axBubbleAttr: 'timeClockView_last24HourFilter'"></button><!--Last 24 hours-->
+
+            <button data-bind="appBarCommand: {
+                    id: 'lastWeekFilter',
+                    label: 'Last week',
+                    extraClass: 'iconCalendarWeek',
+                    onclick: filterLastWeekAsync,
+                    labelResx: 'string_4094'
+                },
+                axBubbleAttr: 'timeClockView_lastWeekFilter'"></button><!--Last week-->
+
+            <button data-bind="appBarCommand: {
+                    id: 'lastMonthFilter',
+                    label: 'Last month',
+                    extraClass: 'iconCalendar',
+                    onclick: filterLastMonthAsync,
+                    labelResx: 'string_4095'
+                },
+                axBubbleAttr: 'timeClockView_lastMonthFilter'"></button><!--Last month-->
+
+            <button data-bind="appBarCommand: {
+                    id: 'selectAStoreFilter',
+                    extraClass: 'iconRetail',
+                    label: 'Select a store',
+                    type: 'flyout',
+                    flyout: '#storeSelectionFlyout',
+                    labelResx: 'string_4096'
+                },
+                axBubbleAttr: 'timeClockView_selectAStoreFilter'"></button><!--Select a store-->
+        </div>
+    </div>
+</body>
+</html>

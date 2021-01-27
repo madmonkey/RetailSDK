@@ -1,0 +1,74 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\..\..\BuildTools\Common.props" />
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyName>$(AssemblyNamePrefix).Commerce.Runtime.TestHost</AssemblyName>
+    <RootNamespace>Contoso.Commerce.Runtime.TestHost</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Web.Extensions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime" Version="$(FrameworkRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache" Version="$(FrameworkRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.Client" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.ConfigurationProviders" Version="$(FrameworkRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.DataServices" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.Messages" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.Services" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.Services.Desktop" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.TransactionService" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.Workflow" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Retail.Resources.Strings" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="EntityFramework" Version="6.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Assets\CommerceRuntime.config">
+      <Link>CommerceRuntime.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\..\Assets\CommerceRuntime.ext.config">
+      <Link>CommerceRuntime.ext.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\..\Assets\workflowFoundation.config">
+      <Link>workflowFoundation.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extensions.CrossLoyaltySample\Runtime.Extensions.CrossLoyaltySample.csproj" />
+    <ProjectReference Include="..\Extensions.CustomerSearchSample\Runtime.Extensions.CustomerSearchSample.csproj" />
+    <ProjectReference Include="..\Extensions.CustomerSearchWithAttributesSample\Runtime.Extensions.CustomerSearchWithAttributesSample.csproj" />
+    <ProjectReference Include="..\Extensions.EmailPreferenceSample\Runtime.Extensions.EmailPreferenceSample.csproj" />
+    <ProjectReference Include="..\Extensions.FiscalRegisterReceiptSample\Runtime.Extensions.FiscalRegisterReceiptSample.csproj" />
+    <ProjectReference Include="..\Extensions.HealthCheckSample\Runtime.Extensions.HealthCheckSample.csproj" />
+    <ProjectReference Include="..\Extensions.NonTransactionalLoyaltyPointsSample\Runtime.Extensions.NonTransactionalLoyaltyPointsSample.csproj" />
+    <ProjectReference Include="..\Extensions.PricingDataServicesSample\Runtime.Extensions.PricingDataServicesSample.csproj" />
+    <ProjectReference Include="..\Extensions.PricingEngineSample\Runtime.Extensions.PricingEngineSample.csproj" />
+    <ProjectReference Include="..\Extensions.PricingServicesSample\Runtime.Extensions.PricingServicesSample.csproj" />
+    <ProjectReference Include="..\Extensions.ReceiptsSample\Runtime.Extensions.ReceiptsSample.csproj" />
+    <ProjectReference Include="..\Extensions.SalesPaymentTransExt\Runtime.Extensions.SalesPaymentTransExt.csproj" />
+    <ProjectReference Include="..\Extensions.SalesTransactionSignatureSample\Runtime.Extensions.SalesTransactionSignatureSample.csproj" />
+    <ProjectReference Include="..\Extensions.StoreHoursSample\Runtime.Extensions.StoreHoursSample.csproj" />
+    <ProjectReference Include="..\Extensions.SuspendTransactionReceiptSample\Runtime.Extensions.SuspendTransactionReceiptSample.csproj" />
+    <ProjectReference Include="..\Extensions.TransactionAttributesSample\Runtime.Extensions.TransactionAttributesSample.csproj" />
+    <ProjectReference Include="..\Extensions.WarrantyAndReturnSample\Runtime.Extensions.WarrantyAndReturnSample.csproj" />
+  </ItemGroup>
+
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

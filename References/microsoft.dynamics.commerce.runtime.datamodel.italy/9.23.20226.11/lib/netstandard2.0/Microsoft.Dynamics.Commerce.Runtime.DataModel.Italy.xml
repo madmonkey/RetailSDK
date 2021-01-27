@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.DataModel.Italy</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.DataModel.Italy.Entities.FiscalCustomerData">
+            <summary>
+            Represents the fiscal customer data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataModel.Italy.Entities.FiscalCustomerData.FiscalCode">
+            <summary>
+            Gets or sets the fiscal code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.DataModel.Italy.Entities.FiscalCustomerData.LotteryCode">
+            <summary>
+            Gets or sets the lottery code.
+            </summary>
+        </member>
+    </members>
+</doc>

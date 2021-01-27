@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:background="@android:color/white">
+    <LinearLayout
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/settingsLayout"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px">
+        <TextView
+            android:text="@string/CloudPosUrlTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:textColor="@android:color/black" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            android:color="@android:color/white"
+            android:textColor="@android:color/black"
+            android:id="@+id/textCloudPosUrl" />
+        <Button
+            android:text="@string/SaveSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/saveSettings" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PkgDynamics_CustomDeployablePackage>..\..\References\Dynamics.CustomDeployablePackage\7.0.4841.35234\</PkgDynamics_CustomDeployablePackage>
+    <PkgDynamics_Servicing_RetailDeployment_72>..\..\References\Dynamics.Servicing.RetailDeployment.72\1.0.30.90\</PkgDynamics_Servicing_RetailDeployment_72>
+    <PkgDynamicsVault>..\..\References\DynamicsVault\0.5.16\</PkgDynamicsVault>
+    <PkgHardwareStationSetup>..\..\References\HardwareStationSetup\9.23.20226.11\</PkgHardwareStationSetup>
+    <PkgMicrosoft_Dynamics_Commerce_Connector_FunctionalTests>..\..\References\Microsoft.Dynamics.Commerce.Connector.FunctionalTests\10.12.20179.2\</PkgMicrosoft_Dynamics_Commerce_Connector_FunctionalTests>
+    <PkgMicrosoft_Dynamics_Commerce_Database_Channel>..\..\References\Microsoft.Dynamics.Commerce.Database.Channel\9.23.20226.11\</PkgMicrosoft_Dynamics_Commerce_Database_Channel>
+    <PkgMicrosoft_Dynamics_Commerce_Diagnostics>..\..\References\Microsoft.Dynamics.Commerce.Diagnostics\10.5.20226.1\</PkgMicrosoft_Dynamics_Commerce_Diagnostics>
+    <PkgMicrosoft_Dynamics_Retail_Diagnostics>..\..\References\Microsoft.Dynamics.Commerce.Diagnostics\10.5.20226.1\</PkgMicrosoft_Dynamics_Retail_Diagnostics>
+    <PkgMicrosoft_Dynamics_Commerce_ModernPosSetup>..\..\References\Microsoft.Dynamics.Commerce.ModernPosSetup\9.23.20226.12\</PkgMicrosoft_Dynamics_Commerce_ModernPosSetup>
+    <PkgMicrosoft_Dynamics_Commerce_PackagesConfigUpdater>..\..\References\Microsoft.Dynamics.Commerce.PackagesConfigUpdater\10.15.20223.2\</PkgMicrosoft_Dynamics_Commerce_PackagesConfigUpdater>
+    <PkgMicrosoft_Dynamics_Commerce_Runtime_Localization>..\..\References\Microsoft.Dynamics.Commerce.Runtime.Localization\9.23.20226.11\</PkgMicrosoft_Dynamics_Commerce_Runtime_Localization>
+    <PkgMicrosoft_Dynamics_Commerce_TestConnector>..\..\References\Microsoft.Dynamics.Commerce.TestConnector\10.12.20179.2\</PkgMicrosoft_Dynamics_Commerce_TestConnector>
+    <PkgMicrosoft_Dynamics_Commerce_TestConnector_Portable>..\..\References\Microsoft.Dynamics.Commerce.TestConnector.Portable\10.12.20179.2\</PkgMicrosoft_Dynamics_Commerce_TestConnector_Portable>
+    <PkgMicrosoft_Dynamics_Retail_Deployment_Resources>..\..\References\Microsoft.Dynamics.Retail.Deployment.Resources\10.5.20225.1\</PkgMicrosoft_Dynamics_Retail_Deployment_Resources>
+    <PkgMicrosoft_Dynamics_Retail_Deployment_SelfService_BootstrapperLibrary>..\..\References\Microsoft.Dynamics.Retail.Deployment.SelfService.BootstrapperLibrary\10.5.20225.1\</PkgMicrosoft_Dynamics_Retail_Deployment_SelfService_BootstrapperLibrary>
+    <PkgMicrosoft_Dynamics_Retail_Deployment_Toolkit>..\..\References\Microsoft.Dynamics.Retail.Deployment.Toolkit\10.5.20225.1\</PkgMicrosoft_Dynamics_Retail_Deployment_Toolkit>
+    <PkgMicrosoft_Dynamics_Retail_HardwareStation_WebHost>..\..\References\Microsoft.Dynamics.Retail.HardwareStation.WebHost\9.23.20226.11\</PkgMicrosoft_Dynamics_Retail_HardwareStation_WebHost>
+    <PkgMicrosoft_Dynamics_Retail_ModernPos>..\..\References\Microsoft.Dynamics.Retail.ModernPos\9.23.20226.12\</PkgMicrosoft_Dynamics_Retail_ModernPos>
+    <PkgMicrosoft_Dynamics_Retail_Pos_Sdk>..\..\References\Microsoft.Dynamics.Retail.Pos.Sdk\9.23.20226.12\</PkgMicrosoft_Dynamics_Retail_Pos_Sdk>
+    <PkgMicrosoft_Dynamics_Retail_RetailServer_WebDeploy>..\..\References\Microsoft.Dynamics.Retail.RetailServer.WebDeploy\9.23.20226.11\</PkgMicrosoft_Dynamics_Retail_RetailServer_WebDeploy>
+    <PkgMicrosoft_Dynamics_Retail_Security>..\..\References\Microsoft.Dynamics.Retail.Security\10.15.20223.2\</PkgMicrosoft_Dynamics_Retail_Security>
+    <PkgStoreSystemSetup>..\..\References\StoreSystemSetup\9.23.20226.10\</PkgStoreSystemSetup>
+  </PropertyGroup>
+</Project>

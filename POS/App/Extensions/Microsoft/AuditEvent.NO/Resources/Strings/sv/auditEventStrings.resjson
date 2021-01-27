@@ -1,0 +1,18 @@
+{
+  "Audit_event_price_lookup_error": "Ett fel uppstod vid registrering av prissökningshändelse: {0}",
+  "_Audit_event_price_lookup_error.comment": "Audit event registration log error message.",
+  "Audit_event_tax_override_error": "Ett fel uppstod vid registrering av händelsen åsidosätt moms: {0}",
+  "_Audit_event_tax_override_error.comment": "Audit event registration log error message.",
+  "Audit_event_quantity_correction_error": "Ett fel uppstod vid registrering av händelsen korrigera kvantitet: {0}",
+  "_Audit_event_quantity_correction_error.comment": "Audit event registration log error message.",
+  "Audit_event_open_cash_drawer_error": "Händelseregistreringsfel för öppen kassalåda: {0}",
+  "_Audit_event_open_cash_drawer_error.comment": "Audit event registration log error message.",
+  "Audit_event_price_lookup_event_message": "Händelsen prissökning har registrerats",
+  "_Audit_event_price_lookup_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_tax_override_event_message": "Händelsen åsidosätt moms har registrerats",
+  "_Audit_event_tax_override_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_quantity_correction_event_message": "Händelsen korrigera kvantitet har registrerats",
+  "_Audit_event_quantity_correction_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_open_cash_drawer_event_message": "Händelse för öppen kassalåda registrerad",
+  "_Audit_event_open_cash_drawer_event_message.comment": "Audit event database log string field value."
+}

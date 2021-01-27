@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Gestionnaire de numéros de build : ajout réussi du numéro de build.",
+  "Build_number_successfull_log_message_text.comment": "Message consigné lorsque le numéro de build du PDV est bien ajouté à la transaction.",
+  "Build_number_error_log_message_text": "Gestionnaire de numéros de build : échec de l'ajout du numéro de build, message d'erreur : « {0} ».",
+  "Build_number_error_log_message_text.comment": "Message consigné lorsque le numéro de build du PDV n'est pas ajouté correctement à la transaction."
+}

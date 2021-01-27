@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="$(TypeScriptRootPath)\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('$(TypeScriptRootPath)\build\Microsoft.TypeScript.MSBuild.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props') And '$(MicrosoftCommonPropsHasBeenImported)' != 'true'" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <OutputPath>bin</OutputPath>
+    <ProjectGuid>{54FF87A6-F9E7-43F4-9EA3-BC95AB714F3E}</ProjectGuid>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <OutputType>Library</OutputType>
+    <AssemblyName>$(AssemblyNamePrefix).Pos.Web</AssemblyName>
+    <UseGlobalApplicationHostFile />
+    <DeployOnBuild Condition="'$(BuildingInsideVisualStudio)'!='true'">true</DeployOnBuild>
+    <BinariesComponentName>RetailPosWeb</BinariesComponentName>
+    <ShouldGenerateJSONBuildVersionFile>true</ShouldGenerateJSONBuildVersionFile>
+    <Product>Microsoft Dynamics 365 Retail</Product>
+    <TargetFrameworkProfile />
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <DefaultLanguage>en-US</DefaultLanguage>
+  </PropertyGroup>
+  <!-- NOTE: do not remove the property group. The project will be opened properly in VS. Otherwise it will be upgraded. -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="**\*.*" Exclude="bin\**\*;bld\**\*;obj\**\*;Extensions\**\*">
+      <InProject>true</InProject>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Extensions\Microsoft\**\*">
+      <InProject>true</InProject>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>15150</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://usnconeboxax1pos.cloud.onebox.dynamics.com</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\SharedApp\Pos.SharedApp.projitems" />
+  <Target Name="CopyLinkedContentFilesIntoProject" AfterTargets="AfterBuild">
+    <Copy Condition=" '%(Content.Link)' != '' " SourceFiles="%(Content.Identity)" DestinationFiles="%(Content.Link)" OverwriteReadOnlyFiles="false" SkipUnchangedFiles="true" />
+  </Target>
+  <Target Name="CleanLinkedContentFilesInProject" BeforeTargets="BeforeClean">
+    <Delete Condition=" '%(Content.Link)' != '' " Files="%(Content.Link)" TreatErrorsAsWarnings="true" />
+  </Target>
+  <Import Project="$(TypeScriptPath)\Microsoft.TypeScript.targets" Condition="Exists('$(TypeScriptPath)\Microsoft.TypeScript.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(SdkRootPath)\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

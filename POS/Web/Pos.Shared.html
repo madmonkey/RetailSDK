@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="mposGridlines" style="display:none">
+        <!-- dynamically injected grid cells -->
+        <div id="mposGridlinesContainer"></div>
+        <div id="mposGridCoords" class="row pad12 height32 width86 bottom0 left0">
+            <div id="mposGridCoordsX" class="h4"></div><div class="width12"></div><div id="mposGridCoordsY" class="h4"></div>
+        </div>
+    </div>
+
+    <!--This section contains all templates still declared in SharedApp. They are currently coupled with components in the UI layer.-->
+    <div id="headerSplitViewTemplate" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'KnockoutControls/HeaderSplitView/knockout.headerSplitView.html'}"></div>
+    <div id="loaderTemplate" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'KnockoutControls/Loader/knockout.loader.html'}"></div>
+    <div id="headerSearch" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'KnockoutControls/HeaderSearch/knockout.headerSearch.html'}"></div>
+    <div id="ExtensionControlsFragmentsPlaceholder" style="position: absolute; visibility: hidden"></div>
+    <div id="CustomControlsFragmentsPlaceholder" style="position: absolute; visibility: hidden"></div>
+    <div id="totalsPanelFieldTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'KnockoutControls/TotalsPanel/knockout.totalsPanel.html'}"></div>
+    <div id="contentHostTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'ContentHost/Templates/ContentHostTemplates.html'}"></div>
+
+    <!--KnockoutControls transferred to 'Controls' project-->
+    <div id="activationUserInfoTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/ActivationUserInfo/knockout.activationUserInfo.html'}"></div>
+    <div id="buttonBlockTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/ButtonBlock/buttonBlock.html'}"></div>
+    <div id="dataListTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/dataList/knockout.dataList.html'}"></div>
+    <div id="incrementalScrollableControlTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/IncrementalScrollableControl/knockout.incrementalScrollableControl.html'}"></div>
+    <div id="loaderWithCheckmarkPlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/LoaderWithCheckmark/knockout.loaderWithCheckmark.html'}"></div>
+    <div id="listViewTemplate" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/ListView/knockout.listView.html'}"></div>
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/NumberPad/numpad.currency.html'}"></div>
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/NumberPad/numpad.alphanumeric.html'}"></div>
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/NumberPad/numpad.numeric.html'}"></div>
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/NumberPad/numpad.transaction.html'}"></div>
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/NumberPad/numpad.multipleInput.html'}"></div>
+    <div id="groupedPivotTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/Pivot/knockout.pivot.html'}"></div>
+    <div id="refinerControlTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/RefinerControl/knockout.refinerControl.html'}"></div>
+    <div id="sectionWrapperTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/SectionWrapper/knockout.sectionWrapper.html'}"></div>
+    <div id="salesOrderAttributeGroupTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/SalesOrderAttributeGroup/knockout.salesOrderAttributeGroup.html'}"></div>
+    <div id="salesOrderAttributesTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/SalesOrderAttributes/knockout.salesOrderAttributes.html'}"></div>
+    <div id="selectRefinerControlTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/SelectRefinerControl/knockout.selectRefinerControl.html'}"></div>
+    <div id="selectTileTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/SelectTile/knockout.selectTile.html'}"></div>
+    <div id="selfPackingListControlTemplate" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/SelfPackingList/knockout.selfPackingList.html'}"></div>
+    <div id="SliderRefinerControlTemplate" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/SliderRefinerControl/knockout.sliderRefinerControl.html'}"></div>
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/HeaderSplitView/ConnectionStatusSelfPackingItemTemplate.html'}"></div>
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/HeaderSplitView/DateAndTimeSelfPackingItemTemplate.html'}"></div>
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/HeaderSplitView/HelpSelfPackingItemTemplate.html'}"></div>
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/HeaderSplitView/NotificationSelfPackingItemTemplate.html'}"></div>
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/HeaderSplitView/SettingsSelfPackingItemTemplate.html'}"></div>
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/HeaderSplitView/TaskRecorderSelfPackingItemTemplate.html'}"></div>
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/HeaderSplitView/UserImageSelfPackingItemTemplate.html'}"></div>
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/HeaderSplitView/UserInfoSelfPackingItemTemplate.html'}"></div>
+    <div id="templateSwitcherTemplate" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/TemplateSwitcher/knockout.templateSwitcher.html'}"></div>
+    <div id="tileListTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/TileList/knockout.tileList.html'}"></div>
+    <div id="timelineTemplate" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/Timeline/knockout.timeline.html'}"></div>
+    <div id="horizontalStatusBarTemplatePlaceHolder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/HorizontalStatusBar/knockout.horizontalStatusBar.html'}"></div>
+    <div id="variantMatrix" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/KnockoutControls/VariantMatrix/knockout.variantMatrix.html'}"></div>
+
+    <!--This section contains all templates that were moved from SharedApp to a LegacyCore project-->
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/Bubbles/BubbleControl.html'}"></div>
+    <div id="productTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/ProductTemplate/ProductTemplate.html'}"></div>
+    <div id="changeDueTemplatePlaceHolder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/ChangeDueTemplate/ChangeDueTemplate.html'}"></div>
+    <div id="customerAttributeTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/CustomerAttributeTemplate/CustomerAttributeTemplate.html'}"></div>
+    <div id="customerOrderTemplate" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/CustomerOrderTemplate/CustomerOrderTemplate.html'}"></div>
+    <div id="customerTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/CustomerTemplate/CustomerTemplate.html'}"></div>
+    <div id="denominationTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/DenominationTemplate/DenominationTemplate.html'}"></div>
+    <div id="productRatingTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/ProductRatingTemplate/ProductRatingTemplate.html'}"></div>
+    <div id="employeeTemplate" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/EmployeeTemplate/EmployeeTemplate.html'}"></div>
+    <div id="extensionPackagesLoadInfoTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/ExtensionPackagesLoadInfoTemplate/ExtensionPackagesLoadInfoTemplate.html'}"></div>
+    <div id="extensionDetailsTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/ExtensionDetailsTemplate/ExtensionDetailsTemplate.html'}"></div>
+    <div id="loyaltyTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/LoyaltyTemplates/LoyaltyTemplates.html'}"></div>
+    <div id="searchResultsSortMenuTemplatePlaceHolder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/SearchResultsSortMenuTemplate/SearchResultsSortMenuTemplate.html'}"></div>
+    <div id="notificationTemplate" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/NotificationTemplate/NotificationTemplate.html'}"></div>
+    <div id="stockCountTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/StockCountTemplate/StockCountTemplate.html'}"></div>
+    <div id="pickAndReceiveTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/PickingAndReceivingTemplate/PickingAndReceivingTemplate.html'}"></div>
+    <div id="storeTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/StoreTemplate/StoreTemplate.html'}"></div>
+    <div id="warehouseTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/WarehouseTemplate/WarehouseTemplate.html'}"></div>
+    <div id="addChargesTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/AddChargesTemplate/AddChargesTemplate.html'}"></div>
+    <div id="salesRepresentativeTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/SalesRepresentativeTemplate/SalesRepresentativeTemplate.html'}"></div>
+    <div id="loginDateTimeTemplatePlaceholder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/LoginDateTimeTemplate/LoginDateTimeTemplate.html'}"></div>
+    <div id="deliveryGridTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/DeliveryGridTemplates/DeliveryGridTemplates.html'}"></div>
+    <div id="paymentGridTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/PaymentGridTemplates/PaymentGridTemplates.html'}"></div>
+    <div id="lineGridTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/LineGridTemplates/LineGridTemplates.html'}"></div>
+    <div id="inventoryDocumentTemplate" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/InventoryDocumentTemplate/InventoryDocumentTemplate.html'}"></div>
+    <div id="salesOrderTemplate" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/SalesOrderTemplate/SalesOrderTemplate.html'}"></div>
+    <div id="cartPromotionTemplatePlaceHolder" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/CartPromotionTemplate/CartPromotionTemplate.html'}"></div>
+    <div id="overrideShiftTenderLineTemplate" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Views/Templates/OverrideShiftTenderLineTemplate/OverrideShiftTenderLineTemplate.html'}"></div>
+    <div id="multiPanelDialogTemplates" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Controls/MultiPanelDialogs/Pos.MultiPanelDialogTemplates.html'}"></div>
+</body>
+</html>

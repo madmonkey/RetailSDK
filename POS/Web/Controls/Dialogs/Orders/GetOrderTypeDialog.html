@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetOrderTypeDialog</title>
+
+</head>
+<body>
+    <div data-bind="customControlInternal: 'GetOrderTypeDialog'">
+
+        <div class="wrapTextWithoutHyphen" data-bind="dialog:
+                {
+                    title: Commerce.ViewModelAdapter.getResourceString('string_7100'),
+                    subTitle: Commerce.ViewModelAdapter.getResourceString('string_7111'),
+                    visible: visible,
+                    buttonClick: dialogButtonClick,
+                    buttons: [
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false }
+                    ]
+                },
+                axBubbleAttr: 'getOrderTypeDialog_getOrderTypeDialog'">
+            <div data-bind="tileList: { itemDataSource: _orderTypeList, iteminvoked: orderTypeListInvokedHandler, field: 'operationName' }, axBubbleAttr: 'getOrderTypeDialog_orderTypeList'">
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+﻿[
+  {
+    "ImageUrl": "https://acrm1514g9ret.cloudax.test.dynamics.com/MediaServer/categories/Fashion%20Sunglasses.png",
+    "HasSubCategories": false,
+    "Data": {
+      "Name": "Fashion Sunglasses",
+      "Images": [
+        {}
+      ],
+      "NameTranslations": [
+        {
+          "Language": "EN-US",
+          "Text": "Fashion Sunglasses"
+        }
+      ]
+    }
+  },
+  {
+    "ImageUrl": "https://acrm1514g9ret.cloudax.test.dynamics.com/MediaServer/categories/Gloves%20&%20Scarves.png",
+    "HasSubCategories": false,
+    "Data": {
+      "Name": "Gloves & Scarves",
+      "Images": [
+        {}
+      ],
+      "NameTranslations": [
+        {
+          "Language": "EN-US",
+          "Text": "Gloves & Scarves"
+        }
+      ]
+    }
+  },
+  {
+    "ImageUrl": "https://acrm1514g9ret.cloudax.test.dynamics.com/MediaServer/categories/Handbags.png",
+    "HasSubCategories": false,
+    "Data": {
+      "Name": "Handbags",
+      "Images": [
+        {}
+      ],
+      "NameTranslations": [
+        {
+          "Language": "EN-US",
+          "Text": "Handbags"
+        }
+      ]
+    }
+  },
+  {
+    "ImageUrl": "https://acrm1514g9ret.cloudax.test.dynamics.com/MediaServer/categories/Jewelry.png",
+    "HasSubCategories": false,
+    "Data": {
+      "Name": "Jewelry",
+      "Images": [
+        {}
+      ],
+      "NameTranslations": [
+        {
+          "Language": "EN-US",
+          "Text": "Jewelry"
+        }
+      ]
+    }
+  },
+  {
+    "ImageUrl": "https://acrm1514g9ret.cloudax.test.dynamics.com/MediaServer/categories/Watches.png",
+    "HasSubCategories": false,
+    "Data": {
+      "Name": "Watches",
+      "Images": [
+        {}
+      ],
+      "NameTranslations": [
+        {
+          "Language": "EN-US",
+          "Text": "Watches"
+        }
+      ]
+    }
+  }
+]

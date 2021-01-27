@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>WeighItemDialog</title>
+
+    <!-- WinJS references -->
+    <link href="WeighItemDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'WeighItemDialog'">
+        <div class="weighItemDialog">
+            <div data-bind="dialog:
+                {
+                    title: title,
+                    subTitle: subTitle,
+                    visible: visible,
+                    backButtonVisible: _backButtonVisible,
+                    backClick: itemGoBack,
+                    buttonClick: onButtonClick,
+                    showProgressIndicator: indeterminateWaitVisible,
+                    dialogCloseButtonClick: dialogCloseButtonClick
+                },
+                axBubbleAttr: 'weighItemDialog_weighItemDialog'" class="weighItemDialog modalWindowContentSection">
+
+
+                <!-- dialog content -->
+                <div class="grow"></div>
+                <div class="content col">
+                    <div data-bind="visible: _scaleSectionVisible">
+                        <h3 data-bind="resx: {textContent: 'string_5321'}">Place the item on the scale.</h3>
+                    </div>
+                    <div data-bind="visible: _weightSectionVisible, axBubbleAttr: 'weighItemDialog_weightNumberNumPad'">
+                        <div data-bind="numericNumpad: {
+                                    parser: new Commerce.NumberParser(),
+                                    value: _itemWeight,
+                                    decimalPrecision: _unitOfMeasureDecimalPrecision,
+                                    labelDataBinding: { resx: {textContent: 'string_5318' /* Weight */ } },
+                                    onEnter: onTextBoxEnterEventHandler,
+                                    numPadInputSource: numPadInputBroker
+                                }">
+                        </div>
+                    </div>
+                    <div class="col marginLeft40" data-bind="visible: _unitOfMeasureVisible">
+                        <label data-bind="resx: {textContent: 'string_5307'}">Unit of measure</label>
+                        <div class="h3 marginBottom0" data-bind="text: _unitOfMeasureDescription"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

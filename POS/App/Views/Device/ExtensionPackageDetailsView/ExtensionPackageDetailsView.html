@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ExtensionPackageDetailsView</title>
+    <link href="ExtensionPackageDetailsView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment extensionPackageDetailsView" data-bind="with: viewModel">
+        <div class="row height100Percent marginLeft20">
+            <!-- Main content -->
+            <div class="col grow" data-bind="sectionWrapper: { header: extensionPackageName }">
+                <div id="extensionsList" class="col grow" data-bind="dataList: {
+                        itemDataSource: extensionLoadInfos,
+                        ariaLabelResx: 'string_7445',  /* List of extensions */
+                        columns: [
+                            { titleResx: 'string_7446', ratio: 40, collapseOrder: 2, minWidth: 180, field: 'extensionInfo.extensionName' },
+                            { titleResx: 'string_7447', ratio: 40, collapseOrder: 1, minWidth: 180, field: 'extensionInfo.extensionPointName' },
+                            { titleResx: 'string_7448', ratio: 20, collapseOrder: 3, minWidth: 60, field: 'loadError', converter: getLocalizedStatus }
+                        ],
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOrSingle,
+                        itemInvoked: onExtensionLoadInfoSelected,
+                        selectInvokedItem: true
+                    },
+                    axBubbleAttr: 'extensionPackageInfoView_extensionsList'">
+                </div>
+            </div>
+
+            <a href="#" id="toggleDetailsPanelButton" class="icon-20x20 width48 height48 center fixedToggleDetailsPaneButton" type="button"
+                    - data-bind="click: toggleDetailsPanel,
+                                    css: isDetailsPanelVisible() ? 'iconClosePane' : 'iconOpenPane',
+-                                    resx: { ariaLabel: 'string_7451' /* Toggle details panel */}"></a>
+
+            <div class="col no-shrink width320 marginLeft20 marginBottom12 marginRight20" data-bind="sectionWrapper: { headerResx: 'string_7449' }, visible: isDetailsPanelVisible()">
+                <div class="primaryPanelBackgroundColor highContrastBorder grow pad20">
+                    <!-- ko if: !isExtensionSelected() -->
+                    <div class="textCenter marginTop56">
+                        <div class="center">
+                            <div class="h1 iconBulletedList width72 height72 center icon-40x40 secondaryFontColor" data-bind="resx: { ariaLabel: 'string_7450' }"></div>
+                        </div>
+                        <div class="h2" data-bind="resx: { textContent: 'string_7450' }">Select an extension</div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: isExtensionSelected() -->
+                    <div data-bind="template: {
+                            name: 'extensionDetailsTemplate',
+                            data: selectedExtensionDetailsViewModel
+                        }">
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <div class="col no-shrink width48 marginLeft20 marginTop48 marginBottom12 marginRight20 primaryPanelBackgroundColor highContrastBorder grow"
+                    data-bind="visible: !isDetailsPanelVisible()"></div>
+        </div>
+    </div>
+</body>
+</html>

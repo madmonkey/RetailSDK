@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.AuthorizationAttribute">
+            <summary>
+            <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.AuthorizationAttribute"/> specifies the commerce authorization filter that verifies the user request's <see cref="T:System.Security.Principal.IPrincipal" />.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.AuthorizationAttribute.#ctor(System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.AuthorizationAttribute"/> class.
+            </summary>
+            <param name="allowedRoles">Allowed roles.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.AuthorizationAttribute.AllowedRoles">
+            <summary>
+            Gets the allowed retail roles.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.BindEntityAttribute">
+            <summary>
+            <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.BindEntityAttribute"/> specifies the entity type this controller will manage.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.BindEntityAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.BindEntityAttribute"/> class.
+            </summary>
+            <param name="boundEntityType">
+            The entity type this controller will be bound to.
+            </param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.BindEntityAttribute.BoundEntityType">
+            <summary>
+            Gets the CLR type of the entity this controller will manage.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.EntityKeyAttribute">
+            <summary>
+            <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.EntityKeyAttribute"/> specifies that the annotated endpoint parameter is used to identify an instance of a bound entity.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.HttpGetAttribute">
+            <summary>
+            <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.HttpGetAttribute"/> specifies that the annotated endpoint method should handle HTTP GET requests.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.HttpPostAttribute">
+            <summary>
+            <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.HttpPostAttribute"/> specifies that the annotated endpoint method should handle HTTP POST requests.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.IController">
+            <summary>
+            An interface used to identify a class as a controller.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.IEndpointContext">
+            <summary>
+            An interface exposing properties and methods that can prove useful to controller endpoint code.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.IEndpointContext.ExecuteAsync``1(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Executes the specified request asynchronously.
+            </summary>
+            <typeparam name="TResponse">The response type of the request.</typeparam>
+            <param name="request">The request to execute.</param>
+            <returns>The response of the request from the request handler.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.RoutePrefixAttribute">
+            <summary>
+            <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.RoutePrefixAttribute"/> configures a URL segment to prefix endpoints defined on a controller.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.RoutePrefixAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.RoutePrefixAttribute"/> class.
+            </summary>
+            <param name="routePrefix">
+            A URL segment to prefix endpoints defined on this controller.
+            A controllerPathPrefix of "examplePrefix" would mean endpoints on this controller would be exposed under serverHostName/ServiceBasePath/examplePrefix/endpointMethodName.
+            "ServiceBasePath/" may or may not exist, depending on the hosting application. Retail Server, for example, currently uses a service base path of "Commerce/".
+            </param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Hosting.Contracts.RoutePrefixAttribute.RoutePrefix">
+            <summary>
+            Gets a URL segment to place all of the controller's methods under.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>LoyaltyCardBalanceDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'LoyaltyCardBalanceDialog'">
+
+        <!-- Dialog -->
+        <div data-bind="dialog:
+             {
+                title: Commerce.ViewModelAdapter.getResourceString('string_3289'), /* Loyalty details */
+                subTitle: Commerce.ViewModelAdapter.getResourceString('string_286'), /* Total available balance */
+                buttonClick: getLoyaltyCardPointBalanceButtonClick,
+                closeOnEscButton: true,
+                dialogCloseButtonClick: dialogCloseButtonClick,
+                visible: visible,
+                buttons: [
+                    { visible: isAddToTransactionButtonVisible, label: Commerce.ViewModelAdapter.getResourceString('string_301'), operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK },
+                    { visible: !isAddToTransactionButtonVisible(), label: Commerce.ViewModelAdapter.getResourceString('string_80'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK }]
+             },
+             axBubbleAttr: 'loyaltyCardPointBalanceDialog_loyaltyCardPointBalanceDialog'">
+
+            <!-- Dialog content -->
+            <div>
+                <div class="row grow">
+                    <div class="col h1 bottomLeft" data-bind="text: viewModel.loyaltyBalanceLabel"></div>
+                    <div class="col h1 bottomRight textRight grow" data-bind="text: Commerce.NumberExtensions.formatNumber(viewModel.totalAvailablePoints, 2)"></div>
+                </div>
+                </div>
+                <div class="padTop8 no-shrink grow">
+                    <div class="line-separator"></div>
+                </div>
+
+                <!-- Script for the following div tag -->
+                <script id="rewardPointsTemplate" type="text/html">
+                    <div class="col padTop20 marginRight4">
+                        <!-- Reward point icon and label-->
+                        <div class="row">
+                            <!-- ko if: PointsExpiringSoon <= 0 -->
+                            <div class="label wrap ratio1 textLeft iconPageList centerY primaryFontColor height24 padTop4" role="img" data-bind="resx: { ariaLabel: 'string_293' }"></div>
+                            <!-- /ko -->
+                            <!-- ko if: PointsExpiringSoon > 0 -->
+                            <div class="label wrap ratio1 textLeft iconReportAlert centerY primaryFontColor height24 padTop4" role="img" data-bind="resx: { ariaLabel: 'string_292' }"></div>
+                            <!-- /ko -->
+                            <div class="h5 wrap ratio9" data-bind="text: Description"></div>
+                        </div>
+                        <!-- Reward point available points row - has ActivePoints -->
+                        <!-- ko if: ActivePoints > 0 -->
+                        <div class="row centerY padTop8" data-bind="click: $root.viewModel.showLoyaltyRewardPointTransactionsDialog.bind($data, $root.viewModel.correlationId, $root.viewModel.loyaltyCardNumberText)">
+                            <div class="col bottomLeft grow ratio5">
+                                <div class="margin0 h4 bold wrap" data-bind="resx: { textContent: 'string_283' }"></div>
+                                <div class="margin0 h6 textTransformNone opacity60 wrap secondaryFontColor" data-bind="text: $root.expiringAsOfCurrentDateLabel"></div>
+                            </div>
+                            <div class="col grow ratio5">
+                                <a href="#" class="h5 wrap textRight bold accent"
+                                   data-bind="text: Commerce.NumberExtensions.formatNumber(ActivePoints, 2)"></a>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <!-- Reward point available points row - no ActivePoints -->
+                        <!-- ko if: ActivePoints <= 0 -->
+                        <div class="row centerY padTop8">
+                            <div class="col bottomLeft grow ratio5">
+                                <div class="margin0 h4 bold wrap" data-bind="resx: { textContent: 'string_283' }"></div>
+                                <div class="margin0 h6 textTransformNone opacity60 wrap secondaryFontColor" data-bind="text: $root.expiringAsOfCurrentDateLabel"></div>
+                            </div>
+                            <div class="col grow ratio5 marginRight8">
+                                <div class="margin0 h5 wrap textRight bold" data-bind="text: Commerce.NumberExtensions.formatNumber(ActivePoints, 2)"></div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <!-- Reward point expiring points row - has PointsExpiringSoon -->
+                        <!-- ko if: PointsExpiringSoon > 0 -->
+                        <div class="row centerY padTop8" data-bind="click: $root.viewModel.showLoyaltyRewardPointPointsExpiringSoonDialog.bind($data, $root.viewModel.correlationId, $root.viewModel.loyaltyCardNumberText)">
+                            <div class="col bottomLeft grow ratio5">
+                                <div class="margin0 h4 bold wrap" data-bind="resx: { textContent: 'string_295' }"></div>
+                                <div class="margin0 h6 textTransformNone opacity60 wrap secondaryFontColor" data-bind="text: $root.viewModel.loyaltyPointDaysToExpiryText"></div>
+                            </div>
+                            <div class="col grow ratio5">
+                                <a href="#" class="h5 wrap textRight bold accent"
+                                   data-bind="text: Commerce.NumberExtensions.formatNumber(PointsExpiringSoon, 2)"></a>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <!-- Reward point expiring points row - no PointsExpiringSoon -->
+                        <!-- ko if: PointsExpiringSoon <= 0 -->
+                        <div class="row centerY padTop8">
+                            <div class="col bottomLeft grow ratio5">
+                                <div class="margin0 h4 bold wrap" data-bind="resx: { textContent: 'string_295' }"></div>
+                                <div class="margin0 h6 textTransformNone opacity60 wrap secondaryFontColor" data-bind="text: $root.viewModel.loyaltyPointDaysToExpiryText"></div>
+                            </div>
+                            <div class="col grow ratio5 marginRight8">
+                                <div class="margin0 h5 wrap textRight bold" data-bind="text: Commerce.NumberExtensions.formatNumber(PointsExpiringSoon, 2)"></div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </script>
+
+                <div class="scrollY col grow">
+                    <!-- Loyalty Programs with Balances -->
+                    <div class="shrink" data-bind="template: { name: 'rewardPointsTemplate', foreach: viewModel.rewardPointsForDisplay }"></div>
+                    <!-- Loyalty Programs with Highest Active Loyalty Card Tiers -->
+                    <!-- Only show this subtitle and list of cards if there are objects in the loyaltyProgramsWithHighestActiveLoyaltyTiers array -->
+                    <div class="shrink" data-bind="visible: viewModel.hasLoyaltyProgramsWithHighestActiveLoyaltyTiers()">
+                        <div class="h4 marginTop40" data-bind="resx: { textContent: 'string_287' }"></div>
+                        <div data-bind="template: { name: 'loyaltyProgramWithHighestActiveLoyaltyCardTierStatusCardTemplate', foreach: viewModel.loyaltyProgramsWithHighestActiveLoyaltyTiers }"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</body>
+</html>

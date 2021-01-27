@@ -1,0 +1,23 @@
+{
+  "Fiscal_register_not_enabled_error": "Le registre fiscal est activé pour le PDV, mais la station matérielle n'est pas activée.",
+  "_Fiscal_register_not_enabled_error.comment": "Fiscal register error message.",
+  "Fiscal_register_not_available_error": "Le registre fiscal est activé pour le PDV, mais la station matérielle n'est pas disponible.",
+  "_Fiscal_register_not_available_error.comment": "Fiscal register error message.",
+  "Fiscal_register_unregistered_comleted_transactions_error": "Une ou plusieurs transaction(s) de vente ne sont pas enregistrées dans le registre fiscal. L'opération est annulée.",
+  "_Fiscal_register_unregistered_comleted_transactions_error.comment": "Fiscal register error message.",
+  "Ok_Button_Label": "OK",
+  "_Ok_Button_Label.comment": "Message dialog button label.",
+  "Cancel_Button_Label": "Annuler",
+  "_Cancel_Button_Label.comment": "Message dialog button label.",
+  "Skip_Button_Label": "Ignorer",
+  "_Skip_Button_Label.comment": "Message dialog button label.",
+  "Run_Refiscalization_Dialog_Title": "Registre fiscal",
+  "_Run_Refiscalization_Dialog_Title.comment": "Message dialog message.",
+  "Run_Refiscalization_Dialog_Message": "Il y a {0} transaction(s) de vente non enregistrée(s) dans le registre fiscal. Cliquez sur OK pour les enregistrer.",
+  "Skip_Refiscalize_Dialog_Title": "Erreur de registre fiscal",
+  "_Skip_Refiscalize_Dialog_Title.comment": "Message dialog title.",
+  "Skip_Refiscalize_Dialog_Message": "Impossible d'enregistrer la transaction de vente dans le registre fiscal. Vous pouvez ignorer l'enregistrement fiscal ou annuler l'opération.",
+  "_Skip_Refiscalize_Dialog_Message.comment": "Message dialog message.",
+  "Confirm_Skip_Refiscalization_Dialog_Message": "Voulez-vous vraiment ignorer l'enregistrement fiscal pour l'ID de transaction : {0}, la date/l'heure de la transaction : {1}, l'ID de ticket de caisse : {2}, le montant total du ticket de caisse : {3} ? Si vous ignorez l'enregistrement fiscal, il sera enregistré dans la transaction.",
+  "_Confirm_Skip_Refiscalization_Dialog_Message.comment": "Message dialog message."
+}

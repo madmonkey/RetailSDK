@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="col height100Percent">
+        <div class="row no-shrink taskRecorderPanelHeader">
+            <div class="grow">
+                <div class="h4 title"
+                    data-bind="text: Title">
+                    TASK RECORDER
+                </div>
+            </div>
+        </div>
+        <div class="col grow padLeft12 padTop12 padRight12 padBottom12">
+            <div class="row no-shrink">
+                <h2 data-bind="resx: { textContent: 'string_10034' }"> Current step </h2>
+            </div>
+            <div class="scrollY minHeight40">
+                <div class="padTop20">
+                    <div class="h4" data-bind="text: storedTaskRecorderStepViewModel.text"> </div>
+                </div>
+                <div class="padTop12">
+                    <label for="recorderEditStepTextId" data-bind="resx: { textContent: 'string_10035' }"> Text </label>
+                    <textarea id="recorderEditStepTextId" class="row" rows="3" data-bind="value: text"> </textarea>
+                </div>
+                <div class="padTop12">
+                    <label for="recorderTextareaNotesId" data-bind="resx: { textContent: 'string_10038' }"> Notes </label>
+                    <textarea id="recorderTextareaNotesId" class="row" rows="4" data-bind="value: notes"> </textarea>
+                </div>
+                <div class="padTop12" data-bind="visible: hasVariableValue">
+                    <div data-bind="visible: !areMultipleLinesAllowedInVariableValue()">
+                        <label for="recorderEditStepVariableValue" data-bind="resx: { textContent: 'string_10046' }"> Value </label>
+                        <input id="recorderEditStepVariableValue" type="text" autocomplete="off"
+                               data-bind="value: variableValue,
+                                      valueUpdate: 'afterkeydown',
+                                      disable: !isVariableValueModifiable()" />
+                    </div>
+                    <div data-bind="visible: areMultipleLinesAllowedInVariableValue">
+                        <label for="recorderEditStepMultilineVariableValue" data-bind="resx: { textContent: 'string_10046' }"> Value </label>
+                        <textarea id="recorderEditStepMultilineVariableValue" class="height100" rows="5" type="text" autocomplete="off"
+                                  data-bind="value: variableValue,
+                                      valueUpdate: 'afterkeydown',
+                                      disable: !isVariableValueModifiable()"></textarea>
+                    </div>
+                </div>
+                <div class="padTop12" data-bind="visible: timeDelaySupported">
+                    <label for="recorderInputTimeDelay" data-bind="resx: { textContent: 'string_10402' }"> Time delay before running step (milliseconds) </label>
+                    <div id="recorderInputTimeDelay" data-bind="numberInput: { inputValue: inputTimeDelay }"></div>
+                </div>
+            </div>
+            <div class="grow"></div>
+            <div class="row no-shrink marginTop24">
+                <div class="col grow marginRight8">
+                    <button class="primaryButton" type="button" data-bind="resx: { textContent: 'string_10040' }, click: saveStep, enable: isFormDataValid">Save</button>
+                </div>
+                <div class="col grow marginLeft8">
+                    <button class="secondaryButton" type="button" data-bind="resx: { textContent: 'string_10041' }, click: cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

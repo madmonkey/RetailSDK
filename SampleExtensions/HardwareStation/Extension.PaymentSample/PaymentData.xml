@@ -1,0 +1,18 @@
+﻿<PaymentCardData>
+  <AutomatedTests>
+    <Track1Data>%B4111111111111111^FDCSTESTCARD/VISACARD^160410110001111A123456789012?</Track1Data>
+    <Track2Data>;4111111111111111=16041011000001234567?</Track2Data>
+    <AccountNumber>4111111111111111</AccountNumber>
+    <CardName>TEST CARD</CardName>
+    <ExpirationMonth>4</ExpirationMonth>
+    <ExpirationYear>2017</ExpirationYear>
+  </AutomatedTests>
+  <PaymentSimulator>
+    <Track1Data></Track1Data>
+    <Track2Data></Track2Data>
+    <AccountNumber></AccountNumber>
+    <CardName>TEST CARD</CardName>
+    <ExpirationMonth>4</ExpirationMonth>
+    <ExpirationYear>2017</ExpirationYear>
+   </PaymentSimulator>
+</PaymentCardData>

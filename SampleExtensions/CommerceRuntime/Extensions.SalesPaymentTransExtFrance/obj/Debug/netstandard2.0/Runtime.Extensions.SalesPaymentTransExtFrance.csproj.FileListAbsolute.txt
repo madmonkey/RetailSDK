@@ -1,0 +1,14 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtFrance\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesPaymentTransExtFrance.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtFrance\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesPaymentTransExtFrance.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtFrance\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesPaymentTransExtFrance.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtFrance\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.CommonFrance.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtFrance\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesPaymentTransExt.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtFrance\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesPaymentTransExt.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtFrance\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.CommonFrance.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtFrance\obj\Debug\netstandard2.0\Runtime.Extensions.SalesPaymentTransExtFrance.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtFrance\obj\Debug\netstandard2.0\Runtime.Extensions.SalesPaymentTransExtFrance.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtFrance\obj\Debug\netstandard2.0\Runtime.Extensions.SalesPaymentTransExtFrance.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtFrance\obj\Debug\netstandard2.0\Runtime.Extensions.SalesPaymentTransExtFrance.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtFrance\obj\Debug\netstandard2.0\Runtime.Extensions.SalesPaymentTransExtFrance.csproj.CopyComplete
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtFrance\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesPaymentTransExtFrance.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesPaymentTransExtFrance\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesPaymentTransExtFrance.pdb

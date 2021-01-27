@@ -1,0 +1,86 @@
+﻿{
+  "$schema": "../Api/dist/manifestSchema.json",
+  "name": "Extensions_TaxRegistrationId_IT",
+  "description": "An extension package providing support for Italy-specific customer tax registration number fields.",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "9.17.0.0",
+  "supportedCountryRegions": [ "IT" ],
+  "components": {
+    "resources": {
+      "supportedUICultures": [ "en-US", "it", "it-CH" ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources/Strings",
+      "stringResourcesFileName": "resources.resjson"
+    },
+    "extend": {
+      "triggers": [
+        {
+          "name": "The pre end transaction trigger",
+          "description": "Adds a fiscal customer to the transaction if set in the device configuration.",
+          "triggerType": "PreEndTransaction",
+          "modulePath": "TriggerHandlers/PreEndTransactionTrigger"
+        }
+      ],
+      "views": {
+        "CustomerAddEditView": {
+          "controlsConfig": {
+            "customControls": [
+              {
+                "name": "Customer add edit view extension",
+                "description": "Extension for providing support for customer fiscal code field.",
+                "controlName": "customerTaxRegistrationIdFieldsControl",
+                "htmlPath": "ViewExtensions/CustomerAddEdit/CustomerTaxRegistrationIdFieldsControl.html",
+                "modulePath": "ViewExtensions/CustomerAddEdit/CustomerTaxRegistrationIdFieldsControl"
+              }
+            ]
+          }
+        },
+        "AddressAddEditView": {
+          "controlsConfig": {
+            "customControls": [
+              {
+                "name": "Address add edit view extension",
+                "description": "Extension for providing support for address loterry code field.",
+                "controlName": "addressTaxRegistrationIdFieldsControl",
+                "htmlPath": "ViewExtensions/AddressAddEdit/AddressTaxRegistrationIdFieldsControl.html",
+                "modulePath": "ViewExtensions/AddressAddEdit/AddressTaxRegistrationIdFieldsControl"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "create": {
+      "templatedDialogs": [
+        {
+          "name": "Edit fiscal customer dialog",
+          "description": "The dialog for editing the fiscal customer.",
+          "htmlPath": "Controls/FiscalCustomer/EditFiscalCustomerDialog.html",
+          "modulePath": "Controls/FiscalCustomer/EditFiscalCustomerDialog"
+        },
+        {
+          "name": "Clear fiscal customer confirmation dialog",
+          "description": "The confirmation dialog to clear the fiscal customer.",
+          "htmlPath": "Controls/FiscalCustomer/ClearConfirmationDialog.html",
+          "modulePath": "Controls/FiscalCustomer/ClearConfirmationDialog"
+        },
+        {
+          "name": "Select fiscal customer action dialog",
+          "description": "The dialog providing the fiscal customer action options.",
+          "htmlPath": "Controls/FiscalCustomer/FiscalCustomerActionDialog.html",
+          "modulePath": "Controls/FiscalCustomer/FiscalCustomerActionDialog"
+        }
+      ],
+      "operations": [
+        {
+          "operationId": "3500",
+          "name": "Add fiscal customer",
+          "description": "Add fiscal customer operation handler.",
+          "operationRequestHandlerPath": "Operations/AddFiscalCustomerOperationRequestHandler",
+          "operationRequestFactoryPath": "Operations/AddFiscalCustomerOperationRequestFactory"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PickUpInStoreView</title>
+    <link href="PickUpInStoreView.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- ko with: viewModel -->
+    <!-- view -->
+    <div class="pickUpInStoreView fragment">
+        <div class="section main row pad20" data-bind="resx: { ariaLabel: 'string_4454' }">
+            <!-- Main content -->
+
+            <div data-bind="pivot: { onselectionchanged: switchMode.bind($data) }">
+
+                <!-- ko if: showMap -->
+                <div data-bind="pivotItem: { headerResx: 'string_2509' }"> <!-- Find a store -->
+                    <div id="pickupInStoreMapContent" class="col maxWidth400 minHeight300">
+
+                        <!-- Input text and search button -->
+
+                        <div class="row height32 marginBottom20 searchSection">
+                            <input class="searchBoxColor noBorder" type="search" data-bind="hasfocus: true, value: searchText, enterKeyPress: search, resx: { ariaLabel: 'string_2509' }" />   <!-- Find a store -->
+                            <button class="iconSearch noBorder margin0 storeSearchButton searchBoxColor height32" data-bind="click: search, resx: { ariaLabel: 'string_50' }"></button> <!-- Search -->
+                        </div>
+
+                        <!-- Bing Maps will be located here, created dynamically by Bing.Maps.ts -->
+                    </div>
+
+                    <div class="gutter40x40"></div>
+
+                    <div class="col stretch">
+                        <div class="row shrink marginBottom12">
+                            <h2 data-bind="resx: { textContent: 'string_2510' }">Available stores</h2>
+                        </div>
+
+                        <!-- Text to show no results on search address -->
+                        <div class="marginTop12" data-bind="visible: errorMessageSearchResultAvailable">
+                            <div class="h4 secondaryFontColor" data-bind="text: errorMessageSearchResult"></div>
+                        </div>
+
+                        <div class="scrollY maxHeight180">
+                            <div id="storeList"
+                                    class="storeList noMargin"
+                                    data-bind="dataList: {
+                                    itemDataSource: locations,
+                                    defaultListType: Commerce.Controls.DataList.ListType.Card,
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.None,
+                                    ariaLabelResx: 'string_2510',   /* Available stores */
+                                    itemTemplates: [
+                                        { templateId: 'storeListTemplate' }
+                                    ]
+                                },
+                                winControl: { preventDefaulListViewEvents: true },
+                                axBubbleAttr: 'pickUpInStoreView_storeList'">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /ko -->
+
+                <div data-bind="pivotItem: { headerResx: 'string_6401' }">
+                    <!-- Main content -->
+                    <div id="allStoreList" data-bind="dataList: {
+                        incrementalDataSource: {
+                            dataManager: $data,
+                            callerMethod: getStoreLocationsAsync,
+                            pageSize: 40,
+                            onLoading: isBusyFlag,
+                            reloadCallBack: reloadStoreLocationsCallback,
+                        },
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                        selectionChanged: storeSelectionChanged,
+                        ariaLabelResx: 'string_5505', /* List of stores */
+                        columns: [
+                            { titleResx: 'string_6402', ratio: 20, collapseOrder: 3, minWidth: 150, field: 'OrgUnitNumber' },
+                            { titleResx: 'string_6403', ratio: 20, collapseOrder: 2, minWidth: 150, field: 'OrgUnitName' },
+                            { titleResx: 'string_6404', ratio: 60, collapseOrder: 1, minWidth: 300, field: 'Address' }]
+                        },
+                        axBubbleAttr: 'pickUpInStoreView_listOfStores'">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Center Map menu -->
+        <div id="centerMapFlyout" data-bind="menu: { anchor: '#centerMapAppBar', placement: 'top', alignment: 'left' }">
+            <button data-bind="menuCommand: {id: 'searchPreferredShippingMenu'}, click: searchPreferredShipping, resx: { label: 'string_2513' }, winControl: { disabled: disablePreferredShipping }"></button>
+            <button data-bind="menuCommand: {id: 'searchCurrentStoreMenu'}, click: searchCurrentStore, resx: { label: 'string_2512' }"></button>
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar: {}, axBubbleAttr: 'pickUpInStoreView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id: 'centerMapAppBar',
+                extraClass: 'iconMapPin',
+                type: 'flyout',
+                flyout: '#centerMapFlyout',
+                labelResx: 'string_2530',
+                visible: showMap() && isSearchOnMapMode()
+                }, axBubbleAttr: 'pickUpInStoreView_centerMapAppBar' "></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAccept',
+                id: 'selectstore',
+                onclick: confirmStoreSelection,
+                labelResx: 'string_6405',
+                enabled: hasSelectedLocationFromAllStoreList,
+                visible: !isSearchOnMapMode()
+            }, axBubbleAttr: 'pickUpInStoreView_selectStoreButton'"></button>
+
+            <button data-bind="appBarCommand: {
+                id:'filterStores',
+                extraClass: 'iconFilter',
+                onclick: filterStoreLocationsAsync,
+                labelResx: 'string_935'
+            }, axBubbleAttr: 'pickUpInStoreView_filterStoreLocations'"></button><!-- Filter -->
+        </div>
+    </div>
+    <!-- /ko -->
+</body>
+</html>

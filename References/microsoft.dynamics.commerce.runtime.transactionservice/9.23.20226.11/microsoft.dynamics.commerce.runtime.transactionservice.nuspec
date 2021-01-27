@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Dynamics.Commerce.Runtime.TransactionService</id>
+    <version>9.23.20226.11</version>
+    <authors>Dynamics Retail and Commerce team</authors>
+    <owners>Dynamics Retail and Commerce team</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://dynamics.microsoft.com/en-us/retail/overview/</projectUrl>
+    <description>The CommerceRuntime TransactionService library for Retail components.</description>
+    <tags>Microsoft Dynamics Dynamics365 Retail Commerce Runtime TransactionService</tags>
+    <repository url="https://msazure.visualstudio.com/D365/Retail Team/_git/Retail-Rainier-Channel" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="Microsoft.Dynamics.Commerce.Runtime.Data" version="9.23.20226.11" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Commerce.Runtime.Entities" version="9.23.20226.11" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages" version="9.23.20226.11" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Commerce.Runtime.RealtimeServices.Messages" version="9.23.20226.11" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Commerce.Runtime.Services.Messages" version="9.23.20226.11" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Commerce.Runtime.DataManagers" version="9.23.20226.11" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Commerce.KeyVault.Contracts" version="10.15.20223.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Commerce.KeyVault.Desktop" version="10.15.20223.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Retail.Cdx.RealtimeServiceClientLibrary" version="10.14.20225.5" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Retail.SynchLibrary" version="10.14.20225.5" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Commerce.Diagnostics" version="10.5.20226.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Commerce.PaymentSDK.Portable" version="10.12.20179.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Dynamics.Commerce.Runtime.Framework" version="10.0.20226.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ListInputDialog</title>
+
+    <link href="ListInputDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'ListInputDialog'">
+        <div data-bind="dialog: {
+            title: title,
+            subTitle: subTitle,
+            visible: visible,
+            showProgressIndicator: indeterminateWaitVisible,
+            buttonClick: buttonClickHandler,
+            buttons: [
+                { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false },
+            ],
+        },
+        axBubbleAttr: 'listInputDialog_listInputDialog'" class="listInputDialog modalWindowContentSection">
+
+            <!-- dialog content -->
+            <div data-bind="visible: isCustomContentVisible">
+                <div class="customContent scrollY">
+                    <!-- empty content to be provided on control call -->
+                </div>
+            </div>
+            <div id="optionsButtonGrid" class="padTop08" data-bind="tileList: {
+                    iteminvoked: itemClickHandler,
+                    itemDataSource: items,
+                    field: 'key'
+                },
+                axBubbleAttr: 'listInputDialog_optionsButtonGrid'"></div>
+        </div>
+    </div>
+</body>
+</html>

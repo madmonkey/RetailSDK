@@ -1,0 +1,24 @@
+@using Contoso.Retail.Ecommerce.Sdk.Controls
+@using Contoso.Retail.Ecommerce.Web.Storefront.Models;
+
+@{
+    ViewBag.Title = @ResourceHelper.GetLocalString("WishListViewTitle");
+}
+
+@section other {
+    @MvcHelperExtension.GetWishListControlHeader(5, true, "/WishListDetails")
+}
+
+<div class="msax-WishListSummary msax-MarginTop30 msax-PaddingRight20 container">
+    <div class="msax-PageTitle">
+        <h1>@ResourceHelper.GetLocalString("Wishlists")</h1> <!-- Wish lists -->
+        <a class="msax-Link msax-PaddingBottom20 msax-PaddingRight20 msax-Button msax-MyAccountLink" href="/MyAccount">
+            <span class="msax-ButtonText">@ResourceHelper.GetLocalString("ReturnToMyAccount")</span> <!-- Return to my account -->
+        </a>
+    </div>
+
+    <p class="msax-WishListDescription">@ResourceHelper.GetLocalString("AllWishListsCanBeTrackedHere")</p>
+
+    <br />
+    @MvcHelperExtension.GetWishListControl()
+</div>

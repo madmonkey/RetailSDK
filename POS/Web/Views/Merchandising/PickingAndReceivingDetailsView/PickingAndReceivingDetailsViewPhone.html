@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PickingAndReceivingDetailsView</title>
+</head>
+<body>
+    <div class="fragment pickingAndReceivingDetailsView" data-bind="with: viewModel">
+        <div id="pickingAndReceivingViewPivot" data-bind="pivot: {}">
+            <div id="pickingAndReceivingViewPivotLines" data-bind="pivotItem: { headerResx: 'string_3741' }">
+                <div id="listviewContainer" data-bind="dataList: {
+                                itemDataSource: lineDetails,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                columns: dataListColumns,
+                                selectionChanged: productSelectionChanged,
+                                ariaLabelResx: 'string_3874'
+                                }">
+                </div>
+            </div>
+            <div id="pickingAndReceivingViewPivotNumpad" data-bind="pivotItem: { headerResx: 'string_2608' }">
+                <div data-ax-bubble="pickingAndReceivingDetailsView_numpad" class="col no-shrink">
+                    <h4 data-bind="visible: isEnterReceivedNowMode, resx: { textContent: receivedNowOrShippedNowLabelResx }"></h4><!-- Received now/Ship now -->
+                    <h4 data-bind="visible: isEnterProductMode, resx: { textContent: 'string_3743' }"></h4><!-- Enter product -->
+                    <h4 data-bind="visible: isReceivedNowMode, resx: { textContent: addToReceivedNowOrShippedNowLabelResx }"></h4><!-- Add to Received/Ship now -->
+                    <!-- Product input numpad -->
+                    <div data-bind="visible: numpadTextMode() === Commerce.ViewModels.PickingAndReceivingTextMode.EnterProduct">
+                        <div data-bind="alphanumericNumpad: {
+                                        onEnter: enterProductOrReceivedNowAsync,
+                                        value: numpadInputText,
+                                        inputDataBinding: { resx: { ariaLabel: 'string_3743' /* Enter product */ } },
+                                        numPadInputSource: $parent.numPadInputBroker
+                            }">
+                        </div>
+                    </div>
+
+                    <!-- Quantity input numpad -->
+                    <div data-bind="visible: numpadTextMode() !== Commerce.ViewModels.PickingAndReceivingTextMode.EnterProduct">
+                        <div data-bind="numericNumpad: {
+                                        onEnter: enterProductOrReceivedNowAsync,
+                                        value: numpadInputText,
+                                        inputDataBinding: { resx: { ariaLabel: 'string_5306' /* Quantity */ } },
+                                        numPadInputSource: $parent.numPadInputBroker
+                            }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pickingReceivingAppBar" data-ax-bubble="pickingAndReceivingDetailsView_commandAppBar" data-bind="appBar: {}">
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconMapPin',
+                id:'changeLocation',
+                labelResx: 'string_3876',
+                onclick: startChangingLocationAsync,
+                visible: isAdvancedWarehousingEnabled }"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconImportAll',
+                id:'receiveAllShipAll',
+                labelResx: receiveAllOrShipAllLabelResx,
+                enabled: isEnterProductMode,
+                onclick: receiveOrShipAllLines}"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconSearch',
+                id:'searchProducts',
+                labelResx: 'string_3821',
+                onclick: searchForProductAsync,
+                enabled: isEnterProductMode, }"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAccept',
+                id:'commitJournal',
+                labelResx: 'string_3823',
+                enabled: isEnterProductMode,
+                onclick: commitJournalAsync }"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconSave',
+                id:'saveJournal',
+                labelResx: 'string_3824',
+                enabled: isEnterProductMode,
+                onclick: saveJournalAsync }"></button>
+
+        </div>
+    </div>
+</body>
+</html>

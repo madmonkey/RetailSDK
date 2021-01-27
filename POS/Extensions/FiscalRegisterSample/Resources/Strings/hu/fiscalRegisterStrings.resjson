@@ -1,0 +1,23 @@
+{
+  "Fiscal_register_not_enabled_error": "A pénztárgép engedélyezve van a pénztárhoz, de a hardverállomás nincs engedélyezve.",
+  "_Fiscal_register_not_enabled_error.comment": "Fiscal register error message.",
+  "Fiscal_register_not_available_error": "A pénztárgép engedélyezve van a pénztárhoz, de a hardverállomás nem érhető el.",
+  "_Fiscal_register_not_available_error.comment": "Fiscal register error message.",
+  "Fiscal_register_unregistered_comleted_transactions_error": "Befejezett, a pénzügyi pénztárgépben nem regisztrált értékesítési tranzakció(k) érhető(k) el. A művelet megszakad.",
+  "_Fiscal_register_unregistered_comleted_transactions_error.comment": "Fiscal register error message.",
+  "Ok_Button_Label": "OK",
+  "_Ok_Button_Label.comment": "Message dialog button label.",
+  "Cancel_Button_Label": "Mégse",
+  "_Cancel_Button_Label.comment": "Message dialog button label.",
+  "Skip_Button_Label": "Kihagyás",
+  "_Skip_Button_Label.comment": "Message dialog button label.",
+  "Run_Refiscalization_Dialog_Title": "Pénzügyi pénztárgép",
+  "_Run_Refiscalization_Dialog_Title.comment": "Message dialog message.",
+  "Run_Refiscalization_Dialog_Message": "Befejezett, {0} a pénzügyi pénztárgépben nem regisztrált értékesítési tranzakció(k) érhető(k) el. Kattintson az OK gombra a tranzakciók regisztrálásához.",
+  "Skip_Refiscalize_Dialog_Title": "Pénzügyipénztárgép-hiba",
+  "_Skip_Refiscalize_Dialog_Title.comment": "Message dialog title.",
+  "Skip_Refiscalize_Dialog_Message": "Az értékesítési tranzakció nem regisztrálható a pénzügyi pénztárgépben. Kihagyhatja a pénzügyi regisztrációt, vagy megszakíthatja a műveletet.",
+  "_Skip_Refiscalize_Dialog_Message.comment": "Message dialog message.",
+  "Confirm_Skip_Refiscalization_Dialog_Message": "Biztosan kihagyja a következő pénzügyi regisztrációját: tranzakcióazonosító: '{0}', tranzakció dátuma/időpontja: '{1}', bevételezési azonosító: '{2}', bevételezés teljes összege: '{3}'? Ha kihagyja a pénzügyi regisztrációt, a rendszer rögzíti ezt a tranzakcióban.",
+  "_Confirm_Skip_Refiscalization_Dialog_Message.comment": "Message dialog message."
+}

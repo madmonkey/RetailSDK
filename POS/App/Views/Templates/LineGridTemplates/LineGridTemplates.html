@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Line Grid Templates</title>
+</head>
+<body>
+
+    <!-- Binding template for the CartPage line grid header row. -->
+    <script type="text/html" id="cartLineGridHeaderTemplate">
+    </script>
+
+    <script type="text/html" id="cartLineGridHeaderTemplate_ProductNameField">
+        <div class="tillLayout-ProductNameField">
+            <div class="h6" data-bind="resx: { textContent: 'string_110' }">ITEM</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_QuantityField">
+        <div class="tillLayout-QuantityField textRight">
+            <div class="h6" data-bind="resx: { textContent: 'string_111' }">QUANTITY</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_DeliveryMethodField">
+        <div class="tillLayout-DeliveryMethodField">
+            <div class="h6" data-bind="resx: { textContent: 'string_4467' }">DELIVERY</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_DeliveryStatusField">
+        <div class="tillLayout-DeliveryStatusField textRight">
+            <div class="h6" data-bind="resx: { textContent: 'string_191' }">STATUS</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_BarcodeIdField">
+        <div class="tillLayout-BarcodeIdField">
+            <div class="h6" data-bind="resx: { textContent: 'string_4431' }">BAR CODE</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_SizeField">
+        <div class="tillLayout-SizeField">
+            <div class="h6" data-bind="resx: { textContent: 'string_4433' }">SIZE</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_ColorField">
+        <div class="tillLayout-ColorField">
+            <div class="h6" data-bind="resx: { textContent: 'string_4434' }">COLOR</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_StyleField">
+        <div class="tillLayout-StyleField">
+            <div class="h6" data-bind="resx: { textContent: 'string_4435' }">STYLE</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_ConfigurationField">
+        <div class="tillLayout-ConfigurationField">
+            <div class="h6" data-bind="resx: { textContent: 'string_4436' }">CONFIGURATION</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_LinkedProductField">
+        <div class="tillLayout-LinkedProductField">
+            <div class="h6" data-bind="resx: { textContent: 'string_4438' }">LINKED PRODUCT</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_OfferIdField">
+        <div class="tillLayout-OfferIdField textRight">
+            <div class="h6" data-bind="resx: { textContent: 'string_4462' }">OFFER ID</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_OriginalPriceField">
+        <div class="tillLayout-OriginalPriceField textRight">
+            <div class="h6" data-bind="resx: { textContent: 'string_4439' }">ORIGINAL PRICE</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_TaxAmountField">
+        <div class="tillLayout-TaxAmountField textRight">
+            <div class="h6" data-bind="resx: { textContent: 'string_4440' }">TAX AMOUNT</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_TaxCodeField">
+        <div class="tillLayout-TaxCodeField">
+            <div class="h6" data-bind="resx: { textContent: 'string_4441' }">TAX CODE</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_TaxPercentageField">
+        <div class="tillLayout-TaxPercentageField textRight">
+            <div class="h6" data-bind="resx: { textContent: 'string_4442' }">TAX PERCENTAGE</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_TotalWithTaxField">
+        <div class="tillLayout-TotalWithTaxField textRight">
+            <div class="h6" data-bind="resx: { textContent: 'string_4443' }">TOTAL (with tax)</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_TotalWithoutTaxField">
+        <div class="tillLayout-TotalWithoutTaxField textRight">
+            <div class="h6" data-bind="resx: { textContent: 'string_4444' }">TOTAL (without tax)</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_UnitOfMeasureField">
+        <div class="tillLayout-UnitOfMeasureField">
+            <div class="h6" data-bind="resx: { textContent: 'string_4445' }">UNIT OF MEASURE</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_ItemIdField">
+        <div class="tillLayout-ItemIdField">
+            <div class="h6" data-bind="resx: { textContent: 'string_4446' }">ITEM ID</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_SalesRepresentativeField">
+        <div class="tillLayout-SalesRepresentativeField">
+            <div class="h6" data-bind="resx: { textContent: 'string_4447' }">SALES REPRESENTATIVE</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_CustomColumn1">
+        <div class="tillLayout-CustomColumn1" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn1.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn1.title()">CUSTOM COLUMN 1</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_CustomColumn2">
+        <div class="tillLayout-CustomColumn2" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn2.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn2.title()">CUSTOM COLUMN 2</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_CustomColumn3">
+        <div class="tillLayout-CustomColumn3" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn3.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn3.title()">CUSTOM COLUMN 3</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_CustomColumn4">
+        <div class="tillLayout-CustomColumn4" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn4.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn4.title()">CUSTOM COLUMN 4</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_CustomColumn5">
+        <div class="tillLayout-CustomColumn5" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn5.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn5.title()">CUSTOM COLUMN 5</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_CustomColumn6">
+        <div class="tillLayout-CustomColumn6" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn6.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn6.title()">CUSTOM COLUMN 6</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_CustomColumn7">
+        <div class="tillLayout-CustomColumn7" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn7.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn7.title()">CUSTOM COLUMN 7</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_CustomColumn8">
+        <div class="tillLayout-CustomColumn8" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn8.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn8.title()">CUSTOM COLUMN 8</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_CustomColumn9">
+        <div class="tillLayout-CustomColumn9" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn9.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn9.title()">CUSTOM COLUMN 9</div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridHeaderTemplate_CustomColumn10">
+        <div class="tillLayout-CustomColumn10" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn10.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h6" data-bind="text: templateViewModel.customColumnsViewModel.customColumn10.title()">CUSTOM COLUMN 10</div>
+        </div>
+    </script>
+
+    <!-- Binding template for CartPage line grid row. -->
+    <script type="text/html" id="cartLineGridRowTemplate">
+    </script>
+
+    <script type="text/html" id="cartLineGridRowTemplate_ProductNameField">
+        <div class="tillLayout-ProductNameField wrapText">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: 'Commerce.Core.Converter.ProductNameFormatter', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_110' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_QuantityField">
+        <div class="tillLayout-QuantityField textRight">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: 'Commerce.Core.Converter.CartLineQuantityFormat', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_111' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_DeliveryMethodField">
+        <div class="tillLayout-DeliveryMethodField">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: 'Commerce.Formatters.DeliveryDescriptionAndDateFormatter', defaultValue: '', type: 'html', ariaLabel: 'true', columnToBindResx: 'string_4467' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_DeliveryStatusField">
+        <div class="tillLayout-DeliveryStatusField textRight">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: 'Commerce.Formatters.CustomerOrderStatusFormatter', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_191' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_BarcodeIdField">
+        <div class="tillLayout-BarcodeIdField">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: 'Barcode', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4431' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_SizeField">
+        <div class="tillLayout-SizeField">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: 'Commerce.Core.Converter.SizeNameFormatter', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4433' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_ColorField">
+        <div class="tillLayout-ColorField">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: 'Commerce.Core.Converter.ColorNameFormatter', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4434' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_StyleField">
+        <div class="tillLayout-StyleField">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: 'Commerce.Core.Converter.StyleNameFormatter', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4435' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_ConfigurationField">
+        <div class="tillLayout-ConfigurationField">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: 'Commerce.Core.Converter.ConfigurationNameFormatter' , defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4436' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_LinkedProductField">
+        <div class="tillLayout-LinkedProductField">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: 'Commerce.Core.Converter.LinkedProductFormatter', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4438' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_OfferIdField">
+        <div class="tillLayout-OfferIdField textRight">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', defaultValue: '', converter: 'Commerce.Core.Converter.OfferIdFormatter', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4462' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_OriginalPriceField">
+        <div class="tillLayout-OriginalPriceField textRight">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', defaultValue: '', converter: 'Commerce.Core.Converter.OriginalPriceFormatter', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4439' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_TaxAmountField">
+        <div class="tillLayout-TaxAmountField textRight">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: 'TaxAmount', converter: 'Commerce.Core.Converter.PriceFormatter', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4440' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_TaxCodeField">
+        <div class="tillLayout-TaxCodeField">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: 'ItemTaxGroupId', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4441' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_TaxPercentageField">
+        <div class="tillLayout-TaxPercentageField textRight">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: 'TaxRatePercent', converter: 'Commerce.Core.Converter.DecimalFormatter', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4442' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_TotalWithTaxField">
+        <div class="tillLayout-TotalWithTaxField textRight">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: 'TotalAmount', converter: 'Commerce.Core.Converter.PriceFormatter', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4443' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_TotalWithoutTaxField">
+        <div class="tillLayout-TotalWithoutTaxField textRight">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: 'NetAmountWithoutTax', converter: 'Commerce.Core.Converter.PriceFormatter', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4444' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_UnitOfMeasureField">
+        <div class="tillLayout-UnitOfMeasureField">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: 'Commerce.Formatters.CartLineUnitOfMeasureFormat', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4445' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_ItemIdField">
+        <div class="tillLayout-ItemIdField wrapText">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: 'ItemId', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4446' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_SalesRepresentativeField">
+        <div class="tillLayout-SalesRepresentativeField">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: 'CommissionSalesGroup', defaultValue: '', type: 'text', ariaLabel: 'true', columnToBindResx: 'string_4447' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_CustomColumn1">
+        <div class="tillLayout-CustomColumn1" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn1.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn1, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_CustomColumn2">
+        <div class="tillLayout-CustomColumn2" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn2.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn2, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_CustomColumn3">
+        <div class="tillLayout-CustomColumn3" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn3.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn3, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_CustomColumn4">
+        <div class="tillLayout-CustomColumn4" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn4.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn4, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_CustomColumn5">
+        <div class="tillLayout-CustomColumn5" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn5.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn5, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_CustomColumn6">
+        <div class="tillLayout-CustomColumn6" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn6.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn6, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_CustomColumn7">
+        <div class="tillLayout-CustomColumn7" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn7.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn7, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_CustomColumn8">
+        <div class="tillLayout-CustomColumn8" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn8.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn8, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_CustomColumn9">
+        <div class="tillLayout-CustomColumn9" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn9.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn9, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+    <script type="text/html" id="cartLineGridRowTemplate_CustomColumn10">
+        <div class="tillLayout-CustomColumn10" data-bind="css: { textRight: templateViewModel.customColumnsViewModel.customColumn10.alignment() === Commerce.Extensibility.CustomGridColumnAlignment.Right }">
+            <div class="h5" data-bind="textConverter: { data: dataRow, field: '$data', converter: templateViewModel.customColumnsViewModel.customColumn10, defaultValue: '', type: 'text' }"></div>
+        </div>
+    </script>
+
+</body>
+</html>

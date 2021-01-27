@@ -1,0 +1,18 @@
+{
+  "Audit_event_price_lookup_error": "Árkeresési eseményregisztrációs hiba: {0}",
+  "_Audit_event_price_lookup_error.comment": "Audit event registration log error message.",
+  "Audit_event_tax_override_error": "Adó-felülbírálási eseményregisztrációs hiba: {0}",
+  "_Audit_event_tax_override_error.comment": "Audit event registration log error message.",
+  "Audit_event_quantity_correction_error": "Mennyiségi korrekció eseményregisztrációs hiba: {0}",
+  "_Audit_event_quantity_correction_error.comment": "Audit event registration log error message.",
+  "Audit_event_open_cash_drawer_error": "Pénztárfiók kinyitása eseményregisztrációs hiba: {0}",
+  "_Audit_event_open_cash_drawer_error.comment": "Audit event registration log error message.",
+  "Audit_event_price_lookup_event_message": "Árkeresési esemény regisztrálva",
+  "_Audit_event_price_lookup_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_tax_override_event_message": "Adófelülírási esemény regisztrálva",
+  "_Audit_event_tax_override_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_quantity_correction_event_message": "Mennyiségi korrekció esemény regisztrálva",
+  "_Audit_event_quantity_correction_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_open_cash_drawer_event_message": "Pénztárfiók kinyitása esemény regisztrálva",
+  "_Audit_event_open_cash_drawer_event_message.comment": "Audit event database log string field value."
+}

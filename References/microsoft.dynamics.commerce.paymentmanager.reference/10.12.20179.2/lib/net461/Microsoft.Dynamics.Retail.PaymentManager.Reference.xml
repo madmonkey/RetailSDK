@@ -1,0 +1,699 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.PaymentManager.Reference</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.CashBackRequestEventArgs">
+            <summary>
+            Cash back request event arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.CashBackRequestEventArgs.CashBackRequested">
+            <summary>
+            Gets the cash back requested.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.CashBackRequestEventArgs.#ctor(System.Decimal)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.CashBackRequestEventArgs"/> class.
+            </summary>
+            <param name="cashBackRequested">The cash back requested.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.CustomerApprovalEventArgs">
+            <summary>
+            Customer approval event argument
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.CustomerApprovalEventArgs.HasApproval">
+            <summary>
+            Gets or sets a value indicating whether [have approval].
+            </summary>
+            <value>
+              <c>true</c> if [have approval]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager">
+            <summary>
+            Class that implments a device manager
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.#ctor(Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandler,Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataStorage)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager"/> class.
+            </summary>
+            <remarks>The device manager becomes the "owner" for the handler and may cause its disposal</remarks>
+            <param name="handler">The handler.</param>
+            <param name="storage">The storage.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.#ctor(Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.IPaymentTerminalHandler,Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataStorage,Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderTypeFunctionalIdentifier)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager"/> class.
+            </summary>
+            <param name="handler">The handler.</param>
+            <param name="storage">The storage.</param>
+            <param name="cardMapper">The card mapper (may be null)</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.Finalize">
+            <summary>
+            Releases unmanaged resources and performs other cleanup operations before the
+            <see cref="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager"/> is reclaimed by garbage collection.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.TenderAvailable">
+            <summary>
+            Occurs when tender is available.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.CustomerApproval">
+            <summary>
+            Occurs on customer approval.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.LoyaltyCustomer">
+            <summary>
+            Occurs on loyalty card payment.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.GetTender">
+            <summary>
+            Get the available tender data (one time only)
+            </summary>
+            <returns>TenderInfo for the available tender data</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.RequestTenderApproval(System.Guid,System.Decimal,System.Decimal)">
+            <summary>
+            Requests the tender approval.
+            </summary>
+            <param name="tenderId">The tender id.</param>
+            <param name="amount">The amount.</param>
+            <param name="cashBack">The cash back.</param>
+            <returns></returns>
+            <remarks>
+            This may BLOCK the current thread until user approves on the device
+            </remarks>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.OperationStatus">
+            <summary>
+            Occurs when [operation status] is available.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.HasCapability(System.String)">
+            <summary>
+            Is the operation specified by the token supported.
+            </summary>
+            <param name="operationToken">Requested operation (token).</param>
+            <returns>
+            true if capability is supported.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.BeginOperation(System.String,System.Object[])">
+            <summary>
+            Begin the operation specified the token. If this returns true then the caller must invoke EndSession
+            before the next attempt to perform this operation.  EndOperation should not be called if this returns false.
+            </summary>
+            <param name="operationToken">Requested operation</param>
+            <param name="args">The arguments</param>
+            <returns>
+            true on success.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.EndOperation(System.String,System.Object[])">
+            <summary>
+            End the operaiton specified by the token and get the results
+            </summary>
+            <param name="operationToken">Requested operation (token).</param>
+            <param name="args">The args.</param>
+            <returns>
+            The value returned depends upon the operation performed
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.CardTypeTransistion(Microsoft.Dynamics.Retail.PaymentManager.Reference.FunctionalTenderType)">
+            <summary>
+            Perform the appropriate transition based upon the card type identified.
+            </summary>
+            <param name="cardTypeIdentified">The card type identified.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.LineDisplayAction(System.Boolean,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Lines the display action.
+            </summary>
+            <param name="clearDisplay">If set to <c>true</c> [clear display].</param>
+            <param name="lines">The lines.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.TransactionEndAction">
+            <summary>
+            Trasaction end action
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.TransactionBeginAction">
+            <summary>
+            Transaction begin action
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.LogOffAction">
+            <summary>
+            Logoff action
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.LogOnAction">
+            <summary>
+            Logon action
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.ShutdownAction">
+            <summary>
+            Shutdown action.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.StartupAction">
+            <summary>
+            Startup action.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.NewWorkingTenderData">
+            <summary>
+            Thread safe method for creating a new working tender.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.MakeWorkingTenderDataAvailable">
+            <summary>
+            Thread safe method for making the working tender the available tender
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.GetAvailableTenderData">
+            <summary>
+            Thread safe for one-time get of available tender data
+            </summary>
+            <returns>Available tender data or null</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.ClearWorkingTender">
+            <summary>
+            Clears the working tender.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.ClearAllTenderData">
+            <summary>
+            therad safe to clear all
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.SetTenderAvailable">
+            <summary>
+            Make the tender available then fire the event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.BeginCashBackRequest(System.Decimal)">
+            <summary>
+            Begins the cash back request.
+            </summary>
+            <param name="cashBackLimit">The cash back limit.</param>
+            <returns>true if operation started</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.EndCashBackRequest">
+            <summary>
+            Ends the cash back request.
+            </summary>
+            <returns>Cash Back reqeusted amount</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.BeginPin(System.String,System.Decimal)">
+            <summary>
+            Begins the pin.
+            </summary>
+            <param name="accountNumber">The account number.</param>
+            <param name="amount">The amount.</param>
+            <returns>True if the operation started.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.ReturnToIdleSubState">
+            <summary>
+            Returns the state of to idle sub state.  MSR is enabled if no pending tender is being processed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.MaskedCardNumber(System.String)">
+            <summary>
+            Maskeds the card number.
+            </summary>
+            <param name="cardNumber">The card number.</param>
+            <returns>The masked card number</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManager.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManagerMessageRelay">
+            <summary>
+            The purpose of this class is to act as a relay for a device manager and its events to a INotificationCenter
+            This isolates the device manager from any RTE specific implementaiton for events.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManagerMessageRelay.Startup">
+            <summary>
+            Occurs when [startup].
+            </summary>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManagerMessageRelay.ShutdownInstance">
+            <summary>
+            Occurs when [shutdown instance].
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManagerMessageRelay.#cctor">
+            <summary>
+            static ctor.  Initialize the Notification Center using the Proxy.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManagerMessageRelay.#ctor(System.Object,Microsoft.Dynamics.Retail.PaymentSDK.IProcessorIdentifier,Microsoft.Dynamics.Retail.PaymentManager.Reference.IPaymentManager)">
+            <summary>
+            ctor - takes an RTE
+            </summary>
+            <param name="hostSessionId">The rte session id.</param>
+            <param name="processorId">The processor id.</param>
+            <param name="theManager">The manager.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManagerMessageRelay.manager_LoyaltyCustomer(System.Object,Microsoft.Dynamics.Retail.PaymentManager.Reference.LoyaltyCustomerEventArgs)">
+            <summary>
+            Handles the LoyaltyCustomer event of the manager control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.LoyaltyCustomerEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManagerMessageRelay.manager_CustomerApproval(System.Object,Microsoft.Dynamics.Retail.PaymentManager.Reference.CustomerApprovalEventArgs)">
+            <summary>
+            Handles the CustomerApproval event of the manager control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.CustomerApprovalEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManagerMessageRelay.manager_TenderAvailable(System.Object,System.EventArgs)">
+            <summary>
+            Handles the TenderAvailable event of the manager control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManagerMessageRelay.ClassApplicationStateHandler(Microsoft.Dynamics.Retail.Notification.Contracts.IApplicationStateData)">
+            <summary>
+            Class Applications the state handler.
+            </summary>
+            <param name="newState">The new state.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManagerMessageRelay.InstanceApplicationStateHandler(Microsoft.Dynamics.Retail.Notification.Contracts.IApplicationStateData)">
+            <summary>
+            Instance Applications the state handler.
+            </summary>
+            <param name="newState">The new state.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManagerMessageRelay.NotifyLogOn(Microsoft.Dynamics.Retail.Notification.Contracts.ILogOnEventData)">
+            <summary>
+            Notifies the log on.
+            </summary>
+            <param name="arg">The arg.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManagerMessageRelay.NotifyLogOff(Microsoft.Dynamics.Retail.Notification.Contracts.ILogOffEventData)">
+            <summary>
+            Notifies the log off.
+            </summary>
+            <param name="arg">The arg.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.DeviceManagerMessageRelay.TransactionStateHandler(Microsoft.Dynamics.Retail.Notification.Contracts.ITransactionStateEventData)">
+            <summary>
+            Transactions the state handler.
+            </summary>
+            <param name="newState">The new state.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.FunctionalTenderType">
+            <summary>
+            Functional Tender types for tenders/cards on the device
+            </summary>
+            <remarks>Equivlent to AX\DataDictionary\BaseEnums\RetailCardTypeBase but values do not map</remarks>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentManager.Reference.FunctionalTenderType.Unknown">
+            <summary>
+            Default value - card type unknown
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentManager.Reference.FunctionalTenderType.Debit">
+            <summary>
+            Debit card (Indicates AX\DataDictionary\BaseEnums\RetailCardTypeBase - InternationalDebit)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentManager.Reference.FunctionalTenderType.Credit">
+            <summary>
+            Credit card (Indicates AX\DataDictionary\BaseEnums\RetailCardTypeBase - InternationalCredit)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentManager.Reference.FunctionalTenderType.Loyalty">
+            <summary>
+            Customer ID/Loyalty card (Indicates AX\DataDictionary\BaseEnums\RetailCardTypeBase - LoyalityCard)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentManager.Reference.FunctionalTenderType.AXGiftCard">
+            <summary>
+            AX Gift Card (Indicates AX\DataDictionary\BaseEnums\RetailCardTypeBase - GiftCard)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.IPaymentManager">
+            <summary>
+            Interface for Hydra payment terminal device.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentManager.Reference.IPaymentManager.TenderAvailable">
+            <summary>
+            Occurs when tender is available.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentManager.Reference.IPaymentManager.CustomerApproval">
+            <summary>
+            Occurs on customer approval.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Dynamics.Retail.PaymentManager.Reference.IPaymentManager.LoyaltyCustomer">
+            <summary>
+            Occurs on loyalty card payment.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.IPaymentManager.GetTender">
+            <summary>
+            Gets the tender.
+            </summary>
+            <returns>ITenderInfo or null</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.IPaymentManager.RequestTenderApproval(System.Guid,System.Decimal,System.Decimal)">
+            <summary>
+            Requests the tender approval.
+            </summary>
+            <param name="tenderId">The tender id.</param>
+            <param name="amount">The charge amount.</param>
+            <param name="cashBack">The cash back.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.IPaymentManager.StartupAction">
+            <summary>
+            Startup action.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.IPaymentManager.ShutdownAction">
+            <summary>
+            Shutdown action.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.IPaymentManager.LogOnAction">
+            <summary>
+            Logon action
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.IPaymentManager.LogOffAction">
+            <summary>
+            Logoff action
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.IPaymentManager.TransactionBeginAction">
+            <summary>
+            Transaction Begin Action
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.IPaymentManager.TransactionEndAction">
+            <summary>
+            Trasaction End Action
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.IPaymentManager.LineDisplayAction(System.Boolean,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Lines the display action.
+            </summary>
+            <param name="clearDisplay">If set to <c>true</c> [clear display].</param>
+            <param name="lines">The lines.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderData">
+            <summary>
+            Strategy pattern for identifing functional tender types
+            </summary>
+            <remarks>This interface is optional</remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataV1">
+            <summary>
+            Version 1.0 of the ITenderTypeFunctionalIdentifier
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataV1.TenderId">
+            <summary>
+            Tender Identifier
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataV1.TenderType">
+            <summary>
+            Functional Tender Type
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataV1.AccountNumber">
+            <summary>
+            Account/Card Number
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataV1.Track1">
+            <summary>
+            Track Data (or null)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataV1.Track2">
+            <summary>
+            Gets the track2.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataV1.Track3">
+            <summary>
+            Gets the track3.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataV1.Track4">
+            <summary>
+            Gets the track4.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataV1.HavePinData">
+            <summary>
+            Flag indicating we have PIN data
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataV1.EncryptedPin">
+            <summary>
+            Encrypted PIN
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataV1.AdditionalSecurityInfo">
+            <summary>
+            Additional Security Info
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataStorage">
+            <summary>
+            Command pattern for storing and clearing tender data
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataStorage.AddTenderData(System.Guid,Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData)">
+            <summary>
+            Store the tender data using the provided key
+            </summary>
+            <param name="key">Key to identify the data</param>
+            <param name="data">The tender data</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataStorage.GetTenderData(System.Guid)">
+            <summary>
+            Get the tender data using the key provided
+            </summary>
+            <param name="key">Key to identify the data</param>
+            <returns>null if tender is not found for the key</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderDataStorage.ClearStorage">
+            <summary>
+            Clear all tender data in the storage
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderTypeFunctionalIdentifier">
+            <summary>
+            Strategy pattern for identifing functional tender types
+            </summary>
+            <remarks>This interface is optional</remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderTypeFunctionalIdentifierV1">
+            <summary>
+            Version 1.0 of the ITenderTypeFunctionalIdentifier
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.ITenderTypeFunctionalIdentifierV1.GetFunctionalTenderType(System.String,System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Gets the type of the functional tender.
+            </summary>
+            <remarks>Should not return DEBIT unless debit processing is the ONLY option available for the card.  If a debit card can be used for debit and credit
+            then Unknown should be returned</remarks>
+            <param name="accountNumber">The account number.</param>
+            <param name="name">The name.</param>
+            <param name="trackData">The track data.</param>
+            <returns>The type or Unkonwn</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.LoyaltyCustomerEventArgs">
+            <summary>
+            Loyalty customer card event
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.LoyaltyCustomerEventArgs.CustomerId">
+            <summary>
+            Gets or sets the customer id.
+            </summary>
+            <value>
+            The customer id.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderAvailableEventData.TenderProcessor">
+            <summary>
+            Name for the tender processor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderAvailableEventData.#ctor(System.String,System.Object)">
+            <summary>
+            ctor
+            </summary>
+            <param name="tenderProcessor"></param>
+            <param name="sessionId"></param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData">
+            <summary>
+            Tender Data
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.TenderId">
+            <summary>
+            Tender Identifier
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.TenderType">
+            <summary>
+            Tender Functional Type
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.TenderUsed">
+            <summary>
+            Is the tender used (saved into storage)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.Track1">
+            <summary>
+            Track Data.  May be null or empty.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.Track2">
+            <summary>
+            Gets or sets the track2.
+            </summary>
+            <value>
+            The track2.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.Track3">
+            <summary>
+            Gets or sets the track3.
+            </summary>
+            <value>
+            The track3.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.Track4">
+            <summary>
+            Gets or sets the track4.
+            </summary>
+            <value>
+            The track4.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.AccountNumber">
+            <summary>
+            Account Number
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.HavePinData">
+            <summary>
+            Flag indicating we have PIN data
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.EncryptedPin">
+            <summary>
+            Encrypted PIN
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.AdditionalSecurityInfo">
+            <summary>
+            Additional Security Info
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.DigitalSignature">
+            <summary>
+            Digital signature (in a Point Array as specified by UPOS standard IList(Point)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.CustomerApprovedAmount">
+            <summary>
+            Amount that the customer has approved for this tender.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.CustomerApprovedCashBack">
+            <summary>
+            Gets or sets the customer approved cash back.
+            </summary>
+            <value>
+            The customer approved cash back.
+            </value>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData"/> class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderDataStorage">
+            <summary>
+            Reference implementaiton for a Teder Data Storage
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderDataStorage.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderDataStorage"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderDataStorage.AddTenderData(System.Guid,Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData)">
+            <summary>
+            Store the tender data using the provided key
+            </summary>
+            <param name="key">Key to identify the data</param>
+            <param name="data">The tender data</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderDataStorage.GetTenderData(System.Guid)">
+            <summary>
+            Get the tender data using the key provided
+            </summary>
+            <param name="key">Key to identify the data</param>
+            <returns>
+            null if tender is not found for the key
+            </returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderDataStorage.ClearStorage">
+            <summary>
+            Clear all tender data in the storage
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderInfo.#ctor">
+            <summary>
+            default ctor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderInfo.#ctor(Microsoft.Dynamics.Retail.PaymentManager.Reference.TenderData)">
+            <summary>
+            designated ctor
+            </summary>
+            <param name="data"></param>
+        </member>
+    </members>
+</doc>

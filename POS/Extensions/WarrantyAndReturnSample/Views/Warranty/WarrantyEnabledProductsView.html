@@ -1,0 +1,28 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Warranty enbaled products view</title>
+</head>
+<body>
+    <div class="warrantyEnabledProductsView">
+        <div id="warrantyDataListPivot" data-bind="msPosPivot: pivot">
+            <div data-bind="msPosPivotItem: pivotItem">
+                <div id="warrantyEnabledProductsDataList">
+                </div>
+                <!-- Empty data list template -->
+                <script type="text/html" id="noProductsWithWarranty">
+                    <div class="center textCenter">
+                        <h3 class="wrapText" data-bind="text: noProductsWithWarrantyMessage"></h3>
+                    </div>
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

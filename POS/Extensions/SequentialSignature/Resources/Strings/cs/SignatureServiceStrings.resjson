@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Při dokončování transakce došlo k chybě. Podepisovací služba není připravena. Kontaktujte správce systému.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Při dokončování transakce došlo k chybě. Propojená fiskální transakce obsahuje data v nesprávném formátu. Kontaktujte správce systému.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "Při obnovení digitálního podpisu poslední transakce došlo k chybě. Pravděpodobně nejsou synchronizovány offline databáze. Kontaktujte správce systému.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

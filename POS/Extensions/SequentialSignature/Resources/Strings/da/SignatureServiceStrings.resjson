@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Der opstod en fejl under afslutningen af transaktionen. Signeringstjenesten er ikke klar. Kontakt systemadministratoren.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Der opstod en fejl under afslutningen af transaktionen. Den sammenkædede finansielle transaktion indeholder data i et forkert format. Kontakt systemadministratoren.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "Der opstod en fejl under genoprettelse af digital signatur i sidste transaktion. Offlinedatabasen er muligvis ikke synkroniseret. Kontakt systemadministratoren.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

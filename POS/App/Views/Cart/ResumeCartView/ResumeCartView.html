@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Resume Cart View</title>
+    <link href="ResumeCartView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="resumeCartView fragment" data-bind="with: viewModel">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'resumeCartView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div data-bind="pivotItem: { headerResx: 'string_4079' }">
+                <div id="resumeCartList" data-bind="dataList: {
+                        itemDataSource: suspendedCartsForDisplay,
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.MultiSelect,
+                        selectionChanged: selectCarts,
+                        ariaLabelResx: 'string_4079',  /* Suspended transactions */
+                        columns: dataListColumns
+                    },
+                    axBubbleAttr: 'resumeCartView_suspendedCarts'">
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar: { extensionCommands: extensionCommandViewModels }, axBubbleAttr: 'resumeCartView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconCancel' ,
+                id:'performVoidOperationAppBar',
+                onclick: voidTransactionsAsync,
+                labelResx: 'string_4083' ,
+                enabled: hasSelectedCart },
+                axBubbleAttr: 'resumeCartView_performVoidOperationAppBar'"></button><!--Void-->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAccept' ,
+                id:'performOperationAppBar',
+                onclick: recallTransactionAsync,
+                labelResx: 'string_4081' ,
+                enabled: hasOneSelectedCart },
+                axBubbleAttr: 'resumeCartView_performRecallOperationAppBar'"></button><!--recall-->
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<DeploymentTopology catalogName="AX" productName="AX7">
+  <DeploymentComponents>
+
+    <!-- Demo topology service model parameters. -->
+    <DeploymentComponent identifier="RetailHQConfiguration" topologyType="Demo">
+      <ScriptReference identifier="UnifiedSetup">
+        <Parameters>
+          <Parameter name="ServiceName">
+            <Value>
+              <Value>RetailHQConfiguration</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="BuildLocation">
+            <Value>
+              <Value>Services\RetailHQConfiguration\</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="BuildId" type="Customization">
+            <Value>
+              <Value>ProductVersion</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="AosWebsiteName">
+            <Value>
+              <Value>AOSService</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="AosDatabaseServer">
+            <Value>
+              <Value>127.0.0.1</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="AosDatabaseName" >
+            <Value>
+              <Value>AxDB</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="ChannelDatabaseServer">
+            <Value>
+              <Value>127.0.0.1</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="ChannelDatabaseName" >
+            <Value>
+              <Value>AxDB</Value>
+            </Value>
+          </Parameter>
+              <Parameter name="IsServiceModelDeployment" >
+            <Value>
+              <Value>true</Value>
+            </Value>
+          </Parameter>         
+          <Parameter name="AosUrl" type="Customization" >
+            <Value>
+              <Value>AX Endpoint</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="AosSoapUrl" type="Customization" continueOnSourceMissing="true">
+            <Value>
+              <Value>AOSService.Soap</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="UserId">
+            <Value>
+              <Value>RetailServerSystemAccount@dynamics.com</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="AosAdminUserId" type="Customization">
+            <Value>
+              <Value>User Alias</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="RetailServerInstanceCount" type="XPath" >
+            <Value>
+              <Value>TopologyInstance/DeploymentItem[@itemName='Demo']/Customizations/Customization[@fieldName='Instance count']/@selectedValue</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="RetailSideloadingKey" type="Customization" >
+            <Value>
+              <Value>RetailSideloadingKey</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="RetailServerUrl" type="Customization">
+            <Value>
+              <Value>Retail Endpoint</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="CloudPOSUrl" type="Customization">
+            <Value>
+              <Value>RetailCloudPos.Https</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="DisableDBServerCertificateValidation">
+            <Value>
+              <Value>True</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="TenantId" type="Customization">
+            <Value>
+              <Value>Organization ID</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="EnvironmentId" type="XPath">
+            <Value>
+              <Value>TopologyInstance/EnvironmentId</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="RetailPaymentConnectorPackageMetadata" type="Customization">
+            <Value>
+              <Value>RetailCombinedPackages</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="ProductSku" type="Customization" continueOnSourceMissing="true">
+            <Value>
+              <Value>ProductSku</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="EnableRetailOnlyModeConfigKey" type="Customization" continueOnSourceMissing="true">
+            <Value>
+              <Value>EnableRetailOnlyModeConfigKey</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="DisableOverlayering" type="Customization" continueOnSourceMissing="true">
+            <Value>
+              <Value>DisableOverlayering</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="TopologySkuType" type="XPath" >
+            <Value>
+              <Value>TopologyInstance/Customizations/Customization[@fieldName='TopologySkuType']/@selectedValue</Value>
+            </Value>
+          </Parameter>
+          <Parameter name="DomSolverLicenseKey" continueOnSourceMissing="true">
+            <Value>
+              <Value></Value>
+            </Value>
+          </Parameter>
+          <Parameter name="DomSolverLicenseExpirationDate" continueOnSourceMissing="true">
+            <Value>
+              <Value></Value>
+            </Value>
+          </Parameter>
+        </Parameters>
+      </ScriptReference>
+      </DeploymentComponent>
+  
+      <!-- DevTest topology service model parameters. -->
+      <DeploymentComponent identifier="RetailHQConfiguration" topologyType="DevTest">
+          <ScriptReference identifier="UnifiedSetup">
+            <Parameters>
+              <Parameter name="ServiceName">
+                <Value>
+                  <Value>RetailHQConfiguration</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="BuildLocation">
+                <Value>
+                  <Value>Services\RetailHQConfiguration\</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="BuildId" type="Customization">
+                <Value>
+                  <Value>ProductVersion</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="AosWebsiteName">
+                <Value>
+                  <Value>AOSService</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="AosDatabaseServer">
+                <Value>
+                  <Value>127.0.0.1</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="AosDatabaseName" >
+                <Value>
+                  <Value>AxDB</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="ChannelDatabaseServer">
+                <Value>
+                  <Value>127.0.0.1</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="ChannelDatabaseName" >
+                <Value>
+                  <Value>AxDB</Value>
+                </Value>
+              </Parameter>
+                  <Parameter name="IsServiceModelDeployment" >
+                <Value>
+                  <Value>true</Value>
+                </Value>
+              </Parameter>         
+              <Parameter name="AosUrl" type="Customization" >
+                <Value>
+                  <Value>AX Endpoint</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="AosSoapUrl" type="Customization" continueOnSourceMissing="true">
+                <Value>
+                  <Value>AOSService.Soap</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="UserId">
+                <Value>
+                  <Value>RetailServerSystemAccount@dynamics.com</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="AosAdminUserId" type="Customization">
+                <Value>
+                  <Value>User Alias</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="RetailServerInstanceCount" type="XPath" >
+                <Value>
+                  <Value>TopologyInstance/DeploymentItem[@itemName='Demo']/Customizations/Customization[@fieldName='Instance count']/@selectedValue</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="RetailSideloadingKey" type="Customization" >
+                <Value>
+                  <Value>RetailSideloadingKey</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="RetailServerUrl" type="Customization">
+                <Value>
+                  <Value>Retail Endpoint</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="CloudPOSUrl" type="Customization">
+                <Value>
+                  <Value>RetailCloudPos.Https</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="DisableDBServerCertificateValidation">
+                <Value>
+                  <Value>True</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="TenantId" type="Customization">
+                <Value>
+                  <Value>Organization ID</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="EnvironmentId" type="XPath">
+                <Value>
+                  <Value>TopologyInstance/EnvironmentId</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="RetailPaymentConnectorPackageMetadata" type="Customization">
+                <Value>
+                  <Value>RetailCombinedPackages</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="ProductSku" type="Customization" continueOnSourceMissing="true">
+                <Value>
+                  <Value>ProductSku</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="EnableRetailOnlyModeConfigKey" type="Customization" continueOnSourceMissing="true">
+                <Value>
+                  <Value>EnableRetailOnlyModeConfigKey</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="DisableOverlayering" type="Customization" continueOnSourceMissing="true">
+                <Value>
+                  <Value>DisableOverlayering</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="TopologySkuType" type="XPath" >
+                <Value>
+                  <Value>TopologyInstance/Customizations/Customization[@fieldName='TopologySkuType']/@selectedValue</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="DomSolverLicenseKey" continueOnSourceMissing="true">
+                <Value>
+                  <Value></Value>
+                </Value>
+              </Parameter>
+              <Parameter name="DomSolverLicenseExpirationDate" continueOnSourceMissing="true">
+                <Value>
+                  <Value></Value>
+                </Value>
+              </Parameter>
+            </Parameters>
+          </ScriptReference>
+      </DeploymentComponent>
+      
+      <!-- Production topology service model parameters. -->
+      <DeploymentComponent identifier="RetailHQConfiguration" topologyType="Production">
+          <ScriptReference identifier="UnifiedSetup">
+            <Parameters>
+              <Parameter name="ServiceName">
+                <Value>
+                  <Value>RetailHQConfiguration</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="BuildLocation">
+                <Value>
+                  <Value>Services\RetailHQConfiguration\</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="BuildId" type="Customization">
+                <Value>
+                  <Value>ProductVersion</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="AosWebsiteName">
+                <Value>
+                  <Value>AOSService</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="AosDatabaseServer">
+                <Value>
+                  <Value>127.0.0.1</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="AosDatabaseName" >
+                <Value>
+                  <Value>AxDB</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="ChannelDatabaseServer">
+                <Value>
+                  <Value>127.0.0.1</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="ChannelDatabaseName" >
+                <Value>
+                  <Value>AxDB</Value>
+                </Value>
+              </Parameter>
+                  <Parameter name="IsServiceModelDeployment" >
+                <Value>
+                  <Value>true</Value>
+                </Value>
+              </Parameter>         
+              <Parameter name="AosUrl" type="Customization" >
+                <Value>
+                  <Value>AX Endpoint</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="AosSoapUrl" type="Customization" continueOnSourceMissing="true">
+                <Value>
+                  <Value>AOSService.Soap</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="UserId">
+                <Value>
+                  <Value>RetailServerSystemAccount@dynamics.com</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="AosAdminUserId" type="Customization">
+                <Value>
+                  <Value>User Alias</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="RetailServerInstanceCount" type="XPath" >
+                <Value>
+                  <Value>TopologyInstance/DeploymentItem[@itemName='Demo']/Customizations/Customization[@fieldName='Instance count']/@selectedValue</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="RetailSideloadingKey" type="Customization" >
+                <Value>
+                  <Value>RetailSideloadingKey</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="RetailServerUrl" type="Customization">
+                <Value>
+                  <Value>Retail Endpoint</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="CloudPOSUrl" type="Customization">
+                <Value>
+                  <Value>RetailCloudPos.Https</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="DisableDBServerCertificateValidation">
+                <Value>
+                  <Value>True</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="TenantId" type="Customization">
+                <Value>
+                  <Value>Organization ID</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="EnvironmentId" type="XPath">
+                <Value>
+                  <Value>TopologyInstance/EnvironmentId</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="RetailPaymentConnectorPackageMetadata" type="Customization">
+                <Value>
+                  <Value>RetailCombinedPackages</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="ProductSku" type="Customization" continueOnSourceMissing="true">
+                <Value>
+                  <Value>ProductSku</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="EnableRetailOnlyModeConfigKey" type="Customization" continueOnSourceMissing="true">
+                <Value>
+                  <Value>EnableRetailOnlyModeConfigKey</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="DisableOverlayering" type="Customization" continueOnSourceMissing="true">
+                <Value>
+                  <Value>DisableOverlayering</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="TopologySkuType" type="XPath" >
+                <Value>
+                  <Value>TopologyInstance/Customizations/Customization[@fieldName='TopologySkuType']/@selectedValue</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="DomSolverLicenseKey" type="XPath" continueOnSourceMissing="true">
+                <Value>
+                  <Value>Environment/Configuration/Setting[@Name='DistributedOrderManagement.SolverLicenseKey']/@Value</Value>
+                </Value>
+              </Parameter>
+              <Parameter name="DomSolverLicenseExpirationDate" type="XPath" continueOnSourceMissing="true">
+                <Value>
+                  <Value>Environment/Configuration/Setting[@Name='DistributedOrderManagement.SolverLicenseExpirationDate']/@Value</Value>
+                </Value>
+              </Parameter>
+            </Parameters>
+          </ScriptReference>
+      </DeploymentComponent>
+  </DeploymentComponents>
+</DeploymentTopology>

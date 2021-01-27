@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>LoginDialog</title>
+</head>
+<body>
+    <div id="loginDialog" data-bind="customControlInternal: 'LoginDialog'">
+        <div data-bind="dialog:
+            {
+                title: title,
+                message: message,
+                visible: visible,
+                buttonClick: onButtonClick,
+                showProgressIndicator: indeterminateWaitVisible,
+                closeOnEscButton: true,
+                buttons: [
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_75'), disable: _isOKButtonDisabled, operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, cssClass: 'okButton' },
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton' }]
+            },
+            axBubbleAttr: 'loginDialog_loginDialog'">
+
+            <!-- dialog content -->
+            <div class="padBottom20" data-bind="visible: !Commerce.StringExtensions.isNullOrWhitespace(_storeId())">
+                <label data-bind="resx: {textContent: 'string_501'}" for="storeNumberTextBox">Store</label>
+                <div class="h4" id="storeNumberTextBox" data-bind="text: _storeId"></div>
+            </div>
+
+            <div>
+                <label data-bind="resx: {textContent: 'string_502'}" for="overrideOperatorTextBox">Operator ID</label>
+                <input id="overrideOperatorTextBox" type="text" required="required"
+                       data-bind="value: _userName,
+                                                valueUpdate: 'afterkeydown',
+                                                hasfocus: true,
+                                                enterKeyPress: enterKeyPressed,
+                                                validator: {
+                                                    validatorField: 'UserId',
+                                                    validatorType: 'ConnectionRequestValidator'
+                                                },
+                                                axBubbleAttr: 'loginDialog_overrideOperatorTextBox'" />
+            </div>
+
+            <div class="padTop20">
+                <label data-bind="resx: {textContent: 'string_503'}" for="passwordBox">Password</label>
+                <input id="passwordBox" type="password" required="required" role="textbox" sensitiveDataFor="overrideOperatorTextBox"
+                       data-bind="value: _password,
+                                                valueUpdate: 'afterkeydown',
+                                                hasfocus: _isPasswordFocused,
+                                                enterKeyPress: enterKeyPressed,
+                                                validator: {
+                                                    validatorField: 'Password',
+                                                    validatorType: 'ConnectionRequestValidator'
+                                                },
+                                                axBubbleAttr: 'loginDialog_passwordBox'" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

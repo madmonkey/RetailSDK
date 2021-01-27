@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Derleme numarası yöneticisi: Derleme numarası başarıyla eklendi.",
+  "Build_number_successfull_log_message_text.comment": "POS derleme numarası harekete başarılı şekilde eklendiğinde kaydedilen ileti.",
+  "Build_number_error_log_message_text": "Derleme numarası yöneticisi: Derleme numarası ekleme başarısız oldu, hata iletisi: '{0}'.",
+  "Build_number_error_log_message_text.comment": "POS derleme numarası harekete başarısız şekilde eklendiğinde kaydedilen ileti."
+}

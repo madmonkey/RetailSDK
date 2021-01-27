@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>LoyaltyCardDetailsDialog</title>
+</head>
+<body>
+    <div class="loyaltyCard" data-bind="customControlInternal: 'LoyaltyCardDetailsDialog'">
+        <div data-bind="dialog:
+            {
+                title: Commerce.ViewModelAdapter.getResourceString('string_281'),
+                subTitle: Commerce.ViewModelAdapter.getResourceString('string_282'),
+                visible: visible,
+                buttonClick: onButtonClick,
+                closeOnEscButton: true,
+                dialogCloseButtonClick: dialogCloseButtonClick,
+                showProgressIndicator: indeterminateWaitVisible,
+                buttons: [{ label: Commerce.ViewModelAdapter.getResourceString('string_80'), operationId: Commerce.Controls.Dialog.OperationIds.CLOSE_BUTTON_CLICK, cssClass: 'cancelButton', isPrimary: true }]
+            },
+            axBubbleAttr: 'numpadSearchDialog_numpadSearchDialog'">
+
+            <!-- dialog content -->
+            <div class="col grow scrollY">
+                <div class="h1 wrapTextWithoutHyphen" data-bind="text: cardIssued">cardIssued</div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

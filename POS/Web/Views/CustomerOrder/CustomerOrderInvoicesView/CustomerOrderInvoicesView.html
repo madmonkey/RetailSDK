@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Customer Order Invoices View</title>
+    <link href="CustomerOrderInvoicesView.css" rel="stylesheet">
+</head>
+<body>
+    <div class="customerOrderInvoicesView fragment" data-bind="with: viewModel">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'customerOrderInvoicesView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div data-bind="pivotItem: { headerResx: 'string_12315' }">
+                <div id="customerOrderInvoicesList" data-bind="dataList: {
+                    itemDataSource: openInvoices,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.MultiSelect,
+                    selectionChanged: onSelectionChanged ,
+                    ariaLabelResx: 'string_12315',  /* Invoices */
+                    columns: [
+                        { titleResx: 'string_12314', ratio: 20, collapseOrder: 6, minWidth: 100, field: 'Id' },
+                        { titleResx: 'string_12309', ratio: 20, collapseOrder: 4, minWidth: 100, field: '$data', converter: 'Commerce.Core.Converter.InvoiceTypeFormatter'},
+                        { titleResx: 'string_12303', ratio: 15, collapseOrder: 1, minWidth: 100, field: 'InvoiceDate', converter: 'Commerce.Core.Converter.DateWithoutTime' },
+                        { titleResx: 'string_12305', ratio: 15, collapseOrder: 2, minWidth: 100, isRightAligned: true, field: 'TotalAmount', converter: 'Commerce.Core.Converter.PriceFormatter' },
+                        { titleResx: 'string_12304', ratio: 15, collapseOrder: 3, minWidth: 100, isRightAligned: true, field: 'AmountPaid', converter: 'Commerce.Core.Converter.PriceFormatter' },
+                        { titleResx: 'string_12306', ratio: 15, collapseOrder: 5, minWidth: 100, isRightAligned: true, field: 'AmountBalance', converter: 'Commerce.Core.Converter.PriceFormatter' }
+                    ]}">
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar: {}">
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAccept',
+                id: 'performOperationAppBar',
+                onclick: addInvoicesToCart,
+                labelResx: 'string_12307' ,
+                disabled: addInvoicesDisabled }"></button><!--select-->
+        </div>
+    </div>
+</body>
+</html>

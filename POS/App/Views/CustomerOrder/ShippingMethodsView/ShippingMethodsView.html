@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Shipping Methods View</title>
+    <link href="ShippingMethodsView.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- view -->
+    <div class="shippingMethodsView fragment" data-bind="with: viewModel">
+        <div class="section main row marginBottom12 marginLeft20 marginRight20" data-bind="resx: { ariaLabel: 'string_4454' }">
+            <!-- Main content -->
+            <div data-bind="sectionWrapper: {headerResx: 'string_2554' }">
+                <!-- shipping to -->
+                <div class="width320 col no-shrink" aria-label="Shipping to">
+                    <div data-bind="template: { name: 'storeAddressTemplate', data: storeAddress }"></div>
+                </div>
+
+                    <!-- Available stores -->
+                    <div class="col marginTop20">
+                        <!-- view all addresses button -->
+                        <div data-bind="visible: true,
+                        buttonBlock: {
+                            buttonClass: 'iconSwitch primaryFontColor',
+                            click: showAllStores,
+                            labelValue: showAllResultsText
+                        }">
+                        </div>
+                    </div>
+
+                    <div class="gutter40x40"></div>
+
+                    <div data-bind="sectionWrapper: {headerResx: 'string_2555' }">
+                        <!-- shipping to -->
+                        <div class="width320 col no-shrink" aria-label="Shipping to">
+                            <!-- customer box -->
+                            <!-- ko if: isShippingAddressProvided && addressPurposeLoaded -->
+                            <div data-bind="template: { name: 'shippingAddressTemplate', data: shippingAddress }"></div>
+                            <!-- /ko -->
+
+                            <div class="primaryPanelBackgroundColor col highContrastBorder" data-bind="visible: !isShippingAddressProvided">
+                                <div class="height140 center">
+                                    <div class="h4" data-bind="resx: { textContent: 'string_2550' }"></div>
+                                </div>
+                            </div>
+
+                            <div class="col marginTop20">
+                                <!-- view all addresses button -->
+                                <div data-bind="visible: totalAddressesVisibility,
+                                buttonBlock: {
+                                buttonClass: 'iconSwitch primaryFontColor',
+                                click: viewAllCustomerAddresses,
+                                labelValue: totalCustomerAddressesString /* Use current store */
+                                },
+                                axBubbleAttr: 'shippingMethodsView_viewAllCustomerAddressesButton'">
+                                </div>
+
+                                <!-- create new address button -->
+                                <div data-bind="visible: _isCustomerLoaded,
+                                buttonBlock: {
+                                buttonClass: 'iconAdd',
+                                click: createCustomerAddress,
+                                labelTextResx: 'string_2503',       /* Create a new shipping address */
+                                ariaLabelResx: 'string_2503',       /* Create a new shipping address */
+                                },
+                                axBubbleAttr: 'shippingMethodsView_createNewAddressButton'">
+                                </div>
+
+                                <!-- search customers button -->
+                                <div data-bind="visible: !_isCustomerLoaded(),
+                                buttonBlock: {
+                                buttonClass: 'iconSearch',
+                                click: searchCustomers,
+                                labelTextResx: 'string_1153',   /* Search customers */
+                                ariaLabelResx: 'string_1153'    /* Search customers */
+                                },
+                                axBubbleAttr: 'shippingMethodsView_searchCustomersButton'">
+                                </div>
+
+                                <!-- create customer button -->
+                                <div data-bind="visible: !_isCustomerLoaded(),
+                                buttonBlock: {
+                                buttonClass: 'iconAdd',
+                                click: createCustomerAsync,
+                                labelTextResx: 'string_1152',   /* Create customer */
+                                ariaLabelResx: 'string_1152'    /* Create customer */
+                                },
+                                axBubbleAttr: 'shippingMethodsView_createCustomerButton'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="gutter40x40"></div>
+
+            <div class="section" aria-label="Shipping method" data-bind="sectionWrapper: { headerResx: 'string_2504' }">
+                <!-- shipping methods -->
+                <div class="col scrollY deliveryModesGrid" data-bind="tileList: { itemDataSource: shippingMethods, iteminvoked: $parent.shippingMethodButtonClick.bind($parent), field: 'Description', flipInPortrait: true }, axBubbleAttr: 'shippingMethodsView_shippingMethods'"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

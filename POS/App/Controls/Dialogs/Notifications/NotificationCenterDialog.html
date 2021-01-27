@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>NotificationCenterDialog</title>
+
+    <link href="NotificationCenterDialog.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="notificationCenterDialog" class="notificationDialog" data-bind="customControlInternal: 'NotificationCenterDialog'">
+        <div data-bind="dialog:
+            {
+                title: Commerce.ViewModelAdapter.getResourceString('string_13200'),
+                visible: visible,
+                buttonClick: notificationDialogCloseButtonClick,
+                dialogCloseButtonClick: notificationDialogCloseButtonClick,
+                closeOnEscButton: true,
+                buttons: [
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_80'), operationId: Commerce.Controls.Dialog.OperationIds.CLOSE_BUTTON_CLICK, cssClass: 'cancelButton', isPrimary: false }
+                ]
+            },
+            axBubbleAttr: 'notificationCenterDialog_notificationCenterDialog'">
+
+            <!-- dialog content -->
+            <div class="grow col">
+                <div class="stretch scrollY padTop12">
+                    <!-- ko if: viewModel.displayCustomerSatisfaction -->
+                    <div data-bind="template: { name: 'CustomerSatisfactionNotificationTemplate'}"></div>
+                    <!-- /ko -->
+                    <!-- ko if: viewModel.isNotificationsSuccessful -->
+                    <div data-bind="template: { name: 'operationBlockTemplate', foreach: viewModel.notifications }"></div>
+                    <!-- /ko -->
+                    <!-- ko ifnot: viewModel.hasNotifications -->
+                    <div class="col center padTop20">
+                        <div class="width64 center iconCompleted icon-40x40 height64 secondaryFontColor" data-bind="resx: {ariaLabel: 'string_13203'}"></div>
+                        <div class="h4 grow padTop20" data-bind="resx: {textContent: 'string_13203'}">There are no notifications at this time.</div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko ifnot: viewModel.isNotificationsSuccessful -->
+                    <div class="col center padTop20 wrapText">
+                        <div class="width64 center iconError icon-40x40 height64 secondaryFontColor" data-bind="resx: {ariaLabel: 'string_13205'}"></div>
+                        <div class="h4 grow col padTop20" data-bind="resx: {textContent: 'string_13205'}">An error has occurred while retrieving notifications.</div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

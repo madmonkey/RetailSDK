@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ProductRichMediaView</title>
+    <link href="ProductRichMediaView.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="center">
+        <div id="productimageflipviewtemplate" data-win-control="WinJS.Binding.Template">
+            <div class="width100Percent height100Percent zoomElement fit-image">
+                <img src="#" data-win-bind="src: source Commerce.Core.Converter.AbsoluteImageUrl; alt: altText; onerror: Commerce.DefaultImages.ProductLarge Commerce.CustomBindings.SetDefaultImage" />
+            </div>
+        </div>
+
+        <div id="productimagepreviewtemplate" data-win-control="WinJS.Binding.Template">
+            <div class="height80 width80 fit-image">
+                <img src="#" data-win-bind="src: source Commerce.Core.Converter.AbsoluteImageUrl; alt: altText; onerror: Commerce.DefaultImages.ProductSmall Commerce.CustomBindings.SetDefaultImage" />
+            </div>
+        </div>
+
+        <div class="fragment productRichMediaView marginLeft12 padRight12">
+
+            <div class="section main full-screen row" data-bind="resx: { ariaLabel: 'string_4454' }">
+                <!-- Main content -->
+                 <nav class="top0 left0 margin20">
+                    <button class="iconBack primaryFontColor" type="button" data-bind="resx: { ariaLabel: 'string_49' }, axBubbleAttr: 'productRichMediaViewPhone_backButton'"></button>    <!-- Back -->
+                </nav>
+                <div class="col grow imageDirection center marginTop20 marginBottom12">
+                    <div class="col center">
+                        <div id="productimageflipview"
+                             data-win-control="WinJS.UI.FlipView"
+                             data-win-options="{
+                            itemTemplate : select('#productimageflipviewtemplate'),
+                            orientation : 'horizontal'
+                        }"
+                             data-bind="winControl: {
+                            itemDataSource: images,
+                            selectListViewItem: { listViewId: '#productimagepreviewviewlist'}
+                        },
+                        resx: { ariaLabel: 'string_926' }">
+                            <!-- Product image -->
+                        </div>
+                        <div class="gutter12x12"></div>
+                        <div class="col height100 padLeft12" id="productimageflipviewThumbnails">
+                            <div class="noMargin browseGrid plainSelectionBorder maxWidth600">
+                                <div id="productimagepreviewviewlist" class="win-selectionstylefilled col grow"
+                                     data-win-control="WinJS.UI.ListView"
+                                     data-win-options="{
+                                selectionMode: 'single',
+                                tapBehavior: 'directSelect',
+                                itemTemplate: select('#productimagepreviewtemplate'),
+                                layout: {type: WinJS.UI.GridLayout}
+                            }"
+                                     data-bind="winControl: {
+                                itemDataSource: images,
+                                flipItem: { flipViewId: '#productimageflipview' }
+                            },
+                            resx: { ariaLabel: 'string_927' }">
+                                    <!-- Product images -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

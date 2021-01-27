@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingDataServicesSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingDataServicesSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingDataServicesSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingDataServicesSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingDataServicesSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingDataServicesSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingDataServicesSample\obj\Debug\netstandard2.0\Runtime.Extensions.PricingDataServicesSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingDataServicesSample\obj\Debug\netstandard2.0\Runtime.Extensions.PricingDataServicesSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingDataServicesSample\obj\Debug\netstandard2.0\Runtime.Extensions.PricingDataServicesSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingDataServicesSample\obj\Debug\netstandard2.0\Runtime.Extensions.PricingDataServicesSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingDataServicesSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingDataServicesSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingDataServicesSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingDataServicesSample.pdb

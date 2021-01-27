@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+    
+    <!-- Legacy packages were created using a different target than SQL Azure, which will cause the script generation to fail, if this option is not set -->
+    <AllowIncompatiblePlatform>true</AllowIncompatiblePlatform>
+    
+    <!-- Column order is ignored to avoid table recreations -->
+    <IgnoreColumnOrder>true</IgnoreColumnOrder>
+    <VerifyDeployment>true</VerifyDeployment>
+
+    <!-- Timeout for each database command in seconds. -->
+    <CommandTimeout>120</CommandTimeout>
+    
+    <!-- This is our extensions on dac deployment to prevent columns being dropped -->
+    <AdditionalDeploymentContributors>Microsoft.Dynamics365.Commerce.Tools.DacExtensions.PlanContributor</AdditionalDeploymentContributors>
+    
+    <!-- 7.0/7.1 only - we need to prevent columns from being dropped -->
+    <AdditionalDeploymentContributorArguments>D365_Commerce_DropIfExists=StoredProcedure,Function,Table,View;D365_Commerce_PreventColumnDrops=true;D365_Commerce_EnableUnnamedConstraintContribution=true;</AdditionalDeploymentContributorArguments>
+    
+    <!--
+        We do our custom analysis of the deployment report.
+        Thus we don't want the default errors to fail the process.
+    -->
+    <TreatVerificationErrorsAsWarnings>true</TreatVerificationErrorsAsWarnings>
+    
+    <!--
+        This value set to false will prevent SSDT from creating
+        RAISEERROR statements on the upgrade script when tables
+        with possible data loss have data on them.
+
+        We do this because in the past we accepted breaking changes that
+        could cause data loss. Thus we validate the deployment report
+        and check for possible data loss that is not whitelisted
+        prior applying the script.
+    -->
+    <BlockOnPossibleDataLoss>false</BlockOnPossibleDataLoss>
+
+    <!-- If DB exists, we want to upgrade it. If this was set to true, it would drop existing DBs -->
+    <CreateNewDatabase>false</CreateNewDatabase>
+    
+    <!--
+        Due to FullTextSearch indexes we cannot enabled transactional scripts.
+    -->
+    <IncludeTransactionalScripts>false</IncludeTransactionalScripts>
+    <RegisterDataTierApplication>false</RegisterDataTierApplication>
+    
+    <!-- 
+      Lets SSDT fill in non-nullable fields with default values for exiting rows.
+      This prevents upgrade to fail when non nullable fields are added, however area owners are still responsible
+      for the correctness of their code.
+    -->
+    <GenerateSmartDefaults>true</GenerateSmartDefaults>
+
+    <!-- Because channel DB may be deployed along other database artifacts, we don't want to control the database options from the package. -->
+    <ScriptFileSize>false</ScriptFileSize>
+    <ScriptDatabaseOptions>false</ScriptDatabaseOptions>
+    <ScriptDatabaseCompatibility>false</ScriptDatabaseCompatibility>
+    <ScriptDatabaseCollation>false</ScriptDatabaseCollation>
+    
+    <!-- 
+      Note: this does not apply to columns
+      Due to dependencies, some objects might be drop and recreated.
+      For instance, altering a column type requires dropping constraints
+      on that column.
+      
+      This cannot be avoided even with DoNotDrop* configuration flags.
+      Any dropped artifacts are reported in the deployment report, so one could
+      parse that and take the difference set between dropped and created artifacts
+      to identify potential customization loss (applicable to 7.1).
+    -->
+    <DropObjectsNotInSource>false</DropObjectsNotInSource>
+    <DropIndexesNotInSource>false</DropIndexesNotInSource>
+  </PropertyGroup>
+</Project>

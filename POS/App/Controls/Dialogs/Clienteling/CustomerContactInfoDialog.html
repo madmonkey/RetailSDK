@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CstomerContactInfoDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'CustomerContactInfoDialog'">
+        <div data-bind="
+            dialog: {
+                title: dialogTitle,
+                visible: visible,
+                buttonClick: buttonClickHandler,
+                closeOnEscButton:true,
+                showProgressIndicator: indeterminateWaitVisible,
+                dialogCloseButtonClick: dialogCloseButtonClick,
+                buttons: [
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_3424'), disable: okButtonDisabled, operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, cssClass: 'okButton' },
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton' }]
+                },
+                axBubbleAttr: 'emailReceiptDialog_emailReceiptDialog'">
+            <!-- Padding separator -->
+            <div class="padBottom8 no-shrink">
+            </div>
+            <div class="row">
+                <div class="width100Percent maxWidth332">
+                    <!-- ko if: contactInfoType() === Commerce.Proxy.Entities.ContactInfoType.Email -->
+                    <div>
+                        <label for="emailInput" data-bind="resx: { textContent: locatorInputLabel }">Add an email</label>
+                        <input id="emailInput" type="email" data-bind="
+                            validator: {
+                                field: 'locator',
+                                validatorField: 'Email',
+                                validatorType: 'AddressValidator'
+                            },
+                            axBubbleAttr: 'customerContactInfoDialog_emailInput'" />
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: (contactInfoType() === Commerce.Proxy.Entities.ContactInfoType.Phone) -->
+                    <div>
+                        <label for="phoneInput" data-bind="resx: { textContent: locatorInputLabel }">Add a phone</label>
+                        <input id="phoneInput" type="text" data-bind="
+                            validator: {
+                                field: 'locator',
+                                validatorField: 'Phone',
+                                validatorType: 'AddressValidator'
+                            },
+                            axBubbleAttr: 'customerContactInfoDialog_phoneInput'" />
+                    </div>
+                    <!-- /ko -->
+                    <div class="padTop12 row" data-bind="visible: !isReceipt()">
+                        <input id="isPrimaryCheckbox" type="checkbox" data-bind="checked: isPrimary, axBubbleAttr: 'customerContactInfoDialog_isPrimaryCheckbox'" />
+                        <div>
+                            <label for="isPrimaryCheckbox" data-bind="resx: { textContent: primaryCheckboxLabel }">use as primary Email/Phone number</label>
+                        </div>
+                    </div>
+                    <div class="padTop12 row" data-bind="visible: !isReceipt()">
+                        <div class="padTop08">
+                            <div>
+                                <div id="marketingOptInToggle"
+                                     data-bind="toggleSwitch: {
+                                         title: 'string_1387', /* Marketing opt-in */
+                                         labelOn: 'string_7411', /* On */
+                                         labelOff:'string_7412', /* Yes */
+                                         checked: marketingOptIn,
+                                         onChange: onMarketingOptInToggle
+                                      }">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

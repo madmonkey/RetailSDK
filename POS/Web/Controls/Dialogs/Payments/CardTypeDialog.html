@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CardTypeDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'CardTypeDialog'">
+        <div data-bind="dialog:
+            {
+                title: Commerce.ViewModelAdapter.getResourceString('string_1140'), /* Payment card type */
+                message: Commerce.ViewModelAdapter.getResourceString('string_1141'), /* Select a payment card type */
+                visible: visible,
+                hideOnEscape: hideOnEscape,
+                buttonClick: cardTypeDialogButtonClickHandler,
+            },
+            axBubbleAttr: 'cardTypeDialog_cardTypeDialog'" class="CardTypeDialog modalWindowContentSection">
+
+            <!-- dialog content -->
+            <div data-bind="tileList: { itemDataSource: cardTypes, iteminvoked: cardTypeListButtonClickHandler,  field: 'Name'  }, axBubbleAttr: 'cardTypeDialog_cardTypes'"></div>
+        </div>
+    </div>
+</body>
+</html>

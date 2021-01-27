@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RefinerControl template</title>
+    <link href="knockout.refinerControl.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/html" id="refinerControlTemplate">
+        <div class="refinerControl">
+            <div class="col height32">
+                <div class="row">
+                    <button id="addRefiner" class="refinerButton marginRight8 centerY height32 shrink"
+                            data-bind="resx: { ariaLabel: 'string_4107' }, click: toggleRefinerListFlyout(), enable: hasAvailableRefiners, axBubbleAttr: 'refinerDialog_addRefiner'">
+                        <div class="row centerY">
+                            <div class="h4 iconAdd icon-15x15 icon" data-bind="css: {accentColorImportant: hasAvailableRefiners, disabled: !hasAvailableRefiners()}"></div>
+                            <div class="h4 padLeft8 padRight8" data-bind="css: {accentColor: hasAvailableRefiners}, resx: { textContent: 'string_4107' }"></div>
+                        </div>
+                    </button> <!-- Add filter -->
+                    <button class="refinerButton padLeft8 centerY height32 shrink"
+                            data-bind="resx: { ariaLabel: 'string_4187' }, click: clear, enable: hasSelectedRefiners, axBubbleAttr: 'refinerDialog_clearAll'">
+                        <div class="row centerY">
+                            <div class="h4 iconClearFilter icon-15x15 icon" data-bind="css: {accentColorImportant: hasSelectedRefiners, disabled: !hasSelectedRefiners()}"></div>
+                            <div class="padLeft8 padRight8 h4" data-bind="css: {accentColor: hasSelectedRefiners}, resx: { textContent: 'string_4187' }"></div>
+                        </div>
+                    </button> <!-- Clear all -->
+                </div>
+                <div class="line-separator"></div>
+            </div>
+            <div class="refinerList scrollY col" data-bind="visible: hasSelectedRefiners">
+                <div class="row padTop04"></div>
+                <!-- ko foreach: selectedRefiners -->
+                <div class="row itemContainer accentBackground highContrastBorder height44 selectedRefinerEditHeader" data-bind="click: $parent.getValueForRefinerAsync.bind($parent, $data), axBubbleAttr: $parent.getEditAttributeBubbleLabel.bind($data)">
+                    <div class="h4 padLeft12" data-bind="text: KeyName"></div>
+                    <button type="button" class="iconChevronRight marginRight01"
+                            data-bind="attr: { 'aria-label': $parent.getEditAttributeLabel($data) }, axBubbleAttr: $parent.getEditAttributeBubbleLabel($data)"></button> <!-- Edit refiner value -->
+                </div>
+                <!-- ko if: Type == Commerce.Refiners.RefinerType.Text -->
+                <div class="row padTop04">
+                    <a class="h4 iconCancel icon" href="#" data-bind="click: $parent.removeSelectedRefiner.bind($parent, $data),
+                            attr: { 'aria-label': $parent.getAriaLabelForRemovingRefinerValue($data) }"
+                       role="button"></a>
+                    <div class="h4 nowrap padLeft12 ellipsis" data-bind="text: SelectedValue"></div>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+            </div>
+            <div class="scrollY col" data-bind="visible: !hasSelectedRefiners() && hasNoSelectedFilterText()">
+                <div class="center height48 marginTop12">
+                    <div data-bind="visible: hasNoSelectedFilterIconName, attr: { class: 'icon-20x20 ' + noSelectedFilterIconName() }"></div>
+                </div>
+                <div class="h4 textCenter" data-bind="text: noSelectedFilterText"></div>
+            </div>
+            <!-- Filters -->
+            <div data-bind="menu: {
+             anchor: '#addRefiner',
+             placement: 'bottom',
+             alignment: 'left',
+             toggleShowHide: toggleRefinerListFlyout,
+             visible: false
+             },
+             resx: { ariaLabel: 'string_4161' }">
+                <!-- ko foreach: availableRefiners -->
+                <button data-bind="menuCommand: {
+                    id: 'refinerOption' + ID,
+                    label: KeyName,
+                    onClick: $parent.getValueForRefinerAsync.bind($parent, $data)
+                }"></button>
+                <!-- /ko -->
+            </div>
+        </div>
+    </script>
+</body>
+</html>

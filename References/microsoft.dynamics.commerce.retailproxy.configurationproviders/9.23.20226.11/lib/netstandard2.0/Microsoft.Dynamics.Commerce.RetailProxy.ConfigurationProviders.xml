@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.RetailProxy.ConfigurationProviders</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.RetailProxy.Configuration.CompositionElement">
+            <summary>
+            Represents a single composition source to be loaded by the retail proxy.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.RetailProxy.Configuration.CompositionElement.Source">
+            <summary>
+            Gets the load source.
+            </summary>
+            <remarks>
+            The only supported value is assembly.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.RetailProxy.Configuration.CompositionElement.Value">
+            <summary>
+            Gets the value for the load source.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.RetailProxy.Configuration.CompositionElementCollection">
+            <summary>
+            Represents a collection of <see cref="T:Microsoft.Dynamics.Commerce.RetailProxy.Configuration.CompositionElement"/> classes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.RetailProxy.Configuration.CompositionElementCollection.CreateNewElement">
+            <summary>
+            Creates a new composition element.
+            </summary>
+            <returns>A new instance of the <see cref="T:Microsoft.Dynamics.Commerce.RetailProxy.Configuration.CompositionElement"/> class.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.RetailProxy.Configuration.CompositionElementCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the key of the collection.
+            </summary>
+            <param name="element">The composition element.</param>
+            <returns>The element value.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.RetailProxy.Configuration.RetailProxyConfigurationManager">
+            <summary>
+            Encapsulates functionality for reading the Retail Proxy configuration.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.RetailProxy.Configuration.RetailProxyConfigurationManager.ExtensionsSectionName">
+            <summary>
+            Represents the retail proxy extensions section name in the .NET configuration file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.RetailProxy.Configuration.RetailProxyConfigurationManager.GetConfigurationExtensionsSection(System.String)">
+            <summary>
+            Gets the extensions configuration section.
+            </summary>
+            <param name="sectionName">Name of the extensions section.</param>
+            <returns>The configuration extensions section.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.RetailProxy.Configuration.RetailProxyExtensionsSection">
+            <summary>
+            Represents the configuration section for the extended Retail Proxy composition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.RetailProxy.Configuration.RetailProxyExtensionsSection.CompositionElement">
+            <summary>
+            Gets the composition collection element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.RetailProxy.Configuration.RetailProxyExtensionsSection.Composition">
+            <summary>
+            Gets the composition collection.
+            </summary>
+        </member>
+    </members>
+</doc>

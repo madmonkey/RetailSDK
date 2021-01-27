@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../schemas/manifestSchema.json",
+  "name": "Transaction_Signature_Sample",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "7.2.0.0",
+  "components": {
+    "resources": {
+      "supportedUICultures": [ "en-US" ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources/Strings",
+      "stringResourcesFileName": "SignatureServiceStrings.resjson"
+    },
+    "create": {
+      "requestHandlers": [
+        {
+          "modulePath": "Handlers/PostSignatureRequestHandler"
+        },
+        {
+          "modulePath": "Handlers/PreSignatureRequestHandler"
+        },
+        {
+          "modulePath": "Handlers/RecoverSignatureOnLogonRequestHandler"
+        }
+      ]
+    }
+  }
+}

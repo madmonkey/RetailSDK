@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Amount Due Dialog</title>
+    <link href="AmountDueDialog.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="amountDueDialog">
+        <div data-bind="
+             dialog: {
+                title: Commerce.ViewModelAdapter.getResourceString('string_1817'),  // Amount due
+                titleCssClass: 'h3',
+                visible: visible,
+                buttonClick: buttonClickHandler,
+                closeOnEscButton: true,
+                dialogCloseButtonClick: dialogCloseButtonClickHandler,
+                buttons: [{
+                    label: Commerce.ViewModelAdapter.getResourceString('string_1819'), // Close
+                    operationId: Commerce.Controls.Dialog.OperationIds.CLOSE_BUTTON_CLICK,
+                    cssClass: 'cancelButton',
+                    isPrimary: true }]
+             },
+             axBubbleAttr: 'amountDueDialog_Dialog'" id="amountDueDialog">
+            <div class="panel padTop8">
+                <!-- ko ifnot: Commerce.ObjectExtensions.isNullOrUndefined(amountDueDialogState()) -->
+                <div data-bind="template: { name: 'changeDueTemplate', data: amountDueDialogState()}"></div>
+                <!-- /ko -->
+                <div class="padBottom8">
+                    <div class="row">
+                        <label data-bind="resx: { textContent: 'string_30702' }">Remaining amount due</label>
+                    </div>
+                    <div class="row textRight">
+                        <div class="h1" data-bind="formatPrice: remainingAmount"></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <!-- Line separator -->
+                <div class="padTop8 padBottom8 no-shrink">
+                    <div class="line-separator"></div>
+                </div>
+                <!-- Payment methods -->
+                <div class="h4 secondaryFontColor marginBottom12" data-bind="resx: { textContent: 'string_4020'}">Payment methods</div>
+                <div class="scrollY tenderTypeList">
+                    <!-- ko foreach: tenderTypesWithIcon -->
+                    <div data-bind="selectTile: {
+                         tileType: Commerce.Controls.SelectTile.SelectTileType.SingleLine,
+                         primaryText: tenderType.Name,
+                         primaryTextCssClass: 'primaryFontColor width120',
+                         backgroundCssClass:'backgroundTransparent',
+                         iconClass: tenderTypeIconClass,
+                         iteminvoked: function () { $parent.tenderTypeOptionClickHandler($data); },
+                         cheveronCssClass:'accentColor',
+                         displayBottomBorder: true,
+                         displayChevron: true }">
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

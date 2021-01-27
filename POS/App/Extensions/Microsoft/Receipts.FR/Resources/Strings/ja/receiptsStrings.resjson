@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "ビルド番号マネージャー: ビルド番号が正常に追加されました。",
+  "Build_number_successfull_log_message_text.comment": "POS ビルド番号がトランザクションに正常に追加された場合にログに記録されるメッセージです。",
+  "Build_number_error_log_message_text": "ビルド番号マネージャー: ビルド番号の追加に失敗しました。エラー メッセージ: '{0}'。",
+  "Build_number_error_log_message_text.comment": "POS ビルド番号がトランザクションに正常に追加されなかった場合にログに記録されるメッセージです。"
+}

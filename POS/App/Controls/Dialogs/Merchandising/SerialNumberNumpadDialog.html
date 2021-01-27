@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SerialNumberNumpadDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'SerialNumberNumpadDialog'">
+        <div data-bind="dialog:
+            {
+                title: title,
+                visible: visible,
+                showProgressIndicator: indeterminateWaitVisible,
+                dialogCloseButtonClick: closeButtonClick,
+                closeOnEscButton: true,
+            },
+            axBubbleAttr: 'serialNumberNumpadDialog_serialNumberNumpadDialog'">
+            <!-- dialog content -->
+            <div class="grow col">
+                <div class="row marginBottom12 marginLeft12 marginTop12 marginRight12">
+                    <div class="width72 height72 marginRight12 col fit-image">
+                        <img data-bind="attr: { src: Commerce.Formatters.ImageFormatter(primaryImageUrl(), Commerce.DefaultImages.ProductSmall) },
+                                alt: itemName(),
+                                setImageOnError: Commerce.DefaultImages.ProductSmall" />
+                    </div>
+                    <div class="col">
+                        <h4 class="marginBottom4" data-bind="text: itemName"></h4>
+                        <h6 class="marginBottom4 secondaryFontColor textTransformNone" data-bind="text: itemId"></h6>
+                        <h6 class="secondaryFontColor textTransformNone" data-bind="text: dimensionsDescription"></h6>
+                    </div>
+                </div>
+
+                <div class="grow"></div>
+
+                <div class="col">
+                    <div data-bind="axBubbleAttr: 'SerialNumberNumpadDialog_numpad'">
+                        <div data-bind="alphanumericNumpad: {
+                                value: numpadTextValue,
+                                labelDataBinding: { text: numpadLabel },
+                                onEnter: onTextBoxEnterEventHandler,
+                                numPadInputSource: numPadInputBroker,
+                            }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

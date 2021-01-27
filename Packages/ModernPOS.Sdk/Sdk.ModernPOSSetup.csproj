@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\_SharedPackagingProjectComponents\internalPackagePaths.settings" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <PropertyGroup>
+    <ProjectGuid>{0AF8626B-B929-4E8D-B569-C82D8340E7FB}</ProjectGuid>
+    <AssemblyName>$(AssemblyNamePrefix).ModernPOSSetup</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <OriginalSetupExe Include="$(PkgMicrosoft_Dynamics_Commerce_ModernPosSetup)\Pkg\Bin\ModernPOSSetup.exe" />
+  </ItemGroup>
+  <Target Name="CopyUniquePackageFiles" AfterTargets="CopyPackageFiles">
+    <Copy SourceFiles="@(OriginalSetupExe)" DestinationFolder="$(OutputPath)content.folder\" SkipUnchangedFiles="true" />
+  </Target>
+  <Import Project="..\_SharedPackagingProjectComponents\Sdk.ModernPos.Shared.csproj" />
+</Project>

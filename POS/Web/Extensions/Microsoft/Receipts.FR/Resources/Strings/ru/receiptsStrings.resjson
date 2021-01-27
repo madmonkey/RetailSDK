@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Менеджер номеров сборки: номер сборки успешно добавлен.",
+  "Build_number_successfull_log_message_text.comment": "Сообщение, зарегистрированное при успешном добавлении номера сборки POS в проводку.",
+  "Build_number_error_log_message_text": "Менеджер номеров сборки: ошибка при добавлении номера сборки; сообщение об ошибке: '{0}'.",
+  "Build_number_error_log_message_text.comment": "Сообщение, зарегистрированное при неуспешном добавлении номера сборки POS в проводку."
+}

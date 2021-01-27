@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Fehler beim Abschließen der Buchung. Der Signaturdienst ist nicht bereit. Wenden Sie sich an den Systemadministrator.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Fehler beim Abschließen der Buchung. Die verknüpfte steuerbezogene Buchung enthält Daten in einem falschen Format. Wenden Sie sich an den Systemadministrator.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "There was an error while last transaction digital signature recovery. Possibly offline database not synced. Contact your system administrator.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

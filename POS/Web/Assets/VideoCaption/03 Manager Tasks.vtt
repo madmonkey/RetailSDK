@@ -1,0 +1,178 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.100 line:-4
+In this video we will look at some additional features within the point of sale
+
+2
+00:00:03.100 --> 00:00:06.400 line:-4
+which often be undertaken by a manager or supervisor. 
+
+3
+00:00:06.400 --> 00:00:08.700 line:-4
+These include things like end of day, 
+
+4
+00:00:08.700 --> 00:00:13.700 line:-4
+door in shift operations, cashier overrides, and reporting. 
+
+5
+00:00:16.400 --> 00:00:19.100 line:-4
+Alex, our store manager, is opening the store 
+
+6
+00:00:19.100 --> 00:00:22.100 line:-4
+and would like to get the point-of-sale terminal ready for the day.
+
+7
+00:00:28.600 --> 00:00:33.600 line:-4
+He opens a new shift and specifies the starting amount in the till. 
+
+8
+00:00:37.600 --> 00:00:40.800 line:-4
+Operations, such as float entry or tender removal, 
+
+9
+00:00:40.800 --> 00:00:45.800 line:-4
+can be used throughout the day to add and remove cash from the drawer.
+
+10
+00:00:50.800 --> 00:00:53.800 line:-4
+Safe and bank drops may also be performed as needed. 
+
+11
+00:00:53.800 --> 00:00:57.800 line:-4
+When the shift is over, dependent upon the configuration and privileges, 
+
+12
+00:00:57.800 --> 00:01:02.100 line:-4
+the operator can choose to close the shift immediately at the current terminal or, 
+
+13
+00:01:02.100 --> 00:01:07.100 line:-4
+in this case, we're going to blind close the shift and count it elsewhere. 
+
+14
+00:01:33.600 --> 00:01:36.600 line:-4
+Now that we have the till safely in the manager's office, 
+
+15
+00:01:36.600 --> 00:01:39.800 line:-4
+we are going to perform a tender declaration and close the shift. 
+
+16
+00:01:39.800 --> 00:01:42.300 line:-4
+A tender declaration is simply the amount of cash
+
+17
+00:01:42.300 --> 00:01:44.900 line:-4
+or other tender that's been counted in the drawer.
+
+18
+00:01:44.900 --> 00:01:47.100 line:-4
+So, we will input the drawer contents here, 
+
+19
+00:01:47.100 --> 00:01:52.100 line:-4
+cash in a check, and save, and now I can go on to close the shift. 
+
+20
+00:02:02.600 --> 00:02:07.600 line:-4
+The register is now ready for the next operator to login and complete a transaction.
+
+21
+00:02:10.600 --> 00:02:14.600 line:-4
+Let's now login as a cashier, Ivo. 
+
+22
+00:02:25.600 --> 00:02:28.100 line:-4
+Our customer has two items they would like to purchase. 
+
+23
+00:02:28.100 --> 00:02:33.100 line:-4
+We add those two products to the transaction and are ready to complete the sale.
+
+24
+00:02:43.100 --> 00:02:48.100 line:-4
+At this point, the customer changes their mind and decides not to purchase the second item.
+
+25
+00:02:48.100 --> 00:02:51.400 line:-4
+In order to facilitate this, the cashier needs to void the item. 
+
+26
+00:02:51.400 --> 00:02:54.100 line:-4
+Ivo does not have permission to void line items,
+
+27
+00:02:54.100 --> 00:02:57.100 line:-4
+so a manager approval is required.
+
+28
+00:03:11.100 --> 00:03:15.900 line:-4
+Let's now look at some of the reporting functionality within the point of sale. 
+
+29
+00:03:15.900 --> 00:03:18.800 line:-4
+The reports we can see are controlled by the user access and 
+
+30
+00:03:18.800 --> 00:03:22.300 line:-4
+store permissions, and the data we can see is also controlled by this.
+
+31
+00:03:22.300 --> 00:03:25.300 line:-4
+Here we are logged in as a manager of the Houston store,
+
+32
+00:03:25.300 --> 00:03:27.500 line:-4
+so that's the information we will see.
+
+33
+00:03:27.500 --> 00:03:29.300 line:-4
+Let's look at sales by register. 
+
+34
+00:03:29.300 --> 00:03:32.300 line:-4
+We can specify a date range and the year.
+
+35
+00:03:32.300 --> 00:03:36.300 line:-4
+In this case, we are looking at a one-year period.
+
+36
+00:03:36.300 --> 00:03:39.800 line:-4
+We can see the results and values graphically.
+
+37
+00:03:39.800 --> 00:03:42.800 line:-4
+We can now see the numbers of transactions, the sales amounts,
+
+38
+00:03:42.800 --> 00:03:46.300 line:-4
+and the average sales amount across the registers in the Houston store.
+
+39
+00:03:46.300 --> 00:03:48.300 line:-4
+Let's take a look at another example.
+
+40
+00:03:48.300 --> 00:03:50.500 line:-4
+We would like to know what the top 10 products are,
+
+41
+00:03:50.500 --> 00:03:53.100 line:-4
+so again, we set the date range,
+
+42
+00:03:53.100 --> 00:03:55.800 line:-4
+and we can now see the sales amount and the quantity
+
+43
+00:03:55.800 --> 00:03:58.800 line:-4
+for each of the top-selling products.
+
+44
+00:04:03.800 --> 00:04:07.833 line:-4
+Thank you for watching and please continue to the trial.
+

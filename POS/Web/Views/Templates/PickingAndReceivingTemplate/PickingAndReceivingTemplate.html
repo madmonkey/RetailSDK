@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Picking and Receiving Templates</title>
+    <link href="PickingAndReceivingTemplate.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="pickAndReceiveDetailsListTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="listViewLine row height52" data-win-bind="title: description">
+            <div class="ratio2"><div class="h4" data-win-bind="textContent: productNumber"></div></div><!-- PRODUCT NUMBER -->
+            <div class="ratio3">
+               
+                <div><div class="h4" data-win-bind="textContent: description"></div></div><!-- DESCRIPTION -->
+                <div><div class="h4" data-win-bind="textContent: this Commerce.Core.Converter.PickingAndReceivingVariantFormatter"></div></div><!-- VARIANT VALUES -->
+                
+            </div>
+            <div class="ratio2 textRight"><div class="h4" data-win-bind="textContent: quantityOrdered"></div></div><!-- ORDERED / TRANSFERRED / TRANSFER QUANTITY -->
+            <div class="ratio1 textRight"><div class="h4" data-win-bind="textContent: quantityReceived"></div></div><!-- RECEIVED / SHIPPED -->
+            <div class="ratio1 textRight"><div class="h4" data-win-bind="textContent: quantityReceivedNow"></div></div><!-- RECEIVED NOW / SHIPPED NOW -->
+            <div class="ratio1"><div class="h4" data-win-bind="textContent: unitOfMeasure"></div></div><!-- UOM -->
+        </div>
+    </div>
+    <div id="pickAndReceiveDetailsListTemplatePhone" data-win-control="WinJS.Binding.Template">
+        <div class="listViewLine row height52" data-win-bind="title: description">
+            <div class="ratio3"><div class="h4" data-win-bind="textContent: productNumber"></div></div><!-- PRODUCT NUMBER -->
+            <div class="ratio2 textRight"><div class="h4" data-win-bind="textContent: quantityOrdered"></div></div><!-- ORDERED / TRANSFERRED / TRANSFER QUANTITY -->
+            <div class="ratio3 textRight"><div class="h4" data-win-bind="textContent: quantityReceivedNow"></div></div><!-- RECEIVED NOW / SHIPPED NOW -->
+            <div class="ratio2 textRight"><div class="h4" data-win-bind="textContent: unitOfMeasure"></div></div><!-- UOM -->
+        </div>
+    </div>
+</body>
+</html>

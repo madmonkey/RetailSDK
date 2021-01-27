@@ -1,0 +1,10 @@
+{
+  "Warning_title": "警告",
+  "_Warning_title.comment": "POS warning message title.",
+  "Shift_closing_warning": "您必须在 {0} 前结束此班次。",
+  "_Shift_closing_warning.comment": "POS warning message when the cashier performs an operation within the shift closing interval.",
+  "Error_title": "错误",
+  "_Error_title.comment": "POS error message title.",
+  "Shift_closing_error": "班次持续时间超出限制。请暂停交易，结束此班次，然后开始新班次。",
+  "_Shift_closing_error.comment": "POS warning message when the cashier performs an operation after the shift closing time."
+}

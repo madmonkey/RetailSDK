@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:CheckoutPageXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Pages.CheckoutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Converters"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:pages="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    Title="{localization:Translate Pages_CheckoutPage_Title}">
+    <ScrollView>
+        <ScrollView.Resources>
+            <ResourceDictionary>
+                <converters:InverseBooleanConverter
+                    x:Key="InverseBooleanConverter" />
+                <converters:ValueExistsConverter
+                    x:Key="ValueExistsConverter" />
+                <converters:ValueNotExistsConverter
+                    x:Key="ValueNotExistsConverter" />
+                <Style
+                    x:Key="specStyle"
+                    TargetType="Label">
+                    <Setter Property="FontSize" Value="Small" />
+                    <Setter Property="TextColor" Value="{x:Static statics:Palette.TEXT_DARK}" />
+                </Style>
+            </ResourceDictionary>
+        </ScrollView.Resources>
+        <StackLayout
+            Spacing="0">
+            <StackLayout
+                Padding="0,10"
+                Spacing="0">
+                <ActivityIndicator
+                    IsEnabled="{Binding IsBusy}"
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}" />
+                <views:OrderLinesView
+                    IsVisible="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
+                    ItemsSource="{Binding CheckoutCartLines}" />
+            </StackLayout>
+            <!--  Delivery section  -->
+            <BoxView
+                HeightRequest="0.5"
+                Color="{x:Static statics:Palette.SEPARATOR}" />
+            <ContentView>
+                <StackLayout
+                    Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnDeliverySectionClicked" />
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout
+                        Padding="10"
+                        HorizontalOptions="StartAndExpand"
+                        Orientation="Vertical">
+                        <views:AddressLabelView
+                            BindingContext="{Binding CheckoutCart.Data.ShippingAddress}"
+                            IsVisible="{Binding Converter={StaticResource ValueExistsConverter}}" />
+                        <StackLayout>
+                            <Label
+                                FontSize="Small"
+                                Text="{localization:Translate Pages_CheckoutPage_ShippingOption}"
+                                TextColor="{x:Static statics:Palette.TEXT_LIGHT}"
+                                IsVisible="{Binding CheckoutCart.Data.ShippingAddress, Converter={StaticResource ValueExistsConverter}}" />
+                            <StackLayout
+                                IsVisible="{Binding CheckoutCart.Data.ShippingAddress, Converter={StaticResource ValueExistsConverter}}"
+                                Orientation="Horizontal">
+                                <Label
+                                    Style="{StaticResource specStyle}"
+                                    Text="{Binding CheckoutCart.DeliveryOption.Data.Description, StringFormat='{0}:'}" />
+                                <Label
+                                    Style="{StaticResource specStyle}"
+                                    Text="{Binding CheckoutCart.Data.ChargeAmount, StringFormat='{0:C}'}" />
+                            </StackLayout>
+                        </StackLayout>
+                        <Label
+                            Margin="0,30"
+                            IsVisible="{Binding CheckoutCart.Data.ShippingAddress, Converter={StaticResource ValueNotExistsConverter}}"
+                            Text="{localization:Translate Pages_CheckoutPage_SelectShipping}"
+                            TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+                    </StackLayout>
+                    <Image
+                        Margin="10"
+                        Aspect="AspectFit"
+                        HeightRequest="{x:Static statics:Sizes.ChevronSizeDouble}"
+                        Source="chevron_right"
+                        WidthRequest="{x:Static statics:Sizes.ChevronSizeDouble}" />
+                </StackLayout>
+            </ContentView>
+            <!--  Payment section  -->
+            <BoxView
+                HeightRequest="0.5"
+                Color="{x:Static statics:Palette.SEPARATOR}" />
+            <ContentView>
+                <StackLayout
+                    Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnPaymentSectionClicked" />
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout
+                        Padding="10"
+                        HorizontalOptions="StartAndExpand"
+                        Orientation="Vertical">
+                        <ContentView
+                            Padding="0,20"
+                            BindingContext="{Binding CreditCardTenderLine}"
+                            IsVisible="{Binding Converter={StaticResource ValueExistsConverter}}">
+                            <StackLayout>
+                                <Label
+                                    FontSize="Small"
+                                    Text="{localization:Translate Pages_CheckoutPage_CreditCard}"
+                                    TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Margin="0,0,10,0"
+                                        FontSize="Small"
+                                        Text="{Binding Data.CardTypeId}"
+                                        TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+                                    <Label
+                                        FontSize="Small"
+                                        Text="{Binding Data.TokenizedPaymentCard.CardTokenInfo.MaskedCardNumber}"
+                                        TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ContentView>
+                        <Label
+                            Margin="0,30"
+                            IsVisible="{Binding CreditCardTenderLine, Converter={StaticResource ValueNotExistsConverter}}"
+                            Text="{localization:Translate Pages_CheckoutPage_PaymentDetails}"
+                            TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+                    </StackLayout>
+                    <Image
+                        Margin="10"
+                        Aspect="AspectFit"
+                        HeightRequest="{x:Static statics:Sizes.ChevronSizeDouble}"
+                        Source="chevron_right"
+                        WidthRequest="{x:Static statics:Sizes.ChevronSizeDouble}" />
+                </StackLayout>
+            </ContentView>
+            <BoxView
+                HeightRequest="0.5"
+                Color="{x:Static statics:Palette.SEPARATOR}" />
+            <views:OrderSummaryView
+                Margin="10,20,10,0"
+                BindingContext="{Binding CheckoutCart}" />
+            <Button
+                Style="{StaticResource actionButtonStyle}"
+                Clicked="OnPlaceOrderClicked"
+                IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
+                Text="{localization:Translate Pages_CheckoutPage_PlaceOrder}" />
+        </StackLayout>
+    </ScrollView>
+</pages:CheckoutPageXaml>

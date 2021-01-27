@@ -1,0 +1,59 @@
+
+/* Overrides the default CSS of the commercedialog */
+#tutorial-dialog .commerceDialog {
+    height: 715px;
+    top: 40px;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1180px !important;
+}
+
+#tutorial-dialog .videoPlayerContainer {
+    background-color: #ffffff;
+    width: 750px;
+    height: 500px;
+}
+
+#tutorial-dialog ::cue {
+    background-color: rgba(0, 0, 0, 0);
+    text-shadow: 1px 1px 2px #000000;
+}
+
+#tutorial-dialog a.video-link {
+    color: #0066CC;
+}
+
+#tutorial-dialog button.primaryButton {
+    width: 100%;
+}
+
+#tutorial-dialog .closeButton {
+    font-family: DynamicsFont;
+    color: black;
+}
+
+#tutorial-dialog .playButton-wrapper {
+    text-align: center;
+}
+
+#tutorial-dialog .playButton {
+    font-family: DynamicsFont;
+    color: #0066cc
+}
+
+#tutorial-dialog input[type=checkbox] {
+    width: 14px;
+}
+
+#tutorial-dialog .label-checkbox {
+    color: #616365
+}
+
+#tutorial-dialog .closeButton:focus,
+#tutorial-dialog input[type=checkbox]:focus,
+#tutorial-dialog a.video-link:focus {
+    outline: 1px dotted;
+}

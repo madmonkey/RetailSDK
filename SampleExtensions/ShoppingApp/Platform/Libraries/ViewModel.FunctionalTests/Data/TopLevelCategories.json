@@ -1,0 +1,50 @@
+﻿[
+  {
+    "ImageUrl": "https://acrm1514g9ret.cloudax.test.dynamics.com/MediaServer/categories/Fashion%20Accessories.png",
+    "HasSubCategories": true,
+    "Data": {
+      "Name": "Fashion Accessories",
+      "Images": [
+        {}
+      ],
+      "NameTranslations": [
+        {
+          "Language": "EN-US",
+          "Text": "Fashion Accessories"
+        }
+      ]
+    }
+  },
+  {
+    "ImageUrl": "https://acrm1514g9ret.cloudax.test.dynamics.com/MediaServer/categories/Menswear.png",
+    "HasSubCategories": true,
+    "Data": {
+      "Name": "Menswear",
+      "Images": [
+        {}
+      ],
+      "NameTranslations": [
+        {
+          "Language": "EN-US",
+          "Text": "Menswear"
+        }
+      ]
+    }
+  },
+  {
+    "ImageUrl": "https://acrm1514g9ret.cloudax.test.dynamics.com/MediaServer/categories/Womenswear.png",
+    "HasSubCategories": true,
+    "Data": {
+      "Name": "Womenswear",
+      "Images": [
+        {}
+      ],
+      "NameTranslations": [
+        {
+          "Language": "EN-US",
+          "Text": "Womenswear"
+        }
+      ]
+    }
+  }
+]

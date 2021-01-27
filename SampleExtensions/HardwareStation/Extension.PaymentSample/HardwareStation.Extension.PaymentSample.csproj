@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\..\..\BuildTools\Common.props" />
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyName>$(AssemblyNamePrefix).Commerce.HardwareStation.Extension.PaymentSample</AssemblyName>
+    <RootNamespace>Contoso.Commerce.HardwareStation.Extension.PaymentSample</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Dynamics.Commerce.HardwareStation.CardPayment" Version="$(HardwareRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.HardwareStation.PayTerminal" Version="$(HardwareRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.HardwareStation.Peripherals.SigCap" Version="$(HardwareRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Runtime.Entities" Version="$(ChannelRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.VirtualPeripherals.MessagePipelineProxy" Version="$(HardwareRepoPackagesVersion)" />
+  </ItemGroup>
+  <Import Project="..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

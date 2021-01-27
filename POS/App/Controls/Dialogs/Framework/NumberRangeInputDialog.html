@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>NumberRangeInputDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'NumberRangeInputDialog'">
+        <div class="numberRangeInputDialog">
+            <div data-bind="dialog:
+                {
+                    title: title,
+                    subTitle: subTitle,
+                    visible: visible,
+                    buttonClick: buttonClickHandler,
+                    subTitleCssClass: subTitleCssClass,
+                    showProgressIndicator: indeterminateWaitVisible,
+                    buttons: [
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_75'), operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK },
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK }
+                    ],
+                },
+                axBubbleAttr: 'numberRangeInputDialog_numberRangeInputDialog'" class="numberRangeInputDialog modalWindowContentSection">
+
+                <!-- dialog content -->
+                <div class="content">
+                    <label for="minimumNumberInput" data-bind="resx: { textContent: 'string_4193' }">Minimum</label>
+                    <input id="minimumNumberInput" type="number" data-bind="value: minimum, axBubbleAttr: 'numberRangeInputDialog_minimumNumberInput'" />
+                    <label for="maximumNumberInput" data-bind="resx: { textContent: 'string_4194' }">Maximum</label>
+                    <input id="maximumNumberInput" type="number" data-bind="value: maximum, axBubbleAttr: 'numberRangeInputDialog_maximumNumberInput'" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

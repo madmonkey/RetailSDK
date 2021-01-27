@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>LoginView</title>
+    <link href="LoginView.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="fragment loginView" data-bind="css: { loginBackgroundImage: !_isPortraitOrientation(), loginBackgroundImagePortrait: _isPortraitOrientation() }">
+        <!--Login panel for accepting user credentials-->
+        <div class="section main scrollY" data-bind="resx: { ariaLabel: 'string_4454' /* Main content */ }">
+            <!-- Main content -->
+            <div class="height100Percent">
+                <!-- User / password textbox field -->
+                <div class="col width100percent height100Percent padLeft32 padRight32 padTop20 padBottom20 loginPanel" data-bind="visible: !firstTimeUsageVisible()">
+                    <div class="loginLogoImage height40" data-bind="visible: viewModel.showLogo()"></div>
+
+                    <div class="padTop12">
+                        <h1 class="wrapTextWithoutHyphen" data-bind="resx: { textContent: 'string_500' }">Sign In</h1>
+                    </div>
+
+                    <div class="padTop12">
+                        <label data-bind="resx: { textContent: 'string_528' }">Store / Register</label>
+                        <div class="ellipsis h4" data-bind="text: viewModel.storeAndRegister">Store / Register</div>
+                    </div>
+                    <!-- ko if: !viewModel.useAad && (!viewModel.showNumPad() || !viewModel.isOperatorIdTextVisible) -->
+                    <div class="padTop12">
+                        <!-- ko if: !viewModel.showNumPad() || !viewModel.isOperatorIdTextVisible -->
+                        <label data-bind="resx: { textContent: viewModel.isOperatorIdTextVisible ? 'string_502' /* Operator ID */ : 'string_530' /* Staff */ }" for="operatorTextBox">
+                            Operator ID
+                        </label>
+                        <!-- /ko -->
+
+                        <!-- ko if: !viewModel.showNumPad() -->
+                        <!-- Depending on the value showListAtStaffLogon show either the text box or select box-->
+                        <input id="operatorTextBox" class="operatorTextBox" type="text" autocomplete="off" autofocus="autofocus"
+                                data-ax-barcode-scanner-enabled="true"
+                                data-bind="value: viewModel.operatorId,
+                                    valueUpdate: 'afterkeydown',
+                                    visible: viewModel.isOperatorIdTextVisible,
+                                    disable: disableInput,
+                                    enterKeyPress: signInHandler,
+                                    validator: {
+                                        validatorField: 'UserId',
+                                        validatorType: 'ConnectionRequestValidator'
+                                    }" />
+                        <!-- /ko -->
+
+                        <!-- People picker -->
+                        <!-- ko if: viewModel.isOperatorIdSelectVisible  -->
+                        <div id="operatorBox" class="centerY heightAuto marginTop8" tabindex="0" role="button"
+                            data-bind="click: selectEmployeeHandler,
+                                enterKeyPress: selectEmployeeHandler,
+                                disable: disableInput"
+                            data-retail-numpad-ignore-keys="enter">
+                            <div data-bind="userImageOrInitials: userImageOrInitialsOptions" class="height48 width48 circleBorder h4"></div>
+                            <!-- ko if: viewModel.isOperatorSelected  -->
+                            <div class="padLeft12 col grow overflowHidden clickable">
+                                <div class="ellipsis h4 primaryFontColor inlineBlock loginOperatorName" data-bind="text: userImageOrInitialsOptions().name"></div>
+                                <div id="operatorSelectedIdText" class="ellipsis h4 primaryFontColor inlineBlock loginOperatorId" data-bind="text: viewModel.operatorId"></div>
+                            </div>
+                            <!-- /ko -->
+                            <!-- ko ifnot: viewModel.isOperatorSelected -->
+                            <div class="h4 padLeft8 inlineBlock grow overflowHidden clickable"
+                                data-bind="resx: { textContent: Commerce.ViewModelAdapter.getResourceString('string_527') /* Choose worker */ }">
+                            </div>
+                            <!-- /ko -->
+                            <div class="center accentColor iconChevronRight icon-24x24 width24 clickable"
+                                data-bind="resx: { ariaLabel: 'string_527' /* Choose worker */ }, axBubbleAttr: 'loginView_chooseOperatorBox'"></div>
+                        </div>
+                        <!-- /ko -->
+
+                    </div>
+
+                    <!-- ko if: !viewModel.showNumPad() -->
+                    <div class="padTop12">
+                        <label data-bind="resx: { textContent: 'string_503' }" for="passwordBox">Password</label>
+
+                        <input id="passwordBox" class="passwordBox" type="password" required="required" role="textbox"
+                                data-bind="value: viewModel.password,
+                                        valueUpdate: 'afterkeydown',
+                                        disable: disableInput,
+                                        enterKeyPress: signInHandler,
+                                        validator: {
+                                            validatorField: 'Password',
+                                            validatorType: 'ConnectionRequestValidator'
+                                        }" />
+                    </div>
+                    <!-- /ko -->
+
+                    <!-- /ko -->
+
+                    <!-- ko if: viewModel.useAad || !viewModel.showNumPad() -->
+                    <div class="padTop40 flexRow">
+                        <button id="signInButton" class="primaryButton flexGrow100"
+                                data-bind="resx: { textContent: 'string_500' }, click: signInHandler, disable: disableSignInButton, setElementRef: signInButton">
+                            Sign in
+                        </button>
+                    </div>
+                    <!-- /ko -->
+
+                    <!-- ko ifnot: viewModel.useAad || !viewModel.showNumPad() -->
+                    <div class="col grow numpad marginTop12 no-shrink" data-bind="multipleTextInputNumpad: {
+                            inputOptions: numpadInputOptions,
+                            onCompleted: onNumpadComplete.bind($root),
+                            numPadInputSource: numPadInputBroker
+                        },
+                        setElementRef: numpadElement">
+                    </div>
+                    <!-- /ko -->
+                </div>
+
+            </div>
+
+            <div id="version" class="h6 bottom0 right12" data-bind="text: applicationVersion"></div>
+        </div>
+    </div>
+</body>
+</html>

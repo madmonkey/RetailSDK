@@ -1,0 +1,13 @@
+{
+  "Error_Title": "Błąd",
+  "_Error_Title.comment": "POS error message title.",
+
+  "Advance_Invoice_Printing_Error": "Błąd podczas drukowania faktury zaliczkowej.",
+  "_Advance_Invoice_Printing_Error.comment": "Error message while printing advance invoice report.",
+
+  "Print_Advance_Invoice": "Drukuj fakturę zaliczkową",
+  "_Print_Advance_Invoice.comment": "Print advance invoice button label.",
+
+  "Windows_Printer_Not_Defined": "Nie zdefiniowano drukarki w systemie Windows. Sprawdź urządzenie lub skontaktuj się z administratorem systemu.",
+  "_Windows_Printer_Not_Defined.comment": "Windows printer peripheral device failure."
+}

@@ -1,0 +1,12 @@
+.editChecklistTaskDialog .win-toggleswitch-header {
+    display: none;
+}
+
+.editChecklistTaskDialog h6,
+.editChecklistTaskDialog .h6 {
+    text-transform: none;
+}
+
+.editChecklistTaskDialog .outlineFocus:focus {
+    outline: 1px dotted #000000;
+}

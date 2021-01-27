@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Search Orders View</title>
+    <!-- WinJS references -->
+    <link href="SearchOrdersView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment searchOrdersView">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'searchOrdersView_pivotItemsHeader', onitemanimationend: searchOrdersViewAnimationEndHandler.bind($root) }, resx: { ariaLabel: 'string_4454' }">
+            <div data-bind="pivotItem: { headerResx: 'string_3872' }">
+                <!-- Main content -->
+                <div id="orderSalesLinesList"
+                     data-bind="dataList: {
+                         incrementalDataSource: {
+                            dataManager: viewModel,
+                            callerMethod: viewModel.getSalesOrdersAsync,
+                            pageSize: 40,
+                            onLoading: viewModel.salesOrderLinesListIsLoading,
+                            reloadCallBack: viewModel.reloadSalesOrdersCallback,
+                            updateItemCallBack: viewModel.updateItemCallback,
+                         },
+                         selectionModes: selectionMode,
+                         selectionChanged: onSelectionChanged,
+                         onLoadingComplete: loadingStateChanged,
+                         ariaLabelResx: 'string_3875', /* Collection of orders */
+                         columns: viewModel.ordersListColumns
+                     },
+                     axBubbleAttr: 'searchOrdersView_orders'">
+                </div>
+            </div>
+        </div>
+
+        <!-- Picking and Packing menu -->
+        <div id="pickingFlyout" data-bind="menu: { anchor: '#pickingAppBar', placement: 'top', alignment: 'left' }, axBubbleAttr: 'searchOrdersView_pickingFlyout'">
+            <button data-bind="menuCommand: {
+                    id:'printPackingSlip'},
+                    resx: { label: 'string_4508' },
+                    click: viewModel.printPackingSlipAsync.bind(viewModel),
+                    winControl: { disabled: viewModel.printPackingSlipDisabled },
+                    axBubbleAttr: 'searchOrdersView_printPackingSlip'"></button>
+            <button data-bind="menuCommand: {
+                    id:'createPackingSlip'},
+                    resx: { label: 'string_4509' },
+                    click: viewModel.createPackingSlip.bind(viewModel),
+                    winControl: { disabled: viewModel.createPackingSlipDisabled },
+                    axBubbleAttr: 'searchOrdersView_createPackingSlip'"></button>
+            <button data-bind="menuCommand: {
+                    id:'createPickingList'},
+                    resx: { label: 'string_4510' },
+                    click: createPickingList,
+                    winControl: { disabled: viewModel.createPickingListDisabled },
+                    axBubbleAttr: 'searchOrdersView_createPickingList'"></button>
+            <button data-bind="menuCommand: {
+                    id:'pickUp'},
+                    resx: { label: 'string_2515' },
+                    click: viewModel.pickUpAsync.bind(viewModel),
+                    winControl: { disabled: viewModel.pickUpDisabled },
+                    axBubbleAttr: 'searchOrdersView_pickUp'"></button>
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="SearchOrdercommandAppBar"
+             data-bind="appBar: { extensionCommands: viewModel.extensionCommandViewModels }, axBubbleAttr: 'searchOrdersView_commandAppBar'">
+
+            <button data-bind="appBarCommand: {
+                id:'pickingAppBar',
+                type: 'flyout',
+                flyout: '#pickingFlyout',
+                extraClass:'iconPickup',
+                disabled: viewModel.pickingAndPackingDisabled,
+                labelResx: 'string_4582'}, axBubbleAttr: 'searchOrdersView_pickingAppBar'"></button>
+            <button data-bind="appBarCommand: {
+                id:'searchOrder',
+                extraClass: 'iconSearch',
+                onclick: viewModel.performSalesOrderSearch.bind(viewModel),
+                labelResx: 'string_4198'}, axBubbleAttr: 'searchOrdersView_searchOrder'"></button>
+            <button data-bind="appBarCommand: {
+                id:'cancelOrder',
+                extraClass: 'iconCancel',
+                onclick: cancelOrder,
+                disabled: viewModel.cancelOrderDisabled,
+                labelResx: 'string_4511'}, axBubbleAttr: 'searchOrdersView_cancelOrder'"></button>
+            <button data-bind="appBarCommand: {
+                id:'returnOrder',
+                extraClass: 'iconProductReturn' ,
+                onclick: returnOrder,
+                disabled: viewModel.salesOrderReturnDisabled,
+                labelResx: 'string_4512'}, axBubbleAttr: 'searchOrdersView_returnOrder'"></button>
+            <button data-bind="appBarCommand: {
+                id:'editOrder',
+                extraClass: 'iconEdit' ,
+                onclick: editOrder,
+                disabled: viewModel.editOrderDisabled,
+                labelResx: 'string_4513'}, axBubbleAttr: 'searchOrdersView_editOrder'"></button>
+        </div>
+    </div>
+</body>
+</html>

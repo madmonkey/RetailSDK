@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>KitDisassemblyView</title>
+    <link href="KitDisassemblyView.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="componentListTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="listViewLine row height92" data-win-bind="title: itemName">
+            <div class="ratio4 row" data-win-bind="this['aria-label']: ariaLabelItemName  WinJS.Binding.setAttribute ">
+                <div class="shrink height72 width72 fit-image">
+                    <img src="#" data-win-bind="src: imageInformation.source Commerce.Core.Converter.ImageUrlFormatter; alt: component.imageInformation.altText; onerror: Commerce.DefaultImages.ProductSmall Commerce.CustomBindings.SetDefaultImage" />
+                </div>
+
+                <div class="col marginTop12 ellipsis">
+                    <div class="h4" data-win-bind="textContent: itemName"></div>
+                    <div class="h4 secondaryFontColor" data-win-bind="textContent: itemId"></div>
+                    <div class="h4 secondaryFontColor" data-win-bind="textContent: variantSummaryString"></div>
+                </div>
+            </div>
+            <div class="ratio3 marginTop20 textRight">
+                <div class="h1" data-win-bind="textContent: returnToInventoryQty; this['aria-label']: ariaLabelItemReturnInventory  WinJS.Binding.setAttribute"></div>
+            </div>
+            <div class="ratio3 accentBorder textRight stretch">
+                <div class="padTop20">
+                    <a href="#" class="h1" data-win-bind="innerText: addToCartQty; this['aria-label']: ariaLabelAddToCart  WinJS.Binding.setAttribute"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fragment kitDisassemblyView">
+        <div id="kitDisassemblyPivot" data-bind="pivot: {}">
+
+            <!-- View for Component list Grid view -->
+            <div id="kitDisassemblyPivotListView" data-bind="pivotItem: { headerResx: 'string_5355' }">
+                <div class="col grow no-shrink height100Percent">
+                    <div class="countingGrid standardGrid">
+                        <!-- Column Headers of Products Grid -->
+                        <div class="listViewHeader">
+                            <div class="ratio4">
+                                <div class="h6" data-bind="resx: { textWithTooltip: 'string_5350' }">PRODUCT</div>
+                            </div>
+                            <div class="ratio3 textRight">
+                                <div class="h6" data-bind="resx: { textWithTooltip: 'string_5353' }">RETURN TO INVENTORY</div>
+                            </div>
+                            <div class="ratio3 textRight">
+                                <div class="h6" data-bind="resx: { textWithTooltip: 'string_5354' }">ADD TO CART</div>
+                            </div>
+                        </div>
+
+                        <div class="col grow tableContent center" data-bind="visible: !viewModel.hasProductComponent()">
+                            <div class="textCenter">
+                                <div class="h4" data-bind="resx: { textContent: 'string_5374' }">Scan or search for a kit to get started</div>
+                            </div>
+                        </div>
+                        <div id="standardGrid countingGrid kitDisassemblyViewList"
+                                data-win-control="WinJS.UI.ListView"
+                                data-win-options="{
+                                selectionMode: 'single',
+                                itemTemplate: select('#componentListTemplate'),
+                                tapBehavior: 'toggleSelect',
+                                layout: { type: WinJS.UI.ListLayout }
+                            }"
+                                data-bind="winControl: {
+                                itemDataSource: viewModel.componentLines,
+                                selectionchanged: { eventHandlerCallBack: viewModel.componentLineSelectionChanged.bind(viewModel) },
+                                templateSwitch: [
+                                    { buttonId: '#showComponentList', templateId: '#componentListTemplate', layoutType: { type: WinJS.UI.ListLayout }, displayElementId: '#componentListResultHeader' },
+                                ],
+                            }, resx: { ariaLabel: 'string_5373' }, visible: viewModel.hasProductComponent"><!-- List of components -->
+                        </div>
+
+                        <!-- Total count results footer -->
+                        <div class="listViewFooter height58">
+                            <div>
+                                <div class="h2" data-bind="text: viewModel.productComponentCount()"></div>
+                                <div class="h4 secondaryFontColor" data-bind="resx: { textContent: 'string_3360' }">TOTAL PRODUCTS</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <!-- menu button to reset the page or quantities entered -->
+        <div id="resetButtonFlyout" data-bind="menu: { anchor: '#resetActions', placement: 'top', alignment: 'left' }">
+            <button data-bind="menuCommand: {id: 'clearKitDetail'}, resx: { label: 'string_5369' }, click: viewModel.clearViewModel.bind(viewModel)"></button>
+            <button data-bind="menuCommand: {id: 'resetAddToSaleQuantities'}, resx: { label: 'string_5370' }, click: viewModel.resetAddToSaleQuantities.bind(viewModel)"></button>
+        </div>
+
+        <div id="KitDisassemblycommandAppBar" data-bind="appBar: {}">
+            <button data-bind="appBarCommand: {
+                id:'resetActions',
+                extraClass: 'iconLightningBolt',
+                flyout: '#resetButtonFlyout',
+                labelResx: 'string_5368',
+                enabled: viewModel.hasProductComponent }"></button>
+
+            <button data-bind="appBarCommand: {
+                id:'searchProduct',
+                extraClass: 'iconSearch',
+                onclick: viewModel.performProductSearch.bind(viewModel),
+                labelResx: 'string_50'}"></button>
+
+            <button data-bind="appBarCommand: {
+                id:'setKitQuantityToDisassemble',
+                extraClass: 'iconQuantity',
+                onclick: setKitQuantityToDisassemble,
+                labelResx: 'string_5363',
+                enabled: viewModel.hasProductComponent }"></button>
+
+            <button data-bind="appBarCommand: {
+                id: 'commitKitTransaction',
+                extraClass: 'iconAccept',
+                onclick: viewModel.commitKitTransaction.bind(viewModel),
+                labelResx: 'string_5360',
+                enabled: viewModel.hasProductComponent }"></button>
+        </div>
+    </div>
+</body>
+</html>

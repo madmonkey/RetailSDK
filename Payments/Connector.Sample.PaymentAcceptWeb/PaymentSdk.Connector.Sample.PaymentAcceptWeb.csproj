@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\..\BuildTools\Common.props" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6548FDBA-90ED-4A97-ABFB-F045C5023313}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Contoso.Retail.SampleConnector.PaymentAcceptWeb</RootNamespace>
+    <AssemblyName>$(AssemblyNamePrefix).Retail.SampleConnector.PaymentAcceptWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <OutputPath>bin</OutputPath>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Jobs.sql" />
+    <Content Include="App_Data\Seed\CountryOrRegion.dat" />
+    <Content Include="App_Data\Seed\CountryOrRegionTranslation.dat" />
+    <Content Include="App_Data\Seed\Seed.sql" />
+    <Content Include="App_Data\Sprocs\CreateCardPaymentEntry.sql" />
+    <Content Include="App_Data\Sprocs\CreateCardPaymentResult.sql" />
+    <Content Include="App_Data\Sprocs\GetCardPaymentEntryByEntryId.sql" />
+    <Content Include="App_Data\Sprocs\GetCardPaymentResultByResultAccessCode.sql" />
+    <Content Include="App_Data\Sprocs\GetCountryListByLocale.sql" />
+    <Content Include="App_Data\Sprocs\PurgeCardPaymentHistory.sql" />
+    <Content Include="App_Data\Sprocs\UpdateCardPaymentEntryAsUsed.sql" />
+    <Content Include="App_Data\Sprocs\UpdateCardPaymentResultAsRetrieved.sql" />
+    <Content Include="App_Data\Sprocs\UpdateCardPaymentResultData.sql" />
+    <Content Include="App_Data\Tables.sql" />
+    <Content Include="CardPage.aspx" />
+    <Content Include="CSS\CardPage.css" />
+    <Content Include="Fonts\segoeui.woff" />
+    <Content Include="Fonts\segoeuilight.woff" />
+    <Content Include="Fonts\segoeuisemilight.woff" />
+    <Content Include="GenericErrorPage.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\WebResources.Designer.cs">
+      <DependentUpon>WebResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\WebResources.es.designer.cs">
+      <DependentUpon>WebResources.es.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="CardPage.aspx.cs">
+      <DependentUpon>CardPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CardPage.aspx.designer.cs">
+      <DependentUpon>CardPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PaymentsController.cs" />
+    <Compile Include="Data\DataManager.cs" />
+    <Compile Include="GenericErrorPage.aspx.cs">
+      <DependentUpon>GenericErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GenericErrorPage.aspx.designer.cs">
+      <DependentUpon>GenericErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CardPaymentEntry.cs" />
+    <Compile Include="Models\CardPaymentException.cs" />
+    <Compile Include="Models\CardPaymentResult.cs" />
+    <Compile Include="Models\CountryOrRegion.cs" />
+    <Compile Include="Models\CustomStyles.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\AppSettings.cs" />
+    <Compile Include="Utilities\CardTypes.cs" />
+    <Compile Include="Utilities\CommonUtility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Sockets" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Extensions.Design" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\WebResources.es.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>WebResources.es.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\WebResources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>WebResources.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi" Version="5.2.2" />
+    <PackageReference Include="System.Composition" Version="1.2.0" />
+    <PackageReference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" Version="1.0.5" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.Diagnostics" Version="$(DiagnosticsRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.PaymentSDK.Extensions" Version="$(PaymentsRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.SDKManager.Portable" Version="$(PaymentsRepoPackagesVersion)" />
+    <PackageReference Include="Microsoft.Dynamics.Commerce.TestConnector.Portable" Version="$(PaymentsRepoPackagesVersion)" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3973</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3973/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="CalculateForCopyWebAppToBinFolder" AfterTargets="CopyRuntimeDependencies">
+    <ItemGroup>
+      <WebAppFiles Include="$(MSBuildThisFileDirectory)\bin\$(Configuration)\*.*" />
+    </ItemGroup>
+    <ItemGroup>
+      <WebAppFilesDestination Include="@(WebAppFiles->'$(MSBuildThisFileDirectory)\bin\%(Filename)%(Extension)')" />
+    </ItemGroup>
+  </Target>
+  <Target Name="CopyWebAppToBinFolder" AfterTargets="CalculateForCopyWebAppToBinFolder" Inputs="@(WebAppFiles)" Outputs="@(WebAppFilesDestination)">
+    <Copy SourceFiles="@(WebAppFiles)" DestinationFiles="@(WebAppFilesDestination)" SkipUnchangedFiles="true" />
+  </Target>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

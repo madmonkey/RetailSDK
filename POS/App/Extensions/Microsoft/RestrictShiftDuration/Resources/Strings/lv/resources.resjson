@@ -1,0 +1,10 @@
+{
+  "Warning_title": "Brīdinājums!",
+  "_Warning_title.comment": "POS warning message title.",
+  "Shift_closing_warning": "Maiņa jāslēdz līdz pulksten {0}.",
+  "_Shift_closing_warning.comment": "POS warning message when the cashier performs an operation within the shift closing interval.",
+  "Error_title": "Kļūda",
+  "_Error_title.comment": "POS error message title.",
+  "Shift_closing_error": "Maiņas ilgums pārsniedz iestatīto robežvērtību. Atceliet transakciju, slēdziet maiņu un pēc tam atveriet jaunu maiņu.",
+  "_Shift_closing_error.comment": "POS warning message when the cashier performs an operation after the shift closing time."
+}

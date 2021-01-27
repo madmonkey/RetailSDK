@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:ProductSearchPageXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Pages.ProductSearchPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages"
+    xmlns:converters="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Converters"
+    xmlns:i18n="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    Title="">
+    <StackLayout
+        VerticalOptions="StartAndExpand">
+        <StackLayout.Resources>
+            <ResourceDictionary>
+                <converters:InverseBooleanConverter
+                    x:Key="InverseBooleanConverter" />
+            </ResourceDictionary>
+        </StackLayout.Resources>
+        <SearchBar
+            x:Name="ProductSearchBar"
+            IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
+            Placeholder="{i18n:Translate Pages_ProductSearchPage_SearchBar_Placeholder}"
+            SearchCommand="{Binding SearchProductsCommand}"
+            Text="{Binding SearchQuery}" />
+        <views:ProductListView
+            ItemTapped="ProductItemTapped"
+            ItemsSource="{Binding Products}"
+            LoadMoreCommand="{Binding LoadMoreProductsCommand}" />
+        <ActivityIndicator
+            HeightRequest="{x:Static statics:Sizes.ListActivityIndicatorDouble}"
+            IsEnabled="{Binding IsBusy}"
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Start" />
+    </StackLayout>
+</base:ProductSearchPageXaml>

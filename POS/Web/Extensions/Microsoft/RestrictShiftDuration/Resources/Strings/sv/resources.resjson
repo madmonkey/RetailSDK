@@ -1,0 +1,10 @@
+{
+  "Warning_title": "Varning",
+  "_Warning_title.comment": "POS warning message title.",
+  "Shift_closing_warning": "Du måste stänga skiftet innan {0}.",
+  "_Shift_closing_warning.comment": "POS warning message when the cashier performs an operation within the shift closing interval.",
+  "Error_title": "Fel",
+  "_Error_title.comment": "POS error message title.",
+  "Shift_closing_error": "Skiftets tidslängd överskrider gränsen. Skjut upp transaktionen, stäng skiftet och öppna ett nytt skift.",
+  "_Shift_closing_error.comment": "POS warning message when the cashier performs an operation after the shift closing time."
+}

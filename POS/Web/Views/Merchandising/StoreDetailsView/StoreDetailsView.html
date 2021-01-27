@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>StoreDetailsView</title>
+    <link href="StoreDetailsView.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- view -->
+    <div class="storeDetailsView fragment">
+        <div class="section main row marginBottom12 marginLeft20 marginRight20" data-bind="resx: { ariaLabel: 'string_4454' }">
+            <!-- Main content -->
+
+            <!-- ko if: viewModel.showMap -->
+            <div id="storeDetailsMapContent" class="col minWidth400" data-bind="axBubbleAttr: 'storeDetailsView_storeDetailsMapContent'">
+                <!--Location-->
+                <div data-bind="sectionWrapper: {headerResx: 'string_5420' }"></div>
+
+                <!-- Bing Maps will be located here, created dynamically by Bing.Maps.ts -->
+            </div>
+
+            <div class="gutter40x40"></div>
+            <!-- /ko -->
+
+            <div class="col stretch">
+                <!--Details-->
+                <div data-bind="sectionWrapper: {headerResx: 'string_5421' }">
+
+                    <div class="row width280 listViewThemeColor" data-bind="visible: _storeDetailsVisible">
+
+                        <!-- First column, contains store pin number -->
+                        <div class="padLeft12 padTop20 shrink padRight20">
+                            <h3><span class="pushPin" data-bind="text: _storeNumber">Store order number</span></h3>
+                        </div>
+
+                        <!-- Second column, contains store details -->
+                        <div class="padTop12">
+                            <div class="row">
+                                <div class="padTop12 shrink">
+                                    <!-- ko if: viewModel.showMap-->
+                                    <a class="h3" href="#" data-bind="text: viewModel.storeDetails().OrgUnitName, click: popupMapInfobox, axBubbleAttr: 'storeDetailsView_storeNameLink'">Store name</a>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: viewModel.showMap-->
+                                    <div class="h3" data-bind="text: viewModel.storeDetails().OrgUnitName">Store name</div>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                            <div class="h4 ellipsis" data-bind="text: viewModel.storeDetails().OrgUnitNumber">Store number</div>
+                            <div class="padRight12 maxWidth220">
+                                <div class="secondaryFontColor" data-bind="html: Commerce.Formatters.CommonAddressFormatterWithHtmlEscape(viewModel.storeDetails().OrgUnitAddress)">Address</div>
+                                <div class="row textRight secondaryFontColor">
+                                    <div class="marginTop06">
+                                        <div class="h3" data-bind="text: viewModel.distance">Store distance from current store</div>
+                                    </div>
+                                    <div class="shrink padLeft05 marginTop12">
+                                        <div class="h4" data-bind="text: viewModel.distanceUnit">Distance Unit</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Store hours -->
+                            <div class="padBottom06 padTop4" data-bind="visible: viewModel.isStoreHoursVisible, foreach: viewModel.formattedStoreHours">
+                                <div class="minWidth204 ellipsis row">
+                                    <div class="col grow h4" data-bind="text: weekDay">Week day</div>
+                                    <div class="col grow h4 textRight" data-bind="text: openAndCloseTime">Store hours</div>
+                                </div>
+                            </div> <!-- end store hours -->
+                        </div> <!-- end second column -->
+                    </div>
+                </div> <!-- end details -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

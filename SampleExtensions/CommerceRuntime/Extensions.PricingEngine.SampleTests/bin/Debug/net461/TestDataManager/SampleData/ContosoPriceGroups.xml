@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfPriceGroupData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!-- add price groups with non-zero priority here. no need to add price groups with zero priority. -->
+  <PriceGroupData>
+    <GroupId>ECAP01CP99</GroupId>
+    <PricingPriorityNumber>99</PricingPriorityNumber>
+  </PriceGroupData>
+</ArrayOfPriceGroupData>

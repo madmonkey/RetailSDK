@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.TypeScript.MSBuild</id>
+    <version>2.2.2</version>
+    <title>Microsoft.TypeScript.MSBuild</title>
+    <authors>TypeScript Team</authors>
+    <owners>TypeScript Team</owners>
+    <licenseUrl>http://go.microsoft.com/fwlink/?LinkID=698879</licenseUrl>
+    <projectUrl>http://typescriptlang.org</projectUrl>
+    <iconUrl>http://www.typescriptlang.org/assets/images/icons/nuget-icon-128x128.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <developmentDependency>true</developmentDependency>
+    <description>The TypeScript MSBuild task, and matching compiler version.</description>
+    <releaseNotes>https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript</releaseNotes>
+    <copyright>Copyright Microsoft (c) 2016</copyright>
+    <language>en-US</language>
+    <tags>TypeScript</tags>
+  </metadata>
+</package>

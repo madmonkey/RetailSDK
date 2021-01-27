@@ -1,0 +1,19 @@
+﻿{
+  "DeliveryOption": null,
+  "Data": {
+    "AmountDue": 500.00,
+    "AmountPaid": 0.0,
+    "CartLines": [
+      {
+        "ItemId": "81315",
+        "Quantity": 1.0,
+        "Price": 500.00,
+        "TotalAmount": 500.00
+      }
+    ],
+    "CartTypeValue": 1,
+    "Name": null,
+    "SubtotalAmount": 500.00,
+    "TotalAmount": 500.00
+  }
+}

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout data list markup.</title>
+    <link href="knockout.dataList.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Template for list header -->
+    <script type="text/html" id="dataListHeaderTemplate">
+        <div data-bind="attr: { 'class': 'column' + collapseOrder }">
+            <div class="h6 ellipsis" data-bind="text: title"></div>
+        </div>
+    </script>
+
+    <!-- Template for each line/row -->
+    <script id="dataListLinesTemplate" type="text/html">
+        <div class="itemContainer">
+            <!-- Data that spans across the row for each column -->
+            <div class="dataListLine" data-bind="foreach: columns">
+                <div data-bind="attr: { 'class': 'column' + collapseOrder }">
+                    <div class="h4 ellipsis" data-bind="attr: { 'data-bind': 'textConverter: $data.columnConfigs[' + $index() + ']' }"></div>
+                </div>
+            </div>
+            <!-- Data that shows underneath the row for collapsed columns -->
+            <div class="dataListSecondaryLine dataListSecondaryLineBottomPadding secondaryFontColor" data-bind="foreach: columns">
+                <div data-bind="attr: { 'class': 'row row' + collapseOrder }">
+                    <div class="h4 no-shrink" data-bind="visible: !isSecondaryTitleHidden,
+                        text: title"></div>
+                    <div class="h4 no-shrink" data-bind="visible: !isSecondaryTitleHidden">:&nbsp;</div>
+                    <div class="h4 ellipsis" data-bind="attr: { 'data-bind': 'textConverter: $data.columnConfigs[' + $index() + ']' }"></div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Data list template, includes section for header template and lines -->
+    <script type="text/html" id="dataListTemplate">
+        <div class="grow col">
+            <div class="dataListHeader">
+                <div class="width40 height32 headerCheckbox" style="display: none"></div> <!-- Select all checkbox placeholder -->
+                <div class="dataListSubheader" data-bind="template: { name: 'dataListHeaderTemplate', foreach: columns }"></div>
+            </div>
+            <div class="grow tableContent dataListPlaceholder win-selectionstylefilled">
+            </div>
+            <div role="alert" class="dataListEmptyContentPlaceholder grow col"></div>
+        </div>
+    </script>
+
+    <!-- Empty data list template -->
+    <script type="text/html" id="emptyDataListTemplate">
+        <div role="alert" class="center textCenter">
+            <div class="h3 wrapText" data-bind="resx: { textContent: emptyDataListMessageResx }"></div>
+        </div>
+    </script>
+</body>
+</html>

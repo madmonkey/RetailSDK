@@ -1,0 +1,415 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>InventoryDocumentShippingAndReceivingViewPhone</title>
+    <link href="InventoryDocumentShippingAndReceivingView.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="inventoryDocumentShippingAndReceivingView fragment" data-bind="with: viewModel, interaction: { activateUpdateNowPivot: { selectPivot: '#inventoryDocumentShippingAndReceivingViewPivotUpdateNowList' }, activateFullOrderPivot: { selectPivot: '#inventoryDocumentShippingAndReceivingViewPivotFullOrderList' }}">
+        <div class="row height100Percent" data-bind="visible: !isPackingSlipSelected()">
+            <div class="col grow flexBasis100Percent" data-bind="visible: !isPhoneDetailVisible()">
+                <div id="inventoryDocumentShippingAndReceivingViewPivot" class="grow" data-bind="pivot: {
+                        onselectionchanged: switchSelectionMode.bind($data),
+                        pivotItemVisibilities: [
+                            { pivotItemId: 'inventoryDocumentShippingAndReceivingViewPivotUpdateNowList', visible: isUpdateNowListViewVisible },
+                        ],
+                        headerItemsAxBubbleAttr: 'inventoryDocumentShippingAndReceivingViewPivot_pivotItemsHeader' },
+                        resx: { ariaLabel: 'string_4454' }"><!--Main content-->
+                    <div id="inventoryDocumentShippingAndReceivingViewPivotUpdateNowList" data-bind="pivotItem: { headerResx: updateNowListHeader() }, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_updateNowListPivot'"><!--Receiving now-->
+                        <div class="col grow height100Percent">
+                            <div id="updateNowDataList" data-bind="dataList: {
+                                    itemDataSource: updateNowLines,
+                                    onItemDataSourceUpdated: onUpdatedUpdateNowList,
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    selectionChanged: onUpdateNowListSelectionChanged,
+                                    ariaLabelResx: 'string_12419',
+                                    columns: dataListColumns(),
+                                    emptyDataListTemplate: 'emptyUpdateNowListTemplate'
+                                }, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_updateNowList'">
+                            </div><!--List of update now lines-->
+                        </div>
+                    </div>
+
+                    <!-- Empty list template for update now list -->
+                    <script id="emptyUpdateNowListTemplate" type="text/html">
+                        <div class="height100Percent row center" data-bind="axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_emptyUpdateNowListTip'">
+                            <div class="center maxWidth392 col">
+                                <h2 class="padLeft20 padRight20 marginBottom20 width100Percent textCenter wrapText" data-bind="resx: { textContent: emptyUpdateNowListTips } "></h2><!--Text placeholder for empty data list-->
+                                <!-- ko if: isDocumentPaused() || isDocumentStartedWorking() -->
+                                <a href="#" class="h4" data-bind="resx: { textContent: 'string_12402' }, click: onGotoFullOrderList, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_emptyUpdateNowListTipAnchor'"></a><!--Full order list-->
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </script>
+
+                    <div id="inventoryDocumentShippingAndReceivingViewPivotFullOrderList" data-bind="pivotItem: { header : fullOrderListHeader() }, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_fullOrderListPivot'"><!--Full order list-->
+                        <div class="col grow height100Percent">
+                            <div id="fullOrderDataList" data-bind="dataList: {
+                                    incrementalDataSource: {
+                                        dataManager: $data,
+                                        callerMethod: getFullOrderLinesAsync,
+                                        pageSize: defaultPageSize,
+                                        reloadCallBack: reloadFullOrderListCallback,
+                                        updateItemCallBack: updateFullOrderLineCallback
+                                    },
+                                    onItemDataSourceUpdated: onUpdatedFullOrderList,
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    selectionChanged: onFullOrderListSelectionChanged,
+                                    ariaLabelResx: 'string_12432',
+                                    columns: dataListColumns(),
+                                }, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_fullOrderList'">
+                            </div><!--List of full order lines-->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="statsPane" class="primaryPanelBackgroundColor row height56 marginLeft12 marginRight12">
+                    <div class="marginLeft20 marginTop4 marginBottom8">
+                        <h3 data-bind="text: isInUpdateNowListView() ? totalUpdateNowLines : totalFullOrderListLines"></h3>
+                        <h6 data-bind="resx: { textContent: 'string_12424' }"></h6><!--TOTAL LINE-->
+                    </div>
+                    <div class="grow"></div>
+                    <div class="marginRight20 marginTop4 marginBottom8 textRight">
+                        <h3 data-bind="text: totalQuantityToDisplay"></h3>
+                        <h6 data-bind="resx: { textContent: 'string_12425' }"></h6><!--TOTAL QUANTITY-->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Line details pane for phone -->
+            <div class="row grow height100Percent" data-bind="visible: isPhoneDetailVisible() ">
+                <div class="col grow height100Percent marginBottom48 primaryPanelBackgroundColor" data-bind="slideVisible: { isShowed: isPhoneDetailVisible() }">
+                    <div class="inventoryDocumentLineDetails grow scrollY">
+                        <!-- Placeholder for nothing selected -->
+                        <!-- ko if: isNoLineSelected -->
+                        <div class="col grow highContrastBorderThin marginBottom12">
+                            <div class="textCenter padTop40">
+                                <div class="row center height72">
+                                    <div class="h1 icon-42x42 secondaryFontColor" data-bind="
+                                        resx: { ariaLabel: noLineSelectedTipsPlaceholder },
+                                        css: { iconProduct: isDocumentEditable(), iconBulletedList: !isDocumentEditable() }">
+                                    </div>
+                                </div>
+                                <h2 class="marginLeft12 marginRight12 wrapText" data-bind="resx: { textContent: noLineSelectedTipsPlaceholder }"></h2><!--Select a line.-->
+                            </div>
+                        </div>
+                        <!-- /ko -->
+
+                        <!-- ko if: singleSelectedLine() -->
+                        <!-- Product Information Section -->
+                        <div data-bind="template: {
+                            name: 'inventoryDocumentLineProductInformationTemplate',
+                            data: {
+                                primaryImageUrl: singleSelectedLine().product.PrimaryImageUrl,
+                                itemName: singleSelectedLine().product.Name,
+                                itemId: singleSelectedLine().product.ItemId,
+                                productDimensionsDescription: singleSelectedLineProductDimensionsDescription }}"></div>
+
+                        <!-- ko ifnot: isDocumentEditable -->
+                        <div class="col marginLeft12 marginRight12">
+                            <div class="row marginBottom20">
+                                <div class="col grow">
+                                    <h4 class="secondaryFontColor" data-bind="resx: { textContent: 'string_12460' }"></h4><!--Ordered-->
+                                    <h1 data-bind="text: singleSelectedLine().SourceDocumentLine.QuantityOrdered"></h1>
+                                </div>
+                                <div class="col grow">
+                                    <!-- ko if: isReceivingOperation -->
+                                    <h4 class="secondaryFontColor" data-bind="resx: { textContent: 'string_12446' }"></h4><!--Received-->
+                                    <h1 data-bind="text: singleSelectedLine().SourceDocumentLine.QuantityReceived"></h1>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: isReceivingOperation -->
+                                    <h4 class="secondaryFontColor" data-bind="resx: { textContent: 'string_12445' }"></h4><!--Shipped-->
+                                    <h1 data-bind="text: singleSelectedLine().SourceDocumentLine.QuantityShipped"></h1>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                            <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12453' }"></h4><!--Remaining-->
+                            <h4 data-bind="text: detailsPaneQuantityRemaining"></h4>
+
+                            <!-- ko if: singleSelectedLineQuantityOverReceived() > 0 -->
+                            <h4 class="marginTop12 marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12472' }"></h4><!--Over-received-->
+                            <h4 data-bind="text: singleSelectedLineQuantityOverReceived"></h4>
+                            <!--/ko-->
+
+                            <!-- ko if: singleSelectedLineQuantityOverShipped() > 0 -->
+                            <h4 class="marginTop12 marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12529' }"></h4><!--Over-shipped-->
+                            <h4 data-bind="text: singleSelectedLineQuantityOverShipped"></h4>
+                            <!--/ko-->
+
+                            <!-- ko if: singleSelectedLineQuantityCanceled() > 0 -->
+                            <h4 class="marginTop12 marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12447' }"></h4><!--Canceled-->
+                            <h4 data-bind="text: singleSelectedLineQuantityCanceled"></h4>
+                            <!-- /ko -->
+
+                            <!-- ko if: isSingleSelectedLineLocationActive -->
+                            <h4 class="marginTop20 marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12438' }"></h4><!--Receiving location-->
+                            <h4 data-bind="text: detailsPaneWmsLocationLabel "></h4>
+                            <!-- /ko -->
+
+                            <!-- ko ifnot: isSingleSelectedLineNoteEmpty -->
+                            <h4 class="marginTop20 marginBottom8 secondaryFontColor" data-bind="resx: { textContent: 'string_12440' }"></h4><!--Note-->
+                            <h4 class="marginBottom8 textTransformNone" data-bind="text: singleSelectedLine().Note"></h4>
+                            <!-- /ko -->
+                        </div>
+                        <!-- /ko -->
+
+                        <!-- ko if: isDocumentEditable -->
+                        <!-- Update Now Quantity Section -->
+                        <div class="col marginLeft12 marginRight12 marginBottom20">
+                            <h4 class="marginBottom12 secondaryFontColor" data-bind="resx: { textContent: detailsPaneUpdateNowQuantityLabel() }"></h4>
+                            <div class="row centerY borderBottomExtraThin clickable" role="button" tabindex="0" data-bind="click: onUpdateLineQuantityAsync, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_detailsPaneReceivingQuantity'">
+                                <h1 class="marginLeft8 marginBottom8" data-bind="text: singleSelectedLine().QuantityToUpdate"></h1>
+                                <div class="grow"></div>
+                                <div class="col center width48 height48 marginBottom8">
+                                    <div class="h2 iconChevronRight icon-24x24 accentColor" data-bind="resx: { ariaLabel: detailsPaneEditUpdateNowQuantityLabel() }"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Expandable Quantity Section -->
+                        <div class="col marginLeft12 marginRight12 marginBottom20">
+                            <div class="col borderBottomExtraThin">
+                                <!-- Close Line Section -->
+                                <!-- ko if: !isReceivingOperation() && isDocumentEditable && isCloseLineAllowedForCompany -->
+                                <h4 class="marginBottom12" data-bind="resx: { textContent: 'string_12526' }"></h4> <!-- Close remaining quantity -->
+                                <div class="isCloseLineToggle marginBottom20"
+                                    data-bind="toggleSwitch: {
+                                                    labelOn: 'string_77',
+                                                    labelOff:'string_78',
+                                                    checked: isSelectedLineCloseLineEnabled,
+                                                    enabled: isSelectedLineCloseLineToggleEnabled,
+                                                    onChange: onUpdateLineCloseLineAsync,
+                                                },
+                                                resx: { ariaLabel: 'string_12526' }"> <!-- Close remaining quantity -->
+                                </div>
+                                <!-- /ko -->
+
+                                <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onToggleDetailsPaneQuantity, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_detailsPaneToggleProductQuantity'">
+                                    <h6 class="marginBottom8 secondaryFontColor" data-bind="resx: { textContent: 'string_12442' }"></h6><!--PRODUCT QUANTITY-->
+                                    <div class="grow"></div>
+                                    <div class="col center width48 height28 marginBottom4 positionRelative">
+                                        <!-- ko if: !isDetailsPaneQuantityExpanded() -->
+                                        <div class="h2 iconChevronDown icon-24x24 accentColor" data-bind="resx: { ariaLabel: 'string_12444' }"></div><!--Unexpanding product quantity section-->
+                                        <!-- /ko -->
+                                        <!-- ko if: isDetailsPaneQuantityExpanded -->
+                                        <div class="h2 iconChevronUp icon-24x24 accentColor" data-bind="resx: { ariaLabel: 'string_12443' }"></div><!--Expand product quantity section-->
+                                        <!-- /ko -->
+                                    </div>
+                                </div>
+                                <!-- ko if: isDetailsPaneQuantityExpanded -->
+                                <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12453' }"></h4><!--Remaining-->
+                                <h4 data-bind="text: detailsPaneQuantityRemaining"></h4>
+
+                                <!-- ko ifnot: isDocumentPurchaseOrder -->
+                                <h4 class="marginTop12 marginBottom4 secondaryFontColor" data-bind="resx: { textContent: isReceivingOperation() ? 'string_12445' : 'string_12528' }"></h4><!--Shipped / Previously shipped-->
+                                <h4 data-bind="text: singleSelectedLine().SourceDocumentLine.QuantityShipped"></h4>
+                                <!-- /ko -->
+
+                                <!-- ko if: isReceivingOperation -->
+                                <h4 class="marginTop12 marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12473' }"></h4><!--Previously received-->
+                                <h4 data-bind="text: singleSelectedLine().SourceDocumentLine.QuantityReceived"></h4>
+                                <!-- /ko -->
+
+                                <!-- ko if: singleSelectedLineQuantityOverReceived() > 0 -->
+                                <h4 class="marginTop12 marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12472' }"></h4><!--Over-received-->
+                                <h4 data-bind="text: singleSelectedLineQuantityOverReceived"></h4>
+                                <!--/ko-->
+
+                                <!-- ko if: singleSelectedLineQuantityOverShipped() > 0 -->
+                                <h4 class="marginTop12 marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12529' }"></h4><!--Over-shipped-->
+                                <h4 data-bind="text: singleSelectedLineQuantityOverShipped"></h4>
+                                <!--/ko-->
+
+                                <!-- ko if: singleSelectedLineQuantityCanceled() > 0 -->
+                                <h4 class="marginTop12 marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12447' }"></h4><!--Canceled-->
+                                <h4 data-bind="text: singleSelectedLineQuantityCanceled"></h4>
+                                <!--/ko-->
+
+                                <h4 class="marginTop12 marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12460' }"></h4><!--Ordered-->
+                                <h4 class="marginBottom20" data-bind="text: singleSelectedLine().SourceDocumentLine.QuantityOrdered"></h4>
+
+                                <!-- /ko -->
+                            </div>
+                        </div>
+
+                        <!-- Location Section -->
+                        <!-- ko if: isSingleSelectedLineLocationActive -->
+                        <div class="col marginLeft12 marginRight12 marginBottom20">
+                            <div data-bind="template: { name: 'inventoryDocumentLineWmsLocationTemplate',
+                                data: { onUpdateLocation: onUpdateLineLocationAsync.bind($data), wmsLocationId: singleSelectedLine().LocationId, isWmsLocationIdEmpty: isSingleSelectedLineWmsLocationIdEmpty() }}">
+                            </div>
+                        </div>
+                        <!-- /ko -->
+
+                        <!-- Serial Number Section -->
+                        <!-- ko if: isReceivingOperation() && isSingleSelectedLineSerialNumberActive() -->
+                        <div class="col marginLeft12 marginRight12 marginBottom20">
+                            <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12800' }"></h4><!--Serial number-->
+                            <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onNavigateToSerialNumberViewAsync, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_detailsPaneSerialNumber'">
+                                <div class="col center width16 height16 marginRight8">
+                                    <div class="h2 iconNumberSymbol icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12804' }"></div><!--Manage serial number-->
+                                </div>
+                                <h4 class="accentColor" data-bind="resx: { textContent: 'string_12804' }"></h4><!--Manage serial number-->
+                            </div>
+                        </div>
+                        <!-- /ko -->
+
+                        <!-- Note Section -->
+                        <div class="col marginLeft12 marginRight12 marginBottom8">
+                            <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12440' }"></h4><!--Notes-->
+                            <!-- ko if: isSingleSelectedLineNoteEmpty -->
+                            <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onUpdateLineNoteAsync, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_detailsPaneAddANote'">
+                                <div class="col center width16 height16 marginRight8">
+                                    <div class="h2 iconAddTo icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12441' }"></div><!--Add a note-->
+                                </div>
+                                <h4 class="accentColor" data-bind="resx: { textContent: 'string_12441' }"></h4><!--Add a note-->
+                            </div>
+                            <!-- /ko -->
+                            <!-- ko ifnot: isSingleSelectedLineNoteEmpty -->
+                            <h4 class="marginBottom8" data-bind="text: singleSelectedLine().Note"></h4>
+                            <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onUpdateLineNoteAsync, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_detailsPaneEditNote'">
+                                <div class="col center width16 height16 marginRight8">
+                                    <div class="h2 iconEdit icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12450' }"></div><!--Edit note-->
+                                </div>
+                                <h4 class="accentColor" data-bind="resx: { textContent: 'string_12450' }"></h4><!--Edit note-->
+                            </div>
+                            <!-- /ko -->
+                        </div>
+
+                        <!-- /ko -->
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+            <!-- End line details pane for phone -->
+        </div>
+        <div class="receiptPreview grow" data-bind="visible: isPackingSlipSelected()">
+            <div class="marginLeft12 marginRight48">
+                <pre data-bind="html: packingSlipText"></pre>
+            </div>
+        </div>
+
+        <!-- Order menu -->
+        <div id="orderFlyout" data-bind="menu: { anchor: '#orderAppBar', placement: 'top', alignment: 'left' }, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_orderFlyout'">
+            <button data-bind="menuCommand: { id: 'showInventoryDocumentHeader' },
+                    resx: { label: 'string_12403' },
+                    click: onShowHeaderAsync,
+                    axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_shownHeader'"></button><!-- Header -->
+
+            <button data-bind="menuCommand: { id: 'syncDocumentCommand' },
+                    resx: { label: 'string_12708' },
+                    click: onSyncDocumentAsync,
+                    winControl: { enabled: isInFullOrderListView },
+                    axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_syncDocumentCommand'"></button><!-- Refresh -->
+        </div>
+
+        <!-- Actions menu -->
+        <div id="setActionFlyout" data-bind="menu: { anchor: '#setActionAppBar', placement: 'top', alignment: 'left' }, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_setActionFlyout'">
+            <button data-bind="menuCommand: { id: 'cancelInventoryDocument' },
+                    resx: { label: cancelButtonLabel() },
+                    click: onCancelDocumentAsync,
+                    winControl: { enabled: isDocumentStartedWorking },
+                    visible: isDocumentEditable,
+                    axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_cancel'"></button><!-- Cancel receiving / fulfillment -->
+
+            <button data-bind="menuCommand: { id: 'commitInventoryDocument' },
+                    resx: { label: finishButtonLabel() },
+                    click: onCommitDocumentAsync,
+                    winControl: { enabled: isDocumentStartedWorking },
+                    visible: isDocumentEditable,
+                    axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_finishWorking'"></button><!-- Finish receiving / fulfillment -->
+
+            <button data-bind="menuCommand: { id: 'pauseInventoryDocument' },
+                    resx: { label: pauseButtonLabel() },
+                    click: onPauseDocumentAsync,
+                    winControl: { enabled: canDocumentBePaused },
+                    visible: isDocumentEditable,
+                    axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_pause'"></button><!-- Pause receiving / fulfillment -->
+
+            <button data-bind="menuCommand: { id: 'validate' },
+                    resx: { label: 'string_12910' },
+                    click: onValidateAsync,
+                    winControl: { enabled: isDocumentStartedWorking() },
+                    visible: isValidationEnabled()"></button><!-- Review -->
+
+            <button data-bind="menuCommand: { id: 'receiveOrShipAllLines' },
+                    resx: { label: receiveOrShipAllButtonLabel() },
+                    click: onReceiveOrShipAllLinesAsync,
+                    winControl: { enabled: isInFullOrderListView },
+                    visible: isDocumentEditable,
+                    axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_receiveAll'"></button><!-- Receive all / Ship all -->
+
+            <button data-bind="menuCommand: { id: 'launchSerialNumberManagementView' },
+                    resx: { label: 'string_12800' },
+                    click: onNavigateToSerialNumberViewAsync,
+                    winControl: { enabled: isDocumentStartedWorking },
+                    visible: isReceivingOperation() && isDocumentEditable(),
+                    axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_serialNumber'"></button><!-- Serial number -->
+        </div>
+
+        <!-- Bottom appbar buttons -->
+        <div id="inventoryDocumentShippingAndReceivingViewCommandAppBar" data-bind="appBar: { extensionCommands: extensionCommandViewModels }, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id:'printPackingSlip',
+                extraClass: 'iconProductList',
+                onclick: onPackingSlipHandlerAsync,
+                visible: !isPackingSlipSelected(),
+                labelResx: 'string_12523' /* Packing slip */
+            },
+            axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_printPackingSlipButton'"></button> <!-- Packing slip -->
+
+            <button data-bind="appBarCommand: {
+                id: 'orderAppBar',
+                extraClass: 'iconInvoice',
+                type: 'flyout',
+                flyout: '#orderFlyout',
+                labelResx: 'string_12474', /* Order */
+                visible: !isPackingSlipSelected(),
+            },
+            axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_order'"></button><!-- Order -->
+
+            <button data-bind="appBarCommand: {
+                id: 'setActionAppBar',
+                extraClass: 'iconSetAction',
+                type: 'flyout',
+                flyout: '#setActionFlyout',
+                labelResx: 'string_4394', /* Actions */
+                visible: !isPackingSlipSelected(),
+            },
+            axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_setAction'"></button><!-- Actions -->
+
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconProductForAppBar',
+                    id: 'keyInProduct',
+                    onclick: onKeyInProductAsync,
+                    labelResx: keyInProductButtonLabel(),
+                    visible: isDocumentEditable() && !isPackingSlipSelected()
+                },
+                axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_receiveProduct'"></button><!-- Receive product -->
+
+            <!-- Buttons visible in preview mode -->
+            <button data-bind="appBarCommand: {
+                    id:'clearPackingSlipSelection',
+                    extraClass: 'iconCancel',
+                    onclick: clearPackingSlipSelectionHandler,
+                    labelResx: 'string_80', /* Close */
+                    visible: isPackingSlipSelected()
+                },
+                axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_clearPackingSlipSelection'"></button><!-- Close Print Preview -->
+
+            <!-- Buttons visible in preview mode -->
+            <button data-bind="appBarCommand: {
+                    id:'printPackingSlipsCommand',
+                    extraClass: 'iconPrint',
+                    onclick: printPackingSlipAsync,
+                    labelResx: 'string_1808', /* Print */
+                    enabled: isSelectedPackingSlipPrintable,
+                    visible: isPackingSlipSelected()
+                },
+                axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_printPackingSlipsCommand'"></button><!-- Print -->
+        </div>
+    </div>
+</body>
+</html>

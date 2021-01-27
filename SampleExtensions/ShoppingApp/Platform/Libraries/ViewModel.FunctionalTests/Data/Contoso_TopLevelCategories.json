@@ -1,0 +1,98 @@
+﻿[
+  {
+    "ImageUrl": "https://acrm1514g9ret.cloudax.test.dynamics.com/MediaServer/categories/Audio.png",
+    "HasSubCategories": true,
+    "Data": {
+      "Name": "Audio",
+      "Images": [
+        {}
+      ],
+      "NameTranslations": [
+        {
+          "Language": "EN-US",
+          "Text": "Audio"
+        }
+      ]
+    }
+  },
+  {
+    "ImageUrl": "https://acrm1514g9ret.cloudax.test.dynamics.com/MediaServer/categories/Cameras.png",
+    "HasSubCategories": true,
+    "Data": {
+      "Name": "Cameras",
+      "Images": [
+        {}
+      ],
+      "NameTranslations": [
+        {
+          "Language": "EN-US",
+          "Text": "Cameras"
+        }
+      ]
+    }
+  },
+  {
+    "ImageUrl": "https://acrm1514g9ret.cloudax.test.dynamics.com/MediaServer/categories/Computers.png",
+    "HasSubCategories": true,
+    "Data": {
+      "Name": "Computers",
+      "Images": [
+        {}
+      ],
+      "NameTranslations": [
+        {
+          "Language": "EN-US",
+          "Text": "Computers"
+        }
+      ]
+    }
+  },
+  {
+    "ImageUrl": "https://acrm1514g9ret.cloudax.test.dynamics.com/MediaServer/categories/Home%20appliances.png",
+    "HasSubCategories": true,
+    "Data": {
+      "Name": "Home appliances",
+      "Images": [
+        {}
+      ],
+      "NameTranslations": [
+        {
+          "Language": "EN-US",
+          "Text": "Home appliances"
+        }
+      ]
+    }
+  },
+  {
+    "ImageUrl": "https://acrm1514g9ret.cloudax.test.dynamics.com/MediaServer/categories/Phones.png",
+    "HasSubCategories": true,
+    "Data": {
+      "Name": "Phones",
+      "Images": [
+        {}
+      ],
+      "NameTranslations": [
+        {
+          "Language": "EN-US",
+          "Text": "Phones"
+        }
+      ]
+    }
+  },
+  {
+    "ImageUrl": "https://acrm1514g9ret.cloudax.test.dynamics.com/MediaServer/categories/TV%20and%20video.png",
+    "HasSubCategories": true,
+    "Data": {
+      "Name": "TV and video",
+      "Images": [
+        {}
+      ],
+      "NameTranslations": [
+        {
+          "Language": "EN-US",
+          "Text": "TV and video"
+        }
+      ]
+    }
+  }
+]

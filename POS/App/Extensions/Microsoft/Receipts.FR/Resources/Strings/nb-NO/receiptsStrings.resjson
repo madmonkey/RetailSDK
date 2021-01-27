@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Leder for versjonsnummer: Versjonsnummer ble lagt til.",
+  "Build_number_successfull_log_message_text.comment": "Melding logget når versjonsnummeret for salgssted blir lagt til i transaksjonen.",
+  "Build_number_error_log_message_text": "Leder for versjonsnummer: Tillegging av versjonsnummer mislyktes. Feilmelding: {0}.",
+  "Build_number_error_log_message_text.comment": "Melding logget når versjonsnummeret for salgssted ikke ble lagt til i transaksjonen."
+}

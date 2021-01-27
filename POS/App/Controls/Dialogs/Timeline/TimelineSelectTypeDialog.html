@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TimelineSelectTypeDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'TimelineSelectTypeDialog'">
+        <div class="timelineSelectTypeDialog">
+            <div data-bind="dialog:
+                {
+                    title: title,
+                    subTitle: subTitle,
+                    visible: visible,
+                    dialogType: Commerce.Controls.Dialog.DialogTypes.SEQUENCE,
+                    backButtonVisible: backButtonVisible,
+                    backClick: dialogGoBack,
+                    buttonClick: onButtonClick,
+                    showProgressIndicator: indeterminateWaitVisible,
+                    dialogCloseButtonClick: dialogCloseButtonClick,
+                    buttons: [
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false }
+                    ],
+                },
+                axBubbleAttr: 'timelineEditDialog_timelineEditDialog'" class="timelineEditDialog modalWindowContentSection">
+
+                <!-- dialog content -->
+                <div class="content col">
+                    <!-- Select type datasource list -->
+                    <div data-bind="if: entityTypesListVisible">
+                        <div data-bind="foreach: entityTypesList">
+                            <div data-bind="selectTile: {
+                                    tileType: Commerce.Controls.SelectTile.SelectTileType.DoubleLine,
+                                    primaryText: Commerce.TimelineHelper.getEntityTypeName(EntityType),
+                                    iconClass: 'iconAddTo icon-20x20 accentColor',
+                                    iteminvoked: $parent.selectEntityTypeClickHandler.bind($parent, $data),
+                                    primaryTextCssClass: 'primaryFontColor',
+                                    secondaryTextCssClass: 'secondaryFontColor',
+                                    backgroundCssClass: 'backgroundTransparent',
+                                    cheveronCssClass:'accentColor clickable',
+                                    displayBottomBorder: true
+                            }"></div>
+                        </div>
+                    </div>
+                    <!-- Select type list -->
+                    <div data-bind="if: typesListVisible">
+                        <div data-bind="foreach: typesList">
+                            <div data-bind="selectTile: {
+                                    tileType: Commerce.Controls.SelectTile.SelectTileType.DoubleLine,
+                                    primaryText: Description,
+                                    iconClass: $parent.getTypeIcon($data.TypeId),
+                                    iteminvoked: $parent.selectTypeClickHandler.bind($parent, $data),
+                                    primaryTextCssClass: 'primaryFontColor',
+                                    secondaryTextCssClass: 'secondaryFontColor',
+                                    backgroundCssClass: 'backgroundTransparent',
+                                    cheveronCssClass:'accentColor clickable',
+                                    displayChevron: false,
+                                    isPreSelected: $parent.isPreSelected($data),
+                                    displayBottomBorder: true
+                            }"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

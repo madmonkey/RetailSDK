@@ -1,0 +1,10 @@
+﻿/* To fix vertical scrolling of contactInfo template in IE */
+.customerAddEditView .win-viewport.win-vertical {
+    overflow: hidden;
+}
+
+/* By default dataList has 12px bottom margin
+   which makes the space between dataList and button below violates page design */
+.dataCardList.noBottomMargin {
+    margin-bottom: 0px;
+}

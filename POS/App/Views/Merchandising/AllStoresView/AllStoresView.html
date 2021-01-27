@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>StoresView</title>
+    <link href="AllStoresView.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="fragment allStoresView">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'allStoresView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div data-bind="pivotItem: { headerResx: 'string_6401' }">
+                <!-- Main content -->
+                <div id="allStoreList" data-bind="dataList: {
+                    itemDataSource: _locations,
+                    onItemDataSourceUpdated: onItemDataSourceUpdated,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                    selectionChanged: storeSelectionChanged,
+                    itemInvoked: invokeStore,
+                    ariaLabelResx: 'string_5505', /* List of stores */
+                    columns: [
+                        { titleResx: 'string_6402', ratio: 20, collapseOrder: 3, minWidth: 150, field: 'OrgUnitNumber' },
+                        { titleResx: 'string_6403', ratio: 20, collapseOrder: 2, minWidth: 150, field: 'OrgUnitName' },
+                        { titleResx: 'string_6404', ratio: 60, collapseOrder: 1, minWidth: 300, field: 'OrgUnitFullAddress' }
+                    ]
+                    },
+                    axBubbleAttr: 'allStoresView_listOfStores'">
+                </div>
+            </div>
+        </div>
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar:{}, axBubbleAttr: 'allStoresView_commandAppBar'">
+
+            <!-- Commenting out the compare functionality -->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAccept',
+                id: 'selectstore',
+                onclick: confirmStoreSelection,
+                labelResx: 'string_6405' ,
+                disabled: _selectCommandDisabled
+            }, axBubbleAttr: 'allStoresView_selectStoreButton'"></button>
+
+        </div>
+    </div>
+</body>
+</html>

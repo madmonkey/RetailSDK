@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Tender Counting View</title>
+    <link href="TenderCountingView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="tenderCountingView fragment" data-bind="with: viewModel">
+        <!-- Payment method template -->
+        <div id="paymentMethodTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="listViewLine">
+                <div class="col ratio4">
+                    <div class="h3" data-win-bind="innerText: tenderName"></div>
+                    <label data-win-bind="innerText: currencyCode"></label>
+                </div>
+                <div class="ratio2">
+                    <div class="padTop05 padLeft12">
+                        <button role="link" class="win-interactive iconCount icon-18x18" data-win-bind="style.display: hasDenominations Commerce.Core.Converter.ShouldDisplay;
+                                this['aria-label']: ariaLabelPaymentCount WinJS.Binding.setAttribute" data-bind="resx: { ariaLabel: 'string_4162' },
+                                attr: {title: Commerce.ViewModelAdapter.getResourceString('string_4162')}"></button>   <!-- Denomination count -->
+                    </div>
+                </div>
+                <div class="ratio4 textRight col accentBorder">
+                    <a class="h1" role="button" data-win-bind="innerText: totalAmountInCurrencyToDisplay;
+                        this['aria-label']: ariaLabelPaymentTotal WinJS.Binding.setAttribute"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section main marginLeft20 marginRight20 col" data-bind="resx: { ariaLabel: 'string_4454' }">
+            <!-- Main content -->
+            <div class="col grow">
+                <div class="col grow" data-bind="sectionWrapper: {headerResx: 'string_4020' }"> <!-- Payment method -->
+                    <div class="standardGrid countingGrid">
+                        <div class="listViewHeader">
+                            <div class="ratio4">
+                                <div class="h6" data-bind="resx: { textWithTooltip: 'string_4023' }">PAYMENT METHOD</div>
+                            </div>
+                            <div class="ratio2">
+                                <div class="h6 padLeft05" data-bind="resx: { textWithTooltip: 'string_4028' }">COUNT</div>
+                            </div>
+                            <div class="ratio4 textRight">
+                                <div class="h6" data-bind="resx: { textWithTooltip: 'string_4024' }">TOTAL</div>
+                            </div>
+                        </div>
+                        <div id="paymentMethodList"
+                                class="col"
+                                data-win-control="WinJS.UI.ListView"
+                                data-win-options="{
+                                    itemTemplate: select('#paymentMethodTemplate'),
+                                    selectionMode: 'single',
+                                    tapBehavior: 'toggleSelect',
+                                    layout: { type: WinJS.UI.ListLayout }
+                                }"
+                                data-bind="winControl: { autoFocusFirstItem: true, itemDataSource: tenderCountingLines, preventDefaulListViewEvents: true, selectionchanged: { eventHandlerCallBack: tenderLineSelectionhandler }, click: $parent.clickCountButton.bind($parent) }, axBubbleAttr: 'tenderCountingView_paymentMethodList'">
+                        </div>
+                        <div class="listViewFooter height60">
+                            <div class="textRight secondaryFontColor no-shrink">
+                                <div class="h2 wrapText" data-bind="formatPrice: totalAmountCounted"></div>
+                                <div class="h6" data-bind="resx: { textContent: 'string_4024' }">TOTAL</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar:{}, axBubbleAttr: 'tenderCountingView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id: 'performOperationAppBar',
+                label: 'Save',
+                extraClass: 'iconSave',
+                onclick: onSave,
+                labelResx: 'string_4302'},
+                axBubbleAttr: 'tenderCountingView_saveButton'">
+            </button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Store Templates</title>
+    <link href="StoreTemplate.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- location list view template -->
+    <script id="storeListTemplate" type="text/html">
+        <div class="row minWidth280 height160 primaryBackgroundColor">
+
+            <!-- First column, contains store pin number -->
+            <div role="button" tabindex="0" class="padLeft12 padTop20 padRight20" data-bind="click: storeUrlSelected, enterKeyPress: storeUrlSelected, resx: { ariaLabel: 'string_1000' }">
+                <h3><span class="pushPin" data-bind="text: storeIdentifier"></span></h3>
+            </div>
+
+            <!-- Second column, contains store details -->
+            <div class="padTop0 grow">
+                <div class="row grow">
+                    <div class="padTop12 grow">
+                        <!-- Store name -->
+                        <a class="h3" href="#" data-bind="text: store.OrgUnitName, click: storeUrlSelected, enterKeyPress: storeUrlSelected"></a>
+                    </div>
+                    <div class="textRight padRight12">
+                        <!-- Select store -->
+                        <button class="iconCheckmark primaryFontColor" data-bind="click: storeSelected, resx: { ariaLabel: 'string_2553' }"></button>
+                    </div>
+                </div>
+                <div tabindex="0" data-bind="click: storeSelected, enterKeyPress: storeSelected">
+                    <!-- Store number -->
+                    <div class="h4 ellipsis" data-bind="text: store.OrgUnitNumber"></div>
+                    <div class="padRight12 maxWidth220">
+                        <!-- Address -->
+                        <div class="height72 secondaryFontColor" data-bind="html: Commerce.Formatters.CommonAddressFormatterWithHtmlEscape(orgUnit.OrgUnitAddress, 3)"></div>
+                        <div class="row alignRight secondaryFontColor">
+                            <div class="marginTop02">
+                                <!-- Store distance from current store -->
+                                <div class="h3" data-bind="text: distanceString"></div>
+                            </div>
+                            <div class="shrink padLeft05 marginTop07">
+                                <!-- Distance Unit -->
+                                <div class="h4" data-bind="text: distanceUnit"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </script>
+
+    <!-- Shipping methods store address -->
+    <script id="storeAddressTemplate" type="text/html">
+        <div class="width320 height140 primaryPanelBackgroundColor col highContrastBorderThin">
+            <!-- shipping from -->
+            <div class="height32 pad12 padTop4 headerBackground">
+                <div class="h4" data-bind="text: Name">Name</div>
+            </div>
+            <div class="positionRelative pad12 padTop4 grow">
+                <div data-bind="html: Commerce.Formatters.CommonAddressFormatterWithHtmlEscape($data)"></div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Shipping methods store address phone-->
+    <script id="storeAddressTemplatePhone" type="text/html">
+        <div class="height140 primaryPanelBackgroundColor col grow highContrastBorderThin">
+            <!-- shipping from -->
+            <div class="height32 pad12 padTop4 headerBackground">
+                <div class="h4" data-bind="text: Name">Name</div>
+            </div>
+            <div class="positionRelative pad12 padTop4 grow">
+                <div data-bind="html: Commerce.Formatters.CommonAddressFormatterWithHtmlEscape($data)"></div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

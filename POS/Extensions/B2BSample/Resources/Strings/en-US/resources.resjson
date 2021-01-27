@@ -1,0 +1,13 @@
+﻿{
+    "string_0"              : "Yes",
+    "_string_0.comment"     : "Positive case button label for setting customer order as B2B.",
+
+    "string_1"              : "No",
+    "_string_1.comment"     : "Negative case button label for setting customer order as B2B.",
+
+    "string_2"              : "B2B Order",
+    "_string_2.comment"     : "Title for B2B customer order dialog.",
+
+    "string_3"              : "Do you want to mark this order as a B2B order?",
+    "_string_3.comment"     : "Message for B2B customer order dialog."
+}

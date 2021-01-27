@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>activation userInfo control</title>
+    <link href="knockout.activationUserInfo.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/html" id="activationUserInfoTemplate">
+        <div data-bind="loader: { visible: $data.indeterminateWaitVisible }"></div>
+        <div class="row right12 top0" data-bind="visible: $data.isUserLoggedOn">
+            <div class="row">
+                <div id="activationUserInfoText" tabindex="0" class="padRight05 padTop05 outlineFocus" data-bind="click: $data.showUserMenu, enterKeyPress: $data.showUserMenu, axBubbleAttr: 'activationUserInfo_userInfoText'">
+                    <div class="h4 textRight" data-bind="text: $data.userImageOrInitialsOptions().name"></div>
+                </div>
+                <div id="activationUserInfo" tabindex="0" class="width40 outlineFocus" role="button" data-bind="click: $data.showUserMenu, enterKeyPress: $data.showUserMenu, setElementRef: $data.activationUserInfoMenuAnchor, resx: { ariaLabel: 'string_514' }, axBubbleAttr: 'activationUserInfo_userInfo'">
+                    <!-- User image -->
+                    <div data-bind="userImageOrInitials: userImageOrInitialsOptions, axBubbleAttr: 'activationUserInfo_userImage'" class="height40 width40 circleBorder h5" />
+                </div>
+            </div>
+        </div>
+        <div id="UserInformationViewMenu" data-bind="menu: { anchor: '#activationUserInfo' }, hidden: $data.isMenuHidden, setElementRef: $data.activationUserInfoMenu, axBubbleAttr: 'activationUserInfo_userInformationViewMenu'">
+            <button data-bind="menuCommand: { id:'logOff', label: 'Log off' }, resx: { label: 'string_3901'}, click: $data.logOff">Log off</button>
+        </div>
+    </script>
+</body>
+</html>

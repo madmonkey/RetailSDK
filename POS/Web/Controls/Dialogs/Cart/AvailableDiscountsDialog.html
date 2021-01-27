@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AvailableDiscountsDialog</title>
+    <link href="AvailableDiscountsDialog.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="AvailableDiscountsDialog" data-bind="customControlInternal: 'AvailableDiscountsDialog'">
+        <div data-bind="dialog: {
+             title: title,
+             message: message,
+             visible: visible,
+             buttonClick: onButtonClick,
+             showProgressIndicator: indeterminateWaitVisible,
+             closeOnEscButton: true,
+             tabIndexButton: 3,
+             dialogCloseButtonClick: onCloseDialogButtonClick,
+             buttons: [
+                 {
+                     label: Commerce.ViewModelAdapter.getResourceString('string_75'),
+                     operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK,
+                     isPrimary: true
+                 },
+                 {
+                     label: Commerce.ViewModelAdapter.getResourceString('string_80'),
+                     operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK,
+                     isPrimary: false
+                 }
+             ]
+         },
+         axBubbleAttr: 'availableDiscountsDialog' ">
+            <!--OK-->
+            <div class="col height100Percent">
+                <div class="flip col no-shrink">
+                    <div class="row primaryFontColor">
+                        <div class="col width88 marginBottom8 marginLeft12">
+                            <div tabindex="1" class="h6 row center padBottom8" id="lineAttributesTabText" role="tab"
+                                 data-bind="css: { active: viewMode() === Commerce.Controls.AvailableDiscountsDisplayMode.Line },
+                                            click: switchToLineDisplayMode,
+                                            enterKeyPress: switchToLineDisplayMode,
+                                            resx: { textContent: 'string_4486' },
+                                            axBubbleAttr: 'AvailableDiscountsDisplay_LineTabText'">
+                                <!--Line-->
+                            </div>
+                            <div class="row height4"
+                                 data-bind="css: viewMode() === Commerce.Controls.AvailableDiscountsDisplayMode.Line ? 'accentBackground' : 'splitViewBackgroundColor'">
+                            </div>
+                        </div>
+                        <div class="col width88 marginBottom8 marginLeft12">
+                            <div tabindex="0" class="h6 row center padBottom8" id="headerAttributesTabText" role="tab"
+                                 data-bind="css: { active: viewMode() === Commerce.Controls.AvailableDiscountsDisplayMode.Transaction },
+                                            click: switchToTransactionDisplayMode,
+                                            enterKeyPress: switchToTransactionDisplayMode,
+                                            resx: { textContent: 'string_108' },
+                                            axBubbleAttr: 'AvailableDiscountsDisplay_TransactionTabText'">
+                                <!--Transaction-->
+                            </div>
+                            <div class="row height4"
+                                 data-bind="css: viewMode() === Commerce.Controls.AvailableDiscountsDisplayMode.Transaction ? 'accentBackground' : 'splitViewBackgroundColor'">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col grow scrollY padLeft12 padRight12">
+                    <div data-bind="visible: viewMode() === Commerce.Controls.AvailableDiscountsDisplayMode.Transaction" class="col grow marginTop0 width100Percent">
+                        <div class="row borderBottomThin">
+                            <div class="padTop12 padBottom12">
+                                <label class="primaryFontColor" data-bind="resx: { textContent: 'string_120' }"><!--SUBTOTAL--></label>
+                                <div class="primaryFontColor h1" data-bind="formatPrice: cartSubTotal"></div>
+                            </div>
+                        </div>
+                        <div id="cartPromotionsButtonGrid" class="grow col">
+                            <!-- ko foreach: transactionPromotions -->
+                            <div id="cartPromotionsList" data-bind="template: { name: 'cartPromotionTemplate' }">
+                            </div>
+                            <!-- /ko -->
+                            <!-- ko if: Commerce.ObjectExtensions.isNullOrUndefined(transactionPromotions()) || transactionPromotions().length === 0 -->
+                            <div class="h3 center wrapTextWithLineBreaks" data-bind="text: Commerce.ViewModelAdapter.getResourceString('string_1032')">
+                                <!--We didn't find anything to display here.-->
+                            </div>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                    <div class="col grow marginTop0 width100Percent"
+                         data-bind="visible: viewMode() === Commerce.Controls.AvailableDiscountsDisplayMode.Line">
+                        <!-- Product information -->
+                        <!-- ko ifnot: Commerce.ObjectExtensions.isNullOrUndefined(product()) -->
+                        <div data-bind="template: { name: 'lineDetailsTemplate', data: product() }"></div>
+                        <!-- /ko -->
+                        <div id="cartPromotionsButtonGrid" class="grow col">
+                            <!-- ko foreach: cartLinePromotions -->
+                            <div id="cartPromotionsList" data-bind="template: { name: 'cartPromotionTemplate' }">
+                            </div>
+                            <!-- /ko -->
+                            <!-- ko if: Commerce.ObjectExtensions.isNullOrUndefined(cartLinePromotions()) || cartLinePromotions().length === 0 -->
+                            <div class="h3 center wrapTextWithLineBreaks" data-bind="text: Commerce.ViewModelAdapter.getResourceString('string_1032')">
+                                <!--We didn't find anything to display here.-->
+                            </div>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Task Management View Phone</title>
+</head>
+<body>
+    <div class="fragment TaskManagementView" data-bind="with: viewModel">
+        <div class="row height100Percent marginBottom48" data-bind="visible: !isPhoneDetailVisible()">
+            <div id="listCol" class="col grow height100Percent">
+                <div id="taskManagementViewPivot" data-bind="pivot: { onselectionchanged: switchMode.bind($data) }, resx: { ariaLabel: 'string_4454' /* Main content */}">
+                    <div id="MyTasksPivotItem" data-bind="pivotItem: { headerResx: 'string_7705' /* My tasks */}">
+                        <!-- ko if: isInMyTasksView() || isMyTasksDatalistLoaded() -->
+                        <div id="MyTasksViewList" data-bind="
+                                dataList: {
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOrMulti,
+                                    selectionChanged: selectTask,
+                                    itemInvoked: onInvokeSelectTaskForPhone,
+                                    selectInvokedItem: true,
+                                    ariaLabelResx: 'string_7705', /* My Tasks */
+                                    incrementalDataSource: {
+                                        dataManager: $data,
+                                        callerMethod: getMyTasks,
+                                        pageSize: Commerce.ViewModels.TaskManagementViewModel.DEFAULT_PAGE_SIZE,
+                                        reloadCallBack: reloadMyTasksCallback
+                                    },
+                                    columns: [
+                                        { titleResx: 'string_7709' /* NAME */, ratio: 25, collapseOrder: 4, minWidth: 150, field: 'Name' },
+                                        { titleResx: 'string_7710' /* DUE DATE */, ratio: 25, collapseOrder: 3, minWidth: 150, field: 'DueDateTime', converter: 'Commerce.Core.Converter.DateWithLocalTime' },
+                                        { titleResx: 'string_7711' /* STATUS */, ratio: 25, collapseOrder: 2, minWidth: 150, field: 'LocalizedStatus' },
+                                        { titleResx: 'string_7712' /* TASK LIST */, ratio: 25, collapseOrder: 1, minWidth: 150, field: 'ChecklistName' }
+                                    ]
+                                },
+                                axBubbleAttr: 'TaskManagementView_MyTasks'">
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <div id="AllTasksPivotItem" data-bind="pivotItem: { headerResx: 'string_7706' /* All tasks */}">
+                        <!-- ko if: isInAllTasksView() || isAllTasksDatalistLoaded() -->
+                        <div id="AllTasksViewList" data-bind="
+                                dataList: {
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOrMulti,
+                                    selectionChanged: selectTask,
+                                    itemInvoked: onInvokeSelectTaskForPhone,
+                                    selectInvokedItem: true,
+                                    ariaLabelResx: 'string_7706', /* All Tasks */
+                                    incrementalDataSource: {
+                                        dataManager: $data,
+                                        callerMethod: getAllTasks,
+                                        pageSize: Commerce.ViewModels.TaskManagementViewModel.DEFAULT_PAGE_SIZE,
+                                        reloadCallBack: reloadAllTasksCallback
+                                    },
+                                    columns: [
+                                        { titleResx: 'string_7709' /* NAME */, ratio: 20, collapseOrder: 5, minWidth: 150, field: 'Name' },
+                                        { titleResx: 'string_7727' /* ASSIGNED TO */, ratio: 20, collapseOrder: 2, minWidth: 150, field: 'AssignedToWorkerName' },
+                                        { titleResx: 'string_7710' /* DUE DATE */, ratio: 20, collapseOrder: 4, minWidth: 150, field: 'DueDateTime', converter: 'Commerce.Core.Converter.DateWithLocalTime' },
+                                        { titleResx: 'string_7711' /* STATUS */, ratio: 20, collapseOrder: 3, minWidth: 150, field: 'LocalizedStatus' },
+                                        { titleResx: 'string_7712' /* TASK LIST */, ratio: 20, collapseOrder: 1, minWidth: 150, field: 'ChecklistName' }
+                                    ]
+                                },
+                                axBubbleAttr: 'TaskManagementView_AllTasks'">
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <div id="OverDueTasksPivotItem" data-bind="pivotItem: { headerResx: 'string_7707' /* Overdue tasks */ }">
+                        <!-- ko if: isInOverDueTasksView() || isOverDueTasksDatalistLoaded() -->
+                        <div id="OverDueTasksViewList" data-bind="
+                                dataList: {
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOrMulti,
+                                    selectionChanged: selectTask,
+                                    itemInvoked: onInvokeSelectTaskForPhone,
+                                    selectInvokedItem: true,
+                                    ariaLabelResx: 'string_7707', /* Overdue Tasks */
+                                    incrementalDataSource: {
+                                        dataManager: $data,
+                                        callerMethod: getOverDueTasks,
+                                        pageSize: Commerce.ViewModels.TaskManagementViewModel.DEFAULT_PAGE_SIZE,
+                                        reloadCallBack: reloadOverDueTasksCallback
+                                    },
+                                    columns: [
+                                        { titleResx: 'string_7709' /* NAME */, ratio: 20, collapseOrder: 5, minWidth: 150, field: 'Name' },
+                                        { titleResx: 'string_7727' /* ASSIGNED TO */, ratio: 20, collapseOrder: 2, minWidth: 150, field: 'AssignedToWorkerName' },
+                                        { titleResx: 'string_7710' /* DUE DATE */, ratio: 20, collapseOrder: 4, minWidth: 150, field: 'DueDateTime', converter: 'Commerce.Core.Converter.DateWithLocalTime' },
+                                        { titleResx: 'string_7711' /* STATUS */, ratio: 20, collapseOrder: 3, minWidth: 150, field: 'LocalizedStatus' },
+                                        { titleResx: 'string_7712' /* TASK LIST */, ratio: 20, collapseOrder: 1, minWidth: 150, field: 'ChecklistName' }
+                                    ]
+                                },
+                                axBubbleAttr: 'TaskManagementView_OverDueTasks'">
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <div id="ChecklistsPivotItem" data-bind="pivotItem: { headerResx: 'string_7708' /* Task lists */ }">
+                        <!-- ko if: isInChecklistsView() || isChecklistsDatalistLoaded() -->
+                        <div id="ChecklistsViewList" data-bind="
+                                dataList: {
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOrMulti,
+                                    selectionChanged: selectChecklist,
+                                    itemInvoked: onInvokeSelectChecklistForPhone,
+                                    selectInvokedItem: true,
+                                    ariaLabelResx: 'string_7708', /* Task lists */
+                                    incrementalDataSource: {
+                                        dataManager: $data,
+                                        callerMethod: getChecklists,
+                                        pageSize: Commerce.ViewModels.TaskManagementViewModel.DEFAULT_PAGE_SIZE,
+                                        reloadCallBack: reloadChecklistsCallback
+                                    },
+                                    columns: [
+                                        { titleResx: 'string_7713' /* NAME */, ratio: 20, collapseOrder: 5, minWidth: 120, field: 'Name' },
+                                        { titleResx: 'string_7714' /* ACTIVE TASKS */, ratio: 20, collapseOrder: 4, minWidth: 120, field: 'ActiveTasksCount', converter: 'Commerce.Core.Converter.IntegerQuantityFormatter' },
+                                        { titleResx: 'string_7734' /* TOTAL TASKS */, ratio: 20, collapseOrder: 3, minWidth: 120, field: 'AllTasksCount', converter: 'Commerce.Core.Converter.IntegerQuantityFormatter' },
+                                        { titleResx: 'string_7735' /* TARGET DATE */, ratio: 20, collapseOrder: 2, minWidth: 120, field: 'TargetDateTime', converter: 'Commerce.Core.Converter.DateWithLocalTime' },
+                                        { titleResx: 'string_7736' /* STATUS */, ratio: 20, collapseOrder: 1, minWidth: 120, field: 'LocalizedStatus' }
+                                    ]
+                                },
+                                axBubbleAttr: 'TaskManagementView_Checklists'">
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row grow height100Percent" data-bind="visible: isPhoneDetailVisible() ">
+            <!-- Task management details pane for mobile -->
+            <div class="col grow height100Percent marginBottom48" data-bind="slideVisible: { isShowed: isPhoneDetailVisible() }">
+                <div class="col grow width100Percent">
+                    <!-- ko if: isInChecklistsView() -->
+                    <div data-bind="template: { name: 'taskManagementTasklistNameTemplate',
+                                                data: {selectedItemDisplay: selectedChecklistForDetailDisplay()} }"></div>
+                    <div class="flip col no-shrink marginTop12" data-bind="slideVisible: { isShowed: true }">
+                        <div class="row primaryFontColor" role="tablist">
+                            <div class="col width100 marginBottom8 marginTop8">
+                                <div tabindex="0" class="h6 row center padBottom8" id="activeTasksTabText" role="tab"
+                                     data-bind="css: { active: tasklistDetailViewMode() === Commerce.ViewModels.TasklistDetailViewMode.Active },
+                                                        click: switchToActiveTasksMode,
+                                                        enterKeyPress: switchToActiveTasksMode,
+                                                        resx: { textContent: 'string_7776' /* Active tasks */ },
+                                                        axBubbleAttr: 'checklistTasklistDetails_activeTasksTabText'">Active tasks</div>
+                                <div class="row height4"
+                                     data-bind="css: tasklistDetailViewMode() === Commerce.ViewModels.TasklistDetailViewMode.Active ? 'accentBackground' : 'splitViewBackgroundColor'"></div>
+                            </div>
+                            <div class="col width100 marginBottom8 marginTop8 marginLeft12">
+                                <div tabindex="0" class="h6 row center padBottom8" id="completedTasksTabText" role="tab"
+                                     data-bind="css: { active : tasklistDetailViewMode() === Commerce.ViewModels.TasklistDetailViewMode.Completed },
+                                                        click: switchToCompletedTasksMode,
+                                                        enterKeyPress: switchToCompletedTasksMode,
+                                                        resx: { textContent: 'string_7777' /* Completed tasks */ },
+                                                        axBubbleAttr: 'checklistTasklistDetails_completedTasksTabText'">Completed tasks</div>
+                                <div class="row height4"
+                                     data-bind="css: tasklistDetailViewMode() === Commerce.ViewModels.TasklistDetailViewMode.Completed ? 'accentBackground' : 'splitViewBackgroundColor'"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-bind="template: { name: 'taskManagementTasklistDetailTemplate',
+                                                data: {selectedItemDisplay: selectedChecklistForDetailDisplay(), isInPhoneView: true} }"
+                         class="col grow primaryPanelBackgroundColor highContrastBorderThin margin12 marginTop0 padTop12 padBottom12"></div>
+                    <!-- /ko -->
+                    <!-- ko ifnot: isInChecklistsView() -->
+                    <div data-bind="template: { name: 'taskManagementTaskDetailTemplate',
+                                                data: {selectedItemDisplay: selectedItemDisplay(), isInPhoneView: true} }"
+                         class="grow scrollY"></div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <!-- End Task management details pane for mobile  -->
+        </div>
+
+        <!-- Sort menu -->
+        <div id="sortMyTasksFlyout" data-bind="menu: { anchor: '#sortMyTasks', placement: 'top', alignment: 'left' }, axBubbleAttr: 'taskManagementView_sortMyTasksFlyout'">
+            <!-- ko foreach: sortMyTasksMenuItems -->
+            <button data-bind="toggleMenuCommand: {id: $data.buttonId}, resx: { label: $data.displayName }, click: $data.clickEvent, axBubbleAttr: $data.axBubbleAttr"></button>
+            <!-- /ko -->
+        </div>
+
+        <div id="sortAllTasksFlyout" data-bind="menu: { anchor: '#sortAllTasks', placement: 'top', alignment: 'left' }, axBubbleAttr: 'taskManagementView_sortAllTasksFlyout'">
+            <!-- ko foreach: sortAllTasksMenuItems -->
+            <button data-bind="toggleMenuCommand: {id: $data.buttonId}, resx: { label: $data.displayName }, click: $data.clickEvent, axBubbleAttr: $data.axBubbleAttr"></button>
+            <!-- /ko -->
+        </div>
+
+        <div id="sortOverDueTasksFlyout" data-bind="menu: { anchor: '#sortOverDueTasks', placement: 'top', alignment: 'left' }, axBubbleAttr: 'taskManagementView_sortOverDueTasksFlyout'">
+            <!-- ko foreach: sortOverDueTasksMenuItems -->
+            <button data-bind="toggleMenuCommand: {id: $data.buttonId}, resx: { label: $data.displayName }, click: $data.clickEvent, axBubbleAttr: $data.axBubbleAttr"></button>
+            <!-- /ko -->
+        </div>
+
+        <div id="sortChecklistsFlyout" data-bind="menu: { anchor: '#sortChecklists', placement: 'top', alignment: 'left' }, axBubbleAttr: 'taskManagementView_sortChecklistsFlyout'">
+            <!-- ko foreach: sortChecklistsMenuItems -->
+            <button data-bind="toggleMenuCommand: {id: $data.buttonId}, resx: { label: $data.displayName }, click: $data.clickEvent, axBubbleAttr: $data.axBubbleAttr"></button>
+            <!-- /ko -->
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar: {}, visible: true, axBubbleAttr: 'taskManagementView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                    id: 'taskManagementViewMyTasks_showMultiSelect',
+                    extraClass: 'iconMultiSelect',
+                    labelResx: 'string_6405' /* Select */,
+                    visible: !isPhoneDetailVisible() && isInMyTasksView()
+                },
+                gridSelectionMode: { id: '#MyTasksViewList' },
+                axBubbleAttr: 'taskManagementViewMyTasks_showMultiSelectLine'"></button><!--Multi select my tasks-->
+            <button data-bind="appBarCommand: {
+                    id: 'taskManagementViewAllTasks_showMultiSelect',
+                    extraClass: 'iconMultiSelect',
+                    labelResx: 'string_6405' /* Select */,
+                    visible: !isPhoneDetailVisible() && isInAllTasksView()
+                },
+                gridSelectionMode: { id: '#AllTasksViewList' },
+                axBubbleAttr: 'taskManagementViewAllTasks_showMultiSelectLine'"></button><!--Multi select all tasks-->
+            <button data-bind="appBarCommand: {
+                    id: 'taskManagementViewOverDueTasks_showMultiSelect',
+                    extraClass: 'iconMultiSelect',
+                    labelResx: 'string_6405' /* Select */,
+                    visible: !isPhoneDetailVisible() && isInOverDueTasksView()
+                },
+                gridSelectionMode: { id: '#OverDueTasksViewList' },
+                axBubbleAttr: 'taskManagementViewOverDueTasks_showMultiSelectLine'"></button><!--Multi select overdue tasks-->
+            <button data-bind="appBarCommand: {
+                    id: 'taskManagementViewChecklists_showMultiSelect',
+                    extraClass: 'iconMultiSelect',
+                    labelResx: 'string_6405' /* Select */,
+                    visible: !isPhoneDetailVisible() && isInChecklistsView()
+                },
+                gridSelectionMode: { id: '#ChecklistsViewList' },
+                axBubbleAttr: 'taskManagementViewChecklists_showMultiSelectLine'"></button><!--Multi select checklists-->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconEdit',
+                id:'editTasks',
+                onclick: editTasksAsync,
+                labelResx: 'string_7753' /* Edit Task */,
+                enabled: isAnyItemSelected() && selectedItemsDisplay().length === 1,
+                visible: !isInChecklistsView() },
+                axBubbleAttr: 'taskManagementView_editTask'"></button><!-- Edit task -->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAdd',
+                id:'addTasks',
+                onclick: addTasksAsync,
+                labelResx: 'string_7758' /* Add Task */,
+                enabled: true,
+                visible: true },
+                axBubbleAttr: 'taskManagementView_addTask'"></button><!-- Add task -->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAssign',
+                id:'reassignTasks',
+                onclick: reassignTasksAsync,
+                labelResx: 'string_7737' /* Assign Tasks */,
+                enabled: isAnyItemSelected(),
+                visible: !isInChecklistsView() },
+                axBubbleAttr: 'taskManagementView_reassignTasks'"></button><!-- Reassign tasks -->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconTrackers',
+                id:'changeChecklistsStatus',
+                onclick: changeChecklistsStatusAsync,
+                labelResx: 'string_7766' /* Change Task list Status */,
+                enabled: isAnyItemSelected(),
+                visible: isInChecklistsView() },
+                axBubbleAttr: 'taskManagementView_changeChecklistsStatus'"></button><!-- Change Checklist Status -->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconTrackers',
+                id:'changeTasksStatus',
+                onclick: changeTasksStatusAsync,
+                labelResx: 'string_7741' /* Change Task Status */,
+                enabled: isAnyItemSelected(),
+                visible: !isInChecklistsView() },
+                axBubbleAttr: 'taskManagementView_changeTasksStatus'"></button><!-- Change Task Status -->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconFilter',
+                id:'applyFilter',
+                onclick: filterTasksAsync,
+                labelResx: 'string_935' /* Filter */,
+                enabled: true,
+                visible: !isPhoneDetailVisible() },
+                axBubbleAttr: 'taskManagementView_applyFilter'"></button><!-- Filter -->
+            <button data-bind="appBarCommand: {
+                id:'sortMyTasks',
+                extraClass: 'iconSort',
+                type: 'flyout',
+                flyout: '#sortMyTasksFlyout',
+                enabled: true,
+                labelResx: 'string_13186' /* Sort */,
+                visible: !isPhoneDetailVisible() && isInMyTasksView()},
+                axBubbleAttr: 'taskManagementView_sortMyTasks'"></button><!-- Sort My Tasks -->
+            <button data-bind="appBarCommand: {
+                id:'sortAllTasks',
+                extraClass: 'iconSort',
+                type: 'flyout',
+                flyout: '#sortAllTasksFlyout',
+                enabled: true,
+                labelResx: 'string_13186' /* Sort */,
+                visible: !isPhoneDetailVisible() && isInAllTasksView()},
+                axBubbleAttr: 'taskManagementView_sortAllTasks'"></button><!-- Sort All Tasks -->
+            <button data-bind="appBarCommand: {
+                id:'sortOverDueTasks',
+                extraClass: 'iconSort',
+                type: 'flyout',
+                flyout: '#sortOverDueTasksFlyout',
+                enabled: true,
+                labelResx: 'string_13186' /* Sort */,
+                visible: !isPhoneDetailVisible() && isInOverDueTasksView()},
+                axBubbleAttr: 'taskManagementView_sortOverDueTasks'"></button><!-- Sort Overdue Tasks -->
+            <button data-bind="appBarCommand: {
+                id:'sortChecklists',
+                extraClass: 'iconSort',
+                type: 'flyout',
+                flyout: '#sortChecklistsFlyout',
+                enabled: true,
+                labelResx: 'string_13186' /* Sort */,
+                visible: !isPhoneDetailVisible() && isInChecklistsView()},
+                axBubbleAttr: 'taskManagementView_sortChecklists'"></button><!-- Sort Checklists -->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconRefresh',
+                id:'refreshTaskManagementView',
+                onclick: refreshTaskManagementView,
+                labelResx: 'string_7749',
+                enabled: true,
+                visible: !isPhoneDetailVisible() },
+                axBubbleAttr: 'taskManagementView_refreshTaskManagementView'"></button><!-- Refresh -->
+        </div>
+    </div>
+</body>
+</html>

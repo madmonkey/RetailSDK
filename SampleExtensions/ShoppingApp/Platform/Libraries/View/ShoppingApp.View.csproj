@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\..\..\..\..\BuildTools\Common.props" />
+  <Import Project="..\..\..\..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Contoso.Commerce.Client.ShoppingApp.View</RootNamespace>
+    <AssemblyName>$(AssemblyNamePrefix).Commerce.Client.ShoppingApp.View</AssemblyName>
+    <SignAssembly>false</SignAssembly>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\Core\Core.csproj" />
+    <ProjectReference Include="..\..\Libraries\Data.Entities\Data.Entities.csproj" />
+    <ProjectReference Include="..\ViewModel\ShoppingApp.ViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Toasts.Forms.Plugin" Version="3.3.2" />
+    <PackageReference Include="Xamarin.Auth" Version="1.6.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Views\Cart\CardPaymentHost.html" />
+  </ItemGroup>
+
+</Project>

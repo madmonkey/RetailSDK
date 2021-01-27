@@ -1,0 +1,454 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.ConfigurationProviders</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.CacheControlElement">
+            <summary>
+            Represents configuration values used to control caching behavior.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CacheControlElement.IsCachingDisabled">
+            <summary>
+            Gets a value indicating whether caching is disabled or not.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CacheControlElement.IsCacheUpdatingDisabled">
+            <summary>
+            Gets a value indicating whether cache updates are allowed or not.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CacheControlElement.ForceHostileCacheLookups">
+            <summary>
+            Gets a value indicating whether cache lookups should return the opposite of reality or not.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CacheControlElement.ForceMissedCacheLookups">
+            <summary>
+            Gets a value indicating whether cache lookups should always fail or not.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CacheControlElement.ForceCacheLookupHits">
+            <summary>
+            Gets a value indicating whether cache lookups should always return positive or not.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.CertificateElement">
+            <summary>
+            Represents configuration values used for certificate.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CertificateElement.Thumbprint">
+            <summary>
+            Gets the certificate thumbprint.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CertificateElement.StoreName">
+            <summary>
+            Gets the certificate store name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CertificateElement.StoreLocation">
+            <summary>
+            Gets the certificate store location.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CertificateElement.Location">
+            <summary>
+            Gets the certificate location.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.ClientIdElement">
+            <summary>
+            Represents a client identifier element required for Real-time Service authentication.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.ClientIdElement.Value">
+            <summary>
+            Gets the value of the client identifier.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.ClientSecretElement">
+            <summary>
+            Represents a a single client secret element required for Real-time Service authentication.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.ClientSecretElement.Value">
+            <summary>
+            Gets the value of the client secret.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.ClientSecretElementCollection">
+            <summary>
+            Represents a collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.ClientSecretElement"/> classes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.ClientSecretElementCollection.CreateNewElement">
+            <summary>
+            Creates a new client secret element.
+            </summary>
+            <returns>A new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.ClientSecretElement"/> class.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.ClientSecretElementCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the key of the collection.
+            </summary>
+            <param name="element">The client secret element.</param>
+            <returns>The element value.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeConfigurationManager">
+            <summary>
+            Encapsulates functionality for reading the Commerce Runtime configuration.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeConfigurationManager.SectionName">
+            <summary>
+            Represents the section name in the .NET configuration file.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeConfigurationManager.ExtensionsSectionName">
+            <summary>
+            Represents the extensions section name in the .NET configuration file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeConfigurationManager.CachedConfiguration">
+            <summary>
+            Gets the cached configuration object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeConfigurationManager.GetConfigurationSection(System.String)">
+            <summary>
+            Gets the configuration section.
+            </summary>
+            <param name="sectionName">Name of the section.</param>
+            <returns>The configuration section.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeConfigurationManager.GetConfigurationExtensionsSection(System.String)">
+            <summary>
+            Gets the extensions configuration section.
+            </summary>
+            <param name="sectionName">Name of the extensions section.</param>
+            <returns>The configuration extensions section.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeConfigurationManager.LoadExtensibleEnumerationTypes">
+            <summary>
+            Gets the types which derive from <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Framework.ExtensibleEnumeration"/>.
+            </summary>
+            <returns>A collection of types.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeExtensionsSection">
+            <summary>
+            Represents the configuration section for the extended Commerce Runtime composition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeExtensionsSection.CompositionElement">
+            <summary>
+            Gets the composition collection element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeExtensionsSection.Composition">
+            <summary>
+            Gets the composition collection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeExtensionsSection.SettingsElement">
+            <summary>
+            Gets the settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeExtensionsSection.Settings">
+            <summary>
+            Gets the settings element.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeSection">
+            <summary>
+            Represents the configuration section for the Commerce Runtime.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeSection.StorageElement">
+            <summary>
+            Gets the storage element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeSection.Storage">
+            <summary>
+            Gets the storage element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeSection.CompositionElement">
+            <summary>
+            Gets the composition collection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeSection.Composition">
+            <summary>
+            Gets the composition collection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeSection.CacheControlElement">
+            <summary>
+            Gets the cache control element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeSection.CacheControl">
+            <summary>
+            Gets the cache control element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeSection.DataAccessElement">
+            <summary>
+            Gets the data access element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeSection.DataAccessSettings">
+            <summary>
+            Gets the data access element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeSection.SettingsElement">
+            <summary>
+            Gets the settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeSection.Settings">
+            <summary>
+            Gets the settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeSection.UseSingletonHandlers">
+            <summary>
+            Gets a value indicating whether the composition should use singleton instances of the request handlers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeSection.RealtimeServiceElement">
+            <summary>
+            Gets the real time service element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CommerceRuntimeSection.RealtimeService">
+            <summary>
+            Gets the real time service element.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionElement">
+            <summary>
+            Represents a single composition source to be loaded by the runtime.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionElement.Source">
+            <summary>
+            Gets the load source.
+            </summary>
+            <remarks>
+            Supported values include type, assembly or directory.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionElement.Value">
+            <summary>
+            Gets the value for the load source.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionElementCollection">
+            <summary>
+            Represents a collection of <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionElement"/> classes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionElementCollection.CreateNewElement">
+            <summary>
+            Creates a new composition element.
+            </summary>
+            <returns>A new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionElement"/> class.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.CompositionElementCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the key of the collection.
+            </summary>
+            <param name="element">The composition element.</param>
+            <returns>The element value.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.ExtensionsAssemblyLoader">
+            <summary>
+            Class to load the extension assemblies.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Configuration.ExtensionsAssemblyLoader.AssemblyLoadPathKey">
+            <summary>
+            Represents the key in the application settings that defines the extension assembly load path.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.Configuration.ExtensionsAssemblyLoader.AssemblyFileExtensions">
+            <summary>
+            This list has the supported assembly file extensions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.ExtensionsAssemblyLoader.LoadFromExtensionsFolder(System.Object,System.ResolveEventArgs)">
+            <summary>
+            Event handler to load the external assemblies.
+            </summary>
+            <param name="sender">The sender object.</param>
+            <param name="args">The args.</param>
+            <returns>The <c>Assembly</c> object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Configuration.ExtensionsAssemblyLoader.GetAssemblyName(System.String)">
+            <summary>
+            This method returns a <c>AssemblyName</c> object if the assembly is found in extensions folder.
+            </summary>
+            <param name="assemblyName">Name of the assembly.</param>
+            <returns>A <c>AssemblyName</c> object if the assembly is found in the extensions folder; Else returns null.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement">
+            <summary>
+            Represents configuration values used for realtime service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.CertificateElement">
+            <summary>
+            Gets the realtime service certificate settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.Certificate">
+            <summary>
+            Gets the certificate element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.ClientIdElement">
+            <summary>
+            Gets the client identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.ClientId">
+            <summary>
+            Gets the client identifier element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.ClientSecretsElement">
+            <summary>
+            Gets the client secret collection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.ClientSecrets">
+            <summary>
+            Gets the composition collection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.SettingsElementCollection">
+            <summary>
+            Gets a generic key-value mapping of real-time service configurations to their values.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.AuthenticationType">
+            <summary>
+            Gets the authentication type to use with Real-time Service.
+            Returns a null string if this configuration is not found in the Settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.ServiceName">
+            <summary>
+            Gets the Service Name to attempt to contact using Real-time Service.
+            Returns a null string if this configuration is not found in the Settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.ServiceHostUrl">
+            <summary>
+            Gets the Service Host URL to attempt to reach using with Real-time Service.
+            Returns a null string if this configuration is not found in the Settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.ProfileId">
+            <summary>
+            Gets the RTS profile ID to use with Real-time Service.
+            Returns a null string if this configuration is not found in the Settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.UserId">
+            <summary>
+            Gets the user ID to use with certificate authentication.
+            Returns a null string if this configuration is not found in the Settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.IssuerUri">
+            <summary>
+            Gets the issuer URI to use with certificate authentication.
+            Returns a null string if this configuration is not found in the Settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.IdentityProvider">
+            <summary>
+            Gets the identity provider to use with certificate authentication.
+            Returns a null string if this configuration is not found in the Settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.IdentityProviderClaim">
+            <summary>
+            Gets the identity provider claim to use with certificate authentication.
+            Returns a null string if this configuration is not found in the Settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.IssuedTokenType">
+            <summary>
+            Gets the issued token type to use with certificate authentication.
+            Returns a null string if this configuration is not found in the Settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.AudienceUrn">
+            <summary>
+            Gets the audience URN to use with certificate authentication.
+            Returns a null string if this configuration is not found in the Settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.AzureAuthority">
+            <summary>
+            Gets the Azure authority to use with Service-to-Service authentication.
+            Returns a null string if this configuration is not found in the Settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.AzureResource">
+            <summary>
+            Gets the Azure resource to use with Service-to-Service authentication.
+            Returns a null string if this configuration is not found in the Settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.CertificateAuthBindingName">
+            <summary>
+            Gets the certificate authentication binding name to use with certificate authentication.
+            Returns a null string if this configuration is not found in the Settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.ServicetoServiceAuthBindingName">
+            <summary>
+            Gets the Service-To-Service authentication binding name to use with Service-to-Service authentication.
+            Returns a null string if this configuration is not found in the Settings element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.MaxExtensionTimeoutInSeconds">
+            <summary>
+            Gets the max allowed timeout setting for extension methods.
+            Returns a null string if this configuration is not found in the setting element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.RealtimeServiceElement.Settings">
+            <summary>
+            Gets a generic key-value mapping of real-time service configurations to their values.
+            This accessor is private to enforce its use through statically defined methods, which expose
+            predefined known configuration values.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Configuration.StorageElement">
+            <summary>
+            Represents configuration values used in conjunction with storage resolution.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Configuration.StorageElement.DefaultOperatingUnitNumber">
+            <summary>
+            Gets the default operating unit for the StorageResolver class.
+            </summary>
+            <remarks>
+            The operating unit used during storage resolution when no channel has been specified
+            as part of the context. This should only be used during bootstrapping scenarios where
+            the target channel is not yet available.
+            </remarks>
+        </member>
+    </members>
+</doc>

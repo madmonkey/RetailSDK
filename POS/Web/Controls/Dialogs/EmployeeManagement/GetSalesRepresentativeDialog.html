@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetSalesRepresentativeDialog</title>
+</head>
+<body>
+    <div class="getSalesRepresentativeDialog" data-bind="customControlInternal: 'GetSalesRepresentativeDialog'">
+        <div data-bind="dialog: {
+             title: title,
+             subTitle: subTitle,
+             visible: visible,
+             buttons: [
+                { label: Commerce.ViewModelAdapter.getResourceString('string_1204'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton', isPrimary: false}
+             ],
+             closeOnEscButton: true,
+             buttonClick: buttonClickHandler,
+             dialogCloseButtonClick: dialogCloseButtonClick
+        },
+        axBubbleAttr: 'getSalesRepresentativeDialog_getSalesRepresentativeDialog'" class="modalWindowContentSection">
+            <!-- Progress ring -->
+            <div data-bind="loader: { visible: viewModel.isBusy, restoreFocus: false, type: Commerce.Controls.Loader.LoaderType.Dialog }"></div>
+            <!-- Dialog content -->
+            <div class="col grow">
+                <!-- Search field -->
+                <div class="marginTop20">
+                    <label data-bind="resx: {textContent: 'string_13009'}" for="searchSalesRepresentativesTextBox">Scan or search</label>
+                    <div class="row grow width100Percent searchWrapper">
+                        <input class="noBorder" id="searchSalesRepresentativesTextBox" type="search"
+                               data-bind="value: viewModel.searchText,
+                                    valueUpdate: 'afterkeydown',
+                                    clearMark: true,
+                                    enterKeyPress: viewModel.performSalesRepresentativeSearch.bind(viewModel)" /> <!-- Search text box -->
+                        <button class="noBorder iconSearch margin0 height32 padRight8 searchButton" type="submit"
+                                data-bind="resx: { ariaLabel: 'string_50' },
+                                    click: viewModel.performSalesRepresentativeSearch.bind(viewModel),
+                                    axBubbleAttr: 'getSalesRepresentativeDialog_searchButton'"></button> <!-- Search button -->
+                    </div>
+                    <div class="marginBottom10 marginTop12 secondaryBackgroundColor highContrastRowLine height01"></div> <!-- Separator line -->
+                </div>
+                <!— Sales representatives list -->
+                <div id="salesRepresentativesButtonGrid" class="grow col">
+                    <label class="marginTop20 marginBottom12 flexNone" data-bind="resx: {textContent: 'string_13008'}">Sales Representatives</label>
+                    <div id="salesRepresentativesList"
+                         class="grow noMargin col"
+                         data-bind="dataList: {
+                             incrementalDataSource: {
+                                dataManager: viewModel,
+                                callerMethod: viewModel.getSalesRepresentativesAsync,
+                                pageSize: 40,
+                                reloadCallBack: viewModel.reloadSalesRepresentativesCallback,
+                             },
+                             defaultListType: Commerce.Controls.DataList.ListType.Card,
+                             selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                             itemInvoked: itemInvokedHandler,
+                             itemTemplates: [
+                                {
+                                    templateId: 'salesRepresentativeGridTemplate',
+                                    cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                    deviceType: Commerce.Controls.DataList.DeviceType.All
+                                }
+                             ]
+                        }, axBubbleAttr: 'getSalesRepresentativeDialog_optionsButtonGrid'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

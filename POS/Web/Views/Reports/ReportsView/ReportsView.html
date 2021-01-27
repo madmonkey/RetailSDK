@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ReportsView</title>
+    <link href="ReportsView.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- The content that will be loaded and displayed. -->
+    <div class="fragment reportsview">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'reportsView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <!-- Main content -->
+            <!-- About -->
+            <div data-bind="pivotItem: { headerResx: 'string_2400' }">
+                <!-- Main content -->
+                <div class="scrollY" data-bind="tileList: { itemDataSource: viewModel.reportsList, iteminvoked: reportInvokedHandler, field: 'REPORTTITLE' }, axBubbleAttr: 'reportsView_reportsList'"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

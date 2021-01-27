@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart Promotion Template</title>
+</head>
+<body>
+    <!-- Promotion style list for cart promotions Templates selection dialog -->
+    <script id="cartPromotionTemplate" type="text/html">
+        <div class="CartPromotionContainer borderBottomThin padBottom12">
+            <div class="row">
+                <div class="col pad12 padBottom0">
+                    <div class="margin0 h5 ellipsis maxWidth220"
+                         data-bind="attr: {
+                            title: Promotion.OfferName
+                         },
+                                text: Promotion.OfferName"></div>
+                    <div class="h6 ellipsis textTransformNone secondaryFontColor"
+                         data-bind="attr: {
+                            title: Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_5635'), Commerce.DiscountsHelper.getDiscountTypeNameByTypeValue(Promotion))
+                         },
+                         text: Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_5635'), Commerce.DiscountsHelper.getDiscountTypeNameByTypeValue(Promotion))">
+                        <!--Discount type : {0}-->
+                    </div>
+                </div>
+            </div>
+            <!-- ko if: Promotion.CouponCodes.length !== 0 -->
+            <div class="row padTop08 padLeft12">
+                <!-- ko if: $root.isPromotionAppliedInCart(Promotion) -->
+                <div class="width20 height20 col center">
+                    <div class="iconDelete icon-14x14 accentColor"></div>
+                </div>
+                <a class="h4 col alignLeft padLeft04 textTransformNone" href="#" data-bind="click: $root.removeCoupon.bind($root),
+                            resx: { textContent: 'string_5637' }" role="button"><!--Remove coupon--></a>
+                <!-- /ko -->
+                <!-- ko ifnot: $root.isPromotionAppliedInCart(Promotion) -->
+                <div class="row alignRight width100Percent">
+                    <button class="secondaryButton" type="button" data-bind="resx: { textContent: 'string_5636' }, click: $root.addCoupon.bind($root)"><!--Apply coupon--></button>
+                </div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+    </script>
+
+    <!-- product detail template -->
+    <script id="lineDetailsTemplate" type="text/html">
+        <div class="row borderBottomThin pad12">
+            <div class="width72 height72 marginRight12 col fit-image">
+                <img src="#" data-bind="attr: {
+                                src: Commerce.Formatters.ImageFormatter(Commerce.SimpleProductHelper.getProductImage($data), Commerce.DefaultImages.ProductSmall),
+                                alt: Name
+                             },
+                             setImageOnError: Commerce.DefaultImages.ProductSmall" />
+            </div>
+            <div class="col width100Percent">
+                <div class="marginBottom4 h4" data-bind="text: Name"></div>
+                <div class="marginBottom4 secondaryFontColor textTransformNone h6" data-bind="text: ItemId"></div>
+                <div class="secondaryFontColor textTransformNone h6" data-bind="text: Commerce.SimpleProductHelper.getVariantDescription($data)"></div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

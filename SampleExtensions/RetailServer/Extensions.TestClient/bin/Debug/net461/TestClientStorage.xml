@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationStorage xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ActivationInformation>
+    <DeviceActivationInformation>
+      <RegisterId>HOUSTON-3</RegisterId>
+      <StoreId>Houston</StoreId>
+      <DeviceToken>HOUSTON-3:q20YOm51LRDsmgJHugHLPbQoe/SgGdz9svc7xRay5BEXE9qbg/IkYyX8ovtE4X8TV+fTs4mkDQaOG8zIkaLCfQ==:5637144592:5637144627</DeviceToken>
+      <DeviceId>HOUSTON-3</DeviceId>
+      <ActivationDateTime>2021-01-05T15:51:16.8276976-05:00</ActivationDateTime>
+      <RetailServerUrl>https://usnconeboxax1ret.cloud.onebox.dynamics.com</RetailServerUrl>
+    </DeviceActivationInformation>
+  </ActivationInformation>
+</ApplicationStorage>

@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Recent Purchases View</title>
+    <link href="RecentPurchasesView.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="fragment recentPurchasesView" data-bind="with: viewModel">
+        <div id="recentPurchasePivot" data-bind="pivot: { }, resx: { ariaLabel: 'string_4454' }">
+            <div id="recentPurchasePivotProducts" class="col grow" data-bind="pivotItem: { header: subTitle }">
+                <!-- Main content -->
+                <!-- ko if: sourceType == Commerce.ViewModels.RecentPurchasesViewModelMode.RecentPurchases -->
+                <div id="recentPurchasesListView"
+                        data-bind="dataList: {
+                        defaultListType: Commerce.Controls.DataList.ListType.List,
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOrMulti,
+                        itemInvoked: navigateToRecentPurchaseItemDetails,
+                        selectionChanged: recentPurchaseSelectionChangedEventHandler,
+                        emptyDataListMessageResx: 'string_235', /* There are no recent purchases */
+                        ariaLabelResx: 'string_925',   /* Collection of products */
+                        incrementalDataSource: {
+                            dataManager: $data,
+                            callerMethod: getRecentPurchasesAsync,
+                            pageSize: Commerce.ViewModels.RecentPurchasesViewModel.RECENT_PURCHASES_PAGE_SIZE,
+                            onLoading: isBusyFlag
+                        },
+                        columns: [
+                            { titleResx: 'string_231', ratio: 20, collapseOrder: 4, minWidth: 120, field: 'ItemId' },
+                            { titleResx: 'string_232', ratio: 30, collapseOrder: 3, minWidth: 200, field: 'ProductName' },
+                            { titleResx: 'string_233', ratio: 25, collapseOrder: 2, minWidth: 200, field: 'DatePurchased', converter: 'Commerce.Core.Converter.ShortDateAndTime' },
+                            { titleResx: 'string_234', ratio: 25, collapseOrder: 1, minWidth: 200, field: '$data', converter: 'Commerce.Core.Converter.RecentPurchaseIdFormatter' }
+                        ],
+                        itemTemplates: [
+                            {
+                                name: 'string_939', /* Show cards */
+                                templateId: 'productLargeRecentPurchaseTemplate',
+                                cardType: Commerce.Controls.DataList.CardType.Static,
+                                deviceType: Commerce.Controls.DataList.DeviceType.Tablet
+                            },
+                            {
+                                name: 'string_939', /* Show cards */
+                                templateId: 'productRecentPurchaseTemplatePhone',
+                                cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                deviceType: Commerce.Controls.DataList.DeviceType.Phone
+                            }
+                        ]
+                        },
+                        axBubbleAttr: 'recentPurchasesView_recentPurchasesGrid'">
+                </div>
+                <!-- /ko -->
+                <!-- ko if: sourceType == Commerce.ViewModels.RecentPurchasesViewModelMode.Wishlist -->
+                <div id="wishlistListView"
+                        data-bind="dataList: {
+                        defaultListType: Commerce.Controls.DataList.ListType.List,
+                        itemDataSource: wishListProducts,
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOrMulti,
+                        itemInvoked: navigateToWishlistItemDetails,
+                        selectionChanged: wishlistProductSelectionChangedEventHandler,
+                        emptyDataListMessageResx: 'string_253',     /* There are no products in your wish list */
+                        ariaLabelResx: 'string_925',   /* Collection of products */
+                        columns: [
+                            { titleResx: 'string_1002', ratio: 30, collapseOrder: 3, minWidth: 120, field: 'ItemId' },
+                            { titleResx: 'string_1003', ratio: 50, collapseOrder: 2, minWidth: 200, field: 'Name' },
+                            { titleResx: 'string_1004', ratio: 20, collapseOrder: 1, minWidth: 100, field: 'Price', converter: 'Commerce.Core.Converter.PriceFormatter', isRightAligned: true }
+                        ],
+                        itemTemplates: [
+                            {
+                                name: 'string_939', /* Show cards */
+                                templateId: 'productSearchResultLargeCardTemplate',
+                                cardType: Commerce.Controls.DataList.CardType.Static,
+                                deviceType: Commerce.Controls.DataList.DeviceType.Tablet
+                            },
+                            {
+                                name: 'string_939', /* Show cards */
+                                templateId: 'productSearchResultSmallCardTemplatePhone',
+                                cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                deviceType: Commerce.Controls.DataList.DeviceType.Phone
+                            }
+                        ]
+                        },
+                        axBubbleAttr: 'recentPurchasesView_recentPurchasesGrid'">
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar: {}, axBubbleAttr: 'recentPurchasesView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconMultiSelect',
+                    id:'showMultiSelectProducts',
+                    visible: sourceType === Commerce.ViewModels.RecentPurchasesViewModelMode.RecentPurchases,
+                    labelResx: 'string_6405' 
+                }, 
+                gridSelectionMode: { id: '#recentPurchasesListView' }, 
+                axBubbleAttr: 'recentPurchasesView_showMultiSelectProducts'">
+            </button><!--Select-->
+
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconMultiSelect',
+                    id:'showWishListProducts',
+                    visible: sourceType === Commerce.ViewModels.RecentPurchasesViewModelMode.Wishlist,
+                    labelResx: 'string_6405' 
+                }, 
+                gridSelectionMode: { id: '#wishlistListView' }, 
+                axBubbleAttr: 'recentPurchasesView_showWishListProducts'">
+            </button><!--Select-->
+
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconView',
+                    id:'showRecentPurchasesViewMenu',
+                    visible: sourceType === Commerce.ViewModels.RecentPurchasesViewModelMode.RecentPurchases,
+                    labelResx: 'string_1035' 
+                },
+                templateSwitcher: { listId: '#recentPurchasesListView' },
+                axBubbleAttr: 'recentPurchasesView_showRecentPurchasesViewMenu'">
+            </button><!-- Change View -->
+
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconView',
+                    id:'showWishListViewMenu',
+                    visible: sourceType === Commerce.ViewModels.RecentPurchasesViewModelMode.Wishlist,
+                    labelResx: 'string_1035'
+                },
+                templateSwitcher: { listId: '#wishlistListView' },
+                axBubbleAttr: 'recentPurchasesView_showWishListViewMenu'"></button><!-- Change View -->
+
+            <button data-bind="appBarCommand: {
+                id:'compare',
+                extraClass: 'iconTwoPage',
+                disabled: compareDisabled,
+                onclick: compare,
+                labelResx: 'string_903'}, axBubbleAttr: 'recentPurchasesView_compareButton'">
+            </button><!-- Compare -->
+
+            <button data-bind="appBarCommand: {
+                id:'addProductToSale',
+                extraClass: 'iconAdd',
+                disabled: addToSaleDisabled,
+                onclick: addToSaleAsync,
+                labelResx: 'string_904'}, axBubbleAttr: 'recentPurchasesView_addToSaleButton'">
+            </button><!-- add to sale-->
+
+            <button data-bind="appBarCommand: {
+                id:'sellProductNow',
+                extraClass: 'iconBuy',
+                disabled: addToSaleDisabled,
+                onclick: sellNowAsync,
+                labelResx: 'string_922'}, axBubbleAttr: 'recentPurchasesView_sellNowButton'">
+            </button><!-- sell now-->
+        </div>
+    </div>
+</body>
+</html>

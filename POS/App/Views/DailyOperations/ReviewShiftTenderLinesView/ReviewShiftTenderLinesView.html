@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Review Shift Tender Lines View</title>
+</head>
+    <body>
+        <div class="fragment" data-bind="with: viewModel">
+            <div class="row height100Percent marginBottom48">
+                <div id="listCol" class="grow scrollY">
+                    <div id="tenderLinePivot" data-bind="pivot: {}">
+                        <div id="shiftTenderLinesViewPivot" data-bind="pivotItem: { headerResx: 'string_30604' } /* Shift tender lines */"> 
+                            <div id="tenderLineViewList" data-bind="
+                                dataList: {
+                                    itemDataSource: tenderLineDisplays,
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    selectionChanged: selectLine,
+                                    columns: [
+                                        { titleResx: 'string_30605', ratio: 25, collapseOrder: 4, minWidth: 80, field: 'tenderType' }, /* Tender type */
+                                        { titleResx: 'string_30607', ratio: 20, collapseOrder: 1, minWidth: 40, field: 'cardType' }, /* Card type */
+                                        { titleResx: 'string_30606', ratio: 25, collapseOrder: 3, minWidth: 50, field: 'currencyCode' }, /* Currency */
+                                        { titleResx: 'string_30608', ratio: 30, collapseOrder: 2, minWidth: 100, field: 'differenceAmount', isRightAligned: true } /* Difference amount */
+                                    ],
+                                    autoSelectFirstItem: true,
+                                    autoFocusFirstItem: true,
+                                },
+                                axBubbleAttr: 'ReviewShiftTenderLinesView_TenderLines'">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="detailsCol" class="col height100Percent">
+                    <div class="row">
+                        <h2 class="title marginTop12" data-bind="if: detailsExpanded(), resx: { textContent: 'string_30626' } /* Details */"></h2> 
+                        <div class="grow"></div>
+                        <a href="#" id="btnToggleDetailsPane" class="icon-20x20 width40 height40 margin4 center fixedToggleDetailsPaneButton"
+                           data-bind="click: toggleDetails, css: detailsExpanded() ? 'iconClosePane' : 'iconOpenPane', resx: { ariaLabel: 'string_30627' } /* Toggle details pane */"></a> 
+                    </div>
+
+                    <div id="detailsView" class="no-shrink width320 col grow height100Percent" data-bind="slideVisible: { isShowed: detailsExpanded() }">
+                        <!--Offline transactions-->
+                        <div class="marginRight12 marginBottom12 marginTop12" data-bind="visible: isOfflineEnabled()">
+                            <div class="h4 primaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30625' } /* Number of offline transactions */"></div>
+                            <div class="h1 secondaryFontColor" data-bind="text: numberOfOfflineTransactions"></div>
+                        </div>
+
+                        <div data-bind="visible: !isLineSelected()" class="row grow">
+                            <div class="col grow primaryPanelBackgroundColor highContrastBorderThin marginBottom12 marginRight12">
+                                <div class="textCenter padTop56">
+                                    <div class="h2 wrapText" data-bind="resx: { textContent: 'string_30628' } /* Select a tender line */"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-bind="if: isLineSelected()" class="row scrollY marginBottom48 grow">
+                            <div class="col height100Percent width100Percent highContrastBorderThin marginBottom48 marginRight12">
+
+                                <!--Bank Drop-->
+                                <div class="row no-shrink">
+                                    <div class="col grow h6 marginTop12 marginBottom12 wrapText" data-bind="resx: { textContent: 'string_30638' } /* Bank drop */">
+                                    </div>
+                                    <div class="col" data-bind="visible: !isBankDropCollapsed()">
+                                        <button class="iconEdit width48 height40 accentColor" data-bind="click: overrideBankDropAmountAsync, resx: { ariaLabel: 'string_30639' } /* Override */"></button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="width48 height40 positionRelativeImportant"
+                                                data-bind="css: isBankDropCollapsed() ? 'iconChevronDown' : 'iconChevronUp',
+                                                    click: toggleBankDropCollapsed,
+                                                    resx: { ariaLabel: 'string_30640' } /* Toggle */"></button>
+                                    </div>
+                                </div>
+                                <div data-bind="visible: !isBankDropCollapsed()">
+                                    <!--Bank drop amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30609' } /* Bank drop amount */"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().bankDropAmount"></div>
+                                    </div>
+
+                                    <!--Overridden bank drop amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30610' } /* Overridden bank drop amount */"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().overriddenBankDropAmount"></div>
+                                    </div>
+                                </div>
+
+                                <!--Change-->
+                                <div class="row no-shrink">
+                                    <div class="col grow h6 marginTop12 marginBottom12 wrapText" data-bind="resx: { textContent: 'string_30641' } /* Change */">
+                                    </div>
+                                    <div class="col" data-bind="visible: !isChangeCollapsed()">
+                                        <button class="iconEdit width48 height40 accentColor" data-bind="click: overrideChangeAmountAsync, resx: { ariaLabel: 'string_30639' } /* Override */"></button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="width48 height40 positionRelativeImportant"
+                                                data-bind="css: isChangeCollapsed() ? 'iconChevronDown' : 'iconChevronUp',
+                                                    click: toggleChangeCollapsed,
+                                                    resx: { ariaLabel: 'string_30640' } /* Toggle */"></button>
+                                    </div>
+                                </div>
+                                <div data-bind="visible: !isChangeCollapsed()">
+                                    <!--Change amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30611' } /* Change amount */"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().changeAmount"></div>
+                                    </div>
+
+                                    <!--Overridden change amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30612' } /* Overridden change amount */"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().overriddenChangeAmount"></div>
+                                    </div>
+                                </div>
+
+                                <!--Declare tender-->
+                                <div class="row no-shrink">
+                                    <div class="col grow h6 marginTop12 marginBottom12 wrapText" data-bind="resx: { textContent: 'string_30642' } /* Declare tender */">
+                                    </div>
+                                    <div class="col" data-bind="visible: !isDeclareTenderCollapsed()">
+                                        <button class="iconEdit width48 height40 accentColor" data-bind="click: overrideDeclareTenderAmountAsync, resx: { ariaLabel: 'string_30639' } /* Override */"></button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="width48 height40 positionRelativeImportant"
+                                                data-bind="css: isDeclareTenderCollapsed() ? 'iconChevronDown' : 'iconChevronUp',
+                                                    click: toggleDeclareTenderCollapsed,
+                                                    resx: { ariaLabel: 'string_30640' } /* Toggle */"></button>
+                                    </div>
+                                </div>
+                                <div data-bind="visible: !isDeclareTenderCollapsed()">
+                                    <!--Declare tender amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30613' } /* Declare tender amount */"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().declareTenderAmount"></div>
+                                    </div>
+
+                                    <!--Overridden declare tender amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30614' } /* Overridden declare tender amount */"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().overriddenDeclareTenderAmount"></div>
+                                    </div>
+                                </div>
+
+                                <!--Floating entry-->
+                                <div class="row no-shrink">
+                                    <div class="col grow h6 marginTop12 marginBottom12 wrapText" data-bind="resx: { textContent: 'string_30643' } /* Floating entry */">
+                                    </div>
+                                    <div class="col" data-bind="visible: !isFloatingEntryCollapsed()">
+                                        <button class="iconEdit width48 height40 accentColor" data-bind="click: overrideFloatingEntryAmountAsync, resx: { ariaLabel: 'string_30639' } /* Override */"></button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="width48 height40 positionRelativeImportant"
+                                                data-bind="css: isFloatingEntryCollapsed() ? 'iconChevronDown' : 'iconChevronUp',
+                                                    click: toggleFloatingEntryCollapsed,
+                                                    resx: { ariaLabel: 'string_30640' } /* Toggle */"></button>
+                                    </div>
+                                </div>
+                                <div data-bind="visible: !isFloatingEntryCollapsed()">
+                                    <!--Float entry amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30615' } /* Float entry amount */"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().floatingEntryAmount"></div>
+                                    </div>
+
+                                    <!--Overridden float entry amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30616' } /* Overridden float entry amount */"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().overriddenFloatingEntryAmount"></div>
+                                    </div>
+                                </div>
+
+                                <!--Remove tender-->
+                                <div class="row no-shrink">
+                                    <div class="col grow h6 marginTop12 marginBottom12 wrapText" data-bind="resx: { textContent: 'string_30644' } /* Remove tender */">
+                                    </div>
+                                    <div class="col" data-bind="visible: !isRemoveTenderCollapsed()">
+                                        <button class="iconEdit width48 height40 accentColor" data-bind="click: overrideRemoveTenderAmountAsync, resx: { ariaLabel: 'string_30639' } /* Override */"></button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="width48 height40 positionRelativeImportant"
+                                                data-bind="css: isRemoveTenderCollapsed() ? 'iconChevronDown' : 'iconChevronUp',
+                                                    click: toggleRemoveTenderCollapsed,
+                                                    resx: { ariaLabel: 'string_30640' } /* Toggle */"></button>
+                                    </div>
+                                </div>
+                                <div data-bind="visible: !isRemoveTenderCollapsed()">
+                                    <!--Remove tender amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30617' } /* Remove tender amount */"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().removeTenderAmount"></div>
+                                    </div>
+
+                                    <!--Overridden remove tender amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30618' } /* Overridden remove tender amount */"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().overriddenRemoveTenderAmount"></div>
+                                    </div>
+                                </div>
+
+                                <!--Safe drop-->
+                                <div class="row no-shrink">
+                                    <div class="col grow h6 marginTop12 marginBottom12 wrapText" data-bind="resx: { textContent: 'string_30645' } /* Safe drop */">
+                                    </div>
+                                    <div class="col" data-bind="visible: !isSafeDropCollapsed()">
+                                        <button class="iconEdit width48 height40 accentColor" data-bind="click: overrideSafeDropAmountAsync, resx: { ariaLabel: 'string_30639' /* Override */}"></button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="width48 height40 positionRelativeImportant"
+                                                data-bind="css: isSafeDropCollapsed() ? 'iconChevronDown' : 'iconChevronUp',
+                                                    click: toggleSafeDropCollapsed,
+                                                    resx: { ariaLabel: 'string_30640' } /* Toggle */"></button>
+                                    </div>
+                                </div>
+                                <div data-bind="visible: !isSafeDropCollapsed()">
+                                    <!--Safe drop amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30619' } /* Safe drop amount */"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().safeDropAmount"></div>
+                                    </div>
+
+                                    <!--Overridden safe drop amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30620' } /* Overridden safe drop amount */"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().overriddenSafeDropAmount"></div>
+                                    </div>
+                                </div>
+
+                                <!--Starting-->
+                                <div class="row no-shrink">
+                                    <div class="col grow h6 marginTop12 marginBottom12 wrapText" data-bind="resx: { textContent: 'string_30646' /* Starting */}">
+                                    </div>
+                                    <div class="col" data-bind="visible: !isStartingCollapsed()">
+                                        <button class="iconEdit width48 height40 accentColor" data-bind="click: overrideStartingAmountAsync, resx: { ariaLabel: 'string_30639' /* Override */}"></button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="width48 height40 positionRelativeImportant"
+                                                data-bind="css: isStartingCollapsed() ? 'iconChevronDown' : 'iconChevronUp',
+                                                click: toggleStartingCollapsed,
+                                                resx: { ariaLabel: 'string_30640' } /* Toggle */"></button>
+                                    </div>
+                                </div>
+                                <div data-bind="visible: !isStartingCollapsed()">
+                                    <!--Starting amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30621' } /* Starting amount */"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().startingAmount"></div>
+                                    </div>
+
+                                    <!--Overridden starting amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30622' } /* Overridden starting amount */"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().overriddenStartingAmount"></div>
+                                    </div>
+                                </div>
+
+                                <!--Tendered-->
+                                <div class="row no-shrink">
+                                    <div class="col grow h6 marginTop12 marginBottom12 wrapText" data-bind="resx: { textContent: 'string_30647' /* Override */}">
+                                    </div>
+                                    <div class="col" data-bind="visible: !isTenderedCollapsed()">
+                                        <button class="iconEdit width48 height40 accentColor" data-bind="click: overrideTenderedAmountAsync, resx: { ariaLabel: 'string_30639' /* Override */}"></button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="width48 height40 positionRelativeImportant" data-bind="css: isTenderedCollapsed() ? 'iconChevronDown' : 'iconChevronUp',
+                                            click: toggleTenderedCollapsed,
+                                            resx: { ariaLabel: 'string_30640' } /* Toggle */"></button>
+                                    </div>
+                                </div>
+                                <div data-bind="visible: !isTenderedCollapsed()">
+                                    <!--Tendered amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30623' /* Tendered amount */}"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().tenderedAmount"></div>
+                                    </div>
+
+                                    <!--Overridden tendered amount-->
+                                    <div class="marginRight12 marginBottom12 marginTop12">
+                                        <div class="h6 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_30624' /* Overridden tendered amount */ }"></div>
+                                        <div class="h4 primaryFontColor" data-bind="text: selectedLine().overriddenTenderedAmount"></div>
+                                    </div>
+                                </div>
+
+                                <!--Notes-->
+                                <div class="row no-shrink">
+                                    <div class="col grow h6 marginTop12 marginBottom12 wrapText" data-bind="resx: { textContent: 'string_30630' } /* Notes */"></div>
+                                    <div class="col">
+                                        <button class="iconEdit width48 height40 accentColor" data-bind="click: inputNoteAsync, resx: { ariaLabel: 'string_30639' } /* Override */"></button>
+                                    </div>
+                                </div>
+                                <div class="marginRight12 marginBottom12 marginTop12">
+                                    <div class="h4 primaryFontColor width100Percent" data-bind="text: selectedLine().notes"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col grow no-shrink marginRight20 marginBottom12" data-bind="visible: !detailsExpanded(), resx: { ariaLabel: 'string_30629'  /* Details section, unexpanded */ }">
+                        <div id="minimizedDetailsView" class="col no-shrink grow primaryPanelBackgroundColor width48"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="commandAppBar" data-bind="appBar: {}">
+                <button data-bind="appBarCommand: {
+                    id:'cancelAppBar',
+                    extraClass: 'iconCancel',
+                    onclick: cancel,
+                    labelResx: 'string_76', /* Cancel */
+                    axBubbleAttr: 'reviewShiftTenderLinesView_cancel'}"></button>
+                <button data-bind="appBarCommand: {
+                    id:'saveAppBar',
+                    extraClass: 'iconAccept',
+                    onclick: saveAsync,
+                    labelResx: 'string_75', /* Ok */
+                    axBubbleAttr: 'reviewShiftTenderLinesView_save'}"></button>
+            </div>
+        </div>
+</body>
+</html>

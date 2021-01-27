@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CompareProductsView</title>
+    <link href="CompareProductsView.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="fragment compareProductsView">
+        <div class="section main row overflowYVisible margin12 marginLeft20 marginRight20" data-bind="resx: { ariaLabel: 'string_4454' }">
+            <!-- Main content -->
+            <!-- product template -->
+            <script type="text/html" id="compareProductsTemplate">
+
+                <!-- product image -->
+
+                <div class="highContrastBorderThin row positionRelative flip">
+
+                    <!-- remove icon -->
+                    <div class="top0 left0 height40 width40 removeButton">
+                        <div class="top0 left0 triangleBackgroundTopLeft primaryBorderColor"></div>
+                        <button class="iconCancel noBorder" data-bind="click: function() { $root.viewModel.removeProductAsync($data.product); },
+                                                                        attr: {'aria-label': Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_709'), $data.product.Name)}"></button>
+                    </div>
+
+                    <!-- empty image holder for resolving flip. -->
+                    <div class="height180 width180 fit-image">
+                        <img data-bind="attr: { alt: $data.product.Name, src: Commerce.Formatters.ImageFormatter($data.image.source, Commerce.DefaultImages.ProductSmall) },
+                                setImageOnError: Commerce.DefaultImages.ProductSmall,
+                                click: function() { $root.viewModel.viewProductDetails($data.product); }" />
+                    </div>
+
+                    <!-- product details -->
+                    <div class="col pad12 maxWidth272">
+                        <!-- ko if: Commerce.ApplicationContext.Instance.channelConfiguration.EnableProductRatingsForRetailStores -->
+                        <!-- product name -->
+                        <div class="height84 scrollY">
+                            <div data-bind="text: $data.product.Name" class="h3 wrapText ellipsis">Product Name</div>
+                        </div>
+
+                        <!-- product ratings -->
+                        <div class="height16 scrollY top12 positionRelativeImportant">
+                            <div data-bind="template: {
+                                                    name: 'productRatingTemplate',
+                                                    data: { productRating: $data.rating }
+                                                }"
+                                 class="h6 wrapText ellipsis">
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko if: !Commerce.ApplicationContext.Instance.channelConfiguration.EnableProductRatingsForRetailStores -->
+                        <!-- product name -->
+                        <div class="height100 scrollY">
+                            <div data-bind="text: $data.product.Name" class="h3 wrapText ellipsis">Product Name</div>
+                        </div>
+                        <!-- /ko -->
+                        <!-- price & add to sale button -->
+                        <div class="row flip shrink">
+                            <div class="col shrink width132 marginTop16">
+                                <!-- product id -->
+                                <div class="height16">
+                                    <div class="h6 secondaryFontColor" data-bind="text: $data.product.ItemId">Item Id</div>
+                                </div>
+
+                                <div class="height32">
+                                    <div class="h2" data-bind="text: Commerce.Formatters.PriceFormatter($data.product.Price)">Price</div>
+                                </div>
+                            </div>
+
+                            <div class="marginTop20 height40 width132">
+                                <button class="primaryButton" data-bind="resx: { textContent: 'string_301' },
+                                        attr: {'aria-label':
+                                            Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_708'), $data.product.Name,Commerce.Formatters.PriceFormatter($data.product.Price),
+                                            Commerce.ViewModelAdapter.getResourceString('string_301'))},
+                                        click: function() { $root.viewModel.addProductToCartHandlerAsync($data.product); }">
+                                    Add to sale
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </script>
+
+            <!-- products container -->
+            <div class="col no-shrink">
+
+                <!-- products heading -->
+                <div class="marginBottom12 no-shrink">
+                    <h2 data-bind="resx: { textContent: 'string_28' }">Products</h2>
+                </div>
+
+                <!-- product column -->
+                <div class="col flip width452 height560">
+                    <!-- The below commented knockout syntax is used by knockout for containerless control flow syntax -->
+                    <!-- ko foreach: {data: viewModel.products, as: 'productInfo'} -->
+                    <div class="row flip width452 height180 marginBottom12 primaryBackgroundColor positionRelative"
+                            data-bind="template: {name: 'compareProductsTemplate', data: productInfo}"></div>
+                    <!-- /ko -->
+                    <!-- add more products to compare -->
+                    <div class="height180 width452 marginBottom12 center primaryBackgroundColor highContrastBorderThin center flip" data-bind="visible: viewModel.isAddProductsVisible">
+                        <div class="col height60 center">
+                            <div class="marginBottom12">
+                                <button class="iconAdd" id="addProductsToCompareButton" data-bind="click: addProductClicked, resx: { ariaLabel: 'string_706' }, axBubbleAttr: 'compareProductsView_addProductsToCompareButton'"></button>   <!-- Add another product to compare -->
+                            </div>
+                            <div data-bind="resx: { textContent: 'string_706' }" class="h4 wrapText textCenter width100Percent">Add another product to compare</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gutter20x20"></div>
+
+            <div class="row grow" style="flex-basis: 0">
+                <div class="row scrollX height600 flip">
+                    <!-- The below commented knockout syntax is used by knockout for containerless control flow syntax -->
+                    <!-- ko foreach: { data: viewModel.productComparisonLines, as: 'productComparisonLine' } -->
+                    <div class="col no-shrink">
+                        <div class="height20 marginTop20 width152">
+                            <div class="h6 wrapText secondaryFontColor" data-bind="text: productComparisonLine.AttributeName">Column Property</div>
+                        </div>
+                        <div class="col flip shrink">
+                            <!-- ko foreach: { data: productComparisonLine.ProductAttributeComparisonEntries, as: 'attributeComparisonEntry'} -->
+                            <div class="height192 flip borderTop maxWidth200">
+                                <div class="height192 scroll padTop20 padRight20">
+                                    <div class="h4 wrapText" data-bind="text: attributeComparisonEntry.AttributeValue.displayText">property Value</div>
+                                </div>
+                            </div>
+                            <!-- /ko -->
+                            <div class="height192 borderTop flip" data-bind="visible: $root.viewModel.isAddProductsVisible"></div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

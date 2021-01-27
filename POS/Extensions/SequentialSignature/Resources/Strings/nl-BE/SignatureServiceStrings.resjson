@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Er is een fout opgetreden bij het voltooien van de transactie. De ondertekeningsservice is niet gereed. Neem contactpersoon op met de systeembeheerder.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Er is een fout opgetreden bij het voltooien van de transactie. De gekoppelde fiscale transactie bevat gegevens in een onjuiste indeling. Neem contactpersoon op met de systeembeheerder.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "There was an error while last transaction digital signature recovery. Possibly offline database not synced. Contact your system administrator.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

@@ -1,0 +1,72 @@
+﻿[
+  {
+    "ActivePrice": {
+      "AdjustedPrice": 0.00,
+      "ItemId": "9999"
+    },
+    "Data": {
+      "ItemId": "9999",
+      "Name": "Gift Card"
+    }
+  },
+  {
+    "ActivePrice": {
+      "AdjustedPrice": 75.00,
+      "ItemId": "81313"
+    },
+    "Data": {
+      "ItemId": "81313",
+      "Name": "Blue Butterfly Class Ring"
+    }
+  },
+  {
+    "ActivePrice": {
+      "AdjustedPrice": 65.00,
+      "ItemId": "81314"
+    },
+    "Data": {
+      "ItemId": "81314",
+      "Name": "Green Class Ring"
+    }
+  },
+  {
+    "ActivePrice": {
+      "AdjustedPrice": 500.00,
+      "ItemId": "81315"
+    },
+    "Data": {
+      "ItemId": "81315",
+      "Name": "Pearl Sapphire Pendant Necklace"
+    }
+  },
+  {
+    "ActivePrice": {
+      "AdjustedPrice": 550.00,
+      "ItemId": "81316"
+    },
+    "Data": {
+      "ItemId": "81316",
+      "Name": "Blue Sapphire Ring"
+    }
+  },
+  {
+    "ActivePrice": {
+      "AdjustedPrice": 35.00,
+      "ItemId": "81317"
+    },
+    "Data": {
+      "ItemId": "81317",
+      "Name": "Multicolor Bracelet Set"
+    }
+  },
+  {
+    "ActivePrice": {
+      "AdjustedPrice": 75.00,
+      "ItemId": "81318"
+    },
+    "Data": {
+      "ItemId": "81318",
+      "Name": "Violet Heart Pendant Necklace"
+    }
+  }
+]

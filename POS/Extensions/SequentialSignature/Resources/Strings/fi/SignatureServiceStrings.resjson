@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Tapahtuman päättämisessä oli virhe. Allekirjoituspalvelu ei ole valmis. Ota yhteyttä järjestelmänvalvojaan.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Tapahtuman päättämisessä oli virhe. Linkitetyssä kirjanpitotapahtumassa on väärässä muodossa olevia tapahtumia. Ota yhteyttä järjestelmänvalvojaan.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "Virhe edellisen tapahtuman digitaalisen allekirjoituksen palautuksen aikana. Offline-tietokantaa ei ehkä synkronoitu. Ota yhteys järjestelmänvalvojaan.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

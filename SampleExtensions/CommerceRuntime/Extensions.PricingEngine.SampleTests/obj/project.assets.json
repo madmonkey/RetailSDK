@@ -1,0 +1,2161 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.6.1": {
+      "Castle.Core/4.4.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Configuration"
+        ],
+        "compile": {
+          "lib/net45/Castle.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Castle.Core.dll": {}
+        }
+      },
+      "Microsoft.CodeCoverage/15.9.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {}
+        },
+        "build": {
+          "build/netstandard1.0/Microsoft.CodeCoverage.props": {},
+          "build/netstandard1.0/Microsoft.CodeCoverage.targets": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Diagnostics/10.5.20226.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Composition": "1.2.0",
+          "System.Runtime.Serialization.Json": "4.3.0",
+          "System.Runtime.Serialization.Primitives": "4.3.0",
+          "System.Runtime.Serialization.Xml": "4.3.0",
+          "System.Xml.XmlSerializer": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Retail.Diagnostics.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Retail.Diagnostics.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Diagnostics.Sinks/10.5.20226.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20226.1"
+        },
+        "frameworkAssemblies": [
+          "System.Configuration"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.Dynamics.Retail.Diagnostics.Sinks.dll": {}
+        },
+        "runtime": {
+          "lib/net461/Microsoft.Dynamics.Retail.Diagnostics.Sinks.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.KeyVault.Contracts/10.15.20223.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.KeyVault.Contracts.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.KeyVault.Contracts.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.PaymentSDK.Portable/10.12.20179.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20178.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Retail.PaymentSDK.Portable.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Retail.PaymentSDK.Portable.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector/9.23.20226.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Runtime.Entities": "9.23.20226.11",
+          "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.19.4",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Runtime.Data/9.23.20226.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20226.1",
+          "Microsoft.Dynamics.Commerce.Runtime.Entities": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.Framework": "10.0.20226.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Data.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Data.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Runtime.DataManagers/9.23.20226.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20226.1",
+          "Microsoft.Dynamics.Commerce.Runtime.Data": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.Entities": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.Framework": "10.0.20226.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.DataManagers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.DataManagers.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages/9.23.20226.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20226.1",
+          "Microsoft.Dynamics.Commerce.Runtime.Entities": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.Framework": "10.0.20226.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Runtime.Entities/9.23.20226.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20226.1",
+          "Microsoft.Dynamics.Commerce.Runtime.Framework": "10.0.20226.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Entities.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Entities.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Runtime.FIF.Connector.Messages/9.23.20226.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20226.1",
+          "Microsoft.Dynamics.Commerce.Runtime.Entities": "9.23.20226.11"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.FIF.Connector.Messages.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.FIF.Connector.Messages.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Runtime.FIF.DocumentProvider.Messages/9.23.20226.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20226.1",
+          "Microsoft.Dynamics.Commerce.Runtime.Entities": "9.23.20226.11"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.FIF.DocumentProvider.Messages.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.FIF.DocumentProvider.Messages.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Runtime.Framework/10.0.20226.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20224.1",
+          "System.Linq.Parallel": "4.3.0",
+          "System.Runtime.Serialization.Primitives": "4.3.0",
+          "System.Security.Principal": "4.3.0",
+          "System.Xml.XmlSerializer": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Framework.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Framework.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Runtime.Localization/9.23.20226.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20226.1",
+          "Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.Entities": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.Framework": "10.0.20226.1",
+          "Microsoft.Dynamics.Retail.Resources.Strings": "9.23.20226.11",
+          "System.Linq.Parallel": "4.3.0",
+          "System.Runtime.Serialization.Primitives": "4.3.0",
+          "System.Security.Principal": "4.3.0",
+          "System.Xml.XmlSerializer": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Localization.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Localization.dll": {}
+        },
+        "resource": {
+          "lib/netstandard2.0/ar-AE/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "ar-AE"
+          },
+          "lib/netstandard2.0/ar/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "ar"
+          },
+          "lib/netstandard2.0/cs/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard2.0/da/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "da"
+          },
+          "lib/netstandard2.0/de-AT/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "de-AT"
+          },
+          "lib/netstandard2.0/de-CH/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "de-CH"
+          },
+          "lib/netstandard2.0/de/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard2.0/en-AU/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "en-AU"
+          },
+          "lib/netstandard2.0/en-CA/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "en-CA"
+          },
+          "lib/netstandard2.0/en-GB/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "en-GB"
+          },
+          "lib/netstandard2.0/en-IE/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "en-IE"
+          },
+          "lib/netstandard2.0/en-IN/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "en-IN"
+          },
+          "lib/netstandard2.0/en-MY/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "en-MY"
+          },
+          "lib/netstandard2.0/en-NZ/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "en-NZ"
+          },
+          "lib/netstandard2.0/en-SG/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "en-SG"
+          },
+          "lib/netstandard2.0/en-ZA/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "en-ZA"
+          },
+          "lib/netstandard2.0/es-MX/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "es-MX"
+          },
+          "lib/netstandard2.0/es/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard2.0/et/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "et"
+          },
+          "lib/netstandard2.0/fi/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "fi"
+          },
+          "lib/netstandard2.0/fr-BE/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "fr-BE"
+          },
+          "lib/netstandard2.0/fr-CA/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "fr-CA"
+          },
+          "lib/netstandard2.0/fr-CH/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "fr-CH"
+          },
+          "lib/netstandard2.0/fr/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard2.0/hu/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "hu"
+          },
+          "lib/netstandard2.0/is/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "is"
+          },
+          "lib/netstandard2.0/it-CH/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "it-CH"
+          },
+          "lib/netstandard2.0/it/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard2.0/ja/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard2.0/lt/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "lt"
+          },
+          "lib/netstandard2.0/lv/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "lv"
+          },
+          "lib/netstandard2.0/nb-NO/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "nb-NO"
+          },
+          "lib/netstandard2.0/nl-BE/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "nl-BE"
+          },
+          "lib/netstandard2.0/nl/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/netstandard2.0/pl/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard2.0/pt-BR/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard2.0/ru/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard2.0/sv/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/netstandard2.0/th/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "th"
+          },
+          "lib/netstandard2.0/tr/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netstandard2.0/zh-Hans/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll": {
+            "locale": "zh-Hans"
+          }
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Runtime.PricingEngine.TestFoundation/9.23.20226.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Runtime.Entities": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.Framework": "10.0.20226.1",
+          "Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine": "9.23.20226.11"
+        },
+        "compile": {
+          "lib/net461/Microsoft.Dynamics.Commerce.Runtime.PricingEngine.TestFoundation.dll": {}
+        },
+        "runtime": {
+          "lib/net461/Microsoft.Dynamics.Commerce.Runtime.PricingEngine.TestFoundation.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Runtime.RealtimeServices.Messages/9.23.20226.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20226.1",
+          "Microsoft.Dynamics.Commerce.Runtime.Entities": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.Framework": "10.0.20226.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.RealtimeServices.Messages.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.RealtimeServices.Messages.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Runtime.Services/9.23.20226.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20226.1",
+          "Microsoft.Dynamics.Commerce.KeyVault.Contracts": "10.15.20223.2",
+          "Microsoft.Dynamics.Commerce.PaymentSDK.Portable": "10.12.20179.2",
+          "Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.DataManagers": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.Entities": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.FIF.Connector.Messages": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.FIF.DocumentProvider.Messages": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.Framework": "10.0.20226.1",
+          "Microsoft.Dynamics.Commerce.Runtime.Localization": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.RealtimeServices.Messages": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.Services.Messages": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.SDKManager.Portable": "10.12.20179.2",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Runtime.Services.Messages/9.23.20226.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20226.1",
+          "Microsoft.Dynamics.Commerce.Runtime.Entities": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.Framework": "10.0.20226.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.Messages.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.Messages.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine/9.23.20226.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20226.1",
+          "Microsoft.Dynamics.Commerce.Runtime.Entities": "9.23.20226.11",
+          "Microsoft.Dynamics.Commerce.Runtime.Framework": "10.0.20226.1",
+          "Microsoft.Dynamics.Commerce.Runtime.Services.Messages": "9.23.20226.11"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.SDKManager.Portable/10.12.20179.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20178.2",
+          "Microsoft.Dynamics.Commerce.PaymentSDK.Portable": "10.12.20179.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Retail.SDKManager.Portable.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Retail.SDKManager.Portable.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Commerce.Tests.Utilities/10.15.20223.2": {
+        "type": "package",
+        "dependencies": {
+          "MSTest.TestFramework": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Tests.Utilities.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Tests.Utilities.dll": {}
+        }
+      },
+      "Microsoft.Dynamics.Retail.Resources.Strings/9.23.20226.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Diagnostics": "10.5.20226.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Retail.Resources.Strings.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Dynamics.Retail.Resources.Strings.dll": {}
+        }
+      },
+      "Microsoft.IdentityModel.Clients.ActiveDirectory/3.19.4": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll": {},
+          "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll": {},
+          "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.dll": {}
+        }
+      },
+      "Microsoft.NET.Test.Sdk/15.9.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CodeCoverage": "15.9.0"
+        },
+        "build": {
+          "build/net45/Microsoft.Net.Test.Sdk.props": {},
+          "build/net45/Microsoft.Net.Test.Sdk.targets": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.Net.Test.Sdk.props": {}
+        }
+      },
+      "Moq/4.13.1": {
+        "type": "package",
+        "dependencies": {
+          "Castle.Core": "4.4.0",
+          "System.Threading.Tasks.Extensions": "4.5.1"
+        },
+        "compile": {
+          "lib/net45/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Moq.dll": {}
+        }
+      },
+      "MSTest.TestAdapter/2.0.0": {
+        "type": "package",
+        "build": {
+          "build/net45/MSTest.TestAdapter.props": {},
+          "build/net45/MSTest.TestAdapter.targets": {}
+        }
+      },
+      "MSTest.TestFramework/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll": {},
+          "lib/net45/Microsoft.VisualStudio.TestPlatform.TestFramework.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll": {},
+          "lib/net45/Microsoft.VisualStudio.TestPlatform.TestFramework.dll": {}
+        }
+      },
+      "Newtonsoft.Json/11.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "System.ComponentModel.Annotations/4.6.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.ComponentModel.DataAnnotations",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.ComponentModel.Annotations.dll": {}
+        },
+        "runtime": {
+          "lib/net461/System.ComponentModel.Annotations.dll": {}
+        }
+      },
+      "System.Composition/1.2.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Composition.AttributedModel": "1.2.0",
+          "System.Composition.Convention": "1.2.0",
+          "System.Composition.Hosting": "1.2.0",
+          "System.Composition.Runtime": "1.2.0",
+          "System.Composition.TypedParts": "1.2.0"
+        }
+      },
+      "System.Composition.AttributedModel/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/System.Composition.AttributedModel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Composition.AttributedModel.dll": {}
+        }
+      },
+      "System.Composition.Convention/1.2.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Composition.AttributedModel": "1.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Composition.Convention.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Composition.Convention.dll": {}
+        }
+      },
+      "System.Composition.Hosting/1.2.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Composition.Runtime": "1.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Composition.Hosting.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Composition.Hosting.dll": {}
+        }
+      },
+      "System.Composition.Runtime/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/System.Composition.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Composition.Runtime.dll": {}
+        }
+      },
+      "System.Composition.TypedParts/1.2.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Composition.AttributedModel": "1.2.0",
+          "System.Composition.Hosting": "1.2.0",
+          "System.Composition.Runtime": "1.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Composition.TypedParts.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Composition.TypedParts.dll": {}
+        }
+      },
+      "System.Linq.Parallel/4.3.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Core"
+        ],
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        }
+      },
+      "System.Runtime.Serialization.Json/4.3.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Runtime.Serialization"
+        ],
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Runtime.Serialization.Primitives/4.3.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Runtime.Serialization",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.Runtime.Serialization.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/net46/System.Runtime.Serialization.Primitives.dll": {}
+        }
+      },
+      "System.Runtime.Serialization.Xml/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.Serialization.Primitives": "4.3.0"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "System.Runtime.Serialization",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.Runtime.Serialization.Xml.dll": {}
+        },
+        "runtime": {
+          "lib/net46/System.Runtime.Serialization.Xml.dll": {}
+        }
+      },
+      "System.Security.Principal/4.3.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Threading.Tasks.Extensions/4.5.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
+        }
+      },
+      "System.Xml.XmlSerializer/4.3.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Xml"
+        ],
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "Contoso.Commerce.Runtime.PricingDataServicesSample/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Microsoft.Dynamics.Commerce.Runtime.DataManagers": "9.23.0",
+          "System.ComponentModel.Annotations": "4.6.0"
+        },
+        "compile": {
+          "bin/placeholder/Contoso.Commerce.Runtime.PricingDataServicesSample.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contoso.Commerce.Runtime.PricingDataServicesSample.dll": {}
+        }
+      },
+      "Contoso.Commerce.Runtime.PricingEngineSample/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Contoso.Commerce.Runtime.PricingDataServicesSample": "1.0.0",
+          "Microsoft.Dynamics.Commerce.Runtime.Services": "9.23.0"
+        },
+        "compile": {
+          "bin/placeholder/Contoso.Commerce.Runtime.PricingEngineSample.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contoso.Commerce.Runtime.PricingEngineSample.dll": {}
+        }
+      },
+      "Contoso.Commerce.Runtime.PricingServicesSample/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Contoso.Commerce.Runtime.PricingDataServicesSample": "1.0.0",
+          "Contoso.Commerce.Runtime.PricingEngineSample": "1.0.0",
+          "Microsoft.Dynamics.Commerce.Runtime.Services": "9.23.0"
+        },
+        "compile": {
+          "bin/placeholder/Contoso.Commerce.Runtime.PricingServicesSample.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contoso.Commerce.Runtime.PricingServicesSample.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Castle.Core/4.4.0": {
+      "sha512": "b5rRL5zeaau1y/5hIbI+6mGw3cwun16YjkHZnV9RRT5UyUIFsgLmNXJ0YnIN9p8Hw7K7AbG1q1UclQVU3DinAQ==",
+      "type": "package",
+      "path": "castle.core/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ASL - Apache Software Foundation License.txt",
+        "CHANGELOG.md",
+        "LICENSE",
+        "castle.core.4.4.0.nupkg.sha512",
+        "castle.core.nuspec",
+        "lib/net35/Castle.Core.dll",
+        "lib/net35/Castle.Core.xml",
+        "lib/net40/Castle.Core.dll",
+        "lib/net40/Castle.Core.xml",
+        "lib/net45/Castle.Core.dll",
+        "lib/net45/Castle.Core.xml",
+        "lib/netstandard1.3/Castle.Core.dll",
+        "lib/netstandard1.3/Castle.Core.xml",
+        "lib/netstandard1.5/Castle.Core.dll",
+        "lib/netstandard1.5/Castle.Core.xml",
+        "readme.txt"
+      ]
+    },
+    "Microsoft.CodeCoverage/15.9.0": {
+      "sha512": "oherNadUtHKqFQbtdRKXgPvZVWyGkOeS83pFWT864587npS7JIFWIJ/LJV0c25cWNkCytn2S9XGSSkKscnNFAQ==",
+      "type": "package",
+      "path": "microsoft.codecoverage/15.9.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/netstandard1.0/CodeCoverage/CodeCoverage.config",
+        "build/netstandard1.0/CodeCoverage/CodeCoverage.exe",
+        "build/netstandard1.0/CodeCoverage/amd64/covrun64.dll",
+        "build/netstandard1.0/CodeCoverage/amd64/msdia140.dll",
+        "build/netstandard1.0/CodeCoverage/codecoveragemessages.dll",
+        "build/netstandard1.0/CodeCoverage/covrun32.dll",
+        "build/netstandard1.0/CodeCoverage/msdia140.dll",
+        "build/netstandard1.0/Microsoft.CodeCoverage.props",
+        "build/netstandard1.0/Microsoft.CodeCoverage.targets",
+        "build/netstandard1.0/Microsoft.VisualStudio.TraceDataCollector.dll",
+        "build/netstandard1.0/cs/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard1.0/de/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard1.0/es/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard1.0/fr/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard1.0/it/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard1.0/ja/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard1.0/ko/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard1.0/pl/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard1.0/pt-BR/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard1.0/ru/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard1.0/tr/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard1.0/zh-Hans/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard1.0/zh-Hant/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "lib/net45/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+        "lib/netcoreapp1.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+        "microsoft.codecoverage.15.9.0.nupkg.sha512",
+        "microsoft.codecoverage.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Diagnostics/10.5.20226.1": {
+      "sha512": "GAkZIerMealx5/Mga0TICb2TyLLsFBcbBbXv5xbn/cc0Aq6jnFdggpJjawm2YSy+CJC3REA7Btq5mwG7rR8dTw==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.diagnostics/10.5.20226.1",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Retail.Diagnostics.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Retail.Diagnostics.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Retail.Diagnostics.xml",
+        "microsoft.dynamics.commerce.diagnostics.10.5.20226.1.nupkg.sha512",
+        "microsoft.dynamics.commerce.diagnostics.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Diagnostics.Sinks/10.5.20226.1": {
+      "sha512": "dt8goh5d6dG8uvL59s8l7ys88+upsRFGx3t2pmY4mpJuAKFY1PPt2IzfvONLi+msZGj6TC2h/6KHHTStV1j3VA==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.diagnostics.sinks/10.5.20226.1",
+      "files": [
+        ".nupkg.metadata",
+        "PkgContent/etw/Microsoft.Dynamics.Retail.Diagnostics.Sinks.PrivacyManifest.xml",
+        "PkgContent/etw/Microsoft.Dynamics.Retail.Diagnostics.Sinks.man",
+        "PkgContent/etw/Microsoft.Dynamics.Retail.Diagnostics.Sinks.man.h",
+        "PkgContent/etw/Microsoft.Dynamics.Retail.Diagnostics.Sinks.man.rc",
+        "PkgContent/etw/Microsoft.Dynamics.Retail.Diagnostics.Sinks.man.res",
+        "PkgContent/etw/Microsoft.Dynamics.Retail.Diagnostics.Sinks.manTEMP.BIN",
+        "PkgContent/etw/Microsoft.Dynamics.Retail.Diagnostics.Sinks.man_MSG00001.bin",
+        "lib/net461/Microsoft.Dynamics.Retail.Diagnostics.Sinks.dll",
+        "lib/net461/Microsoft.Dynamics.Retail.Diagnostics.Sinks.pdb",
+        "lib/net461/Microsoft.Dynamics.Retail.Diagnostics.Sinks.xml",
+        "microsoft.dynamics.commerce.diagnostics.sinks.10.5.20226.1.nupkg.sha512",
+        "microsoft.dynamics.commerce.diagnostics.sinks.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.KeyVault.Contracts/10.15.20223.2": {
+      "sha512": "qiTQbmXE7r2577aowk0ENKEzsR54N49PHMf6xKl0WDWv1frnubVDCUP77Oq2j8Ux9QcW+prYEhAEmoPPoU0mKA==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.keyvault.contracts/10.15.20223.2",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.KeyVault.Contracts.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.KeyVault.Contracts.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.KeyVault.Contracts.xml",
+        "microsoft.dynamics.commerce.keyvault.contracts.10.15.20223.2.nupkg.sha512",
+        "microsoft.dynamics.commerce.keyvault.contracts.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.PaymentSDK.Portable/10.12.20179.2": {
+      "sha512": "Ja8kfJmP+1/XPfrD+4sQQEfAnSNZogMyWtih1vY+yQSvaxqprPUzBfA+moT9QkQAgp/chQ2URu28xmbRy2N2nQ==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.paymentsdk.portable/10.12.20179.2",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Retail.PaymentSDK.Portable.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Retail.PaymentSDK.Portable.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Retail.PaymentSDK.Portable.xml",
+        "microsoft.dynamics.commerce.paymentsdk.portable.10.12.20179.2.nupkg.sha512",
+        "microsoft.dynamics.commerce.paymentsdk.portable.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector/9.23.20226.11": {
+      "sha512": "ChDJl+pBrQKYbKea1o6XbnzclYcP8iwG18/fkwg1q7cyFasS12L4BtHBWZiXwu3IL2G/leetFyS6wS+BuN9egA==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.proxies.customerinsightsconnector/9.23.20226.11",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Proxies.CustomerInsightsConnector.xml",
+        "microsoft.dynamics.commerce.proxies.customerinsightsconnector.9.23.20226.11.nupkg.sha512",
+        "microsoft.dynamics.commerce.proxies.customerinsightsconnector.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Runtime.Data/9.23.20226.11": {
+      "sha512": "iO6E9lJegyb+T1J6V19erInOxkzDCepg7wHiKvZfQl3qe0FU3lc5FBvkfbG3ciwY4MIfMVqvMJzb0nrEvVA3lQ==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.runtime.data/9.23.20226.11",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Data.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Data.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Data.xml",
+        "microsoft.dynamics.commerce.runtime.data.9.23.20226.11.nupkg.sha512",
+        "microsoft.dynamics.commerce.runtime.data.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Runtime.DataManagers/9.23.20226.11": {
+      "sha512": "HphD3ukzOX2Rq8n5wOeHUMnG8oTqckJV00vet6IiVgtqUJBivKrdPbFWeB/QYAa49NNkwt9s/d4OIXpcm9a40Q==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.runtime.datamanagers/9.23.20226.11",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.DataManagers.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.DataManagers.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.DataManagers.xml",
+        "microsoft.dynamics.commerce.runtime.datamanagers.9.23.20226.11.nupkg.sha512",
+        "microsoft.dynamics.commerce.runtime.datamanagers.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages/9.23.20226.11": {
+      "sha512": "MYGjUZQUDAQtUS5Lw0VGluImvEy3XLd8zrj/aUD+u2RIMR5XA6Z99zIYkZ5AXEZbzlxOzFjFEQDz1DruZ3HCbw==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.runtime.dataservices.messages/9.23.20226.11",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.xml",
+        "microsoft.dynamics.commerce.runtime.dataservices.messages.9.23.20226.11.nupkg.sha512",
+        "microsoft.dynamics.commerce.runtime.dataservices.messages.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Runtime.Entities/9.23.20226.11": {
+      "sha512": "AIeIlW3cD6DINrD2PwYNu3Jhd5Br3VQTf8DtEnX3V2sDa2f+V2fZ5kobkzp8cHhtvxhJ2iyFOhViN0cktGGI6w==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.runtime.entities/9.23.20226.11",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Entities.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Entities.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Entities.xml",
+        "microsoft.dynamics.commerce.runtime.entities.9.23.20226.11.nupkg.sha512",
+        "microsoft.dynamics.commerce.runtime.entities.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Runtime.FIF.Connector.Messages/9.23.20226.11": {
+      "sha512": "gaQaftJsSHZx4uzZNCeTBtR5q1QQYxcNKuHeuNEIDnJ1ewUwe0URJMJrH1o9RdyOe1P9tnwevGkycLBVJ+tQsQ==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.runtime.fif.connector.messages/9.23.20226.11",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.FIF.Connector.Messages.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.FIF.Connector.Messages.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.FIF.Connector.Messages.xml",
+        "microsoft.dynamics.commerce.runtime.fif.connector.messages.9.23.20226.11.nupkg.sha512",
+        "microsoft.dynamics.commerce.runtime.fif.connector.messages.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Runtime.FIF.DocumentProvider.Messages/9.23.20226.11": {
+      "sha512": "Pwuwq24HjJCA5ImK6jcua4XxgVDcv80qSBWjYIuhvQWISK4VegPuA18S93DI5kPpd4d45l6PHC4gfBH0V9mSDg==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.runtime.fif.documentprovider.messages/9.23.20226.11",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.FIF.DocumentProvider.Messages.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.FIF.DocumentProvider.Messages.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.FIF.DocumentProvider.Messages.xml",
+        "microsoft.dynamics.commerce.runtime.fif.documentprovider.messages.9.23.20226.11.nupkg.sha512",
+        "microsoft.dynamics.commerce.runtime.fif.documentprovider.messages.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Runtime.Framework/10.0.20226.1": {
+      "sha512": "US+HHm8G/ppwPPwbzcbNgk8Dsfb+oN0RJxP/edYl8rMmAnOlb9dc3J6Tz5b3VmAzJfXlhQi/GU+GRoOthV3aUw==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.runtime.framework/10.0.20226.1",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Framework.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Framework.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Framework.xml",
+        "microsoft.dynamics.commerce.runtime.framework.10.0.20226.1.nupkg.sha512",
+        "microsoft.dynamics.commerce.runtime.framework.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Runtime.Localization/9.23.20226.11": {
+      "sha512": "yxyjDDGuQ9lELOMHuaLThslFUON4n3Ojo2+qFTrnp6kgwV50FHzLS14p5uWEOA9uXyezv26SAj3hbS4wqz0S0A==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.runtime.localization/9.23.20226.11",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Localization.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Localization.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Localization.xml",
+        "lib/netstandard2.0/ar-AE/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/ar/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/cs/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/da/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/de-AT/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/de-CH/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/de/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/en-AU/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/en-CA/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/en-GB/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/en-IE/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/en-IN/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/en-MY/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/en-NZ/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/en-SG/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/en-ZA/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/es-MX/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/es/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/et/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/fi/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/fr-BE/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/fr-CA/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/fr-CH/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/fr/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/hu/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/is/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/it-CH/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/it/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/ja/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/lt/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/lv/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/nb-NO/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/nl-BE/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/nl/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/pl/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/pt-BR/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/ru/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/sv/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/th/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/tr/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "lib/netstandard2.0/zh-Hans/Microsoft.Dynamics.Commerce.Runtime.Localization.resources.dll",
+        "microsoft.dynamics.commerce.runtime.localization.9.23.20226.11.nupkg.sha512",
+        "microsoft.dynamics.commerce.runtime.localization.nuspec",
+        "src/ResourceFiles/RuntimeExceptionMessages.resx",
+        "src/ResourceFiles/RuntimeInventoryMessages.resx",
+        "src/ResourceFiles/RuntimeMerchandisingMessages.resx",
+        "src/ResourceFiles/RuntimeReceiptMessages.resx"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Runtime.PricingEngine.TestFoundation/9.23.20226.11": {
+      "sha512": "tIcWyMd1GkOXTB5nSNiay+4cadxXkk4I1PcqdQJRT3+o0vDr82oEO0lDtZDUZQeLTRi6MQWOtCNC/AqUQ7sydQ==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.runtime.pricingengine.testfoundation/9.23.20226.11",
+      "files": [
+        ".nupkg.metadata",
+        "lib/net461/Microsoft.Dynamics.Commerce.Runtime.PricingEngine.TestFoundation.dll",
+        "lib/net461/Microsoft.Dynamics.Commerce.Runtime.PricingEngine.TestFoundation.pdb",
+        "lib/net461/Microsoft.Dynamics.Commerce.Runtime.PricingEngine.TestFoundation.xml",
+        "microsoft.dynamics.commerce.runtime.pricingengine.testfoundation.9.23.20226.11.nupkg.sha512",
+        "microsoft.dynamics.commerce.runtime.pricingengine.testfoundation.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Runtime.RealtimeServices.Messages/9.23.20226.11": {
+      "sha512": "PkAzkw8UWyq29Jq5KN80TWfQO6MYohy/4HwiljiXJKFLPz0sfbFQmtFvDzBQD0QaPyrgHQ2zWcvHTxn3TdPKWw==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.runtime.realtimeservices.messages/9.23.20226.11",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.RealtimeServices.Messages.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.RealtimeServices.Messages.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.RealtimeServices.Messages.xml",
+        "microsoft.dynamics.commerce.runtime.realtimeservices.messages.9.23.20226.11.nupkg.sha512",
+        "microsoft.dynamics.commerce.runtime.realtimeservices.messages.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Runtime.Services/9.23.20226.11": {
+      "sha512": "4VD3WjyDmX2vui6glFvoDornIRhOHCHZKJ5JLS2z4EtQ6SOIJmaTIukOLgqTnMTLHGXyFLaRfAFFlGSljEnR7w==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.runtime.services/9.23.20226.11",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.xml",
+        "microsoft.dynamics.commerce.runtime.services.9.23.20226.11.nupkg.sha512",
+        "microsoft.dynamics.commerce.runtime.services.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Runtime.Services.Messages/9.23.20226.11": {
+      "sha512": "E/COt5oqOJkOSaMOyvBEBLdbMats/oaRsNJWDW9D9Q4HoeJnW3s1u0Ec4dAkwtBkHl+w8Orz0CZltrrm+0vwdg==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.runtime.services.messages/9.23.20226.11",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.Messages.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.Messages.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.Messages.xml",
+        "microsoft.dynamics.commerce.runtime.services.messages.9.23.20226.11.nupkg.sha512",
+        "microsoft.dynamics.commerce.runtime.services.messages.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine/9.23.20226.11": {
+      "sha512": "y1eOqXxvFwFf5JZaiyXzK+J1inY2JbJMOu8Y4T98/QqFZTXPsxt3qop7n1ZFyILOmMb71nvpvfjZErpb/L53sg==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.runtime.services.pricingengine/9.23.20226.11",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine.xml",
+        "microsoft.dynamics.commerce.runtime.services.pricingengine.9.23.20226.11.nupkg.sha512",
+        "microsoft.dynamics.commerce.runtime.services.pricingengine.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.SDKManager.Portable/10.12.20179.2": {
+      "sha512": "MIhxUlOIA4w2LNTEicX9njf7xH44GizT4xdyfKgsZboYgYq1PhS+TohdQZf4L91/CgjyNjM4bPdyA5fkf5QFOw==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.sdkmanager.portable/10.12.20179.2",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Retail.SDKManager.Portable.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Retail.SDKManager.Portable.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Retail.SDKManager.Portable.xml",
+        "microsoft.dynamics.commerce.sdkmanager.portable.10.12.20179.2.nupkg.sha512",
+        "microsoft.dynamics.commerce.sdkmanager.portable.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Commerce.Tests.Utilities/10.15.20223.2": {
+      "sha512": "Fn9rIvAFOlLxaYMHkv2g/T2HHZ9SLxRZoFO1Trfgh7WvfCTqBZH8b+DMwf+tbIPXS5AeglG/NCPNO5uVpWba0A==",
+      "type": "package",
+      "path": "microsoft.dynamics.commerce.tests.utilities/10.15.20223.2",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Tests.Utilities.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Commerce.Tests.Utilities.pdb",
+        "microsoft.dynamics.commerce.tests.utilities.10.15.20223.2.nupkg.sha512",
+        "microsoft.dynamics.commerce.tests.utilities.nuspec"
+      ]
+    },
+    "Microsoft.Dynamics.Retail.Resources.Strings/9.23.20226.11": {
+      "sha512": "ibawLw0nb54mLfb1SzvCp3SOlB6U99bylyUwJ/aSMD29S9NS8kzbz4NQOoA4ciIZ/pDL4E0ZIoTpD1HZWXPyGg==",
+      "type": "package",
+      "path": "microsoft.dynamics.retail.resources.strings/9.23.20226.11",
+      "files": [
+        ".nupkg.metadata",
+        "lib/netstandard2.0/Microsoft.Dynamics.Retail.Resources.Strings.dll",
+        "lib/netstandard2.0/Microsoft.Dynamics.Retail.Resources.Strings.pdb",
+        "lib/netstandard2.0/Microsoft.Dynamics.Retail.Resources.Strings.xml",
+        "microsoft.dynamics.retail.resources.strings.9.23.20226.11.nupkg.sha512",
+        "microsoft.dynamics.retail.resources.strings.nuspec"
+      ]
+    },
+    "Microsoft.IdentityModel.Clients.ActiveDirectory/3.19.4": {
+      "sha512": "DNmfww1BYg4p0AYkbqs4k+zS8BH4VZ57JYGRbOTBI5NxdXzU2YMBp8yqchBqSMk1LtIACaP0gdgJfo4RGaUQzg==",
+      "type": "package",
+      "path": "microsoft.identitymodel.clients.activedirectory/3.19.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid7/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
+        "lib/MonoAndroid7/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml",
+        "lib/MonoAndroid7/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
+        "lib/MonoAndroid7/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
+        "lib/Xamarin.iOS10/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
+        "lib/Xamarin.iOS10/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml",
+        "lib/Xamarin.iOS10/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
+        "lib/Xamarin.iOS10/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
+        "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
+        "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml",
+        "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
+        "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
+        "lib/netcore45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
+        "lib/netcore45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml",
+        "lib/netcore45/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
+        "lib/netcore45/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
+        "lib/netstandard1.1/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
+        "lib/netstandard1.1/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml",
+        "lib/netstandard1.1/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
+        "lib/netstandard1.1/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
+        "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
+        "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml",
+        "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
+        "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
+        "lib/portable-net45+win/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
+        "lib/portable-net45+win/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml",
+        "lib/portable-net45+win/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
+        "lib/portable-net45+win/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
+        "microsoft.identitymodel.clients.activedirectory.3.19.4.nupkg.sha512",
+        "microsoft.identitymodel.clients.activedirectory.nuspec"
+      ]
+    },
+    "Microsoft.NET.Test.Sdk/15.9.0": {
+      "sha512": "sGDhl1lTcyC4nbMA6vta+nADm50IEGnm9SW9+JNaie1zjtSmUdOPHu02+WK2SJND+3vbr9DWvgfi9qlSPfUAyw==",
+      "type": "package",
+      "path": "microsoft.net.test.sdk/15.9.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net45/Microsoft.Net.Test.Sdk.props",
+        "build/net45/Microsoft.Net.Test.Sdk.targets",
+        "build/netcoreapp1.0/Microsoft.Net.Test.Sdk.props",
+        "build/netcoreapp1.0/Microsoft.Net.Test.Sdk.targets",
+        "build/uap10.0/Microsoft.Net.Test.Sdk.props",
+        "buildMultiTargeting/Microsoft.Net.Test.Sdk.props",
+        "microsoft.net.test.sdk.15.9.0.nupkg.sha512",
+        "microsoft.net.test.sdk.nuspec"
+      ]
+    },
+    "Moq/4.13.1": {
+      "sha512": "ic4m9/b10tz9oRB1Oi5bW7E/FS6Pd2SH5OJFhlmhUJkQhiV5FyrIRxVUEaG5KOpSpcfSPGAVW4rRZt6OzrS5zg==",
+      "type": "package",
+      "path": "moq/4.13.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Moq.dll",
+        "lib/net45/Moq.xml",
+        "lib/netstandard2.0/Moq.dll",
+        "lib/netstandard2.0/Moq.xml",
+        "moq.4.13.1.nupkg.sha512",
+        "moq.nuspec"
+      ]
+    },
+    "MSTest.TestAdapter/2.0.0": {
+      "sha512": "VoXDhx+a/44RmQYpkrYWe3D6AP6kjqibe02NOj1t8Zn9uo8e90gXW22SYj3geEwNTcEdMg2XMq0SI2P0Fl2Trw==",
+      "type": "package",
+      "path": "mstest.testadapter/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "build/_common/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll",
+        "build/_common/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll",
+        "build/_common/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll",
+        "build/_common/Microsoft.VisualStudio.TestPlatform.TestFramework.dll",
+        "build/_common/cs/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll",
+        "build/_common/cs/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll",
+        "build/_common/cs/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll",
+        "build/_common/de/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll",
+        "build/_common/de/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll",
+        "build/_common/de/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll",
+        "build/_common/es/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll",
+        "build/_common/es/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll",
+        "build/_common/es/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll",
+        "build/_common/fr/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll",
+        "build/_common/fr/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll",
+        "build/_common/fr/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll",
+        "build/_common/it/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll",
+        "build/_common/it/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll",
+        "build/_common/it/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll",
+        "build/_common/ja/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll",
+        "build/_common/ja/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll",
+        "build/_common/ja/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll",
+        "build/_common/ko/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll",
+        "build/_common/ko/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll",
+        "build/_common/ko/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll",
+        "build/_common/pl/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll",
+        "build/_common/pl/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll",
+        "build/_common/pl/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll",
+        "build/_common/pt/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll",
+        "build/_common/pt/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll",
+        "build/_common/pt/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll",
+        "build/_common/ru/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll",
+        "build/_common/ru/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll",
+        "build/_common/ru/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll",
+        "build/_common/tr/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll",
+        "build/_common/tr/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll",
+        "build/_common/tr/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll",
+        "build/_common/zh-Hans/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll",
+        "build/_common/zh-Hans/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll",
+        "build/_common/zh-Hans/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll",
+        "build/_common/zh-Hant/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll",
+        "build/_common/zh-Hant/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll",
+        "build/_common/zh-Hant/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll",
+        "build/net45/MSTest.TestAdapter.props",
+        "build/net45/MSTest.TestAdapter.targets",
+        "build/netcoreapp1.0/MSTest.TestAdapter.props",
+        "build/netcoreapp1.0/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll",
+        "build/uap10.0/MSTest.TestAdapter.props",
+        "build/uap10.0/MSTest.TestAdapter.targets",
+        "build/uap10.0/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll",
+        "mstest.testadapter.2.0.0.nupkg.sha512",
+        "mstest.testadapter.nuspec"
+      ]
+    },
+    "MSTest.TestFramework/2.0.0": {
+      "sha512": "gDlwhzIqdhUB+tirA80c6jUnlAsWBl2RXsKwmCbeZ1XkTjufrZIrBs7cvBdxbzddAEFOZuqfeCHJK/rp0vloZg==",
+      "type": "package",
+      "path": "mstest.testframework/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net45/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.XML",
+        "lib/net45/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll",
+        "lib/net45/Microsoft.VisualStudio.TestPlatform.TestFramework.XML",
+        "lib/net45/Microsoft.VisualStudio.TestPlatform.TestFramework.dll",
+        "lib/net45/cs/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/net45/cs/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/net45/de/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/net45/de/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/net45/es/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/net45/es/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/net45/fr/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/net45/fr/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/net45/it/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/net45/it/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/net45/ja/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/net45/ja/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/net45/ko/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/net45/ko/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/net45/pl/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/net45/pl/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/net45/pt/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/net45/pt/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/net45/ru/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/net45/ru/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/net45/tr/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/net45/tr/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/net45/zh-Hans/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/net45/zh-Hans/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/net45/zh-Hant/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/net45/zh-Hant/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/netstandard1.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.XML",
+        "lib/netstandard1.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll",
+        "lib/netstandard1.0/Microsoft.VisualStudio.TestPlatform.TestFramework.XML",
+        "lib/netstandard1.0/Microsoft.VisualStudio.TestPlatform.TestFramework.dll",
+        "lib/netstandard1.0/cs/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/netstandard1.0/cs/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/netstandard1.0/de/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/netstandard1.0/de/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/netstandard1.0/es/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/netstandard1.0/es/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/netstandard1.0/fr/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/netstandard1.0/fr/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/netstandard1.0/it/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/netstandard1.0/it/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/netstandard1.0/ja/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/netstandard1.0/ja/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/netstandard1.0/ko/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/netstandard1.0/ko/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/netstandard1.0/pl/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/netstandard1.0/pl/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/netstandard1.0/pt/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/netstandard1.0/pt/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/netstandard1.0/ru/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/netstandard1.0/ru/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/netstandard1.0/tr/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/netstandard1.0/tr/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/netstandard1.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/netstandard1.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/netstandard1.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/netstandard1.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/uap10.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.XML",
+        "lib/uap10.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll",
+        "lib/uap10.0/Microsoft.VisualStudio.TestPlatform.TestFramework.XML",
+        "lib/uap10.0/Microsoft.VisualStudio.TestPlatform.TestFramework.dll",
+        "lib/uap10.0/cs/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/uap10.0/cs/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/uap10.0/de/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/uap10.0/de/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/uap10.0/es/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/uap10.0/es/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/uap10.0/fr/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/uap10.0/fr/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/uap10.0/it/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/uap10.0/it/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/uap10.0/ja/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/uap10.0/ja/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/uap10.0/ko/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/uap10.0/ko/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/uap10.0/pl/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/uap10.0/pl/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/uap10.0/pt/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/uap10.0/pt/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/uap10.0/ru/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/uap10.0/ru/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/uap10.0/tr/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/uap10.0/tr/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/uap10.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/uap10.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "lib/uap10.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml",
+        "lib/uap10.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.TestFramework.xml",
+        "mstest.testframework.2.0.0.nupkg.sha512",
+        "mstest.testframework.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/11.0.2": {
+      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+      "type": "package",
+      "path": "newtonsoft.json/11.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.11.0.2.nupkg.sha512",
+        "newtonsoft.json.nuspec"
+      ]
+    },
+    "System.ComponentModel.Annotations/4.6.0": {
+      "sha512": "pOd+UhZ3X8xfwKDlgAzowUJNjp8VYVmOHZm++vCd0kq1HZ0zK3mNo2yRXjYgv7Ik/Xi43fmJfND2PLEsQSALCg==",
+      "type": "package",
+      "path": "system.componentmodel.annotations/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/net461/System.ComponentModel.Annotations.dll",
+        "lib/netcore50/System.ComponentModel.Annotations.dll",
+        "lib/netstandard1.4/System.ComponentModel.Annotations.dll",
+        "lib/netstandard2.0/System.ComponentModel.Annotations.dll",
+        "lib/netstandard2.1/System.ComponentModel.Annotations.dll",
+        "lib/netstandard2.1/System.ComponentModel.Annotations.xml",
+        "lib/portable-net45+win8/_._",
+        "lib/win8/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/net461/System.ComponentModel.Annotations.dll",
+        "ref/net461/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/System.ComponentModel.Annotations.dll",
+        "ref/netcore50/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/de/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/es/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/fr/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/it/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ja/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ko/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ru/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/System.ComponentModel.Annotations.dll",
+        "ref/netstandard1.1/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/de/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/es/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/fr/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/it/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/ja/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/ko/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/ru/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/System.ComponentModel.Annotations.dll",
+        "ref/netstandard1.3/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/de/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/es/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/fr/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/it/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/ja/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/ko/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/ru/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/System.ComponentModel.Annotations.dll",
+        "ref/netstandard1.4/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/de/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/es/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/fr/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/it/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/ja/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/ko/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/ru/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard2.0/System.ComponentModel.Annotations.dll",
+        "ref/netstandard2.0/System.ComponentModel.Annotations.xml",
+        "ref/netstandard2.1/System.ComponentModel.Annotations.dll",
+        "ref/netstandard2.1/System.ComponentModel.Annotations.xml",
+        "ref/portable-net45+win8/_._",
+        "ref/win8/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.componentmodel.annotations.4.6.0.nupkg.sha512",
+        "system.componentmodel.annotations.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Composition/1.2.0": {
+      "sha512": "nTgIj77StlLM7CW3uFM3B/0Yen5udzaeSQcdSCVV3wIlRGYsXYLjZWTYa9m8IBjQiyZKsukKYaogqhOa6QUlDA==",
+      "type": "package",
+      "path": "system.composition/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "system.composition.1.2.0.nupkg.sha512",
+        "system.composition.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Composition.AttributedModel/1.2.0": {
+      "sha512": "IQ2bn1BR/Q7gapjnXR/HGh0BMtjYVU0t0uPZ3LXE4yfwjM7x/HcImJxwwhUtnL+YWU5/pTOhzZnqsjwKJpWaug==",
+      "type": "package",
+      "path": "system.composition.attributedmodel/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard1.0/System.Composition.AttributedModel.dll",
+        "lib/netstandard2.0/System.Composition.AttributedModel.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Composition.AttributedModel.dll",
+        "system.composition.attributedmodel.1.2.0.nupkg.sha512",
+        "system.composition.attributedmodel.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Composition.Convention/1.2.0": {
+      "sha512": "g9PSAdL/0dT3GZbdwt5r238RLHfnn+ujRVhoOGvVNjbbhlgZeKcDA+zsje4Y81csMywAPsDXkeXrBigtjINurg==",
+      "type": "package",
+      "path": "system.composition.convention/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard1.0/System.Composition.Convention.dll",
+        "lib/netstandard2.0/System.Composition.Convention.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Composition.Convention.dll",
+        "system.composition.convention.1.2.0.nupkg.sha512",
+        "system.composition.convention.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Composition.Hosting/1.2.0": {
+      "sha512": "NQa4OanHFuWVpMuj3+0RnoAq2v+5KQNA3+EYuhmuDbOfR06o7rYjzs9FHP0XWJWN85vqnM76dgAgj46OYsDV8A==",
+      "type": "package",
+      "path": "system.composition.hosting/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard1.0/System.Composition.Hosting.dll",
+        "lib/netstandard2.0/System.Composition.Hosting.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Composition.Hosting.dll",
+        "system.composition.hosting.1.2.0.nupkg.sha512",
+        "system.composition.hosting.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Composition.Runtime/1.2.0": {
+      "sha512": "F8Ef3y9/JKbK4lEqJScFnfhT8/CwboGS890a/Js9E11wb1N6rl63pU8wxRPmy2MUUUHSafxrF3ooIh94pNEF0g==",
+      "type": "package",
+      "path": "system.composition.runtime/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard1.0/System.Composition.Runtime.dll",
+        "lib/netstandard2.0/System.Composition.Runtime.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Composition.Runtime.dll",
+        "system.composition.runtime.1.2.0.nupkg.sha512",
+        "system.composition.runtime.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Composition.TypedParts/1.2.0": {
+      "sha512": "cLjoUGnaLRkJSwL6FLEx3aJanDgwEtyoEqf9cE6Z5ipbjNXAlk7W11uwNfHaECxdPa/QfGbvaRd4i24gxc5ygg==",
+      "type": "package",
+      "path": "system.composition.typedparts/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard1.0/System.Composition.TypedParts.dll",
+        "lib/netstandard2.0/System.Composition.TypedParts.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Composition.TypedParts.dll",
+        "system.composition.typedparts.1.2.0.nupkg.sha512",
+        "system.composition.typedparts.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Linq.Parallel/4.3.0": {
+      "sha512": "td7x21K8LalpjTWCzW/nQboQIFbq9i0r+PCyBBCdLWWnm4NBcdN18vpz/G9hCpUaCIfRL+ZxJNVTywlNlB1aLQ==",
+      "type": "package",
+      "path": "system.linq.parallel/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.Linq.Parallel.dll",
+        "lib/netstandard1.3/System.Linq.Parallel.dll",
+        "lib/portable-net45+win8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.Linq.Parallel.dll",
+        "ref/netcore50/System.Linq.Parallel.xml",
+        "ref/netcore50/de/System.Linq.Parallel.xml",
+        "ref/netcore50/es/System.Linq.Parallel.xml",
+        "ref/netcore50/fr/System.Linq.Parallel.xml",
+        "ref/netcore50/it/System.Linq.Parallel.xml",
+        "ref/netcore50/ja/System.Linq.Parallel.xml",
+        "ref/netcore50/ko/System.Linq.Parallel.xml",
+        "ref/netcore50/ru/System.Linq.Parallel.xml",
+        "ref/netcore50/zh-hans/System.Linq.Parallel.xml",
+        "ref/netcore50/zh-hant/System.Linq.Parallel.xml",
+        "ref/netstandard1.1/System.Linq.Parallel.dll",
+        "ref/netstandard1.1/System.Linq.Parallel.xml",
+        "ref/netstandard1.1/de/System.Linq.Parallel.xml",
+        "ref/netstandard1.1/es/System.Linq.Parallel.xml",
+        "ref/netstandard1.1/fr/System.Linq.Parallel.xml",
+        "ref/netstandard1.1/it/System.Linq.Parallel.xml",
+        "ref/netstandard1.1/ja/System.Linq.Parallel.xml",
+        "ref/netstandard1.1/ko/System.Linq.Parallel.xml",
+        "ref/netstandard1.1/ru/System.Linq.Parallel.xml",
+        "ref/netstandard1.1/zh-hans/System.Linq.Parallel.xml",
+        "ref/netstandard1.1/zh-hant/System.Linq.Parallel.xml",
+        "ref/portable-net45+win8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.linq.parallel.4.3.0.nupkg.sha512",
+        "system.linq.parallel.nuspec"
+      ]
+    },
+    "System.Runtime.CompilerServices.Unsafe/4.5.0": {
+      "sha512": "YrzNWduCDHhUaSRBxHxL11UkM2fD6y8hITHis4/LbQZ6vj3vdRjoH3IoPWWC9uDXK2wHIqn+b5gv1Np/VKyM1g==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/uap10.0.16300/_._",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/uap10.0.16300/_._",
+        "system.runtime.compilerservices.unsafe.4.5.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Runtime.Serialization.Json/4.3.0": {
+      "sha512": "CpVfOH0M/uZ5PH+M9+Gu56K0j9lJw3M+PKRegTkcrY/stOIvRUeonggxNrfBYLA5WOHL2j15KNJuTuld3x4o9w==",
+      "type": "package",
+      "path": "system.runtime.serialization.json/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.Runtime.Serialization.Json.dll",
+        "lib/netstandard1.3/System.Runtime.Serialization.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.Runtime.Serialization.Json.dll",
+        "ref/netcore50/System.Runtime.Serialization.Json.xml",
+        "ref/netcore50/de/System.Runtime.Serialization.Json.xml",
+        "ref/netcore50/es/System.Runtime.Serialization.Json.xml",
+        "ref/netcore50/fr/System.Runtime.Serialization.Json.xml",
+        "ref/netcore50/it/System.Runtime.Serialization.Json.xml",
+        "ref/netcore50/ja/System.Runtime.Serialization.Json.xml",
+        "ref/netcore50/ko/System.Runtime.Serialization.Json.xml",
+        "ref/netcore50/ru/System.Runtime.Serialization.Json.xml",
+        "ref/netcore50/zh-hans/System.Runtime.Serialization.Json.xml",
+        "ref/netcore50/zh-hant/System.Runtime.Serialization.Json.xml",
+        "ref/netstandard1.0/System.Runtime.Serialization.Json.dll",
+        "ref/netstandard1.0/System.Runtime.Serialization.Json.xml",
+        "ref/netstandard1.0/de/System.Runtime.Serialization.Json.xml",
+        "ref/netstandard1.0/es/System.Runtime.Serialization.Json.xml",
+        "ref/netstandard1.0/fr/System.Runtime.Serialization.Json.xml",
+        "ref/netstandard1.0/it/System.Runtime.Serialization.Json.xml",
+        "ref/netstandard1.0/ja/System.Runtime.Serialization.Json.xml",
+        "ref/netstandard1.0/ko/System.Runtime.Serialization.Json.xml",
+        "ref/netstandard1.0/ru/System.Runtime.Serialization.Json.xml",
+        "ref/netstandard1.0/zh-hans/System.Runtime.Serialization.Json.xml",
+        "ref/netstandard1.0/zh-hant/System.Runtime.Serialization.Json.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.runtime.serialization.json.4.3.0.nupkg.sha512",
+        "system.runtime.serialization.json.nuspec"
+      ]
+    },
+    "System.Runtime.Serialization.Primitives/4.3.0": {
+      "sha512": "Wz+0KOukJGAlXjtKr+5Xpuxf8+c8739RI1C+A2BoQZT+wMCCoMDDdO8/4IRHfaVINqL78GO8dW8G2lW/e45Mcw==",
+      "type": "package",
+      "path": "system.runtime.serialization.primitives/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/net46/System.Runtime.Serialization.Primitives.dll",
+        "lib/netcore50/System.Runtime.Serialization.Primitives.dll",
+        "lib/netstandard1.3/System.Runtime.Serialization.Primitives.dll",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/net46/System.Runtime.Serialization.Primitives.dll",
+        "ref/netcore50/System.Runtime.Serialization.Primitives.dll",
+        "ref/netcore50/System.Runtime.Serialization.Primitives.xml",
+        "ref/netcore50/de/System.Runtime.Serialization.Primitives.xml",
+        "ref/netcore50/es/System.Runtime.Serialization.Primitives.xml",
+        "ref/netcore50/fr/System.Runtime.Serialization.Primitives.xml",
+        "ref/netcore50/it/System.Runtime.Serialization.Primitives.xml",
+        "ref/netcore50/ja/System.Runtime.Serialization.Primitives.xml",
+        "ref/netcore50/ko/System.Runtime.Serialization.Primitives.xml",
+        "ref/netcore50/ru/System.Runtime.Serialization.Primitives.xml",
+        "ref/netcore50/zh-hans/System.Runtime.Serialization.Primitives.xml",
+        "ref/netcore50/zh-hant/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.0/System.Runtime.Serialization.Primitives.dll",
+        "ref/netstandard1.0/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.0/de/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.0/es/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.0/fr/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.0/it/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.0/ja/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.0/ko/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.0/ru/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.0/zh-hans/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.0/zh-hant/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.3/System.Runtime.Serialization.Primitives.dll",
+        "ref/netstandard1.3/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.3/de/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.3/es/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.3/fr/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.3/it/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.3/ja/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.3/ko/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.3/ru/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.3/zh-hans/System.Runtime.Serialization.Primitives.xml",
+        "ref/netstandard1.3/zh-hant/System.Runtime.Serialization.Primitives.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/aot/lib/netcore50/System.Runtime.Serialization.Primitives.dll",
+        "system.runtime.serialization.primitives.4.3.0.nupkg.sha512",
+        "system.runtime.serialization.primitives.nuspec"
+      ]
+    },
+    "System.Runtime.Serialization.Xml/4.3.0": {
+      "sha512": "nUQx/5OVgrqEba3+j7OdiofvVq9koWZAC7Z3xGI8IIViZqApWnZ5+lLcwYgTlbkobrl/Rat+Jb8GeD4WQESD2A==",
+      "type": "package",
+      "path": "system.runtime.serialization.xml/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/net46/System.Runtime.Serialization.Xml.dll",
+        "lib/netcore50/System.Runtime.Serialization.Xml.dll",
+        "lib/netstandard1.3/System.Runtime.Serialization.Xml.dll",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/net46/System.Runtime.Serialization.Xml.dll",
+        "ref/netcore50/System.Runtime.Serialization.Xml.dll",
+        "ref/netcore50/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/de/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/es/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/fr/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/it/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/ja/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/ko/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/ru/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/zh-hans/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/zh-hant/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/System.Runtime.Serialization.Xml.dll",
+        "ref/netstandard1.0/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/de/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/es/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/fr/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/it/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/ja/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/ko/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/ru/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/zh-hans/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/zh-hant/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/System.Runtime.Serialization.Xml.dll",
+        "ref/netstandard1.3/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/de/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/es/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/fr/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/it/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/ja/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/ko/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/ru/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/zh-hans/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/zh-hant/System.Runtime.Serialization.Xml.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.runtime.serialization.xml.4.3.0.nupkg.sha512",
+        "system.runtime.serialization.xml.nuspec"
+      ]
+    },
+    "System.Security.Principal/4.3.0": {
+      "sha512": "I1tkfQlAoMM2URscUtpcRo/hX0jinXx6a/KUtEQoz3owaYwl3qwsO8cbzYVVnjxrzxjHo3nJC+62uolgeGIS9A==",
+      "type": "package",
+      "path": "system.security.principal/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.Security.Principal.dll",
+        "lib/netstandard1.0/System.Security.Principal.dll",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.Security.Principal.dll",
+        "ref/netcore50/System.Security.Principal.xml",
+        "ref/netcore50/de/System.Security.Principal.xml",
+        "ref/netcore50/es/System.Security.Principal.xml",
+        "ref/netcore50/fr/System.Security.Principal.xml",
+        "ref/netcore50/it/System.Security.Principal.xml",
+        "ref/netcore50/ja/System.Security.Principal.xml",
+        "ref/netcore50/ko/System.Security.Principal.xml",
+        "ref/netcore50/ru/System.Security.Principal.xml",
+        "ref/netcore50/zh-hans/System.Security.Principal.xml",
+        "ref/netcore50/zh-hant/System.Security.Principal.xml",
+        "ref/netstandard1.0/System.Security.Principal.dll",
+        "ref/netstandard1.0/System.Security.Principal.xml",
+        "ref/netstandard1.0/de/System.Security.Principal.xml",
+        "ref/netstandard1.0/es/System.Security.Principal.xml",
+        "ref/netstandard1.0/fr/System.Security.Principal.xml",
+        "ref/netstandard1.0/it/System.Security.Principal.xml",
+        "ref/netstandard1.0/ja/System.Security.Principal.xml",
+        "ref/netstandard1.0/ko/System.Security.Principal.xml",
+        "ref/netstandard1.0/ru/System.Security.Principal.xml",
+        "ref/netstandard1.0/zh-hans/System.Security.Principal.xml",
+        "ref/netstandard1.0/zh-hant/System.Security.Principal.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.security.principal.4.3.0.nupkg.sha512",
+        "system.security.principal.nuspec"
+      ]
+    },
+    "System.Threading.Tasks.Extensions/4.5.1": {
+      "sha512": "WSKUTtLhPR8gllzIWO2x6l4lmAIfbyMAiTlyXAis4QBDonXK4b4S6F8zGARX4/P8wH3DH+sLdhamCiHn+fTU1A==",
+      "type": "package",
+      "path": "system.threading.tasks.extensions/4.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll",
+        "lib/netstandard1.0/System.Threading.Tasks.Extensions.xml",
+        "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll",
+        "lib/netstandard2.0/System.Threading.Tasks.Extensions.xml",
+        "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/netcoreapp2.1/_._",
+        "ref/netstandard1.0/System.Threading.Tasks.Extensions.dll",
+        "ref/netstandard1.0/System.Threading.Tasks.Extensions.xml",
+        "ref/netstandard2.0/System.Threading.Tasks.Extensions.dll",
+        "ref/netstandard2.0/System.Threading.Tasks.Extensions.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.threading.tasks.extensions.4.5.1.nupkg.sha512",
+        "system.threading.tasks.extensions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Xml.XmlSerializer/4.3.0": {
+      "sha512": "MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
+      "type": "package",
+      "path": "system.xml.xmlserializer/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.Xml.XmlSerializer.dll",
+        "lib/netstandard1.3/System.Xml.XmlSerializer.dll",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.Xml.XmlSerializer.dll",
+        "ref/netcore50/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/de/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/es/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/fr/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/it/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/ja/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/ko/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/ru/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/zh-hans/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/zh-hant/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/System.Xml.XmlSerializer.dll",
+        "ref/netstandard1.0/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/de/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/es/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/fr/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/it/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/ja/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/ko/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/ru/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/zh-hans/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/zh-hant/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/System.Xml.XmlSerializer.dll",
+        "ref/netstandard1.3/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/de/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/es/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/fr/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/it/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/ja/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/ko/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/ru/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/zh-hans/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/zh-hant/System.Xml.XmlSerializer.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll",
+        "system.xml.xmlserializer.4.3.0.nupkg.sha512",
+        "system.xml.xmlserializer.nuspec"
+      ]
+    },
+    "Contoso.Commerce.Runtime.PricingDataServicesSample/1.0.0": {
+      "type": "project",
+      "path": "../Extensions.PricingDataServicesSample/Runtime.Extensions.PricingDataServicesSample.csproj",
+      "msbuildProject": "../Extensions.PricingDataServicesSample/Runtime.Extensions.PricingDataServicesSample.csproj"
+    },
+    "Contoso.Commerce.Runtime.PricingEngineSample/1.0.0": {
+      "type": "project",
+      "path": "../Extensions.PricingEngineSample/Runtime.Extensions.PricingEngineSample.csproj",
+      "msbuildProject": "../Extensions.PricingEngineSample/Runtime.Extensions.PricingEngineSample.csproj"
+    },
+    "Contoso.Commerce.Runtime.PricingServicesSample/1.0.0": {
+      "type": "project",
+      "path": "../Extensions.PricingServicesSample/Runtime.Extensions.PricingServicesSample.csproj",
+      "msbuildProject": "../Extensions.PricingServicesSample/Runtime.Extensions.PricingServicesSample.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.6.1": [
+      "Contoso.Commerce.Runtime.PricingDataServicesSample >= 1.0.0",
+      "Contoso.Commerce.Runtime.PricingEngineSample >= 1.0.0",
+      "Contoso.Commerce.Runtime.PricingServicesSample >= 1.0.0",
+      "MSTest.TestAdapter >= 2.0.0",
+      "MSTest.TestFramework >= 2.0.0",
+      "Microsoft.Dynamics.Commerce.Diagnostics.Sinks >= 10.5.*",
+      "Microsoft.Dynamics.Commerce.Runtime.DataManagers >= 9.23.*",
+      "Microsoft.Dynamics.Commerce.Runtime.PricingEngine.TestFoundation >= 9.23.*",
+      "Microsoft.Dynamics.Commerce.Tests.Utilities >= 10.15.*",
+      "Microsoft.NET.Test.Sdk >= 15.9.0",
+      "Moq >= 4.13.1"
+    ]
+  },
+  "packageFolders": {
+    "C:\\RetailSDK\\References": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\RetailSDK\\SampleExtensions\\CommerceRuntime\\Extensions.PricingEngine.SampleTests\\Runtime.Extensions.PricingEngine.SampleTests.csproj",
+      "projectName": "Contoso.Commerce.Runtime.PricingEngine.SampleTests",
+      "projectPath": "C:\\RetailSDK\\SampleExtensions\\CommerceRuntime\\Extensions.PricingEngine.SampleTests\\Runtime.Extensions.PricingEngine.SampleTests.csproj",
+      "packagesPath": "C:\\RetailSDK\\References",
+      "outputPath": "C:\\RetailSDK\\SampleExtensions\\CommerceRuntime\\Extensions.PricingEngine.SampleTests\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\RetailSDK\\NuGet.Config",
+        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net461"
+      ],
+      "sources": {
+        "C:\\RetailSDK\\pkgs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net461": {
+          "projectReferences": {
+            "C:\\RetailSDK\\SampleExtensions\\CommerceRuntime\\Extensions.PricingDataServicesSample\\Runtime.Extensions.PricingDataServicesSample.csproj": {
+              "projectPath": "C:\\RetailSDK\\SampleExtensions\\CommerceRuntime\\Extensions.PricingDataServicesSample\\Runtime.Extensions.PricingDataServicesSample.csproj"
+            },
+            "C:\\RetailSDK\\SampleExtensions\\CommerceRuntime\\Extensions.PricingEngineSample\\Runtime.Extensions.PricingEngineSample.csproj": {
+              "projectPath": "C:\\RetailSDK\\SampleExtensions\\CommerceRuntime\\Extensions.PricingEngineSample\\Runtime.Extensions.PricingEngineSample.csproj"
+            },
+            "C:\\RetailSDK\\SampleExtensions\\CommerceRuntime\\Extensions.PricingServicesSample\\Runtime.Extensions.PricingServicesSample.csproj": {
+              "projectPath": "C:\\RetailSDK\\SampleExtensions\\CommerceRuntime\\Extensions.PricingServicesSample\\Runtime.Extensions.PricingServicesSample.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net461": {
+        "dependencies": {
+          "MSTest.TestAdapter": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          },
+          "MSTest.TestFramework": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          },
+          "Microsoft.Dynamics.Commerce.Diagnostics.Sinks": {
+            "target": "Package",
+            "version": "[10.5.*, )"
+          },
+          "Microsoft.Dynamics.Commerce.Runtime.DataManagers": {
+            "target": "Package",
+            "version": "[9.23.*, )"
+          },
+          "Microsoft.Dynamics.Commerce.Runtime.PricingEngine.TestFoundation": {
+            "target": "Package",
+            "version": "[9.23.*, )"
+          },
+          "Microsoft.Dynamics.Commerce.Tests.Utilities": {
+            "target": "Package",
+            "version": "[10.15.*, )"
+          },
+          "Microsoft.NET.Test.Sdk": {
+            "target": "Package",
+            "version": "[15.9.0, )"
+          },
+          "Moq": {
+            "target": "Package",
+            "version": "[4.13.1, )"
+          }
+        }
+      }
+    }
+  }
+}

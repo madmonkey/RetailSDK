@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SelectApplicableWarrantiesDialog</title>
+
+</head>
+<body>
+    <div data-bind="customControlInternal: 'SelectApplicableWarrantiesDialog'">
+        <div class="selectApplicableWarrantiesDialog">
+            <div data-bind="dialog: {
+                    title: Commerce.ViewModelAdapter.getResourceString('string_29869'),
+                    visible: visible,
+                    showProgressIndicator: indeterminateWaitVisible,
+                    buttonClick: selectWarrantyButtonClick,
+                    buttons: [
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_830'), operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, isPrimary: true, disable: noWarrantySelected, cssClass: 'okButton' },
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton' }]
+                }"
+                 class="selectApplicableWarrantiesDialog">
+
+                <!-- dialog content -->
+                <div class="col height100Percent">
+
+                    <div class="padTop20 padBottom4"><div class="h3" data-bind="resx: { textContent: productName}"></div></div>
+                    <div class="padTop20 padBottom4"><div class="h4" data-bind="resx: { textContent: productSubtitle}"></div></div>
+                    <div class="padTop20 padBottom4"><div class="h4" data-bind="resx: { textContent: 'string_29870'}"></div></div> <!-- Select warranty -->
+
+                    <!-- Warranties -->
+                    <div id="WarrantyGrid" class="height100Percent stretch">
+                        <!-- The sales lines to display -->
+                        <div id="warrantiesList"
+                             class="grow noMargin col"
+                             data-bind="dataList: {
+                                    itemDataSource: applicableWarranties,
+                                    defaultListType: Commerce.Controls.DataList.ListType.Card,
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    selectionChanged: warrantySelectedEventHandler,
+                                    ariaLabelResx: 'string_29871',    // Applicable warranties
+                                    itemTemplates: [
+                                        {
+                                            templateId: 'warrantyGridTemplate',
+                                            cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                            deviceType: Commerce.Controls.DataList.DeviceType.All
+                                        }
+                                    ]
+                            }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

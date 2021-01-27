@@ -1,0 +1,21 @@
+@using Contoso.Retail.Ecommerce.Sdk.Controls
+@using Contoso.Retail.Ecommerce.Web.Storefront.Models
+@model Contoso.Retail.Ecommerce.Web.Storefront.ViewModels.CheckoutViewModel
+
+@{
+    ViewBag.Title = @ResourceHelper.GetLocalString("CheckoutViewTitle");
+}
+
+@section other {
+    @MvcHelperExtension.GetCheckoutControlHeader("/OrderConfirmation", false, (@Model != null) ? @Model.EncodedRedirectResponse : null)
+
+    @{
+        this.ViewContext.HttpContext.Items["IsCheckout"] = true;
+    }
+}
+
+@MvcHelperExtension.GetCheckoutControl()
+
+
+
+

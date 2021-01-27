@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loyalty Templates</title>
+</head>
+<body>
+
+    <!-- Template for loyalty programs with tier status cards on the loyalty card balance dialog -->
+    <script type="text/html" id="loyaltyProgramWithHighestActiveLoyaltyCardTierStatusCardTemplate">
+        <div class="grow marginTop12 cardBorderTop cardBorderBottom cardBorderLeft cardBorderRight">
+            <div class="h3 ellipsis height52 pad12 grow cardBorderBottom" data-bind="text: loyaltyGroupName"></div>
+            <!-- ko if: loyaltyCardTierRecordId != 0 -->
+            <div class="height60 pad12 padTop8">
+                <div class="h5 ellipsis margin0" data-bind="text: loyaltyCardTierTierId"></div>
+                <div class="row marginTop0">
+                    <div class="col grow ratio5 margin0">
+                        <div class="margin0 h6 ellipsis textTransformNone opacity60 wrap secondaryFontColor textLeft" data-bind="text: validFromDisplayText"></div>
+                    </div>
+                    <div class="col grow ratio5 margin0">
+                        <div class="margin0 h6 ellipsis textTransformNone opacity60 wrap secondaryFontColor textRight" data-bind="text: validToDisplayText"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: loyaltyCardTierRecordId == 0 -->
+            <div class="height36 pad12 padTop8">
+                <div class="row marginTop0">
+                    <div class="col grow ratio5 margin0">
+                        <div class="margin0 h6 ellipsis textTransformNone opacity60 wrap secondaryFontColor textLeft" data-bind="text: validFromDisplayText"></div>
+                    </div>
+                    <div class="col grow ratio5 margin0">
+                        <div class="margin0 h6 ellipsis textTransformNone opacity60 wrap secondaryFontColor textRight" data-bind="text: validToDisplayText"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /ko -->
+
+        </div>
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SetDisassembleQuantityDialog</title>
+
+    <!-- WinJS references -->
+    <link href="SetDisassembleQuantityDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'SetDisassembleQuantityDialog'">
+
+        <div data-bind="dialog:
+            {
+                title: title,
+                subTitle: subTitle,
+                visible: visible,
+                buttonClick: setItemDisassembleQuantityInvokedHandler,
+                subTitleCssClass: subTitleCssClass,
+                showProgressIndicator: indeterminateWaitVisible,
+                buttons: [
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_5365'), disable: isOKButtonDisabled, operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, cssClass: 'okButton' },
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton' }]
+            },
+            axBubbleAttr: 'setDisassembleQuantityDialog_setDisassembleQuantityDialog'">
+
+            <!-- dialog content -->
+            <div>
+                <div class="row marginBottom10 height72 width72 fit-image">
+                    <img src="#" data-bind="attr: { src: Commerce.Formatters.ImageUrlFormatter(productImageUrl()) }, setImageOnError: Commerce.DefaultImages.ProductSmall" />
+                    <div class="col marginLeft12 marginTop12">
+                        <div class="h4" data-bind="text: productDescription"></div>
+                        <div class="h4 secondaryFontColor" data-bind="text: productNumber"></div>
+                    </div>
+                </div>
+
+                <div data-bind="axBubbleAttr: 'setDisassembleQuantityDialog_quantityNumberNumPad'">
+                    <div  data-bind="numericNumpad: {
+                                parser: new Commerce.NumberParser(),
+                                value: itemQuantity,
+                                decimalPrecision: 0,
+                                labelDataBinding: { resx: { textContent: 'string_5306' /* Quantity */ } },
+                                onEnter: onTextBoxEnterEventHandler,
+                                numPadInputSource: numPadInputBroker
+                            }">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

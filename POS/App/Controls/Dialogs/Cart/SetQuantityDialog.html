@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SetQuantityDialog</title>
+
+    <!-- WinJS references -->
+    <link href="SetQuantityDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'SetQuantityDialog'">
+        <div data-bind="dialog:
+            {
+                title: title,
+                subTitle: subTitle,
+                visible: visible,
+                backButtonVisible: _backButtonVisible,
+                backClick: itemGoBack,
+                buttonClick: onButtonClick,
+                showProgressIndicator: indeterminateWaitVisible,
+                closeOnEscButton: true,
+                dialogCloseButtonClick: dialogCloseButtonClick
+            },
+            axBubbleAttr: 'setQuantityDialog_setQuantityDialog'">
+
+            <!-- dialog content -->
+            <div class="col grow">
+                <div class="marginTop20" data-bind="visible: _unitOfMeasureVisible">
+                    <label data-bind="resx: {textContent: 'string_5307'}" >Unit of measure</label>
+                    <div>
+                        <div class="h4" id="setQuantityUnitOfMeasureValue" data-bind="text: _unitOfMeasureDescription"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="grow"></div>
+            <div data-bind="axBubbleAttr: 'setQuantityDialog_setQuantityNumPad'">
+                <div data-bind="numericNumpad: {
+                                parser: new Commerce.NumberParser(),
+                                value: _itemQuantity,
+                                decimalPrecision: _unitOfMeasureDecimalPrecision,
+                                labelDataBinding: { resx: {textContent: 'string_5306' /* Quantity */ } },
+                                onEnter: onTextBoxEnterEventHandler,
+                                numPadInputSource: numPadInputBroker
+                     }"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

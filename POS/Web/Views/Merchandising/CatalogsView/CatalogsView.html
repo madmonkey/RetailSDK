@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CatalogsView</title>
+    <link href="CatalogsView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment catalogsView">
+        <div class="section main row marginBottom12 marginLeft20 marginRight20" data-bind="resx: { ariaLabel: 'string_4454' }">
+            <!-- Main content -->              
+            <div data-bind="sectionWrapper: { headerResx: 'string_35' }"> <!-- Selected store -->
+                <div class="col no-shrink">
+                    <div class="col width320 primaryBackgroundColor highContrastBorderThin padLeft20" data-bind="visible: Commerce.Session.instance.productCatalogStore.StoreType != Commerce.Proxy.Entities.StoreButtonControlType.AllStores">
+                        <div id="storeName" class="padTop12 shrink">
+                            <a class="h3" href="#" data-bind="text: currentStoreLocation, click: navigateToStoreDetails, axBubbleAttr: 'catalogsView_storeName'">Store name</a>
+                        </div>
+                        <div>
+                            <div class="h4" data-win-bind="textContent: currentStore.OrgUnitNumber"></div>
+                        </div>
+                        <div class="row marginTop12 marginBottom20">
+                            <div class="marginRight8">
+                                <div class="margin8">
+                                    <button class="iconPhone icon-18x18 margin07" data-bind="resx: { ariaLabel: 'string_4209' }, axBubbleAttr: 'catalogsView_phoneButton'"></button>  <!-- Phone number -->
+                                </div>
+                            </div>
+                            <div>
+                                <div class="margin8">
+                                    <button class="iconMail icon-18x18 margin07" data-bind="resx: { ariaLabel: 'string_4211' }, axBubbleAttr: 'catalogsView_emailButton'"></button>  <!-- Email address -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="height72 secondaryFontColor" data-win-bind="innerHTML: currentStore.OrgUnitAddress Commerce.Core.Converter.threeLineAddressFormatterWithHtmlEscape"></div>
+                    </div>
+                    <div class="row width320 height92 primaryBackgroundColor highContrastBorderThin pad12" data-bind="visible: Commerce.Session.instance.productCatalogStore.StoreType == Commerce.Proxy.Entities.StoreButtonControlType.AllStores">
+                        <div class="width72 height72">
+                            <img class="width72 height72 otherStores highContrastBorderThin" />
+                        </div>
+                        <div class="height72 width232 padLeft12">
+                            <div class="padTop05">
+                                <h3 class="ellipsis" data-bind="resx: { textContent: 'string_5504' }"></h3> <!--All stores and catalogs-->
+                            </div>
+                            <div class="secondaryFontColor">
+                                <div class="h4" data-bind="resx: { textContent: 'string_44' }"></div> <!--Search all available products currently for sale anywhere.-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marginTop12">
+                        <div data-bind="buttonBlock: {  buttonClass: 'iconRetail'
+                                                , labelTextResx: 'string_43' /* Use current store */
+                                                , click: switchToCurrentStore
+                                                },
+                                                axBubbleAttr: 'catalogsView_switchToCurrentStoreButton'">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div data-bind="buttonBlock: {  buttonClass: 'iconMapPin'
+                                                , labelTextResx: 'string_30' /* Find other stores */
+                                                , click: switchToOtherStores
+                                                },
+                                                axBubbleAttr: 'catalogsView_switchToOtherStoresButton'">
+                        </div>
+                    </div>
+                    <div>
+                        <div data-bind="buttonBlock: {  buttonClass: 'iconSearch'
+                                                , labelTextResx: 'string_36' /* Search all stores and catalogs */
+                                                , click: switchToAllStoreProducts
+                                                },
+                                                axBubbleAttr: 'catalogsView_switchToAllStoreProductsButton'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gutter40x40"></div>               
+            <div data-bind="sectionWrapper: {headerResx: 'string_32'}" class="width100Percent col"> <!-- Catalogs -->
+                <div class="stretch col no-shrink width100Percent">
+                    <div id="catalogsList"
+                            class="col noMargin"
+                            data-bind="dataList: {
+                            defaultListType: Commerce.Controls.DataList.ListType.Card,
+                            itemDataSource: viewModel.catalogs,
+                            selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                            itemInvoked: itemInvokedHandler,
+                            ariaLabelResx: 'string_925', /* Collection of products */
+                            itemTemplates: [
+                                { templateId: 'categoryCatalogTemplate' }
+                            ]
+                            },
+                            axBubbleAttr: 'catalogsView_productsView'">
+                    </div>
+                </div>
+            </div>
+            <div class="gutter40x40"></div>
+        </div>
+    </div>
+</body>
+</html>

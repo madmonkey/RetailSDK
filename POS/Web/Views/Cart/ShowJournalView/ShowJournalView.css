@@ -1,0 +1,75 @@
+.showJournalView .receiptPreview {
+    color: #000000;
+    background-color: #ffffff;
+    align-self: stretch;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+/*Have to use monospace font here to make sure the alignment works fine.*/
+.showJournalView .receiptPreview pre {
+    font-family:'Lucida Console';
+}
+
+body[dir="rtl"] .showJournalView .receiptPreview {
+    margin-right: -40px;
+    margin-left: 0; 
+}
+
+@media (orientation: portrait) {
+    .showJournalView .receiptPreview {
+        margin-left: 0;
+    }
+
+    body[dir="rtl"] .showJournalView .receiptPreview {
+        margin-right: 0;
+    }
+
+    body[dir="rtl"] .showJournalView #ShowJournalCustomerPanel,
+    .showJournalView #ShowJournalTotalsPanel {
+        margin-left: 40px;
+    }
+}
+
+/* treats the pesky height: 400px that's set by default in ui-dark.css */
+.showJournalView .standardGrid .win-listview,
+.showJournalView .dataList .win-listview {
+    height: calc(100% - 30px);
+}
+
+/* Fix for chrome-specific issue where 100% height of list isn't being calculated correctly unless parent elements have their height specified 100% */
+.showJournalView .dataList > div {
+    height: 100%
+}
+
+/* This is to handle a chrome-specific issue where height 100%, specifically on the data list, 
+   is ending up as 0px unless all parent elements with "col grow" classes applied have a flex-basis of 100% */
+.showJournalView .flexBasis100Percent {
+    flex-basis: 100%;
+}
+
+.showJournalView .transactionLinesGrid .win-listview {
+    height: 0px;
+}
+
+/* fixes appbar overlap issue if 6 or more items in the transaction. */
+.showJournalView .transactionLinesGrid > div {
+    height: 100%;
+}
+.showJournalView .transactionLinesGrid .tableContent {
+    flex: 1 1 auto;
+}
+
+/* 
+    Grid hides rows if display:none is used to hide it. 
+    To reproduce the problem scroll transactions select row then click show receipts. 
+    As a work around this is another way of hiding element. 
+*/
+.showJournalView .hiddenAbsolute {
+    visibility: hidden;
+    position: absolute;
+}
+
+.showJournalView *[role=main]{
+    overflow: hidden;
+}

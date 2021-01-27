@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>RefinerDialog</title>
+    <link href="RefinerDialog.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="refinerListTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="height40 grow marginLeft12 centerY width252">
+            <div class="h4 ellipsis" data-win-bind="textContent: KeyName"></div>
+        </div>
+    </div>
+    <div class="refinerDialog" data-bind="customControlInternal: 'RefinerDialog'">
+        <div data-bind="dialog: {
+            title: title,
+            visible: visible,
+            buttonClick: applyRefinerButtonClick,
+            showProgressIndicator: indeterminateWaitVisible,
+            closeOnEscButton:true,
+            buttons: [
+                { label: Commerce.ViewModelAdapter.getResourceString('string_79'), operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, cssClass: 'okButton', isPrimary:true },
+                { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton' },
+            ],
+        },
+        axBubbleAttr: 'refinerDialog_refinerDialog'">
+            <!-- dialog content -->
+            <div class="col height40" data-bind="with: viewModel">
+                <div class="row padTop15 borderBottom">
+                    <button id="addRefiner" class="marginTop02 marginRight8 centerY height32 shrink"
+                            data-bind="resx: { ariaLabel: 'string_4107' }, click: toggleRefinerListFlyout(), visible: availableRefiners().length > 0, axBubbleAttr: 'refinerDialog_addRefiner'">
+                        <div class="row centerY">
+                            <div class="h4 iconAdd accent"></div>
+                            <div class="padLeft8 padRight8 accent h4" data-bind="resx: { textContent: 'string_4107' }"></div>
+                        </div>
+                    </button> <!-- Add filter -->
+                    <button id="clearRefiners" class="marginTop02 padLeft8 centerY height32 shrink"
+                            data-bind="resx: { ariaLabel: 'string_4187' }, click: $root.clear.bind($root), axBubbleAttr: 'refinerDialog_clearAll'">
+                        <div class="row centerY">
+                            <div class="h4 iconClearFilter accent icon-15x15"></div>
+                            <div class="padLeft8 padRight8 accent h4" data-bind="resx: { textContent: 'string_4187' }"></div>
+                        </div>
+                    </button> <!-- Clear all -->
+                </div>
+            </div>
+            <div class="scrollY">
+                <div class="refinerList row wrap">
+                </div>
+            </div>
+        </div>
+        <!-- Filters -->
+        <div class="pad0 baseFont"
+             data-bind="flyout: {
+                    anchor: '#addRefiner',
+                    alignment: 'left',
+                    toggleShowHide: viewModel.toggleRefinerListFlyout
+                 }, visible: true, resx: { ariaLabel: 'string_4161' } ">
+            <!-- List of filters -->
+            <div class="scrollY">
+                <div id="refinerDialog_repeater" class="itemPicker win-selectionstylefilled"
+                     data-win-control="WinJS.UI.ListView"
+                     data-win-options="{ selectionMode: 'none', tapBehavior: 'invokeOnly', itemTemplate: select('#refinerListTemplate'), layout: { type: WinJS.UI.ListLayout }}"
+                     data-bind="winControl: {
+                                       itemDataSource: viewModel.availableRefiners,
+                                       iteminvoked : addRefinerUI
+                                       },
+                            resx: { ariaLabel: 'string_4104' },
+                            axBubbleAttr: 'refinerDialog_repeater'">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

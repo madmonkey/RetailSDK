@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\_SharedPackagingProjectComponents\internalPackagePaths.settings" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props') And '$(MicrosoftCommonPropsHasBeenImported)' != 'true'" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <ProjectGuid>{0AF8626B-B929-4E8D-B569-C82D8340E7FB}</ProjectGuid>
+    <PackageName>RetailServer</PackageName>
+    <InputManifest>Scripts\InstallationInfo.xml</InputManifest>
+    <OutputManifest>content.folder\$(PackageName)\Scripts\CustomizedInstallationInfo.xml</OutputManifest>
+    <InstallationInfoDllFullPath>$(PkgDynamics_CustomDeployablePackage)\PlatformSDK\UpdateInstaller\Microsoft.Dynamics.AX.AXInstallationInfo.dll</InstallationInfoDllFullPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <_Code_bin_ext_File Include="@(CommerceRuntime_CustomizableFile)" />
+    <_Code_bin_ext_File Include="@(RetailServer_CustomizableFile)" />
+    <_Database_File Include="@(DatabaseFile_FullSchema)" />
+    <_Database_Upgrade_Custom_File Include="@(DatabaseFile_Upgrade_Custom)" />
+  </ItemGroup>
+  <ItemGroup>
+    <_Code_File Include=".\Code\web.config" />
+    <_Data_File Include="$(PkgMicrosoft_Dynamics_Commerce_Database_Channel)\contentFiles\DeploymentPublishProfile.xml" />
+    <_Scripts_File Include="$(InstallationInfoDllFullPath)" />
+    <_Scripts_File Include="$(InputManifest)" />
+    <_Scripts_File Include="$(PkgDynamics_Servicing_RetailDeployment_72)\ServiceModels\RetailServer\Scripts\**\*" />
+    <_Scripts_File Include="$(PkgDynamics_Servicing_RetailDeployment_72)\ServiceModels\RetailSelfService\Scripts\SelfServiceConfiguration.psm1" />
+    <_Scripts_File Include="$(PkgMicrosoft_Dynamics_Commerce_Database_Channel)\contentFiles\DeploymentPublishProfile.xml" />
+    <_Scripts_Upgrade_Core_File Include="$(PkgMicrosoft_Dynamics_Commerce_Database_Channel)\contentFiles\DeploymentPublishProfile.xml" />
+    <_Update_Installer_Files Include="$(PkgDynamics_CustomDeployablePackage)\PlatformSDK\UpdateInstaller\*" />
+    <_ServiceModel_Files Include="$(PkgDynamics_Servicing_RetailDeployment_72)\ServiceModels\RetailServer\ServiceModel\*" />
+  </ItemGroup>
+  <Target Name="Build">
+    <CreateItem Include="$(PaymentsIPaymentProcessorAssemblies_RootFolder)\**\*.*">
+      <Output TaskParameter="Include" ItemName="All_PaymentsIPaymentProcessorAssemblies_Files" />
+    </CreateItem>
+  </Target>
+  <Target Name="BuildIncremental" AfterTargets="Build" Inputs="$(MSBuildAllProjects);@(All_PaymentsIPaymentProcessorAssemblies_Files);@(_Code_File);@(_Data_File);@(_Data_Upgrade_Custom_File);@(_Data_Upgrade_File);@(_ETWManifest_File);@(_Packages_File);@(_Scripts_File);@(_Scripts_Upgrade_Core_File);@(_ServiceModel_Files);@(__File);@(_Database_File);@(_Database_Upgrade_Custom_File);@(_Database_Upgrade_Retail_File);@(_Update_Installer_Files)" Outputs="$(OutputPath)content.zip">
+    <CallTarget Targets="CopyPackageFiles" />
+    <Delete Files="$(OutputPath)content.zip" />
+    <GenerateHotfixInstallationInfo ContentFolder="$(OutputPath)content.folder" InstallationInfoDllFullPath="$(InstallationInfoDllFullPath)" />
+    <Zip OutputFileName="$(OutputPath)content.zip" InputFolder="$(OutputPath)content.folder" />
+  </Target>
+  <Target Name="CopyPackageFiles">
+    <RemoveDir Directories="$(OutputPath)content.folder" />
+    <Copy SourceFiles="@(_Code_File)" DestinationFolder="$(OutputPath)content.folder\RetailServer\Code" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Data_File)" DestinationFolder="$(OutputPath)content.folder\RetailServer\Data" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Data_Upgrade_Custom_File)" DestinationFolder="$(OutputPath)content.folder\RetailServer\Data\Upgrade\Custom" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Data_Upgrade_File)" DestinationFolder="$(OutputPath)content.folder\RetailServer\Data\Upgrade" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_ETWManifest_File)" DestinationFolder="$(OutputPath)content.folder\RetailServer\ETWManifest" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Packages_File)" DestinationFolder="$(OutputPath)content.folder\RetailServer\Packages" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Scripts_File)" DestinationFolder="$(OutputPath)content.folder\RetailServer\Scripts\%(RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Scripts_Upgrade_Core_File)" DestinationFolder="$(OutputPath)content.folder\RetailServer\Scripts\Upgrade\Core" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_ServiceModel_Files)" DestinationFolder="$(OutputPath)content.folder\RetailServer\ServiceModel\%(RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(__File)" DestinationFolder="$(OutputPath)content.folder\RetailServer\" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Code_bin_ext_File)" DestinationFolder="$(OutputPath)content.folder\RetailServer\Code\bin\ext\%(RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Database_File)" DestinationFolder="$(OutputPath)content.folder\$(PackageName)\Data" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Database_Upgrade_Custom_File)" DestinationFolder="$(OutputPath)content.folder\$(PackageName)\Data\Upgrade\Custom" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Update_Installer_Files)" DestinationFolder="$(OutputPath)content.folder" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(All_PaymentsIPaymentProcessorAssemblies_Files)" DestinationFiles="@(All_PaymentsIPaymentProcessorAssemblies_Files-&gt;Replace('$(PaymentsIPaymentProcessorAssemblies_RootFolder)', 'RetailServer\Code\bin\ext')-&gt;'$(OutputPath)content.folder\%(RelativeDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(OutputPath)content.folder\RetailServer\$(InputManifest)" DestinationFiles="$(OutputPath)$(OutputManifest)" />
+    <Delete Files="$(OutputPath)content.folder\RetailServer\$(InputManifest)" />
+  </Target>
+  <Target Name="BuildGenerated" />
+  <Target Name="BuildCompiled" />
+  <Target Name="BuildLinked" />
+  <Target Name="Rebuild">
+    <CallTarget Targets="Clean" />
+    <CallTarget Targets="Build" />
+  </Target>
+  <Target Name="Clean">
+    <RemoveDir Directories="$(OutputPath)content.folder" />
+    <Delete Files="$(OutputPath)content.zip" />
+  </Target>
+  <Import Project="$(SdkRootPath)\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

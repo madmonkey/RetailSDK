@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TransferOrderInputDialog</title>
+    <link href="TransferOrderInputDialog.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'TransferOrderInputDialog'">
+
+        <div class="transferOrderInputDialog">
+            <div data-bind="dialog: {
+                    title: title,
+                    subTitle: subTitle,
+                    visible: visible,
+                    buttonClick: buttonClickHandler,
+                    closeOnEscButton: true,
+                    buttons: [
+                        { label: okButtonLabel, operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, visible: okButtonAllowed, disable: disableOKButton }, 
+                        { label: cancelButtonLabel, operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK }
+                    ],
+                },
+                axBubbleAttr: 'transferOrderInputDialog_transferOrderInputDialog'">
+
+                <!-- dialog content -->
+                <div class="content">
+                    <div class="h4 marginBottom12 secondaryFontColor" data-bind="resx: { textContent: 'string_3885' }">Transfer from</div> <!-- Origination location/store-->
+
+                    <!-- Transfer from-->
+                    <div id="fromLocation" 
+                         tabindex="0"
+                         role="button"
+                         class="row height60 marginBottom12 centerY clickable outlineFocus" 
+                         data-bind="click: fromLocationClickHandler,
+                         enterKeyPress: fromLocationClickHandler,
+                         css: {'readOnlyMode': !canEditFromLocation(), 'accentBackground': canEditFromLocation}">
+
+                        <div class="col padLeft12" data-bind="visible: isFromLocationSelected ">
+                            <div class="h5 mainText" data-bind="text: fromLocation().inventLocationId"></div>
+                            <div class="h6 subText" data-bind="text: fromLocation().inventLocationName"></div>
+                        </div>
+                        <div class="row padLeft12 centerY">
+                            <div class="h5 mainText" data-bind="resx: { textContent: 'string_3891' }, visible: !isFromLocationSelected()"></div> <!-- Choose warehouse -->
+                            <div class="iconChevronRight centerY alignRight marginRight12"
+                                 data-bind="resx: { ariaLabel: 'string_3886' },
+                             axBubbleAttr: 'transferOrderInputDialog_toLocation',
+                             visible: canEditFromLocation"></div>
+                        </div>
+                    </div>
+
+                    <div class="h4 marginBottom12 secondaryFontColor" data-bind="resx: { textContent: 'string_3883' }">Ship date</div> <!-- Ship date -->
+
+                    <!--Ship date picker dropdown-->
+                    <div id="shipDate" 
+                         class="row marginBottom12"
+                         data-bind="datePicker: { 
+                            datePattern: '{day.integer(2)} {dayofweek.full}',
+                            current: shipDate,
+                            enabled: enableDateControls 
+                         },
+                         resx: { ariaLabel: 'string_3883'},
+                         axBubbleAttr: 'transferOrderInputDialog_shipDate'"></div>
+
+                    <div class="h4 marginBottom12 secondaryFontColor" data-bind="resx: { textContent: 'string_3886' }">Transfer to</div> 
+                    
+                    <!-- Destination location/store -->
+                    <div id="toLocation"
+                         tabindex="0"
+                         role="button"
+                         class="row height60 marginBottom12 centerY clickable outlineFocus" 
+                         data-bind="click: toLocationClickHandler,
+                         css: {'readOnlyMode': !canEditToLocation(), 'accentBackground': canEditToLocation},
+                         enterKeyPress: toLocationClickHandler">
+                        <div class="col padLeft12"  data-bind="visible: isToLocationSelected">
+                            <div class="h5 mainText" data-bind="text: toLocation().inventLocationId"></div>
+                            <div class="h6 subText" data-bind="text: toLocation().inventLocationName"></div>
+                        </div>
+                        <div class="row padLeft12 centerY">
+                            <div class="h5 mainText" data-bind="resx: { textContent: 'string_3891' }, visible: !isToLocationSelected()"></div> <!-- Choose warehouse -->
+                            <div class="iconChevronRight centerY alignRight marginRight12"
+                                 data-bind="resx: { ariaLabel: 'string_3886' },
+                             axBubbleAttr: 'transferOrderInputDialog_toLocation',
+                             visible: canEditToLocation"></div>
+                        </div>
+                    </div>
+
+                    <div class="h4 marginBottom12 secondaryFontColor" data-bind="resx: { textContent: 'string_3884' }">Receive date</div> <!-- Receive date -->
+
+                    <!-- Receive date picker dropdown -->
+                    <div id="receiveDate" 
+                         class="row marginBottom12"
+                         data-bind="datePicker: { 
+                            datePattern: '{day.integer(2)} {dayofweek.full}',
+                            current: receiveDate,
+                            enabled: enableDateControls
+                         },
+                         resx: { ariaLabel: 'string_3884'},
+                         axBubbleAttr: 'transferOrderInputDialog_receiveDate'"></div>
+
+                    <div class="h4 marginBottom12 secondaryFontColor" data-bind="resx: { textContent: 'string_3439' }">Delivery mode</div> <!-- Delivery mode -->
+
+                    <!-- Mode of delivery dropdown -->
+                    <div>
+                        <select id="deliveryModes" 
+                                data-bind="options: deliveryModes,
+                                           optionsText: 'Description',
+                                           optionsValue: 'Code',
+                                           value: selectedDeliveryModeId,
+                                           resx: { ariaLabel: 'string_3439'},
+                                           enable: canEditDeliveryMode">
+                         </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

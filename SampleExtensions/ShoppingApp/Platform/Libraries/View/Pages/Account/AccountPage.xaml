@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<base:AccountPageXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Pages.AccountPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages"
+    xmlns:converters="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Converters"
+    xmlns:extensions="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Extensions"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    Title="{localization:Translate Pages_AccountPage_AccountInformation}">
+    <ScrollView>
+        <ScrollView.Resources>
+            <ResourceDictionary>
+                <converters:InverseBooleanConverter
+                    x:Key="InverseBooleanConverter" />
+            </ResourceDictionary>
+        </ScrollView.Resources>
+        <StackLayout
+            Spacing="0">
+
+            <StackLayout
+                IsVisible="{extensions:AnyFeatureEnabled GoogleSignIn}">
+
+                <StackLayout
+                    HeightRequest="{x:Static statics:RowSizes.XLargeRowHeightDouble}"
+                    Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnOrderHistoryButtonTapped" />
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Margin="20,0"
+                        FontSize="Large"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{localization:Translate Pages_AccountPage_OrderHistory}"
+                        TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                        VerticalTextAlignment="Center" />
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="{x:Static statics:RowSizes.XLargeRowHeightDouble}"
+                        Source="open_box.png" />
+                </StackLayout>
+                <BoxView
+                    HeightRequest="0.5"
+                    Color="{x:Static statics:Palette.SEPARATOR}" />
+
+                <StackLayout
+                    HeightRequest="{x:Static statics:RowSizes.MediumRowHeightDouble}"
+                    IsVisible="{Binding IsSignedIn, Converter={StaticResource InverseBooleanConverter}}"
+                    Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnSignInButtonTapped" />
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Margin="20,0"
+                        FontSize="Small"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{localization:Translate Pages_AccountPage_SignIn}"
+                        TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
+                <BoxView
+                    HeightRequest="0.5"
+                    IsVisible="{Binding IsSignedIn, Converter={StaticResource InverseBooleanConverter}}"
+                    Color="{x:Static statics:Palette.SEPARATOR}" />
+
+                <StackLayout
+                    HeightRequest="{x:Static statics:RowSizes.MediumRowHeightDouble}"
+                    IsVisible="{Binding IsSignedIn}"
+                    Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding SignOutCommand}" />
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Margin="20,0"
+                        FontSize="Small"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{localization:Translate Pages_AccountPage_SignOut}"
+                        TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
+                <BoxView
+                    HeightRequest="0.5"
+                    IsVisible="{Binding IsSignedIn}"
+                    Color="{x:Static statics:Palette.SEPARATOR}" />
+
+            </StackLayout>
+
+            <StackLayout
+                HeightRequest="{x:Static statics:RowSizes.MediumRowHeightDouble}"
+                Orientation="Horizontal">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnAboutControlTapped" />
+                </StackLayout.GestureRecognizers>
+                <Label
+                    Margin="20,0"
+                    FontSize="Small"
+                    HorizontalOptions="StartAndExpand"
+                    Text="{localization:Translate Pages_AccountPage_About}"
+                    TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                    VerticalTextAlignment="Center" />
+            </StackLayout>
+            <BoxView
+                HeightRequest="0.5"
+                Color="{x:Static statics:Palette.SEPARATOR}" />
+
+            <StackLayout
+                HeightRequest="{x:Static statics:RowSizes.MediumRowHeightDouble}"
+                IsVisible="{Binding IsEvaluationModeEnabled}"
+                Orientation="Horizontal">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnEvaluationModeSettingsButtonTapped" />
+                </StackLayout.GestureRecognizers>
+                <Label
+                    Margin="20,0"
+                    FontSize="Small"
+                    HorizontalOptions="StartAndExpand"
+                    Text="{localization:Translate Pages_AccountPage_EvaluationModeSettings}"
+                    TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                    VerticalTextAlignment="Center" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</base:AccountPageXaml>

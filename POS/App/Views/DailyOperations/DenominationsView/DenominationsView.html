@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Denominations View</title>
+</head>
+<body>
+    <div class="denominationsView fragment" data-bind="with: viewModel">
+        <section role="main" class="marginLeft12 marginRight12 col grow" data-bind="resx: { ariaLabel: 'string_4454' }">
+            <!-- Main content -->
+            <div class="col grow">
+                <div class="col grow" data-bind="sectionWrapper: {headerResx: tenderName() },"> 
+                    <!-- Denomination -->
+                    <div class="standardGrid countingGrid">
+                        <div class="listViewHeader">
+                            <div class="ratio2">
+                                <div class="h6" data-bind="resx: { textWithTooltip: 'string_4025' }">DENOMINATION</div>
+                            </div>
+                            <div class="ratio4 textRight">
+                                <div class="h6" data-bind="resx: { textWithTooltip: 'string_4026' }">QUANTITY</div>
+                            </div>
+                            <div class="ratio4 textRight">
+                                <div class="h6" data-bind="resx: { textWithTooltip: 'string_4024' }">TOTAL</div>
+                            </div>
+                        </div>
+                        <div class="scrollY">
+                            <div data-bind="template: { name: 'denominationListTemplate', foreach: $parent.viewModel.denominationLines }"></div>
+                        </div>
+                        <div class="listViewFooter height60">
+                            <div class="textRight secondaryFontColor">
+                                <div class="h2 wrapText" data-bind="text: totalAmountToDisplay"></div>
+                                <div class="h6" data-bind="resx: { textContent: 'string_4024' }">TOTAL</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar:{}, axBubbleAttr: 'denominationsView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id: 'performOperationAppBar',
+                label: 'Save',
+                extraClass: 'iconSave',
+                onclick: onSave,
+                labelResx: 'string_4302'},
+                axBubbleAttr: 'denominationsView_saveButton'"></button>
+        </div>
+    </div>
+</body>
+</html>

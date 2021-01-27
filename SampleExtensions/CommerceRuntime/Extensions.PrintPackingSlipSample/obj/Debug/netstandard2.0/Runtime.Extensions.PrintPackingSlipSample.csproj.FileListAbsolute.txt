@@ -1,0 +1,8 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PrintPackingSlipSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PrintPackingSlipSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PrintPackingSlipSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PrintPackingSlipSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PrintPackingSlipSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PrintPackingSlipSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PrintPackingSlipSample\obj\Debug\netstandard2.0\Runtime.Extensions.PrintPackingSlipSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PrintPackingSlipSample\obj\Debug\netstandard2.0\Runtime.Extensions.PrintPackingSlipSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PrintPackingSlipSample\obj\Debug\netstandard2.0\Runtime.Extensions.PrintPackingSlipSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PrintPackingSlipSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.PrintPackingSlipSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PrintPackingSlipSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.PrintPackingSlipSample.pdb

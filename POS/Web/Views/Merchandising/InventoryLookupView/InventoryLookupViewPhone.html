@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>InventoryLookupView</title>
+    <link href="InventoryLookupView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment inventoryLookupView" data-bind="with: viewModel, interaction: { productsByKeywordFound: { selectPivot: '#inventoryStoreListPivot' }}">
+        <div id="inventoryLookupPivot" data-bind="pivot: {}">
+
+            <!-- Views for Numpad -->
+            <div id="inventoryLookupPivotNumPad" data-bind="pivotItem: { headerResx: 'string_2620' }">
+                <div class="col">
+                    <div data-bind="alphanumericNumpad: {
+                                inputDataBinding: { resx: { ariaLabel: 'string_2620' /* Search products */ } },
+                                onEnter: findInventoriesByKeyword,
+                                value: searchKeyword,
+                                numPadInputSource: $parent.numPadInputBroker
+                                }">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Views for Stores Grid -->
+            <div id="inventoryStoreListPivot" data-bind="pivotItem: { header:Commerce.ViewModelAdapter.getResourceString('string_3434') }">
+                <div class="col minWidth300 grow height100Percent">
+                    <div id="inventoryStoreList" data-bind="dataList: {
+                        incrementalDataSource: {
+                            dataManager: $data,
+                            callerMethod: getOrgUnitAvailabilityAsync,
+                            pageSize: 20,
+                            onLoading: isBusyFlag,
+                            reloadCallBack: reloadStoreAndWarehouseAvailabilityCallback
+                        },
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                        selectionChanged: storeSelectionChanged,
+                        emptyDataListTemplate: 'emptyInventoryLookupStoreGridMessage',
+                        ariaLabelResx: 'string_5505', /* List of stores */
+                        columns: inventoryByStoreListColumns
+                    },
+                    axBubbleAttr: 'inventoryLookupView_stores'"></div>
+
+                    <script type="text/html" id="emptyInventoryLookupStoreGridMessage">
+                        <div class="center textCenter">
+                            <div class="h4" data-bind="visible: !hasProduct(), resx: { textContent: 'string_2619' }">Scan or search for a product to get started</div>
+                            <div class="h4" data-bind="visible: productNotAvailableAtNearbyStores, resx: { textContent: 'string_2625' }">This product is not available at nearby stores</div>
+                        </div>
+                    </script>
+
+                </div>
+            </div>
+
+            <!-- Views for Product Details -->
+            <div id="inventoryProductPivot" data-bind="pivotItem: { header:Commerce.ViewModelAdapter.getResourceString('string_2608') }">
+                <div class="row">
+                    <div class="col width240">
+                        <!-- Product content when product is chosen -->
+                        <div class="maxHeight232 col highContrastBorder" data-bind="visible: hasProduct, if: hasProduct">
+                            <div class="height160">
+                                <div class="height232 fit-image">
+                                    <img src="#" data-bind="attr: { alt: productName, src: Commerce.Formatters.ImageUrlFormatter(productImage().source, Commerce.DefaultImages.ProductLarge) }, setImageOnError: Commerce.DefaultImages.ProductLarge" />
+                                </div>
+                            </div>
+                            <div class="padLeft12 height72 padRight12 padTop12 primaryBackgroundColor overLayZIndex">
+                                <div class="h4 ellipsis" data-bind="text: productName"></div>
+                                <div class="height12 padTop02">
+                                    <div class="h6 secondaryFontColor ellipsis" data-bind="text: productItemId"></div>
+                                </div>
+                                <div>
+                                    <div class="h3 textRight ellipsis" data-bind="formatPrice: productPriceViewModel.productPrice"></div>
+                                </div>
+                            </div>
+                            <div class="padTop20">
+                                <div class="h4 ellipsis" data-bind="text: variantDimensionValues"></div>
+                            </div>
+                        </div>
+                        <div class="height232 col highContrastBorder grow primaryPanelBackgroundColor" data-bind="visible: !hasProduct()">
+                            <div class="center pad32">
+                                <div class="textCenter">
+                                    <div class="h4" data-bind="resx: { textContent: 'string_2619' }">Scan or search for a product to get started</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gutter40x40"></div>
+                        <!-- Quantity for the given product -->
+                        <div class="col width240 height52" data-bind="visible: hasProduct, if: hasProduct">
+                            <div class="row">
+                                <label data-bind="resx: { textContent: 'string_2824' }"></label>
+                            </div>
+                            <div class="row">
+                                <div class="h1" data-bind="text: Commerce.Formatters.QuantityFromStoreInventoryFormatter(currentStoreItemAvailabilites())"></div>
+                            </div>
+                        </div>
+                        <div class="gutter40x40"></div>
+                        <!-- Uom for the given product -->
+                        <div class="col width240 height52" data-bind="visible: hasProduct() && hasItemAvailabilities()">
+                            <div class="row">
+                                <label data-bind="resx: { textContent: 'string_2825' }"></label>
+                            </div>
+                            <div class="row">
+                                <div class="h1" data-bind="text: Commerce.Formatters.UnitOfMeasureFromStoreInventoryFormatter(currentStoreItemAvailabilites())"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="commandAppBar" data-bind="appBar: { extensionCommands: extensionCommandViewModels }">
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconSearch',
+                id:'searchForProduct',
+                onclick: searchForProduct,
+                labelResx: 'string_2609'}"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconFilter',
+                id:'filterStoreAndWarehouseAvailability',
+                enabled: allowShowFilter,
+                onclick: filterOrgUnitAvailabilityAsync,
+                labelResx: 'string_935'}, axBubbleAttr: 'inventoryLookupView_filterStoreAndWarehouseAvailability'"></button><!--filter stores and warehouses-->
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconCalendar',
+                id:'showStoreAvailableToPromise',
+                enabled: isAnyStoreSelected(),
+                onclick: showStoreAvailableToPromise,
+                labelResx: 'string_2613'}"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconMapPin',
+                id:'showStoreLocation',
+                enabled: isAnyStoreSelected(),
+                onclick: showStoreLocation,
+                labelResx: 'string_2610'}"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconPickup',
+                id:'pickUpInStore',
+                enabled: isAnyStoreSelected(),
+                onclick: pickUpInStore,
+                labelResx: 'string_2611'}"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconDeliveryTruck',
+                id:'shipFromStore',
+                enabled: isAnyStoreSelected(),
+                onclick: shipFromStoreAsync,
+                labelResx: 'string_2614'}, axBubbleAttr: 'inventoryLookupView_shipFromStoreButton'"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAdd',
+                id:'addToTransaction',
+                enabled: allowAddToTransaction(),
+                onclick: addToTransaction,
+                labelResx: 'string_2612'}"></button>
+        </div>
+    </div>
+</body>
+</html>

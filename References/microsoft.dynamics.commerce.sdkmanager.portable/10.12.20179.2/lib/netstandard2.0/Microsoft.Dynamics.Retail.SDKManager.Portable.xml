@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.SDKManager.Portable</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.SDKManager.Portable.AXBridge">
+            <summary>
+            Provides a bridge to overloaded methods that X++ cannot access.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.AXBridge.PaymentProperty_GetPropertyValueProperties(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Hashtable,System.String,System.String,Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentProperty[]@)">
+            <summary>
+            Returns the property list value of a property.
+            </summary>
+            <param name="hashtable">Hashtable containing all of the payment properties.</param>
+            <param name="namespaceValue">The namespace of the property to seek.</param>
+            <param name="name">The name of the property to seek.</param>
+            <param name="value">The property's value.</param>
+            <returns>True if the property was found, false if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.AXBridge.PaymentProperty_GetPropertyValueString(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Hashtable,System.String,System.String,System.String@)">
+            <summary>
+            Returns the string value of a property.
+            </summary>
+            <param name="hashtable">Hashtable containing all of the payment properties.</param>
+            <param name="namespaceValue">The namespace of the property to seek.</param>
+            <param name="name">The name of the property to seek.</param>
+            <param name="value">The property's value.</param>
+            <returns>True if the property was found, false if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.AXBridge.PaymentProperty_GetPropertyValueDecimal(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Hashtable,System.String,System.String,System.Decimal@)">
+            <summary>
+            Returns the decimal value of a property.
+            </summary>
+            <param name="hashtable">Hashtable containing all of the payment properties.</param>
+            <param name="namespaceValue">The namespace of the property to seek.</param>
+            <param name="name">The name of the property to seek.</param>
+            <param name="value">The property's value.</param>
+            <returns>True if the property was found, false if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.AXBridge.PaymentProperty_GetPropertyValueDateTime(Microsoft.Dynamics.Retail.PaymentSDK.Portable.Hashtable,System.String,System.String,System.DateTime@)">
+            <summary>
+            Returns the date/time value of a property.
+            </summary>
+            <param name="hashtable">Hashtable containing all of the payment properties.</param>
+            <param name="namespaceValue">The namespace of the property to seek.</param>
+            <param name="name">The name of the property to seek.</param>
+            <param name="value">The property's value.</param>
+            <returns>True if the property was found, false if not found.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager">
+            <summary>
+            PaymentProcessorManager class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.Padlock">
+            <summary>
+            Used to make updates thread safe.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.Connectors">
+            <summary>
+            Gets or sets the connectors.
+            </summary>
+            <value>
+            The connectors.
+            </value>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.Create(System.String)">
+            <summary>
+            Create the PaymentProcessorFactory.
+            </summary>
+            <param name="connectorPathValue">The path where the payment processors are located.</param>
+            <remarks> Loads payment connector assemblies from provided connector path.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.Create(System.String[])">
+            <summary>
+            Create the PaymentProcessorFactory.
+            </summary>
+            <param name="assemblyNames">An array of payment connectors assembly names to load.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.Create(System.String[],System.String)">
+            <summary>
+            Create the PaymentProcessorFactory.
+            </summary>
+            <param name="assemblyNames">An array of payment connectors assembly names to load.</param>
+            <param name="path">Path to the folder where to look for payment connectors assemblies.</param>
+            <remarks> Loads only those payment connector assemblies that are requested from the path provided. If the assembly is already loaded we skip reloading it.</remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.LoadAssemblies(System.String[],System.String[])">
+            <summary>
+            Try to load specified connectors from specified folders.
+            </summary>
+            <param name="assemblyNames">The assembly names to load.</param>
+            <param name="assemblyDirs">(optional)The folders where to search for assemblies.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.LoadAllAssemblies(System.String[])">
+            <summary>
+            Load all assemblies from provided folders
+            </summary>
+            <param name="assemblyDirs">The folders where to search for assemblies.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.GetSupportedProcessors">
+            <summary>
+            Fetch an array of installed payment processor connectors.
+            </summary>
+            <returns>Array of payment processor names.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.GetPaymentProcessor(System.String)">
+            <summary>
+            Fetch a PaymentProcessor.
+            </summary>
+            <param name="name">The name of the required payment processor.</param>
+            <returns>Payment processor object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.CombineConnectorAssemblies(System.Collections.Generic.IList{System.Reflection.Assembly})">
+            <summary>
+            Combines the desktop connector converted to portable with the portable connectors.
+            </summary>
+            <param name="desktopConnectorAssemblies">A collection of desktop connectors to be combined.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.TryPortableFileName(System.String)">
+            <summary>
+            Adds portable to end of file name, If already present returns empty string.
+            </summary>
+            <param name="file">The assembly name to add .portable to.</param>
+            <returns>Assembly name plus .portable, otherwise just empty string if portable already present.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.LoadAssembly(System.String,System.String)">
+            <summary>
+            Returns the assembly given a specific assembly name and folder to load the assembly from.
+            </summary>
+            <param name="name">Name of the assembly.</param>
+            <param name="path">Path to the folder to load the assembly from.</param>
+            <returns>The assembly that was loaded.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.IsAssemblyPortable(System.Reflection.Assembly)">
+            <summary>
+            Checks if provided assembly is portable
+            </summary>
+            <param name="assembly">The assembly.</param>
+            <returns><c>true</c> if specified assembly is portable</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.AssemblyComparer">
+            <summary>
+            Defines methods to support the comparison of IPaymentProcessor for equality.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.AssemblyComparer.Equals(Microsoft.Dynamics.Retail.PaymentSDK.Portable.IPaymentProcessor,Microsoft.Dynamics.Retail.PaymentSDK.Portable.IPaymentProcessor)">
+            <summary>
+            Determines whether the specified IPaymentProcessor are equal.
+            </summary>
+            <param name="x">The first object to compare.</param>
+            <param name="y">The second object to compare.</param>
+            <returns><c>true</c> if the specified objects are equal; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.SDKManager.Portable.PaymentProcessorManager.AssemblyComparer.GetHashCode(Microsoft.Dynamics.Retail.PaymentSDK.Portable.IPaymentProcessor)">
+            <summary>
+            Returns a hash code for the specified object.
+            </summary>
+            <param name="obj">The assembly for which a hash code is to be returned.</param>
+            <returns>A hash code for the specified object.</returns>
+        </member>
+    </members>
+</doc>

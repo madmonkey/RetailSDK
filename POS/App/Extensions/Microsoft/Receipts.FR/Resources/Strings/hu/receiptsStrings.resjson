@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Buildszámkezelő: A buildszám hozzáadása sikerült.",
+  "Build_number_successfull_log_message_text.comment": "Az üzenet Naplózva, amikor a pénztár buildszámának tranzakcióhoz adása sikerült.",
+  "Build_number_error_log_message_text": "Buildszámkezelő: A buildszám hozzáadása nem sikerült, hibaüzenet: „{0}”.",
+  "Build_number_error_log_message_text.comment": "Az üzenet Naplózva, amikor a pénztár buildszámának tranzakcióhoz adása sikertelen volt."
+}

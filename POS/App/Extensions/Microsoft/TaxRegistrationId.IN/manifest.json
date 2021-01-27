@@ -1,0 +1,43 @@
+﻿{
+  "$schema": "../Api/dist/manifestSchema.json",
+  "name": "Extensions_TaxRegistrationId_IN",
+  "description": "An extension package providing support for India-specific customer tax registration number fields.",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "9.7.0.0",
+  "supportedCountryRegions": [ "IN" ],
+  "components": {
+    "resources": {
+      "supportedUICultures": [ "en-US", "en-IN" ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources/Strings",
+      "stringResourcesFileName": "resources.resjson"
+    },
+    "extend": {
+      "views": {
+        "AddressAddEditView": {
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "addressTaxRegistrationIdFieldsControl",
+                "htmlPath": "ViewExtensions/AddressAddEdit/AddressTaxRegistrationIdFieldsControl.html",
+                "modulePath": "ViewExtensions/AddressAddEdit/AddressTaxRegistrationIdFieldsControl"
+              }
+            ]
+          }
+        },
+        "CustomerAddEditView": {
+          "controlsConfig": {
+            "customControls": [
+              {
+                "controlName": "customerTaxRegistrationIdFieldsControl",
+                "htmlPath": "ViewExtensions/CustomerAddEdit/CustomerTaxRegistrationIdFieldsControl.html",
+                "modulePath": "ViewExtensions/CustomerAddEdit/CustomerTaxRegistrationIdFieldsControl"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

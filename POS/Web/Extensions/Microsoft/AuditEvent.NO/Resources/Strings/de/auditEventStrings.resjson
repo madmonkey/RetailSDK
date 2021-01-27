@@ -1,0 +1,18 @@
+{
+  "Audit_event_price_lookup_error": "Fehler bei der Erfassung des Preissuchereignisses: {0}",
+  "_Audit_event_price_lookup_error.comment": "Audit event registration log error message.",
+  "Audit_event_tax_override_error": "Fehler bei der Erfassung des MwSt.-Überschreibungsereignisses: {0}",
+  "_Audit_event_tax_override_error.comment": "Audit event registration log error message.",
+  "Audit_event_quantity_correction_error": "Fehler bei der Erfassung des Mengenkorrekturereignisses: {0}",
+  "_Audit_event_quantity_correction_error.comment": "Audit event registration log error message.",
+  "Audit_event_open_cash_drawer_error": "Geldladenereignis-Registrierungsfehler öffnen: {0}",
+  "_Audit_event_open_cash_drawer_error.comment": "Audit event registration log error message.",
+  "Audit_event_price_lookup_event_message": "Preissuchereignis erfasst",
+  "_Audit_event_price_lookup_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_tax_override_event_message": "MwSt.-Überschreibungsereignis erfasst",
+  "_Audit_event_tax_override_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_quantity_correction_event_message": "Mengenkorrekturereignis erfasst",
+  "_Audit_event_quantity_correction_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_open_cash_drawer_event_message": "Registriertes Geldladenereignis öffnen",
+  "_Audit_event_open_cash_drawer_event_message.comment": "Audit event database log string field value."
+}

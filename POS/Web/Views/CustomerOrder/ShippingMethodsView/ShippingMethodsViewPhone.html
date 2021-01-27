@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ShippingMethodsView</title>
+
+    <link href="ShippingMethodsView.css" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- view -->
+    <div class="shippingMethodsView fragment" data-bind="with: viewModel">
+        <div class="section main row" data-bind="resx: { ariaLabel: 'string_4454' }">
+            <div id="ShippingMethodsPivot" data-bind="pivot: {}">
+                <!-- Main content -->
+                <!-- shipping address -->
+                <div data-bind="pivotItem: { headerResx: 'string_2502' }" class="padLeft20">
+                    <!-- shipping from -->
+                    <div class="width280 col no-shrink" aria-label="Shipping from">
+                        <div data-bind="template: { name: 'storeAddressTemplatePhone', data: storeAddress }"></div>
+                    </div>
+                    <!-- Available stores -->
+                        <!-- view all addresses button -->
+                        <div class="padTop12" data-bind="buttonBlock: {
+                            buttonClass: 'iconSwitch primaryFontColor',
+                            click: showAllStores,
+                            labelValue: showAllResultsText
+                        }">
+                        </div>
+                    <div class="padTop20 width280 col no-shrink" aria-label="Shipping address">
+                        <!-- customer box -->
+                        <!-- ko if: isShippingAddressProvided && addressPurposeLoaded -->
+                        <div data-bind="template: { name: 'shippingAddressTemplatePhone', data: shippingAddress }"></div>
+                        <!-- /ko -->
+
+                        <div class="primaryPanelBackgroundColor col highContrastBorder" data-bind="visible: !isShippingAddressProvided">
+                            <div class="height140 center">
+                                <div class="h4" data-bind="resx: { textContent: 'string_2550' }"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col marginTop20">
+                        <!-- view all addresses button -->
+                        <div data-bind="visible: totalAddressesVisibility,
+                            buttonBlock: {
+                                buttonClass: 'iconMore primaryFontColor',
+                                click: viewAllCustomerAddresses,
+                                labelValue: totalCustomerAddressesString /* Use current store */
+                            }">
+                        </div>
+
+                        <!-- create new address button -->
+                        <div data-bind="visible: _isCustomerLoaded,
+                            buttonBlock: {
+                                buttonClass: 'iconAdd',
+                                click: $parent.createNewAddressButtonClick.bind($parent),
+                                labelTextResx: 'string_2503',       /* Create a new shipping address */
+                                ariaLabelResx: 'string_2503',       /* Create a new shipping address */
+                            }">
+                        </div>
+
+                        <!-- search customers button -->
+                        <div data-bind="visible: !_isCustomerLoaded(),
+                            buttonBlock: {
+                                buttonClass: 'iconSearch',
+                                click: searchCustomers,
+                                labelTextResx: 'string_1153',   /* Search customers */
+                                ariaLabelResx: 'string_1153'    /* Search customers */
+                }">
+                        </div>
+
+                        <!-- create customer button -->
+                        <div data-bind="visible: !_isCustomerLoaded(),
+                            buttonBlock: {
+                                buttonClass: 'iconAdd',
+                                click: createCustomerAsync,
+                                labelTextResx: 'string_1152',   /* Create customer */
+                                ariaLabelResx: 'string_1152'    /* Create customer */
+                }">
+                        </div>
+                    </div>
+                </div>
+                <!-- shipping methods -->
+                <div data-bind="pivotItem: { headerResx: 'string_2504' }" class="padLeft20 padRight20 ">
+                    <div data-bind="tileList: { itemDataSource: shippingMethods, iteminvoked: $parent.shippingMethodButtonClick.bind($parent), field: 'Description', flipInPortrait: false }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

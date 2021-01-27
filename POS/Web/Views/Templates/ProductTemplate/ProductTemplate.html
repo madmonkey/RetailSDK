@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Templates</title>
+    <link href="ProductTemplate.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Typeahead Suggestion Templates -->
+    <div id="typeAheadSuggestionTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="row marginTop12 no-shrink height32">
+            <div class="no-shrink marginTop05 marginLeft12">
+                <div class="h4" data-win-bind="innerHTML: htmlString Commerce.Core.Converter.SearchTextSuggestionFormatterWithHtmlEscape"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Large card template for ProductWarrantiesResult entity -->
+    <script id="productWarrantiesResultLargeCardTemplate" type="text/html">
+        <div class="width240 height232 col">
+            <div class="h6 secondaryFontColor" data-bind="text: Name"></div>
+        </div>
+    </script>
+
+    <!-- Large card template for ProductSearchResult entity. -->
+    <script id="productSearchResultLargeCardTemplate" type="text/html">
+        <!-- ko if: Commerce.ApplicationContext.Instance.channelConfiguration.EnableProductRatingsForRetailStores -->
+        <div class="width240 height232 col fit-image" data-bind="attr: { title: Name, 'aria-label': Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_947'), Name, ItemId, Commerce.Formatters.PriceFormatter(Price), Commerce.Formatters.RatingLabelFormatter($data) ) }">
+            <div class="width240 height144 col">
+                <div aria-hidden="true" data-bind="asyncImage: {
+                        offlineBinaryImageHandlerProperty: 'OfflineImageHandler',
+                        defaultImage: 'Assets/defaultLarge.png',
+                        data: $data,
+                        altText: Name,
+                        onlineImage: PrimaryImageUrl
+                     }"></div>
+            </div>
+            <div class="padLeft12 width240 padRight12 height88 padTop4 primaryBackgroundColor overLayZIndex">
+                <div class="h4 ellipsis" data-bind="text: Name"></div>
+                <div class="height16">
+                    <div class="h6 secondaryFontColor" data-bind="text: ItemId"></div>
+                </div>
+                <div>
+                    <div data-bind="template: {
+                                                  name: 'productRatingTemplate',
+                                                  data: { productRating: $data }
+                                              }">
+                    </div>
+                    <div class="h3 textRight clearBoth" data-bind="text: Commerce.Formatters.PriceFormatter(Price)"></div>
+                </div>
+            </div>
+            <div class="cardHover accentBorder overLayZIndex"></div>
+        </div>
+        <!-- /ko -->
+        <!-- ko if: !Commerce.ApplicationContext.Instance.channelConfiguration.EnableProductRatingsForRetailStores -->
+        <div class="width240 height232 col fit-image" data-bind="attr: { title: Name, 'aria-label': Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_943'), Name, ItemId, Commerce.Formatters.PriceFormatter(Price) ) }">
+            <div class="width240 height160 col">
+                <div aria-hidden="true" data-bind="asyncImage: {
+                        offlineBinaryImageHandlerProperty: 'OfflineImageHandler',
+                        defaultImage: 'Assets/defaultLarge.png',
+                        data: $data,
+                        altText: Name,
+                        onlineImage: PrimaryImageUrl
+                     }"></div>
+            </div>
+            <div class="padLeft12 width240 padRight12 height72 padTop4 primaryBackgroundColor overLayZIndex">
+                <div class="h4 ellipsis" data-bind="text: Name"></div>
+                <div class="height16">
+                    <div class="h6 secondaryFontColor" data-bind="text: ItemId"></div>
+                </div>
+                <div>
+                    <div class="h3 textRight" data-bind="text: Commerce.Formatters.PriceFormatter(Price)"></div>
+                </div>
+            </div>
+            <div class="cardHover accentBorder overLayZIndex pointerEventsNone"></div>
+        </div>
+        <!-- /ko -->
+    </script>
+
+    <!-- Small card template for ProductSearchResult entity (phone view). -->
+    <script id="productSearchResultSmallCardTemplatePhone" type="text/html">
+        <div class="height72 width100Percent row grow" data-bind="attr: { title: Name }">
+            <div class="width72 height72 col fit-image">
+                <div data-bind="asyncImage: {
+                        offlineBinaryImageHandlerProperty: 'OfflineImageHandler',
+                        defaultImage: 'Assets/defaultSmall.png',
+                        data: $data,
+                        altText: Name,
+                        onlineImage: PrimaryImageUrl
+                     }"></div>
+            </div>
+            <div class="padLeft12 grow padRight12 height72 padTop4 primaryBackgroundColor">
+                <div class="h4 ellipsis padRight20" data-bind="text: Name"></div>
+                <div class="height12 padTop02">
+                    <div class="h6 secondaryFontColor" data-bind="text: ItemId"></div>
+                </div>
+                <div class="padTop08">
+                    <!-- ko if: Commerce.ApplicationContext.Instance.channelConfiguration.EnableProductRatingsForRetailStores -->
+                    <div class="h3 marginTop08" style="float: left">
+                        <div data-bind="template: {
+                                                    name: 'productRatingTemplate',
+                                                    data: { productRating: $data }
+                                                }"
+                             class="h6">
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                    <div class="h3 textRight" data-bind="text: Commerce.Formatters.PriceFormatter(Price)"></div>
+                </div>
+            </div>
+            <div class="cardHover accentBorder overLayZIndex"></div>
+        </div>
+    </script>
+
+    <!-- Square card template for ProductSearchResult entity. -->
+    <script id="productSearchResultSquareCardTemplate" type="text/html">
+        <div class="width152 height152 col row marginRight8 marginBottom8" data-bind="attr: { title: Name }" style="float: left">
+            <div class="width152 height152 col fit-image">
+                <img data-bind="attr: { src: Commerce.Formatters.ImageFormatter(PrimaryImageUrl, Commerce.DefaultImages.ProductSmall) }, setImageOnError: Commerce.DefaultImages.ProductSmall" />
+            </div>
+            <div class="bottom0 textLeft padRight12 padTop4 padLeft12 width152 primaryBackgroundColor overLayZIndex">
+                <div class="h4" data-bind="text: Name"></div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Category and Catalog templates. -->
+    <script id="categoryCatalogTemplate" type="text/html">
+        <div class="width240 height232 col fit-image">
+            <div class="width240 height160 col">
+                <img data-bind="image: { src: Commerce.Formatters.CategoryImage($data), defaultSrc: Commerce.DefaultImages.ProductLarge, alt: Commerce.Formatters.CategoryNameTranslator($data), ariaLabel: Commerce.Formatters.CategoryNameTranslator($data) }" />
+            </div>
+            <div class="padLeft12 width240 padRight12 padTop12 primaryBackgroundColor overLayZIndex col grow" aria-hidden="true">
+                <h3 class="ellipsis" data-bind="text: Commerce.Formatters.CategoryNameTranslator($data)"></h3>
+            </div>
+            <div class="cardHover accentBorder overLayZIndex pointerEventsNone" aria-hidden="true"></div>
+        </div>
+    </script>
+
+    <script id="categoryCatalogPhoneTemplate" type="text/html">
+        <div class="width240 height232 col fit-image">
+            <div class="width240 height160 col">
+                <img data-bind="image: {src: Commerce.Formatters.CategoryImage($data), alt: $data.Name, defaultSrc: Commerce.DefaultImages.ProductLarge}" />
+            </div>
+            <div class="padLeft12 width240 padRight12 padTop4 primaryBackgroundColor overLayZIndex col grow">
+                <h3 class="ellipsis" data-bind="text: Commerce.Formatters.CategoryNameTranslator($data)"></h3>
+            </div>
+        </div>
+    </script>
+
+    <!-- Suggested Products Small Card View Phone -->
+    <script id="productGridTemplatePhone" type="text/html">
+        <div class="height72 width100Percent row" data-bind="attr: { title: Name }">
+            <div class="width72 height72 col fit-image">
+                <div data-bind="asyncImage: {
+                        offlineBinaryImageHandlerProperty: 'OfflineImageHandler',
+                        defaultImage: 'Assets/defaultSmall.png',
+                        data: $data,
+                        altText: Name,
+                        onlineImage: PrimaryImageUrl
+                     }"></div>
+            </div>
+            <div class="padLeft12 grow padRight12 padTop4 height72 primaryBackgroundColor">
+                <div class="h4 ellipsis" data-bind="text: Name"></div>
+                <div class="height12 padTop02">
+                    <div class="h6 secondaryFontColor" data-bind="text: ItemId"></div>
+                </div>
+                <div class="padTop08">
+                    <div class="h3 textRight" data-bind="text: Commerce.Formatters.PriceFormatter(Price)"></div>
+                </div>
+            </div>
+            <div class="cardHover accentBorder overLayZIndex"></div>
+        </div>
+    </script>
+
+    <!-- Card view for warranty grid -->
+    <script id="warrantyGridTemplate" type="text/html">
+        <div class="width100Percent minHeight116 row" data-bind="attr: { title: Name }">
+            <div class="width72 height72 col fit-image">
+                <div data-bind="asyncImage: {
+                        defaultImage: 'Assets/defaultSmall.png',
+                        data: $data,
+                        altText: Name,
+                        onlineImage: PrimaryImageUrl
+                     }"></div>
+            </div>
+            <div class="padLeft12 grow padRight12 padTop4">
+                <div class="h5 ellipsis width176 wrapText" data-bind="text: Name"></div>
+                <div class="height20">
+                    <div class="h4 secondaryFontColor" data-bind="text: ItemId"></div>
+                </div>
+                <div class="height20">
+                    <div class="h4 secondaryFontColor" data-bind="text: Commerce.Formatters.DurationTextFormatter(Duration, DurationUnitValue)"></div>
+                </div>
+                <div class="height20">
+                    <div class="h5 textRight" data-bind="text: Commerce.Formatters.PriceFormatter(activePrice.CustomerContextualPrice)"></div>
+                </div>
+            </div>
+            <div class="cardHover accentBorder overLayZIndex"></div>
+        </div>
+    </script>
+
+    <!-- Small Card View Phone for sales lines against which to print gift receipt. -->
+    <script id="salesLineGridTemplatePhone" type="text/html">
+        <div class="width100Percent height116 row" data-bind="attr: { title: productName }">
+            <div class="width72 height72 col fit-image">
+                <div data-bind="asyncImage: {
+                        defaultImage: 'Assets/defaultSmall.png',
+                        data: $data,
+                        altText: productName,
+                        onlineImage: primaryImageUrl
+                     }"></div>
+            </div>
+            <div class="padLeft12 grow padRight12 padTop4">
+                <div class="h5 ellipsis width176" data-bind="text: productName"></div>
+                <div class="height20">
+                    <div class="h4 secondaryFontColor" data-bind="text: ItemId"></div>
+                </div>
+                <div class="height20" data-bind="visible: variantDescription.length > 0">
+                    <div class="h4 secondaryFontColor ellipsis" data-bind="text: variantDescription"></div>
+                </div>
+                <div class="height20">
+                    <div class="h4 secondaryFontColor" data-bind="text: quantityWithUom"></div>
+                </div>
+                <div class="height20">
+                    <div class="h5 textRight" data-bind="text: Commerce.Formatters.PriceFormatter(TotalAmount)"></div>
+                </div>
+            </div>
+            <div class="cardHover accentBorder overLayZIndex"></div>
+        </div>
+    </script>
+
+    <!--Kit Related Templates-->
+    <!-- Kit component Small Card Templates -->
+    <script id="kitComponentSmallCardTemplatePhone" type="text/html">
+        <div class="width100Percent height72 row" data-bind="attr: { title: Name }">
+            <div class="width72 height72 col fit-image">
+                <div data-bind="asyncImage: {
+                        offlineBinaryImageHandlerProperty: 'OfflineImageHandler',
+                        defaultImage: 'Assets/defaultSmall.png',
+                        data: $data,
+                        altText: Name,
+                        onlineImage: Product.PrimaryImageUrl
+                     }"></div>
+            </div>
+            <div class="padLeft12 width100Percent padRight12 height72 padTop4 primaryBackgroundColor">
+                <div class="h4 ellipsis" data-bind="text: Name"></div>
+                <div class="height12 padTop02">
+                    <div class="h6 secondaryFontColor" data-bind="text: ItemId"></div>
+                </div>
+                <div class="padTop08">
+                    <div class="h3 textRight" data-bind="text: Commerce.Formatters.AdditionalComponentChargeFormatter(AdditionalChargeForComponent, '')"></div>
+                </div>
+            </div>
+            <div class="cardHover accentBorder overLayZIndex"></div>
+        </div>
+    </script>
+
+    <!-- Kit component Large Card Templates -->
+    <script id="kitComponentLargeCardTemplate" type="text/html">
+        <div class="width240 height232 col" data-bind="attr: { title: Name }">
+            <div class="width240 height160 col">
+                <div class="width240 height232" data-bind="asyncImage: {
+                        offlineBinaryImageHandlerProperty: 'OfflineImageHandler',
+                        defaultImage: 'Assets/defaultLarge.png',
+                        data: $data,
+                        altText: Name,
+                        onlineImage: Product.PrimaryImageUrl
+                     }"></div>
+            </div>
+            <div class="padLeft12 width240 padRight12 height72 padTop4 primaryBackgroundColor overLayZIndex">
+                <div class="h4 ellipsis" data-bind="text: Name"></div>
+                <div class="height12 padTop02">
+                    <div class="h6 secondaryFontColor" data-bind="text: Commerce.Formatters.ProductComponentQuantityFormatter($data, '')"></div>
+                </div>
+                <div class="padTop08">
+                    <div class="h3 textRight" data-bind="text: Commerce.Formatters.AdditionalComponentChargeFormatter(AdditionalChargeForComponent, '')"></div>
+                </div>
+            </div>
+            <div class="cardHover accentBorder overLayZIndex pointerEventsNone"></div>
+        </div>
+    </script>
+
+    <!--Recent Purchases related templates-->
+    <!-- Recent Purchases Large Card View -->
+    <script id="productLargeRecentPurchaseTemplate" type="text/html">
+        <div class="width240 height232 col fit-image" data-bind="attr: { title: ProductName }">
+            <div class="width240 height160 col">
+                <img src="#"
+                     data-bind="image: {
+                        src: Commerce.Formatters.LargeRecentPurchaseImage(ImageUrl),
+                        alt: ProductName,
+                        defaultSrc: Commerce.DefaultImages.ProductLarge
+                     }" />
+            </div>
+            <div class="padLeft12 width240 padRight12 height72 padTop4 primaryBackgroundColor overLayZIndex">
+                <div class="h4 ellipsis" data-bind="text: ProductName"></div>
+                <div class="height12 padTop02">
+                    <div class="h6 secondaryFontColor" data-bind="text: Commerce.Formatters.ShortDateAndTimeFormatter(DatePurchased)"></div>
+                </div>
+                <!-- Show either ReceiptId or OrderId -->
+                <div class="padTop08">
+                    <div class="h3 textRight" data-bind="text: Commerce.Formatters.RecentPurchaseIdFormatter($data)"></div>
+                </div>
+            </div>
+            <div class="cardHover accentBorder overLayZIndex pointerEventsNone"></div>
+        </div>
+    </script>
+
+    <!-- Recent Purchases Small Card View Phone -->
+    <script id="productRecentPurchaseTemplatePhone" type="text/html">
+        <div class="height72 width100Percent row grow" data-bind="attr: { title: ProductName }">
+            <div class="height72 width72 col fit-image">
+                <img src="#"
+                     data-bind="image: {
+                        src: Commerce.Formatters.SmallRecentPurchaseImage(ImageUrl),
+                        alt: ProductName,
+                        defaultSrc: Commerce.DefaultImages.ProductSmall
+                     }" />
+            </div>
+            <div class="padLeft12 grow padRight12 height72 padTop4 primaryBackgroundColor">
+                <div class="h4 ellipsis padRight20" data-bind="text: ProductName"></div>
+                <div class="height12 padTop02">
+                    <div class="h6 secondaryFontColor ellipsis" data-bind="text: Commerce.Formatters.ShortDateAndTimeFormatter(DatePurchased)"></div>
+                </div>
+                <!-- Show either ReceiptId or OrderId -->
+                <div class="padTop08">
+                    <div class="h3 textRight" data-bind="text: Commerce.Formatters.RecentPurchaseIdFormatter($data)"></div>
+                </div>
+            </div>
+            <div class="cardHover accentBorder overLayZIndex"></div>
+        </div>
+    </script>
+
+    <!-- Product search result non-interactable small card -->
+    <script id="productSearchResultNonInteractableSmallCard" type="text/html">
+        <div class="height72 width100Percent row" data-bind="attr: { title: Name }">
+            <div class="width72 height72 col fit-image">
+                <div data-bind="asyncImage: {
+                        offlineBinaryImageHandlerProperty: 'OfflineImageHandler',
+                        defaultImage: 'Assets/defaultSmall.png',
+                        data: $data,
+                        altText: Name,
+                        onlineImage: PrimaryImageUrl
+                     }"></div>
+            </div>
+            <div class="padLeft12 grow padRight12 padTop4 height72">
+                <div class="h4 ellipsis" data-bind="text: Name"></div>
+                <div class="height12 padTop02">
+                    <div class="h6 secondaryFontColor" data-bind="text: ItemId"></div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Order fulfillment details non-interactable small card -->
+    <script id="orderFulfillmentDetailsNonInteractableSmallCard" type="text/html">
+        <div class="height72 width100Percent row" data-bind="attr: { title: ItemName }">
+            <div class="width72 height72 col fit-image">
+                <div data-bind="asyncImage: {
+                        offlineBinaryImageHandlerProperty: 'OfflineImageHandler',
+                        defaultImage: 'Assets/defaultSmall.png',
+                        data: $data,
+                        altText: ItemName,
+                        onlineImage: productPrimaryImageUrl
+                     }"></div>
+            </div>
+            <div class="padLeft12 grow padRight12 padTop4 height72">
+                <div class="h4 ellipsis padTop4" data-bind="text: ItemName"></div>
+                <div class="height14 padTop4">
+                    <div class="h6 secondaryFontColor" data-bind="text: ItemId"></div>
+                </div>
+                <div class="height14 padTop4">
+                    <div class="h6 secondaryFontColor" data-bind="text: ProductVariant"></div>
+                </div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

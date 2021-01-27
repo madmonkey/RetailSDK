@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DeviceDeactivationView</title>
+    <link href="DeviceDeactivation.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="deviceDeactivationSettingsFlyout" class="col" data-bind="customControlInternal: 'DeviceDeactivation', axBubbleAttr: 'deviceDeactivation_deviceDeactivationSettingsFlyout'">
+        <!-- Progress ring -->
+        <div data-bind="loader: { visible: indeterminateWaitVisible }"></div>
+
+        <!-- ToDo: resx -->
+        <div class="marginTop8 marginBottom8" data-bind="visible: !Commerce.Config.isPhone">
+            <h2 data-bind="resx: { textContent: 'string_1419' }">Device activation</h2>
+        </div>
+        <div class="marginBottom12" data-bind="visible: Commerce.StringExtensions.isNullOrWhitespace(Commerce.Config.onlineDatabase), css: { marginBottom2: !Commerce.Config.isPhone }">
+            <!-- Retail server -->
+            <label data-bind="resx: { textContent: 'string_6604' }"></label>
+            <div class="h4 wrapTextWithoutHyphen" data-bind="text: Commerce.Config.retailServerUrl"></div>
+        </div>
+        <div class="marginBottom12" data-bind="visible: !Commerce.StringExtensions.isNullOrWhitespace(Commerce.Config.onlineDatabase)">
+            <label data-bind="resx: { textContent: 'string_6612' }"></label>
+            <div class="h4" data-bind="text: Commerce.Config.onlineDatabase, css: { wrapTextWithoutHyphen: Commerce.Config.isPhone }"></div>
+        </div>
+        <div class="marginBottom12">
+            <label data-bind="resx: { textContent: 'string_1409' }"></label>
+            <div class="h4" data-bind="text: storeId"></div>
+        </div>
+        <div class="marginBottom12">
+            <!-- Register -->
+            <label data-bind="resx: { textContent: 'string_1410' }"></label>
+            <div class="h4" data-bind="text: registerId"></div>
+        </div>
+        <div class="marginBottom12">
+            <!-- Device -->
+            <label data-bind="resx: { textContent: 'string_1411' }"></label>
+            <div class="h4" data-bind="text: deviceId"></div>
+        </div>
+        <div class="marginBottom12">
+            <!-- Deactivate -->
+            <label data-bind="resx: { textContent: 'string_1412' }, css: { marginBottom1: !Commerce.Config.isPhone }">Deactivate device</label>
+            <button class="primaryButton"
+                    data-bind="resx: { textContent: 'string_1413' }, click: deactivateDeviceHandler, axBubbleAttr: 'deviceDeactivation_deactivateButton'"></button>
+            <label class="marginTop12" data-bind="resx: { textContent: 'string_1414' }, css: { wrapTextWithoutHyphen: Commerce.Config.isPhone }"></label>
+        </div>
+    </div>
+</body>
+</html>

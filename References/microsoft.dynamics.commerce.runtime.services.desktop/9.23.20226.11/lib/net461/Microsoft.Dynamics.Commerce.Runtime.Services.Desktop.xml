@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.Services.Desktop</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Services.Desktop.CommerceDataExchangeService">
+            <summary>
+            Commerce data exchange service class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Services.Desktop.CommerceDataExchangeService.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.Desktop.CommerceDataExchangeService.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Entry point to commerce data exchange service. Takes a commerce data exchange service request and returns the result
+            of the request execution.
+            </summary>
+            <param name="request">The commerce data exchange service request to execute.</param>
+            <returns>Result of executing request, or null object for void operations.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.Desktop.CommerceDataExchangeService.GetConnectionString(Microsoft.Dynamics.Commerce.Runtime.RequestContext)">
+            <summary>
+            Gets the connection string.
+            </summary>
+            <param name="context">The request context.</param>
+            <returns>The current connection string.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.Desktop.CommerceDataExchangeService.SyncOfflineTransactions(Microsoft.Dynamics.Commerce.Runtime.Services.Messages.SyncOfflineTransactionsServiceRequest)">
+            <summary>
+            Sync the offline transactions to targeted database.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The operation result.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Services.ExtendedConfigurationRequestHandler">
+            <summary>
+            Extended configuration service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.ExtendedConfigurationRequestHandler.Process(Microsoft.Dynamics.Commerce.Runtime.Services.Messages.GetExtendedConfigurationServiceRequest)">
+            <summary>
+            Retrieves keys from the appSettings section.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Services.CertificateHelper">
+            <summary>
+            Helper class for working with certificates.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.CertificateHelper.ResolveCertificate(Microsoft.Dynamics.Commerce.Runtime.RequestContext,System.Uri,System.Boolean)">
+            <summary>
+            Retrieves the certificate using the specified location.
+            </summary>
+            <param name="context">The request context.</param>
+            <param name="certificateLocation">The certificate location.</param>
+            <param name="signature">Indicates (optional) if certificate is used for signature. If true certificate is used for signature. False if it is used for encryption.</param>
+            <returns>
+            The X509 certificate to encrypt, decrypt or sign the data blob.
+            </returns>
+            <remarks>
+            Some validation is done to ensure that the loaded certificate can be used for RSA encryption/signature.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.CertificateHelper.GetCertificateByThumbprint(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Retrieves the certificate using the specified thumbprint and optionally store name and store location.
+            </summary>
+            <param name="thumbprint">The certificate thumbprint to load.</param>
+            <param name="storeName">The (optional) certificate store name. If null, My store name is used.</param>
+            <param name="storeLocation">The (optional) certificate store location. If null, LocalMachine store location is used.</param>
+            <param name="signature">Indicates (optional) if certificate is used for signature. If true certificate is used for signature. False if it is used for encryption.</param>
+            <returns>
+            The X509 certificate to encrypt, decrypt or sign the data blob.
+            </returns>
+            <remarks>
+            Some validation is done to ensure that the loaded certificate can be used for RSA encryption/signature.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.CertificateHelper.ValidateCertificateChainOffline(System.Security.Cryptography.X509Certificates.X509Certificate2,System.Security.Cryptography.X509Certificates.X509VerificationFlags,System.Security.Cryptography.X509Certificates.X509ChainStatus[]@)">
+            <summary>
+            Validate entire certificate chain with custom validation policy and offline revocation list.
+            </summary>
+            <param name="certificate">The certificate to be validated.</param>
+            <param name="verificationFlags">The verification flags to be used.</param>
+            <param name="chainStatus">The array of invalid chain status.</param>
+            <returns>Return True if certificate is valid False otherwise.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Services.DataProtectionRequestHandler">
+            <summary>
+            Data protection service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Services.DataProtectionRequestHandler.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.DataProtectionRequestHandler.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>
+            The outgoing response message.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">The request is null.</exception>
+            <exception cref="T:System.NotSupportedException">The request type is not supported.</exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.DataProtectionRequestHandler.HashData(Microsoft.Dynamics.Commerce.Runtime.Services.Messages.HashDataServiceRequest)">
+            <summary>
+            Hashes the data.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.DataProtectionRequestHandler.DecryptData(Microsoft.Dynamics.Commerce.Runtime.Services.Messages.CertificateDecryptionServiceRequest)">
+            <summary>
+            Decrypts the data.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.DataProtectionRequestHandler.EncryptData(Microsoft.Dynamics.Commerce.Runtime.Services.Messages.CertificateEncryptionServiceRequest)">
+            <summary>
+            Encrypts the data using the public key of the specified certificate.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+            <remarks>
+            The base-64 encoded string containing the encrypted data.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Services.DataSignatureRequestHandler">
+            <summary>
+            An implementation responsible for hashing and/or signing data blobs.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Services.DataSignatureRequestHandler.SupportedRequestTypes">
+            <summary>
+            Gets supported request types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.DataSignatureRequestHandler.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>
+            The outgoing response message.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">The request is null.</exception>
+            <exception cref="T:System.NotSupportedException">The request type is not supported.</exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.DataSignatureRequestHandler.HashAndSignData(Microsoft.Dynamics.Commerce.Runtime.Services.Messages.CertificateSignatureServiceRequest)">
+            <summary>
+            Hashes and signs the data using the public key of the specified certificate and given hash algorithm.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+            <remarks>
+            The base-64 encoded string containing data signature is returned.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Services.GenerateSecureIdentifierRequestHandler">
+            <summary>
+            Handler for generating secure random identifiers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.Services.GenerateSecureIdentifierRequestHandler.SupportedRequestTypes">
+            <summary>
+            Gets the collection of supported request types by this handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.GenerateSecureIdentifierRequestHandler.Execute(Microsoft.Dynamics.Commerce.Runtime.Messages.Request)">
+            <summary>
+            Represents the entry point of the request handler.
+            </summary>
+            <param name="request">The incoming request message.</param>
+            <returns>
+            The outgoing response message.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">The request is null.</exception>
+            <exception cref="T:System.NotSupportedException">The request type is not supported.</exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.GenerateSecureIdentifierRequestHandler.GenerateAlphanumericSecureIdentifier(Microsoft.Dynamics.Commerce.Runtime.Services.Messages.GenerateAlphanumericSecureIdentifierServiceRequest)">
+            <summary>
+            Generates a random alphanumeric identifier.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Services.GenerateSecureIdentifierRequestHandler.GenerateUrlSafeSecureIdentifier(Microsoft.Dynamics.Commerce.Runtime.Services.Messages.GenerateUrlSafeSecureIdentifierServiceRequest)">
+            <summary>
+            Generates a random url safe identifier.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response.</returns>
+        </member>
+    </members>
+</doc>

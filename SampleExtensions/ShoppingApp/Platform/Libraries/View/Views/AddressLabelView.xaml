@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Views.AddressLabelView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Converters"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views">
+    <StackLayout>
+        <Label
+            FontSize="Small"
+            Text="{localization:Translate Views_AddressLabelView_ShippingAddress}"
+            TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+        <Label
+            FontSize="Small"
+            Text="{Binding Street}"
+            TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+        <StackLayout Orientation="Horizontal">
+            <Label
+                FontSize="Small"
+                Text="{Binding City, StringFormat='{0},'}"
+                TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+            <Label
+                FontSize="Small"
+                Text="{Binding State, StringFormat='{0} '}"
+                TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+            <Label
+                FontSize="Small"
+                Text="{Binding ZipCode}"
+                TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+        </StackLayout>
+    </StackLayout>
+</ContentView>

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CustomerContactInfoView</title>
+</head>
+<body>
+    <div class="CustomerContactInfoView fragment">
+        <div class="section main row margin12 marginLeft20 marginRight20 " data-bind="resx: { ariaLabel: 'string_4454' }">
+            <!-- Main content -->
+            <div class="width100Percent no-shrink">
+                <div class=" row marginBottom12 no-shrink">
+                    <h2 data-bind="resx: { textContent: subTitle }">Email address/ Phone number</h2>
+                </div>
+                <div class="scrollY height100Percent">
+                    <!-- ko if: viewModel.contactInfoType === Commerce.Proxy.Entities.ContactInfoType.Email -->
+                    <div class="col grow height100Percent">
+                        <div id="customerEmailAddressesList"
+                             class="grow noMargin col"
+                             data-bind="dataList: {
+                                        itemDataSource: viewModel.contactInfoList,
+                                        defaultListType: Commerce.Controls.DataList.ListType.Card,
+                                        selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                                        itemInvoked: viewModel.contactInfoTitleClicked.bind(viewModel),
+                                        ariaLabelResx: 'string_1311',    /* Email address */
+                                        itemTemplates: [
+                                            {
+                                                templateId: 'customerEmailAddressTemplate',
+                                                cardType: Commerce.Controls.DataList.CardType.Static,
+                                                deviceType: Commerce.Controls.DataList.DeviceType.All
+                                            }
+                                        ]
+                                        },
+                                        axBubbleAttr: 'customerContactInfoView_customerEmailAddressesList'">
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: viewModel.contactInfoType === Commerce.Proxy.Entities.ContactInfoType.Phone -->
+                    <div class="col grow height100Percent">
+                        <div id="customerPhoneAddressesList"
+                             class="grow noMargin col"
+                             data-bind="dataList: {
+                                        itemDataSource: viewModel.contactInfoList,
+                                        defaultListType: Commerce.Controls.DataList.ListType.Card,
+                                        selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                                        itemInvoked: viewModel.contactInfoTitleClicked.bind(viewModel),
+                                        ariaLabelResx: 'string_4209',    /* Phone number */
+                                        itemTemplates: [
+                                            {
+                                                templateId: 'customerPhoneNumberTemplate',
+                                                cardType: Commerce.Controls.DataList.CardType.Static,
+                                                deviceType: Commerce.Controls.DataList.DeviceType.All
+                                            }
+                                        ]
+                                        },
+                                        axBubbleAttr: 'customerContactInfoView_customerPhoneAddressesList'">
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar: {}, axBubbleAttr: 'customerContactInfoView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                                  extraClass: 'iconAdd',
+                                  id:'cmdAddContactInfo',
+                                  onclick: viewModel.addContactInfo.bind(viewModel),
+                                  labelResx: 'string_830'
+                              },
+                              axBubbleAttr: 'customerContactInfoView_cmdAddNewContactInfo'"></button><!--Add new-->
+        </div>
+    </div>
+</body>
+</html>

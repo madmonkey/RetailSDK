@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Health Check View</title>
+    <link href="HealthCheckView.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment healthCheckView" data-bind="with: viewModel">
+        <div class="row height100Percent">
+            <div class="col grow flexBasis100Percent">
+                <div id="healthCheckLineViewPivot" data-bind="pivot: {}, resx: { ariaLabel: 'string_4454' }">
+                    <!-- Main content -->
+                    <div id="healthCheckViewPivotItem" data-bind="pivotItem: { headerResx: 'string_30301' }">
+                        <!-- Available tests  -->
+                        <div id="healthCheckEntityList" class="dataList" data-bind="dataList: {
+                                    defaultListType: Commerce.Controls.DataList.ListType.List,
+                                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                                    itemDataSource: healthCheckEntities,
+                                    onItemDataSourceUpdated: reselectHealthCheckEntity,
+                                    selectionChanged: selectHealthCheckEntity,
+                                    autoSelectFirstItem: false,
+                                    autoFocusFirstItem: true,
+                                    ariaLabelResx: 'string_30301', /* Available tests */
+                                    columns: healthCheckEntityListColumns
+                                },
+                                axBubbleAttr: 'healthCheckView_healthCheckEntities'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Details panel -->
+            <div class="col">
+                <!-- Panel header -->
+                <div class="row">
+                    <div class="h2 marginTop8 marginBottom8 marginRight64" data-bind="resx: { textContent: 'string_30302' }, visible: isHeaderVisible">Details</div>
+                    <a href="#" id="btnToggleDetailsPane" class="icon-20x20 width40 height40 margin4 center fixedToggleDetailsPaneButton"
+                       data-bind="click: toggleHeader, css: isHeaderVisible() ? 'iconClosePane' : 'iconOpenPane', resx: { ariaLabel: 'string_13156' }"></a>
+                </div>
+
+                <!-- Panel content -->
+                <div class="col grow width320 marginRight20 marginBottom12" data-bind="slideVisible: { isShowed: isHeaderVisible() }">
+                    <!-- Panel tabs-->
+                    <!-- ko ifnot: Commerce.ObjectExtensions.isNullOrUndefined(selectedHealthCheckEntity()) -->
+                    <div class="row primaryFontColor">
+                        <div class="col ratio5">
+                            <div class="marginBottom12 marginLeft12">
+                                <div id="detailsAboutTabText" class="h6 row center padTop8 padBottom8" tabindex="0" role="tab"
+                                     data-bind="css: { active: selectedHealthCheckDetailsMode() === Commerce.ViewModels.HealthCheckDetailsMode.About },
+                                        click: function() { toggleHealthCheckDetailsMode(Commerce.ViewModels.HealthCheckDetailsMode.About); },
+                                        enterKeyPress: function() { toggleHealthCheckDetailsMode(Commerce.ViewModels.HealthCheckDetailsMode.About); },
+                                        resx: { textContent: 'string_30315' },
+                                        axBubbleAttr: 'healthCheckView_detailsAboutTab'">
+                                    About
+                                </div>
+                                <div class="row height4"
+                                     data-bind="css: selectedHealthCheckDetailsMode() === Commerce.ViewModels.HealthCheckDetailsMode.About
+                                                    ? 'accentBackground' : 'splitViewBackgroundColor'"></div>
+                            </div>
+                        </div>
+                        <div class="col ratio5">
+                            <div class=" marginBottom12 marginLeft12 marginRight12">
+                                <div id="detailsStatusTabText" class="h6 row center padTop8 padBottom8" tabindex="0" role="tab"
+                                     data-bind="css: { active: selectedHealthCheckDetailsMode() === Commerce.ViewModels.HealthCheckDetailsMode.Status },
+                                        click: function() { toggleHealthCheckDetailsMode(Commerce.ViewModels.HealthCheckDetailsMode.Status); },
+                                        enterKeyPress: function() { toggleHealthCheckDetailsMode(Commerce.ViewModels.HealthCheckDetailsMode.Status); },
+                                        resx: { textContent: 'string_30316' },
+                                        axBubbleAttr: 'healthCheckView_detailsStatusTab'">
+                                    Status
+                                </div>
+                                <div class="row height4"
+                                     data-bind="css: selectedHealthCheckDetailsMode() === Commerce.ViewModels.HealthCheckDetailsMode.Status
+                                                    ? 'accentBackground' : 'splitViewBackgroundColor'"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- About section content -->
+                    <div class="col grow primaryPanelBackgroundColor highContrastBorderThin scrollY" data-bind="visible: selectedHealthCheckDetailsMode() === Commerce.ViewModels.HealthCheckDetailsMode.About">
+                        <div data-bind="fadeVisible: { isShowed: selectedHealthCheckDetailsMode() === Commerce.ViewModels.HealthCheckDetailsMode.About }">
+                            <div class="col margin12">
+                                <!-- ko with: selectedHealthCheckEntity -->
+                                <!-- Peripheral type -->
+                                <div class="h5 marginBottom12" data-bind="text: Commerce.Formatters.HealthCheckEntityTypeFormatter(entityType)"></div>
+
+                                <!-- Setup section -->
+                                <!-- ko if: Commerce.ArrayExtensions.hasElements(configurations) -->
+                                <div class="marginBottom12">
+                                    <div class="h6 marginBottom12" data-bind="resx: { textContent: 'string_30317' }">Setup</div>
+                                    <div data-bind="foreach: configurations">
+                                        <!-- ko if: $parents[1].configurationValueExists($data) -->
+                                        <label data-bind="text: Commerce.Formatters.HealthCheckConfigurationKeyFormatter(Key)">Config Key</label>
+
+                                        <div class="marginBottom8">
+                                            <!-- ko ifnot: Commerce.ObjectExtensions.isNullOrUndefined(Value.StringValue) -->
+                                            <div class="h4" data-bind="text: Value.StringValue"></div>
+                                            <!-- /ko -->
+                                            <!-- ko ifnot: Commerce.ObjectExtensions.isNullOrUndefined(Value.BooleanValue) -->
+                                            <div class="h4" data-bind="text: Commerce.Formatters.YesNoBooleanFormatter(Value.BooleanValue)"></div>
+                                            <!-- /ko -->
+                                            <!-- ko ifnot: Commerce.ObjectExtensions.isNullOrUndefined(Value.IntegerValue) -->
+                                            <div class="h4" data-bind="text: Commerce.Formatters.NumberFormatter(Value.IntegerValue)"></div>
+                                            <!-- /ko -->
+                                        </div>
+                                        <!-- /ko -->
+                                    </div>
+                                </div>
+                                <!-- /ko -->
+                                <!-- /ko -->
+                                <!-- Hardware station section -->
+                                <!-- ko if: hasHardwareStation -->
+                                <div class="marginBottom12">
+                                    <div class="h6 marginBottom12" data-bind="resx: { textContent: 'string_30318' }">Hardware station</div>
+                                    <div class="marginBottom8">
+                                        <label data-bind="textContent: { resx: 'string_30319' }">Type</label>
+                                        <div class="h4" data-bind="text: currentHardwareStationType">Hardware station type</div>
+                                    </div>
+                                    <div class="marginBottom8">
+                                        <label data-bind="textContent: { resx: 'string_30320' }">Description</label>
+                                        <div class="h4" data-bind="text: currentHardwareStation.description">Hardware station description</div>
+                                    </div>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status section content -->
+                    <div class="col grow primaryPanelBackgroundColor highContrastBorderThin scrollY" data-bind="visible: selectedHealthCheckDetailsMode() === Commerce.ViewModels.HealthCheckDetailsMode.Status">
+                        <div data-bind="fadeVisible: { isShowed: selectedHealthCheckDetailsMode() === Commerce.ViewModels.HealthCheckDetailsMode.Status }">
+                            <div class="col margin12">
+                                <!-- Non-failure result -->
+                                <!-- ko if: !isSelectedHealthCheckEntityExpectedStatus(Commerce.Client.Entities.HealthCheckStatusEnum.Failed) -->
+                                <div class="row padLeft12 padRight12 padBottom12 marginBottom12">
+                                    <div class="width100Percent col">
+                                        <div class="row center height72">
+                                            <div class="icon-42x42 center width72 height72"
+                                                 data-bind="attr: { 'aria-label': selectedHealthCheckEntityStatusLabel() },
+                                                    css: { iconUnknown: isSelectedHealthCheckEntityStatusNotRun(),
+                                                           iconCompleted: isSelectedHealthCheckEntityExpectedStatus(Commerce.Client.Entities.HealthCheckStatusEnum.Succeeded),
+                                                           iconBlocked: isSelectedHealthCheckEntityExpectedStatus(Commerce.Client.Entities.HealthCheckStatusEnum.Unsupported)}"></div>
+                                        </div>
+
+                                        <div class="h5 center wrapText" data-bind="text: selectedHealthCheckEntityStatusLabel()"></div>
+                                    </div>
+                                </div>
+                                <!-- /ko -->
+                                <!-- Health check results exist and errors were found -->
+                                <!-- ko if: isSelectedHealthCheckEntityExpectedStatus(Commerce.Client.Entities.HealthCheckStatusEnum.Failed) -->
+                                <!-- ko with: selectedHealthCheckEntity -->
+                                <div class="row padLeft12 padRight12 padBottom12 marginBottom12">
+                                    <div class="width100Percent col">
+                                        <div class="row center height72">
+                                            <div class="iconError icon-42x42 center width72 height72" data-bind="attr: { 'aria-label': $parent.selectedHealthCheckEntityStatusLabel() }"></div>
+                                        </div>
+
+                                        <!-- Error message title -->
+                                        <!-- ko if: Commerce.ObjectExtensions.isNullOrUndefined(healthCheckStatus.result) || Commerce.StringExtensions.isNullOrWhitespace(healthCheckStatus.result.title) -->
+                                        <div class="h5 center wrapText" data-bind="resx: { textContent: 'string_30322' }">Health check failed</div>
+                                        <!-- /ko -->
+                                        <!-- ko if: !Commerce.ObjectExtensions.isNullOrUndefined(healthCheckStatus.result) && !Commerce.StringExtensions.isNullOrWhitespace(healthCheckStatus.result.title) -->
+                                        <div class="h5 center wrapText" data-bind="text: healthCheckStatus.result.title">Health check result error title</div>
+                                        <!-- /ko -->
+                                        <!-- Line separator -->
+                                        <div class="highContrastRowLine height01 secondaryBackgroundColor marginTop12 marginBottom12"></div>
+
+                                        <!-- Error message details -->
+                                        <!-- ko if: Commerce.ObjectExtensions.isNullOrUndefined(healthCheckStatus.result) || Commerce.StringExtensions.isNullOrWhitespace(healthCheckStatus.result.message) -->
+                                        <div class="h4 center" data-bind="resx: { textContent: 'string_30323' }">Health check failed with an unspecified error.</div>
+                                        <!-- /ko -->
+                                        <!-- ko if: !Commerce.ObjectExtensions.isNullOrUndefined(healthCheckStatus.result) && !Commerce.StringExtensions.isNullOrWhitespace(healthCheckStatus.result.message) -->
+                                        <div class="h4 center" data-bind="text: healthCheckStatus.result.message">Health check result error title</div>
+                                        <!-- /ko -->
+                                    </div>
+                                </div>
+                                <!-- /ko -->
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- Empty content -->
+                    <!-- ko if: Commerce.ObjectExtensions.isNullOrUndefined(selectedHealthCheckEntity()) -->
+                    <div class="col grow primaryPanelBackgroundColor highContrastBorderThin">
+                        <div class="textCenter padTop56">
+                            <div class="center">
+                                <div class="h1 iconBulletedList icon-40x40 secondaryFontColor" data-bind="resx: { ariaLabel: 'string_30325' }"></div>
+                            </div>
+                            <div class="h2 wrapText" data-bind="resx: { textContent: 'string_30325' }">Select a test</div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+
+                <div class="col grow width48 marginTop48 marginRight20" data-bind="visible: !isHeaderVisible()">
+                    <div class="col grow primaryPanelBackgroundColor highContrastBorderThin marginBottom12"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="healthCheckViewCommandAppBar" data-bind="appBar: { }, axBubbleAttr: 'healthCheckView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                    id: 'testSelected',
+                    extraClass: 'iconRefresh',
+                    onclick: testSelectedHealthCheckAsync,
+                    labelResx: 'string_30313',
+                    enabled: isHealthCheckEntitySelected
+                },
+                axBubbleAttr: 'healthCheckView_testSelected'"></button><!-- Test selected -->
+            <button data-bind="appBarCommand: {
+                    id: 'testAll',
+                    extraClass: 'iconMultiSelect',
+                    onclick: testAllHealthChecksAsync,
+                    labelResx: 'string_30314'
+                },
+                axBubbleAttr: 'healthCheckView_testAll'"></button><!-- Test all -->
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.ReceiptsAustria.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.ReceiptsAustria.Contracts.FiscalServiceResponse">
+            <summary>
+            Fiscal service response for Austria.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.ReceiptsAustria.Contracts.FiscalServiceResponse.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.ReceiptsAustria.Contracts.FiscalServiceResponse"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsAustria.Contracts.FiscalServiceResponse.SequenceNumber">
+            <summary>
+            Gets or sets the sequence number.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsAustria.Contracts.FiscalServiceResponse.FiscalQRCode">
+            <summary>
+            Gets or sets the fiscal QR-code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsAustria.Contracts.FiscalServiceResponse.SubmittedDocument">
+            <summary>
+            Gets or sets submitted fisal document.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsAustria.Contracts.FiscalServiceResponse.Response">
+            <summary>
+            Gets or sets a response from fiscal service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.ReceiptsAustria.Contracts.FiscalServiceResponse.InfoMessage">
+            <summary>
+            Gets or sets a info message.
+            </summary>
+        </member>
+    </members>
+</doc>

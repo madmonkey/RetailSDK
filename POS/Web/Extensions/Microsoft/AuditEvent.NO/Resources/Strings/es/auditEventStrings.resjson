@@ -1,0 +1,18 @@
+{
+  "Audit_event_price_lookup_error": "Error de registro de evento de búsqueda de precios: {0}",
+  "_Audit_event_price_lookup_error.comment": "Audit event registration log error message.",
+  "Audit_event_tax_override_error": "Error de registro de evento de anulación de impuestos: {0}",
+  "_Audit_event_tax_override_error.comment": "Audit event registration log error message.",
+  "Audit_event_quantity_correction_error": "Error de registro de eventos de corrección de cantidad: {0}",
+  "_Audit_event_quantity_correction_error.comment": "Audit event registration log error message.",
+  "Audit_event_open_cash_drawer_error": "Error de registro de evento de caja registradora abierta: {0}",
+  "_Audit_event_open_cash_drawer_error.comment": "Audit event registration log error message.",
+  "Audit_event_price_lookup_event_message": "Evento de búsqueda de precios registrado",
+  "_Audit_event_price_lookup_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_tax_override_event_message": "Evento de anulación de impuestos registrado",
+  "_Audit_event_tax_override_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_quantity_correction_event_message": "Evento de corrección de cantidad registrado",
+  "_Audit_event_quantity_correction_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_open_cash_drawer_event_message": "Evento de caja registradora abierta registrado",
+  "_Audit_event_open_cash_drawer_event_message.comment": "Audit event database log string field value."
+}

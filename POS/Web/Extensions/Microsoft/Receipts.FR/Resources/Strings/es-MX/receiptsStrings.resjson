@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Administrador de números de compilación: el número de compilación se agregó correctamente.",
+  "Build_number_successfull_log_message_text.comment": "Mensaje que se registra cuando el número de compilación de POS se agrega correctamente a la transacción.",
+  "Build_number_error_log_message_text": "Administrador de números de compilación: error al agregar el número de compilación, mensaje de error: '{0}'.",
+  "Build_number_error_log_message_text.comment": "Mensaje que se registra cuando el número de compilación de POS no se agrega correctamente a la transacción."
+}

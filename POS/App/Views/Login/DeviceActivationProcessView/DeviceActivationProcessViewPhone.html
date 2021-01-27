@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DeviceActivationProcessView</title>
+</head>
+
+<body>
+    <div id="deviceActivationProcessPanel" class="fragment dynamicsBackground scrollY">
+
+        <!-- Indeterminate wait -->
+        <div data-bind="loader: { visible: viewModel.isBusy, color: Commerce.Controls.Loader.LoaderColor.White }"></div>
+
+        <div data-bind="activationUserInfo: { }"></div>
+
+        <div id="deviceActivationProcessSection" class="main col panelBackgroundColor grow padTop40" data-bind="resx: { ariaLabel: 'string_4454' }">
+            <!-- Main content -->
+            <!-- Logo -->
+            <div class="center height100">
+                <img src="#" data-bind="attr: { src: 'Assets/Wide310x150Logo.scale-100.png' }" />
+            </div>
+
+            <div class="pad40 padTop40 padLeft32 padRight32">
+
+                <!-- Title -->
+                <div class="padBottom40">
+                    <div class="headerFont wrapTextWithoutHyphen" data-bind="text: appTitle">Activate Retail Modern POS</div>
+                </div>
+
+                <!-- When device is still activating -->
+                <div data-bind="visible: controllerState() === Commerce.Proxy.Entities.DeviceActivationControllerState.Processing">
+                    <div class="padBottom40">
+                        <div class="h4" data-bind="text: progressMessage"></div>
+                    </div>
+
+                    <!--Progress bar to indicate navigation to login page-->
+                    <div data-bind="progressBar: {value: progressBarValue }"></div>
+                </div>
+
+                <!-- When device is activated successfully -->
+                <div data-bind="visible: controllerState() === Commerce.Proxy.Entities.DeviceActivationControllerState.Succeeded">
+                    <div>
+                        <div class="h4" data-bind="text: deviceActivatedMessage">Device activated successfully!</div>
+                    </div>
+
+                    <div class="padTop40 textRight">
+                        <button id="launchButton" class="primaryButton dynamicsBackground"
+                                data-bind="text: getStartedMessage, click: launch">
+                            Get started
+                        </button>
+                    </div>
+                </div>
+
+                <!-- When any errors occur during device activation -->
+                <div data-bind="visible: controllerState() == Commerce.Proxy.Entities.DeviceActivationControllerState.Error">
+                    <div id="activationErrorControl" class="activationErrorControl"
+                         data-bind="userControl: {
+                                    name: 'ActivationErrorControl',
+                                    options: {
+                                        errorHeaderMessage: errorHeaderMessage,
+                                        clientErrorMessage: clientErrorMessage,
+                                        errorMessage: errorMessage,
+                                        errorDetails: errorDetails,
+                                        footerMessage: footerMessage,
+                                        continueLabel: continueLabel,
+                                        headerDeviceId: headerDeviceId,
+                                        headerRegisterNumber: headerRegisterNumber,
+                                        previousFunction: navigateToActivationPage.bind($root),
+                                        retryFunction: activateDevice.bind($root)
+                                    }
+                                 }">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

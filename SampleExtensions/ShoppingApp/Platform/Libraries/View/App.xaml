@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extensions="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Extensions"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key="actionButtonStyle"
+                TargetType="Button">
+                <Setter Property="TextColor" Value="{extensions:Palette ActionButtonText}" />
+                <Setter Property="Margin" Value="20" />
+                <Setter Property="BackgroundColor" Value="{extensions:Palette ActionButtonBackground}" />
+            </Style>
+            <Style
+                x:Key="fieldEntryStyle"
+                TargetType="Entry">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Margin" Value="20,5" />
+            </Style>
+            <Style
+                x:Key="fieldPickerStyle"
+                TargetType="Picker">
+                <Setter Property="Margin" Value="20,10,20,5" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="BackgroundColor" Value="#f6f6f6" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

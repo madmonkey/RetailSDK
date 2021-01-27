@@ -1,0 +1,10 @@
+{
+  "Warning_title": "Предупреждение",
+  "_Warning_title.comment": "POS warning message title.",
+  "Shift_closing_warning": "Смену следует закрыть к {0}.",
+  "_Shift_closing_warning.comment": "POS warning message when the cashier performs an operation within the shift closing interval.",
+  "Error_title": "Ошибка",
+  "_Error_title.comment": "POS error message title.",
+  "Shift_closing_error": "Продолжительность смены превышает лимит. Приостановите транзакцию, закройте смену и откройте новую смену.",
+  "_Shift_closing_error.comment": "POS warning message when the cashier performs an operation after the shift closing time."
+}

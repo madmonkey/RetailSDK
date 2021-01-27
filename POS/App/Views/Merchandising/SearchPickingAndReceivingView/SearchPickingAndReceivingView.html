@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Search Picking and Receiving View</title>
+    <link href="SearchPickingAndReceivingView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment searchPickAndReceiveView">
+        <div data-bind="pivot: {}, resx: { ariaLabel: 'string_4454' }">
+            <!-- Main content -->
+            <!-- About -->
+            <div data-bind="pivotItem: { headerResx: 'string_3872' }">
+                <!-- PICKING AND RECEIVING -->
+                <!-- Main content -->
+                <div id="pickingAndReceivingList" class="col grow" data-bind="dataList: {
+                itemDataSource: viewModel.purchaseTransferOrders,
+                selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                selectionChanged: viewModel.purchaseTransferOrderSelectionChanged.bind(viewModel),
+                ariaLabelResx: 'string_2114',  /* List of orders */
+                columns: viewModel.ordersListColumns
+                },
+                axBubbleAttr: 'searchPickingAndReceivingView_purchaseTransferOrders'"></div>
+            </div>
+        </div>
+            
+        <!-- menu buttons to create (transfer) orders -->
+        <div id="createOrderFlyOut" 
+                data-bind="menu: { anchor: '#createActions', placement: 'top', alignment: 'left' },
+                axBubbleAttr: 'SearchPickingAndReceivingView_createOrderButtonFlyout'">
+
+            <button data-bind="menuCommand: {id: 'createInboundTransferOrder'},
+                    resx: { label: 'string_3880' },
+                    click: viewModel.createInboundTransferOrderAsync.bind(viewModel),
+                    axBubbleAttr: 'searchPickingAndReceivingView_createInboundTransferOrder'"></button>
+            <button data-bind="menuCommand: {id: 'createOutboundTransferOrder'},
+                    resx: { label: 'string_3881' },
+                    click: viewModel.createOutboundTransferOrderAsync.bind(viewModel),
+                    axBubbleAttr: 'searchPickingAndReceivingView_createOutboundTransferOrder'"></button>
+        </div>
+
+        <!--create transfer order-->
+        <div id="SearchPickingAndReceivingcommandAppBar" data-bind="appBar: { extensionCommands: viewModel.extensionCommandViewModels }, axBubbleAttr: 'searchPickingAndReceivingView_commandAppBar'">
+            <!-- deletes the selected order -->
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconDelete',
+                    id:'deleteOrder',
+                    onclick: viewModel.deleteTransferOrderAsync.bind(viewModel),
+                    labelResx: 'string_3310',
+                    disabled: viewModel.disableEditOrderButton
+                },
+                axBubbleAttr: 'searchPickingAndReceivingView_deleteOrderButton'"></button>  <!-- Delete -->
+
+            <button data-bind="appBarCommand: {
+                    id:'editOrder',
+                    extraClass: 'iconEdit',
+                    disabled: viewModel.disableEditOrderButton,
+                    onclick: editOrderClickHandler,
+                    labelResx: 'string_3800'
+                }, 
+                axBubbleAttr: 'searchPickingAndReceivingView_editOrderButton'"></button>    <!-- Edit -->
+
+            <button data-bind="appBarCommand: {
+                    id:'editJournal',
+                    extraClass: 'iconInvoiceEntry',
+                    disabled: viewModel.editPurchaseTransferOrderDisabled,
+                    onclick: editPurchaseTransferOrder,
+                    labelResx: 'string_3418'
+                }, 
+                axBubbleAttr: 'searchPickingAndReceivingView_editJournalButton'"></button>  <!-- Update -->
+
+            <button data-bind="appBarCommand: {
+                    id:'createActions',
+                    extraClass: 'iconAdd',
+                    flyout: '#createOrderFlyOut',
+                    labelResx: 'string_3882'
+                },
+                axBubbleAttr: 'searchPickingAndReceivingView_createActionButton'"></button> <!-- New -->
+
+            <button data-bind="appBarCommand: {
+                    id: 'searchPickAndReceiveOrder',
+                    extraClass: 'iconSearch',
+                    onclick: viewModel.performSearchPickingAndReceivingOrder.bind(viewModel),
+                    labelResx: 'string_10084'
+                },
+                axBubbleAttr: 'searchPickAndReceiveOrder_searchButton'"></button>   <!-- Search -->
+        </div>
+    </div>
+</body>
+</html>

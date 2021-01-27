@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change due template</title>
+</head>
+<body>
+    <!-- Change due template -->
+    <script id="changeDueTemplate" type="text/html">
+        <div>
+            <div class="row padBottom12">
+                <div>
+                    <label data-bind="resx: { textContent: 'string_30700' }">Subtotal</label>
+                </div>
+                <div class="textRight">
+                    <div class="h4" data-bind="formatPrice: subtotalAmountWithoutTax"></div>
+                </div>
+            </div>
+            <div class="row padBottom12">
+                <div>
+                    <label data-bind="resx: { textContent: 'string_30701' }">Tax</label>
+                </div>
+                <div class="textRight">
+                    <div class="h4" data-bind="formatPrice: taxAmount"></div>
+                </div>
+            </div>
+            <div class="row padBottom12">
+                <div>
+                    <label data-bind="resx: { textContent: 'string_1817' }">Amount due</label>
+                </div>
+                <div class="textRight">
+                    <div class="h4" data-bind="formatPrice: amountDue"></div>
+                </div>
+            </div>
+            <div class="row padBottom20">
+                <div>
+                    <label data-bind="resx: { textContent: 'string_1818' }">Total Payments</label>
+                </div>
+                <div class="textRight">
+                    <div class="h4" data-bind="formatPrice: totalAmountPaid"></div>
+                </div>
+            </div>
+            <!-- ko if: salesPaymentDifference !== 0 -->
+            <div class="row padBottom20">
+                <div>
+                    <label data-bind="resx: { textContent: 'string_1823' }">Rounding</label>
+                </div>
+                <div class="textRight">
+                    <div class="h4" data-bind="formatPrice: salesPaymentDifference"></div>
+                </div>
+            </div>
+            <!-- /ko -->
+            <!-- Line separator -->
+            <div class="padBottom8 no-shrink">
+                <div class="line-separator"></div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

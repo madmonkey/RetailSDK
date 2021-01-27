@@ -1,0 +1,18 @@
+{
+  "Audit_event_price_lookup_error": "خطأ في تسجيل حدث البحث عن السعر: {0}",
+  "_Audit_event_price_lookup_error.comment": "Audit event registration log error message.",
+  "Audit_event_tax_override_error": "خطأ في تسجيل حدث تجاوز الضريبة: {0}",
+  "_Audit_event_tax_override_error.comment": "Audit event registration log error message.",
+  "Audit_event_quantity_correction_error": "خطأ في تسجيل حدث تصحيح الكمية: {0}",
+  "_Audit_event_quantity_correction_error.comment": "Audit event registration log error message.",
+  "Audit_event_open_cash_drawer_error": "خطأ في تسجيل حدث فتح درج النقدية: {0}",
+  "_Audit_event_open_cash_drawer_error.comment": "Audit event registration log error message.",
+  "Audit_event_price_lookup_event_message": "تم تسجيل حدث البحث عن السعر",
+  "_Audit_event_price_lookup_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_tax_override_event_message": "تم تسجيل حدث تجاوز الضريبة",
+  "_Audit_event_tax_override_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_quantity_correction_event_message": "تم تسجيل حدث تصحيح الكمية",
+  "_Audit_event_quantity_correction_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_open_cash_drawer_event_message": "تم تسجيل حدث فتح درج النقدية",
+  "_Audit_event_open_cash_drawer_event_message.comment": "Audit event database log string field value."
+}

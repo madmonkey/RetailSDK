@@ -1,0 +1,25 @@
+﻿{
+  "$schema": "../schemas/manifestSchema.json",
+  "name": "Transaction_Signature_Sample",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "7.2.0.0",
+  "components": {
+    "extend": {
+      "triggers": [
+        {
+          "triggerType": "PostCartCheckoutTransaction",
+          "modulePath": "TriggerHandlers/SalesTransSignaPostCartCheckoutTrigger"
+        },
+        {
+          "triggerType": "PreEndTransaction",
+          "modulePath": "TriggerHandlers/SalesTransSignaPreEndTransactionTrigger"
+        },
+        {
+          "triggerType": "PreLogon",
+          "modulePath": "TriggerHandlers/SalesTransSignaturePreLogonTrigger"
+        }
+      ]
+    }
+  }
+}

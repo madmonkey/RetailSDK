@@ -1,0 +1,65 @@
+﻿<!--
+    HTMLLint is an internal tool that fails on this file due to non-localized example labels,
+    there is no need for this comment and the one below in real-world extensions.
+-->
+<!-- HTMLLint Disable LabelExistsValidator -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HeaderSplitViewView</title>
+</head>
+<body>
+    <div class="AppBarView">
+        <div class="grow marginBottom48 scrollY">
+            <div class="pad20 col width680">
+                <h3>HeaderSplitView</h3>
+                <div class="h4 padTop40">ViewModel interface</div>
+                <textarea class="height220">
+                    export interface IHeaderSplitViewState {
+                    title?: string | Observable<string>;
+                        }
+                </textarea>
+                <div class="h4 padTop40">Controller syntax</div>
+                <textarea class="height220">
+                    import * as Views from "PosApi/Create/Views";
+                    import { ObjectExtensions } from "PosApi/TypeExtensions";
+                    /**
+                    * The controller for HeaderSplitViewView.
+                    */
+                    export default class HeaderSplitViewView extends Views.CustomViewControllerBase {
+
+                    constructor(context: Views.ICustomViewControllerContext) {
+                    // Do not save in history
+                        super(context);
+                        this.state.title = "HeaderSplitView sample";
+                    }
+                    /**
+                    * Bind the html element with view controller.
+                    *
+                    * @param {HTMLElement} element DOM element.
+                    */
+                    public onReady(element: HTMLElement): void {
+
+                        ko.applyBindings(this, element);
+                    }
+
+                    /**
+                    * Called when the object is disposed.
+                    */
+                    public dispose(): void {
+                        ObjectExtensions.disposeAllProperties(this);
+                    }
+                    }
+
+                </textarea>
+                <div class="h4 padTop40">HTML syntax</div>
+                <textarea class="height220">
+                    <div id="headerSplitView">
+                    </div>
+                </textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.TransactionAttributesSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.TransactionAttributesSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.TransactionAttributesSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.TransactionAttributesSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.TransactionAttributesSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.TransactionAttributesSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.TransactionAttributesSample\obj\Debug\netstandard2.0\Runtime.Extensions.TransactionAttributesSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.TransactionAttributesSample\obj\Debug\netstandard2.0\Runtime.Extensions.TransactionAttributesSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.TransactionAttributesSample\obj\Debug\netstandard2.0\Runtime.Extensions.TransactionAttributesSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.TransactionAttributesSample\obj\Debug\netstandard2.0\Runtime.Extensions.TransactionAttributesSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.TransactionAttributesSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.TransactionAttributesSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.TransactionAttributesSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.TransactionAttributesSample.pdb

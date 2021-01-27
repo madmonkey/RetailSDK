@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Beheer van buildnummer: het buildnummer is toegevoegd.",
+  "Build_number_successfull_log_message_text.comment": "Het bericht dat wordt geregistreerd als het POS-buildnummer is toegevoegd aan de transactie.",
+  "Build_number_error_log_message_text": "Beheer van buildnummer: het buildnummer is niet toegevoegd, foutbericht: {0}.",
+  "Build_number_error_log_message_text.comment": "Het bericht dat wordt geregistreerd als het POS-buildnummer niet is toegevoegd aan de transactie."
+}

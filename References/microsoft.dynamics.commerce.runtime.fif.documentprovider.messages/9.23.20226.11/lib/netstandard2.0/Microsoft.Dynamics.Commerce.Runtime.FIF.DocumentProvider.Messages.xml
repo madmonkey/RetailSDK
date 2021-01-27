@@ -1,0 +1,348 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.FIF.DocumentProvider.Messages</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.DocumentProviderRequest">
+            <summary>
+            Represents the base request used by all request messages.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.DocumentProviderRequest.FiscalIntegrationTechnicalProfile">
+            <summary>
+            Gets or sets technical profile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.DocumentProviderRequest.FiscalIntegrationFunctionalityProfile">
+            <summary>
+            Gets or sets functionality profile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.DocumentProviderRequest.FiscalIntegrationFunctionalityProfileGroupId">
+            <summary>
+            Gets or sets functionality profile group id.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.DocumentProviderResponse">
+            <summary>
+            Represents the base response used by all response messages.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalDocumentDocumentProviderRequest">
+            <summary>
+            Document provider request to generate fiscal document for registration in fiscal service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalDocumentDocumentProviderRequest.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationDocumentRetrievalCriteria)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalDocumentDocumentProviderRequest"/> class.
+            </summary>
+            <param name="criteria">The fiscal document retrieval criteria.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalDocumentDocumentProviderRequest.FiscalDocumentRetrievalCriteria">
+            <summary>
+            Gets fiscal document retrieval criteria
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalDocumentDocumentProviderRequest.SalesOrder">
+            <summary>
+            Gets or sets the sales order.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalDocumentDocumentProviderRequest.NonSalesTenderTransaction">
+            <summary>
+            Gets or sets the non sale tender transaction if any.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalDocumentDocumentProviderRequest.DropAndDeclareTransaction">
+            <summary>
+            Gets or sets the transaction for a drop and declare transaction if any.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalDocumentDocumentProviderRequest.Shift">
+            <summary>
+            Gets or sets the shift.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalDocumentDocumentProviderResponse">
+            <summary>
+            Response for request to generate fiscal document.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalDocumentDocumentProviderResponse.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationDocument)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalDocumentDocumentProviderResponse"/> class.
+            </summary>
+            <param name="fiscalDocument">Sets fiscal document.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalDocumentDocumentProviderResponse.FiscalDocument">
+            <summary>
+            Gets fiscal document.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalIntegrationSequentialKeysDocumentProviderRequest">
+            <summary>
+            The document provider request to get sequential signature keys.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalIntegrationSequentialKeysDocumentProviderResponse">
+            <summary>
+            The response to request to get sequential signature keys collection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalIntegrationSequentialKeysDocumentProviderResponse.#ctor(System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalIntegrationSequentialKeysDocumentProviderResponse"/> class.
+            </summary>
+            <param name="sequentialSignatureKeys">Sequential signature keys collection.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalIntegrationSequentialKeysDocumentProviderResponse.SequentialSignatureKeys">
+            <summary>
+            Gets seque4ntial signature keys colletion.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalRegisterResponseToSaveDocumentProviderRequest">
+            <summary>
+            The document provider request to get fiscal register response to save.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalRegisterResponseToSaveDocumentProviderRequest.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationRegistrationResult)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalRegisterResponseToSaveDocumentProviderRequest"/> class.
+            </summary>
+            <param name="registrationResult">Response from fiscal registration service.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalRegisterResponseToSaveDocumentProviderRequest.FiscalRegistrationResult">
+            <summary>
+            Gets the fiscal registration result.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalRegisterResponseToSaveDocumentProviderResponse">
+            <summary>
+            Response for request to get fiscal register response to save.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalRegisterResponseToSaveDocumentProviderResponse.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalRegisterResponseToSaveDocumentProviderResponse"/> class.
+            </summary>
+            <param name="fiscalRegisterResponseToSave">The response from fiscal register to save.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalRegisterResponseToSaveDocumentProviderResponse.FiscalRegisterResponseToSave">
+            <summary>
+            Gets the response from fiscal register to save.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalServiceReadDataDocumenDocumentProvidertRequest">
+            <summary>
+            The document provider request to read data from the fiscal service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalServiceReadDataDocumentDocumentProviderResponse">
+            <summary>
+            Response for request to get document to read data from fiscal document.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalServiceReadDataDocumentDocumentProviderResponse.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationDocument)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalServiceReadDataDocumentDocumentProviderResponse"/> class.
+            </summary>
+            <param name="readDataDocument">Sets document to read data from fiscal service.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalServiceReadDataDocumentDocumentProviderResponse.ReadDataDocument">
+            <summary>
+            Gets document to read data from fiscal service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalServiceSetupDocumentDocumentProviderRequest">
+            <summary>
+            The document provider request to genetate setup document for fiscal service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalServiceSetupDocumentDocumentProviderResponse">
+            <summary>
+            The document provider response for request to get fiscal service setup document.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalServiceSetupDocumentDocumentProviderResponse.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationDocument)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalServiceSetupDocumentDocumentProviderResponse"/> class.
+            </summary>
+            <param name="setupDocument">The setup document.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalServiceSetupDocumentDocumentProviderResponse.SetupDocument">
+            <summary>
+            Gets setup document.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalTransactionExtendedDataDocumentProviderRequest">
+            <summary>
+            The document provider request to get fiscal transaction extended data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalTransactionExtendedDataDocumentProviderRequest.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationRegistrationResult)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalTransactionExtendedDataDocumentProviderRequest"/> class.
+            </summary>
+            <param name="registrationResult">Response from fiscal registration service.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalTransactionExtendedDataDocumentProviderRequest.FiscalRegistrationResult">
+            <summary>
+            Gets the fiscal registration result.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalTransactionExtendedDataDocumentProviderResponse">
+            <summary>
+            Response for request to get fiscal transaction extended data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalTransactionExtendedDataDocumentProviderResponse.#ctor(System.String,Microsoft.Dynamics.Commerce.Runtime.DataModel.ExtensibleFiscalRegistrationType,System.String,System.String,System.Collections.Generic.ICollection{Microsoft.Dynamics.Commerce.Runtime.DataModel.CommerceProperty})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalTransactionExtendedDataDocumentProviderResponse"/> class.
+            </summary>
+            <param name="documentNumber">The fiscal document number.</param>
+            <param name="registrationType">The fiscal registration type.</param>
+            <param name="serviceName">The fiscal service name.</param>
+            <param name="countryRegionIsoCode">The country/region ISO code where fiscal transaction is registered.</param>
+            <param name="extendedData">The extended data of the fiscal transaction.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalTransactionExtendedDataDocumentProviderResponse.DocumentNumber">
+            <summary>
+            Gets the fiscal document number.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalTransactionExtendedDataDocumentProviderResponse.RegistrationType">
+            <summary>
+            Gets the value of the fiscal registration type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalTransactionExtendedDataDocumentProviderResponse.ServiceName">
+            <summary>
+            Gets the fiscal service name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalTransactionExtendedDataDocumentProviderResponse.CountryRegionIsoCode">
+            <summary>
+            Gets the country/region where fiscal transaction is registered.
+            </summary>
+            <remarks>The country/region has format of ISO code "XXX", e.g. "ITA".</remarks>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetFiscalTransactionExtendedDataDocumentProviderResponse.ExtendedData">
+            <summary>
+            Gets the extended data of the fiscal transaction.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetNonFiscalDocumentDocumentProviderRequest">
+            <summary>
+            Document provider request to generate non-fiscal document to send to fiscal service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetNonFiscalDocumentDocumentProviderRequest.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationDocumentRetrievalCriteria)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetNonFiscalDocumentDocumentProviderRequest"/> class.
+            </summary>
+            <param name="criteria">The non-fiscal document retrieval criteria.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetNonFiscalDocumentDocumentProviderRequest.NonFiscalDocumentRetrievalCriteria">
+            <summary>
+            Gets non-fiscal document retrieval criteria
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetNonFiscalDocumentDocumentProviderRequest.SalesOrder">
+            <summary>
+            Gets or sets the sales order.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetNonFiscalDocumentDocumentProviderRequest.NonSalesTenderTransaction">
+            <summary>
+            Gets or sets the non sale tender transaction if any.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetNonFiscalDocumentDocumentProviderRequest.DropAndDeclareTransaction">
+            <summary>
+            Gets or sets the transaction for a drop and declare transaction if any.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetNonFiscalDocumentDocumentProviderRequest.Shift">
+            <summary>
+            Gets or sets the shift.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetNonFiscalDocumentDocumentProviderResponse">
+            <summary>
+            Response for request to generate non-fiscal document.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetNonFiscalDocumentDocumentProviderResponse.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationDocument)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetNonFiscalDocumentDocumentProviderResponse"/> class.
+            </summary>
+            <param name="nonFiscaldocument">Sets non-fiscal document.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetNonFiscalDocumentDocumentProviderResponse.NonFiscalDocument">
+            <summary>
+            Gets non-fiscal document.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetSupportedRegistrableEventsDocumentProviderRequest">
+            <summary>
+            The document provider request to get supported registrable events.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetSupportedRegistrableEventsDocumentProviderResponse">
+            <summary>
+            The response to request to get supported registrable events..
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetSupportedRegistrableEventsDocumentProviderResponse.#ctor(System.Collections.Generic.ICollection{System.Int32},System.Collections.Generic.ICollection{System.Int32})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetSupportedRegistrableEventsDocumentProviderResponse"/> class.
+            </summary>
+            <param name="supportedFiscalEventTypes">Supported registrable fiscal event types.</param>
+            <param name="supportedNonFiscalEventTypes">Supported registrable non-fiscal event types.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetSupportedRegistrableEventsDocumentProviderResponse.SupportedFiscalEventTypes">
+            <summary>
+            Gets supported registrable fiscal event types.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.GetSupportedRegistrableEventsDocumentProviderResponse.SupportedNonFiscalEventTypes">
+            <summary>
+            Gets supported registrable non-fiscal event types.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.ProcessFiscalServiceReadDataResultDocumentProviderRequest">
+            <summary>
+            The document provider request to parse document read from fiscal service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.ProcessFiscalServiceReadDataResultDocumentProviderRequest.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.ProcessFiscalServiceReadDataResultDocumentProviderRequest"/> class.
+            </summary>
+            <param name="dataToParse">Response from fiscal service.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.ProcessFiscalServiceReadDataResultDocumentProviderRequest.DataFromFiscalService">
+            <summary>
+            Gets data read from fiscal service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.SaveFiscalRegistrationResultDocumentProviderRequest">
+            <summary>
+            The document provider request to save fiscal registration result.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.SaveFiscalRegistrationResultDocumentProviderRequest.#ctor(Microsoft.Dynamics.Commerce.Runtime.DataModel.FiscalIntegrationRegistrationResult)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.SaveFiscalRegistrationResultDocumentProviderRequest"/> class.
+            </summary>
+            <param name="registrationResult">Response from fiscal registration service.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.FiscalIntegration.DocumentProvider.Messages.SaveFiscalRegistrationResultDocumentProviderRequest.FiscalRegistrationResult">
+            <summary>
+            Gets fiscal registration result.
+            </summary>
+        </member>
+    </members>
+</doc>

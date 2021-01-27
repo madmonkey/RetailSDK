@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetReportFilterValuesDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'GetReportFilterValuesDialog'">
+        <div data-bind="dialog:
+                {
+                    title: title,
+                    subTitle: subTitle,
+                    visible: visible,
+                    buttonClick: buttonClickHandler,
+                    showProgressIndicator: indeterminateWaitVisible,
+                    subTitleCssClass: subTitleCssClass,
+                    closeOnEscButton: true,
+                    dialogCloseButtonClick: dialogCloseButtonClick,
+                    buttons: [
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_2401'), operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, isPrimary: true },
+                        { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false }
+                    ]
+                },
+                axBubbleAttr: 'getReportFilterValuesDialog_getReportFilterValuesDialog'">
+
+            <!-- dialog content -->
+            <div class="content">
+                    <!-- The below commented knockout syntax is used by knockout for containerless control flow syntax -->
+                    <!-- ko foreach: { data: parametersForDisplay, afterRender: Commerce.ViewModelAdapterWinJS.bindReportParameters } -->
+                    <div class="padTop0 padBottom12 " data-bind="visible: $index() > 0"></div>
+                    <div class="col wrap padTop20">
+                        <label class="ellipsis" data-bind="text: Label, attr: {for: 'reportDetailControl' + $index()}"></label>
+                        <div class="controlPlaceholder width100Percent" data-bind="attr: {internalControlId: 'reportDetailControl' + $index()}"></div>
+                    </div>
+                    <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

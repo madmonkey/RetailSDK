@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Būvējumu numuru pārvaldnieks: būvējuma numurs tika veiksmīgi pievienots.",
+  "Build_number_successfull_log_message_text.comment": "Ziņojums tiek reģistrēts, kad transakcijai sekmīgi tiek pievienots POS būvējuma numurs.",
+  "Build_number_error_log_message_text": "Būvējumu numuru pārvaldnieks: neizdevās pievienot būvējuma numuru, kļūdas ziņojums: {0}.",
+  "Build_number_error_log_message_text.comment": "Ziņojums tiek reģistrēts, kad transakcijai nesekmīgi tiek pievienots POS būvējuma numurs."
+}

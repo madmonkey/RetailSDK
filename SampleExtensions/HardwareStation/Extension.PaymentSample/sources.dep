@@ -1,0 +1,4 @@
+BUILD_PASS1_CONSUMES = \
+    source\frameworks\retailrain\tools\virtualperipherals\framework|PASS1 \
+    source\frameworks\retailrain\tools\virtualperipherals\messagepipelinehandler|PASS1 \
+    source\frameworks\retailrain\tools\virtualperipherals\messagepipelineproxy|PASS1 \

@@ -1,0 +1,48 @@
+﻿{
+  "$schema": "../schemas/manifestSchema.json",
+  "name": "Fiscal_Register_Sample",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "7.2.0.0",
+  "components": {
+    "resources": {
+      "supportedUICultures": [ "en-US", "sv" ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources/Strings",
+      "stringResourcesFileName": "fiscalRegisterStrings.resjson"
+    },
+    "extend": {
+      "triggers": [
+        {
+          "triggerType": "PreEndTransaction",
+          "modulePath": "TriggerHandlers/FiscalRegisterPreEndTransactionTrigger"
+        },
+        {
+          "triggerType": "PostCartCheckoutTransaction",
+          "modulePath": "TriggerHandlers/FiscalRegisterPostCartCheckoutTrigger"
+        },
+        {
+          "triggerType": "PrePrintReceiptCopy",
+          "modulePath": "TriggerHandlers/FiscalRegisterPrePrintReceiptCopyTrigger"
+        },
+        {
+          "triggerType": "PreProductSale",
+          "modulePath": "TriggerHandlers/FiscalRegisterPreSaleTrigger"
+        },
+        {
+          "triggerType": "PreOperation",
+          "modulePath": "TriggerHandlers/FiscalRegisterPreCloseShiftTrigger"
+        }
+      ]
+    },
+    "create": {
+      "operations": [
+        {
+          "operationId": "6000",
+          "operationRequestFactoryPath": "Operations/SkipFiscalizationOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/SkipFiscalizationOperationRequestHandler"
+        }
+      ]
+    }
+  }
+}

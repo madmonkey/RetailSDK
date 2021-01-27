@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.StoreHoursSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.StoreHoursSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.StoreHoursSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.StoreHoursSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.StoreHoursSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.StoreHoursSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.StoreHoursSample\obj\Debug\netstandard2.0\Runtime.Extensions.StoreHoursSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.StoreHoursSample\obj\Debug\netstandard2.0\Runtime.Extensions.StoreHoursSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.StoreHoursSample\obj\Debug\netstandard2.0\Runtime.Extensions.StoreHoursSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.StoreHoursSample\obj\Debug\netstandard2.0\Runtime.Extensions.StoreHoursSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.StoreHoursSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.StoreHoursSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.StoreHoursSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.StoreHoursSample.pdb

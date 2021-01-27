@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Extended LogOn View</title>
+</head>
+<body>
+
+    <div class="extendedLogOnView fragment" data-bind="with: viewModel">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'extendedLogOnView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div data-bind="pivotItem: { headerResx: 'string_11000' }">
+                <div id="extendedLogonList" data-bind="dataList: {
+                    itemDataSource: foundEmployees,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                    selectionChanged: $parent.employeeSelectionChanged.bind($parent),
+                    columns: [
+                        { titleResx: 'string_11002', ratio: 40, collapseOrder: 2, minWidth: 120, field: 'StaffId' },
+                        { titleResx: 'string_11003', ratio: 60, collapseOrder: 1, minWidth: 200, field: 'Name' }
+                    ]
+                    },
+                axBubbleAttr: 'extendedLogOnView_foundEmployees'">
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar:{}, axBubbleAttr: 'extendedLogOnView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id: 'searchLogOnOperator',
+                extraClass: 'iconSearch',
+                onclick: searchEmployee,
+                labelResx: 'string_10084'},
+                axBubbleAttr: 'extendedLogOnView_searchButton'"></button>
+
+            <button data-bind="appBarCommand: {
+                id: 'unassign',
+                extraClass: 'iconUndo',
+                onclick: unassignStartAsync,
+                enabled: isEmployeeSelected,
+                labelResx: 'string_11004'},
+                axBubbleAttr: 'extendedLogOnView_unassignButton'"></button>
+
+            <button data-bind="appBarCommand: {
+                id: 'assign',
+                extraClass: 'iconPermissions',
+                onclick: assignStartAsync,
+                enabled: isEmployeeSelected,
+                labelResx: 'string_11005'},
+                axBubbleAttr: 'extendedLogOnView_assignButton'"></button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Pick up View</title>
+    <link href="PickUpView.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="fragment pickupView" data-bind="with: viewModel">
+        <div id="pickUpViewPivot" data-bind="pivot: {}, resx: { ariaLabel: 'string_4454' }">
+            <div id="pickUpViewPivotItem" data-bind="pivotItem: { headerResx: 'string_4530' }">
+                <!-- Main content -->
+                <div id="pickUpSalesLinesList" class="dataList" data-bind="dataList: {
+                    itemDataSource: salesLines,
+                    onItemDataSourceUpdated: preSelectSalesLines,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.MultiSelect,
+                    selectionChanged: onSelectionChanged,
+                    ariaLabelResx: 'string_1877', /* Line items */
+                    columns: [
+                        { titleResx: 'string_4531', ratio: 20, collapseOrder: 7, minWidth: 150, field: 'ItemId' },
+                        { titleResx: 'string_4532', ratio: 20, collapseOrder: 6, minWidth: 200, field: 'productName' },
+                        { titleResx: 'string_4533', ratio: 8, collapseOrder: 1, minWidth: 100, field: 'Price', converter: 'Commerce.Core.Converter.PriceFormatter', isRightAligned: true },
+                        { titleResx: 'string_4652', ratio: 7, collapseOrder: 4, minWidth: 60, field: 'QuantityOrdered', isRightAligned: true },
+                        { titleResx: 'string_4651', ratio: 7, collapseOrder: 3, minWidth: 60, field: 'QuantityShipped', isRightAligned: true },
+                        { titleResx: 'string_4570', ratio: 7, collapseOrder: 8, minWidth: 60, field: 'QuantityInvoiced', isRightAligned: true }, /* Qty Invoiced */
+                        { titleResx: 'string_4650', ratio: 7, collapseOrder: 9, minWidth: 60, field: 'QuantityRemained', isRightAligned: true }, /* Qty remained for Pick-up */
+                        { titleResx: 'string_4653', ratio: 6, collapseOrder: 10, minWidth: 60, field: 'QuantityCanceled', isRightAligned: true }, /* Qty cancelled */
+                        { titleResx: 'string_4535', ratio: 8, collapseOrder: 2, minWidth: 100, field: 'NetAmount', converter: 'Commerce.Core.Converter.PriceFormatter', isRightAligned: true },
+                        { titleResx: 'string_4536', ratio: 10, collapseOrder: 5, minWidth: 100, field: 'TotalAmount', converter: 'Commerce.Core.Converter.PriceFormatter', isRightAligned: true }
+                    ]
+                    },
+                axBubbleAttr: 'pickUpView_salesLines'">
+                </div>
+            </div>
+        </div>
+
+        <div id="commandAppBar" data-bind="appBar: {}, axBubbleAttr: 'pickUpView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconSelectAll',
+                id: 'selectAll',
+                labelResx: 'string_1213',
+                onclick: $root.selectAll.bind($root) },
+                axBubbleAttr: 'pickUpView_selectAllButton'"></button> <!--Select All-->
+
+            <button data-bind="appBarCommand: {
+                id:'pickUp',
+                extraClass: 'iconPickup',
+                onclick: pickUpSalesLines,
+                disabled: isNoLineSelected,
+                labelResx: 'string_4538'}, 
+                axBubbleAttr: 'pickUpView_pickUpButton'"></button><!--Pick up-->
+        </div>
+    </div>
+</body>
+</html>

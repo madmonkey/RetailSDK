@@ -1,0 +1,10 @@
+{
+  "Warning_title": "Uyarı",
+  "_Warning_title.comment": "POS warning message title.",
+  "Shift_closing_warning": "Vardiyayı şu zamana kadar kapatmanız gerekiyor: {0}.",
+  "_Shift_closing_warning.comment": "POS warning message when the cashier performs an operation within the shift closing interval.",
+  "Error_title": "Hata",
+  "_Error_title.comment": "POS error message title.",
+  "Shift_closing_error": "Vardiya süresi sınırı aşıyor. İşlemi askıya alın, vardiyayı kapatın ve yeni bir vardiya açın.",
+  "_Shift_closing_error.comment": "POS warning message when the cashier performs an operation after the shift closing time."
+}

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:CheckoutDeliveryOptionsPageXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Pages.CheckoutDeliveryOptionsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages"
+    xmlns:converters="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Converters"
+    xmlns:custom="clr-namespace:XFormsRadioButton.CustomControls;assembly=XFormsRadioButton"
+    xmlns:extensions="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Extensions"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:pages="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    Title="{localization:Translate Pages_CheckoutDeliveryOptionsPage_Title}">
+    <ScrollView>
+        <ScrollView.Resources>
+            <ResourceDictionary>
+                <converters:InverseBooleanConverter
+                    x:Key="InverseBooleanConverter" />
+            </ResourceDictionary>
+        </ScrollView.Resources>
+        <StackLayout
+            Orientation="Vertical"
+            Spacing="0">
+            <ActivityIndicator
+                IsEnabled="{Binding IsBusy}"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}" />
+            <Label
+                Margin="20,20,20,0"
+                FontSize="Small"
+                HorizontalOptions="StartAndExpand"
+                Text="{localization:Translate Pages_CheckoutDeliveryOptionsPage_Title}"
+                TextColor="{x:Static statics:Palette.TEXT_LIGHT}"
+                VerticalTextAlignment="Center" />
+            <Picker
+                x:Name="Picker"
+                Title="{localization:Translate Pages_CheckoutDeliveryOptionsPage_PickerTitle}"
+                Style="{StaticResource fieldPickerStyle}"
+                SelectedIndexChanged="PickerSelectedIndexChanged" />
+            <Button
+                Margin="20,20"
+                BackgroundColor="{extensions:Palette ActionButtonBackground}"
+                Clicked="ContinueButtonClicked"
+                IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
+                Text="{localization:Translate Pages_CheckoutDeliveryOptionsPage_Continue}"
+                TextColor="{extensions:Palette ActionButtonText}" />
+        </StackLayout>
+    </ScrollView>
+</pages:CheckoutDeliveryOptionsPageXaml>

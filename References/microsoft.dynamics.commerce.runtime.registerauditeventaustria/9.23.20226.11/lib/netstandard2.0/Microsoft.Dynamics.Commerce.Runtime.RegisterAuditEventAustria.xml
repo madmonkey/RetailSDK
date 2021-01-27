@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.RegisterAuditEventAustria</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.RegisterAuditEventAustria.AustriaExtensibleAuditEventType">
+            <summary>
+            The extensible audit event type enumeration class with additional audit events for Austria.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.RegisterAuditEventAustria.AustriaExtensibleAuditEventType.PriceOverrideName">
+            <summary>
+            Price override audit event type name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.RegisterAuditEventAustria.AustriaExtensibleAuditEventType.OpenShiftName">
+            <summary>
+            Open shift audit event type name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Commerce.Runtime.RegisterAuditEventAustria.AustriaExtensibleAuditEventType.CloseShiftName">
+            <summary>
+            Close shift audit event type name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.RegisterAuditEventAustria.AustriaExtensibleAuditEventType.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.RegisterAuditEventAustria.AustriaExtensibleAuditEventType"/> class.
+            </summary>
+            <param name="name">The name of the audit event type.</param>
+            <param name="value">The value of the audit event type.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.RegisterAuditEventAustria.AustriaExtensibleAuditEventType.PriceOverride">
+            <summary>
+            Gets price override audit event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.RegisterAuditEventAustria.AustriaExtensibleAuditEventType.OpenShift">
+            <summary>
+            Gets open shift audit event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.RegisterAuditEventAustria.AustriaExtensibleAuditEventType.CloseShift">
+            <summary>
+            Gets close shift audit event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.RegisterAuditEventAustria.RegisterAuditEventServiceRequestHandler">
+            <summary>
+            Encapsulates the implementation of the service to maintain an audit event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Commerce.Runtime.RegisterAuditEventAustria.RegisterAuditEventServiceRequestHandler.SupportedCountryRegions">
+            <summary>
+            Gets a collection of country regions supported by this request handler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.RegisterAuditEventAustria.RegisterAuditEventServiceRequestHandler.Process(Microsoft.Dynamics.Commerce.Runtime.Services.Messages.RegisterAuditEventServiceRequest)">
+            <summary>
+            Processing an audit event with no response.
+            </summary>
+            <param name="request">The request containing information about the event.</param>
+            <returns>Null response.</returns>
+        </member>
+    </members>
+</doc>

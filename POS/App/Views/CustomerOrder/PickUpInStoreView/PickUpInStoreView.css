@@ -1,0 +1,20 @@
+.storeSearchButton {
+    min-width: 20px !important;
+    padding: 0px !important;
+}
+
+.searchPaneBorder {
+    border: 1px solid;
+    overflow: hidden;
+}
+
+/* High contrast mode */
+@media screen and (-ms-high-contrast) {
+    .pickUpInStoreView input[type=search] {
+        border-style: solid !important;
+    }
+
+    .storeSearchButton {
+        background-color: Highlight !important;
+    }
+}

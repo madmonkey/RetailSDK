@@ -1,0 +1,15 @@
+﻿.refinerDialog .scrollY {
+    height: auto;
+}
+
+.refinerDialog .iconUndo, .refinerDialog .iconAdd {
+    width: auto;
+    height: auto;
+    min-height: 0;
+    min-width: 0;
+}
+
+.refinerDialog #clearRefiners, .refinerDialog #addRefiner {
+    background: none;
+    border: none;
+}

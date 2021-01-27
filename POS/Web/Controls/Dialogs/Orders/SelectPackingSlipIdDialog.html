@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SelectPackingSlipIdDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'SelectPackingSlipIdDialog'">
+        <div data-bind="dialog: {
+            title: title,
+            visible: visible,
+            buttonClick: buttonClickHandler,
+            buttons: [
+                { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false }, /* Cancel */
+            ],
+        },
+        axBubbleAttr: 'selectPackingSlipIdDialog_selectPackingSlipIdDialog'">
+
+            <!-- dialog content -->
+            <div class="h4 secondaryFontColor marginTop20 marginBottom4" data-bind="resx: { textContent: 'string_13178' }">Sales order number</div>
+            <div class="h4 marginBottom20" data-bind="text: salesId"></div>
+            <div class="h4 secondaryFontColor marginBottom8" data-bind="resx: { textContent: 'string_13177' }">Packing slips</div>
+            <!-- ko if: packingSlipsData().length > 0 -->
+            <div id="packingSlipIds" data-bind="tileList: {
+                    iteminvoked: itemClickHandler,
+                    itemDataSource: packingSlipsData,
+                    field: 'PackingSlipId',
+                    secondaryField: 'CreatedDateTime',
+                    secondaryConverter: 'Commerce.Core.Converter.ShortDateAndTime',
+                    tileType: Commerce.Controls.TileList.TileType.DoubleLine
+                },
+                axBubbleAttr: 'selectPackingSlipIdDialog_packingSlipIds'"></div>
+            <!-- /ko -->
+            <!-- ko if: packingSlipsData().length === 0 -->
+            <div class="h4" data-bind="resx: { textContent: 'string_13179' }">There is no packing slip to display</div>
+            <!-- /ko -->
+        </div>
+    </div>
+</body>
+</html>

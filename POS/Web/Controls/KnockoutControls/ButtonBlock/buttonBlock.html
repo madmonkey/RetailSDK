@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>buttonBlock control</title>
+</head>
+<body>
+    <script type="text/html" id="buttonBlockTemplate">
+        <!-- Button block must be type="button" or it will try to navigate on some views. -->
+        <button type="button" class="pad12 centerY row noBorder height48"
+                data-bind="attr: { 'tabindex': tabIndex, 'aria-label': ariaLabel },
+                        css: { 
+                            padLeft0: blockType === Commerce.ButtonBlock.ButtonBlockType.Text, 
+                            accentColor: showActiveStyles,
+                            primaryFontColor: !showActiveStyles()
+                        },
+                        style: { 'cursor': showActiveStyles() ? 'pointer' : 'default' },
+                        attr: { role: blockType === Commerce.ButtonBlock.ButtonBlockType.Text ? '' : 'button' },
+                        enable: buttonBlockEnabled">
+            <div tabindex="-1" data-bind="attr: { 'class': buttonClass + ' centerY width32 icon' },
+                                          css: { visible: !loading() && blockType === Commerce.ButtonBlock.ButtonBlockType.Button },
+                                          style: { 'cursor': showActiveStyles() ? 'pointer' : 'default' }"></div>
+            <div class="width32 height32 centerY" data-bind="visible: !loading() && blockType === Commerce.ButtonBlock.ButtonBlockType.Text">
+                <div tabindex="-1" class="h4 margin0 height20 width20" style="cursor: default" data-bind="css: buttonClass"></div>
+            </div>
+            <div class="width32 height32 centerY" data-bind="loader: { visible: loading, isSmall: true, type: Commerce.Controls.Loader.LoaderType.Nested, color: Commerce.Controls.Loader.LoaderColor.White }"></div>
+            <div class="ellipsis" data-bind="visible: labelVisible">
+                <!-- Label for standard button block -->
+                <div tabindex="-1"
+                     class="h4 margin0 ellipsis"
+                     data-bind="text: label,
+                        css: maxLabelWidthClass"></div>
+            </div>
+        </button>
+    </script>
+</body>
+</html>

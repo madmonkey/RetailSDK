@@ -1,0 +1,440 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CustomersView</title>
+    <link href="CustomerAddEditView.css" rel="stylesheet" />
+</head>
+<body>
+    <form autocomplete="off">
+        <div class="fragment customerAddEditView">
+            <div class="section main scrollY marginTop12" data-bind="resx: { ariaLabel: 'string_4454' }">
+                <!-- Main content -->
+                <div class="col grow-landscape marginLeft12 marginRight12 minWidth240 maxWidth320">
+                    <div class="marginBottom12">
+                        <!-- Customer type -->
+                        <div class="marginBottom20">
+                            <label for="customerTypeInput" data-bind="resx: { textContent: 'string_1300' }">Type</label>
+                            <select tabindex="1" id="customerTypeInput"
+                                    data-bind="enable: viewModel.allowChangeCustomerType,
+                                    options: viewModel.customerTypes,
+                                    optionsText: 'Name',
+                                    optionsValue: 'Code',
+                                    value: viewModel.customerProxy.CustomerTypeValue,
+                                    optionsCaption: Commerce.ViewModelAdapter.getResourceString('string_1301'),
+                                    attr: { 'title': Commerce.ViewModelAdapter.getResourceString('string_1301') }">
+                            </select>
+                        </div>
+
+                        <!-- Customer group -->
+                        <div class="marginBottom20">
+                            <label for="customerGroupOptions" data-bind="resx: { textContent: 'string_1302' }">Customer Group</label>
+                            <select tabindex="2" id="customerGroupOptions"
+                                    data-bind="options: viewModel.customerGroups,
+                                    optionsText: 'CustomerGroupName',
+                                    optionsValue: 'CustomerGroupNumber',
+                                    value: viewModel.customerProxy.CustomerGroup,
+                                    optionsCaption: Commerce.ViewModelAdapter.getResourceString('string_1303'),
+                                    attr: { 'title': Commerce.ViewModelAdapter.getResourceString('string_1303') }">
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Contact Info header -->
+                    <div class="row marginBottom12 ">
+                        <h2 data-bind="resx: { textContent: !viewModel.isMarketingOptInFeatureEnabled() ? 'string_1304' : 'string_4803' }">Contact information</h2>
+                    </div>
+
+                    <div>
+                        <!-- ko ifnot: viewModel.customerIsPerson -->
+                        <!-- Company -->
+                        <div class="marginBottom20">
+                            <label for="companyNameInput" data-bind="resx: { textContent: 'string_1308' }">Company</label>
+                            <input tabindex="3" type="text" id="companyNameInput"
+                                   data-bind="validator: {
+                                        data: viewModel.customerProxy,
+                                        field: 'Name',
+                                        validatorType: 'CustomerValidator'
+                                    },
+                                   enable: !viewModel.customerIsPerson()" />
+                        </div>
+                        <!-- /ko -->
+
+                        <!-- ko if: viewModel.customerIsPerson -->
+                        <!-- Customer title -->
+                        <div class="marginBottom20" data-bind="visible: viewModel.isMarketingOptInFeatureEnabled">
+                            <label for="customerTitleOptions" data-bind="resx: { textContent: 'string_1385' }">Title</label>
+                            <select tabindex="3" id="customerTitleOptions"
+                                    data-bind="options: viewModel.customerTitles,
+                                        optionsText: 'Text',
+                                        optionsValue: 'RecordId',
+                                        value: viewModel.customerProxy.TitleRecordId,
+                                        optionsCaption: Commerce.ViewModelAdapter.getResourceString('string_1386'/* Select customer title */),
+                                        attr: { 'title': Commerce.ViewModelAdapter.getResourceString('string_1386') /* Select customer title */ }"></select>
+                        </div>
+                        <!-- First name -->
+                        <div class="marginBottom20">
+                            <label for="customerFirstNameInput" data-bind="resx: { textContent: 'string_1305' }">First Name</label>
+                            <input tabindex="4" type="text" id="customerFirstNameInput"
+                                   data-bind="validator: {
+                                        data: viewModel.customerProxy,
+                                        field: 'FirstName',
+                                        validatorType: 'CustomerValidator'
+                                    },
+                                    enable: viewModel.customerIsPerson" />
+                        </div>
+                        <!-- Last name -->
+                        <div class="marginBottom20">
+                            <label for="customerLastNameInput" data-bind="resx: { textContent: 'string_1307' }">Last Name</label>
+                            <input tabindex="5" type="text" id="customerLastNameInput"
+                                   data-bind="validator: {
+                                        data: viewModel.customerProxy,
+                                        field: 'LastName',
+                                        validatorType: 'CustomerValidator'
+                                    },
+                                   enable: viewModel.customerIsPerson" />
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <div class="gutter12x12"></div>
+                    <!-- ko if: viewModel.isMarketingOptInFeatureEnabled -->
+                    <div class="row marginBottom12 ">
+                        <h2 data-bind="resx: { textContent: 'string_30413' }">Email addresses</h2>
+                    </div>
+                    <div class="marginBottom20">
+                        <!-- ko if: !Commerce.StringExtensions.isNullOrWhitespace(viewModel.numberOfEmailAddressesText()) -->
+                        <div class="stretch height32 row padBottom12">
+                            <a class="h4" href="#" data-bind="
+                                        text: viewModel.numberOfEmailAddressesText,
+                                        click: viewModel.viewEmailAddresses.bind(viewModel),
+                                        attr: {
+                                            'aria-label': viewModel.numberOfEmailAddressesText
+                                        },
+                                        axBubbleAttr: 'customerAddEditView_emailDetailsLink'">
+                                <!--emails-->
+                            </a>
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko if:  viewModel.mode() === Commerce.ViewModels.CustomerAddEditViewModelEnum.Add -->
+                        <!-- Contact email address -->
+                        <div class="marginBottom20">
+                            <label for="customerContactEmailInput" data-bind="resx: { textContent: 'string_30414' }">Primary Email</label>
+                            <input tabindex="5" type="text" id="customerContactEmailInput"
+                                   data-bind="validator: {
+                                    data: viewModel.customerProxy,
+                                    field: 'Email',
+                                    validatorType: 'AddressValidator',
+                                    validatorField: 'Email',
+                                },
+                                event: { blur: viewModel.onBlurContactEmail.bind(viewModel) }" />
+                        </div>
+                        <div class="marginBottom20">
+                            <div>
+                                <label data-bind="resx: {textContent: 'string_1387'}">Marketing opt-in</label>
+                                <div>
+                                    <div id="marketingOptInToggle_PrimaryEmail"
+                                         data-bind="toggleSwitch: {
+                                                            labelOn: 'string_6817',
+                                                            labelOff:'string_6818',
+                                                            checked: viewModel.primaryEmailMarketingOptIn,
+                                                            onChange: viewModel.togglePrimaryEmailMarketingOptIn.bind(viewModel)
+                                                         },
+                                                 resx: { ariaLabel: 'string_1387' },
+                                                 axBubbleAttr: 'customerAddEditView_marketingOptInToggle_PrimaryEmail'">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <!-- Receipt email address -->
+                            <div class="marginBottom08">
+                                <label for="customerReceiptEmailInput" data-bind="resx: { textContent: 'string_1312' }">Receipt Email</label>
+                                <input tabindex="6" type="text" id="customerReceiptEmailInput"
+                                       data-bind="validator: {
+                                    data: viewModel.customerProxy,
+                                    field: 'ReceiptEmail',
+                                    validatorType: 'AddressValidator',
+                                    validatorField: 'Email'
+                                }" />
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko if:  viewModel.mode() === Commerce.ViewModels.CustomerAddEditViewModelEnum.Edit -->
+                        <div>
+                            <div id="customerEmailAddressesList" class="grow noMargin col marginBottom0"
+                                 data-bind="dataList: {
+                                                        itemDataSource: viewModel.emailAddresses,
+                                                        defaultListType: Commerce.Controls.DataList.ListType.Card,
+                                                        selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                                                        itemInvoked: viewModel.contactInfoTitleClicked.bind(viewModel),
+                                                        emptyDataListTemplate: 'emptyTemplate',
+                                                        ariaLabelResx: 'string_1311',    /* Email address */
+                                                        itemTemplates: [
+                                                            {
+                                                                templateId: 'customerEmailAddressTemplate',
+                                                                cardType: Commerce.Controls.DataList.CardType.Static,
+                                                                deviceType: Commerce.Controls.DataList.DeviceType.All
+                                                            }
+                                                        ]
+                                                        },
+                                                    axBubbleAttr: 'customerAddEditView_customerEmailAddressesList'">
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <div>
+                            <div class="height40" data-bind="buttonBlock: {
+                                                buttonClass: 'iconAdd',
+                                                ariaLabelResx: 'string_1390',    /* Add an email */
+                                                labelTextResx: 'string_1390',    /* Add an email */
+                                                invokeValidate: viewModel.addNewEmailAddress.bind(viewModel)
+                                        },
+                                        axBubbleAttr: 'customerAddEditView_createNewEmailButton' ">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gutter12x12"></div>
+                    <div class="row marginBottom12 ">
+                        <h2 data-bind="resx: { textContent: 'string_1389' }">Phone number</h2>
+                    </div>
+                    <div class="marginBottom20">
+                        <!-- ko if: !Commerce.StringExtensions.isNullOrWhitespace(viewModel.numberOfPhoneNumbersText())-->
+                        <div class="stretch height32 row padBottom12">
+                            <a class="h4" href="#" data-bind="
+                                        text: viewModel.numberOfPhoneNumbersText,
+                                        click: viewModel.viewPhoneNumbers.bind(viewModel),
+                                        attr: {
+                                            'aria-label': viewModel.numberOfPhoneNumbersText
+                                        },
+                                        axBubbleAttr: 'customerAddEditView_phoneNumberDetailsLink'">
+                                <!--Phone numbers-->
+                            </a>
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko if:  viewModel.mode() === Commerce.ViewModels.CustomerAddEditViewModelEnum.Add -->
+                        <!-- Phone number -->
+                        <div class="marginBottom08">
+                            <label for="customerPhoneNumberInput" data-bind="resx: { textContent: 'string_1309' }">Phone</label>
+                            <input tabindex="7" type="tel" id="customerPhoneNumberInput"
+                                   data-bind="validator: {
+                                    data: viewModel.customerProxy,
+                                    field: 'Phone',
+                                    validatorType: 'AddressValidator'
+                                }" />
+                        </div>
+                        <div class="col stretch">
+                            <div>
+                                <label data-bind="resx: {textContent: 'string_1387'}">Marketing opt-in</label>
+                                <div>
+                                    <div id="marketingOptInToggle_PrimaryPhone"
+                                         data-bind="toggleSwitch: {
+                                                            labelOn: 'string_6817',
+                                                            labelOff:'string_6818',
+                                                            checked: viewModel.primaryPhoneNumberMarketingOptIn,
+                                                            onChange: viewModel.togglePrimaryPhoneNumberMarketingOptIn.bind(viewModel)
+                                                         },
+                                                 resx: { ariaLabel: 'string_1387' },
+                                                 axBubbleAttr: 'customerAddEditView_marketingOptInToggle_PrimaryPhone'">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko if:  viewModel.mode() === Commerce.ViewModels.CustomerAddEditViewModelEnum.Edit -->
+                        <div class="row">
+                            <div id="customerPhoneAddressesList" class="grow noMargin col marginBottom0"
+                                 data-bind="
+                                    dataList: {
+                                        itemDataSource: viewModel.phoneNumbers,
+                                        defaultListType: Commerce.Controls.DataList.ListType.Card,
+                                        selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                                        itemInvoked: viewModel.contactInfoTitleClicked.bind(viewModel),
+                                        emptyDataListTemplate: 'emptyTemplate',
+                                        ariaLabelResx: 'string_4209',    /* Phone number */
+                                        itemTemplates: [
+                                            {
+                                                templateId: 'customerPhoneNumberTemplate',
+                                                cardType: Commerce.Controls.DataList.CardType.Static,
+                                                deviceType: Commerce.Controls.DataList.DeviceType.All
+                                            }
+                                        ]
+                                    },
+                                    axBubbleAttr: 'customerAddEditView_customerPhoneAddressesList'">
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <div class="col stretch">
+                            <div class="height40" data-bind="buttonBlock: {
+                                                buttonClass: 'iconAdd',
+                                                ariaLabelResx: 'string_1391',    /* Add a phone number */
+                                                labelTextResx: 'string_1391',    /* Add a phone number */
+                                                invokeValidate: viewModel.addNewPhoneNumber.bind(viewModel)
+                                        },
+                                        axBubbleAttr: 'customerAddEditView_createNewPhoneNumberButton' ">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: !viewModel.isMarketingOptInFeatureEnabled() -->
+                    <div>
+                        <!-- Contact email address -->
+                        <div class="marginBottom20">
+                            <label for="customerContactEmailInput" data-bind="resx: { textContent: 'string_4845' }">Contact email address</label>
+                            <input tabindex="6" type="text" id="customerContactEmailInput"
+                                   data-bind="validator: {
+                                    data: viewModel.customerProxy,
+                                    field: 'Email',
+                                    validatorType: 'AddressValidator',
+                                    validatorField: 'Email',
+                                },
+                                event: { blur: viewModel.onBlurContactEmail.bind(viewModel) }" />
+                        </div>
+                        <!-- Phone number -->
+                        <div class="marginBottom20">
+                            <label for="customerPhoneNumberInput" data-bind="resx: { textContent: 'string_1309' }">Phone</label>
+                            <input tabindex="8" type="tel" id="customerPhoneNumberInput"
+                                   data-bind="validator: {
+                                    data: viewModel.customerProxy,
+                                    field: 'Phone',
+                                    validatorType: 'AddressValidator'
+                                }" />
+                        </div>
+                    </div>
+                    <div>
+                        <!-- Receipt email address -->
+                        <div class="marginBottom20">
+                            <label for="customerReceiptEmailInput" data-bind="resx: { textContent: 'string_1312' }">Receipt Email</label>
+                            <input tabindex="7" type="text" id="customerReceiptEmailInput"
+                                   data-bind="validator: {
+                                    data: viewModel.customerProxy,
+                                    field: 'ReceiptEmail',
+                                    validatorType: 'AddressValidator',
+                                    validatorField: 'Email'
+                                }" />
+                        </div>
+                    </div>
+                    <!-- /ko -->
+
+                    <div class="gutter12x12"></div>
+                    <!-- Preferences header add-edit-customer-preferences-->
+                    <div class="marginBottom12 ">
+                        <h2 data-bind="resx: { textContent: 'string_1320' }">Preferences</h2>
+                    </div>
+
+                    <div>
+                        <!-- Receipt preferences -->
+                        <div class="marginBottom20">
+                            <label for="customerReceiptPreferenceOptions" data-bind="resx: { textContent: 'string_1325' }">Receipt Preference</label>
+                            <select tabindex="9" id="customerReceiptPreferenceOptions"
+                                    data-bind="options: viewModel.receiptPreferences,
+                                    optionsText: 'description',
+                                    attr: { title: Commerce.ViewModelAdapter.getResourceString('string_1326') },
+                                    optionsValue: 'code',
+                                    value: viewModel.customerProxy.ReceiptSettings,
+                                    optionsCaption: Commerce.ViewModelAdapter.getResourceString('string_1326')">
+                            </select>
+                        </div>
+
+                        <!-- Language -->
+                        <div class="marginBottom20">
+                            <label for="customerLanguageOptions" data-bind="resx: { textContent: 'string_1323' }">Language</label>
+                            <select tabindex="11" id="customerLanguageOptions"
+                                    data-bind="options: viewModel.languages,
+                                    optionsText: 'LanguageName',
+                                    attr: { title: Commerce.ViewModelAdapter.getResourceString('string_1324') },
+                                    optionsValue: 'LanguageId',
+                                    value: viewModel.customerProxy.Language,
+                                    optionsCaption: Commerce.ViewModelAdapter.getResourceString('string_1324')">
+                            </select>
+                        </div>
+
+                        <div class="stretch">
+                            <!-- Currency -->
+                            <div class="marginBottom20">
+                                <label for="customerCurrencyOptions" data-bind="resx: { textContent: 'string_1321' }">Currency</label>
+                                <select tabindex="10" id="customerCurrencyOptions"
+                                        data-bind="options: viewModel.currencies,
+                                        optionsText: 'CurrencyCode',
+                                        optionsValue: 'CurrencyCode',
+                                        attr: { title: Commerce.ViewModelAdapter.getResourceString('string_1322') },
+                                        value: viewModel.customerProxy.CurrencyCode,
+                                        optionsCaption: Commerce.ViewModelAdapter.getResourceString('string_1322')">
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="gutter12x12"></div>
+
+                    <!-- ko if: viewModel.hasCustomerAttributes() -->
+                    <!-- Attributes header -->
+                    <div class="marginBottom12 ">
+                        <h2 data-bind="resx: { textContent: 'string_209' }">Attributes</h2>
+                    </div>
+
+                    <!-- Attributes -->
+                    <div data-bind="foreach: { data: viewModel.customerAttributesForDisplay, as: 'attributeViewModel' }">
+                        <div class="marginBottom20">
+                            <div data-bind="template: { name: 'customerAttributeTemplate',
+                                            data: { customerAttributeViewModel: attributeViewModel,
+                                                    attributeIndex: $index(),
+                                                    tabIndex: 11 + $index()
+                                                    }
+                                            }"
+                                 class="stretch">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gutter12x12"></div>
+                    <!-- /ko -->
+
+                    <div class="col width272">
+                        <!-- Customer address card -->
+                        <div>
+                            <h2 data-bind="resx: { textContent: !viewModel.isMarketingOptInFeatureEnabled() ? 'string_4809' : 'string_4834' }">Primary Address</h2>
+                        </div>
+                        <div data-bind="customerCard: {data: viewModel.customerCardViewModel, template: 'customerPrimaryAddressCardTemplate'}"></div>
+                        <div data-bind="
+                                 visible: !viewModel.shouldShowNumberOfAddresses(),
+                                 buttonBlock: {
+                                     buttonClass: 'iconAdd',
+                                     ariaLabelResx: !viewModel.isMarketingOptInFeatureEnabled() ? 'string_2503'  /* Add an address */ : 'string_1388',    /* Create a new address */
+                                     labelTextResx: !viewModel.isMarketingOptInFeatureEnabled() ? 'string_2503'  /* Add an address */ : 'string_1388',    /* Create a new address */
+                                     invokeValidate: viewModel.gotoAddNewAddress.bind(viewModel)
+                                     },
+                                     css: { 'marginTop1': viewModel.addressFilled } ">
+                        </div>
+                        <div class="height32 row pad12 padTop0 marginTop08 marginBottom08" data-bind="visible: viewModel.shouldShowNumberOfAddresses">
+                            <div class="marginTop08 stretch">
+                                <a class="h4" href="#" data-bind="text: viewModel.numberOfAddressesText,
+                                                                  click: viewModel.gotoAddressesView.bind(viewModel)"></a>
+                            </div>
+                            <button class="iconAdd" data-bind="click: viewModel.gotoAddNewAddress.bind(viewModel),
+                                                               resx: { ariaLabel: 'string_4842' }"></button>  <!-- Add address -->
+                        </div>
+
+                    </div>
+                    <div class="hideInLandscape"></div>
+                </div>
+
+            </div>
+
+            <!-- Bottom app bar -->
+            <div id="commandAppBar" data-bind="appBar: {}">
+                <button data-bind="appBarCommand: {
+                    extraClass: 'iconSave',
+                    id:'cmdSaveCustomerDetails',
+                    labelResx: 'string_1327',
+                    enabled: viewModel.canSave }, invokeValidate: viewModel.saveCustomer.bind(viewModel)"></button>
+
+                <button data-bind="appBarCommand: {
+                    extraClass: 'iconAdd',
+                    id:'cmdSaveAndAddCustomerToSale',
+                    labelResx: 'string_1328',
+                    enabled: viewModel.canSave,
+                    visible: !viewModel.isSelectionMode }, invokeValidate: viewModel.saveAndAddCustomerToSale.bind(viewModel)"></button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

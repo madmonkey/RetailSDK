@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Koontiversion numeron hallinta: koontiversion numeron lisääminen onnistui.",
+  "Build_number_successfull_log_message_text.comment": "Viesti on kirjattu, kun myyntipisteen koontiversion numero on lisätty onnistuneesti tapahtumaan.",
+  "Build_number_error_log_message_text": "Koontiversion numeron hallinta: koontiversion numeron lisääminen epäonnistui. Virhesanoma: {0}.",
+  "Build_number_error_log_message_text.comment": "Viesti on kirjattu, kun myyntipisteen koontiversion numeron lisääminen tapahtumaan on epäonnistunut."
+}

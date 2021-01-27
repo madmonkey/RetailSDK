@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<base:NonPersistentSelectedItemListView
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Views.CategoryListView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    RowHeight="{x:Static statics:Sizes.CategoryListRowSizeInt}"
+    SeparatorColor="{x:Static statics:Palette.SEPARATOR}">
+    <base:NonPersistentSelectedItemListView.ItemTemplate>
+        <DataTemplate>
+            <ViewCell
+                StyleId="disclosure">
+                <ContentView
+                    Padding="10,5,10,5">
+                    <StackLayout
+                        HorizontalOptions = "FillAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="5">
+                        <AbsoluteLayout
+                            WidthRequest="{x:Static statics:Sizes.CategoryListRowSizeDouble}">
+                            <Image
+                                AbsoluteLayout.LayoutBounds="0,0,AutoSize,AutoSize"
+                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                Aspect="AspectFit"
+                                Source="{Binding ImageUrl}"
+                                WidthRequest="{x:Static statics:Sizes.CategoryListRowSizeDouble}" />
+                        </AbsoluteLayout>
+                        <StackLayout
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Vertical"
+                            Spacing="0"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Large"
+                                Text="{Binding Data.Name}"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <Image
+                            Margin="10"
+                            Aspect="AspectFit"
+                            HeightRequest="{x:Static statics:Sizes.ChevronSizeDouble}"
+                            HorizontalOptions="End"
+                            Source="chevron_right"
+                            WidthRequest="{x:Static statics:Sizes.ChevronSizeDouble}" />
+                    </StackLayout>
+                </ContentView>
+            </ViewCell>
+        </DataTemplate>
+    </base:NonPersistentSelectedItemListView.ItemTemplate>
+</base:NonPersistentSelectedItemListView>

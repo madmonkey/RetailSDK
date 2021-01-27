@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knockout timeline handler.</title>
+    <link href="knockout.timeline.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/html" id="timeline-icon-template">
+        <div class="timeline-iconTemplate center height48 width48 roundedBorder border" role="presentation" 
+             data-bind="
+                attr: {'aria-label': $data.iconAriaLabel},
+                css: $data.backgroundCssClass
+             ">
+            <div class="timeline-icon icon-24x24 accentColor" data-bind="css: $data.iconCssClass"></div>
+        </div>
+    </script>
+    <script type="text/html" id="timeline-template">
+        <div class="timeline col height100Percent primaryPanelBackgroundColor" 
+             data-bind="let: { 
+                $$controlViewModel: $data
+             }">
+            <div class="timeline-header headerBackground row height32 padLeft12 padRight0 padTop06">
+                <div class="timeline-header-title h4" role="banner" data-bind="text: title"></div>
+                <div data-bind="visible: isFilterAvailable">
+                    <button class="timeline-header-expandCollapse-Button noBorder height20 overflowHidden" role="button"
+                            data-bind="resx: { ariaLabel: 'string_30222' }, click: expandCollapseFilterPanelHandler"><!-- Toggle filters visibility.-->
+                        <div class="icon-20x20 iconChevronDown accentColor positionRelativeImportant" role="presentation"
+                             data-bind="css: { iconChevronDown: !isFilterPanelVisible(), iconChevronUp: isFilterPanelVisible }"></div>
+                    </button>
+                </div>
+            </div>
+            <div data-bind="visible: isFilterPanelVisible">
+                <div class="pad12 padRight0 maxHeight240 scrollY"
+                     data-bind="foreach: { data: timelineItemFiltersData, as: 'filter'}">
+                    <button class="noBorder primaryFontColor pad0 clickable width80 marginRight12 marginBottom12 verticalAlignTop inlineBlock" role="button"
+                            data-bind="attr: {'aria-label': filter.ariaLabel, 'title': filter.ariaLabel},
+                                click: $$controlViewModel.timelineItemFilterInvoked.bind($$controlViewModel, filter)
+                            ">
+                        <!-- ko template: { name: 'timeline-icon-template', data: $$controlViewModel.getTimelineItemType(filter.type) }-->
+                        <!-- /ko -->
+                        <div class="h4 center secondaryFontColor" data-bind="text: filter.label"></div>
+                    </button>
+                </div>
+                <div class="cardBorderBottom marginLeft12 marginRight12"></div>
+            </div>
+            <div class="grow pad12 padTop0 flexBasis100Percent scrollY"
+                 data-bind="foreach: {data: timelineItemGroupsData, as: 'group'}">
+                <div class="col">
+                    <div class="padBottom12 padTop12 row">
+                        <div class="timeline-groupSection-title h4 secondaryFontColor minWidth48 textCenter" data-bind="text: group.label"></div>
+                        <div class="grow"></div>
+                    </div>
+                    <div class="timeline-groupSection-items" role="list"
+                         data-bind="foreach: {data: group.items, as: 'timelineItem'}">
+                        <div class="row" role="listitem">
+                            <div class="timeline-itemSection-Icon col" role="presentation">
+                                <div class="height12 row">
+                                    <div class="grow height100Percent">&nbsp;</div>
+                                    <div class="borderRight width01 height100Percent">&nbsp;</div>
+                                    <div class="grow height100Percent">&nbsp;</div>
+                                </div>
+                                <a href="#" class="accentColor"
+                                   data-bind="template: { name: 'timeline-icon-template', data: $$controlViewModel.getTimelineItemType(timelineItem.type) },
+                                        resx: { ariaLabel: $$controlViewModel.getTimelineItemAriaLabel(timelineItem) },
+                                        click: $$controlViewModel.timelineItemInvoked.bind($$controlViewModel, timelineItem)
+                                    "></a>
+                                <div class="minHeight12 row grow">
+                                    <div class="grow height100Percent">&nbsp;</div>
+                                    <div class="borderRight width01 height100Percent">&nbsp;</div>
+                                    <div class="grow height100Percent">&nbsp;</div>
+                                </div>      
+                            </div>
+                            <div class="timeline-itemSection-Body minHeight48 padTop12 padLeft12 width100Percent">
+                                <a href="#" class="h4 padRight8 accentColor" data-bind="resx: { ariaLabel: $$controlViewModel.getTimelineItemAriaLabel(timelineItem) },
+                                       click: $$controlViewModel.timelineItemInvoked.bind($$controlViewModel, timelineItem)
+                                    ">
+                                    <div class="row padBottom4">
+                                        <div class="h5 padRight8 accentColor" data-bind="text: $$controlViewModel.getTimelineItemType(timelineItem.type).label"></div>
+                                        <div class="h5 secondaryFontColor" data-bind="text: timelineItem.headerSecondaryText || ''"></div>
+                                    </div>
+                                    <div class="h6 secondaryFontColor padBottom4" data-bind="if: timelineItem.dateTime, text: $$controlViewModel.formatDateTime(timelineItem.dateTime)">
+                                    </div>
+                                    <div class="h4 padBottom4 primaryFontColor ellipsis" data-bind="text: timelineItem.title, attr: { title: timelineItem.title } "></div>
+                                </a>
+                                <div data-bind="with: $$controlViewModel.getTimelineItemType(timelineItem.type)">
+                                    <!-- ko if: $data.actions-->
+                                    <div class="row padBottom4" data-bind="foreach: $data.actions">
+                                        <a class="row accentColor" href="#" data-bind="
+                                                click: $$controlViewModel.timelineItemActionInvoked.bind($$controlViewModel, $data, timelineItem),
+                                                attr: {'aria-label': $data.ariaLabel}
+                                            ">
+                                            <div class="icon-14x14 marginRight08 marginTop03 accentColor" data-bind="visible: $data.iconCssClass, css: iconCssClass"></div>
+                                            <div class="h4" data-bind="text: $data.label"></div>
+                                        </a>
+                                        <div class="timeline-ActivitySection-Body-ActionsSeparator padLeft20 padRight20 h4"
+                                             data-bind="visible: $context.$parent.actions.length > $context.$index() + 1">|</div>
+                                    </div>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

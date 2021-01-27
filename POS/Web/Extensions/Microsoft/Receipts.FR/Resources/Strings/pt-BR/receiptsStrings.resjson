@@ -1,0 +1,6 @@
+{
+  "Build_number_successfull_log_message_text": "Gerenciador de número de compilação: o número da compilação foi adicionado com êxito.",
+  "Build_number_successfull_log_message_text.comment": "Mensagem Registrada quando o número da compilação do PDV é adicionado com êxito à transação.",
+  "Build_number_error_log_message_text": "Gerenciador de número de compilação: falha ao adicionar o número da compilação, mensagem de erro: '{0}'.",
+  "Build_number_error_log_message_text.comment": "Mensagem Registrada quando o número da compilação do PDV não é adicionado com êxito à transação."
+}

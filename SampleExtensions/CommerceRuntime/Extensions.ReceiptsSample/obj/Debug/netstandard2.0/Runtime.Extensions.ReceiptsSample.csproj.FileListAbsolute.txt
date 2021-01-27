@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.ReceiptsSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.ReceiptsSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.ReceiptsSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.ReceiptsSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.ReceiptsSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.ReceiptsSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.ReceiptsSample\obj\Debug\netstandard2.0\Runtime.Extensions.ReceiptsSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.ReceiptsSample\obj\Debug\netstandard2.0\Runtime.Extensions.ReceiptsSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.ReceiptsSample\obj\Debug\netstandard2.0\Runtime.Extensions.ReceiptsSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.ReceiptsSample\obj\Debug\netstandard2.0\Runtime.Extensions.ReceiptsSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.ReceiptsSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.ReceiptsSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.ReceiptsSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.ReceiptsSample.pdb

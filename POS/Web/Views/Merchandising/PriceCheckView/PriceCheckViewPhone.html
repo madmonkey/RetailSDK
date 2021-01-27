@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PriceCheckView</title>
+    <link href="PriceCheckView.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- The content that will be loaded and displayed. -->
+    <div class="fragment priceCheckView" data-bind="with: viewModel, interaction: { ProductByKeywordFound: { selectPivot: '#priceCheckPivotProduct' }}">
+            <div id="priceCheckPivot" data-bind="pivot: {}">
+                <div id="priceCheckPivotProduct" data-bind="pivotItem: { headerResx: 'string_3510' }">
+                    <div class="no-shrink col marginRight20 marginLeft20 height100Percent">
+                        <div class="col">
+
+                            <div class="row width292">
+                                <!-- Product image -->
+                                <div class="col width292 height320 fit-image" data-bind="visible: hasProduct">
+                                    <img src="#"
+                                            data-bind="attr: { alt:productName, src: Commerce.Formatters.ImageUrlFormatter(productImage().source, Commerce.DefaultImages.ProductLarge) }, setImageOnError: Commerce.DefaultImages.ProductLarge" />
+                                </div>
+                            </div>
+
+                            <!-- Product information -->
+                            <div class="col width232" data-bind="visible: hasProduct">
+
+                                <div class="gutter40x40"></div>
+                                <h3 class="wrapText" data-bind="text: productName">Product name</h3>
+
+                                <div class="gutter40x40"></div>
+                                <div class="h4 wrapText secondaryFontColor" data-bind="text: itemId">Product identifier</div>
+
+                                <div data-bind="visible: hasVariant">
+                                    <div class="gutter40x40"></div>
+                                    <div class="h4 wrapText" data-bind="text: variantDimensionValues"></div>
+                                </div>
+
+                                <div class="gutter40x40"></div>
+                                <h1 class="wrapText" data-bind="formatPrice: productPrice">Product price</h1>
+
+                            </div>
+
+                        </div>
+                        <!--ko ifnot: hasProduct-->
+                        <div class="center">
+                            <div class="h4" data-bind="resx: { textContent: 'string_2619' }">Scan or search for a product to get started</div>
+                        </div>
+                        <!--/ko-->
+                    </div>
+                </div>
+                <div id="priceCheckPivotStore" data-bind="pivotItem: { headerResx: 'string_3511' }">
+                    <div class="col marginLeft20 marginRight20 height80 highContrastBorderThin listViewThemeColor padLeft12 padTop20">
+                        <a href="#" class="h3" data-bind="text: store().OrgUnitName, click: navigateToStoreDetails, attr: {'aria-label': Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_2558'), store().OrgUnitName) }"></a>
+                        <div class="h4" data-bind="text: store().OrgUnitNumber"></div>
+                    </div>
+                </div>
+                <div id="priceCheckPivotCustomer" data-bind="pivotItem: { headerResx: 'string_3512' }">
+
+                    <!-- Section when customer is added to price check -->
+                    <div id="CustomerPanel" class="marginLeft20 marginRight20 col highContrastBorderThin listViewThemeColor height80 padLeft12 padTop20 " data-bind="visible: hasCustomer, with: customer">
+                        <div class="right0 top0 overLayZIndex">
+                            <button class="iconCancel noBorder" data-bind="resx: { ariaLabel: 'string_4401' }, click: $parent.removeCustomerAsync.bind($parent)"></button>    <!-- Remove customer -->
+                        </div>
+                        <a href="#" class="h3 ellipsis" data-bind="text: Name, click: $parent.navigateToCustomerDetails.bind($parent)"></a>
+                        <div class="h4" data-bind="text: AccountNumber"></div>
+                    </div>
+
+                    <!-- Section when no customer is added to price check -->
+                    <div class="marginLeft20 marginRight20 listViewThemeColor height80 highContrastBorderThin centerY" data-bind="visible: !hasCustomer(),
+                        buttonBlock: {  buttonClass: 'iconAdd',
+                                        labelTextResx: 'string_3522', /* Add customer */
+                                        click: searchCustomers }">
+                    </div>  
+                </div>
+            </div>
+        <div id="priceCheckAppBar" data-bind="appBar: { extensionCommands: extensionCommandViewModels }">
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconBuy',
+                id:'addProductToCart',
+                onclick: addProductToCartAsync,
+                labelResx: 'string_922'},
+                enabled: hasProduct"></button>
+            <button data-bind="appBarCommand: {
+                id:'searchProductPrice',
+                extraClass: 'iconSearch',
+                onclick: getSearchTextInputAndSearchProductAsync,
+                labelResx: 'string_3371' }, axBubbleAttr: 'priceCheckView_searchProductPrice'"></button>
+        </div>
+    </div>
+</body>
+</html>

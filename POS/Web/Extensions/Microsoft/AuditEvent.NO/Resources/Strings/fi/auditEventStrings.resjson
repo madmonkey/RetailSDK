@@ -1,0 +1,18 @@
+{
+  "Audit_event_price_lookup_error": "Hinnan hakutapahtuman rekisteröintivirhe: {0}",
+  "_Audit_event_price_lookup_error.comment": "Audit event registration log error message.",
+  "Audit_event_tax_override_error": "Veron ohitustapahtuman rekisteröintivirhe: {0}",
+  "_Audit_event_tax_override_error.comment": "Audit event registration log error message.",
+  "Audit_event_quantity_correction_error": "Määrän korjaustapahtuman rekisteröintivirhe: {0}",
+  "_Audit_event_quantity_correction_error.comment": "Audit event registration log error message.",
+  "Audit_event_open_cash_drawer_error": "Avaa kassan tapahtuman rekisteröintivirhe: {0}",
+  "_Audit_event_open_cash_drawer_error.comment": "Audit event registration log error message.",
+  "Audit_event_price_lookup_event_message": "Hinnan hakutapahtuma on rekisteröity",
+  "_Audit_event_price_lookup_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_tax_override_event_message": "Veron ohitustapahtuma on rekisteröity",
+  "_Audit_event_tax_override_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_quantity_correction_event_message": "Määrän korjaustapahtuma on rekisteröity",
+  "_Audit_event_quantity_correction_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_open_cash_drawer_event_message": "Avaa rekisteröity kassan tapahtuma",
+  "_Audit_event_open_cash_drawer_event_message.comment": "Audit event database log string field value."
+}

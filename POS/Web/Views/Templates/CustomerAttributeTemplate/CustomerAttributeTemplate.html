@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Attribute Template</title>
+</head>
+<body>
+
+    <!-- Customer attribute template -->
+    <script type="text/html" id="customerAttributeTemplate">
+        <div class="stretch">
+            <!-- HTMLLint Disable LabelExistsValidator -->
+            <label data-bind="attr: { for: 'customerCustomAttribute' + attributeIndex },
+                              text: customerAttributeViewModel.attributeFriendlyName"></label>
+            <!-- ko if: customerAttributeViewModel.attributeDefinition.DataTypeValue === Commerce.Proxy.Entities.AttributeDataType.Text -->
+            <!-- ko if: !customerAttributeViewModel.attributeDefinition.IsEnumeration -->
+            <input data-bind="attr: { id: 'customerCustomAttribute' + attributeIndex, tabindex: String(tabIndex) },
+                              value: customerAttributeViewModel.attributeValue.stringValue,
+                              axBubbleAttr: 'customerAttributeTemplate_DataTypeText_' + customerAttributeViewModel.attributeDefinition.Name + '_' + 'customerAttributeViewModel.attributeDefinition.AttributeTypeName'"
+                   type="text" />
+            <!-- /ko -->
+            <!-- ko if: customerAttributeViewModel.attributeDefinition.IsEnumeration -->
+            <select data-bind="attr: { id: 'customerCustomAttribute' + attributeIndex, tabindex: String(tabIndex) },
+                              value: customerAttributeViewModel.attributeValue.stringValue,
+                              options: customerAttributeViewModel.attributeDefinition.EnumerationDetails,
+                              optionsText: Commerce.ViewModels.CustomerAttributeViewModel.getTranslatedEnumerationValue,
+                              optionsValue: 'EnumerationValue',
+                              optionsCaption: Commerce.ViewModelAdapter.getResourceString('string_1368'),
+                              axBubbleAttr: 'customerAttributeTemplate_DataTypeText_' + customerAttributeViewModel.attributeDefinition.Name + '_' + 'customerAttributeViewModel.attributeDefinition.AttributeTypeName'">
+            </select>
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: customerAttributeViewModel.attributeDefinition.DataTypeValue === Commerce.Proxy.Entities.AttributeDataType.Integer -->
+            <input data-bind="attr: { id: 'customerCustomAttribute' + attributeIndex, tabindex: String(tabIndex) },
+                              value: customerAttributeViewModel.attributeValue.stringValue,
+                              axBubbleAttr: 'customerAttributeTemplate_DataTypeInteger_' + customerAttributeViewModel.attributeDefinition.Name + '_' + 'customerAttributeViewModel.attributeDefinition.AttributeTypeName'"
+                   onchange="this.value = Commerce.ViewModels.CustomerAttributeViewModel.formatIntegerString(this.value);"
+                   type="text" />
+            <!-- /ko -->
+            <!-- ko if: customerAttributeViewModel.attributeDefinition.DataTypeValue === Commerce.Proxy.Entities.AttributeDataType.Decimal -->
+            <input data-bind="attr: { id: 'customerCustomAttribute' + attributeIndex, tabindex: String(tabIndex) },
+                              value: customerAttributeViewModel.attributeValue.stringValue,
+                              axBubbleAttr: 'customerAttributeTemplate_DataTypeDecimal_' + customerAttributeViewModel.attributeDefinition.Name + '_' + 'customerAttributeViewModel.attributeDefinition.AttributeTypeName'"
+                   onchange="this.value = Commerce.ViewModels.CustomerAttributeViewModel.formatDecimalString(this.value);"
+                   type="text" />
+            <!-- /ko -->
+            <!-- ko if: customerAttributeViewModel.attributeDefinition.DataTypeValue === Commerce.Proxy.Entities.AttributeDataType.TrueFalse -->
+            <div data-bind="attr: { id: 'customerCustomAttribute' + attributeIndex, tabindex: String(tabIndex) },
+                            toggleSwitch: {
+                                labelOn: 'string_1357',
+                                labelOff: 'string_1358',
+                                checked: customerAttributeViewModel.attributeValue.booleanValue,
+                                onChange: function(isChecked) { customerAttributeViewModel.attributeValue.booleanValue(isChecked); }
+                            }">
+            </div>
+            <!-- /ko -->
+            <!-- ko if: customerAttributeViewModel.attributeDefinition.DataTypeValue === Commerce.Proxy.Entities.AttributeDataType.DateTime -->
+            <div data-bind="attr: { id: 'customerCustomAttribute' + attributeIndex, tabindex: String(tabIndex) },
+                            datePicker: { datePattern: '{day.integer(2)} {dayofweek.full}',
+                                          current: customerAttributeViewModel.attributeValue.dateTimeOffsetValue
+                            },
+                            resx: { ariaLabel: 'string_4118'},
+                            axBubbleAttr: 'customerAttributeTemplate_DataTypeDateTime_' + customerAttributeViewModel.attributeDefinition.Name + '_' + 'customerAttributeViewModel.attributeDefinition.AttributeTypeName'"></div>
+            <!-- /ko -->
+            <!-- HTMLLint Enable LabelExistsValidator -->
+        </div>
+    </script>
+
+</body>
+</html>

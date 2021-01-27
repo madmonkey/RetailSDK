@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>EditFiscalCustomerDialog</title>
+</head>
+<body>
+    <!-- HTMLLint Disable LabelExistsValidator -->
+    <div class="editFiscalCustomerDialog col grow">
+        <div class="marginTop12">
+            <label for="vatIdInput" data-bind="text: getResx('Tax_Registration_ID_PL_Vat_Number_Input_Label')">VAT number</label>
+            <input id="vatIdInput" type="text" data-bind="
+                value: vatId,
+                disable: isReadOnly(),
+                attr: {
+                    'placeholder': getVatIdPlaceholder()
+                }" />
+        </div>
+    </div>
+</body>
+</html>

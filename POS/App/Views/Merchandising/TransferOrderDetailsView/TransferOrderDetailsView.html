@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TransferOrderDetailsView</title>
+</head>
+<body>
+    <div class="fragment transferOrderDetailsView"  data-bind="with: viewModel">
+        <div id="transferOrderPivot" data-bind="pivot: { headerItemsAxBubbleAttr: 'transferOrderDetailsView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div id="transferOrderLinesPivot" class="col grow" data-bind="pivotItem: { headerResx: viewSubTitle }">
+                <!-- Main content -->
+                <!-- View for transfer order Grid view -->
+                <div class="col grow height100Percent">
+                    <!-- transfer order lines grid -->
+                    <div id="transferOrderDetailsView_dataList"
+                            class="grow"
+                            data-bind="dataList:
+                            {
+                            itemDataSource: orderLines,
+                            selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                            selectionChanged: productSelectionChanged,
+                            ariaLabelResx: 'string_3395',
+                            columns: transferOrderLinesListColumns
+                            },
+                            axBubbleAttr: 'transferOrderDetailsView_listView'">
+                    </div>
+
+                    <div class="padBottom12">
+                        <!-- footer -->
+                        <div class="row padTop8 padBottom8 primaryPanelBarColor">
+                            <div class="ratio7 padLeft52 padRight12">
+                                <div class="h4" data-bind="text: totalProducts"></div>
+                                <div class="h4 secondaryFontColor" data-bind="resx: { textContent: 'string_3399' }"></div>
+                            </div>
+                            <div class="ratio2 textRight padLeft12 padRight24">
+                                <div class="h4" data-bind="text: totalQuantity"></div>
+                                <div class="h4 secondaryFontColor" data-bind="resx: { textContent: 'string_3362' }"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="commandAppBar" data-bind="appBar:{ extensionCommands: extensionCommandViewModels }, axBubbleAttr: 'transferOrderDetailsView_commandAppBar'">
+
+            <!-- opens dialog to show the transfer order header -->
+            <button data-bind="appBarCommand: {
+                id:'showOrderHeader',
+                extraClass: 'iconPageHeader',
+                onclick: showOrderHeaderClickHandler,
+                labelResx: 'string_3423'}, axBubbleAttr: 'transferOrderDetailsView_showOrderHeaderButton'"></button>
+
+            <!-- opens a dialog to add/view comments of the current transfer order.-->
+            <button data-bind="appBarCommand: {
+                id: 'addTransferOrderComment',
+                extraClass: 'iconNote',
+                onclick: addOrViewTransferOrderCommentAsync,
+                enabled: hasTransferOrder,
+                labelResx: 'string_3426'}, axBubbleAttr: 'transferOrderDetailsView_showTransferOrderCommentButton'"></button>
+
+            <!-- deletes the selected transfer order line -->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconDelete',
+                id:'removeTransferOrderLine',
+                onclick: removeTransferLineHandler,
+                labelResx: 'string_3310',
+                enabled: enableEdit}, axBubbleAttr: 'transferOrderDetailsView_removeTransferOrderLineButton'"></button>
+
+            <!-- opens dialog to edit transfer quantity of the selected transfer order line-->
+            <button data-bind="appBarCommand: {
+                id:'addQuantity',
+                extraClass: 'iconQuantity',
+                enabled: enableEdit,
+                onclick: performEditQuantityAsync,
+                labelResx: 'string_3374'}, axBubbleAttr: 'transferOrderDetailsView_addQuantityButton'"></button>
+
+            <!-- opens a dialog to add a new transfer order line -->
+            <button data-bind="appBarCommand: {
+                id: 'addTransferLine',
+                extraClass: 'iconAdd',
+                onclick: addTransferOrderLineHandler,
+                enabled: enableAddTransferLine,
+                labelResx: 'string_923'}, axBubbleAttr: 'transferOrderDetailsView_addTransferLineButton'"></button>
+
+            <!-- Refresh -->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconRefresh',
+                id:'refreshTransferOrderLines',
+                onclick: refreshTransferOrderLinesValidator,
+                labelResx: 'string_3325',
+                enabled: !isTransferOrderSaved()}, axBubbleAttr: 'transferOrderDetailsView_refreshTransferOrderLinesButton'"></button>
+
+            <!-- save the transfer order in the local channel database-->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconSave',
+                id:'saveTransferOrder',
+                onclick: saveTransferOrder,
+                labelResx: 'string_3324',
+                disabled: isTransferOrderSaved}, axBubbleAttr: 'transferOrderDetailsView_saveTransferOrderButton'"></button>
+
+            <!-- Commit the order to AX. (saves the order in AX database)-->
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAccept',
+                id:'commitTransferOrder',
+                onclick: commitTransferOrderLinesHandler,
+                labelResx: 'string_3323',
+                enabled: enableAddTransferLine}, axBubbleAttr: 'transferOrderDetailsView_commitTransferOrderButton'"></button> <!--enableAddTransferLine controls both commit and add new order line buttons--> 
+        </div>
+    </div>
+</body>
+</html>

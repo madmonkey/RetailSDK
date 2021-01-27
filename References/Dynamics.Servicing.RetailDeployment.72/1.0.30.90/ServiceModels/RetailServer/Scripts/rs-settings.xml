@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+SAMPLE CODE NOTICE
+
+THIS SAMPLE CODE IS MADE AVAILABLE AS IS.  MICROSOFT MAKES NO WARRANTIES, WHETHER EXPRESS OR IMPLIED, 
+OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY OR COMPLETENESS OF RESPONSES, OF RESULTS, OR CONDITIONS OF MERCHANTABILITY.  
+THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS SAMPLE CODE REMAINS WITH THE USER.  
+NO TECHNICAL SUPPORT IS PROVIDED.  YOU MAY NOT DISTRIBUTE THIS CODE UNLESS YOU HAVE A LICENSE AGREEMENT WITH MICROSOFT THAT ALLOWS YOU TO DO SO.
+-->
+<Settings>
+  <Setting key="ChannelDatabaseServerName" value="" />
+  <!-- Note: Format for a SQL instance name is either the server name or the full instance name. I.e. valid names are: "localhost", "localhost\instance2", "server1", "server1\instance2"-->
+  <Setting key="ChannelDatabaseServerNamedInstanceName" value="" />
+  <Setting key="ChannelDatabaseName" value="" />
+
+  <Setting key="RetailServerWebAppPoolName" value="RetailServerAppPool" />
+  <Setting key="RetailServerWebSiteName" value="RetailServerWebsite" />
+  <Setting key="RetailServerWebSiteHttpPort" value="" />
+  <Setting key="RetailServerWebSiteHttpsPort" value="" />
+  <Setting key="RetailServerWebApplicationName" value="RetailServer" />
+  <Setting key="RetailServerWebSiteSSLCertificateStore"  value="My" /> 
+  <Setting key="RetailServerWebSiteSSLCertificateRootStore"  value="LocalMachine" /> 
+  <Setting key="RetailServerWebSiteWorkingFolder" value="%SystemDrive%\inetpub\wwwroot" />
+  <Setting key="RetailServerWebAppPoolUser" value="" />
+  <Setting key="RetailServerWebSiteSSLCertificateThumbprint" value="" />
+  <Setting key="RetailServerWebApplicationServiceBinarySourceFolder" value="" />
+  <Setting key="RetailServerWebApplicationWorkingFolder" value="[RetailServerWebSiteWorkingFolder]\[RetailServerWebApplicationName]" />
+  <Setting key="RetailServerAllowAnonymousMetadata" value="false" />
+  <Setting key="RetailServerRequireSSL" value="true" />
+</Settings>

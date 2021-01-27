@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetSignatureFromDeviceDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'GetSignatureFromDeviceDialog'">
+        <div data-bind="dialog:
+            {
+                title: title,
+                visible: visible,
+                buttonClick: buttonClickHandler,
+                buttons: [
+                    {   label: Commerce.ViewModelAdapter.getResourceString('string_6909'), operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, enable: viewModel.isSignatureCaptureDeviceOpen, isPrimary: true }, /* Get signature */
+                    {   label: Commerce.ViewModelAdapter.getResourceString('string_6903'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: false }, /* Skip */
+                ]
+            }">
+            <div class="marginBottom8">
+                <div class="h4" data-bind="resx: { textContent: 'string_6907' }">Ask the customer to sign on the device.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\_SharedPackagingProjectComponents\internalPackagePaths.settings" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props') And '$(MicrosoftCommonPropsHasBeenImported)' != 'true'" />
+  <Import Project="..\..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+  <PropertyGroup>
+    <ProjectGuid>{387A27A8-D273-4E1E-BF5C-D278C69FB43B}</ProjectGuid>
+    <PackageName>RetailSelfService</PackageName>
+    <InputManifest>Scripts\InstallationInfo.xml</InputManifest>
+    <OutputManifest>content.folder\$(PackageName)\Scripts\CustomizedInstallationInfo.xml</OutputManifest>
+    <InstallationInfoDllFullPath>$(PkgDynamics_CustomDeployablePackage)\PlatformSDK\UpdateInstaller\Microsoft.Dynamics.AX.AXInstallationInfo.dll</InstallationInfoDllFullPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <CustomizedModernPosSetupExe Include="$(SdkReferencesPath)\$(AssemblyNamePrefix).ModernPOSSetup.exe" />
+    <CustomizedModernPosOfflineSetupExe Include="$(SdkReferencesPath)\$(AssemblyNamePrefix).ModernPOSSetupOffline.exe" />
+    <CustomizedHardwareStationSetupExe Include="$(SdkReferencesPath)\$(AssemblyNamePrefix).HardwareStationSetup.exe" />
+    <CustomizedStoreSystemSetupExe Include="$(SdkReferencesPath)\$(AssemblyNamePrefix).StoreSystemSetup.exe" />
+    <_Update_Installer_Files Include="$(PkgDynamics_CustomDeployablePackage)\PlatformSDK\UpdateInstaller\*" />
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(MPOSWindowsPhoneFile)')">
+    <MPOSWindowsPhoneFileName Include="$(MPOSWindowsPhoneFile)" />
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(MPOSAndroidFile)')">
+    <MPOSAndroidFileName Include="$(MPOSAndroidFile)" />
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(MPOSiOSFile)')">
+    <MPOSiOSFileName Include="$(MPOSiOSFile)" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomManifestAttributes Include="ModernPosExeName">
+      <Value>@(CustomizedModernPosSetupExe-&gt;'%(Filename)%(Extension)')</Value>
+    </CustomManifestAttributes>
+    <CustomManifestAttributes Include="ModernPosOfflineExeName">
+      <Value>@(CustomizedModernPosOfflineSetupExe-&gt;'%(Filename)%(Extension)')</Value>
+    </CustomManifestAttributes>
+    <CustomManifestAttributes Include="HardwareStationExeName">
+      <Value>@(CustomizedHardwareStationSetupExe-&gt;'%(Filename)%(Extension)')</Value>
+    </CustomManifestAttributes>
+    <CustomManifestAttributes Include="StoreSystemExeName">
+      <Value>@(CustomizedStoreSystemSetupExe-&gt;'%(Filename)%(Extension)')</Value>
+    </CustomManifestAttributes>
+    <CustomManifestAttributes Include="MPOSWindowsPhoneFileName" Condition="Exists('$(MPOSWindowsPhoneFile)')">
+      <Value>@(MPOSWindowsPhoneFileName-&gt;'%(Filename)%(Extension)')</Value>
+    </CustomManifestAttributes>
+    <CustomManifestAttributes Include="MPOSAndroidFileName" Condition="Exists('$(MPOSAndroidFile)')">
+      <Value>@(MPOSAndroidFileName-&gt;'%(Filename)%(Extension)')</Value>
+    </CustomManifestAttributes>
+    <CustomManifestAttributes Include="MPOSiOSFileName" Condition="Exists('$(MPOSiOSFile)')">
+      <Value>@(MPOSiOSFileName-&gt;'%(Filename)%(Extension)')</Value>
+    </CustomManifestAttributes>
+  </ItemGroup>
+  <ItemGroup>
+    <_Scripts_File Include="$(InstallationInfoDllFullPath)" />
+    <_Scripts_File Include="Scripts\InstallationInfo.xml" />
+    <_Scripts_File Include="$(PkgDynamics_Servicing_RetailDeployment_72)\ServiceModels\RetailSelfService\Scripts\*" />
+    <_Update_Installer_Files Include="$(PkgDynamics_CustomDeployablePackage)\PlatformSDK\UpdateInstaller\*" />
+    <_Scripts_Upgrade_File Include="$(PkgDynamics_Servicing_RetailDeployment_72)\ServiceModels\RetailSelfService\Scripts\Upgrade\*" />
+    <_ServiceModel_Files Include="$(PkgDynamics_Servicing_RetailDeployment_72)\ServiceModels\RetailSelfService\ServiceModel\*" />
+  </ItemGroup>
+  <Target Name="Build" Inputs="$(MSBuildAllProjects);@(_Update_Installer_Files);@(CustomizedModernPosSetupExe);@(CustomizedModernPosOfflineSetupExe);@(CustomizedHardwareStationSetupExe);@(_Code_bin_File);@(_Code_bin_ProductInfo_File);@(_Code_File);@(_Data_File);@(_ETWManifest_File);@(_Packages_File);@(_Scripts_File);@(_Scripts_Upgrade_File);@(_ServiceModel_Files);@(__File)" Outputs="$(OutputPath)content.zip">
+    <CallTarget Targets="CopyPackageFiles" />
+    <Delete Files="$(OutputPath)content.zip" />
+    <GenerateHotfixInstallationInfo ContentFolder="$(OutputPath)content.folder" InstallationInfoDllFullPath="$(InstallationInfoDllFullPath)" />
+    <Zip OutputFileName="$(OutputPath)content.zip" InputFolder="$(OutputPath)content.folder" />
+  </Target>
+  <Target Name="CopyPackageFiles">
+    <RemoveDir Directories="$(OutputPath)content.folder" />
+    <Copy SourceFiles="@(CustomizedModernPosSetupExe)" DestinationFolder="$(OutputPath)content.folder\$(PackageName)\Packages" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(CustomizedModernPosOfflineSetupExe)" DestinationFolder="$(OutputPath)content.folder\$(PackageName)\Packages" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(CustomizedHardwareStationSetupExe)" DestinationFolder="$(OutputPath)content.folder\$(PackageName)\Packages" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(CustomizedStoreSystemSetupExe)" DestinationFolder="$(OutputPath)content.folder\$(PackageName)\Packages" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(MPOSWindowsPhoneFileName)" DestinationFolder="$(OutputPath)content.folder\$(PackageName)\Packages" SkipUnchangedFiles="true" Condition="Exists('%(FullPath)')" />
+    <Copy SourceFiles="@(MPOSAndroidFileName)" DestinationFolder="$(OutputPath)content.folder\$(PackageName)\Packages" SkipUnchangedFiles="true" Condition="Exists('%(FullPath)')" />
+    <Copy SourceFiles="@(MPOSiOSFileName)" DestinationFolder="$(OutputPath)content.folder\$(PackageName)\Packages" SkipUnchangedFiles="true" Condition="Exists('%(FullPath)')" />
+    <Copy SourceFiles="@(_Update_Installer_Files)" DestinationFolder="$(OutputPath)content.folder" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Code_bin_File)" DestinationFolder="$(OutputPath)content.folder\RetailSelfService\Code\bin" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Code_bin_ProductInfo_File)" DestinationFolder="$(OutputPath)content.folder\RetailSelfService\Code\bin\ProductInfo" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Code_File)" DestinationFolder="$(OutputPath)content.folder\RetailSelfService\Code" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Data_File)" DestinationFolder="$(OutputPath)content.folder\RetailSelfService\Data" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_ETWManifest_File)" DestinationFolder="$(OutputPath)content.folder\RetailSelfService\ETWManifest" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Packages_File)" DestinationFolder="$(OutputPath)content.folder\RetailSelfService\Packages" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Scripts_File)" DestinationFolder="$(OutputPath)content.folder\RetailSelfService\Scripts" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_Scripts_Upgrade_File)" DestinationFolder="$(OutputPath)content.folder\RetailSelfService\Scripts\Upgrade" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_ServiceModel_Files)" DestinationFolder="$(OutputPath)content.folder\RetailSelfService\ServiceModel" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(__File)" DestinationFolder="$(OutputPath)content.folder\RetailSelfService\" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(OutputPath)content.folder\RetailSelfService\$(InputManifest)" DestinationFiles="$(OutputPath)$(OutputManifest)" />
+    <Delete Files="$(OutputPath)content.folder\RetailSelfService\$(InputManifest)" />
+  </Target>
+  <Target Name="BuildGenerated" />
+  <Target Name="BuildCompiled" />
+  <Target Name="BuildLinked" />
+  <Target Name="Rebuild">
+    <CallTarget Targets="Clean" />
+    <CallTarget Targets="Build" />
+  </Target>
+  <Target Name="Clean">
+    <RemoveDir Directories="$(OutputPath)content.folder" />
+    <Delete Files="$(OutputPath)content.zip" />
+  </Target>
+  <Import Project="$(SdkRootPath)\BuildTools\Microsoft.Dynamics.RetailSdk.Build.targets" />
+</Project>

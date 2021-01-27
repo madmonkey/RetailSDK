@@ -1,0 +1,18 @@
+{
+  "Audit_event_price_lookup_error": "Fejl under registrering af prisopslagshændelse: {0}",
+  "_Audit_event_price_lookup_error.comment": "Audit event registration log error message.",
+  "Audit_event_tax_override_error": "Fejl under registrering af momsændringshændelse: {0}",
+  "_Audit_event_tax_override_error.comment": "Audit event registration log error message.",
+  "Audit_event_quantity_correction_error": "Fejl under registrering af antalskorrektionshændelse: {0}",
+  "_Audit_event_quantity_correction_error.comment": "Audit event registration log error message.",
+  "Audit_event_open_cash_drawer_error": "Fejl i hændelsesregistrering for åbning af pengeskuffe: {0}",
+  "_Audit_event_open_cash_drawer_error.comment": "Audit event registration log error message.",
+  "Audit_event_price_lookup_event_message": "Registreret prisopslagshændelse",
+  "_Audit_event_price_lookup_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_tax_override_event_message": "Registreret momsændringshændelse",
+  "_Audit_event_tax_override_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_quantity_correction_event_message": "Registreret antalskorrektionshændelse",
+  "_Audit_event_quantity_correction_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_open_cash_drawer_event_message": "Hændelse er registreret for åbning af pengeskuffe",
+  "_Audit_event_open_cash_drawer_event_message.comment": "Audit event database log string field value."
+}

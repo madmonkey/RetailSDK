@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pos.App.iOS", "App\Pos.App.iOS.csproj", "{B4E8EF12-B5E8-4CC4-8350-3928683C8EAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		Ad-Hoc|iPhoneSimulator = Ad-Hoc|iPhoneSimulator
+		AppStore|iPhone = AppStore|iPhone
+		AppStore|iPhoneSimulator = AppStore|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4E8EF12-B5E8-4CC4-8350-3928683C8EAA}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{B4E8EF12-B5E8-4CC4-8350-3928683C8EAA}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{B4E8EF12-B5E8-4CC4-8350-3928683C8EAA}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Ad-Hoc|iPhoneSimulator
+		{B4E8EF12-B5E8-4CC4-8350-3928683C8EAA}.Ad-Hoc|iPhoneSimulator.Build.0 = Ad-Hoc|iPhoneSimulator
+		{B4E8EF12-B5E8-4CC4-8350-3928683C8EAA}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{B4E8EF12-B5E8-4CC4-8350-3928683C8EAA}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{B4E8EF12-B5E8-4CC4-8350-3928683C8EAA}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhoneSimulator
+		{B4E8EF12-B5E8-4CC4-8350-3928683C8EAA}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
+		{B4E8EF12-B5E8-4CC4-8350-3928683C8EAA}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{B4E8EF12-B5E8-4CC4-8350-3928683C8EAA}.Debug|iPhone.Build.0 = Debug|iPhone
+		{B4E8EF12-B5E8-4CC4-8350-3928683C8EAA}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{B4E8EF12-B5E8-4CC4-8350-3928683C8EAA}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8386FB52-86B4-4C18-B372-A2878AA957D3}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetChargeAmountDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'GetChargeAmountDialog'">
+        <div data-bind="dialog:
+            {
+                title: title,
+                visible: visible,
+                buttonClick: getChargeAmountButtonClick,
+                dialogCloseButtonClick: dialogCloseButtonClick
+            },
+            axBubbleAttr: 'getChargeAmountDialog_getChargeAmountDialog'">
+            <!-- dialog content -->
+            <!-- ko ifnot: Commerce.ObjectExtensions.isNullOrUndefined(product()) -->
+            <div class="marginTop20" data-bind="template: { name: 'productSearchResultNonInteractableSmallCard', data: product() }"></div>
+            <!-- /ko -->
+
+            <label class="marginTop20 marginBottom8 flexNone h4" data-bind="resx: {textContent: 'string_5958' }">selected charge</label>
+            <div class="h4" data-bind="resx: { textContent: chargeCode }"></div>
+
+            <div class="grow"></div>
+            <div data-bind="axBubbleAttr: 'getChargeAmountDialog_setchargesAmountNumpad'">
+                <div data-bind="currencyNumpad:
+                    {
+                        value: chargeAmount,
+                        onEnter: onTextBoxEnterEventHandler,
+                        labelDataBinding: { resx: {textContent: 'string_5959' /* Enter charge amount */ } },
+                        numPadInputSource: numPadInputBroker
+                    }"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

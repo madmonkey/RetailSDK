@@ -1,0 +1,14 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingServicesSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingServicesSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingServicesSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingServicesSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingServicesSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingServicesSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingServicesSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingDataServicesSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingServicesSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingEngineSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingServicesSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingDataServicesSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingServicesSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingEngineSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingServicesSample\obj\Debug\netstandard2.0\Runtime.Extensions.PricingServicesSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingServicesSample\obj\Debug\netstandard2.0\Runtime.Extensions.PricingServicesSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingServicesSample\obj\Debug\netstandard2.0\Runtime.Extensions.PricingServicesSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingServicesSample\obj\Debug\netstandard2.0\Runtime.Extensions.PricingServicesSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingServicesSample\obj\Debug\netstandard2.0\Runtime.Extensions.PricingServicesSample.csproj.CopyComplete
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingServicesSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingServicesSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.PricingServicesSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.PricingServicesSample.pdb

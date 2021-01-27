@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetQuotationExpirationDateDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'GetQuotationExpirationDateDialog'">
+        <div data-bind="dialog:
+            {
+                title: Commerce.ViewModelAdapter.getResourceString('string_4308'),
+                visible: visible,
+                buttonClick: getQuotationExpirationDateButtonClick,
+                buttons: [
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_75'), disable: isOKButtonDisabled, operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, isPrimary: true },
+                    { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton' }]
+            },
+            axBubbleAttr: 'getQuotationExpirationDateDialog_getQuotationExpirationDateDialog'">
+
+
+            <!-- dialog content -->
+            <div class="content">
+                <div class="dialogSplitColumn">
+                    <label for="shippingDate_DatePicker" data-bind="resx: { textContent: 'string_1873' }">Date</label>
+                    <div class="width100Percent" id="shippingDate_DatePicker" data-win-control="WinJS.UI.DatePicker"
+                         data-win-options="{ datePattern: '{day.integer(2)} {dayofweek.full}' }"
+                         data-bind="winControl: {minYear: minYear, toggleChanged: dateChangeHandler, current: _requestedExpirationDate },
+                            axBubbleAttr: 'getQuotationExpirationDateDialog_shippingDate_datePicker'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

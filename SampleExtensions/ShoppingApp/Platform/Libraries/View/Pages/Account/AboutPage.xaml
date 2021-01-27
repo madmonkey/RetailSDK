@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:AboutPageXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Pages.AboutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages"
+    xmlns:behaviors="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Behaviors"
+    xmlns:converters="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Converters"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    Title="{localization:Translate Pages_AboutPage_Title}">
+    <StackLayout
+        Orientation="Vertical">
+        <StackLayout.Resources>
+            <ResourceDictionary>
+                <Style
+                    x:Key="baseStyle"
+                    TargetType="Label">
+                    <Setter
+                        Property="FontSize"
+                        Value="Small" />
+                    <Setter
+                        Property="HorizontalTextAlignment"
+                        Value="Center" />
+                    <Setter
+                        Property="Margin"
+                        Value="20,20,20,0" />
+                    <Setter
+                        Property="HorizontalOptions"
+                        Value="StartAndExpand" />
+                </Style>
+                <converters:ValueExistsConverter
+                    x:Key="ValueExistsConverter" />
+            </ResourceDictionary>
+        </StackLayout.Resources>
+        <Label
+            Style="{StaticResource baseStyle}"
+            IsVisible="{Binding TermsOfUseUrl, Converter={StaticResource ValueExistsConverter}}"
+            Text="{localization:Translate Pages_AboutPage_TermsOfUse}"
+            TextColor="{x:Static statics:Palette.Hyperlink}">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped="OnTermsOfUseControlTapped" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Label
+            Style="{StaticResource baseStyle}"
+            IsVisible="{Binding PrivacyPolicyUrl, Converter={StaticResource ValueExistsConverter}}"
+            Text="{localization:Translate Pages_AboutPage_PrivacyPolicy}"
+            TextColor="{x:Static statics:Palette.Hyperlink}">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped="OnPrivacyPolicyControlTapped" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Label
+            Style="{StaticResource baseStyle}"
+            IsVisible="{Binding ThirdPartyNotices, Converter={StaticResource ValueExistsConverter}}"
+            Text="{localization:Translate Pages_AboutPage_ThirdPartyNotices}"
+            TextColor="{x:Static statics:Palette.Hyperlink}">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped="OnThirdPartyNoticesControlTapped" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Label
+            Style="{StaticResource baseStyle}"
+            Text="{localization:Translate Pages_AboutPage_CopyRightInfo}"
+            TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+        <Label
+            Style="{StaticResource baseStyle}"
+            Text="{localization:Translate Pages_AboutPage_VersionNumber}"
+            TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+    </StackLayout>
+</base:AboutPageXaml>

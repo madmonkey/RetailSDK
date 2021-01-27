@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+  <service>
+    <EvaluationModeEnabled>false</EvaluationModeEnabled>
+    <DebugMode>false</DebugMode>
+    <DataServiceUrl></DataServiceUrl>
+    <MediaBaseUrl></MediaBaseUrl>
+    <CardPaymentHostPageUrl></CardPaymentHostPageUrl>
+    <OperatingUnitNumber></OperatingUnitNumber>
+  </service>
+  <pallet>
+    <Primary>#86aae7</Primary>
+    <PrimaryDark>#466cab</PrimaryDark>
+    <Accent>#a3bdea</Accent>
+    <ActionButtonBackground>#174a63</ActionButtonBackground>
+    <ActionButtonText>#FFFFFF</ActionButtonText>
+  </pallet>
+  <about>
+    <TermsOfUseUrl></TermsOfUseUrl>
+    <PrivacyPolicyUrl></PrivacyPolicyUrl>
+    <ThirdPartyNoticesUrl></ThirdPartyNoticesUrl>
+  </about>
+</config>

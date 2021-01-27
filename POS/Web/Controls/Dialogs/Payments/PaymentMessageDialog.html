@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PaymentMessageDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'PaymentMessageDialog'">
+
+        <div data-bind="dialog:
+                {
+                    title: title,
+                    subTitle: subTitle,
+                    visible: visible,
+                    buttonClick: buttonClickHandler,
+                    showProgressIndicator: indeterminateWaitVisible,
+                    closeOnEscButton: false,
+                    hideOnEscape: false,
+                    buttons: [
+                        { label: buttonText, operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, isPrimary: true }
+                    ],
+                },
+                axBubbleAttr: 'paymentMessageDialog_paymentMessageDialog'" class="paymentMessageDialog">
+
+            <!-- dialog content -->
+            <div>
+                <div class="h4 wrapTextWithoutHyphen" data-bind="text: messageText"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

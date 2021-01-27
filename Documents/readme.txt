@@ -1,0 +1,1 @@
+Retail SDK documentation can be found at https://aka.ms/retailsdkdocs.

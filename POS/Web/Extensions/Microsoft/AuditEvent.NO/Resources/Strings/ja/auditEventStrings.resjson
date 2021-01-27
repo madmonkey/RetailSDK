@@ -1,0 +1,18 @@
+{
+  "Audit_event_price_lookup_error": "価格検索イベント登録エラー: {0}",
+  "_Audit_event_price_lookup_error.comment": "Audit event registration log error message.",
+  "Audit_event_tax_override_error": "税上書きイベント登録エラー: {0}",
+  "_Audit_event_tax_override_error.comment": "Audit event registration log error message.",
+  "Audit_event_quantity_correction_error": "数量修正イベント登録エラー: {0}",
+  "_Audit_event_quantity_correction_error.comment": "Audit event registration log error message.",
+  "Audit_event_open_cash_drawer_error": "キャッシュ ドロワーを開くイベント登録エラー: {0}",
+  "_Audit_event_open_cash_drawer_error.comment": "Audit event registration log error message.",
+  "Audit_event_price_lookup_event_message": "価格検索イベントを登録しました",
+  "_Audit_event_price_lookup_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_tax_override_event_message": "税上書きイベントを登録しました",
+  "_Audit_event_tax_override_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_quantity_correction_event_message": "数量修正イベントを登録しました",
+  "_Audit_event_quantity_correction_event_message.comment": "Audit event database log string field value.",
+  "Audit_event_open_cash_drawer_event_message": "キャッシュ ドロワーを開くイベントを登録しました",
+  "_Audit_event_open_cash_drawer_event_message.comment": "Audit event database log string field value."
+}

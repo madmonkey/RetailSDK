@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SelectSalesLinesDialog</title>
+
+</head>
+<body>
+    <div data-bind="customControlInternal: 'SelectSalesLinesDialog'">
+        <div class="selectSalesLinesDialog">
+            <div data-bind="dialog: {
+                     title: title,
+                     subTitle: subTitle,
+                     visible: visible,
+                     showProgressIndicator: indeterminateWaitVisible,
+                     buttonClick: buttonClickHandler,
+                     buttons: [
+                          { label: Commerce.ViewModelAdapter.getResourceString('string_75'), disable: noSalesLinesSelected, operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK, cssClass: 'okButton', isPrimary: true },
+                          { label: Commerce.ViewModelAdapter.getResourceString('string_76'), operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK, cssClass: 'cancelButton' }
+                     ]
+                }"
+                class="selectSalesLinesDialog">
+
+                <!-- dialog content -->
+                <div class="col grow padTop8">
+
+                    <!-- SalesLines -->
+                    <div id="salesLinesGrid" class="col grow">
+                        <!-- The sales lines to display -->
+                        <div id="salesLinesDataList"
+                             class="grow noMargin col"
+                             data-bind="dataList: {
+                                    itemDataSource: salesLinesForDisplay,
+                                    defaultListType: Commerce.Controls.DataList.ListType.Card,
+                                    selectionModes: selectionMode,
+                                    selectionChanged: selectedSalesLines,
+                                    ariaLabelResx: 'string_1249',    // List of sales lines for an order
+                                    itemTemplates: [
+                                        {
+                                            templateId: 'salesLineGridTemplatePhone',
+                                            cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                            deviceType: Commerce.Controls.DataList.DeviceType.All
+                                        }
+                                    ]
+                            }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

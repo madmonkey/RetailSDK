@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ProductsView</title>
+    <link href="ProductsView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment">
+        <div class="height100Percent marginLeft20" data-bind="with:viewModel">
+            <div class="row pivotHeader marginTop8 marginBottom8" role="tablist">
+                <div class="shrink marginRight40">
+                    <button class="h2 tabFontColor outlineFocus noBorder"
+                            role="tab"
+                            data-bind="attr: {
+                                            'aria-selected': activeMode() == Commerce.ViewModels.ProductsViewModelActiveMode.Products },
+                                            css: { active: activeMode() == Commerce.ViewModels.ProductsViewModelActiveMode.Products },
+                                            click: switchToProductsMode,
+                                            resx: { textContent: 'string_28' },
+                                            axBubbleAttr: 'productsView_productsPivot'">Products
+                    </button>
+                </div>
+                <div class="shrink marginRight40">
+                    <button class="h2 tabFontColor outlineFocus noBorder"
+                            role="tab"
+                            data-bind="attr: {
+                                            'aria-selected': activeMode() == Commerce.ViewModels.ProductsViewModelActiveMode.Categories },
+                                            css: { active: activeMode() == Commerce.ViewModels.ProductsViewModelActiveMode.Categories },
+                                            click: switchToCategoriesMode,
+                                            resx: { textContent: 'string_920' },
+                                            axBubbleAttr: 'productsView_categoriesPivot'">Categories
+                    </button>
+                </div>
+            </div>
+
+            <!-- Products -->
+            <div class="pivotContainer scrollY" data-bind="css: {
+                                                        selectedContainer: activeMode() == Commerce.ViewModels.ProductsViewModelActiveMode.Products },
+                                                        visible: activeMode() == Commerce.ViewModels.ProductsViewModelActiveMode.Products">
+                <div class="col grow height100Percent">
+                    <div id="productsViewList" data-bind="dataList: {
+                                defaultListType: Commerce.Controls.DataList.ListType.Card,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOrMulti,
+                                selectionChanged: setSelectedItems,
+                                itemInvoked: showProductDetails,
+                                emptyDataListMessageResx: 'string_913',
+                                ariaLabelResx: 'string_925',
+                                incrementalDataSource: {
+                                    dataManager: $data,
+                                    callerMethod: searchProducts,
+                                    pageSize: 60,
+                                    pageLoadCallBack: Commerce.ProductPropertiesHelper.getActivePricesRatingsAndUpdateProductSearchResults,
+                                    onLoading: isProductsModeBusy,
+                                    reloadCallBack: resetProductsHandler,
+                                    pageLoadCompleteCallBackFunction: $data.productsPageLoadCompleted.bind($data)
+                                },
+                                itemTemplates: [
+                                    {
+                                        name: 'string_939', /* Show cards */
+                                        templateId: 'productSearchResultLargeCardTemplate',
+                                        cardType: Commerce.Controls.DataList.CardType.Static,
+                                        deviceType: Commerce.Controls.DataList.DeviceType.Tablet
+                                    },
+                                    {
+                                        name: 'string_939', /* Show cards */
+                                        templateId: 'productSearchResultSmallCardTemplatePhone',
+                                        cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                        deviceType: Commerce.Controls.DataList.DeviceType.Phone,
+                                    }
+                                ],
+                                columns: productViewColumns
+                                },
+                                axBubbleAttr: 'productsView_browseGrid'">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="pivotContainer scrollY" data-bind="css: {
+                                                        selectedContainer: activeMode() == Commerce.ViewModels.ProductsViewModelActiveMode.Categories },
+                                                        visible: activeMode() == Commerce.ViewModels.ProductsViewModelActiveMode.Categories">
+                <div class="col grow height100Percent">
+                    <div id="productCategoriesList" data-bind="dataList: {
+                                itemDataSource: categories,
+                                defaultListType: Commerce.Controls.DataList.ListType.Card,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                                itemInvoked: showProductsForCategory,
+                                emptyDataListMessageResx: 'string_914', /* There are no subcategories in this category */
+                                ariaLabelResx: 'string_612',  /* List of categories */
+                                itemTemplates: [
+                                    {
+                                        templateId: 'categoryCatalogTemplate',
+                                        cardType: Commerce.Controls.DataList.CardType.Static,
+                                        deviceType: Commerce.Controls.DataList.DeviceType.All
+                                    }
+                                ],
+                                },
+                                axBubbleAttr: 'productsView_categoriesview'">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom app bar -->
+        <!-- Sort menu -->
+        <div id="productsViewSortLayout" data-bind="menu: {
+             anchor: '#productSearchSortResults',
+             placement: 'top',
+             alignment: 'left',
+             itemDataSource: viewModel.sortMenuItems,
+             template: 'searchResultsSortMenuTemplate' }, axBubbleAttr: 'searchResults_sortFlyout'">
+        </div>
+
+        <div id="commandAppBar" data-bind="appBar: {}, visible: viewModel.isProductsModeActive, axBubbleAttr: 'productsView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                    id: 'productSearchSortResults',
+                    extraClass: 'iconSort',
+                    type: 'flyout',
+                    flyout: '#productsViewSortLayout',
+                    labelResx: 'string_13186',
+                    }, axBubbleAttr: 'searchView_sort'">
+            </button>
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconMultiSelect',
+                id:'showMultiSelect',
+                labelResx: 'string_6405'}, gridSelectionMode:{ id: '#productsViewList' },
+                axBubbleAttr: 'productsView_showMultiSelect'"></button><!--Select-->
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconFilter',
+                id:'applyFilter',
+                onclick: showRefinerDialog,
+                labelResx: 'string_935',
+                enabled: viewModel.isCurrentStore },
+                axBubbleAttr: 'productsView_applyFilter'"></button>
+
+            <button data-bind="appBarCommand: {
+                    extraClass: 'iconView',
+                    id: 'showViewMenu',
+                    labelResx: 'string_924' /* Change view */
+                },
+                templateSwitcher: { listId: '#productsViewList' },
+                axBubbleAttr: 'productsView_showViewMenu'"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconTwoPage',
+                id:'compare',
+                onclick: viewModel.compareSelectedItems.bind(viewModel),
+                labelResx: 'string_903',
+                enabled: viewModel.canCompareSelectedItems },
+                axBubbleAttr: 'productsView_compareButton'"></button><!-- Compare -->
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAdd',
+                id:'addProductToSale',
+                onclick: viewModel.addSelectedItemsToCart.bind(viewModel),
+                labelResx: 'string_904',
+                enabled: viewModel.canAddSelectedItemsToSale },
+                axBubbleAttr: 'productsView_addToSaleButton'"></button><!-- Add to sale-->
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconBuy',
+                id:'sellProductNow',
+                onclick: viewModel.quickSellSelectedItems.bind(viewModel),
+                labelResx: 'string_922',
+                enabled: viewModel.canAddSelectedItemsToSale },
+                axBubbleAttr: 'productsView_sellNowButton'"></button><!-- sell now-->
+        </div>
+    </div>
+</body>
+</html>

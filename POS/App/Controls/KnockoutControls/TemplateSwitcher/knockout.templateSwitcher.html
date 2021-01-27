@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>templateSwitcher control</title>
+    <link href="knockout.templateSwitcher.min.css" rel="stylesheet" />
+</head>
+<body>
+    <script id="templateSwitcherMenuOptionTemplate" type="text/html">
+        <button data-bind="menuCommand: { id: templateId }, resx: { label: name }"></button>
+    </script>
+
+    <script type="text/html" id="templateSwitcherMenuTemplate">
+        <div data-bind="menu: { 
+                    anchor: anchorId, 
+                    placement: 'top', 
+                    alignment: 'left', 
+                    toggleShowHide: toggleShowHideMenu 
+                }, 
+                setElementRef: templateSwitcherMenu">
+        </div>
+    </script>
+</body>
+</html>

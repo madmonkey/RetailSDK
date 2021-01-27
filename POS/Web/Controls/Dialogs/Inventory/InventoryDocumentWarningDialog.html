@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>InventoryDocumentWarningDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'InventoryDocumentWarningDialog'">
+        <div data-bind="dialog: {
+                title: title,
+                visible: visible,
+                buttonClick: buttonClickHandler,
+                showProgressIndicator: indeterminateWaitVisible,
+                hideOnEscape: true,
+                buttons: [
+                    {
+                        label: Commerce.ViewModelAdapter.getResourceString('string_77'),
+                        operationId: Commerce.Controls.Dialog.OperationIds.OK_BUTTON_CLICK,
+                        isPrimary: true
+                    },
+                    {
+                        label: Commerce.ViewModelAdapter.getResourceString('string_76'),
+                        operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK,
+                        isPrimary: false
+                    }
+                ],
+                dialogCloseButtonClick: closeClickHandler
+            },
+            axBubbleAttr: 'InventoryDocumentWarningDialog_InventoryDocumentWarningDialog',attr: { 'aria-label': title() + contentTitle() }">
+            <!-- Dialog content -->
+            <div class="inventoryDocumentWarningDialogContent">
+                <div class="marginBottom20 ">
+                    <span class="h3 iconWarning icon-18x18 warningColor inline"></span>
+                    <h3 class="wrapText warningColor inline" data-bind="text: contentTitle"></h3>
+                </div>
+
+                <h4 class="marginBottom8 secondaryFontColor" data-bind="text: contentSubTitle"></h4>
+                <h5 data-bind="text: contentMessage"></h5>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Notification Template</title>
+        <link href="NotificationTemplate.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- CustomerSatisfaction Notification -->
+        <script id="CustomerSatisfactionNotificationTemplate" type="text/html">
+            <div id="CustomerSatisfactionNotification" class="padTop12 padRight16 padBottom12 padLeft16 allBorders marginBottom24">
+                <!-- ko ifnot: viewModel.customerSatisfactionSurveySent -->
+                <div id="CustomerSatisfactionFormPanel">
+                    <div class="marginBottom20">
+                        <div tabindex="0" class="row height16 marginBottom16">
+                            <div class="grow col centerY">
+                                <div class="h5" data-bind="resx: {textContent: 'string_13210'}"><b>Microsoft Wants your feedback</b></div>
+                            </div>
+                        </div>
+                        <div tabindex="0" class="row height32 marginBottom4">
+                            <div class="grow col centerY">
+                                <div class="textLeft secondaryFontColor h6 wrapText" data-bind="resx: {textContent: 'string_13211', ariaLabel: 'string_13211'}">
+                                    Overall, how satisfied are you with Dynamics 365 Retail Modern POS? Your feedback is anonymous.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row height64">
+                            <div class="grow centerY center" id="customerSatisfactionRatingRadioButtons">
+                                <label for="ratingValue4">
+                                    <input type="radio" name="CustomerSatisfaction" value="4" id="ratingValue4" data-bind="checked: viewModel.customerSatisfactionRating, resx: {ariaLabel: 'string_13221'}"> <span></span>
+                                </label>
+                                <label for="ratingValue3">
+                                    <input type="radio" name="CustomerSatisfaction" value="3" id="ratingValue3" data-bind="checked: viewModel.customerSatisfactionRating, resx: {ariaLabel: 'string_13222'}"> <span></span>
+                                </label>
+                                <label for="ratingValue2">
+                                    <input type="radio" name="CustomerSatisfaction" value="2" id="ratingValue2" data-bind="checked: viewModel.customerSatisfactionRating, resx: {ariaLabel: 'string_13223'}"> <span></span>
+                                </label>
+                                <label for="ratingValue1">
+                                    <input type="radio" name="CustomerSatisfaction" value="1" id="ratingValue1" data-bind="checked: viewModel.customerSatisfactionRating, resx: {ariaLabel: 'string_13224'}"> <span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row height24">
+                            <div class="centerY">
+                                <div class="grow h6" data-bind="resx: {textContent: 'string_13213', ariaLabel: 'string_13213'}">Very satisfied</div>
+                            </div>
+                            <div class="centerY">
+                                <div class="grow h6 textRight" data-bind="resx: {textContent: 'string_13212', ariaLabel: 'string_13212'}">Very dissatisfied</div>
+                            </div>
+                        </div>
+                        <div tabindex="0" class="row height32 marginTop16">
+                            <div class="grow col centerY">
+                                <div class="secondaryFontColor h6" id="textareaLabel" data-bind="resx: {textContent: 'string_13214', ariaLabel: 'string_13214'}">
+                                    What can we do to improve?
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row height120">
+                            <textarea id="commentDialogContent"
+                                      class="textInputArea"
+                                      data-bind="value: viewModel.customerSatisfactionComment,
+                                                    resx: {ariaLabel: 'string_13218'},
+                                                    attr: {placeholder: Commerce.ViewModelAdapter.getResourceString('string_13218')}">
+                            </textarea>
+                        </div>
+                        <div class="row height16">
+                            <div class="grow h6"> <a target="_blank" href="https://aka.ms/AA5pbic" data-bind="resx: {textContent: 'string_13217', ariaLabel: 'string_13217'}">Privacy statement</a></div>
+                        </div>
+                    </div>
+                    <div class="row height40">
+                        <div class="centerY marginRight4 width100Percent">
+                            <button class="grow primaryButton"
+                                    data-bind="click: submitCustomerSatisfactionSurvey,
+                                                resx: {textContent: 'string_13215', ariaLabel: 'string_13215'},
+                                                enable: viewModel.isCustomerSatisfactionRatingSelected">Submit
+                            </button>
+                        </div>
+                        <div class="centerY marginLeft4 width100Percent">
+                            <button class="grow cancelButton secondaryButton"
+                                    data-bind="click: omitCustomerSatisfactionSurvey,
+                                                resx: {textContent: 'string_13216', ariaLabel: 'string_13216'}">Not now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: viewModel.customerSatisfactionSurveySent -->
+                <div id="CustomerSatisfactionCompletedPanel">
+                    <div class="marginBottom24">
+                        <div tabindex="0" class="row height32">
+                            <div class="grow col centerY">
+                                <div class="h3" data-bind="resx: {textContent: 'string_13220', ariaLabel: 'string_13220'}">Thanks for your feedback</div>
+                            </div>
+                        </div>
+                        <div tabindex="0" class="row height64 marginBottom164">
+                            <div class="grow col centerY">
+                                <div class="textLeft secondaryFontColor h6 wrapText" data-bind="resx: {textContent: 'string_13219', ariaLabel: 'string_13219'}">
+                                    You can always submit feedback recommendations and follow planning at the Dynamics 365 Ideas Portal
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row height16">
+                            <div class="centerY">
+                                <button class="grow cancelButton secondaryButton"
+                                        data-bind="click: closeCustomerSatisfactionNotification, resx: {textContent: 'string_3425', ariaLabel: 'string_3425'}">Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </script>
+        <!-- Operation template -->
+        <script id="operationBlockTemplate" type="text/html">
+            <div class="marginBottom24">
+                <div class="row height32">
+                    <div class="grow col centerY">
+                        <div class="h5" data-bind="text: ActionName">Action Name</div>
+                    </div>
+                    <!-- Refresh button-->
+                    <button class="iconRefresh accentColor center height32 width32"
+                            data-bind="click: $root.viewModel.refreshNotification.bind($root.viewModel, Action),
+                                   attr: { 'aria-label': Commerce.ViewModelAdapter.getResourceString('string_13208') }"></button>
+                </div>
+                <!-- Last pulled date time-->
+                <div class="row height24 centerY">
+                    <div class="h6 secondaryFontColor"
+                         data-bind="text: Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_13201'), Commerce.Formatters.ShortDateAndTimeFormatter(lastPullDateTime))">Last pulled date time</div>
+                </div>
+                <div data-bind="template: { name: 'notificationBlockTemplate', foreach: NotificationDetails }"></div>
+            </div>
+        </script>
+        <!-- Notification detail template -->
+        <script id="notificationBlockTemplate" type="text/html">
+            <!-- ko ifnot: IsLiveContentOnly -->
+            <div tabindex="0"
+                 role="button"
+                 class="clickableDiv grow marginBottom12"
+                 data-bind="click: $root.navigate.bind($root, $parent.Action, ActionProperty),
+                        enterKeyPress: $root.navigate.bind($root, $parent.Action, ActionProperty),
+                        attr: { 'aria-label': Commerce.ViewModelAdapter.getResourceString(DisplayText) }">
+                <!-- Notification subtitle -->
+                <div class="row height32 accentBackground notificationHeader">
+                    <div class="grow col">
+                        <div class="h4 padLeft08 centerY" data-bind="text: Commerce.ViewModelAdapter.getResourceString(DisplayText)">Name</div>
+                    </div>
+                    <!-- new notification indicator -->
+                    <div class="center height32 width32" data-bind="css: { iconStarburstSolid: IsNew }, attr: { 'aria-label': Commerce.ViewModelAdapter.getResourceString('string_13207') }"></div>
+                </div>
+                <!-- Counter -->
+                <div class="grow col borders notificationContent">
+                    <div class="height64 center padTop08">
+                        <div class="h1 padBottom08" data-bind="text: ItemCount, visible: IsSuccess, css: { zeroFontColor: ItemCount === 0 }"></div>
+                        <div class="width64 center iconError icon-40x40 height64"
+                             data-bind="visible: !IsSuccess, attr: { 'aria-label': Commerce.ViewModelAdapter.getResourceString('string_13206') }"></div>
+                    </div>
+                    <div class="height24 center padBottom08" data-bind="visible: !IsSuccess">
+                        <div class="h6" data-bind="resx: {textContent: 'string_13206'}">Something went wrong.</div>
+                    </div>
+                </div>
+            </div>
+            <!-- /ko -->
+        </script>
+    </body>
+</html>

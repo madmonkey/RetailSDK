@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Manage Shifts View</title>
+    <link href="ManageShiftsView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment" data-bind="with: viewModel">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'manageShiftsView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div data-bind="pivotItem: { header: subTitle }">
+                <div id="blindClosedShiftsList" data-bind="dataList: {
+                        itemDataSource: nonClosedShifts,
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.MultiSelect,
+                        selectionChanged: selectShifts,
+                        ariaLabelResx: 'string_2114',  /* Shifts */
+                        columns: [
+                            { titleResx: 'string_2157', ratio: 3, collapseOrder: 7, minWidth: 40, field: '$data', converter: 'Commerce.Core.Converter.manageShiftsDataListIconHtmlFormatter', type: 'html' },
+                            { titleResx: 'string_191',  ratio: 17, collapseOrder: 8, minWidth: 100, field: 'StatusValue', converter: 'Commerce.Core.Converter.shiftStatusEnumFormatter' },
+                            { titleResx: 'string_4043', ratio: 15, collapseOrder: 6, minWidth: 100, field: 'TerminalId' },
+                            { titleResx: 'string_4044', ratio: 10, collapseOrder: 2, minWidth: 120, field: 'ShiftId' },
+                            { titleResx: 'string_4045', ratio: 15, collapseOrder: 5, minWidth: 150, field: 'StartDateTime', converter: 'Commerce.Core.Converter.ShortDateAndTime' },
+                            { titleResx: 'string_4046', ratio: 15, collapseOrder: 3, minWidth: 150, field: '$data', converter: 'Commerce.Core.Converter.statusDateTimeFormatterForBlindClosed' },
+                            { titleResx: 'string_4206', ratio: 15, collapseOrder: 4, minWidth: 150, field: '$data', converter: 'Commerce.Core.Converter.statusDateTimeFormatterForSuspended' },
+                            { titleResx: 'string_4047', ratio: 10, collapseOrder: 1, minWidth: 100, field: 'StaffId' }
+                        ]
+                    },
+                    axBubbleAttr: 'manageShiftsView_availableShifts'"></div>
+            </div>
+        </div>
+        <div id="cashDrawerFlyout" data-bind="menu: { anchor: '#cashDrawerAppBar', placement: 'top', alignment: 'left' }">
+            <button data-bind="menuCommand: {id:'declareStartAmount', label: 'Declare starting amount'}, resx: { label: 'string_4008' }, click: declareStartAmountAsync, axBubbleAttr: 'manageShiftsView_declareStartAmount'"></button>
+            <button data-bind="menuCommand: {id:'bankDrop', label: 'string_4572'}, resx: { label: 'string_4572' }, click: bankDropAsync, axBubbleAttr: 'manageShiftsView_bankDrop'"></button>
+            <button data-bind="menuCommand: {id:'tenderDeclaration', label: 'string_4029'}, resx: { label: 'string_4029' }, click: tenderDeclarationAsync, axBubbleAttr: 'manageShiftsView_tenderDeclaration'"></button>
+        </div>
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar: { extensionCommands: extensionCommandViewModels }, axBubbleAttr: 'manageShiftsView_appBar'">
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconInvoiceComplete',
+                        id:'reconcileShiftsAppBar',
+                        label:'string_4030',
+                        enabled: hasSelectedReconcilableShifts(),
+                        onclick: openReconcileShiftsView,
+                        labelResx: 'string_2133'},
+                        axBubbleAttr: 'manageShiftsView_reconcileShiftsAppBar'"></button>
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconCashDrawer',
+                        id:'cashDrawerAppBar',
+                        label:'string_4030',
+                        enabled: hasSelectedSingleBlindClosedShift(),
+                        type: 'flyout',
+                        flyout: '#cashDrawerFlyout',
+                        labelResx: 'string_4030'},
+                        axBubbleAttr: 'manageShiftsView_cashDrawerAppBar'"></button>
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconPrint',
+                        id:'printXAppBar',
+                        label:'Print X report',
+                        enabled: hasSelectedSingleBlindClosedShift(),
+                        onclick: printXAsync,
+                        labelResx: 'string_4040'},
+                        axBubbleAttr: 'manageShiftsView_printXAppBar'"></button>
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconDelete',
+                        id:'deleteShiftAppBar',
+                        label:'Delete shift',
+                        enabled: hasSelectedSingleInvalidShift(),
+                        onclick: forceDeleteShiftAsync,
+                        labelResx: 'string_4207'},
+                        axBubbleAttr: 'manageShiftsView_deleteShiftAppBar'"></button>
+
+            <button data-bind="appBarCommand: {
+                        extraClass: 'iconRevert',
+                        id:'closeShiftAppBar',
+                        label:'Close shift',
+                        enabled: hasSelectedSingleBlindClosedShiftAndReconciledShift(),
+                        onclick: closeShiftAsync,
+                        labelResx: 'string_4036'},
+                        axBubbleAttr: 'manageShiftsView_closeShiftAppBar'"></button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿{
+    "OK_Button_Label": "OK",
+    "_OK_Button_Label.comment": "Button text.",
+
+    "Cancel_Button_Label": "Cancel",
+    "_Cancel_Button_Label.comment": "Button text",
+
+    "Yes_Button_Label": "Yes",
+    "_Yes_Button_Label.comment": "Button text.",
+
+    "No_Button_Label": "No",
+    "_No_Button_Label.comment": "Button text",
+
+    "Tax_Registration_ID_Title": "Tax registration numbers",
+    "_Tax_Registration_ID_Title.comment": "Customer form field group title.",
+
+    "Fiscal_Code_Input_Label": "Fiscal code",
+    "_Fiscal_Code_Input_Label.comment": "Input label.",
+
+    "Lottery_Code_Input_Empty_Placeholder": "No lottery code",
+    "_Lottery_Code_Input_Empty_Placeholder.comment": "Empty input placeholder.",
+
+    "Tax_Lottery_Confirmation_Dialog_Title": "Enter customer information",
+    "_Tax_Lottery_Confirmation_Dialog_Title.comment": "Dialog title.",
+
+    "Tax_Lottery_Confirmation_Dialog_Message": "Ask if the customer wants to provide personal information",
+    "_Tax_Lottery_Confirmation_Dialog_Message.comment": "Dialog message.",
+
+    "Enter_Manually_Action_Label": "Enter manually",
+    "_Enter_Manually_Action_Label.comment": "Action name.",
+
+    "Copy_From_Transaction_Customer_Action_Label": "Copy from transaction customer",
+    "_Copy_From_Transaction_Customer_Action_Label.comment": "Action name.",
+
+    "Clear_Action_Label": "Clear",
+    "_Clear_Action_Label.comment": "Action name (verb).",
+
+    "Fiscal_Customer_Action_Dialog_Title": "Customer information",
+    "_Fiscal_Customer_Action_Dialog_Title.comment": "Dialog title.",
+
+    "Fiscal_Customer_Action_Dialog_SubTitle": "Select an action:",
+    "_Fiscal_Customer_Action_Dialog_SubTitle.comment": "Dialog subtitle.",
+
+    "Edit_Fiscal_Customer_Dialog_Subtitle": "Enter customer information:",
+    "_Edit_Fiscal_Customer_Dialog_Subtitle.comment": "Dialog subtitle.",
+
+    "Check_Fiscal_Customer_Dialog_Subtitle": "Verify customer information:",
+    "_Check_Fiscal_Customer_Dialog_Subtitle.comment": "Dialog subtitle.",
+
+    "Clear_Fiscal_Code_Dialog_Message": "Are you sure you want to clear customer information?",
+    "_Clear_Fiscal_Code_Dialog_Message.comment": "Dialog message.",
+
+    "Fiscal_Customer_Save_Unexpected_Error_Message": "An unexpected error occurred.",
+    "_Fiscal_Customer_Save_Unexpected_Error_Message.comment": "Error message text.",
+
+    "Fiscal_Customer_Save_Error_Title": "Customer information is not valid",
+    "_Fiscal_Customer_Save_Error_Title.comment": "Error message title.",
+
+    "Fiscal_Customer_Save_Error_Subtitle": "Unable to save the customer information. Make sure that the information is correct and try again.",
+    "_Fiscal_Customer_Save_Error_Subtitle.comment": "Error message subtitle.",
+
+    "Tax_Registration_ID_IT_Lottery_Code_Input_Label": "Lottery code",
+    "_Tax_Registration_ID_IT_Lottery_Code_Input_Label.comment": "Lottery code."
+}

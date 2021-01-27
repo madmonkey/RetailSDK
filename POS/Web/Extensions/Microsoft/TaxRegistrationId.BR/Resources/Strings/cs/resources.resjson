@@ -1,0 +1,12 @@
+{
+  "Tax_Registration_ID_Title": "DIČ",
+  "_Tax_Registration_ID_Title.comment": "Title for the tax registration information control.",
+  "CPF_Input_Label": "CPF",
+  "_CPF_Input_Label.comment": "CPF input box label.",
+  "CNPJ_Input_Label": "CNPJ",
+  "_CNPJ_Input_Label.comment": "CNPJ input box label.",
+  "IE_Input_Label": "IE",
+  "_IE_Input_Label.comment": "IE input box label.",
+  "CCM_Input_Label": "CCM",
+  "_CCM_Input_Label.comment": "CCM input box label."
+}

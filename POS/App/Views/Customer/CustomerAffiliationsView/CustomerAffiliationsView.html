@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CustomerAffiliationsView</title>
+    <link href="CustomerAffiliationsView.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="fragment customerAffiliationsView" data-bind="with: viewModel">
+        <div id="customerAffiliationViewPivot" data-bind="pivot: { headerItemsAxBubbleAttr: 'customerAffiliationView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div id="customerAffiliationViewPivotItem" data-bind="pivotItem: { headerResx : 'string_5200' }">
+                <div class="col grow" id="customerAffiliationGrid" data-bind="dataList: {
+                        itemDataSource: customerAffiliations,
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.MultiSelect,
+                        selectionChanged: customerAffiliationsSelectionChangedHandler,
+                        columns: [
+                        { titleResx: 'string_5202', ratio: 40, collapseOrder: 2, minWidth: 200, field: 'Name' } , /* Name */
+                        { titleResx: 'string_5203', ratio: 60, collapseOrder: 1, minWidth: 200, field: 'Description' } /* Description */
+                ],
+                ariaLabelResx: 'string_5200' /* Affiliations */
+                },
+                axBubbleAttr: 'customerAffiliationsView_customerAffiliations'"></div>
+            </div>
+        </div>
+
+        <div id="commandAppBarAffiliation" data-bind="appBar: {}, axBubbleAttr: 'customerAffiliationsView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id:'addAffiliationsAppBar',
+                extraClass: 'iconAdd',
+                onclick: addAffiliationToCustomerAsync,
+                labelResx: 'string_6303'}, axBubbleAttr: 'customerAffiliationsView_addAffiliationsButton'"></button><!--Add affiliation-->
+
+            <button data-bind="appBarCommand: {
+                id:'deleteAffiliationsAppBar',
+                extraClass: 'iconDelete',
+                onclick: deleteAffiliationsFromCustomerAsync,
+                enabled: canSelectCustomerAffiliations,
+                labelResx: 'string_6304'}, axBubbleAttr: 'customerAffiliationsView_deleteAffiliationsButton'"></button><!--Remove affiliation-->
+
+            <button data-bind="appBarCommand: {
+                id:'navigateToCustomerDetailAppBar',
+                extraClass: 'iconAccept',
+                onclick: $parent.navigateToCustomerDetailPage.bind($parent),
+                labelResx : 'string_6307'}, axBubbleAttr: 'customerAffiliationsView_navigateToCustomerDetailButton'"></button><!--Done-->
+        </div>
+    </div>
+
+</body>
+</html>

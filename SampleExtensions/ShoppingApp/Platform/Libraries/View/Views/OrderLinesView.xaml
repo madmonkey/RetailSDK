@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:NonPersistentSelectedItemListView
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Views.OrderLinesView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Converters"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:statics="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Statics"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    HasUnevenRows="false"
+    RowHeight="{x:Static statics:RowSizes.XLargeRowHeightInt}"
+    SeparatorColor="Transparent">
+    <views:NonPersistentSelectedItemListView.Resources>
+        <ResourceDictionary>
+            <converters:ValueExistsConverter
+                x:Key="ValueExistsConverter" />
+            <converters:DimensionsToStringConverter
+                x:Key="DimensionsToStringConverter" />
+        </ResourceDictionary>
+    </views:NonPersistentSelectedItemListView.Resources>
+    <views:NonPersistentSelectedItemListView.ItemTemplate>
+        <DataTemplate>
+            <ViewCell>
+                <ContentView
+                    Padding="10,5">
+                    <StackLayout
+                        Orientation="Horizontal"
+                        Spacing="5">
+                        <AbsoluteLayout
+                            WidthRequest="{x:Static statics:RowSizes.XLargeRowHeightDouble}">
+                            <ActivityIndicator
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional"
+                                BindingContext="{x:Reference ThumbnailImage}"
+                                IsEnabled="{Binding IsLoading}"
+                                IsRunning="{Binding IsLoading}"
+                                IsVisible="{Binding IsLoading}"
+                                WidthRequest="{x:Static statics:RowSizes.XLargeRowHeightDouble}" />
+                            <Image
+                                x:Name="ThumbnailImage"
+                                AbsoluteLayout.LayoutBounds="0,0,AutoSize,AutoSize"
+                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                Aspect="AspectFit"
+                                Source="{Binding ImageUrl}"
+                                WidthRequest="{x:Static statics:RowSizes.XLargeRowHeightDouble}" />
+                        </AbsoluteLayout>
+                        <StackLayout
+                            HorizontalOptions="StartAndExpand"
+                            Spacing="0">
+                            <Label
+                                FontSize="Small"
+                                LineBreakMode="TailTruncation"
+                                Text="{Binding SimpleProduct.Name}"
+                                TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                FontSize="Small"
+                                Text="{Binding SimpleProduct.ItemId}"
+                                TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+                            <Label
+                                FontSize="Small"
+                                Text="{Binding SimpleProduct.Dimensions, Converter={StaticResource DimensionsToStringConverter}}"
+                                TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+                            <StackLayout
+                                Orientation="Horizontal"
+                                Spacing="0">
+                                <Label
+                                    FontSize="Small"
+                                    Text="{localization:Translate Views_OrderLinesView_Quantity_Abbreviation}"
+                                    TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+                                <Label
+                                    FontSize="Small"
+                                    Text=": "
+                                    TextColor="{x:Static statics:Palette.TEXT_LIGHT}" />
+                                <Label
+                                    FontSize="Small"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Data.Quantity, StringFormat='{0:F0}'}"
+                                    TextColor="{x:Static statics:Palette.TEXT_LIGHT}"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout
+                            Spacing="0"
+                            WidthRequest="92">
+                            <Label
+                                FontSize="Small"
+                                HorizontalTextAlignment="End"
+                                LineBreakMode="TailTruncation"
+                                Text="{Binding Data.ExtendedPrice, StringFormat='{0:C}'}"
+                                TextColor="{x:Static statics:Palette.TEXT_DARK}" />
+                            <StackLayout
+                                IsVisible="{Binding Data.DiscountAmount, Converter={StaticResource ValueExistsConverter}}"
+                                Spacing="2">
+                                <Label
+                                    FontSize="Small"
+                                    HorizontalTextAlignment="End"
+                                    Text="{localization:Translate Views_OrderLinesView_Savings}"
+                                    TextColor="{x:Static statics:Palette.Discount}" />
+                                <Label
+                                    FontSize="Small"
+                                    HorizontalTextAlignment="End"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Data.DiscountAmount, StringFormat='{0:C}'}"
+                                    TextColor="{x:Static statics:Palette.Discount}" />
+                            </StackLayout>
+                            <Label
+                                FontSize="Small"
+                                IsVisible="{Binding Data.DiscountAmount, Converter={StaticResource ValueExistsConverter}}"
+                                LineBreakMode="TailTruncation"
+                                Text="{Binding FormattedDiscountNames}"
+                                TextColor="{x:Static statics:Palette.TEXT_DARK}"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                    </StackLayout>
+                </ContentView>
+            </ViewCell>
+        </DataTemplate>
+    </views:NonPersistentSelectedItemListView.ItemTemplate>
+</views:NonPersistentSelectedItemListView>

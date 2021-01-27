@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pages:CategoryListPageXaml
+    x:Class="Contoso.Commerce.Client.ShoppingApp.View.Pages.CategoryListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:localization="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Localization"
+    xmlns:pages="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Pages"
+    xmlns:views="clr-namespace:Contoso.Commerce.Client.ShoppingApp.View.Views"
+    Title="{localization:Translate Pages_CategoryListPage_Products}">
+    <ContentPage.ToolbarItems>
+        <views:SearchToolbarItem
+            Navigation="{Binding Navigation}" />
+    </ContentPage.ToolbarItems>
+    <StackLayout
+        x:Name="MainContent"
+        Orientation="Vertical"
+        Spacing="0">
+        <views:CategoryListView
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            ItemTapped="CategoryItemTapped"
+            ItemsSource="{Binding SubCategories}" />
+    </StackLayout>
+</pages:CategoryListPageXaml>

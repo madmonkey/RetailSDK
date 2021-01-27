@@ -1,0 +1,10 @@
+{
+  "Warning_title": "Waarschuwing",
+  "_Warning_title.comment": "POS warning message title.",
+  "Shift_closing_warning": "U moet de ploeg beëindigen om {0}.",
+  "_Shift_closing_warning.comment": "POS warning message when the cashier performs an operation within the shift closing interval.",
+  "Error_title": "Fout",
+  "_Error_title.comment": "POS error message title.",
+  "Shift_closing_error": "De ploegduur overschrijdt de limiet. Stel de transactie uit, sluit de ploeg en open een nieuwe ploeg.",
+  "_Shift_closing_error.comment": "POS warning message when the cashier performs an operation after the shift closing time."
+}

@@ -1,0 +1,16 @@
+﻿{
+  "$schema": "../schemas/manifestSchema.json",
+  "name": "Sales_Transaction_Signature_Norway",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "7.2.0.0",
+  "components": {
+    "create": {
+      "requestHandlers": [
+        {
+          "modulePath": "Handlers/GetSignatureRecoveryStrategyRequestHandler"
+        }
+      ]
+    }
+  }
+}

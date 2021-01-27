@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Databse connection status view</title>
+</head>
+<body>
+    <div class="fragment">
+        <div id="databaseConnectionStatusViewPivot" data-bind="pivot: {}, resx: { ariaLabel: 'string_4454' }">
+            <!-- Overview area -->
+            <div id="databaseConnectionStatusViewPivotOverview" data-bind="pivotItem: { headerResx: 'string_6602' }">
+                <div class="width280 marginLeft20">
+                    <div>
+                        <label data-bind="resx: { textContent: 'string_6603' }" for="connectionStatusBox">Connected</label>
+                        <div class="h4" id="connectionStatusBox" data-bind="text: viewModel.status"></div>
+                    </div>
+
+                    <div class="padTop20" data-bind="visible: Commerce.StringExtensions.isNullOrWhitespace(Commerce.Config.onlineDatabase)">
+                        <label data-bind="resx: { textContent: 'string_6604' }" for="serviceURLBox">Retail server</label>
+                        <div id="serviceURLBox" class="h4 wrapTextWithoutHyphen" data-bind="text: Commerce.Config.retailServerUrl"></div>
+                    </div>
+
+                    <div class="padTop20" data-bind="visible: !Commerce.StringExtensions.isNullOrWhitespace(Commerce.Config.onlineDatabase)">
+                        <label data-bind="resx: { textContent: 'string_6612' }" for="connectionStringBox">Store database</label>
+                        <div class="h4" id="connectionStringBox" data-bind="text: Commerce.Config.onlineDatabase"></div>
+                    </div>
+
+                    <div class="padTop20">
+                        <label data-bind="resx: { textContent: 'string_6620' }" for="connectionStatusBox">Pending transactions in offline database</label>
+                        <div class="h4" id="connectionStatusBox" data-bind="text: viewModel.pendingTransactionCount"></div>
+                    </div>
+
+                    <div class="padTop20">
+                        <label data-bind="resx: { textContent: 'string_6638' }" for="connectionStatusBox">Pending downloads</label>
+                        <div class="h4" id="connectionStatusBox" data-bind="text: viewModel.pendingDownloadSessionCount"></div>
+                    </div>
+
+                    <div class="padTop20">
+                        <label data-bind="resx: { textContent: 'string_6623' }" for="connectionStatusBox">Offline sync status</label>
+                        <div class="h4" id="connectionStatusBox" data-bind="text: viewModel.offlineSyncStatus"></div>
+                    </div>
+
+                    <div class="row marginTop32 height40">
+                        <button id="connectionButton" class="primaryButton"
+                                data-bind="text: connectionButtonText, click: toggleConnection, axBubbleAttr: 'databaseConnectionStatusView_connectionButton'">
+                            Disconnect
+                        </button>
+
+                        <div class="padLeft20">
+                            <button id="syncButton" class="primaryButton"
+                                    data-bind="resx: { textContent: 'string_6624' }, click: syncOfflineData, axBubbleAttr: 'databaseConnectionStatusView_syncButton'">
+                                Sync
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="downloadViewPivot" data-bind="pivotItem: { headerResx: 'string_7300' }">
+                <div id="viewDownloadList" data-bind="dataList: {
+                    itemDataSource: viewModel.downloadSessionStatusTable,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.None,
+                    ariaLabelResx: 'string_4183', /* List of jobs */
+                    columns: [
+                        { titleResx: 'string_6614', ratio: 40, collapseOrder: 4, minWidth: 200, field: 'JobDescription' },
+                        { titleResx: 'string_6616', ratio: 25, collapseOrder: 3, minWidth: 100, field: 'Status' },
+                        { titleResx: 'string_6619', ratio: 25, collapseOrder: 2, minWidth: 200, field: 'LastSyncDateTime', converter: 'Commerce.Core.Converter.ShortDateAndTime' },
+                        { titleResx: 'string_7302', ratio: 10, collapseOrder: 1, minWidth: 60, field: 'FileSize', isRightAligned: true }
+                    ]
+                    },
+                axBubbleAttr: 'databaseConnectionStatusView_downloadSessionStatusTable'">
+                </div>
+            </div>
+
+            <div id="uploadViewPivot" data-bind="pivotItem: { headerResx: 'string_7301' }">
+                <div id="viewUploadList" data-bind="dataList: {
+                    itemDataSource: viewModel.uploadSessionStatusTable,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.None,
+                    ariaLabelResx: 'string_4183', /* List of jobs */
+                    columns: [
+                        { titleResx: 'string_6614', ratio: 40, collapseOrder: 4, minWidth: 200, field: 'JobDescription' },
+                        { titleResx: 'string_6616', ratio: 25, collapseOrder: 3, minWidth: 100, field: 'Status' },
+                        { titleResx: 'string_6619', ratio: 25, collapseOrder: 2, minWidth: 200, field: 'LastSyncDateTime', converter: 'Commerce.Core.Converter.ShortDateAndTime' },
+                        { titleResx: 'string_7302', ratio: 10, collapseOrder: 1, minWidth: 60, field: 'FileSize', isRightAligned: true }
+                    ]
+                    },
+                axBubbleAttr: 'databaseConnectionStatusView_uploadSessionStatusTable'">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

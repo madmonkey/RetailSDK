@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GetCancellationChargeModalDialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'GetCancellationChargeModalDialog'">
+        <div data-bind="dialog:
+            {
+                title: Commerce.ViewModelAdapter.getResourceString('string_4309'),
+                visible: visible,
+                buttonClick: getCancellationChargeButtonClick,
+                dialogCloseButtonClick: dialogCloseButtonClick
+            },
+            axBubbleAttr: 'getCancellationChargeModalDialog_getCancellationChargeModalDialog',
+              attr: { 'aria-label':  title() }">
+
+            <div class="col">
+                <div class="row">
+                    <div class="h4 secondaryFontColor alignRight" data-bind="resx: { textContent: 'string_4659' }">Deposit Paid</div>
+                </div>
+                <div class="row alignRight">
+                    <div class="h1 primaryFontColor" data-bind="text: depositPaid"></div>
+                </div>
+            </div>
+
+            <!-- dialog content -->
+            <div class="grow"></div>
+            <div class="content">
+                <div data-bind="axBubbleAttr: 'getCancellationChargeModalDialog_setCancellationChargeNumPad'">
+                    <div data-bind="currencyNumpad: {
+                                value: cancellationCharge,
+                                labelDataBinding: { resx: { textContent: 'string_4658' } },
+                                inputDataBinding: { resx: { ariaLabel: 'string_4658' /* Enter the charge amount for canceling the order. */ } },
+                                onEnter: onTextBoxEnterEventHandler,
+                                numPadInputSource: numPadInputBroker
+                    }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

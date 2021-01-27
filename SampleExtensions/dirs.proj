@@ -1,0 +1,17 @@
+<Project ToolsVersion="14.0" DefaultTargets="Build" BuildInParallel="false" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.props" />
+  <Import Project="..\BuildTools\Microsoft.Dynamics.RetailSdk.Build.settings" />
+    <ItemGroup>
+			<ProjectFiles Include="CommerceRuntime\CommerceRuntimeSamples.sln" />
+			<ProjectFiles Include="RetailServer\dirs.proj" />
+			<ProjectFiles Include="RetailProxy\dirs.proj" /><!-- Must be built after RetailServer, due to dependencies. -->
+			<ProjectFiles Include="TypeScriptProxy\dirs.proj" />
+			<ProjectFiles Include="SampleExtensionsTest\dirs.proj" />
+			<ProjectFiles Include="HardwareStation\HardwareStationSamples.sln" />
+			<ProjectFiles Include="OnlineStore\SampleExtensions.OnlineStore.sln" />
+
+			<!-- Follow instructions to enable for Xamarin build -->
+			<!--ProjectFiles Include="ShoppingApp\Sample.ShoppingApp.sln" /-->
+    </ItemGroup>
+    <Import Project="$(SdkRootPath)\BuildTools\Microsoft.Dynamics.RetailSdk.Build.traversal.targets" />
+</Project>

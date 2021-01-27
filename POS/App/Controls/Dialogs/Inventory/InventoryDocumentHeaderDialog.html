@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Inventory Document Header Dialog</title>
+</head>
+<body>
+    <div data-bind="customControlInternal: 'InventoryDocumentHeaderDialog'">
+        <div data-bind="dialog: {
+            title: viewModel.title(),
+            visible: visible,
+            buttons: [{
+                label: closeButtonLabel,
+                operationId: Commerce.Controls.Dialog.OperationIds.CLOSE_BUTTON_CLICK,
+                isPrimary: false
+            }],
+            buttonClick: closeClickHandler,
+            dialogCloseButtonClick: closeClickHandler
+        },
+        axBubbleAttr: 'inventoryDocumentHeaderDialog_inventoryDocumentHeaderDialog',attr: { 'aria-label': viewModel.title() }">
+            <div class="inventoryDocumentHeaderDialog">
+                <!-- Order number -->
+                <div class="marginBottom20">
+                    <div class="h4 secondaryFontColor" data-bind="resx: { textContent: 'string_12631' }"></div> <!-- Order number -->
+                    <div class="h4 primaryFontColor" data-bind="text: viewModel.document().SourceDocument.DocumentId"></div>
+                </div>
+
+                <!-- Order status -->
+                <div class="marginBottom20">
+                    <div class="h4 secondaryFontColor" data-bind="resx: { textContent: 'string_12635' }"></div> <!-- Order status -->
+                    <div class="h3 primaryFontColor" data-bind="text: Commerce.Formatters.InventoryDocumentStatusEnumFormatter(viewModel.document())"></div>
+                </div>
+
+                <div data-bind="template: { name: 'inventoryDocumentHeaderDetailsTemplate',
+                    data: {
+                        'quantityNotStarted': viewModel.quantityNotStarted(),
+                        'quantityInProgress': viewModel.totalUpdateNowQuantity(),
+                        'quantityReceived': viewModel.document().SourceDocument.TotalQuantityReceived,
+                        'quantityShipped': viewModel.document().SourceDocument.TotalQuantityShipped,
+                        'quantityDecimalPrecision': viewModel.quantityDecimalPrecision(),
+                        'showQuantitySection': true,
+                        'showExpandableQuantitySection': false,
+                        'isPurchaseOrder': viewModel.isPurchaseOrder(),
+                        'sender': viewModel.document().SourceDocument.Sender,
+                        'senderDetails': viewModel.document().SourceDocument.SenderDetails,
+                        'receiver': viewModel.document().SourceDocument.Receiver,
+                        'receiverDetails': viewModel.document().SourceDocument.ReceiverDetails,
+                        'deliveryMode': viewModel.deliveryMode(),
+                        'isInboundOperation': viewModel.isInboundOperation(),
+                        'shipDate': viewModel.document().SourceDocument.ShipDate,
+                        'receiveDate': viewModel.document().SourceDocument.ReceiveDate,
+                        'displayInDialog': true,
+                    }}">
+                </div>
+
+                <!-- Notes -->
+                <!-- ko ifnot: viewModel.isDocumentCompleted() && !viewModel.hasNote() -->
+                <div class="col">
+                    <div class="h4 secondaryFontColor marginBottom4" data-bind="resx: { textContent: 'string_12629' }"></div> <!-- Notes -->
+                    <!-- ko if: viewModel.isDocumentCompleted() || viewModel.hasNote() -->
+                    <h4 class="marginBottom8 textTransformNone" data-bind="text: viewModel.document().Note"></h4>
+                    <!-- /ko -->
+                    <!-- ko ifnot: viewModel.hasNote() -->
+                    <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onClickEditNote, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_detailsPaneAddANote'">
+                        <div class="col center width16 height16 marginRight8">
+                            <div class="h2 iconAddTo icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12441' }"></div><!--Add a note-->
+                        </div>
+                        <h4 class="accentColor" data-bind="resx: { textContent: 'string_12441' }"></h4><!--Add a note-->
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: viewModel.hasNote() -->
+                    <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onClickEditNote, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_detailsPaneEditANote'">
+                        <div class="col center width16 height16 marginRight8">
+                            <div class="h2 iconEdit icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12450' }"></div><!--Edit note-->
+                        </div>
+                        <h4 class="accentColor" data-bind="resx: { textContent: 'string_12450' }"></h4><!--Edit note-->
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <!-- /ko -->
+        </div>
+    </div>
+</body>
+</html>

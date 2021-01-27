@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.Notification.Proxy</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Proxy.ApplicationStateData">
+            <summary>
+            Application Startup/Shutdown Event Data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Notification.Proxy.ApplicationStateData.#ctor(System.Object,Microsoft.Dynamics.Retail.Notification.Contracts.ApplicationActiveState)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Notification.Proxy.ApplicationStateData"/> class.
+            </summary>
+            <param name="sessionId">The session identifier.</param>
+            <param name="state">The state.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Proxy.ApplicationStateData.State">
+            <summary>
+            Gets or sets the state.
+            </summary>
+            <value>
+            The state.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Proxy.LineDisplayEventData">
+            <summary>
+            Line Display Event Notification Data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Notification.Proxy.LineDisplayEventData.#ctor(System.Object,System.Boolean,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Notification.Proxy.LineDisplayEventData"/> class.
+            </summary>
+            <param name="sessionId">The session id.</param>
+            <param name="clearLines">If set to <c>true</c> clears lines.</param>
+            <param name="displayLinesAtText">The display lines at text.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Proxy.LineDisplayEventData.ClearLines">
+            <summary>
+            Gets a value indicating whether [clear lines].
+            </summary>
+            <value>
+              <c>true</c> if [clear lines]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Proxy.LineDisplayEventData.DisplayAtLines">
+            <summary>
+            Gets the Display the lines identified (0 based).
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Proxy.LogOffEventData">
+            <summary>
+            Log Off Event Data class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Notification.Proxy.LogOffEventData.#ctor(System.Object,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Notification.Proxy.LogOffEventData"/> class.
+            </summary>
+            <param name="sessionId">The session identifier.</param>
+            <param name="operatorId">The operator identifier.</param>
+            <param name="operatorName">Name of the operator.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Proxy.LogOffEventData.OperatorId">
+            <summary>
+            Gets or sets the operator (e.g., cashier) id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Proxy.LogOffEventData.OperatorName">
+            <summary>
+            Gets or sets the name of the operator.
+            </summary>
+            <value>
+            The name of the operator (e.g., cashier).
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Proxy.LogOnEventData">
+            <summary>
+            Log On Event Data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Notification.Proxy.LogOnEventData.#ctor(System.Object,System.Boolean,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Notification.Proxy.LogOnEventData"/> class.
+            </summary>
+            <param name="sessionId">The session identifier.</param>
+            <param name="logOnOk">If set to <c>true</c> the logon was ok.</param>
+            <param name="operatorId">The operator identifier.</param>
+            <param name="operatorName">Name of the operator.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Proxy.LogOnEventData.SuccessfulLogOn">
+            <summary>
+            Gets or sets a value indicating whether [successful log on].
+            </summary>
+            <value>
+              <c>true</c> if [successful log on]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Proxy.LogOnEventData.OperatorId">
+            <summary>
+            Gets or sets the operator identifier.
+            </summary>
+            <value>
+            The operator identifier.
+            </value>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Proxy.LogOnEventData.OperatorName">
+            <summary>
+            Gets or sets the name of the operator.
+            </summary>
+            <value>
+            The name of the operator.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Proxy.NotificationProxy">
+            <summary>
+            Notification Proxy.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Notification.Proxy.NotificationProxy.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Microsoft.Dynamics.Retail.Notification.Proxy.NotificationProxy"/> class from being created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Proxy.NotificationProxy.Notifications">
+            <summary>
+            Gets the Event Aggregator used for notifications.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Notification.Proxy.NotificationProxy.GetNotificationCenter">
+            <summary>
+            Factory to return a notification center (or proxy).
+            </summary>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Notification.Proxy.NotificationProxy.InitializeLifetimeService">
+            <summary>
+            Override default lifetime so that the proxy does not expire.
+            </summary>
+            <returns>Returns null.</returns>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Proxy.RequestAddCustomerEventData">
+            <summary>
+            The request add customer event data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Notification.Proxy.RequestAddCustomerEventData.#ctor(System.Object,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Notification.Proxy.RequestAddCustomerEventData"/> class.
+            </summary>
+            <param name="sessionId">The session identifier.</param>
+            <param name="customerId">The customer identifier.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Proxy.RequestAddCustomerEventData.CustomerId">
+            <summary>
+            Gets or sets the customer identifier.
+            </summary>
+            <value>
+            The customer identifier.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Proxy.RequestAddItemEventData">
+            <summary>
+            The request add item event data class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Notification.Proxy.RequestAddItemEventData.#ctor(System.Object,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Notification.Proxy.RequestAddItemEventData"/> class.
+            </summary>
+            <param name="sessionId">The session identifier.</param>
+            <param name="itemId">The item identifier.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Proxy.RequestAddItemEventData.ItemId">
+            <summary>
+            Gets or sets the item identifier.
+            </summary>
+            <value>
+            The item identifier.
+            </value>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Proxy.SessionEventData">
+            <summary>
+            Session Event Data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Notification.Proxy.SessionEventData.#ctor(System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Notification.Proxy.SessionEventData"/> class.
+            </summary>
+            <param name="sessionId">The session identifier.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Proxy.SessionEventData.SessionId">
+            <summary>
+            Gets or sets the session id.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.Notification.Proxy.TransactionStateEventData">
+            <summary>
+            Application Startup/Shutdown Event Data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.Notification.Proxy.TransactionStateEventData.#ctor(System.Object,Microsoft.Dynamics.Retail.Notification.Contracts.TransactionState)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.Notification.Proxy.TransactionStateEventData"/> class.
+            </summary>
+            <param name="sessionId">The session identifier.</param>
+            <param name="state">The state.</param>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.Notification.Proxy.TransactionStateEventData.State">
+            <summary>
+            Gets or sets the state.
+            </summary>
+            <value>
+            The state.
+            </value>
+        </member>
+    </members>
+</doc>

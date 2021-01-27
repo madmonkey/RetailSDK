@@ -1,0 +1,22 @@
+{
+  "$schema": "../schemas/manifestSchema.json",
+  "name": "Pos_SalesOrders_Sample",
+  "publisher": "Microsoft",
+  "version": "9.7.0",
+  "minimumPosVersion": "9.7.0.0",
+  "components": {
+    "resources": {
+      "supportedUICultures": [ "en-US" ],
+      "fallbackUICulture": "en-US",
+      "culturesDirectoryPath": "Resources/Strings",
+      "stringResourcesFileName": "resources.resjson"
+    },
+    "extend": {
+      "requestHandlers": [
+        {
+          "modulePath": "Handlers/GetGiftReceiptsClientRequestHandlerExt"
+        }
+      ]
+    }
+  }
+}

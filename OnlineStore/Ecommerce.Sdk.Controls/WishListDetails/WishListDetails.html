@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Wish lists details</title>
+</head>
+
+<body>
+    <!--CONTENT_START-->
+    <div id="WishListDetailsControl" class="msax-WishListDetails msax-MarginTop30" data-model="Contoso.Retail.Ecommerce.Sdk.Controls.WishListDetails">
+        <div class="msax-Loading msax-DisplayNone">
+            <div id="LoadingSpinner" class="msax-Spinner msax-MarginTop50"></div>
+            <div id="LoadingText" class="msax-LoadingText msax-MarginTop20"></div>
+        </div>
+
+        <div id="ErrorPanel" class="msax-ErrorPanel msax-DisplayNone" data-bind="foreach: errorMessages">
+            <div data-bind="text: $data"></div>
+        </div>
+
+        <div data-bind="if: isWishListDetailsLoaded">
+            <label class="msax-SelectWishListText" data-bind="resx: {textContent: 'String_264' }"></label>
+            <select id="WishListDropDown" class="msax-DropDown msax-WishListDropDown" data-bind="options: allWishListsDropDown, value: selectedWishList, optionsText: 'Text', optionsValue: 'Value'"></select>
+            <div data-bind="visible: wishListContainsItems">
+                <div id="WishListDetails" class="msax-WishListDetailsContent">
+                    <div class="msax-ShoppingCartWrapper msax-ClearBoth" data-bind="with: wishList">
+                        <!-- ko if: $data.PromotionLines && $data.PromotionLines.length -->
+                        <div id="CartPromotionBanner" class="msax-PromotionBanner msax-PaddingTop5 msax-PaddingBottom5" data-bind="foreach: PromotionLines">
+                            <span class="msax-CartPromotionBanner msax-PaddingLeft20" data-bind="text: $data"></span>
+                        </div>
+                        <!-- /ko -->
+                        <div id="ReviewItemsGrid" class="msax-ItemsGrid">
+                            <div class="row msax-GridHeader hidden-xs">
+                                <div class="col-sm-1 hidden-xs"><input id="msax-WishListSummaryCheckBoxHeader" data-bind="checked: $root.selectAll" type="checkbox" /></div>
+                                <div class="col-sm-4 hidden-xs" data-bind="resx: {textContent: 'String_2' }"></div> <!-- Product details -->
+                                <div class="col-sm-2 hidden-xs" data-bind="resx: {textContent: 'String_3' }"></div> <!-- Each -->
+                                <div class="col-sm-2 hidden-xs" data-bind="resx: {textContent: 'String_4' }"></div> <!-- Quantity -->
+                                <div class="col-sm-3 hidden-xs" data-bind="resx: {textContent: 'String_5' }"></div> <!-- Line total -->
+                            </div>
+                            <div data-bind="foreach: CommerceListLines">
+                                <div class="row" style="padding-top:10px;">
+                                    <div class="col-sm-1"><input class="msax-WishListSummaryCheckBox" data-bind="value: $data.LineId, checked: $root.selectedWishListLines" type="checkbox" /></div> <!-- Product details -->
+                                    <div class="col-sm-4">
+                                        <div class="msax-Row msax-FullView msax-View480">
+                                            <a class="msax-ProductImage msax-MarginRight10" data-bind="attr: { href: ProductUrl }">
+                                                <div class="msax-ImageWrapper50px" data-bind="html: ImageMarkup50px"></div>
+                                                <div class="msax-ImageWrapper180px" data-bind="html: ImageMarkup180px"></div>
+                                            </a>
+                                            <div class="msax-PaddingLeft20">
+                                                <div class="msax-ProductNameWrapper">
+                                                    <a class="msax-ProductName" data-bind="attr: { href: ProductUrl }, text: ProductName"></a>
+                                                    <div class="msax-ProductDimensions msax-PaddingBottom5 msax-PaddingTop5" data-bind="text: ProductDimension"></div>
+                                                    <div class="msax-ProductNumber msax-SecondaryColor" data-bind="text: ItemId"></div>
+                                                </div>
+                                                <div class="msax-View480">
+                                                    <div class="msax-ItemPrice msax-MarginTop20" data-bind="text: $root.formatCurrencyString.call($root, $data.BasePrice)"></div>
+                                                    <div class="msax-MarginTop20">
+                                                        <button class="msax-Minus16" data-bind="click: $root.quantityMinusClick.bind($root)"></button>
+                                                        <input type="number" class="msax-QuantityTextBox" data-bind="event: {change: $root.quantityTextBoxChanged.bind($root) }, validator: { validatorType: 'ShoppingCartItemValidator', field: 'Quantity' }" />
+                                                        <button class="msax-Plus16" data-bind="click: $root.quantityPlusClick.bind($root)"></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="msax-View480">
+                                            <div class="col-sm-1"><input class="msax-WishListSummaryCheckBox" type="checkbox" /></div> <!-- Product details -->
+                                            <div class="msax-FloatLeft">
+                                                <button class="msax-Delete16 msax-WithText" data-bind="click: $root.removeFromWishListClick.bind($root), resx: {textContent: 'String_6' }"></button> <!-- Remove -->
+                                            </div>
+                                            <div class="msax-FloatRight">
+                                                <div>
+                                                    <span data-bind="resx: {textContent: 'String_238' }"></span> <!-- Line total: -->
+                                                    <span class="msax-LineTotal" data-bind="text: $root.formatCurrencyString.call($root, $data.NetAmount)"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="msax-View320">
+                                            <div class="col-sm-1"><input class="msax-WishListSummaryCheckBox" type="checkbox" /></div> <!-- Product details -->
+                                            <a class="msax-ProductImage" data-bind="attr: { href: ProductUrl }">
+                                                <div class="msax-ImageWrapper50px" data-bind="html: ImageMarkup50px"></div>
+                                                <div class="msax-ImageWrapper180px" data-bind="html: ImageMarkup180px"></div>
+                                            </a>
+                                            <div class="msax-Row msax-PaddingLeft20">
+                                                <div class="msax-ProductNameWrapper">
+                                                    <a class="msax-ProductName" data-bind="attr: { href: ProductUrl }, text: ProductName"></a>
+                                                    <div class="msax-ProductDimensions msax-PaddingBottom5 msax-PaddingTop5" data-bind="text: ProductDimension"></div>
+                                                    <div class="msax-ProductNumber msax-SecondaryColor" data-bind="text: ItemId"></div>
+                                                </div>
+                                            </div>
+                                            <div class="msax-MarginTop10">
+                                                <div class="msax-ItemPrice msax-MarginTop10" data-bind="text: $root.formatCurrencyString.call($root, $data.BasePrice)"></div>
+                                                <div class="msax-FloatLeft msax-MarginTop10">
+                                                    <button class="msax-Minus16" data-bind="click: $root.quantityMinusClick.bind($root)"></button>
+                                                    <input type="number" class="msax-QuantityTextBox" data-bind="event: {change: $root.quantityTextBoxChanged.bind($root) }, validator: { validatorType: 'ShoppingCartItemValidator', field: 'Quantity' }" />
+                                                    <button class="msax-Plus16" data-bind="click: $root.quantityPlusClick.bind($root)"></button>
+                                                </div>
+                                                <div class="msax-FloatRight msax-MarginTop10">
+                                                    <div>
+                                                        <span data-bind="resx: {textContent: 'String_238' }"></span> <!-- Line total: -->
+                                                        <span class="msax-LineTotal" data-bind="text: $root.formatCurrencyString.call($root, $data.NetAmount)"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="msax-ClearBoth">
+                                                <button class="msax-Delete16 msax-WithText msax-MarginTop10" data-bind="click: $root.removeFromWishListClick.bind($root), resx: {textContent: 'String_6' }"></button> <!-- Remove -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 msax-FullView">
+                                        <div class="msax-ItemPrice" data-bind="text: $root.formatCurrencyString.call($root, $data.BasePrice)"></div>
+                                    </div>
+                                    <div class="col-sm-2 msax-FullView">
+                                        <div>
+                                            <button class="msax-Minus16" data-bind="click: $root.quantityMinusClick.bind($root)"></button>
+                                            <input type="number" class="msax-QuantityTextBox" data-bind="event: {change: $root.quantityTextBoxChanged.bind($root) }, validator: { validatorType: 'ShoppingCartItemValidator', field: 'Quantity' }" />
+                                            <button class="msax-Plus16" data-bind="click: $root.quantityPlusClick.bind($root)"></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 msax-FullView">
+                                        <div class="msax-LineTotal" data-bind="text: $root.formatCurrencyString.call($root, $data.NetAmount)"></div>
+                                    </div>
+                                </div>
+                                <div class="row msax-MarginBottom20">
+                                    <div class="col-sm-offset-1 col-sm-12 msax-FullView">
+                                        <button class="msax-Delete16 msax-WithText" data-bind="click: $root.removeFromWishListClick.bind($root), resx: {textContent: 'String_6' }"></button> <!-- Remove -->
+                                    </div>
+                                </div>
+
+                                <!-- ko if: ProductType === $root.kitVariantProductType() -->
+                                <div class="msax-NoOfComponentsInKit row">
+                                    <div class="col-sm-12">
+                                        <span class="msax-KitComponentsCount" data-bind="text: KitComponentCount"></span>
+                                    </div>
+                                </div>
+                                <!-- /ko -->
+                                <!-- ko foreach: KitComponents -->
+                                <div class="msax-KitComponents row">
+                                    <div class="msax-ProductDetails msax-PaddingLeft60 col-sm-6">
+                                        <div class="msax-Row">
+                                            <a class="msax-ProductImage50px msax-MarginRight10" data-bind="attr: { href: ProductUrl }">
+                                                <div class="msax-ImageWrapper" data-bind="html: ImageMarkup50px"></div>
+                                            </a>
+                                            <div class="msax-PaddingLeft20">
+                                                <div class="msax-ProductNameWrapper">
+                                                    <a class="msax-ProductName" data-bind="attr: { href: ProductUrl }, text: ProductName"></a>
+                                                    <div class="msax-ProductDimensions msax-PaddingBottom5 msax-PaddingTop5" data-bind="text: ProductDimension"></div>
+                                                </div>
+                                                <div class="msax-ProductNumber msax-SecondaryColor" data-bind="text: ItemId"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <span class="msax-ItemPrice" data-bind="text: $root.formatCurrencyString.call($root, $data.KitComponentPrice)"></span>
+                                    </div>
+                                    <div class="msax-Quantity col-sm-3">
+                                        <span class="msax-Quantity" data-bind="text: Quantity"></span>
+                                    </div>
+                                </div>
+                                <!-- /ko -->
+                                <!-- ko if: $data.hasOwnProperty("PromotionLines") && $data.PromotionLines.length -->
+                                <div class="row">
+                                    <div colspan="5" class="msax-PromotionBanner msax-PaddingTop5 msax-PaddingBottom5 col-sm-12" data-bind="foreach: PromotionLines">
+                                        <span class="msax-ItemPromotionBanner msax-PaddingLeft20" data-bind="text: $data"></span>
+                                    </div>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="AddToCartButton" type="button" class="msax-AddToCartButton" data-bind="visible: wishListContainsItems, click: $root.addToCartClick, resx: {textContent: 'String_261' }">
+                <!-- Add items to cart -->
+            </button>
+            <div class="msax-MarginTop20 msax-MarginLeft10" data-bind="visible: !wishListContainsItems()">
+                <span data-bind="resx: {textContent: 'String_259' }"></span> <!-- There are no items in your wish list. Please add items to the list. -->
+            </div>
+        </div>
+    </div>
+    <!--CONTENT_END-->
+</body>
+</html>

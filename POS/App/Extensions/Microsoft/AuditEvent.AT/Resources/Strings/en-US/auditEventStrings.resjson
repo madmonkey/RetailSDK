@@ -1,0 +1,30 @@
+{
+    //======================== Audit event error messages. ========================
+    "Audit_event_registration_error_message"                : "Registration error for event '{0}': {1}.",
+    "Audit_event_registration_error_message.comment"        : "Audit event registration log error message.",
+
+    //======================== Audit event database messages. ========================
+    "Audit_event_AT_close_shift_event_message"                 : "Shift has been closed successfully.",
+    "_Audit_event_AT_close_shift_event_message.comment"        : "Audit event database log string field value.",
+
+    "Audit_event_AT_tax_override_event_message"                : "Tax override operation has been completed",
+    "_Audit_event_AT_tax_override_event_message.comment"       : "Audit event database log string field value.",
+
+    "Audit_event_AT_price_override_event_message"              : "Price override operation has been completed",
+    "_Audit_event_AT_price_override_event_message.comment"     : "Audit event database log string field value.",
+
+    "Audit_event_AT_open_shift_event_message"                  : "Shift {0} has been opened successfully.",
+    "_Audit_event_AT_open_shift_event_message.comment"         : "Audit event database log string field value.",
+
+    "Audit_event_AT_logon_event_message"                       : "User has successfully Logon.",
+    "_Audit_event_AT_logon_event_message.comment"              : "Audit event database log string field value.",
+
+    "Audit_event_AT_logoff_event_message"                      : "User has successfully Logoff.",
+    "_Audit_event_AT_logoff_event_message.comment"             : "Audit event database log string field value.",
+
+    "Audit_event_AT_void_products_message"                     : "Line item voided: {0}.",
+    "_Audit_event_AT_void_products_message.comment"            : "Audit event database log string field value.",
+
+    "Audit_event_AT_void_transaction_message"                  : "Transaction '{0}' voided.",
+    "_Audit_event_AT_void_transaction_message.comment"         : "Audit event database log string field value."
+}

@@ -1,0 +1,8 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesTransactionSignatureSample.Messages\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesTransactionSignatureSample.Messages.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesTransactionSignatureSample.Messages\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesTransactionSignatureSample.Messages.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesTransactionSignatureSample.Messages\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesTransactionSignatureSample.Messages.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesTransactionSignatureSample.Messages\obj\Debug\netstandard2.0\Runtime.Extensions.SalesTransactionSignatureSample.Messages.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesTransactionSignatureSample.Messages\obj\Debug\netstandard2.0\Runtime.Extensions.SalesTransactionSignatureSample.Messages.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesTransactionSignatureSample.Messages\obj\Debug\netstandard2.0\Runtime.Extensions.SalesTransactionSignatureSample.Messages.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesTransactionSignatureSample.Messages\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesTransactionSignatureSample.Messages.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.SalesTransactionSignatureSample.Messages\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.SalesTransactionSignatureSample.Messages.pdb

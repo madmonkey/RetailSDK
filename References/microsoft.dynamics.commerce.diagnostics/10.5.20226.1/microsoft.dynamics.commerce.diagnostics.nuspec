@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Dynamics.Commerce.Diagnostics</id>
+    <version>10.5.20226.1</version>
+    <authors>Dynamics Retail and Commerce team</authors>
+    <owners>Dynamics Retail and Commerce team</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://dynamics.microsoft.com/en-us/retail/overview/</projectUrl>
+    <description>The diagnostics library for Retail and Commerce components.</description>
+    <tags>Microsoft Dynamics Dynamics365 Retail Diagnostics</tags>
+    <repository url="https://msazure.visualstudio.com/D365/Retail Team/_git/Retail-Rainier-Diagnostics" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Composition" version="1.2.0" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.Serialization.Json" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.Serialization.Primitives" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.Serialization.Xml" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Xml.XmlSerializer" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--
+        NOTE: mPOS and cloudPOS have separate Pos.html. Make sure you update both accordingly to your changes.
+    -->
+    <meta charset="utf-8" />
+
+    <!-- Prevent app from using JavaScript over HTTP connections for navigation or other non-media web content retrievals -->
+    <meta name="ms-https-connections-only" content="true">
+    <title>Dynamics Retail POS</title>
+
+    <link rel="stylesheet" href="Stylesheets/AppStart.min.css" />
+
+    <!--
+        NOTE: -axretail-stylesheet-async is supported by Commerce.CSSHelpers.
+        It adds these two features for better UI experience:
+        - 1. Non blocking async load of css files.
+        - 2. CSSHelpers know when a stylesheet is loaded by browser.
+
+        (!) Please use it for any new css file so the splash screen rendering won't be blocked.
+    -->
+    <link rel="-axretail-stylesheet-async" href="Stylesheets/Vendor/jQueryUI/jquery-ui.min.css" />
+    <link rel="-axretail-stylesheet-async" href="Stylesheets/Main.min.css" />
+    <link rel="-axretail-stylesheet-async" href="Controls/KnockoutControls/ButtonGrid/buttonGrid.css" />
+    <link rel="-axretail-stylesheet-async" href="KnockoutControls/Menu/knockout.menu.min.css" />
+    <link rel="-axretail-stylesheet-async" href="KnockoutControls/TabControl/tabControl.css" />
+
+    <script src="Libraries/winjs/js/base.js" defer="defer"></script>
+    <script src="Libraries/winjs/js/ui.js" defer="defer"></script>
+    <script src="Libraries/globalize/0.1.1/globalize.min.js" defer="defer"></script>
+    <script src="Libraries/globalize/0.1.1/globalize.cultures.min.js" defer="defer"></script>
+    <script src="Libraries/jquery.min.js" defer="defer"></script>
+    <script src="Libraries/jquery-ui.min.js" defer="defer"></script>
+    <script src="Libraries/knockout-2.2.1.js" defer="defer"></script>
+    <script src="Libraries/datajs-1.1.0.min.js" defer="defer"></script>
+    <script src="Libraries/highcharts-4.2.3.js" defer="defer"></script>
+    <script src="Libraries/moment/moment-with-locales.min.js" defer="defer"></script>
+    <script src="Libraries/moment-timezone/moment-timezone-with-data.min.js" defer="defer"></script>
+    <script src="Libraries/AppInsights/ai.0.js" defer="defer"></script>
+    <!-- Use auto for polyfill registration. Cannot debug min version with maps provided, map and src files mismatched -->
+    <script src="Libraries/es6-promise/es6-promise.auto.js" defer="defer"></script>
+    <!-- Turn off fetch API before load SystemJS to force SystemJS to use xhr for remote extension loading -->
+    <script src="DisableFetch.js" defer="defer"></script>
+    <!-- Minified version does not run properly after load complete. Cannot debug min version with maps provided, map and src files mismatched -->
+    <script src="Libraries/systemjs/system.src.js" defer="defer"></script>
+
+    <!-- ************************************    Commerce Libraries    ************************************ -->
+    <script src="Diagnostics.TypeScriptCore.js" defer="defer"></script>
+    <script src="Commerce.TypeExtensions.Public.js" defer="defer"></script>
+    <script src="Commerce.AsyncResult.js" defer="defer"></script>
+
+    <!-- ************************************    POS Platform    ****************************************** -->
+    <script src="Pos.Framework.Contracts.Public.js" defer="defer"></script>
+    <script src="Pos.RetailLogger.js" defer="defer"></script>
+    <script src="Pos.Framework.js" defer="defer"></script>
+
+    <!-- ************************************    POS Public Contracts    ********************************** -->
+    <script src="Pos.Core.Contracts.Public.js" defer="defer"></script>
+    <script src="Pos.ViewModels.Contracts.Public.js" defer="defer"></script>
+    <script src="Pos.Views.Contracts.Public.js" defer="defer"></script>
+
+    <!-- ************************************    POS Internal Contracts    ******************************** -->
+    <script src="Pos.Core.Contracts.js" defer="defer"></script>
+
+    <!-- ************************************    POS Features    ****************************************** -->
+    <script src="Pos.UserActivityRecorder.Contracts.js" defer="defer"></script>
+    <script src="Pos.UserActivityRecorder.js" defer="defer"></script>
+    <script src="Pos.Payments.Contracts.js" defer="defer"></script>
+    <script src="Pos.Payments.js" defer="defer"></script>
+
+    <!-- ************************************    POS LegacyCore    **************************************** -->
+    <script src="Pos.Core.js" defer="defer"></script>
+    <script src="Pos.ViewModels.js" defer="defer"></script>
+    <script src="Pos.Controls.js" defer="defer"></script>
+    <script src="Pos.Views.js" defer="defer"></script>
+    <script src="Pos.js" defer="defer"></script>
+
+    <style title="TillLayoutStyles"></style>
+</head>
+<body class="bodyBackgroundImage">
+    <div data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri: 'Pos.Shared.html'}"></div>
+    <div id="splashScreen" class="splash-screen">
+        <div class="splash-screen-spinner"></div>
+    </div>
+    <div id="contenthost" data-win-control="Commerce.Controls.ContentHost.ContentHostWinJSControl"></div>
+    <div id="userActivityRecorderContainer">
+        <div id="taskRecorderHost"></div>
+        <div id="testRecorderFloat"></div>
+    </div>
+    <div id="helpViewHost"></div>
+</body>
+</html>

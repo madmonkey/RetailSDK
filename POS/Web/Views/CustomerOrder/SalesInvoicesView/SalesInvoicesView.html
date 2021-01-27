@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sales Invoices View</title>
+    <link href="SalesInvoicesView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment salesInvoicesView">
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'salesInvoicesView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div data-bind="pivotItem: { headerResx: 'string_5000' }">
+                <div id="InvoiceList" data-bind="dataList: {
+                    itemDataSource: _salesInvoices,
+                    onItemDataSourceUpdated: onItemDataSourceUpdated,
+                    selectionChanged: onSelectionChanged,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                    ariaLabelResx: 'string_3875', /* Collection of orders */
+                    columns: viewModel.salesInvoicesListColumns
+                },
+                axBubbleAttr: 'salesInvoicesView_salesInvoices'"></div>
+            </div>
+        </div>
+
+        <div id="commandAppBar" data-bind="appBar: {}, axBubbleAttr: 'salesInvoicesView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id:'returnButton',
+                extraClass: 'iconProductReturn',
+                onclick: returnSalesInvoice,
+                disabled: returnSalesInvoiceDisabled,
+                labelResx: 'string_5013' }, axBubbleAttr: 'salesInvoicesView_returnButton'"></button><!--Return-->
+        </div>
+    </div>
+</body>
+</html>

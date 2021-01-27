@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "トランザクションの終了中にエラーが発生しました。署名サービスの準備ができていません。システム管理者に問い合わせてください。",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "トランザクションの終了中にエラーが発生しました。リンクされた会計トランザクションに間違った形式のデータが含まれています。システム管理者に問い合わせてください。",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "トランザクションのデジタル署名の復旧処理で前回、エラーが発生しました。オフライン データベースが同期していない可能性が考えられます。システム管理者にお問い合わせください。",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

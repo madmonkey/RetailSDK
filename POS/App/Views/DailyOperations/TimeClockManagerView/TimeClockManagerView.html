@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Time Clock Manager View</title>
+    <link href="TimeClockManagerView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="timeClockManagerView fragment" data-bind="with: viewModel">
+        <!-- Main content -->
+        <div data-bind="pivot: { headerItemsAxBubbleAttr: 'timeClockManagerView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div data-bind="pivotItem: { headerResx: 'string_4158' }">
+
+                <div id="timeClockManagerList" data-bind="dataList: {
+                    itemDataSource: timeRegistrations,
+                    selectionModes: Commerce.Controls.DataList.SelectionMode.None,
+                    columns: [
+                        { titleResx: 'string_4097', ratio: 25, minWidth: 200,collapseOrder: 5, field: 'StaffName' },
+                        { titleResx: 'string_4098', ratio: 15, minWidth: 100,collapseOrder: 2, field: 'StaffId' },
+                        { titleResx: 'string_4064', ratio: 25, minWidth: 200,collapseOrder: 4, field: 'ActivityDateTimeOffset', converter: 'Commerce.Core.Converter.ShortDateAndTime' },
+                        { titleResx: 'string_4091', ratio: 20, minWidth: 200,collapseOrder: 3, field: 'Activity' },
+                        { titleResx: 'string_4092', ratio: 15, minWidth: 150,collapseOrder: 1, field: 'StoreNumber', isRightAligned: true },
+                                ],
+                    ariaLabelResx: 'string_4158' /* Time clock entries */
+                },
+                axBubbleAttr: 'timeClockManagerView_timeRegistrations'">
+                </div>
+            </div>
+        </div>
+
+        <!-- Show activity flyout menu options -->
+        <div id="showActivityFlyout" data-bind="menu: { anchor: '#showActivity', placement: 'top', alignment: 'left' }, axBubbleAttr: 'timeClockManagerView_showActivityFlyout'">
+            <button data-bind="menuCommand: {id: 'setClockInFilter'}, resx: { label: 'string_4084' }, click: filterClockInAsync , axBubbleAttr: 'timeClockManagerView_setClockInFilter'"></button>
+            <button data-bind="menuCommand: {id: 'setClockOutFilter'}, resx: { label: 'string_4085' }, click: filterClockOutAsync , axBubbleAttr: 'timeClockManagerView_setClockOutFilter'"></button>
+            <button data-bind="menuCommand: {id: 'setBreakForLunchFilter'}, resx: { label: 'string_4087' }, click: filterBreakForLunchAsync , axBubbleAttr: 'timeClockManagerView_setBreakForLunchFilter'"></button>
+            <button data-bind="menuCommand: {id: 'setBreakFromWorkFilter'}, resx: { label: 'string_4086' }, click: filterBreakFromWorkAsync , axBubbleAttr: 'timeClockManagerView_setBreakFromWorkFilter'"></button>
+        </div>
+
+        <!-- Show store flyout menu options -->
+        <div id="showStoreFlyout" data-bind="menu: { anchor: '#showStore', placement: 'top', alignment: 'left' }, axBubbleAttr: 'timeClockManagerView_showStoreFlyout'">
+            <button data-bind="menuCommand: {id: 'setAllStoresFilter'}, resx: { label: 'string_5503' }, click: clearStoreFilterAsync, axBubbleAttr: 'timeClockManagerView_setAllStoresFilter'"></button>
+            <button data-bind="menuCommand: {id: 'setStoreFilter'}, resx: { label: 'string_4096' }, click: $parent.setStoreFilter, axBubbleAttr: 'timeClockManagerView_setStoreFilter'"></button>
+        </div>
+
+        <!-- Bottom app bar -->
+        <div id="commandAppBar" data-bind="appBar:{}, axBubbleAttr: 'timeClockManagerView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id: 'showActivity',
+                extraClass: 'iconFilter',
+                type: 'flyout',
+                flyout: '#showActivityFlyout',
+                labelResx: 'string_4157'},
+                axBubbleAttr: 'timeClockManagerView_showActivity'"></button>
+
+            <button data-bind="appBarCommand: {
+                id: 'showStore',
+                extraClass: 'iconRetail',
+                type: 'flyout',
+                flyout: '#showStoreFlyout',
+                labelResx: 'string_4100'},
+                axBubbleAttr: 'timeClockManagerView_showStore'"></button>
+        </div>
+    </div>
+</body>
+</html>

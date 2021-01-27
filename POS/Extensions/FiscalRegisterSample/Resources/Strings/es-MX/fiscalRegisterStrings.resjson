@@ -1,0 +1,23 @@
+{
+  "Fiscal_register_not_enabled_error": "El registro fiscal está habilitado para el POS, pero la estación de hardware no está habilitada.",
+  "_Fiscal_register_not_enabled_error.comment": "Fiscal register error message.",
+  "Fiscal_register_not_available_error": "El registro fiscal está habilitado para el POS, pero la estación de hardware no está disponible.",
+  "_Fiscal_register_not_available_error.comment": "Fiscal register error message.",
+  "Fiscal_register_unregistered_comleted_transactions_error": "Hay transacciones de ventas completadas sin registrar en el registro fiscal. La operación se canceló.",
+  "_Fiscal_register_unregistered_comleted_transactions_error.comment": "Fiscal register error message.",
+  "Ok_Button_Label": "Aceptar",
+  "_Ok_Button_Label.comment": "Message dialog button label.",
+  "Cancel_Button_Label": "Cancelar",
+  "_Cancel_Button_Label.comment": "Message dialog button label.",
+  "Skip_Button_Label": "Omitir",
+  "_Skip_Button_Label.comment": "Message dialog button label.",
+  "Run_Refiscalization_Dialog_Title": "Registro fiscal",
+  "_Run_Refiscalization_Dialog_Title.comment": "Message dialog message.",
+  "Run_Refiscalization_Dialog_Message": "Hay {0} transacciones de ventas completadas sin registrar en el registro fiscal. Haga clic en Aceptar para registrarlas.",
+  "Skip_Refiscalize_Dialog_Title": "Error del registro fiscal",
+  "_Skip_Refiscalize_Dialog_Title.comment": "Message dialog title.",
+  "Skip_Refiscalize_Dialog_Message": "No se pudieron registrar las transacciones de ventas en el registro fiscal. Puede omitir el registro fiscal o cancelar la operación.",
+  "_Skip_Refiscalize_Dialog_Message.comment": "Message dialog message.",
+  "Confirm_Skip_Refiscalization_Dialog_Message": "¿Está seguro de que quiere omitir el registro fiscal para el id. de transacción \"{0}\", fecha y hora de transacción \"{1}\", id. de recibo \"{2}\", importe total de recibo \"{3}\"? Si omite el registro fiscal, se registrará en la transacción.",
+  "_Confirm_Skip_Refiscalization_Dialog_Message.comment": "Message dialog message."
+}

@@ -1,0 +1,9 @@
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.WarrantyAndReturnSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.WarrantyAndReturnSample.deps.json
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.WarrantyAndReturnSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.WarrantyAndReturnSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.WarrantyAndReturnSample\bin\Debug\netstandard2.0\Contoso.Commerce.Runtime.WarrantyAndReturnSample.pdb
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.WarrantyAndReturnSample\obj\Debug\netstandard2.0\Runtime.Extensions.WarrantyAndReturnSample.csprojAssemblyReference.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.WarrantyAndReturnSample\obj\Debug\netstandard2.0\Runtime.Extensions.WarrantyAndReturnSample.csproj.CoreCompileInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.WarrantyAndReturnSample\obj\Debug\netstandard2.0\Runtime.Extensions.WarrantyAndReturnSample.AssemblyInfoInputs.cache
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.WarrantyAndReturnSample\obj\Debug\netstandard2.0\Runtime.Extensions.WarrantyAndReturnSample.AssemblyInfo.cs
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.WarrantyAndReturnSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.WarrantyAndReturnSample.dll
+C:\RetailSDK\SampleExtensions\CommerceRuntime\Extensions.WarrantyAndReturnSample\obj\Debug\netstandard2.0\Contoso.Commerce.Runtime.WarrantyAndReturnSample.pdb

@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "حدث خطأ أثناء إنهاء الحركة. خدمة التوقيع غير جاهزة. اتصل بمسؤول النظام.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "حدث خطأ أثناء إنهاء الحركة. تحتوي الحركة المالية المرتبطة على بيانات تنسيق خاطئ. اتصل بمسؤول النظام.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "حدث خطأ أثناء استرداد آخر توقيع رقمي للحركة. من المحتمل وجود قاعدة بيانات غير متصلة لم تتم مزامنتها. اتصل بمسؤول النظام لديك.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

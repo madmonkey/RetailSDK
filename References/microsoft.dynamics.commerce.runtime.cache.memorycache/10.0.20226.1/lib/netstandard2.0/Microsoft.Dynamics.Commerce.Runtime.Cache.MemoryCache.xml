@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.MemoryCacheAccessor">
+            <summary>
+            Class modeling the behavior of a memory cache accessor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.MemoryCacheAccessor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.MemoryCacheAccessor"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.MemoryCacheAccessor.TryGetItem``1(System.String,``0@,Microsoft.Dynamics.Commerce.Runtime.Data.IDataStore)">
+            <summary>
+            Attempts to extract the item stored in the cache under the specified key.
+            </summary>
+            <param name="key">The key of the item in the cache.</param>
+            <typeparam name="T">Type of the item to be retrieved.</typeparam>
+            <param name="item">The item to be returned.</param>
+            <param name="currentStore">The current data store.</param>
+            <returns>True if the key exists in the memory cache.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.MemoryCacheAccessor.PutItem``1(System.String,``0,Microsoft.Dynamics.Commerce.Runtime.Data.IDataStore)">
+            <summary>
+            Puts an item in the cache under the specified key.
+            </summary>
+            <param name="key">The key under which the item is stored.</param>
+            <typeparam name="T">The type of the item to be stored.</typeparam>
+            <param name="item">The item to be stored.</param>
+            <param name="currentStore">The current data store.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.MemoryCacheAccessor.PutItem``1(System.String,``0,System.DateTimeOffset,Microsoft.Dynamics.Commerce.Runtime.Data.IDataStore)">
+            <summary>
+            Puts an item in the cache under the specified key.
+            </summary>
+            <param name="key">The item key.</param>
+            <typeparam name="T">The type of the item to be stored.</typeparam>
+            <param name="item">The item to be stored.</param>
+            <param name="absoluteExpiration">Absolute expiration timestamp for the specified item.</param>
+            <param name="currentStore">The current data store.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.MemoryCacheAccessor.PutItem``1(System.String,``0,System.DateTimeOffset,System.TimeSpan,Microsoft.Dynamics.Commerce.Runtime.Data.IDataStore)">
+            <summary>
+            Puts an item in the cache under the specified key.
+            </summary>
+            <param name="key">The item key.</param>
+            <typeparam name="T">The type of the item to be stored.</typeparam>
+            <param name="item">The item to be stored.</param>
+            <param name="absoluteExpiration">Absolute expiration timestamp for the specified item.</param>
+            <param name="slidingExpiration">Sliding expiration interval for the specified item.</param>
+            <param name="currentStore">The current data store.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.MemoryCacheAccessor.EvictItem(System.String,Microsoft.Dynamics.Commerce.Runtime.Data.IDataStore)">
+            <summary>
+            Evicts from the cache the item with the specified key.
+            </summary>
+            <param name="key">Key of item to be evicted.</param>
+            <param name="currentStore">The current data store.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.MemoryCacheAccessor.EvictAll(System.String,Microsoft.Dynamics.Commerce.Runtime.Data.IDataStore)">
+            <summary>
+            Evicts all the items from the cache.
+            </summary>
+            <param name="keyPattern">The key pattern.</param>
+            <param name="currentStore">The current data store.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.MemoryCacheAccessor.InitializeDataStores">
+            <summary>
+            Initializes the static object that is the data store manager.
+            </summary>
+            <returns>An instance of the data store manager object.</returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.MemoryCacheAccessor.Clear(Microsoft.Dynamics.Commerce.Runtime.Data.IDataStore)">
+            <summary>
+            Clears all the entities for the given data store.
+            </summary>
+            <param name="currentStore">The current data store.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfContosoDiscountData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ContosoDiscountData>
+    <OfferId>EXT-CAP01CP99</OfferId>
+    <OfferName>Extensibility - discount amount cap - Compounded.</OfferName>
+    <CurrencyCode>USD</CurrencyCode>
+    <ConcurrencyMode>Compounded</ConcurrencyMode>
+    <DateValidationType>Standard</DateValidationType>
+    <PercentOfValue>0</PercentOfValue>
+    <ValidFromOffsetInMinutes>-2880</ValidFromOffsetInMinutes>
+    <ValidToOffsetInMinutes>2880</ValidToOffsetInMinutes>
+    <ContosoDiscountAmountCap>30</ContosoDiscountAmountCap>
+    <ContosoApplyBaseReduction>true</ContosoApplyBaseReduction>
+    <DiscountLines>
+      <PeriodicDiscountLineData>
+        <CategoryHierarchy>Retail Product Category</CategoryHierarchy>
+        <CategoryName>Cricket</CategoryName>
+        <DiscountOfferMethod>DiscountPercent</DiscountOfferMethod>
+        <DiscountOfferValue>30</DiscountOfferValue>
+      </PeriodicDiscountLineData>
+      <PeriodicDiscountLineData>
+        <CategoryHierarchy>Retail Product Category</CategoryHierarchy>
+        <CategoryName>Baseball Bats</CategoryName>
+        <Symbol>ea</Symbol>
+        <DiscountOfferMethod>DiscountPercent</DiscountOfferMethod>
+        <DiscountOfferValue>20</DiscountOfferValue>
+      </PeriodicDiscountLineData>
+    </DiscountLines>
+    <PriceGroups>
+      <string>ECAP01CP99</string>
+    </PriceGroups>
+  </ContosoDiscountData>
+
+  <ContosoDiscountData>
+    <OfferId>EXT-CAP02BP</OfferId>
+    <OfferName>Extensibility - discount amount cap - BestPrice.</OfferName>
+    <CurrencyCode>USD</CurrencyCode>
+    <ConcurrencyMode>BestPrice</ConcurrencyMode>
+    <DateValidationType>Standard</DateValidationType>
+    <PercentOfValue>0</PercentOfValue>
+    <ValidFromOffsetInMinutes>-2880</ValidFromOffsetInMinutes>
+    <ValidToOffsetInMinutes>2880</ValidToOffsetInMinutes>
+    <ContosoDiscountAmountCap>50</ContosoDiscountAmountCap>
+    <DiscountLines>
+      <PeriodicDiscountLineData>
+        <ItemId>0025</ItemId>
+        <Symbol>ea</Symbol>
+        <DiscountOfferMethod>DiscountPercent</DiscountOfferMethod>
+        <DiscountOfferValue>22</DiscountOfferValue>
+      </PeriodicDiscountLineData>
+      <PeriodicDiscountLineData>
+        <ItemId>0026</ItemId>
+        <Symbol>ea</Symbol>
+        <DiscountOfferMethod>DiscountPercent</DiscountOfferMethod>
+        <DiscountOfferValue>22</DiscountOfferValue>
+      </PeriodicDiscountLineData>
+      <PeriodicDiscountLineData>
+        <ItemId>0055</ItemId>
+        <Symbol>ea</Symbol>
+        <DiscountOfferMethod>DiscountAmount</DiscountOfferMethod>
+        <DiscountOfferValue>8</DiscountOfferValue>
+      </PeriodicDiscountLineData>
+      <PeriodicDiscountLineData>
+        <ItemId>0056</ItemId>
+        <Symbol>ea</Symbol>
+        <DiscountOfferMethod>DiscountAmount</DiscountOfferMethod>
+        <DiscountOfferValue>10</DiscountOfferValue>
+      </PeriodicDiscountLineData>
+      <PeriodicDiscountLineData>
+        <ItemId>0142</ItemId>
+        <Symbol>ea</Symbol>
+        <DiscountOfferMethod>OfferPrice</DiscountOfferMethod>
+        <DiscountOfferValue>19.99</DiscountOfferValue>
+      </PeriodicDiscountLineData>
+      <PeriodicDiscountLineData>
+        <CategoryHierarchy>Retail Product Category</CategoryHierarchy>
+        <CategoryName>Baseball Bats</CategoryName>
+        <Symbol>ea</Symbol>
+        <DiscountOfferMethod>DiscountPercent</DiscountOfferMethod>
+        <DiscountOfferValue>20</DiscountOfferValue>
+      </PeriodicDiscountLineData>
+    </DiscountLines>
+    <PriceGroups>
+      <string>EXTCAP02BP</string>
+    </PriceGroups>
+  </ContosoDiscountData>
+
+  <ContosoDiscountData>
+    <OfferId>EXT-CAP03CP</OfferId>
+    <OfferName>Extensibility - discount amount cap - Compounded.</OfferName>
+    <CurrencyCode>USD</CurrencyCode>
+    <ConcurrencyMode>Compounded</ConcurrencyMode>
+    <DateValidationType>Standard</DateValidationType>
+    <PercentOfValue>0</PercentOfValue>
+    <ValidFromOffsetInMinutes>-2880</ValidFromOffsetInMinutes>
+    <ValidToOffsetInMinutes>2880</ValidToOffsetInMinutes>
+    <ContosoDiscountAmountCap>50</ContosoDiscountAmountCap>
+    <DiscountLines>
+      <PeriodicDiscountLineData>
+        <ItemId>0055</ItemId>
+        <Symbol>ea</Symbol>
+        <DiscountOfferMethod>DiscountAmount</DiscountOfferMethod>
+        <DiscountOfferValue>8</DiscountOfferValue>
+      </PeriodicDiscountLineData>
+      <PeriodicDiscountLineData>
+        <CategoryHierarchy>Retail Product Category</CategoryHierarchy>
+        <CategoryName>Soccer</CategoryName>
+        <DiscountOfferMethod>DiscountPercent</DiscountOfferMethod>
+        <DiscountOfferValue>10</DiscountOfferValue>
+      </PeriodicDiscountLineData>
+    </DiscountLines>
+    <PriceGroups>
+      <string>EXTCAP03CP</string>
+    </PriceGroups>
+  </ContosoDiscountData>
+
+</ArrayOfContosoDiscountData>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DatabaseConnectionStatus</title>
+
+    <link href="DatabaseConnectionStatusDialog.scss" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'DatabaseConnectionStatusDialog'">
+        <div data-bind="dialog: {
+             title: Commerce.ViewModelAdapter.getResourceString('string_6600'),
+             visible: visible,
+             buttonClick: dialogCloseButtonClick,
+             closeOnEscButton: true,
+             buttons: [{ label: Commerce.ViewModelAdapter.getResourceString('string_1819'), operationId: Commerce.Controls.Dialog.OperationIds.CLOSE_BUTTON_CLICK, cssClass: 'cancelButton', isPrimary: true }]
+            },
+            axBubbleAttr: 'DatabaseConnectionStatusDialog_DatabaseConnectionStatusDialog'">
+
+            <div>
+                <div class="padTop20 padBottom20">
+                    <label data-bind="resx: { textContent: 'string_6601' }" for="connectionStatusBox">Connection status</label>
+                    <div class="h4" id="connectionStatusBox" data-bind="text: status" />
+                </div>
+                <div>
+                    <label data-bind="resx: { textContent: 'string_6604' }" for="serviceURLBox">Retail server</label>
+                    <div id="serviceURLBox" class="h4 wrapTextWithoutHyphen" data-bind="text: Commerce.Config.retailServerUrl, visible: isConnected" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,424 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SimpleProductDetailsView</title>
+    <link href="SimpleProductDetailsView.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="productimagepreviewtemplate" data-win-control="WinJS.Binding.Template">
+        <div class="height80 width80 fit-image">
+            <img src="#" data-win-bind="src: source Commerce.Core.Converter.AbsoluteImageUrl; alt: altText;
+                onerror: Commerce.DefaultImages.ProductSmall Commerce.CustomBindings.SetDefaultImage" />
+        </div>
+    </div>
+
+    <div id="productimageflipviewtemplate" data-win-control="WinJS.Binding.Template">
+        <div class="col width292 height320 fit-image">
+            <div class="width292 height280">
+                <img src="#" data-win-bind="src: source Commerce.Core.Converter.AbsoluteImageUrl; alt: altText;
+                    onerror: Commerce.DefaultImages.ProductLarge Commerce.CustomBindings.SetDefaultImage" />
+            </div>
+        </div>
+    </div>
+
+    <div class="fragment productdetails">
+        <div class="section main padBottom0" data-bind="resx: { ariaLabel: 'string_4454' }">
+            <div id="productDetailsViewPivot" data-bind="pivot: { onselectionchanged: viewModel.switchMode.bind(viewModel) }">
+                <div id="productDetailsViewPivotSummary" data-bind="pivotItem: { header: Commerce.ViewModelAdapter.getResourceString('string_208') }">
+                    <!-- Summary -->
+                    <div class="row marginBottom16 minheight144">
+                        <!--ko if: viewModel.productImagesViewModel.hasImages -->
+                        <div class="width144 height144 zoomElement fit-image">
+                            <img src="#"
+                                 data-bind="image: {
+                                        src: Commerce.Formatters.AbsoluteImageUrl(viewModel.productImagesViewModel.imagesForDisplay()[0].source),
+                                        alt: viewModel.productImagesViewModel.imagesForDisplay()[0].altText,
+                                        defaultSrc: Commerce.DefaultImages.ProductLarge }" />
+                        </div>
+                        <!-- /ko -->
+                        <div class="height100Percent width240 marginLeft20" data-bind="if:viewModel.product()">
+                            <div class="marginBottom08 minHeight76">
+                                <div class="h5 wrapTextWithoutHyphen" data-bind="text: viewModel.product().Name">  </div>
+                            </div>
+                            <div class="marginBottom08">
+                                <div class="h4" data-bind="text: viewModel.product().ItemId"></div>
+                            </div>
+                            <!-- ko if: Commerce.ApplicationContext.Instance.channelConfiguration.EnableProductRatingsForRetailStores -->
+                            <div class="marginBottom08">
+                                <div data-bind="template: {
+                                                    name: 'productRatingTemplate',
+                                                    data: { productRating: viewModel.productRatingViewModel.productRating() }
+                                                }"
+                                     class="h6">
+                                </div>
+                            </div>
+                            <!-- /ko -->
+                            <div class="padBottom08">
+                                <div class="h2" data-bind="formatPrice: viewModel.productPriceViewModel.productPrice"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Item -->
+                    <div class="no-shrink width292" data-bind="if: viewModel.product(), visible: !viewModel.isSelectionMode || viewModel.isVariantSelectionEnabled()">
+                        <div data-bind="if: !viewModel.productIsKit(), visible: !viewModel.productIsKit()">
+                            <!-- ko if: viewModel.isVariantSelectionEnabled -->
+                            <div class="center overlayNestedLoader" data-bind="loader: { visible: viewModel.variantSelectionViewModel().isBusy(), type: Commerce.Controls.Loader.LoaderType.Nested }"></div>
+                            <!-- /ko -->
+                            <div class="primaryBackgroundColor highContrastBorderThin width100Percent" data-bind="if: !viewModel.productIsKit(), visible: !viewModel.productIsKit()">
+                                <div class="pad20">
+                                    <!-- ko if: viewModel.isVariantSelectionEnabled -->
+                                    <div class="col grow" data-bind="with: viewModel.variantSelectionViewModel">
+                                        <!-- ko foreach: productDimensionViewModels -->
+                                        <div class="h4 secondaryFontColor" data-bind="text: dimensionTypeLabel"></div>
+                                        <select data-bind="options: productDimensionValues,
+                                            optionsText: 'Value',
+                                            optionsValue: 'RecordId',
+                                            optionsCaption: optionsCaption,
+                                            value: selectedDimensionValueRecId,
+                                            enable: isSelectionEnabled,
+                                            attr: { 'aria-label': optionsCaption }"></select>
+                                        <div class="gutter32x32"></div>
+                                        <!-- /ko -->
+                                    </div>
+                                    <!-- /ko -->
+                                    <button class="primaryButton" data-bind="resx: { textContent: 'string_911' }, click: viewModel.addProductToCartAsync.bind(viewModel), visible: !viewModel.isSelectionMode">Add item</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ko if: viewModel.productIsKit() -->
+                        <h2 data-bind="resx: { textContent: 'string_822' }">Included Products</h2>
+                        <!-- ko if: viewModel.isVariantSelectionEnabled() && !viewModel.variantSelectionViewModel().kitComponentsLoaded() -->
+                        <div class="height100Percent padBottom92 padRight48 blankBackgroundNestedLoader center">
+                            <div class="center" data-bind="loader: { visible: viewModel.variantSelectionViewModel().isBusy(), type: Commerce.Controls.Loader.LoaderType.Nested }"></div>
+                        </div>
+                        <!-- /ko --> <!-- Ending if binding on viewModel.isVariantSelectionEnabled() && !viewModel.variantSelectionViewModel().kitComponentsLoaded()-->
+                        <!-- ko if: viewModel.isVariantSelectionEnabled() &&  viewModel.variantSelectionViewModel().kitComponentsLoaded() -->
+                        <div data-bind="with: viewModel.variantSelectionViewModel">
+                            <div class="center overlayNestedLoader" data-bind="loader: { visible: isBusy , type: Commerce.Controls.Loader.LoaderType.Nested }"></div>
+                            <div class="col marginTop20">
+                                <!-- ko foreach: componentInSlotViewModels -->
+                                <div class="col grow primaryPanelBackgroundColor highContrastBorderThin">
+                                    <div class="row padLeft20 padRight20 padTop20 padBottom12 shrink">
+                                        <div class="marginRight12 no-shrink height72 width72 fit-image">
+                                            <img src="#" data-bind="attr: { src: Commerce.Formatters.ImageUrlFormatter(image().source), alt: image().altText }, setImageOnError: Commerce.DefaultImages.ProductSmall" />
+                                        </div>
+                                        <div class="col ellipsis padTop12 grow">
+                                            <a href="#" class="h4" data-bind="text: componentName, click: viewComponentDetails">Component name</a>
+                                            <div class="h4 secondaryFontColor" data-bind="text: componentItemId"></div>
+                                            <div class="row">
+                                                <div class="col grow">
+                                                    <div class="h4 secondaryFontColor" data-bind="text: quantityWithUnitOfMeasure"></div>
+                                                </div>
+                                                <div class="textRight">
+                                                    <div class="h3" data-bind="text: additionalCharge"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="padLeft20 padRight20">
+                                        <!-- ko if: isVariantSelectionEnabled -->
+                                        <div data-bind="with: variantSelectionViewModel">
+                                            <!-- ko foreach: productDimensionViewModels -->
+                                            <label data-bind="text: dimensionTypeLabel" for="dimensionSelector"></label>
+                                            <div class="padBottom20">
+                                                <select id="dimensionSelector" data-bind="options: productDimensionValues,
+                                                        optionsText: 'Value',
+                                                        optionsValue: 'RecordId',
+                                                        optionsCaption: optionsCaption,
+                                                        value: selectedDimensionValueRecId,
+                                                        enable: isSelectionEnabled"></select>
+                                            </div>
+                                            <!-- /ko --> <!-- Ending for each binding on productDimensionViewModels -->
+                                        </div>
+                                        <!-- /ko --> <!-- Ending if binding on isVariantSelectionEnabled -->
+                                    </div>
+
+                                    <div role="button" aria-labelledby="changeProductButton" class="centerY marginBottom12 height52 padLeft20" data-bind="click: selectSubstituteComponentAsync,  visible: areSubstitutesAvailable" tabindex="0">
+                                        <button id="changeProductButton" data-bind="resx: { ariaLabel: 'string_821' }, enable: isComponentSelectionEnabled" class="iconProduct"></button>
+                                        <div class="marginLeft12" tabindex="-1">
+                                            <div class="h4 margin0" data-bind="resx: { textContent: 'string_821' }">Change product</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Hides the element for the last item. -->
+                                <div class="gutter40x40" data-bind="visible: $parent.componentInSlotViewModels().length > ($index() + 1)"></div>
+                                <!-- /ko --> <!-- Ending for each over componentInSlotViewModels -->
+                            </div>
+                        </div>
+                        <!-- /ko --> <!-- Ending if binding on viewModel.isVariantSelectionEnabled() &&  viewModel.variantSelectionViewModel().kitComponentsLoaded() -->
+                        <!-- /ko --> <!-- Ending if binding on productIsKit -->
+                    </div>
+                    <!-- end Add Item -->
+                    <!-- end Summary -->
+                </div>
+
+                <!-- ko with: viewModel.productImagesViewModel -->
+                <div id="productDetailsViewPivotImage" data-bind="pivotItem: { header: Commerce.ViewModelAdapter.getResourceString('string_934') }">
+
+                    <!--Retry data retrieval-->
+                    <div data-bind="visible: !isBusy() && dataRetrievalFailed()" class="center col">
+                        <div class="h4" data-bind="resx: { textContent: 'string_839' }"></div>
+                        <a href="#" class="h4" data-bind="click: refreshAsync, resx: { textContent: 'string_8095' }"></a>
+                    </div>
+
+                    <!-- Loader -->
+                    <div class="center" data-bind="loader: { visible: isBusy, type: Commerce.Controls.Loader.LoaderType.Nested }"></div>
+
+                    <!-- Images -->
+                    <div class="width292 col imageDirection marginLeft20" data-bind="visible: hasContent">
+                        <div class="col no-shrink height320">
+                            <div class="height280">
+                                <div class="noMargin height320" id="productimageflipview"
+                                     data-win-control="WinJS.UI.FlipView"
+                                     data-win-options="{
+                                            itemTemplate: select('#productimageflipviewtemplate'),
+                                            orientation: 'horizontal'
+                                        }"
+                                     data-bind="winControl: {
+                                            itemDataSource: imagesForDisplay,
+                                            selectListViewItem: { listViewId: '#productimagepreviewviewlist'}
+                                        },
+                                        resx: { ariaLabel: 'string_926' }">
+                                    <!-- Product image -->
+                                </div>
+                            </div>
+                            <div class="padRight05 padBottom05 overLayZIndex textRight" data-bind="visible: isImageExpansionAvailable">
+                                <button class="iconZoomIn secondaryFontColor" data-bind="click: selectProductImage, resx: { ariaLabel: 'string_928' }"></button>  <!-- View image -->
+                            </div>
+                        </div>
+                        <div class="gutter12x12"></div>
+                        <div class="col no-shrink">
+                            <!-- Product images -->
+                            <div class="noMargin browseGrid plainSelectionBorder">
+                                <div id="productimagepreviewviewlist" class="win-selectionstylefilled browseGrid maxHeight120"
+                                        data-win-control="WinJS.UI.ListView" 
+                                        data-win-options="{
+                                        selectionMode: 'single',
+                                        tapBehavior: 'directSelect',
+                                        itemTemplate: select('#productimagepreviewtemplate'),
+                                        layout: {type: WinJS.UI.GridLayout}
+                                    }"
+                                     data-bind="winControl: {
+                                        forcelayout: onImagesVisible,
+                                        itemDataSource: imagesForDisplay,
+                                        flipItem: { flipViewId: '#productimageflipview' }
+                                    },
+                                    resx: { ariaLabel: 'string_927' }">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end Images -->
+                </div>
+                <!-- /ko --> <!-- End knockout with viewModel.productImagesViewModel -->
+
+                <!-- ko with: viewModel.productAttributesViewModel -->
+                <div id="productDetailsViewPivotSpecification" data-bind="pivotItem: { header: Commerce.ViewModelAdapter.getResourceString('string_801') }">
+
+                    <!--Retry data retrieval-->
+                    <div data-bind="visible: !isBusy() && dataRetrievalFailed()" class="center col blankBackgroundNestedLoader">
+                        <div class="h4" data-bind="resx: { textContent: 'string_839' }"></div>
+                        <a href="#" class="h4" data-bind="click: refreshAsync, resx: { textContent: 'string_8095' }"></a>
+                    </div>
+
+                    <!-- Loader -->
+                    <div class="center" data-bind="loader: { visible: isBusy, type: Commerce.Controls.Loader.LoaderType.Nested }"></div>
+
+                    <!-- Specification -->
+                    <div class="padBottom60 col marginLeft20" data-bind="visible: hasContent">
+
+                        <div class="padRight20 scrollX scrollY grow" tabindex="0">
+                            <div data-bind="foreach: { data: attributes, as: 'attribute' }">
+                                <div class="marginBottom12 marginTop05 secondaryBackgroundColor highContrastRowLine height01"></div>
+                                <div class="row padTop12 padBottom12">
+                                    <div class="ratio5">
+                                        <div data-bind="text: attribute.name" class="h6 wrapText secondaryFontColor"></div>
+                                    </div>
+                                    <div>
+                                        <div data-bind="text: attribute.textValue" class="h4 wrapText"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="marginBottom12 marginTop05 secondaryBackgroundColor highContrastRowLine height01"></div>
+                        </div>
+                    </div>
+                    <!-- end Specification -->
+                </div>
+                <!-- /ko --> <!-- End binding with viewModel.productAttributesViewModel -->
+
+                <div id="productDetailsViewPivotDescription" data-bind="pivotItem: { header: Commerce.ViewModelAdapter.getResourceString('string_824') }">
+                    <!-- Description -->
+                    <div class="col width300 marginLeft20" data-bind="if: viewModel.product()">
+                        <div class="padBottom12 scrollY grow">
+                            <div class="h4 wrapText" data-bind="text: viewModel.product().Description"></div>
+                        </div>
+                    </div>
+                    <!--end Description -->
+                </div>
+
+                <!-- ko with: viewModel.similarLooksProductsViewModel -->
+                <div id="productDetailsViewPivotSimilarLooksProducts" class="browseGrid" data-bind="pivotItem: { headerResx: 'string_805' /* Similar looks products */ }">
+
+                    <!--Retry data retrieval-->
+                    <div data-bind="visible: !isBusy() && dataRetrievalFailed()" class="center col blankBackgroundNestedLoader">
+                        <div class="h4" data-bind="resx: { textContent: 'string_839' /* Content not available */ }"></div>
+                        <a href="#" class="h4" data-bind="click: refreshAsync, resx: { textContent: 'string_8095' /* Try again */ }"></a>
+                    </div>
+
+                    <!-- Loader -->
+                    <div class="center" data-bind="loader: { visible: isBusy, type: Commerce.Controls.Loader.LoaderType.Nested }"></div>
+
+                    <!--Similar Looks products-->
+                    <div class="col marginLeft20 height100Percent width100Percent padRight12" data-bind="visible: hasContent">
+
+                        <!-- ko if: !isBusy() && !dataRetrievalFailed() -->
+                        <div class="height20">
+                            <a href="#" class="h4" data-bind="click: seeAllSimilarLooksProducts, resx: { textContent: 'string_809' /* See all */ },
+                                visible: areMoreSimilarLooksProducts"></a>
+                        </div>
+                        <div id="simpleLooksProductsList"
+                             class="noMargin padRight20"
+                             data-bind="dataList: {
+                                itemDataSource: similarLooksProductsForDisplay,
+                                defaultListType: Commerce.Controls.DataList.ListType.Card,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                                itemInvoked: selectSimilarLookProduct,
+                                ariaLabelResx: 'string_805', /* Similar looks products */
+                                itemTemplates: [
+                                    {
+                                        templateId: 'productSearchResultSmallCardTemplatePhone',
+                                        cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                        deviceType: Commerce.Controls.DataList.DeviceType.Phone
+                                    }
+                                ]
+                            }">
+                        </div>
+                        <!-- /ko --> <!-- End knockout if: !isBusy() && !dataRetrievalFailed() -->
+
+                    </div>
+                    <!-- end Similar Looks products -->
+                </div>
+                <!-- /ko --> <!-- End knockout with viewModel.similarLooksProductsViewModel -->
+                <!-- ko with: viewModel.relatedProductsViewModel -->
+                <div id="productDetailsViewPivotRelatedProducts" class="browseGrid" data-bind="pivotItem: { header: Commerce.ViewModelAdapter.getResourceString('string_802') }">
+
+                    <!--Retry data retrieval-->
+                    <div data-bind="visible: !isBusy() && dataRetrievalFailed()" class="center col blankBackgroundNestedLoader">
+                        <div class="h4" data-bind="resx: { textContent: 'string_839' }"></div>
+                        <a href="#" class="h4" data-bind="click: loadAsync, resx: { textContent: 'string_8095' }"></a>
+                    </div>
+
+                    <!-- Loader -->
+                    <div class="center" data-bind="loader: { visible: isBusy, type: Commerce.Controls.Loader.LoaderType.Nested }"></div>
+
+                    <!-- Related Products -->
+                    <div class="col marginLeft20 height100Percent width100Percent padRight12" data-bind="visible: hasContent">
+
+                        <!-- ko if: !isBusy() && !dataRetrievalFailed() -->
+                        <div class="height20">
+                            <a href="#" class="h4" data-bind="click: seeAllRelatedProductsAsync, resx: { textContent: 'string_809' },
+                                visible: areMoreRelatedProductsAvailable"></a>
+                        </div>
+                        <div id="relatedProductsList"
+                             class="noMargin padRight20"
+                             data-bind="dataList: {
+                                itemDataSource: relatedProducts,
+                                defaultListType: Commerce.Controls.DataList.ListType.Card,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                                itemInvoked: selectRelatedProduct,
+                                ariaLabelResx: 'string_802',
+                                itemTemplates: [
+                                    {
+                                        templateId: 'productSearchResultSmallCardTemplatePhone',
+                                        cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                        deviceType: Commerce.Controls.DataList.DeviceType.Phone
+                                    }
+                                ]
+                                }">
+                        </div>
+                        <!-- /ko --> <!-- End knockout if: !isBusy() && !dataRetrievalFailed() -->
+                    </div>
+                    <!-- end Related Products -->
+                </div>
+                <!-- /ko --> <!-- End knockout with viewModel.relatedProductsViewModel -->
+
+                <!-- ko with: viewModel.recommendedProductsViewModel -->
+                <div id="productDetailsViewPivotRecommendedProducts" class="browseGrid" data-bind="pivotItem: { headerResx: 'string_804' }">
+
+                    <!--Retry data retrieval-->
+                    <div data-bind="visible: !isBusy() && dataRetrievalFailed()" class="center col blankBackgroundNestedLoader">
+                        <div class="h4" data-bind="resx: { textContent: 'string_839' }"></div>
+                        <a href="#" class="h4" data-bind="click: refreshAsync, resx: { textContent: 'string_8095' }"></a>
+                    </div>
+
+                    <!-- Loader -->
+                    <div class="center" data-bind="loader: { visible: isBusy, type: Commerce.Controls.Loader.LoaderType.Nested }"></div>
+
+                    <!--Recommended products-->
+                    <div class="col marginLeft20 height100Percent width100Percent padRight12" data-bind="visible: hasContent">
+
+                        <!-- ko if: !isBusy() && !dataRetrievalFailed() -->
+                        <div class="height20">
+                            <a href="#" class="h4" data-bind="click: seeAllRecommendedProducts, resx: { textContent: 'string_809' },
+                                visible: areMoreRecommendedProductsAvailable"></a>
+                        </div>
+                        <div id="recommendedProductsList"
+                             class="noMargin padRight20"
+                             data-bind="dataList: {
+                                itemDataSource: recommendedProductsForDisplay,
+                                defaultListType: Commerce.Controls.DataList.ListType.Card,
+                                selectionModes: Commerce.Controls.DataList.SelectionMode.InvokeOnly,
+                                itemInvoked: selectRecommendedProduct,
+                                ariaLabelResx: 'string_804',
+                                itemTemplates: [
+                                    {
+                                        templateId: 'productSearchResultSmallCardTemplatePhone',
+                                        cardType: Commerce.Controls.DataList.CardType.Stretchable,
+                                        deviceType: Commerce.Controls.DataList.DeviceType.Phone
+                                    }
+                                ]
+                            }">
+                        </div>
+                        <!-- /ko --> <!-- End knockout if: !isBusy() && !dataRetrievalFailed() -->
+
+                    </div>
+                    <!-- end Recommended products -->
+                </div>
+                <!-- /ko --> <!-- End knockout with viewModel.recommendedProductsViewModel -->
+
+            </div>
+        </div>
+
+        <div id="SimpleProductDetailsViewPhonecommandAppBar" data-bind="appBar: { extensionCommands: viewModel.extensionCommandViewModels }">
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAdd',
+                id:'SimpleProductDetailsViewPhone_addProductToSale',
+                onclick: viewModel.addProductToCartAsync.bind(viewModel),
+                labelResx: 'string_911',
+                disabled: viewModel.isBusy,
+                visible: !viewModel.isSelectionMode }"></button><!-- Add item-->
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAccept',
+                id:'inventoryLookupCommand',
+                onclick: viewModel.addProductToCallbackPage.bind(viewModel),
+                labelResx: 'string_6405',
+                enabled: viewModel.product(),
+                visible: viewModel.isSelectionMode }"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconBuy',
+                id:'SimpleProductDetailsViewPhone_sellProductNow',
+                onclick: viewModel.sellNowAsync.bind(viewModel),
+                labelResx: 'string_922',
+                disabled: viewModel.isBusy,
+                visible: !viewModel.isSelectionMode}"></button><!-- Sell now-->
+        </div>
+    </div>
+</body>
+</html>

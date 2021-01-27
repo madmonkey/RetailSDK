@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PromptRegisterInventoryDocumentSerialNumberDialog</title>
+    <link href="PromptRegisterInventoryDocumentSerialNumberDialog.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-bind="customControlInternal: 'PromptRegisterInventoryDocumentSerialNumberDialog'">
+        <div data-bind="dialog: {
+                title: title,
+                visible: visible,
+                buttonClick: buttonClickHandler,
+                showProgressIndicator: indeterminateWaitVisible,
+                hideOnEscape: true,
+                buttons: [
+                    {
+                        label: Commerce.ViewModelAdapter.getResourceString('string_12812'), /* Skip */
+                        operationId: Commerce.Controls.Dialog.OperationIds.CANCEL_BUTTON_CLICK,
+                        isPrimary: false,
+                    },
+                ],
+                dialogCloseButtonClick: closeClickHandler
+            },
+            axBubbleAttr: 'PromptRegisterInventoryDocumentSerialNumberDialog_PromptRegisterInventoryDocumentSerialNumberDialog',attr: { 'aria-label': title() }">
+            <!-- Dialog content -->
+            <div class="PromptRegisterInventoryDocumentSerialNumberDialogContent">
+                <!-- Product information -->
+                <div class="borderBottomThin" data-bind="template: {
+                    name: 'inventoryDocumentLineProductInformationTemplate',
+                    data: {
+                        primaryImageUrl: itemPrimaryImageUrl(),
+                        itemName: itemName(),
+                        itemId: itemId(),
+                        productDimensionsDescription: productDimensionsDescription() }}"></div>
+
+                <div class="col marginTop12 marginBottom8">
+                    <h4 class="marginBottom4 secondaryFontColor" data-bind="resx: { textContent: 'string_12800' }"></h4><!--Serial number-->
+                    <div class="row centerY clickable" role="button" tabindex="0" data-bind="click: onRegisterSerialNumber, axBubbleAttr: 'inventoryDocumentShippingAndReceivingView_registerSerialNumber'">
+                        <div class="col center width16 height16 marginRight8">
+                            <div class="h2 iconNumberSymbol icon-15x15 accentColor" data-bind="resx: { ariaLabel: 'string_12804' }"></div><!--Manage serial number-->
+                        </div>
+                        <h4 class="accentColor" data-bind="resx: { textContent: 'string_12804' }"></h4><!--Manage serial number-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

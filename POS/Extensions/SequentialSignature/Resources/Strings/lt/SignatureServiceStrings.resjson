@@ -1,0 +1,8 @@
+{
+  "Signature_service_error": "Užbaigiant operaciją įvyko klaida. Pasirašymo tarnyba neparengta. Kreipkitės į sistemos administratorių.",
+  "_Signature_service_error.comment": "Signature service readiness check failed.",
+  "Fiscal_transaction_parsing_failed": "Užbaigiant operaciją įvyko klaida. Susietoje finansinėje operacijoje yra netinkamo formato duomenų. Kreipkitės į sistemos administratorių.",
+  "_Fiscal_transaction_parsing_failed.comment": "Fiscal transaction parsing failed error message.",
+  "Signature_recovery_error": "Atkuriant paskutinės operacijos skaitmeninį parašą įvyko klaida. Gali būti, kad autonominė duomenų bazė nesinchronizuota. Kreipkitės į sistemos administratorių.",
+  "_Signature_recovery_error.comment": "Previous transaction digital signature recovery failed."
+}

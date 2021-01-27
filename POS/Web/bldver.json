@@ -1,0 +1,9 @@
+{
+    "publisher":  "Microsoft Corporation",
+    "version":  {
+                    "major":  "9",
+                    "minor":  "23",
+                    "build":  "20226",
+                    "revision":  "12"
+                }
+}

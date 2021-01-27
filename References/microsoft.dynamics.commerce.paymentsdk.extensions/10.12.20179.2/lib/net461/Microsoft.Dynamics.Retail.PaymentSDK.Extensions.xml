@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Dynamics.Retail.PaymentSDK.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider">
+            <summary>
+            Cryptographic Service Provider aka CSP
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.hCSP">
+            <summary>
+            Handle of a CSP
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.hKey">
+            <summary>
+            Handle of a private/public key pair assotiated with CSP
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.Handle">
+            <summary>
+            Handle of a CSP
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.ContainerName">
+            <summary>
+            CSP container name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.ProviderName">
+            <summary>
+            CSP provider name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.ProviderType">
+            <summary>
+            CSP provider type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.KeyType">
+            <summary>
+            Type of private/public key pair assotiated with CSP.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.KEY_PROV_INFO">
+            <summary>
+            Gets structure with information about a key container within CSP
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.#ctor(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the Cryptographic Service Provider class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Initializes a new instance of the Cryptographic Service Provider class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.GenerateKeyPair(System.Int32,System.Int32)">
+            <summary>
+            Generates new private/public key pair.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.ExportPublicKeyInfo(System.IntPtr@,System.Int32@,System.Collections.Generic.IList{System.Runtime.InteropServices.GCHandle})">
+            <summary>
+            Exports the public key information.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.disposed">
+            <summary>
+            Track whether dispose has been called.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.DisposeComponents">
+            <summary>
+            Releases unmanaged and - optionally - managed resources
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.CryptographicServiceProvider.Finalize">
+            <summary>
+            Releases unmanaged resources and performs other cleanup operations before the
+            CryptographicServiceProvider is reclaimed by garbage collection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.NativeMethods.ThrowExceptionForLastError">
+            <summary>
+            Throws the exception for last Win32 error.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.Internal.Utilities.PinObject(System.Object,System.Collections.Generic.IList{System.Runtime.InteropServices.GCHandle})">
+            <summary>
+            Pins the object and returns the address of the object as an IntPtr.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.X509CertificateExtensions">
+            <summary>
+            Extensions for <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.X509CertificateExtensions.CreateSelfSignedCertificate(System.Security.Cryptography.X509Certificates.X500DistinguishedName,System.DateTime,System.DateTime,System.Byte[])">
+            <summary>
+            Creates the self signed certificate.
+            </summary>
+            <param name="certificateName">Name of the certificate.</param>
+            <param name="startTime">The start time.</param>
+            <param name="endTime">The end time.</param>
+            <param name="serialNumber">The serial number.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.DynamicsOnlineConnector.Portable.Cryptography.X509CertificateExtensions.CreateAndSignCertificate(System.Security.Cryptography.X509Certificates.X509Certificate2,System.Security.Cryptography.X509Certificates.X500DistinguishedName,System.DateTime,System.DateTime,System.Byte[])">
+            <summary>
+            Creates the and sign certificate.
+            </summary>
+            <param name="rootCertificate">The root certificate.</param>
+            <param name="certificateName">Name of the certificate.</param>
+            <param name="startTime">The start time.</param>
+            <param name="endTime">The end time.</param>
+            <param name="serialNumber">The serial number.</param>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Portable.DesktopExtensions">
+            <summary>
+            Desktop extensions.
+            </summary>
+            <remarks>
+            Following code (portable part of it) was copied into PortableExtensions.cs. If you making changes here, please update that file as well.
+            </remarks>
+            <seealso cref="T:Microsoft.Dynamics.Retail.PaymentSDK.Portable.IExtensions" />
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.DesktopExtensions.GetCreditCardDetails(Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentProperty[],System.Collections.Generic.Dictionary{System.String,Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentProperty}@)">
+            <summary>
+            Gets the credit card details.
+            </summary>
+            <param name="requiredInteractionProperties">The required interaction properties.</param>
+            <param name="interactionProperties">The interaction properties.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.DesktopExtensions.EncryptData(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Encrypts the data.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="algorithm">The algorithm.</param>
+            <param name="invariant">The invariant.</param>
+            <param name="context">The context.</param>
+            <param name="regKey">The reg key.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">
+            data - EncryptData: 'data' parameter is null
+            or
+            algorithm - EncryptData: 'algorithm' parameter is null or blank
+            or
+            invariant - EncryptData: 'invariant' parameter is null or blank
+            or
+            context - EncryptData: 'context' parameter is null or blank
+            or
+            regKey - EncryptData: 'regKey' parameter is null or blank
+            </exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.DesktopExtensions.DecryptData(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Decrypts the data.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="algorithm">The algorithm.</param>
+            <param name="invariant">The invariant.</param>
+            <param name="context">The context.</param>
+            <param name="regKey">The reg key.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">
+            data - DecryptData: 'data' parameter is null or blank
+            or
+            algorithm - DecryptData: 'algorithm' parameter is null or blank
+            or
+            invariant - DecryptData: 'invariant' parameter is null or blank
+            or
+            context - DecryptData: 'context' parameter is null or blank
+            or
+            regKey - DecryptData: 'regKey' parameter is null or blank
+            </exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.DesktopExtensions.GetX509CertificateExport(System.String,System.String)">
+            <summary>
+            Gets the X509 certificate export.
+            </summary>
+            <param name="certificatePrivateKey">The certificate private key.</param>
+            <param name="certificatePassword">The certificate password.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.DesktopExtensions.SignWithX509Certificate(System.String,System.String,System.Byte[])">
+            <summary>
+            Signs the with X509 certificate.
+            </summary>
+            <param name="certificatePrivateKey">The certificate private key.</param>
+            <param name="certificatePassword">The certificate password.</param>
+            <param name="data">The data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.DesktopExtensions.GetSecureGuid">
+            <summary>
+            Gets the secure unique identifier.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.DesktopExtensions.GenerateCerificate(System.String@,System.String@,System.String@)">
+            <summary>
+            Generates the cerificate.
+            </summary>
+            <param name="password">The password.</param>
+            <param name="privateKey">The private key.</param>
+            <param name="publicKey">The public key.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.DesktopExtensions.AsyncWait(System.IAsyncResult,System.Int32)">
+            <summary>
+            Asynchronouses the wait.
+            </summary>
+            <param name="asyncResult">The asynchronous result.</param>
+            <param name="timeout">The timeout.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">asyncResult</exception>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.DesktopExtensions.FetchDesktopConnectors(System.Collections.Generic.IList{System.Reflection.Assembly})">
+            <summary>
+            Fetches the desktop connectors.
+            </summary>
+            <param name="assemblies">The assemblies.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.DesktopExtensions.GetConnectorsFromDirectory(System.String)">
+            <summary>
+            Gets the connectors from directory.
+            </summary>
+            <param name="connectorPathValue">The connector path value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.DesktopExtensions.LoadAssemblyFromPath(System.String)">
+            <summary>
+            Loads the assembly from path.
+            </summary>
+            <param name="assemblyPath">The assembly path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.DesktopExtensions.ComputeHashSHA256(System.Byte[],System.Byte[])">
+            <summary>
+            Computes the hash sh a256.
+            </summary>
+            <param name="keyData">The key data.</param>
+            <param name="message">The message.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">keyData</exception>
+        </member>
+        <member name="T:Microsoft.Dynamics.Retail.PaymentSDK.Portable.GenericMetadataForm">
+            <summary>
+            Generic metdata form.
+            </summary>
+            <seealso cref="T:System.Windows.Forms.Form" />
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.GenericMetadataForm.#ctor(Microsoft.Dynamics.Retail.PaymentSDK.Portable.PaymentProperty[],System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Dynamics.Retail.PaymentSDK.Portable.GenericMetadataForm"/> class.
+            </summary>
+            <param name="properties">The properties.</param>
+            <param name="title">The title.</param>
+            <param name="instruction">The instruction.</param>
+        </member>
+        <member name="F:Microsoft.Dynamics.Retail.PaymentSDK.Portable.GenericMetadataForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.GenericMetadataForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Microsoft.Dynamics.Retail.PaymentSDK.Portable.GenericMetadataForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

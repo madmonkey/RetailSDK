@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Templates</title>
+    <link href="EmployeeTemplate.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Card style list for store employees selection dialog -->
+    <script id="storeEmployeesGridTemplate" type="text/html">
+        <div class="storeEmployeeItemContainer">
+            <div class="accentBackground">
+                <div class="row centerY">
+                    <div class="bottomLeft grow pad12">
+                        <div class="margin0 h5 ellipsis maxWidth220" data-bind="text: Name"></div>
+                        <div class="margin0 h6 textTransformNone opacity60 ellipsis maxWidth220" data-bind="text: StaffId"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Card style list for store task list selection dialog -->
+    <script id="storeTasklistsGridTemplate" type="text/html">
+        <div class="storeTasklistItemContainer">
+            <div>
+                <div class="row centerY">
+                    <div class="h6 iconTrackers icon-24x24 icon height48 width48 center accentColorImportant marginRight8"></div>
+                    <div class="grow marginTop16 marginBottom16 maxWidth192">
+                        <div class="h4 primaryFontColor ellipsis marginBottom4" data-bind="text: Name"></div>
+                        <div class="ellipsis">
+                            <span class="h6 secondaryFontColor inlineBlock tasksCount" data-bind="text: Commerce.StringExtensions.format((AllTasksCount > 1 ?
+                                                                                                        Commerce.ViewModelAdapter.getResourceString('string_7779') /* {0} tasks */ :
+                                                                                                        Commerce.ViewModelAdapter.getResourceString('string_7787') /* {0} task */),
+                                                                                                        Commerce.Formatters.NumberFormatter(AllTasksCount))"></span>
+                            <span class="h6 secondaryFontColor inlineBlock marginLeft8 marginRight8">|</span>
+                            <span class="h6 secondaryFontColor inlineBlock" data-bind="text: Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_7780') /* Created {0} */,
+                                                                                             Commerce.Formatters.DateWithoutLocalTime(StartDateTime))"></span>
+                        </div>
+                    </div>
+                    <div class="h6 iconChevronRight icon-24x24 icon height48 width48 center accentColorImportant"></div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Card style list for get store customer dialog -->
+    <script id="customersGridTemplate" type="text/html">
+        <!-- ko if: AccountNumber -->
+        <div class="customerItemContainer">
+            <div>
+                <div class="row centerY marginLeft12">
+                    <div data-bind="userImageOrInitials: { name: FullName, picture: Commerce.Formatters.CustomerImage($data) }, axBubbleAttr: 'customerAccountUserInfo_userImage'" class="height32 width32 circleBorder h5"></div>
+                    <div class="grow marginTop16 marginBottom16 maxWidth192 marginLeft12">
+                        <div class="h4 primaryFontColor ellipsis marginBottom4" data-bind="text: FullName"></div>
+                        <div class="ellipsis">
+                            <span class="h6 secondaryFontColor inlineBlock" data-bind="text: Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_7790') /* ID: {0} */, AccountNumber)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </script>
+
+    <!-- Task management task detail view -->
+    <script id="taskManagementTaskDetailTemplate" type="text/html">
+        <div class="taskManagementDetail" data-bind="with: selectedItemDisplay">
+            <!--Title + Status-->
+            <div class="margin12 taskTitleStatus">
+                <!-- ko if: $parent.isInPhoneView -->
+                <div class="h2 wrapText primaryFontColor marginBottom8 maxHeight64 ellipsis" data-bind="text: Name"></div>
+                <!-- /ko -->
+                <!-- ko ifnot: $parent.isInPhoneView -->
+                <div class="h3 wrapText primaryFontColor marginBottom8 maxHeight56 ellipsis" data-bind="text: Name"></div>
+                <!-- /ko -->
+                <div class="row centerY">
+                    <!-- ko if: StatusValue === Commerce.Proxy.Entities.ChecklistTaskStatus.NotStarted -->
+                    <div class="h6 iconTaskStateNotStarted icon-16x16 icon marginRight8 accentColorImportant"></div>
+                    <!-- /ko -->
+                    <!-- ko if: StatusValue === Commerce.Proxy.Entities.ChecklistTaskStatus.InProgress -->
+                    <div class="h6 iconTaskStateProcess icon-16x16 icon marginRight8 accentColorImportant"></div>
+                    <!-- /ko -->
+                    <!-- ko if: StatusValue === Commerce.Proxy.Entities.ChecklistTaskStatus.Completed -->
+                    <div class="h6 iconTaskStateCompleted icon-16x16 icon marginRight8 accentColorImportant"></div>
+                    <!-- /ko -->
+                    <div class="h6 secondaryFontColor" data-bind="text: LocalizedStatus"></div>
+                    <!-- ko if: CompletionDateTime  -->
+                    <div class="h6 secondaryFontColor">&nbsp;-&nbsp;</div>
+                    <!-- /ko -->
+                    <div class="h6 secondaryFontColor"
+                         data-bind="text: Commerce.Formatters.DateWithLocalTime(CompletionDateTime)"></div>
+                </div>
+            </div>
+            <div data-bind="css: { 'primaryPanelBackgroundColor highContrastBorderThin margin12 marginTop16 padTop12 padBottom12': $parent.isInPhoneView }">
+                <!--Assigned to-->
+                <!-- ko if: AssignedToWorkerName  -->
+                <div class="marginRight12 marginBottom12 marginLeft12">
+                    <div class="h4 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_7727' /* Assigned to */ }"></div>
+                    <div class="row centerY">
+                        <div data-bind="userImageOrInitials: { name: AssignedToWorkerName, picture: AssignedToWorkerImageUri }, axBubbleAttr: 'assignedToUserInfo_userImage'" class="height32 width32 circleBorder h5"></div>
+                        <div class="h4 primaryFontColor marginLeft12" data-bind="text: AssignedToWorkerName"></div>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!--Associated checklist-->
+                <div class="marginRight12 marginBottom12 marginLeft12">
+                    <div class="h4 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_7720' /* Task list */ }"></div>
+                    <div class="h4 primaryFontColor" data-bind="text: ChecklistName"></div>
+                </div>
+
+                <!--Instructions-->
+                <!-- ko if: Instructions -->
+                <div class="marginRight12 marginBottom12 marginLeft12">
+                    <div class="h4 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_7721' /* Instructions */ }"></div>
+                    <div class="h4 primaryFontColor maxHeight180 wrapTextWithLineBreaks scroll" data-bind="text: Instructions"></div>
+                </div>
+                <!-- /ko -->
+                <!--Checklist assigned to-->
+                <div class="marginRight12 marginBottom12 marginLeft12">
+                    <div class="h4 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_7751' /* Task list assigned to */ }"></div>
+                    <!-- ko if: ChecklistAssignedToChannelName -->
+                    <div class="row centerY">
+                        <div class="h4 primaryFontColor" data-bind="text: ChecklistAssignedToChannelName"></div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: ChecklistAssignedToWorkerName -->
+                    <div class="row centerY">
+                        <div data-bind="userImageOrInitials: { name: ChecklistAssignedToWorkerName, picture: ChecklistAssignedToWorkerImageUri }, axBubbleAttr: 'checklistAssignedToUserInfo_userImage'" class="height32 width32 circleBorder h5"></div>
+                        <div class="h4 primaryFontColor marginLeft12" data-bind="text: ChecklistAssignedToWorkerName"></div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+
+                <!--contact Person-->
+                <!-- ko if: ContactPersonName  -->
+                <div class="marginRight12 marginBottom12 marginLeft12">
+                    <div class="h4 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_7745' /* Contact person */ }"></div>
+                    <div class="row centerY">
+                        <div data-bind="userImageOrInitials: { name: ContactPersonName, picture: ContactPersonImageUri }, axBubbleAttr: 'contactPersonIUserInfo_userImage'" class="height32 width32 circleBorder h5"></div>
+                        <div class="h4 primaryFontColor marginLeft12" data-bind="text: ContactPersonName"></div>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!--Task link-->
+                <!-- ko if: DeepLinkTypeValue === Commerce.Proxy.Entities.ChecklistTaskDeepLinkType.Url  -->
+                <div class="marginRight12 marginBottom12 marginLeft12">
+                    <div class="h4 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_7750' /* Task link - URL */ }"></div>
+                    <a class="h4 ellipsis" href="#" target="_blank" data-bind="text: DeepLink, attr: { href: DeepLink }">Task link</a>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: DeepLinkTypeValue === Commerce.Proxy.Entities.ChecklistTaskDeepLinkType.CustomerAccount  -->
+                <!-- ko if: DeepLink  -->
+                <div class="marginRight12 marginBottom12 marginLeft12">
+                    <div class="h4 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_7769' /* Task link - Customer account */ }"></div>
+                    <div class="row centerY clickable outlineFocus" tabindex="0" role="button" data-bind="click: $root.viewModel.navigateToCustomer.bind($root.viewModel, DeepLink)">
+                        <div data-bind="userImageOrInitials: { name: DeepLinkCustomerAccountName, picture: DeepLinkCustomerAccountImageUri }, axBubbleAttr: 'customerAccountIUserInfo_userImage'" class="height32 width32 circleBorder h5"></div>
+                        <div class="grow marginLeft12">
+                            <div class="h4 primaryFontColor" data-bind="text: DeepLinkCustomerAccountName"></div>
+                            <div class="ellipsis">
+                                <span class="h6 secondaryFontColor inlineBlock" data-bind="text: Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_7790') /* ID: {0} */, DeepLink)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko if: DeepLinkTypeValue === Commerce.Proxy.Entities.ChecklistTaskDeepLinkType.PosOperation  -->
+                <div class="marginRight12 marginBottom12 marginLeft12">
+                    <div class="h4 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_7770' /* Task link - Pos operation */ }"></div>
+                    <div class="row clickable outlineFocus" tabindex="0"
+                         data-bind="click: $root.posOperationClick.bind($root, Commerce.NumberExtensions.parseNumber(DeepLink)), axBubbleAttr: 'checklistTaskDetails_posOperationLink'">
+                        <div class="h4 primaryFontColor grow height48 centerY" data-bind="text: DeepLinkPosOperationName"></div>
+                        <div class="h6 iconChevronRight icon-24x24 icon height48 width48 center accentColorImportant"></div>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </script>
+
+    <!-- Task management task list detail view -->
+    <script id="taskManagementTasklistNameTemplate" type="text/html">
+        <div data-bind="with: selectedItemDisplay">
+            <div class="h2 wrapText primaryFontColor marginLeft12 marginRight12 marginTop8 marginBottom8 maxHeight64 ellipsis" data-bind="text: Name"></div>
+        </div>
+    </script>
+
+    <!-- Task management task list detail view -->
+    <script id="taskManagementTasklistDetailTemplate" type="text/html">
+        <div class="col grow taskManagementDetail height100Percent" data-bind="with: selectedItemDisplay">
+            <!--Assigned to-->
+            <div class="row">
+                <div class="marginRight12 marginBottom12 marginLeft12">
+                    <div class="h4 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_7727' /* Assigned to */ }"></div>
+                    <!-- ko if: AssignedToChannelName -->
+                    <div class="row centerY">
+                        <div class="h4 primaryFontColor" data-bind="text: AssignedToChannelName"></div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: AssignedToWorkerName -->
+                    <div class="row centerY">
+                        <div data-bind="userImageOrInitials: { name: AssignedToWorkerName, picture: AssignedToWorkerImageUri }, axBubbleAttr: 'assignedToUserInfo_userImage'" class="height32 width32 circleBorder h5"></div>
+                        <div class="h4 primaryFontColor marginLeft12" data-bind="text: AssignedToWorkerName"></div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+
+            <div class="row">
+                <!--Start date-->
+                <div class="grow marginRight12 marginBottom12 marginLeft12">
+                    <div class="h4 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_7748' /* Start date */ }"></div>
+                    <div class="h4 primaryFontColor" data-bind="text: Commerce.Formatters.DateWithLocalTime(StartDateTime)"></div>
+                </div>
+
+                <!--Target date-->
+                <div class="grow marginRight12 marginBottom12 marginLeft12">
+                    <div class="h4 secondaryFontColor padBottom4" data-bind="resx: { textContent: 'string_7732' /* Target date */ }"></div>
+                    <div class="h4 primaryFontColor"
+                         data-bind="text: Commerce.Formatters.DateWithLocalTime(TargetDateTime)"></div>
+                </div>
+            </div>
+
+            <!--Associated tasks-->
+            <div class="row grow scrollY">
+                <div class="marginRight12 marginBottom12 marginLeft12 width100Percent">
+                    <div class="h4 primaryFontColor" data-bind="foreach: { data: Tasks, as: 'task' }">
+                        <div class="taskDetail pad12 marginBottom12 primaryBackgroundColor cardBorder">
+                            <div class="row width100Percent">
+                                <!-- ko if: task.StatusValue === Commerce.Proxy.Entities.ChecklistTaskStatus.NotStarted -->
+                                <div class="grow taskStatus h6 secondaryFontColor marginBottom12" data-bind="resx: { textContent: 'string_7723' /* Not Started */ }"></div>
+                                <!-- /ko -->
+                                <!-- ko if: task.StatusValue === Commerce.Proxy.Entities.ChecklistTaskStatus.InProgress -->
+                                <div class="grow taskStatus h6 secondaryFontColor marginBottom12" data-bind="resx: { textContent: 'string_7724' /* In Progress */ }"></div>
+                                <!-- /ko -->
+                                <!-- ko if: task.StatusValue === Commerce.Proxy.Entities.ChecklistTaskStatus.Completed -->
+                                <div class="grow taskStatus h6 secondaryFontColor marginBottom12"
+                                     data-bind="text: Commerce.StringExtensions.format(Commerce.ViewModelAdapter.getResourceString('string_7784') /* Completed {0} */,
+                                                                                       Commerce.Formatters.DateWithoutLocalTime(task.CompletionDateTime))"></div>
+                                <!-- /ko -->
+                            </div>
+                            <div class="row centerY">
+                                <!-- ko if: task.StatusValue === Commerce.Proxy.Entities.ChecklistTaskStatus.NotStarted -->
+                                <div class="h6 iconTaskStateNotStarted icon-20x20 icon height40 width40 center primaryFontColor marginRight8"></div>
+                                <!-- /ko -->
+                                <!-- ko if: task.StatusValue === Commerce.Proxy.Entities.ChecklistTaskStatus.InProgress -->
+                                <div class="h6 iconTaskStateProcess icon-20x20 icon height40 width40 center primaryFontColor marginRight8"></div>
+                                <!-- /ko -->
+                                <!-- ko if: task.StatusValue === Commerce.Proxy.Entities.ChecklistTaskStatus.Completed -->
+                                <div class="h6 iconTaskStateCompleted icon-20x20 icon height40 width40 center primaryFontColor marginRight8"></div>
+                                <!-- /ko -->
+                                <div class="h4 primaryFontColor grow" data-bind="text: task.Name"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

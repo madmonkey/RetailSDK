@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DeviceActivationView</title>
+</head>
+
+<body>
+    <form autocomplete="off">
+        <div id="deviceActivationPanel" class="fragment dynamicsBackground scrollY">
+
+            <div data-bind="activationUserInfo: { }"></div>
+
+            <div id="deviceActivationSection" class="main col panelBackgroundColor grow padTop40" data-bind="resx: { ariaLabel: 'string_4454' }">
+                <!-- Main content -->
+                <div class="center height100">
+                    <img src="#" data-bind="attr: { src: 'Assets/Wide310x150Logo.scale-100.png' }" />
+                </div>
+
+                <div class="padLeft32 padRight32 padBottom40 padTop40">
+
+                    <div class="padBottom40">
+                        <div class="headerFont wrapTextWithoutHyphen" data-bind="text: appTitle">Activate Retail Modern POS</div>
+                    </div>
+
+                    <!-- Activation textfields -->
+                    <div class="shrink">
+                        <div data-bind="visible: showServerUrl" class="padBottom20">
+                            <label data-bind="resx: { textContent: 'string_1420' }" for="serviceURLBox">Server URL</label>
+
+                            <input id="serviceURLBox" autofocus="autofocus" type="url"
+                                   data-bind="value: viewModel.serviceUrl, valueUpdate:'afterkeydown', enterKeyPress:ActivateDeviceHandler" />
+                        </div>
+
+                        <div class="padBottom20">
+                            <label data-bind="resx: { textContent: 'string_1401' }" for="deviceNumberBox">Device ID</label>
+
+                            <input id="deviceNumberBox" type="text"
+                                   data-bind="value: viewModel.deviceId, valueUpdate:'afterkeydown', enterKeyPress:ActivateDeviceHandler" />
+                        </div>
+
+                        <div class="padBottom20">
+                            <label data-bind="resx: { textContent: 'string_1402' }" for="registerNumberBox">Register number</label>
+
+                            <input id="registerNumberBox" type="text"
+                                   data-bind="value: viewModel.registerId, valueUpdate:'afterkeydown', enterKeyPress:ActivateDeviceHandler" />
+                        </div>
+
+                        <div class="padBottom20" data-bind="visible: !Commerce.Config.aadEnabled">
+                            <label data-bind="resx: { textContent: 'string_1403' }" for="operatorIdBox">Operator ID</label>
+
+                            <input id="operatorIdBox" type="text"
+                                   data-bind="value: operatorId, valueUpdate:'afterkeydown', enterKeyPress:ActivateDeviceHandler" />
+                        </div>
+
+                        <div class="padBottom20" data-bind="visible: !Commerce.Config.aadEnabled">
+                            <label data-bind="resx: { textContent: 'string_1404' }" for="passwordBox">Password</label>
+
+                            <input id="passwordBox" type="password" role="textbox"
+                                   data-bind="value: viewModel.password, valueUpdate:'afterkeydown', enterKeyPress:ActivateDeviceHandler" />
+                        </div>
+
+                        <div class="padTop20 row">
+                            <div class="centerY padTop12">
+                                <a href="#" class="h4" data-bind="click: navigateToGuidedActivation, visible: showGuidedActivationNavigation, resx: { textContent: 'string_1451' }">Use guided activation</a>
+                            </div>
+                            <div class="textRight">
+                                <button id="activateButton" class="primaryButton dynamicsBackground"
+                                        data-bind="resx: { textContent: 'string_1405' }, invokeValidate: ActivateDeviceHandler, disable: disableActivateButton">
+                                    Activate
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+    </html>

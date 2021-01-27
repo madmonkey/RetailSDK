@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extension Details Template</title>
+</head>
+<body>
+    <!-- Extension details template -->
+    <script type="text/html" id="extensionDetailsTemplate">
+        <div class="marginBottom20">
+            <div class="row marginBottom4">
+                <div class="h6 secondaryFontColor" data-bind="resx: { textContent: 'string_7455' }">Module path</div>
+            </div>
+            <div class="row">
+                <div class="h4 width280 wrapTextWithoutHyphen" data-bind="text: modulePath"></div>
+            </div>
+        </div>
+        <div class="marginBottom20">
+            <div class="row marginBottom4">
+                <div class="h6 secondaryFontColor" data-bind="resx: { textContent: 'string_7456' }">Description</div>
+            </div>
+            <div class="row">
+                <div class="h4 width280 wrapTextWithoutHyphen" data-bind="text: description"></div>
+            </div>
+        </div>
+        <div data-bind="visible: isLoadFailed">
+            <div class="row marginBottom4">
+                <div class="h6 secondaryFontColor" data-bind="resx: { textContent: 'string_7454' }">Error messages</div>
+            </div>
+            <div class="row">
+                <div class="h4 width280 wrapTextWithoutHyphen" data-bind="text: loadError"></div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

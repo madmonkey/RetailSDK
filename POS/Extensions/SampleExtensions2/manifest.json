@@ -1,0 +1,25 @@
+﻿{
+  "$schema": "../schemas/manifestSchema.json",
+  "name": "Pos_Extensibility_Samples2",
+  "publisher": "Microsoft",
+  "version": "7.2.0",
+  "minimumPosVersion": "7.2.0.0",
+  "components": {
+    "extend": {
+      "views": {
+        "SimpleProductDetailsView": {
+          "appBarCommands": [ { "modulePath": "ViewExtensions/PrintProductLabelCommand" } ]
+        }
+      }
+    },
+    "create": {
+      "operations": [
+        {
+          "operationId": "4500",
+          "operationRequestFactoryPath": "Operations/LineDiscount/LineDiscountOperationRequestFactory",
+          "operationRequestHandlerPath": "Operations/LineDiscount/LineDiscountOperationRequestHandler"
+        }
+      ]
+    }
+  }
+}

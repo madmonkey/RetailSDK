@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Search Stock Count View</title>
+    <link href="SearchStockCountView.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fragment searchStockCountView">
+        <div id="searchStockCountViewRecentPurchasePivot" data-bind="pivot: { headerItemsAxBubbleAttr: 'searchStockCountView_pivotItemsHeader' }, resx: { ariaLabel: 'string_4454' }">
+            <div id="searchStockCountViewRecentPurchasePivotProducts" data-bind="pivotItem: { headerResx: 'string_3303' }">
+                <!-- Main content -->
+                <div id="searchStockCountList" data-bind="dataList: {
+                        itemDataSource: viewModel.stockCountJournals,
+                        selectionModes: Commerce.Controls.DataList.SelectionMode.SingleSelect,
+                        selectionChanged:  stockCountListSelectionChanged,
+                        ariaLabelResx: 'string_3303', /* Journal */
+                        columns: viewModel.stockCountListColumns
+                        },
+                    axBubbleAttr: 'searchStockCountView_stockCountJournals'"></div>
+            </div>
+        </div>
+        <div id="searchStockCountViewCommandAppBar" data-bind="appBar:{}, axBubbleAttr: 'searchStockCountView_commandAppBar'">
+            <button data-bind="appBarCommand: {
+                id:'searchOrder',
+                extraClass: 'iconSearch',
+                onclick: $root.viewModel.performSearchJournal.bind($root.viewModel),
+                labelResx: 'string_50' }, axBubbleAttr: 'searchOrdersView_searchOrder'"></button>
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconRefresh',
+                id:'syncJournals',
+                onclick: syncAllJournals,
+                labelResx: 'string_3313' }, axBubbleAttr: 'searchStockCountView_syncJournalsButton'"></button><!-- Sync Journals -->
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconDelete',
+                id:'deleteJournal',
+                onclick: deleteJournals,
+                labelResx: 'string_3310',
+                disabled: deleteJournalsDisabled }, axBubbleAttr: 'searchStockCountView_deleteJournalButton'"></button><!-- Delete Journal -->
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconEdit',
+                id:'editJournal',
+                onclick: editJournal,
+                labelResx: 'string_3311',
+                disabled: editJournalDisabled }, axBubbleAttr: 'searchStockCountView_editJournalButton'"></button><!-- Edit Journal-->
+
+            <button data-bind="appBarCommand: {
+                extraClass: 'iconAdd',
+                id:'newJournal',
+                onclick: createJournal,
+                labelResx: 'string_3312',
+                disabled: createJournalDisabled }, axBubbleAttr: 'searchStockCountView_newJournalButton'"></button><!-- New Journal-->
+        </div>
+    </div>
+</body>
+</html>

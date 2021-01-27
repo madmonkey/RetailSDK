@@ -1,0 +1,9 @@
+<configuration>
+  <appSettings>
+    <add key="AADLoginUrl" value="https://login.windows.net/common"/>
+    <add key="AADClientId" value="d6b5a0bd-bf3f-4a8c-b370-619fb3d0e1cc"/>
+    <add key="AADRetailServerResourceId" value="https://commerce.dynamics.com"/>
+    <add key="IsAppInsightsLoggingEnabled" value="true"/>
+    <add key="AppInsightsApplicationName" value="WindowsPhonePos"/>
+  </appSettings>
+</configuration>
